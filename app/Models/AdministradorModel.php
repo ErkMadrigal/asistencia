@@ -340,7 +340,7 @@ class AdministradorModel
                 SELECT sys_permisos_usuarios.id, permiso, sys_modulos.descripcion ,sys_modulos.parent , sys_modulos.child , sys_modulos.idparent , sys_modulos.icon, idmodulo , sys_modulos.orden
                 FROM sys_permisos_usuarios 
                 LEFT JOIN sys_modulos ON sys_permisos_usuarios.idmodulo = sys_modulos.id 
-                WHERE sys_permisos_usuarios.idusuario = '$id' AND idparent != 8 AND idparent IN ((SELECT idmodulo FROM sys_facturacion WHERE idusuario = '$idUserAdmin' AND idestatus = 1)) 
+                WHERE sys_permisos_usuarios.idusuario = '$id' AND idparent != 8 
                 UNION 
                 SELECT CONCAT('new_' , sys_modulos.id) AS id, 0 AS permiso, sys_modulos.descripcion ,sys_modulos.parent , sys_modulos.child , sys_modulos.idparent , sys_modulos.icon, idmodulo , sys_modulos.orden
                 FROM sys_permisos_usuarios 

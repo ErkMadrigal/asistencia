@@ -147,11 +147,14 @@ class Administrador extends BaseController {
 			$id = $this->encrypt->Decrytp($getId);
 			$idAdmin = session()->get('IdUser');
         	$idUserAdmin = $this->encrypter->decrypt($idAdmin);
-        	$this->crudDetailUser = new Crud_AdminDetailUser();
-			$data['form'] = $this->crudDetailUser->crud_SegForm($id , $idUserAdmin);
-			$data['breadcrumb'] = ["inicio" => lang('Administrador.breadcrumbUsuarios') ,
+
+        	$data['user'] = $this->modelAdministrador->GetuserById($id);
+        	$data['modulosUsuario'] = $this->modelAdministrador->GetModulosUserById($id , $idUserAdmin);
+        	
+			
+			$data['breadcrumb'] = ["inicio" => 'Usuarios' ,
                     				"url" => 'usuarios',
-                    				"titulo" => lang('Administrador.breadcrumbDetalle')];
+                    				"titulo" => 'Detalle'];
 		
 			return view('administrador/detailUsuarios', $data);
 		}	
@@ -211,14 +214,13 @@ class Administrador extends BaseController {
 		if ($this->request->getMethod() == "get" && $rolUser === "1"){
 
 			$data['modulos'] = $this->menu->Permisos();
-			$data['breadcrumb'] = ["inicio" => lang('Administrador.breadcrumbUsuarios') ,
+			$data['breadcrumb'] = ["inicio" => 'Usuarios' ,
                     				"url" => 'usuarios',
-                    				"titulo" => lang('Administrador.breadcrumbAgregarUsuario')];
-			$this->crudAddUser = new Crud_AdminAddUser();
+                    				"titulo" => 'Agregar usuario'];
+			
 			$id = session()->get('IdUser');
         	$idUser = $this->encrypter->decrypt($id);
-			$data['form'] = $this->crudAddUser->crud_SegForm($idUser);
-		
+			
 			return view('administrador/addUsuario', $data);
 		}	
 	}

@@ -48,6 +48,8 @@ $routes->get('empresa', 'Administrador::InfoEmpresa',['filter' => 'auth']);
 $routes->get('editEmpresa', 'Administrador::EditarEmpresa',['filter' => 'auth']);
 $routes->post('EditInfoEmpresa', 'Administrador::SaveEmpresa',['filter' => 'auth']);
 $routes->get('usuarios', 'Administrador::GetUsuario',['filter' => 'auth']);
+$routes->get('AddUser', 'Administrador::AgregarUsuario',['filter' => 'auth']);
+$routes->get('detailUser', 'Administrador::DetalleUsuario',['filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------
