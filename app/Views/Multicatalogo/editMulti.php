@@ -21,14 +21,14 @@
                     <div class="form-group">
                         <label for="tipo_combo" class="control-label">Tipo Combo: </label>
                         <div >
-                            <input type="text"  class="form-control " id="tipo_combo" name="tipo_combo"  value="<?= $catalogo->tipo_combo ?>"><?= csrf_field() ?>
+                            <input type="text"  class="form-control " disabled id="tipo_combo" name="tipo_combo"  value="<?= $catalogo->tipo_combo ?>"><input type="hidden"  class="form-control " value =" <?=$id?> " id="id" name="id" ><?= csrf_field() ?>
                             
                         </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-6'>    
                     <div class="form-group">
-                        <label for="valor" class="control-label">valor: </label>
+                        <label for="valor" class="control-label">valor: <span class="text-danger">*</span></label>
                         <div >
                             <input type="text"  class="form-control " id="valor" name="valor" value="<?= $catalogo->valor ?>">
                         </div>

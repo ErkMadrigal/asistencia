@@ -33,10 +33,10 @@ class CataMultiModel
 
     public function GetMultiById($id){
         $builder = $this->db->table('catalogos_detalle');
-        $builder->select("catalogos.valor as tipo_combo, catalogos_detalle.valor,activo");
+        $builder->select("catalogos.valor as tipo_combo, catalogos_detalle.valor,catalogos_detalle.activo, catalogos_detalle.createddate, catalogos_detalle.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
         $builder->join("catalogos","catalogos_detalle.idCatalogo = catalogos.idCatalogo","left");
-       // $builder->join("serprosep.sys_usuarios_admin UA","catalogos_detalle.createdby = UA.id","left");
-       // $builder->join("serprosep.sys_usuarios_admin UU","catalogos_detalle.updatedby = UU.id","left");
+       $builder->join("sys_usuarios_admin UA","catalogos_detalle.createdby = UA.id","left");
+       $builder->join("sys_usuarios_admin UU","catalogos_detalle.updatedby = UU.id","left");
        $builder->orderBy("valor","asc");
        $builder->where('catalogos_detalle.id', $id);
         return $builder->get()->getRow();
@@ -52,10 +52,10 @@ class CataMultiModel
         
     }
 
-    public function saveMulti( $updateEmpresa, $idEmpresa ){
+    public function saveMulti( $updateEmpresa, $idCatalogo ){
 
         $return = false;
-        $this->db->table('catalogos_detalle')->where('id', $idEmpresa)->update($updateEmpresa);
+        $this->db->table('catalogos_detalle')->where('id', $idCatalogo)->update($updateEmpresa);
 
         if ($this->db->affectedRows() > 0){
             $return = true;

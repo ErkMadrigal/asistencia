@@ -65,6 +65,7 @@ class PortaCatalogoMulti extends BaseController {
 
 			
 			$data['catalogo'] = $this->modelMulticatalogo->GetMultiById($id);
+            $data['id'] = $this->encrypt->Encrypt($id);
 
 			$data['breadcrumb'] = ["inicio" => 'Multicatalogo' ,
                     				"url" => 'multicatalogo',
@@ -74,24 +75,32 @@ class PortaCatalogoMulti extends BaseController {
 	}
     public function SaveMulti(){
 
-		if($this->request->getMethod() == "post" && $this->request->getvar(['tipo_combo','valor'],FILTER_SANITIZE_STRING)) {
+		if($this->request->getMethod() == "post" && $this->request->getvar(['valor', 'id'],FILTER_SANITIZE_STRING)) {
 
-			$rules = ['valor' =>  [ 'label' => 'valor', 'rules' => 'required']];
+			$rules = ['id' =>  ['label' => '', 'rules' =>'required'],
+                'valor' =>  [ 'label' => 'valor', 'rules' => 'required']];
+
 				$errors = [];
 				$succes = [];
 				$dontSucces = [];
 				$data = [];
 				
 				if($this->validate($rules)){
-					$getEmpresa = session()->get('empresa');
-					$idEmpresa = $this->encrypter->decrypt($getEmpresa);
-
+					//$getEmpresa = session()->get('empresa');
+					//$idEmpresa = $this->encrypter->decrypt($getEmpresa);
+                    $getUser = session()->get('IdUser');
+					$LoggedUserId = $this->encrypter->decrypt($getUser);
+					$TodayDate = date("Y-m-d H:i:s");
+					$idModi = $this->request->getPost('id');
+					$idCatalogo = $this->encrypt->Decrytp($idModi);	
 					$updateEmpresa = array(
-                        "activo" =>  $_POST['activo'],
-		    			"tipo_combo" =>  $_POST["tipo_combo"],
-		    			"valor" =>  $_POST["valor"]);
+                        "activo" => $this->request->getPost('activo'),
+		    			"valor" =>  $_POST["valor"],
+                        "updatedby" => $LoggedUserId,
+                				"updateddate" => $TodayDate
+                    );
 
-					$registrar = $this->modelMulticatalogo->saveMulti($updateEmpresa, $idEmpresa);
+					$registrar = $this->modelMulticatalogo->saveMulti($updateEmpresa, $idCatalogo);
 
 					if ($registrar){
 

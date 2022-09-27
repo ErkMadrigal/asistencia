@@ -12,17 +12,35 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
+            <form class="form-horizontal" >
                 <div class="row">
-                    <div class="col-7">
-                    <p class="text-muted text-sm"><b>Tipo Combo: </b><?=$catalogo->tipo_combo ?></b></h2>
-                      <p class="text-muted text-sm"><b>valor: </b> <?= $catalogo->valor ?> </p>
-                      <p class="text-muted text-sm"><b>Activo: </b> 
-                      <input class=""  onclick="return false;" type="checkbox" <?=($catalogo->activo == 1 ? "checked" : "" ) ?>>
-                    </p>
+                    <div class='col-12 col-sm-6'>
+                        <div class="form-group">
+                            <label for="empresa" class="control-label">Tipo Combo: </label>
+                            <div >
+                            <?=$catalogo->tipo_combo ?>
+                                
+                            </div>
+                        </div>
                     </div>
-                </div>
-                
-    </div>
+                    <div class='col-12 col-sm-6'>    
+                        <div class="form-group">
+                            <label for="oficina" class="control-label">valor: </label>
+                            <div >
+                            <?= $catalogo->valor ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-6'>    
+                        <div class="form-group">
+                            <label for="Activo" class="control-label">Activo: </label>
+                            <div class="form-check" >
+                            <input class=""  onclick="return false;" type="checkbox" <?=($catalogo->activo == 1 ? "checked" : "" ) ?>>                            </div>
+                        </div>
+                    </div>
+                </div>        
+            </form>
+        </div>
     <div class="card-footer  clearfix  ">
     <div class="row callout callout-warning">
         <div class='col-12 col-sm-6'>
@@ -30,16 +48,17 @@
                 <i class="fa fa-user " aria-hidden="true"></i>
                 <label for="creado" class="control-label">Creado por: </label>
                 <div>
-
+                <?=$catalogo->createdby ?>
                 </div>
             </div>
         </div>
+        
         <div class='col-12 col-sm-6'>
             <div class="form-group">
                 <i class="fa fa-calendar " aria-hidden="true"></i>
                 <label for="createddate" class="control-label">Fecha creación: </label>
                 <div>
-                    
+                <?=$catalogo->createddate ?>
                 </div>
             </div>
         </div>
@@ -48,7 +67,7 @@
                 <i class="fa fa-user " aria-hidden="true"></i>
                 <label for="actualizado" class="control-label">Actualizado por: </label>
                 <div>
-                    
+                <?=$catalogo->updatedby ?>
                 </div>
             </div>
         </div>
@@ -57,7 +76,7 @@
                 <i class="fa fa-calendar " aria-hidden="true"></i>
                 <label for="updateddate" class="control-label">Fecha actualización: </label>
                 <div>
-                   
+                <?=$catalogo->updateddate ?>
                 </div>
             </div>
         </div>
