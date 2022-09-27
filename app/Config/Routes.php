@@ -50,7 +50,10 @@ $routes->post('EditInfoEmpresa', 'Administrador::SaveEmpresa',['filter' => 'auth
 $routes->get('usuarios', 'Administrador::GetUsuario',['filter' => 'auth']);
 $routes->get('AddUser', 'Administrador::AgregarUsuario',['filter' => 'auth']);
 $routes->get('detailUser', 'Administrador::DetalleUsuario',['filter' => 'auth']);
-
+$routes->get('multicatalogo', 'PortaCatalogoMulti::GetMulti',['filter' => 'auth']);
+$routes->get('editMulti', 'PortaCatalogoMulti::EditarMulticatalogo',['filter' => 'auth']);
+$routes->post('EditInfoMulti', 'PortaCatalogoMulti::SaveMulti',['filter' => 'auth']);
+$routes->get('detailMulti', 'PortaCatalogoMulti::DetalleMulticatalogo',['filter' => 'auth']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing
