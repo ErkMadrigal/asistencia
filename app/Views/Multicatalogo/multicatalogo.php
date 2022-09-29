@@ -7,7 +7,7 @@
         <div class="col-12 col-sm-6 col-md-8 ">
         </div>
             <div class="col-12 col-sm-6 col-md-4">
-                <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/AddUser " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i>Agregar Multicatalogo</a>
+                <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/Addmulticata " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i>Agregar Multicatalogo</a>
             </div>
         </div>    
     </div>

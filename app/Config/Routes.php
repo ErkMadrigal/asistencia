@@ -54,6 +54,7 @@ $routes->get('multicatalogo', 'PortaCatalogoMulti::GetMulti',['filter' => 'auth'
 $routes->get('editMulti', 'PortaCatalogoMulti::EditarMulticatalogo',['filter' => 'auth']);
 $routes->post('EditInfoMulti', 'PortaCatalogoMulti::SaveMulti',['filter' => 'auth']);
 $routes->get('detailMulti', 'PortaCatalogoMulti::DetalleMulticatalogo',['filter' => 'auth']);
+$routes->get('Addmulticata', 'PortaCatalogoMulti::AgregarMulti',['filter' => 'auth']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing

@@ -143,6 +143,24 @@ class PortaCatalogoMulti extends BaseController {
 		}	
 	}
 
+    public function AgregarMulti(){
+		if ($this->request->getMethod() == "get" && $this->request->getvar(['id'],FILTER_SANITIZE_STRING)){
 
+			$data['modulos'] = $this->menu->Permisos();
+
+			//$getId = str_replace(" ", "+", $_GET['id']);
+			//$id = $this->encrypt->Decrytp($getId);
+			//$idAdmin = session()->get('IdUser');
+
+			$data['breadcrumb'] = ["inicio" => 'Multicatalogo' ,
+                    				"url" => 'multicatalogo',
+                    				"titulo" => 'Agregar Multicatalogo'];
+			
+			$id = session()->get('IdUser');
+        	$idUser = $this->encrypter->decrypt($id);
+			
+			return view('Multicatalogo/addMulti', $data);
+		}	
+	}
 
 }
