@@ -13,7 +13,7 @@ class UserModel extends Model{
 	public function getModulos($id)
     {
         
-        $queryModulos = "SELECT sys_modulos.descripcion , parent , child , idparent, icon , url,business FROM sys_permisos_usuarios 
+        $queryModulos = "SELECT sys_modulos.id AS idmodulo, sys_modulos.descripcion , parent , child , idparent, icon , url,business,sys_permisos_usuarios.permiso FROM sys_permisos_usuarios 
             LEFT JOIN sys_modulos ON sys_permisos_usuarios.idmodulo = sys_modulos.id 
             LEFT JOIN sys_usuarios_admin ON sys_permisos_usuarios.idusuario = sys_usuarios_admin.id
             WHERE sys_permisos_usuarios.idusuario = '$id' AND sys_permisos_usuarios.permiso = 1

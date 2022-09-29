@@ -79,7 +79,7 @@
 
                     toastr.success(response.succes.mensaje);
 
-                    var count = 5;
+                    var count = 3;
                     setInterval(function(){
                       count--;
                       if (count == 0) {

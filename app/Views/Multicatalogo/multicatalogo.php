@@ -2,16 +2,16 @@
 <?= $this->section('content') ?>
 	<div id="load" class=" spinner text-secondary" role="status">
     </div>
-    <div class="card-footer bg-transparent clearfix">
-        <div class="row">
-        <div class="col-12 col-sm-6 col-md-8 ">
+<div class=" mb-2">    
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-9 ">
         </div>
-            <div class="col-12 col-sm-6 col-md-4">
-                <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/AddUser " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i>Agregar Multicatalogo</a>
-            </div>
-        </div>    
-    </div>
-<div class="card card-primary">
+        <div class="col-12 col-sm-6 col-md-3">
+            <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/AddUser " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Agregar Multicatalogo</a>
+        </div>
+    </div>    
+</div>    
+<div class="card card-primary ">
     <div class="card-header" id="tabMain">
         <h3 class="card-title">Multicatalogo</h3>
     
