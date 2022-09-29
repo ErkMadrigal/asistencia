@@ -54,6 +54,10 @@ $routes->get('multicatalogo', 'PortaCatalogoMulti::GetMulti',['filter' => 'auth'
 $routes->get('editMulti', 'PortaCatalogoMulti::EditarMulticatalogo',['filter' => 'auth']);
 $routes->post('EditInfoMulti', 'PortaCatalogoMulti::SaveMulti',['filter' => 'auth']);
 $routes->get('detailMulti', 'PortaCatalogoMulti::DetalleMulticatalogo',['filter' => 'auth']);
+$routes->post('SaveUser', 'Administrador::CrearUsuario',['filter' => 'auth']);
+$routes->get('editUser', 'Administrador::EditarUsuario',['filter' => 'auth']);
+$routes->post('EditInfoUser', 'Administrador::EditarUsuarioById',['filter' => 'auth']);
+$routes->post('EditUserPermiso', 'Administrador::EditarPermiso',['filter' => 'auth']);
 $routes->get('Addmulticata', 'PortaCatalogoMulti::AgregarMulti',['filter' => 'auth']);
 /*
  * --------------------------------------------------------------------

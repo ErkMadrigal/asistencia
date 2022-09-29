@@ -7,7 +7,7 @@ use CodeIgniter\HTTP\RequestInterface;
 use App\Models\AdministradorModel;
 use App\Libraries\Encrypt;
 
- 
+ $encrypt = new Encrypt();
 
 ?>
 <div id="load" class=" spinner text-secondary" role="status">
@@ -29,7 +29,7 @@ use App\Libraries\Encrypt;
             <div class="row">
                 <div class='col-12 col-sm-6'>
                     <div class="form-group">
-                        <label for="Nombre" class="control-label">Nombre: </label>
+                        <label for="Nombre" class="control-label">Nombre: <span class="text-danger">*</span></label>
                         <div >
                             <input type="text"  class="form-control " id="Nombre" name="Nombre"><?= csrf_field() ?>
                         </div>
@@ -37,7 +37,7 @@ use App\Libraries\Encrypt;
                 </div>
                 <div class='col-12 col-sm-6'>    
                     <div class="form-group">
-                        <label for="Paterno" class="control-label">Apellido paterno: </label>
+                        <label for="Paterno" class="control-label">Apellido paterno: <span class="text-danger">*</span></label>
                         <div >
                             <input type="text"  class="form-control " id="apellidopaterno" name="apellidopaterno" >
                         </div>
@@ -45,7 +45,7 @@ use App\Libraries\Encrypt;
                 </div>
                 <div class='col-12 col-sm-6'>    
                     <div class="form-group">
-                        <label for="email" class="control-label">Email: </label>
+                        <label for="email" class="control-label">Email: <span class="text-danger">*</span></label>
                         <div >
                             <input type="email"  class="form-control" id="email" name="email" >
                         </div>
@@ -70,7 +70,7 @@ foreach ( $modulos as $v){
 	<div class="card card-primary">
     <div class="card-header" >
         
-        <h3 class="card-title"><i class="nav-icon '. $v->icon .'  " ></i>&nbsp;&nbsp <?= $v->descripcion ?></h3>
+        <h3 class="card-title"><i class="nav-icon <?= $v->icon ?>  " ></i>&nbsp;&nbsp <?= $v->descripcion ?></h3>
     
     <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -95,7 +95,7 @@ foreach ( $modulos as $v){
 
      } elseif ($v->parent == 0 && $v->child == 1) { 
      	
-        $id = $this->encrypt->Encrypt($v->idmodulo);
+        $id = $encrypt->Encrypt($v->idmodulo);
     
 	?>        
             
@@ -104,7 +104,7 @@ foreach ( $modulos as $v){
                         <label for="Nombre" class="control-label"><?= $v->descripcion ?> </label>
                         <div >
                             
-                            <input type="checkbox" class="modulo" id="'. $id .'"  name='ids[]'  data-bootstrap-switch data-off-color="danger" data-on-color="success">
+                            <input type="checkbox" class="modulo" id="<?= $id ?>"  name='ids[]'  data-bootstrap-switch data-off-color="danger" data-on-color="success">
                         </div>
                     </div>
                 </div>
@@ -112,7 +112,7 @@ foreach ( $modulos as $v){
     <?php         
     
     } elseif ($v->parent == 0 && $v->child == 0) {
-        $id = $this->encrypt->Encrypt($v->idmodulo);
+        $id = $encrypt->Encrypt($v->idmodulo);
     ?>    
         
             
@@ -121,7 +121,7 @@ foreach ( $modulos as $v){
                         <label for="Nombre" class="control-label"> <?php $v->descripcion ?></label>
                         <div >
                             
-                            <input type="checkbox" class="modulo" id="'. $id .'"  name='ids[]'  data-bootstrap-switch data-off-color="danger" data-on-color="success">
+                            <input type="checkbox" class="modulo" id="<?= $id ?>"  name='ids[]'  data-bootstrap-switch data-off-color="danger" data-on-color="success">
                         </div>
                     </div>
                 </div>
@@ -185,7 +185,7 @@ if($parentStatus == 1){ ?>
 
                     toastr.success(response.succes.mensaje);
 
-                    var count = 5;
+                    var count = 2;
                     setInterval(function(){
                       count--;
                       if (count == 0) {
@@ -204,7 +204,7 @@ if($parentStatus == 1){ ?>
                         $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
                             
                     }
-                        toastr.error(''.lang('Administrador.camposObligatorios').'');
+                        toastr.error('<?=lang('Layout.camposObligatorios')?>');
 
                 }
 
@@ -213,7 +213,7 @@ if($parentStatus == 1){ ?>
                         
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                toastr.error(''.lang('Administrador.toastrError').'');
+                toastr.error('<?=lang('Layout.toastrError')?>');
                 $("#load").attr("style", "display: none !important");           
             }
         });

@@ -47,7 +47,7 @@ class AdministradorModel
         $builder->join("sys_modulos","sys_permisos_usuarios.idmodulo = sys_modulos.id","left");
         $builder->orderBy("idparent","asc");
         $builder->orderBy("orden","asc");
-        $where = " sys_usuarios_admin.id = '". $id ."' AND idparent != 8 AND idparent IN ((SELECT idmodulo FROM sys_facturacion WHERE idusuario = '$id' AND idestatus = 1))";
+        $where = " sys_usuarios_admin.id = '". $id ."' AND idparent != 1 AND idparent IN ((SELECT idmodulo FROM sys_facturacion WHERE idusuario = '$id' AND idestatus = 1))";
         $builder->where($where);
         return $builder->get()->getResult();
         
@@ -75,8 +75,8 @@ class AdministradorModel
         $queryModulo = "SELECT idparent FROM sys_modulos WHERE id = $valModulo";
         
 
-
         $idParent = $this->db->query($queryModulo)->getRow();
+
 
 
         $queryActivos = "SELECT COUNT(*) as total FROM sys_permisos_usuarios 
@@ -139,34 +139,7 @@ class AdministradorModel
                 }
             }
 
-        if ($valor == 1){
-
-            if ($count == 0){
-
-                $queryFacturacion = "UPDATE sys_facturacion SET usuariosactivos = usuariosactivos + 1 WHERE idmodulo = ".$idParent->idparent." AND idusuario = '".$idUserAdmin."'";
         
-                $this->db->query($queryFacturacion);   
-            }
-
-        } else {
-
-            $queryActivosFinal = "SELECT COUNT(*) as total FROM sys_permisos_usuarios 
-                            LEFT JOIN sys_modulos ON sys_permisos_usuarios.idmodulo = sys_modulos.id
-                            WHERE idparent = ".$idParent->idparent." AND permiso = 1 AND parent = 0 AND sys_permisos_usuarios.idusuario = '$idUser'";
-
-            $countFinal = $this->db->query($queryActivosFinal)->getRow()->total;
-
-
-            if ($countFinal== 0){
-
-                $queryFacturacion = "UPDATE sys_facturacion SET usuariosactivos = usuariosactivos - 1 WHERE idmodulo = ".$idParent->idparent." AND idusuario = '".$idUserAdmin."'";
-        
-                $this->db->query($queryFacturacion);   
-            } 
-
-
-
-        }
 
         $this->db->transComplete();
 
@@ -213,7 +186,6 @@ class AdministradorModel
             rol,
             confirmacion,
             idempresa,
-            idbase,
             activo,
             ip) VALUES (
             '".$idUsuario."',
@@ -224,7 +196,6 @@ class AdministradorModel
             ".$data['rol'].",
             1,
             '".$data['idempresa']."',
-            ".$data['idbase'].",
             ".$data['activo'].",
             '".$data['ip']."')";
        
@@ -300,29 +271,6 @@ class AdministradorModel
         }
 
 
-        $moduloList = "";
-        foreach($getModulos as $x =>$value){
-            if ($value['val'] == 1){
-                $id = $this->encrypt->Decrytp($value['modulo']);
-                $moduloList.= "'".$id."'";
-            }
-        }
-
-        $modulosIn = str_replace("''","','",$moduloList);
-
-        $queryModulo = "SELECT DISTINCT idparent FROM sys_modulos WHERE id IN ($modulosIn)";
-        
-        $licencias = $this->db->query($queryModulo)->getResult();
-
-        foreach($licencias as $x ){
-            
-            $queryFacturacion = "UPDATE sys_facturacion SET usuariosactivos = usuariosactivos + 1 WHERE idmodulo = ".$x->idparent." AND idusuario = '".$idUserAdmin."'";
-        
-            $this->db->query($queryFacturacion);    
-
-        } 
-
-
         $this->db->transComplete();
        
         if ($this->db->transStatus() === TRUE){
@@ -340,12 +288,12 @@ class AdministradorModel
                 SELECT sys_permisos_usuarios.id, permiso, sys_modulos.descripcion ,sys_modulos.parent , sys_modulos.child , sys_modulos.idparent , sys_modulos.icon, idmodulo , sys_modulos.orden
                 FROM sys_permisos_usuarios 
                 LEFT JOIN sys_modulos ON sys_permisos_usuarios.idmodulo = sys_modulos.id 
-                WHERE sys_permisos_usuarios.idusuario = '$id' AND idparent != 8 
+                WHERE sys_permisos_usuarios.idusuario = '$id'  
                 UNION 
                 SELECT CONCAT('new_' , sys_modulos.id) AS id, 0 AS permiso, sys_modulos.descripcion ,sys_modulos.parent , sys_modulos.child , sys_modulos.idparent , sys_modulos.icon, idmodulo , sys_modulos.orden
                 FROM sys_permisos_usuarios 
                 LEFT JOIN sys_modulos ON sys_permisos_usuarios.idmodulo = sys_modulos.id 
-                WHERE sys_permisos_usuarios.idusuario = '$idUserAdmin' AND idparent != 8 AND idmodulo NOT IN ((SELECT idmodulo FROM sys_permisos_usuarios WHERE idusuario = '$id' )) ORDER BY idparent ASC , orden ASC";
+                WHERE sys_permisos_usuarios.idusuario = '$idUserAdmin'  AND idmodulo NOT IN ((SELECT idmodulo FROM sys_permisos_usuarios WHERE idusuario = '$id' )) ORDER BY idparent ASC , orden ASC";
         
 
         return $this->db->query($query)->getResult();
@@ -372,7 +320,7 @@ class AdministradorModel
         $builder->join("sys_usuarios_admin","sys_permisos_usuarios.idusuario = sys_usuarios_admin.id","left");
         $builder->join("sys_modulos","sys_permisos_usuarios.idmodulo = sys_modulos.id","left");
         $builder->orderBy("idmodulo","asc");
-        $where = " sys_usuarios_admin.id = '". $id ."' AND parent = 1 AND idparent != 8 AND idparent IN ((SELECT idmodulo FROM sys_facturacion WHERE idusuario = '$id'  AND idestatus = 1))";
+        $where = " sys_usuarios_admin.id = '". $id ."' AND parent = 1 AND idparent != 1 ";
         $builder->where($where);
         return $builder->get()->getResult();
     
@@ -456,7 +404,7 @@ class AdministradorModel
         $query = "SELECT sys_permisos_usuarios.idmodulo, sys_permisos_usuarios.permiso
                 FROM sys_permisos_usuarios 
                 LEFT JOIN sys_modulos ON sys_permisos_usuarios.idmodulo = sys_modulos.id 
-                WHERE sys_permisos_usuarios.idusuario = '$idUserAdmin' AND idparent != 8 AND idmodulo NOT IN ((SELECT idmodulo FROM sys_permisos_usuarios WHERE idusuario = '$idUser' )) ORDER BY idmodulo ASC";
+                WHERE sys_permisos_usuarios.idusuario = '$idUserAdmin' AND idparent != 1 AND idmodulo NOT IN ((SELECT idmodulo FROM sys_permisos_usuarios WHERE idusuario = '$idUser' )) ORDER BY idmodulo ASC";
         
         return $this->db->query($query)->getResult();
         

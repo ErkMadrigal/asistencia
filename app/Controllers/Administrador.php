@@ -65,17 +65,21 @@ class Administrador extends BaseController {
 		if ($this->request->getMethod() == "get" && $rolUser === "1" && $this->request->getvar(['id'],FILTER_SANITIZE_STRING)){
 
 			$data['modulos'] = $this->menu->Permisos();
-			$this->crudEditUser = new Crud_AdminEditUser();
-
+			
 			$getId = str_replace(" ", "+", $_GET['id']);
 			$id = $this->encrypt->Decrytp($getId);
 			$getUser = session()->get('IdUser');
 			$idUserAdmin = $this->encrypter->decrypt($getUser);
 
-			$data['form'] = $this->crudEditUser->crud_SegForm($id , $getId,$idUserAdmin);
-			$data['breadcrumb'] = ["inicio" => lang('Administrador.breadcrumbUsuarios') ,
+			$data['modulosUsuario'] = $this->modelAdministrador->GetModulosUserById($id , $idUserAdmin);
+
+			$data['user'] = $this->modelAdministrador->GetuserById($id);
+
+			$data['getId'] =  $getId;
+			
+			$data['breadcrumb'] = ["inicio" => 'Usuarios',
                     				"url" => 'usuarios',
-                    				"titulo" => lang('Administrador.breadcrumbEditar')];
+                    				"titulo" => 'Editar'];
 			return view('administrador/editUsuarios', $data);
 		}	
 	}
@@ -103,8 +107,6 @@ class Administrador extends BaseController {
 
 					$idEdit = $this->encrypt->Decrytp($idEditPost);
 
-					$validaLicencias = $this->modelAdministrador->validaLicenciasById($idEdit,$idUserAdmin , $idUser,$_POST["valEdit"]);
-					if($validaLicencias){
 						
 					
 						$updatePermiso = array(
@@ -115,20 +117,15 @@ class Administrador extends BaseController {
 
                     	if ($update) {
                     	
-                    		$succes = ["mensaje" => lang('Administrador.permisoExito') ,
+                    		$succes = ["mensaje" => 'Permiso editado con exito.' ,
                             	   "succes" => "succes"];
                     	
                     	} else {
                     		$dontSucces = ["error" => "error" ,
-                    				   "mensaje" => lang('Administrador.permisoError')];
+                    				   "mensaje" => 'Hubo un error al intentar editar el permiso.'];
 
                     	}
-                    } else {
-
-                    	$dontSucces = ["error" => "error" ,
-                    				   "mensaje" => lang('Administrador.licenciaError')];
-
-                    }		
+                    		
 
 				} else {	
 					$errors = $this->validator->getErrors();
@@ -164,9 +161,9 @@ class Administrador extends BaseController {
 		$rolUser = $this->Rol();
 		if ($this->request->getMethod() == "post" && $rolUser === "1" && $this->request->getvar(['Nombre','apellidopaterno','activo', 'id'],FILTER_SANITIZE_STRING)){
 				$rules = [
-				'Nombre' => ['label' => lang('Administrador.nombre'), 'rules' => 'required' ],
-				'apellidopaterno' => ['label' => lang('Administrador.apellidopaterno'), 'rules' => 'required'],
-				'activo' => ['label' => lang('Administrador.activo'), 'rules' => 'in_list[0,1]'],
+				'Nombre' => ['label' => 'Nombre', 'rules' => 'required' ],
+				'apellidopaterno' => ['label' => 'Apellido paterno', 'rules' => 'required'],
+				'activo' => ['label' => 'Activo', 'rules' => 'in_list[0,1]'],
 				'id' => ['label' => '', 'rules' => 'required']
 
 				];
@@ -193,12 +190,12 @@ class Administrador extends BaseController {
 
                     if ($update) {
                     	
-                    	$succes = ["mensaje" => lang('Administrador.editaUsuarioExito') ,
+                    	$succes = ["mensaje" => 'Usuario editado con exito.' ,
                             	   "succes" => "succes"];
                     	
                     } else {
                     	$dontSucces = ["error" => "error" ,
-                    				   "mensaje" => lang('Administrador.editaUsuarioError')];
+                    				   "mensaje" => 'Hubo un error al intentar editar el usuario.'];
 
                     }
 				} else {	
@@ -221,33 +218,21 @@ class Administrador extends BaseController {
 			$id = session()->get('IdUser');
         	$idUser = $this->encrypter->decrypt($id);
 			
+
+
 			return view('administrador/addUsuario', $data);
 		}	
 	}
 
-	public function GetSuscripciones(){
-		$rolUser = $this->Rol();
-		if ($this->request->getMethod() == "get" && $rolUser === "1"){
-
-			$data['modulos'] = $this->menu->Permisos();
-			$this->crudSuscripciones = new Crud_AdminSuscripciones();
-
-			$id = session()->get('IdUser');
-        	$idUser = $this->encrypter->decrypt($id);
-
-			$data['form'] = $this->crudSuscripciones->crud_SegForm($idUser);
-		
-			return view('administrador/suscripciones', $data);
-		}	
-	}
+	
 
 	public function CrearUsuario(){
 		$rolUser = $this->Rol();
 		if ($this->request->getMethod() == "post" && $rolUser === "1" && $this->request->getvar(['Nombre','email','apellidopaterno'],FILTER_SANITIZE_STRING)){
 				$rules = [
-				'Nombre' => ['label' => lang('Administrador.nombre'), 'rules' => 'required' ],
-				'apellidopaterno' => ['label' => lang('Administrador.apellidopaterno'), 'rules' => 'required'],
-				'email' =>  [ 'label' => lang('Administrador.email'), 'rules' => 'required|valid_email|is_unique[sys_usuarios_admin.email]']
+				'Nombre' => ['label' => 'Nombre', 'rules' => 'required' ],
+				'apellidopaterno' => ['label' => 'Apellido paterno', 'rules' => 'required'],
+				'email' =>  [ 'label' => 'Email', 'rules' => 'required|valid_email|is_unique[sys_usuarios_admin.email]']
 
 				];
 				
@@ -271,9 +256,7 @@ class Administrador extends BaseController {
 					
 					$getUser = session()->get('IdUser');
 					$idUser = $this->encrypter->decrypt($getUser);
-					$validaLicencias = $this->modelAdministrador->validaLicencias($getModulos,$idUser );
-					if($validaLicencias){
-
+					
 						
 						$empresa = session()->get('empresa');
 						
@@ -339,12 +322,7 @@ class Administrador extends BaseController {
                     				   "mensaje" => lang('Administrador.creaUsuarioError')];
 
                     	}
-                	} else {
-
-                		$dontSucces = ["error" => "error" ,
-                    				   "mensaje" => lang('Administrador.licenciaError')];
-
-                	}
+                	
 				} else {	
 					$errors = $this->validator->getErrors();
 				}
