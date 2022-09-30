@@ -58,6 +58,7 @@ $routes->post('SaveUser', 'Administrador::CrearUsuario',['filter' => 'auth']);
 $routes->get('editUser', 'Administrador::EditarUsuario',['filter' => 'auth']);
 $routes->post('EditInfoUser', 'Administrador::EditarUsuarioById',['filter' => 'auth']);
 $routes->post('EditUserPermiso', 'Administrador::EditarPermiso',['filter' => 'auth']);
+$routes->get('catDocumentos', 'Documentos::GetDocumentos',['filter' => 'auth']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing

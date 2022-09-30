@@ -1,0 +1,148 @@
+<?php namespace App\Controllers;
+
+use App\Models\CataMultiModel;
+use App\Libraries\Crud_email;
+use App\Libraries\Menu;
+use App\Libraries\Encrypt;
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\Type\Hexadecimal;
+use Ramsey\Uuid\Provider\Node\StaticNodeProvider;
+
+class Documentos extends BaseController {
+    private $encrypter;
+	private $menu;
+	private $encrypt;
+	private $db;
+	private $modelMulticatalogo;
+
+    public function __construct(){
+		$this->menu = new Menu();
+		$this->encrypt = new Encrypt();
+		$this->encrypter = \Config\Services::encrypter();
+        $this->db =  \Config\Database::connect('default');
+		$this->modelMulticatalogo = new CataMultiModel($this->db);
+    }
+
+    public function GetDocumentos(){
+		if ($this->request->getMethod() == "get"){
+
+			$data['modulos'] = $this->menu->Permisos();
+			$empresa = session()->get('empresa');
+			$idEmpresa = $this->encrypter->decrypt($empresa);
+			// $resultData = $this->modelMulticatalogo->GetMulti($idEmpresa);
+			 $result = [];
+			// foreach ( $resultData as $v){
+				
+			// 	$id = $this->encrypt->Encrypt($v->id);
+			// 	$result[] = (object) array (
+			// 		'id' => $id ,
+			// 		'tipo_combo' => $v->tipo_combo,
+			// 		'valor' => $v->valor,
+			// 		'activo' => $v->activo
+
+			// 	) ;
+			// }
+		
+			 $dataCrud = [
+                 'data' => $result]; 
+
+         	$data['documentos'] = $dataCrud['data'];
+
+			
+			return view('Documentos/documentos', $data);
+		}	
+    }
+
+
+    public function EditarMulticatalogo(){
+		if ($this->request->getMethod() == "get" && $this->request->getvar(['id'],FILTER_SANITIZE_STRING)){
+
+			$data['modulos'] = $this->menu->Permisos();
+			
+			$getId = str_replace(" ", "+", $_GET['id']);
+			$id = $this->encrypt->Decrytp($getId);
+			$idAdmin = session()->get('IdUser');
+
+			
+			$data['catalogo'] = $this->modelMulticatalogo->GetMultiById($id);
+            $data['id'] = $this->encrypt->Encrypt($id);
+
+			$data['breadcrumb'] = ["inicio" => 'Multicatalogo' ,
+                    				"url" => 'multicatalogo',
+                    				"titulo" => 'Editar'];
+			return view('Multicatalogo/editMulti', $data);
+		}	
+	}
+    public function SaveMulti(){
+
+		if($this->request->getMethod() == "post" && $this->request->getvar(['valor', 'id'],FILTER_SANITIZE_STRING)) {
+
+			$rules = ['id' =>  ['label' => '', 'rules' =>'required'],
+                'valor' =>  [ 'label' => 'valor', 'rules' => 'required']];
+
+				$errors = [];
+				$succes = [];
+				$dontSucces = [];
+				$data = [];
+				
+				if($this->validate($rules)){
+					//$getEmpresa = session()->get('empresa');
+					//$idEmpresa = $this->encrypter->decrypt($getEmpresa);
+                    $getUser = session()->get('IdUser');
+					$LoggedUserId = $this->encrypter->decrypt($getUser);
+					$TodayDate = date("Y-m-d H:i:s");
+					$idModi = $this->request->getPost('id');
+					$idCatalogo = $this->encrypt->Decrytp($idModi);	
+					$updateEmpresa = array(
+                        "activo" => $this->request->getPost('activo'),
+		    			"valor" =>  $_POST["valor"],
+                        "updatedby" => $LoggedUserId,
+                				"updateddate" => $TodayDate
+                    );
+
+					$registrar = $this->modelMulticatalogo->saveMulti($updateEmpresa, $idCatalogo);
+
+					if ($registrar){
+
+						$succes = ["mensaje" => 'Multicatalogo editado con exito' ,
+                            	   "succes" => "succes"];
+					} else {
+
+						$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	lang('Layout.toastrError') ];
+					}
+					
+				} else {
+
+					$errors = $this->validator->getErrors();
+				}
+
+			}
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+	}
+
+    public function DetalleMulticatalogo(){
+		if ($this->request->getMethod() == "get" && $this->request->getvar(['id'],FILTER_SANITIZE_STRING)){
+
+			$data['modulos'] = $this->menu->Permisos();
+
+			$getId = str_replace(" ", "+", $_GET['id']);
+			$id = $this->encrypt->Decrytp($getId);
+			$idAdmin = session()->get('IdUser');
+        	//$idUserAdmin = $this->encrypter->decrypt($idAdmin);
+
+        	$data['catalogo'] = $this->modelMulticatalogo->GetMultiById($id);
+        	//$data['modulosUsuario'] = $this->modelAdministrador->GetModulosUserById($id , $idUserAdmin);
+        	
+			
+			$data['breadcrumb'] = ["inicio" => 'Multicatalogo' ,
+                    				"url" => 'multicatalogo',
+                    				"titulo" => 'Detalle'];
+		
+			return view('Multicatalogo/detailMulti', $data);
+		}	
+	}
+
+
+
+}

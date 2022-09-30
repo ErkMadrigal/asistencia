@@ -7,13 +7,13 @@
         <div class="col-12 col-sm-6 col-md-9 ">
         </div>
         <div class="col-12 col-sm-6 col-md-3">
-            <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/AddUser " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Agregar Multicatalogo</a>
+            <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/AddUser " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Agregar Documento</a>
         </div>
     </div>    
 </div>    
 <div class="card card-primary ">
     <div class="card-header" id="tabMain">
-        <h3 class="card-title">Multicatalogo</h3>
+        <h3 class="card-title">Documentos requeridos</h3>
     
     <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -26,8 +26,8 @@
         <table id="dataGrid" class="table  text-center table-hover table-head-fixed text-nowrap">
             <thead>
             <tr>
-                <th>Tipo de combo</th>
-                <th>Valor</th>
+                <th>Documento</th>
+                <th>Tipo</th>
                 <th>Activo</th>
                 <th>Editar</th>
                 <th>Detalle</th>
@@ -52,7 +52,7 @@ function estatusRenderer(data, type, full, meta) {
     return src;
 }
 	var table = $('#dataGrid').DataTable({
-            data: <?= json_encode($catalogo) ?> ,
+            data: <?= json_encode($documentos) ?> ,
             deferRender: true,
             pageLength: 10,
             columns: [{ data: "tipo_combo"
