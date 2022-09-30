@@ -64,4 +64,38 @@ class CataMultiModel
 
         return $return; 
     }
+
+    //obtener los catlago padre se muestra en el combo
+    public function GetCatalogos(){
+        $builder = $this->db->table('catalogos');
+        $builder->select('idCatalogo, valor');
+        //$builder->where("activo",true);
+        $builder->orderBy("valor","asc");
+        return $builder->get()->getResult();
+        
+    }
+
+    public function insertItemAndSelect($table, $data , $tableSelect , $idCatalogo , $LoggedUserId, $idEmpresa)
+    {
+
+        $return = false;
+        $this->db->transStart();
+
+        $query = "INSERT INTO catalogos_detalle (idCatalogo, valor, activo, createdby, createddate, idEmpresa) VALUES ('".$idCatalogo."','".$data['valor']."',1,'".$LoggedUserId."', now() ,'".$idEmpresa."')";
+
+        $this->db->query($query);
+        
+
+        $this->db->transComplete();
+
+        if ($this->db->transStatus() === TRUE)
+        {
+            $return = true;
+        } 
+
+        return $return;
+    }
+
+
+
 }
