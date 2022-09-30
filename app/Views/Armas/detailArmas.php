@@ -65,14 +65,6 @@
                     </div>
                     <div class='col-12 col-sm-6'>    
                         <div class="form-group">
-                            <label for="modalidad" class="control-label">Modalidad: </label>
-                            <div >
-                            <?= $arma->idModalidad ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-12 col-sm-6'>    
-                        <div class="form-group">
                             <label for="Activo" class="control-label">Activo: </label>
                             <div class="form-check" >
                             <input class=""  onclick="return false;" type="checkbox" <?=($arma->activo == 1 ? "checked" : "" ) ?>>                            </div>

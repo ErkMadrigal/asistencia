@@ -48,12 +48,14 @@ use App\Libraries\Encrypt;
                         <label for="clase" class="control-label">Clase: <span class="text-danger">*</span></label>
                         <select class="form-control" id="clase" name="clase">
                         <option value="">Selecciona una Clase</option>';
+                        <?php
                                 if( !empty($clase) ):
                                     foreach($clase as  $a){
-                                        $idClase = $this->encrypt->Encrypt($a->id);
-                                        $form.= '<option value="'.$idClase.'">'.$a->valor .'</option>';
+                                        $idClase = $encrypt->Encrypt($a->idClase);?>
+                                            <option value="<?=$idClase?>"><?= $a->valor ?></option>
+                                            <?php
                                     }
-                                endif;
+                                endif;?>
                                     </select><script>$(document).ready(function() {
                                         $("#clase").select2({theme: "bootstrap4",width:"100%"});
                                         });</script>
@@ -62,14 +64,16 @@ use App\Libraries\Encrypt;
                 <div class='col-12 col-sm-6'>    
                     <div class="form-group">
                         <label for="calibre" class="control-label">Calibre: <span class="text-danger">*</span></label>
-                        <select class="form-control" id="clase" name="clase">
+                        <select class="form-control" id="calibre" name="calibre">
                         <option value="">Selecciona un Calibre</option>';
-                                if( !empty($calibre) ):
-                                    foreach($calibre as  $a){
-                                        $idCalibre = $this->encrypt->Encrypt($a->id);
-                                        $form.= '<option value="'.$idCalibre.'">'.$a->valor .'</option>';
+                        <?php
+                                if( !empty($calible) ):
+                                    foreach($calible as  $a){
+                                        $idCalibre = $encrypt->Encrypt($a->idCalibre);?>
+                                            <option value="<?=$idCalibre?>"><?= $a->valor ?></option>
+                                            <?php
                                     }
-                                endif;
+                                endif;?>
                                     </select><script>$(document).ready(function() {
                                         $("#calibre").select2({theme: "bootstrap4",width:"100%"});
                                         });</script>
@@ -78,14 +82,16 @@ use App\Libraries\Encrypt;
                 <div class='col-12 col-sm-6'>    
                     <div class="form-group">
                         <label for="marca" class="control-label">Marca: <span class="text-danger">*</span></label>
-                        <select class="form-control" id="clase" name="clase">
+                        <select class="form-control" id="marca" name="marca">
                         <option value="">Selecciona una Marca</option>';
+                        <?php
                                 if( !empty($marca) ):
                                     foreach($marca as  $a){
-                                        $idMarca = $this->encrypt->Encrypt($a->id);
-                                        $form.= '<option value="'.$idMarca.'">'.$a->valor .'</option>';
+                                        $idMarca = $encrypt->Encrypt($a->idMarca);?>
+                                            <option value="<?=$idMarca?>"><?= $a->valor ?></option>
+                                            <?php
                                     }
-                                endif;
+                                endif;?>
                                     </select><script>$(document).ready(function() {
                                         $("#marca").select2({theme: "bootstrap4",width:"100%"});
                                         });</script>
@@ -94,32 +100,18 @@ use App\Libraries\Encrypt;
                 <div class='col-12 col-sm-6'>    
                     <div class="form-group">
                         <label for="modelo" class="control-label">Modelo: <span class="text-danger">*</span></label>
-                        <select class="form-control" id="clase" name="clase">
+                        <select class="form-control" id="modelo" name="modelo">
                         <option value="">Selecciona un Modelo</option>';
+                        <?php
                                 if( !empty($modelo) ):
                                     foreach($modelo as  $a){
-                                        $idModelo = $this->encrypt->Encrypt($a->id);
-                                        $form.= '<option value="'.$idModelo.'">'.$a->valor .'</option>';
+                                        $idModelo = $encrypt->Encrypt($a->idModelo);?>
+                                            <option value="<?=$idModelo?>"><?= $a->valor ?></option>
+                                            <?php
                                     }
-                                endif;
+                                endif;?>
                                     </select><script>$(document).ready(function() {
                                         $("#modelo").select2({theme: "bootstrap4",width:"100%"});
-                                        });</script>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-6'>    
-                    <div class="form-group">
-                        <label for="modalidad" class="control-label">Modalidad: <span class="text-danger">*</span></label>
-                        <select class="form-control" id="clase" name="clase">
-                        <option value="">Seleccionar Clase</option>';
-                                if( !empty($modalidad) ):
-                                    foreach($modalidad as  $a){
-                                        $idModalidad = $this->encrypt->Encrypt($a->id);
-                                        $form.= '<option value="'.$idModalidad.'">'.$a->valor .'</option>';
-                                    }
-                                endif;
-                                    </select><script>$(document).ready(function() {
-                                        $("#modalidad").select2({theme: "bootstrap4",width:"100%"});
                                         });</script>
                     </div>
                 </div>
