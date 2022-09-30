@@ -70,15 +70,6 @@
                         </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-6'>
-                    <div class="form-group">
-                        <label for="idModalidad" class="control-label">Modalidad: </label>
-                        <div >
-                            <input type="text"  class="form-control " disabled id="idModalidad" name="idModalidad"  value="<?= $arma->idModalidad ?>">
-                            
-                        </div>
-                    </div>
-                </div>
                 <div class='col-12 col-sm-6'>    
                     <div class="form-group">
                         <label for="Activo" class="control-label">Activo:</label>
