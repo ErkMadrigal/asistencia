@@ -153,7 +153,6 @@ class PortaCatalogoMulti extends BaseController {
 			$data['breadcrumb'] = ["inicio" => 'Multicatalogo' ,
                     				"url" => 'multicatalogo',
                     				"titulo" => 'Agregar Multicatalogo'];
-			
 			$id = session()->get('IdUser');
         	$idUser = $this->encrypter->decrypt($id);
 			
@@ -162,7 +161,6 @@ class PortaCatalogoMulti extends BaseController {
 	}
 	public function AgregarMulticatalogo(){
 		if ($this->request->getMethod() == "post" && $this->request->getvar(['catalogo,valor'],FILTER_SANITIZE_STRING)){
-
 
 				$rules = [
 				'valor' =>  ['label' => "Valor", 'rules' => 'required|max_length[255]'],
