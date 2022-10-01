@@ -74,7 +74,7 @@
                     <div class="form-group">
                         <label for="Activo" class="control-label">Activo:</label>
                         <div class="form-check" >
-                            <input class="form-check-input"  type="checkbox" value="<?= $arma->activo == 1 ? 'checked' : '' ?>">
+                            <input class="form-check-input"  type="checkbox" id="activo" name="activo"  value="<?= $arma->activo == 1 ? 'checked' : '' ?>">
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,13 @@
      $('#editArmas').click(function (event) {
         event.preventDefault();
         $('#loadBtn').show();
+        if($('#activo').is(':checked')) {
+            val = 1;
+        } else {
+            val = 0;
+        }
         var formData = new FormData($("form#frmArmas")[0]);
+        formData.append('activo', val);
         
         $.ajax({
             url: base_url + '/EditInfoArma',

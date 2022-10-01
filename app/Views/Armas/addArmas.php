@@ -51,7 +51,7 @@ use App\Libraries\Encrypt;
                         <?php
                                 if( !empty($clase) ):
                                     foreach($clase as  $a){
-                                        $idClase = $encrypt->Encrypt($a->idClase);?>
+                                        $idClase = $encrypt->Encrypt($a->id);?>
                                             <option value="<?=$idClase?>"><?= $a->valor ?></option>
                                             <?php
                                     }
@@ -67,9 +67,9 @@ use App\Libraries\Encrypt;
                         <select class="form-control" id="calibre" name="calibre">
                         <option value="">Selecciona un Calibre</option>';
                         <?php
-                                if( !empty($calible) ):
-                                    foreach($calible as  $a){
-                                        $idCalibre = $encrypt->Encrypt($a->idCalibre);?>
+                                if( !empty($calibre) ):
+                                    foreach($calibre as  $a){
+                                        $idCalibre = $encrypt->Encrypt($a->id);?>
                                             <option value="<?=$idCalibre?>"><?= $a->valor ?></option>
                                             <?php
                                     }
@@ -87,7 +87,7 @@ use App\Libraries\Encrypt;
                         <?php
                                 if( !empty($marca) ):
                                     foreach($marca as  $a){
-                                        $idMarca = $encrypt->Encrypt($a->idMarca);?>
+                                        $idMarca = $encrypt->Encrypt($a->id);?>
                                             <option value="<?=$idMarca?>"><?= $a->valor ?></option>
                                             <?php
                                     }
@@ -106,7 +106,7 @@ use App\Libraries\Encrypt;
                         <?php
                                 if( !empty($modelo) ):
                                     foreach($modelo as  $a){
-                                        $idModelo = $encrypt->Encrypt($a->idModelo);?>
+                                        $idModelo = $encrypt->Encrypt($a->id);?>
                                             <option value="<?=$idModelo?>"><?= $a->valor ?></option>
                                             <?php
                                     }

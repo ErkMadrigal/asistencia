@@ -102,7 +102,7 @@ class ArmasModel
         return $return; 
     }
 
-    public function insertItemAndSelect($table, $data , $tableSelect , $LoggedUserId, $idEmpresa)
+    public function insertItemAndSelect($table, $data , $tableSelect , $LoggedUserId, $idEmpresa, $idClase, $idCalibre, $idMarca, $idModelo)
     {
 
         $return = false;
@@ -110,9 +110,9 @@ class ArmasModel
         
         $uuid = Uuid::uuid4();
         
-        $idClase = $uuid->toString();
+        $idArma = $uuid->toString();
 
-        $query = "INSERT INTO armas (id, matricula, idClase, idCalibre, idMarca, idModelo,folio_manif valor, activo,createdby,createddate,idEmpresa) VALUES ('".$idCatalogo."','".$data['folio_manif']."','".$data['matricula']."',1,'".$LoggedUserId."', now() ,'".$idEmpresa."')";
+        $query = "INSERT INTO armas (id, matricula,folio_manif, idClase, idCalibre, idMarca, idModelo, activo,createdby,createddate,idEmpresa) VALUES ('".$idArma."','".$data['matricula']."','".$data['folio_manif']."','".$idClase."','".$idCalibre."','".$idMarca."','".$idModelo."',1,'".$LoggedUserId."', now() ,'".$idEmpresa."')";
 
         $this->db->query($query);
         

@@ -86,8 +86,6 @@ class PortaCatalogoMulti extends BaseController {
 				$data = [];
 				
 				if($this->validate($rules)){
-					//$getEmpresa = session()->get('empresa');
-					//$idEmpresa = $this->encrypter->decrypt($getEmpresa);
                     $getUser = session()->get('IdUser');
 					$LoggedUserId = $this->encrypter->decrypt($getUser);
 					$TodayDate = date("Y-m-d H:i:s");
@@ -97,7 +95,7 @@ class PortaCatalogoMulti extends BaseController {
                         "activo" => $this->request->getPost('activo'),
 		    			"valor" =>  $_POST["valor"],
                         "updatedby" => $LoggedUserId,
-                				"updateddate" => $TodayDate
+                		"updateddate" => $TodayDate
                     );
 
 					$registrar = $this->modelMulticatalogo->saveMulti($updateEmpresa, $idCatalogo);

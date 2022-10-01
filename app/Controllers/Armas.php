@@ -150,26 +150,33 @@ class Armas extends BaseController {
 			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
 	}
 
+
 	public function AgreArma(){
 		if ($this->request->getMethod() == "get"){
+
+            $getEmpresa = session()->get('empresa');
+            $idEmpresa = $this->encrypter->decrypt($getEmpresa);
 
 			$data['modulos'] = $this->menu->Permisos();
 			$data['breadcrumb'] = ["inicio" => 'Armas' ,
                     				"url" => 'armas',
                     				"titulo" => 'Agregar Arma'];
-			
+
+			$data['clase']=$this->modelArmas->GetClase($idEmpresa);
+            $data['calibre']=$this->modelArmas->GetCalibre($idEmpresa);
+            $data['modelo']=$this->modelArmas->GetModelo($idEmpresa);
+            $data['marca']=$this->modelArmas->GetMarca($idEmpresa);
+
 			$id = session()->get('IdUser');
         	$idUser = $this->encrypter->decrypt($id);
 			
-
-
 			return view('Armas/addArmas', $data);
 		}	
 	}
 
     public function AgregarArma(){
 		//helper(['form']);
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['matricula,folio_manif,idClase,idCalibre,idMarca,idModelo,idModalidad'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['matricula,folio_manif,clase,calibre,marca,modelo'],FILTER_SANITIZE_STRING)){
 
 				$getEmpresa = session()->get('empresa');
 				$idEmpresa = $this->encrypter->decrypt($getEmpresa);
@@ -177,27 +184,34 @@ class Armas extends BaseController {
 				
 
 				$rules = [
-				'matricula' =>  ['label' => "matricula", 'rules' => 'required|max_length[255]'],
-				'folio_manif' =>  ['label' => "folio_manif", 'rules' => 'required|max_length[255]'],
-                'idClase' =>  ['label' => "clase", 'rules' => 'required'],
-                'idCalibre' =>  ['label' => "calibre", 'rules' => 'required'],
-                'idMarca' =>  ['label' => "marca", 'rules' => 'required'],
-                'idModelo' =>  ['label' => "modelo", 'rules' => 'required'],
-                'idModalidad' =>  ['label' => "modalidad", 'rules' => 'required']];
+				'matricula' =>  ['label' => "Matricula", 'rules' => 'required|max_length[255]'],
+				'folio_manif' =>  ['label' => "Folio Manif", 'rules' => 'required|max_length[255]'],
+                'clase' =>  ['label' => "Clase", 'rules' => 'required'],
+                'calibre' =>  ['label' => "Calibre", 'rules' => 'required'],
+                'marca' =>  ['label' => "Marca", 'rules' => 'required'],
+                'modelo' =>  ['label' => "Modelo", 'rules' => 'required']];
 		 
 				$errors = [];
 				$succes = [];
 				$dontSucces = [];
 				$data = [];
 
+
 				if($this->validate($rules)){
 					
 					$getUser = session()->get('IdUser');
 					$LoggedUserId = $this->encrypter->decrypt($getUser);
-					$getEmpresa = $this->request->getPost('empresa');
-					$idEmpresa = $this->encrypt->Decrytp($getEmpresa);
-					
-					$result = $this->modelArmas->insertItemAndSelect('armas', $this->request->getPost() , 'armas' , $idEmpresa ,$LoggedUserId , $idEmpresa);
+					$empresa = session()->get('empresa');
+					$idEmpresa = $this->encrypter->decrypt($empresa);
+					$getClase = $this->request->getPost('clase');
+					$idClase = $this->encrypt->Decrytp($getClase);
+                    $getCalibre= $this->request->getPost('calibre');
+					$idCalibre = $this->encrypt->Decrytp($getCalibre);
+                    $getMarca = $this->request->getPost('marca');
+					$idMarca = $this->encrypt->Decrytp($getMarca);
+                    $getModelo = $this->request->getPost('modelo');
+					$idModelo = $this->encrypt->Decrytp($getModelo);
+					$result = $this->modelArmas->insertItemAndSelect('armas', $this->request->getPost() , 'armas',$LoggedUserId , $idEmpresa, $idClase,$idCalibre,$idMarca,$idModelo);
 
                     if ($result) {
 
