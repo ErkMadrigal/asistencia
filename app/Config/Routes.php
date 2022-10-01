@@ -58,8 +58,6 @@ $routes->post('SaveUser', 'Administrador::CrearUsuario',['filter' => 'auth']);
 $routes->get('editUser', 'Administrador::EditarUsuario',['filter' => 'auth']);
 $routes->post('EditInfoUser', 'Administrador::EditarUsuarioById',['filter' => 'auth']);
 $routes->post('EditUserPermiso', 'Administrador::EditarPermiso',['filter' => 'auth']);
-$routes->get('catDocumentos', 'Documentos::GetDocumentos',['filter' => 'auth']);
-//$routes->get('Addmulticata', 'PortaCatalogoMulti::AgregarMulti',['filter' => 'auth']);
 $routes->get('armas', 'Armas::GetArmas',['filter' => 'auth']);
 $routes->get('detailArmas', 'Armas::DetalleArmas',['filter' => 'auth']);
 $routes->get('editArmas', 'Armas::EditarArma',['filter' => 'auth']);
@@ -68,6 +66,7 @@ $routes->get('AddArmas', 'Armas::AgreArma',['filter' => 'auth']);
 $routes->post('GuardarArma', 'Administrador::AgregarArma',['filter' => 'auth']);
 $routes->get('AddMulti', 'PortaCatalogoMulti::AgregarMulti',['filter' => 'auth']);
 $routes->post('GuardarMulti', 'PortaCatalogoMulti::AgregarMulticatalogo',['filter' => 'auth']);
+$routes->get('catDocumentos', 'Documentos::GetDocumentos',['filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------
