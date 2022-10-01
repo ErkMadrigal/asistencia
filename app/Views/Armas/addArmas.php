@@ -95,6 +95,7 @@ use App\Libraries\Encrypt;
                                     </select><script>$(document).ready(function() {
                                         $("#marca").select2({theme: "bootstrap4",width:"100%"});
                                         });</script>
+
                     </div>
                 </div>
                 <div class='col-12 col-sm-6'>    
@@ -113,6 +114,7 @@ use App\Libraries\Encrypt;
                                     </select><script>$(document).ready(function() {
                                         $("#modelo").select2({theme: "bootstrap4",width:"100%"});
                                         });</script>
+
                     </div>
                 </div>
             </div>        
@@ -126,7 +128,6 @@ use App\Libraries\Encrypt;
             </div>
             </form><script>
     
-
     $('#SaveArmas').click(function (event) {
         event.preventDefault();
         $("#load").show();
