@@ -19,7 +19,7 @@
             <div class="row">
                 <div class='col-12 col-sm-6'>
                     <div class="form-group">
-                        <label for="empresa" class="control-label">Empresa: </label>
+                        <label for="empresa" class="control-label">Empresa: <span class="text-danger">*</span></label>
                         <div >
                             <input type="text"  class="form-control " id="empresa" name="empresa"  value="<?= $empresa->nombre ?>"><?= csrf_field() ?>
                             

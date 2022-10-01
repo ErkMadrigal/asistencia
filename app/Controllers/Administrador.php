@@ -405,7 +405,7 @@ class Administrador extends BaseController {
 					} else {
 
 						$dontSucces = ["error" => "error",
-                    				  "mensaje" => 	lang('Layout.toastrError') ];
+                    				  "mensaje" => 	'Hubo un error al intentar editar la empresa' ];
 					}
 					
 				} else {
