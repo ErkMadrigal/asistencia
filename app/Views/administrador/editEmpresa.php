@@ -5,7 +5,7 @@
 
 <div class="card card-primary">
     <div class="card-header" >
-        <h3 class="card-title">Empresa</h3>
+        <h3 class="card-title">Editar Empresa</h3>
     
     <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -41,7 +41,7 @@
         <div class="row">
             
             <div class="col-12 col-sm-6 col-md-3 ">    
-                <button id="editEmpresa" class="btn btn-block btn-flat btn-primary " type="button"><i id="loadBtn" class="fa fa-circle-o-notch fa-spin" style="display:none;"></i>&nbsp&nbspGuardar</button>
+                <button id="editEmpresa" class="btn btn-block btn-flat btn-primary " type="button"><i id="loadBtn" class="fa fa-circle-o-notch fa-spin" style="display:none;"></i><i class="fa fa-floppy-o" ></i>&nbsp&nbspGuardar</button>
             </div>
         </div>    
     </div>

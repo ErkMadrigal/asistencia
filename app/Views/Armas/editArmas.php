@@ -38,7 +38,7 @@
                     <div class="form-group">
                         <label for="idClase" class="control-label">Clase: </label>
                         <div >
-                            <input type="text"  class="form-control " disabled id="idClase" name="idClase"  value="<?= $arma->idClase ?>">
+                            <input type="text"  class="form-control " disabled id="idClase" name="idClase"  value="<?= $arma->clase ?>">
                             
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                     <div class="form-group">
                         <label for="idCalibre" class="control-label">Calibre: </label>
                         <div >
-                            <input type="text"  class="form-control " disabled id="idCalibre" name="idCalibre"  value="<?= $arma->idCalibre ?>">
+                            <input type="text"  class="form-control " disabled id="idCalibre" name="idCalibre"  value="<?= $arma->calibre ?>">
                             
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                     <div class="form-group">
                         <label for="idMarca" class="control-label">Marca: </label>
                         <div >
-                            <input type="text"  class="form-control " disabled id="idMarca" name="idMarca"  value="<?= $arma->idMarca ?>">
+                            <input type="text"  class="form-control " disabled id="idMarca" name="idMarca"  value="<?= $arma->marca ?>">
                             
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                     <div class="form-group">
                         <label for="idModelo" class="control-label">Modelo: </label>
                         <div >
-                            <input type="text"  class="form-control " disabled id="idModelo" name="idModelo"  value="<?= $arma->idModelo ?>">
+                            <input type="text"  class="form-control " disabled id="idModelo" name="idModelo"  value="<?= $arma->modelo ?>">
                             
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                     <div class="form-group">
                         <label for="Activo" class="control-label">Activo:</label>
                         <div class="form-check" >
-                            <input class="form-check-input"  type="checkbox" value="<?= $catalogo->activo == 1 ? 'checked' : '' ?>">
+                            <input class="form-check-input"  type="checkbox" value="<?= $arma->activo == 1 ? 'checked' : '' ?>">
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
         <div class="row">
             
             <div class="col-12 col-sm-6 col-md-3 ">    
-                <button id="editArmas" class="btn btn-block btn-flat btn-primary " type="button"><i id="loadBtn" class="fa fa-circle-o-notch fa-spin" style="display:none;"></i>&nbsp&nbspGuardar</button>
+                <button id="editArmas" class="btn btn-block btn-flat btn-primary " type="button"><i id="loadBtn" class="fa fa-circle-o-notch fa-spin" style="display:none;"></i><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
             </div>
         </div>    
     </div>

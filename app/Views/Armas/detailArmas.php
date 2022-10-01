@@ -2,7 +2,7 @@
 <?= $this->section('content') ?>
 <div class="card card-primary">
     <div class="card-header" >
-        <h3 class="card-title">Detalle Armas</h3>
+        <h3 class="card-title">Detalle Arma</h3>
     
         <div class="card-tools">
          <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -35,7 +35,7 @@
                         <div class="form-group">
                             <label for="clase" class="control-label">Clase: </label>
                             <div >
-                            <?= $arma->idClase ?>
+                            <?= $arma->clase ?>
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                         <div class="form-group">
                             <label for="calibre" class="control-label">Calibre: </label>
                             <div >
-                            <?= $arma->idCalibre ?>
+                            <?= $arma->calibre ?>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                         <div class="form-group">
                             <label for="marca" class="control-label">Marca: </label>
                             <div >
-                            <?= $arma->idMarca ?>
+                            <?= $arma->marca ?>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                         <div class="form-group">
                             <label for="modelo" class="control-label">Modelo: </label>
                             <div >
-                            <?= $arma->idModelo ?>
+                            <?= $arma->modelo ?>
                             </div>
                         </div>
                     </div>

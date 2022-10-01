@@ -15,7 +15,7 @@ use App\Libraries\Encrypt;
 
 <div class="card card-primary">
     <div class="card-header" >
-        <h3 class="card-title">Usuario</h3>
+        <h3 class="card-title">Agregar Usuario</h3>
     
     <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -144,7 +144,7 @@ if($parentStatus == 1){ ?>
 
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-3">    
-                    <button id="SaveUsuario" class="btn btn-block btn-flat btn-primary " type="button">Guardar</button>
+                    <button id="SaveUsuario" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
                 </div>
             </div>
             </form><script>

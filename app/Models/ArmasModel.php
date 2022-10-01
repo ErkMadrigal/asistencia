@@ -32,11 +32,11 @@ class ArmasModel
 
     public function GetArmaById($id){
         $builder = $this->db->table('armas');
-        $builder->select("armas.matricula, armas.folio_manif,armas.activo,armas.idClase,armas.idCalibre,armas.idMarca,armas.idModelo, armas.createddate, armas.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
-       $builder->join("catalogos_detalle"," armas.idClase= catalogos_detalle.id  ","left");
-        $builder->join("catalogos_detalle","armas.idCalibre = catalogos_detalle.id","left");
-        $builder->join("catalogos_detalle"," armas.idMarca= catalogos_detalle.id  ","left");
-        $builder->join("catalogos_detalle","armas.idModelo = catalogos_detalle.id","left");
+        $builder->select("armas.matricula, armas.folio_manif,armas.activo,CL.valor AS clase,CA.valor AS calibre,M.valor AS marca,MO.valor AS modelo, armas.createddate, armas.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->join("catalogos_detalle CL"," armas.idClase= CL.id  ","left");
+        $builder->join("catalogos_detalle CA","armas.idCalibre = CA.id","left");
+        $builder->join("catalogos_detalle M"," armas.idMarca= M.id  ","left");
+        $builder->join("catalogos_detalle MO","armas.idModelo = MO.id","left");
        $builder->join("sys_usuarios_admin UA","armas.createdby = UA.id","left");
        $builder->join("sys_usuarios_admin UU","armas.updatedby = UU.id","left");
        $builder->orderBy("matricula","asc");

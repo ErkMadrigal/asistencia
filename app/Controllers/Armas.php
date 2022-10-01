@@ -35,6 +35,8 @@ class Armas extends BaseController {
 			$idEmpresa = $this->encrypter->decrypt($empresa);
 			$resultData = $this->modelArmas->GetArmas($idEmpresa);
 			$result = [];
+
+
 			foreach ( $resultData as $v){
 				
 				$id = $this->encrypt->Encrypt($v->id);
@@ -105,7 +107,7 @@ class Armas extends BaseController {
 		if($this->request->getMethod() == "post" && $this->request->getvar(['matricula', 'id'],FILTER_SANITIZE_STRING)) {
 
 			$rules = ['id' =>  ['label' => '', 'rules' =>'required'],
-                'matricula' =>  [ 'label' => 'matricula', 'rules' => 'required']];
+                'matricula' =>  [ 'label' => 'Matricula', 'rules' => 'required']];
 
 				$errors = [];
 				$succes = [];
@@ -122,7 +124,7 @@ class Armas extends BaseController {
 					$idCatalogo = $this->encrypt->Decrytp($idModi);	
 					$updateEmpresa = array(
                         "activo" => $this->request->getPost('activo'),
-		    			"matricula" =>  $_POST["valor"],
+		    			"matricula" =>  $_POST["matricula"],
                         "updatedby" => $LoggedUserId,
                 				"updateddate" => $TodayDate
                     );
@@ -152,7 +154,7 @@ class Armas extends BaseController {
 		if ($this->request->getMethod() == "get"){
 
 			$data['modulos'] = $this->menu->Permisos();
-			$data['breadcrumb'] = ["inicio" => 'Arma' ,
+			$data['breadcrumb'] = ["inicio" => 'Armas' ,
                     				"url" => 'armas',
                     				"titulo" => 'Agregar Arma'];
 			

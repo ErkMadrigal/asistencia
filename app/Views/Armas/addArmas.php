@@ -15,7 +15,7 @@ use App\Libraries\Encrypt;
 
 <div class="card card-primary">
     <div class="card-header" >
-        <h3 class="card-title">Armas</h3>
+        <h3 class="card-title">Agregar Arma</h3>
     
     <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -121,7 +121,7 @@ use App\Libraries\Encrypt;
 </div>
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-3">    
-                    <button id="SaveArmas" class="btn btn-block btn-flat btn-primary " type="button">Guardar</button>
+                    <button id="SaveArmas" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
                 </div>
             </div>
             </form><script>
