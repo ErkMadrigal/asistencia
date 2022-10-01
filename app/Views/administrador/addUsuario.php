@@ -152,7 +152,7 @@ if($parentStatus == 1){ ?>
 
     $('#SaveUsuario').click(function (event) {
         event.preventDefault();
-        $("#load").show();
+        $('#load').addClass( "spinner-border" );    
         var formData = new FormData($("form#frmUsuario")[0]);
         var mod = [];
         
@@ -208,13 +208,13 @@ if($parentStatus == 1){ ?>
 
                 }
 
-                $("#load").attr("style", "display: none !important");    
+                $('#load').removeClass( "spinner-border" );    
 
                         
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 toastr.error('<?=lang('Layout.toastrError')?>');
-                $("#load").attr("style", "display: none !important");           
+                $('#load').removeClass( "spinner-border" );           
             }
         });
             

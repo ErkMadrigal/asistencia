@@ -15,7 +15,7 @@ use App\Libraries\Encrypt;
 
 <div class="card card-primary">
     <div class="card-header" >
-        <h3 class="card-title">Agregar Multicatalogo</h3>
+        <h3 class="card-title">Agregar Documento</h3>
     
     <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -25,53 +25,63 @@ use App\Libraries\Encrypt;
      </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmMulticatalogo">
+        <form class="form-horizontal" id="frmDocumento">
             <div class="row">
-            <div class='col-12 col-sm-6'>    
+                <div class='col-12 col-sm-6'>    
                     <div class="form-group">
-                        <label for="catalogo" class="control-label">Catalogo: <span class="text-danger">*</span></label>
-                        <select class="form-control" id="catalogo" name="catalogo">
-                        <option value="">Selecciona un Catalogo</option>
+                        <label for="modalidad" class="control-label">Modalidad: <span class="text-danger">*</span></label>
+                        <select class="form-control" id="modalidad" name="modalidad">
+                        <option value="">Selecciona una Modalidad</option>';
                         <?php
-                                if( !empty($catalogo) ):
-                                    foreach($catalogo as  $a){
-                                        $idCatalogo = $encrypt->Encrypt($a->idCatalogo);?>
-                                            <option value="<?=$idCatalogo?>"><?= $a->valor ?></option>
+                                if( !empty($modalidad) ):
+                                    foreach($modalidad as  $a){
+                                        $idClase = $encrypt->Encrypt($a->id);?>
+                                            <option value="<?=$idClase?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
                                     </select><script>$(document).ready(function() {
-                                        $("#catalogo").select2({theme: "bootstrap4",width:"100%"});
+                                        $("#modalidad").select2({theme: "bootstrap4",width:"100%"});
                                         });</script>
                     </div>
                 </div>
-                <div class='col-12 col-sm-6'>
+                <div class='col-12 col-sm-6'>    
                     <div class="form-group">
-                        <label for="valor" class="control-label">Valor: <span class="text-danger">*</span></label>
+                        <label for="documento" class="control-label">Documento: <span class="text-danger">*</span></label>
                         <div >
-                            <input type="text"  class="form-control " id="valor" name="valor"><?= csrf_field() ?>
+                            <input type="text"  class="form-control "  id="documento" name="documento" value=""><?= csrf_field() ?>
                         </div>
                     </div>
                 </div>
-            </div>        
-        
+                <div class='col-12 col-sm-6'>    
+                    <div class="form-group">
+                        <label for="tipo" class="control-label">Tipo: <span class="text-danger">*</span></label>
+                        <select class="form-control" id="tipo" name="tipo">
+                            <option value="">Seleccionar tipo</option>
+                            <option  value="COPIA">COPIA</option>
+                            <option  value="ORIGINAL">ORIGINAL</option>
+                        </select><script>$(document).ready(function() {
+                                        $("#tipo").select2({theme: "bootstrap4",width:"100%"});
+                                        });</script>
+                    </div>
+                </div>
+            </div>  
     </div>
 </div>
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-3">    
-                    <button id="SaveMulti" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
+                    <button id="SaveDocumento" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
                 </div>
             </div>
             </form><script>
     
-
-    $('#SaveMulti').click(function (event) {
+    $('#SaveDocumento').click(function (event) {
         event.preventDefault();
         $('#load').addClass( "spinner-border" );
-        var formData = new FormData($("form#frmMulticatalogo")[0]);
+        var formData = new FormData($("form#frmDocumento")[0]);
         
         $.ajax({
-            url: base_url + '/GuardarMulti',
+            url: base_url + '/GuardarCatDocumento',
             type: 'POST',
             dataType: 'json',
             data: formData,
@@ -90,7 +100,7 @@ use App\Libraries\Encrypt;
                     setInterval(function(){
                       count--;
                       if (count == 0) {
-                        window.location = base_url + '/multicatalogo'; 
+                        window.location = base_url + '/catDocumentos'; 
                       }
                     },1000);
 

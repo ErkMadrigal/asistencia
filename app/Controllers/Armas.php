@@ -44,7 +44,7 @@ class Armas extends BaseController {
 					'id' => $id ,
 					'matricula' => $v->matricula,
 					'folio_manif' => $v->folio_manif,
-                    'idClase' => $v->idClase,
+                    'idMarca' => $v->idMarca,
 					'activo' => $v->activo
 
 				) ;
@@ -167,8 +167,6 @@ class Armas extends BaseController {
             $data['modelo']=$this->modelArmas->GetModelo($idEmpresa);
             $data['marca']=$this->modelArmas->GetMarca($idEmpresa);
 
-			$id = session()->get('IdUser');
-        	$idUser = $this->encrypter->decrypt($id);
 			
 			return view('Armas/addArmas', $data);
 		}	

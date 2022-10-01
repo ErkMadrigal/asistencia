@@ -130,7 +130,7 @@ use App\Libraries\Encrypt;
     
     $('#SaveArmas').click(function (event) {
         event.preventDefault();
-        $("#load").show();
+        $('#load').addClass( "spinner-border" );
         var formData = new FormData($("form#frmArmas")[0]);
         
         $.ajax({
@@ -172,13 +172,13 @@ use App\Libraries\Encrypt;
 
                 }
 
-                $("#load").attr("style", "display: none !important");    
+                $('#load').removeClass( "spinner-border" );    
 
                         
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 toastr.error('<?=lang('Layout.toastrError')?>');
-                $("#load").attr("style", "display: none !important");           
+                $('#load').removeClass( "spinner-border" );           
             }
         });
             

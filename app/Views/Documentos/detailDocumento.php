@@ -2,7 +2,7 @@
 <?= $this->section('content') ?>
 <div class="card card-primary">
     <div class="card-header" >
-        <h3 class="card-title">Detalle Multicatalogo</h3>
+        <h3 class="card-title">Detalle Documento</h3>
     
         <div class="card-tools">
          <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -16,18 +16,26 @@
                 <div class="row">
                     <div class='col-12 col-sm-6'>
                         <div class="form-group">
-                            <label for="empresa" class="control-label">Tipo Combo: </label>
+                            <label for="empresa" class="control-label">Modalidad: </label>
                             <div >
-                            <?=$catalogo->tipo_combo ?>
+                            <?=$documento->valor ?>
                                 
                             </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-6'>    
                         <div class="form-group">
-                            <label for="oficina" class="control-label">valor: </label>
+                            <label for="oficina" class="control-label">Documento: </label>
                             <div >
-                            <?= $catalogo->valor ?>
+                            <?= $documento->documento ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-6'>    
+                        <div class="form-group">
+                            <label for="oficina" class="control-label">Tipo: </label>
+                            <div >
+                            <?= $documento->tipo ?>
                             </div>
                         </div>
                     </div>
@@ -35,7 +43,7 @@
                         <div class="form-group">
                             <label for="Activo" class="control-label">Activo: </label>
                             <div class="form-check" >
-                            <input class=""  onclick="return false;" type="checkbox" <?=($catalogo->activo == 1 ? "checked" : "" ) ?>>                            </div>
+                            <input class=""  onclick="return false;" type="checkbox" <?=($documento->activo == 1 ? "checked" : "" ) ?>>                            </div>
                         </div>
                     </div>
                 </div>        
@@ -48,7 +56,7 @@
                 <i class="fa fa-user " aria-hidden="true"></i>
                 <label for="creado" class="control-label">Creado por: </label>
                 <div>
-                <?=$catalogo->createdby ?>
+                <?=$documento->createdby ?>
                 </div>
             </div>
         </div>
@@ -58,7 +66,7 @@
                 <i class="fa fa-calendar " aria-hidden="true"></i>
                 <label for="createddate" class="control-label">Fecha creación: </label>
                 <div>
-                <?=$catalogo->createddate ?>
+                <?=$documento->createddate ?>
                 </div>
             </div>
         </div>
@@ -67,7 +75,7 @@
                 <i class="fa fa-user " aria-hidden="true"></i>
                 <label for="actualizado" class="control-label">Actualizado por: </label>
                 <div>
-                <?=$catalogo->updatedby ?>
+                <?=$documento->updatedby ?>
                 </div>
             </div>
         </div>
@@ -76,7 +84,7 @@
                 <i class="fa fa-calendar " aria-hidden="true"></i>
                 <label for="updateddate" class="control-label">Fecha actualización: </label>
                 <div>
-                <?=$catalogo->updateddate ?>
+                <?=$documento->updateddate ?>
                 </div>
             </div>
         </div>

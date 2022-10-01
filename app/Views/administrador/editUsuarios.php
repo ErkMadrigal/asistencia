@@ -171,8 +171,8 @@ if($parentStatus == 1){
                 <p><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;Esta seguro de editar el permiso ?</p>
             </div>
             <div class="modal-footer justify-content-between">
-                <a href="#" id="closeModal" class="btn btn-secondary">Cerrar</a>
-                <a href="#" id="editPermiso" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</a>
+                <a href="#" id="closeModal" class="btn btn-secondary btn-flat">Cerrar</a>
+                <a href="#" id="editPermiso" class="btn btn-primary btn-flat"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</a>
             </div>
                 </form>
         </div>
@@ -229,7 +229,7 @@ if($parentStatus == 1){
 
     $('#SaveUsuario').click(function (event) {
         event.preventDefault();
-        $("#load").show();
+        $('#load').addClass( "spinner-border" );
         var val = 0;
         if($("#activo").is(':checked')) {
             val = 1;
@@ -269,13 +269,13 @@ if($parentStatus == 1){
 
                 }
 
-                $("#load").attr("style", "display: none !important");    
+                $('#load').removeClass( "spinner-border" );    
 
                         
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 toastr.error('<?= lang('Layout.toastrError') ?>');
-                $("#load").attr("style", "display: none !important");           
+                $('#load').removeClass( "spinner-border" );           
             }
         });
             

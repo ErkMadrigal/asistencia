@@ -25,6 +25,7 @@ class CataMultiModel
         $builder = $this->db->table('catalogos_detalle');
         $builder->select('catalogos_detalle.id,catalogos.valor as tipo_combo, catalogos_detalle.valor,activo');
         $builder->join("catalogos","catalogos_detalle.idCatalogo = catalogos.idCatalogo","left");
+        $builder->orderBy("tipo_combo","asc");
         $builder->orderBy("valor","asc");
         $builder->where("idempresa",$idEmpresa);
         return $builder->get()->getResult();

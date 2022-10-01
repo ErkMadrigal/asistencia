@@ -7,7 +7,7 @@
         <div class="col-12 col-sm-6 col-md-9 ">
         </div>
         <div class="col-12 col-sm-6 col-md-3">
-            <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/AddUser " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Agregar Documento</a>
+            <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/AddCatDoc" class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Agregar Documento</a>
         </div>
     </div>    
 </div>    
@@ -26,6 +26,7 @@
         <table id="dataGrid" class="table  text-center table-hover table-head-fixed text-nowrap">
             <thead>
             <tr>
+                <th>Modalidad</th>
                 <th>Documento</th>
                 <th>Tipo</th>
                 <th>Activo</th>
@@ -55,9 +56,11 @@ function estatusRenderer(data, type, full, meta) {
             data: <?= json_encode($documentos) ?> ,
             deferRender: true,
             pageLength: 10,
-            columns: [{ data: "tipo_combo"
+            columns: [{ data: "valor"
                       },
-                      { data: "valor"
+                      { data: "documento"
+                      },
+                      { data: "tipo"
                       },
                       { data: "activo",
                         render: estatusRenderer
@@ -65,14 +68,14 @@ function estatusRenderer(data, type, full, meta) {
                       {  data: "edit",
                     render: function (data, type, full, meta) {
                     
-                        return "<a href='" + base_url + "/editMulti?id=" + full.id + "' class='nav-link'><i class='fa fa-pencil-square-o nav-icon'></i>";
+                        return "<a href='" + base_url + "/editCatDoc?id=" + full.id + "' class='nav-link'><i class='fa fa-pencil-square-o nav-icon'></i>";
                     
                     }
                 }, {
                     data: "detail",
                     render: function (data, type, full, meta) {
                     
-                        return "<a href='" + base_url + "/detailMulti?id=" + full.id + "' class='nav-link'><i class='fa fa-list-alt nav-icon'></i>";
+                        return "<a href='" + base_url + "/detailCatDoc?id=" + full.id + "' class='nav-link'><i class='fa fa-list-alt nav-icon'></i>";
                     
                     }
                 }

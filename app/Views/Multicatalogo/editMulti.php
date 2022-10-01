@@ -38,7 +38,7 @@
                     <div class="form-group">
                         <label for="Activo" class="control-label">Activo:</label>
                         <div class="form-check" >
-                            <input class="form-check-input"  type="checkbox" id="activo" name="activo" value="<?= $catalogo->activo == 1 ? 'checked' : '' ?>">
+                            <input class="form-check-input"  type="checkbox" id="activo" name="activo" <?= ($catalogo->activo == 1 ? 'checked' : '' ) ?>>
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
         <div class="row">
             
             <div class="col-12 col-sm-6 col-md-3 ">    
-                <button id="editMulti" class="btn btn-block btn-flat btn-primary " type="button"><i id="loadBtn" class="fa fa-circle-o-notch fa-spin" style="display:none;"></i>&nbsp&nbspGuardar</button>
+                <button id="editMulti" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
             </div>
         </div>    
     </div>
@@ -58,7 +58,7 @@
 <script>
      $('#editMulti').click(function (event) {
         event.preventDefault();
-        $('#loadBtn').show();
+        $('#load').addClass( "spinner-border" );
 
         if($('#activo').is(':checked')) {
             val = 1;
@@ -86,7 +86,7 @@
 
                     toastr.success(response.succes.mensaje);
 
-                    var count = 3;
+                    var count = 2;
                     setInterval(function(){
                       count--;
                       if (count == 0) {
@@ -109,12 +109,12 @@
                 }
 
                    
-                $('#loadBtn').hide();
+                $('#load').removeClass( "spinner-border" );
                         
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 toastr.error('<?=lang('Layout.toastrError') ?>');
-                $('#loadBtn').hide();           
+                $('#load').removeClass( "spinner-border" );           
             }
         });
             
