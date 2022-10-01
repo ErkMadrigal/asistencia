@@ -15,7 +15,7 @@ use App\Libraries\Encrypt;
 
 <div class="card card-primary">
     <div class="card-header" >
-        <h3 class="card-title">Multicatalogo</h3>
+        <h3 class="card-title">Agregar Multicatalogo</h3>
     
     <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
