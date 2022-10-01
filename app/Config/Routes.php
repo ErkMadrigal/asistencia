@@ -58,7 +58,6 @@ $routes->post('SaveUser', 'Administrador::CrearUsuario',['filter' => 'auth']);
 $routes->get('editUser', 'Administrador::EditarUsuario',['filter' => 'auth']);
 $routes->post('EditInfoUser', 'Administrador::EditarUsuarioById',['filter' => 'auth']);
 $routes->post('EditUserPermiso', 'Administrador::EditarPermiso',['filter' => 'auth']);
-//$routes->get('Addmulticata', 'PortaCatalogoMulti::AgregarMulti',['filter' => 'auth']);
 $routes->get('armas', 'Armas::GetArmas',['filter' => 'auth']);
 $routes->get('detailArmas', 'Armas::DetalleArmas',['filter' => 'auth']);
 $routes->get('editArmas', 'Armas::EditarArma',['filter' => 'auth']);
