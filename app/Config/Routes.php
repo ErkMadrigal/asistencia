@@ -67,6 +67,7 @@ $routes->post('GuardarArma', 'Armas::AgregarArma',['filter' => 'auth']);
 $routes->get('AddMulti', 'PortaCatalogoMulti::AgregarMulti',['filter' => 'auth']);
 $routes->post('GuardarMulti', 'PortaCatalogoMulti::AgregarMulticatalogo',['filter' => 'auth']);
 $routes->get('catDocumentos', 'Documentos::GetDocumentos',['filter' => 'auth']);
+$routes->get('cuip', 'Cuip::GetDatos',['filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------
