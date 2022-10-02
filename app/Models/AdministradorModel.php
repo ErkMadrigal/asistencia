@@ -87,7 +87,6 @@ class AdministradorModel
 
         if ($strModulo == "new_"){
 
-            /////
 
         $parents = $this->GetParentsByIdUpdate($idUser, $idUserAdmin);
         
