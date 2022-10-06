@@ -5,7 +5,7 @@
 
 <div class="card card-primary">
     <div class="card-header" >
-        <h3 class="card-title">Empresa</h3>
+        <h3 class="card-title">Editar Empresa</h3>
     
     <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -19,7 +19,7 @@
             <div class="row">
                 <div class='col-12 col-sm-6'>
                     <div class="form-group">
-                        <label for="empresa" class="control-label">Empresa: </label>
+                        <label for="empresa" class="control-label">Empresa: <span class="text-danger">*</span></label>
                         <div >
                             <input type="text"  class="form-control " id="empresa" name="empresa"  value="<?= $empresa->nombre ?>"><?= csrf_field() ?>
                             
@@ -41,7 +41,7 @@
         <div class="row">
             
             <div class="col-12 col-sm-6 col-md-3 ">    
-                <button id="editEmpresa" class="btn btn-block btn-flat btn-primary " type="button"><i id="loadBtn" class="fa fa-circle-o-notch fa-spin" style="display:none;"></i>&nbsp&nbspGuardar</button>
+                <button id="editEmpresa" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" ></i>&nbsp;&nbsp;Guardar</button>
             </div>
         </div>    
     </div>
@@ -50,7 +50,7 @@
 <script>
      $('#editEmpresa').click(function (event) {
         event.preventDefault();
-        $('#loadBtn').show();
+        $('#load').addClass( "spinner-border" );
         var formData = new FormData($("form#frmEmpresa")[0]);
         
         $.ajax({
@@ -71,7 +71,7 @@
 
                     toastr.success(response.succes.mensaje);
 
-                    var count = 5;
+                    var count = 2;
                     setInterval(function(){
                       count--;
                       if (count == 0) {
@@ -94,12 +94,12 @@
                 }
 
                    
-                $('#loadBtn').hide();
+                $('#load').removeClass( "spinner-border" );
                         
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 toastr.error('<?=lang('Layout.toastrError') ?>');
-                $('#loadBtn').hide();           
+                $('#load').removeClass( "spinner-border" );           
             }
         });
             

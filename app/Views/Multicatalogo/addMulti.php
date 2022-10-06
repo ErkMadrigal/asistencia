@@ -1,11 +1,21 @@
 <?= $this->extend('includes/main') ?>
 <?= $this->section('content') ?>
+
+<?php
+
+use CodeIgniter\HTTP\RequestInterface;
+use App\Models\ArmasModel;
+use App\Libraries\Encrypt;
+
+ $encrypt = new Encrypt();
+
+?>
 <div id="load" class=" spinner text-secondary" role="status">
     </div>
 
 <div class="card card-primary">
     <div class="card-header" >
-        <h3 class="card-title">Editar Multicatalogo</h3>
+        <h3 class="card-title">Agregar Multicatalogo</h3>
     
     <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -17,59 +27,51 @@
     <div class="card-body table-responsive ">
         <form class="form-horizontal" id="frmMulticatalogo">
             <div class="row">
+            <div class='col-12 col-sm-6'>    
+                    <div class="form-group">
+                        <label for="catalogo" class="control-label">Catalogo: <span class="text-danger">*</span></label>
+                        <select class="form-control" id="catalogo" name="catalogo">
+                        <option value="">Selecciona un Catalogo</option>
+                        <?php
+                                if( !empty($catalogo) ):
+                                    foreach($catalogo as  $a){
+                                        $idCatalogo = $encrypt->Encrypt($a->idCatalogo);?>
+                                            <option value="<?=$idCatalogo?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                                    </select><script>$(document).ready(function() {
+                                        $("#catalogo").select2({theme: "bootstrap4",width:"100%"});
+                                        });</script>
+                    </div>
+                </div>
                 <div class='col-12 col-sm-6'>
                     <div class="form-group">
-                        <label for="tipo_combo" class="control-label">Tipo Combo: </label>
+                        <label for="valor" class="control-label">Valor: <span class="text-danger">*</span></label>
                         <div >
-                            <input type="text"  class="form-control " disabled id="tipo_combo" name="tipo_combo"  value="<?= $catalogo->tipo_combo ?>"><input type="hidden"  class="form-control " value =" <?=$id?> " id="id" name="id" ><?= csrf_field() ?>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-6'>    
-                    <div class="form-group">
-                        <label for="valor" class="control-label">valor: <span class="text-danger">*</span></label>
-                        <div >
-                            <input type="text"  class="form-control " id="valor" name="valor" value="<?= $catalogo->valor ?>">
-                        </div>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-6'>    
-                    <div class="form-group">
-                        <label for="Activo" class="control-label">Activo:</label>
-                        <div class="form-check" >
-                            <input class="form-check-input"  type="checkbox" id="activo" name="activo" <?= ($catalogo->activo == 1 ? 'checked' : '' ) ?>>
+                            <input type="text"  class="form-control " id="valor" name="valor"><?= csrf_field() ?>
                         </div>
                     </div>
                 </div>
             </div>        
-        </form>
-    </div>
-    <div class="card-footer bg-transparent clearfix">
-        <div class="row">
-            
-            <div class="col-12 col-sm-6 col-md-3 ">    
-                <button id="editMulti" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
-            </div>
-        </div>    
+        
     </div>
 </div>
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-3">    
+                    <button id="SaveMulti" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
+                </div>
+            </div>
+            </form><script>
+    
 
-<script>
-     $('#editMulti').click(function (event) {
+    $('#SaveMulti').click(function (event) {
         event.preventDefault();
         $('#load').addClass( "spinner-border" );
-
-        if($('#activo').is(':checked')) {
-            val = 1;
-        } else {
-            val = 0;
-        }
         var formData = new FormData($("form#frmMulticatalogo")[0]);
-        formData.append('activo', val);
-
+        
         $.ajax({
-            url: base_url + '/EditInfoMulti',
+            url: base_url + '/GuardarMulti',
             type: 'POST',
             dataType: 'json',
             data: formData,
@@ -78,11 +80,9 @@
             contentType: false,
             processData: false,
             success: function (response) {
-                $('.errorparticipante').remove();
+                $('.errorField').remove();
 
                 if (response.succes.succes == 'succes') {
-                    
-                    $("#exampleModal").modal("hide");
 
                     toastr.success(response.succes.mensaje);
 
@@ -95,6 +95,7 @@
                     },1000);
 
                 } else if (response.dontsucces.error == 'error'){
+
                     toastr.error(response.dontsucces.mensaje);
                             
                 } else if (Object.keys(response.error).length > 0 ){
@@ -104,22 +105,21 @@
                         $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
                             
                     }
-                        toastr.error('<?= lang('Layout.camposObligatorios') ?>');
+                        toastr.error('<?=lang('Layout.camposObligatorios')?>');
 
                 }
 
-                   
-                $('#load').removeClass( "spinner-border" );
+                $('#load').removeClass( "spinner-border" );    
+
                         
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                toastr.error('<?=lang('Layout.toastrError') ?>');
+                toastr.error('<?=lang('Layout.toastrError')?>');
                 $('#load').removeClass( "spinner-border" );           
             }
         });
             
     });
 
-    
 </script>
 <?= $this->endSection() ?>

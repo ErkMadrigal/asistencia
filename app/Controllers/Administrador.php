@@ -213,7 +213,7 @@ class Administrador extends BaseController {
 			$data['modulos'] = $this->menu->Permisos();
 			$data['breadcrumb'] = ["inicio" => 'Usuarios' ,
                     				"url" => 'usuarios',
-                    				"titulo" => 'Agregar usuario'];
+                    				"titulo" => 'Agregar'];
 			
 			$id = session()->get('IdUser');
         	$idUser = $this->encrypter->decrypt($id);
@@ -405,7 +405,7 @@ class Administrador extends BaseController {
 					} else {
 
 						$dontSucces = ["error" => "error",
-                    				  "mensaje" => 	lang('Layout.toastrError') ];
+                    				  "mensaje" => 	'Hubo un error al intentar editar la empresa' ];
 					}
 					
 				} else {

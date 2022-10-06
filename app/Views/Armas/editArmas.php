@@ -5,7 +5,7 @@
 
 <div class="card card-primary">
     <div class="card-header" >
-        <h3 class="card-title">Editar Multicatalogo</h3>
+        <h3 class="card-title">Editar Arma</h3>
     
     <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -15,22 +15,58 @@
      </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmMulticatalogo">
+        <form class="form-horizontal" id="frmArmas">
             <div class="row">
+                <div class='col-12 col-sm-6'>    
+                    <div class="form-group">
+                        <label for="matricula" class="control-label">Matricula: <span class="text-danger">*</span></label>
+                        <div >
+                            <input type="text"  class="form-control " id="matricula" name="matricula" value="<?= $arma->matricula ?>"><input type="hidden"  class="form-control " value =" <?=$id?> " id="id" name="id" ><?= csrf_field() ?>
+                        </div>
+                    </div>
+                </div>
                 <div class='col-12 col-sm-6'>
                     <div class="form-group">
-                        <label for="tipo_combo" class="control-label">Tipo Combo: </label>
+                        <label for="folio_manif" class="control-label">Folio-Manif: </label>
                         <div >
-                            <input type="text"  class="form-control " disabled id="tipo_combo" name="tipo_combo"  value="<?= $catalogo->tipo_combo ?>"><input type="hidden"  class="form-control " value =" <?=$id?> " id="id" name="id" ><?= csrf_field() ?>
+                            <input type="text"  class="form-control " disabled id="folio_manif" name="folio_manif"  value="<?= $arma->folio_manif ?>">
                             
                         </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-6'>    
+                <div class='col-12 col-sm-6'>
                     <div class="form-group">
-                        <label for="valor" class="control-label">valor: <span class="text-danger">*</span></label>
+                        <label for="idClase" class="control-label">Clase: </label>
                         <div >
-                            <input type="text"  class="form-control " id="valor" name="valor" value="<?= $catalogo->valor ?>">
+                            <input type="text"  class="form-control " disabled id="idClase" name="idClase"  value="<?= $arma->clase ?>">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-6'>
+                    <div class="form-group">
+                        <label for="idCalibre" class="control-label">Calibre: </label>
+                        <div >
+                            <input type="text"  class="form-control " disabled id="idCalibre" name="idCalibre"  value="<?= $arma->calibre ?>">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-6'>
+                    <div class="form-group">
+                        <label for="idMarca" class="control-label">Marca: </label>
+                        <div >
+                            <input type="text"  class="form-control " disabled id="idMarca" name="idMarca"  value="<?= $arma->marca ?>">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-6'>
+                    <div class="form-group">
+                        <label for="idModelo" class="control-label">Modelo: </label>
+                        <div >
+                            <input type="text"  class="form-control " disabled id="idModelo" name="idModelo"  value="<?= $arma->modelo ?>">
+                            
                         </div>
                     </div>
                 </div>
@@ -38,7 +74,7 @@
                     <div class="form-group">
                         <label for="Activo" class="control-label">Activo:</label>
                         <div class="form-check" >
-                            <input class="form-check-input"  type="checkbox" id="activo" name="activo" <?= ($catalogo->activo == 1 ? 'checked' : '' ) ?>>
+                            <input class="form-check-input"  type="checkbox" id="activo" name="activo"  <?= ($arma->activo == 1 ? 'checked' : '' ) ?>>
                         </div>
                     </div>
                 </div>
@@ -49,27 +85,26 @@
         <div class="row">
             
             <div class="col-12 col-sm-6 col-md-3 ">    
-                <button id="editMulti" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
+                <button id="editArmas" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
             </div>
         </div>    
     </div>
 </div>
 
 <script>
-     $('#editMulti').click(function (event) {
+     $('#editArmas').click(function (event) {
         event.preventDefault();
         $('#load').addClass( "spinner-border" );
-
         if($('#activo').is(':checked')) {
             val = 1;
         } else {
             val = 0;
         }
-        var formData = new FormData($("form#frmMulticatalogo")[0]);
+        var formData = new FormData($("form#frmArmas")[0]);
         formData.append('activo', val);
-
+        
         $.ajax({
-            url: base_url + '/EditInfoMulti',
+            url: base_url + '/EditInfoArma',
             type: 'POST',
             dataType: 'json',
             data: formData,
@@ -90,7 +125,7 @@
                     setInterval(function(){
                       count--;
                       if (count == 0) {
-                        window.location = base_url + '/multicatalogo'; 
+                        window.location = base_url + '/armas'; 
                       }
                     },1000);
 

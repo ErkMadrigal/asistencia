@@ -42,7 +42,7 @@
 	var table = $('#dataGrid').DataTable({
             data: <?= json_encode($result) ?> ,
             deferRender: true,
-            pageLength: 5,
+            pageLength: 10,
             
             columns: [{ data: "firstname"
                       },

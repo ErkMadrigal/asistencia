@@ -5,7 +5,7 @@
 
 <div class="card card-primary">
     <div class="card-header" >
-        <h3 class="card-title">Editar Multicatalogo</h3>
+        <h3 class="card-title">Editar Documento</h3>
     
     <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -15,30 +15,42 @@
      </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmMulticatalogo">
+        <form class="form-horizontal" id="frmDocumento">
             <div class="row">
                 <div class='col-12 col-sm-6'>
                     <div class="form-group">
-                        <label for="tipo_combo" class="control-label">Tipo Combo: </label>
+                        <label for="modalidad" class="control-label">Modalidad: </label>
                         <div >
-                            <input type="text"  class="form-control " disabled id="tipo_combo" name="tipo_combo"  value="<?= $catalogo->tipo_combo ?>"><input type="hidden"  class="form-control " value =" <?=$id?> " id="id" name="id" ><?= csrf_field() ?>
+                            <input type="text"  class="form-control " disabled id="modalidad" name="modalidad"  value="<?= $documento->valor ?>"><input type="hidden"  class="form-control " value =" <?=$id?> " id="id" name="id" ><?= csrf_field() ?>
                             
                         </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-6'>    
                     <div class="form-group">
-                        <label for="valor" class="control-label">valor: <span class="text-danger">*</span></label>
+                        <label for="documento" class="control-label">Documento: </label>
                         <div >
-                            <input type="text"  class="form-control " id="valor" name="valor" value="<?= $catalogo->valor ?>">
+                            <input type="text"  class="form-control " disabled id="documento" name="documento" value="<?= $documento->documento ?>">
                         </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-6'>    
+                    <div class="form-group">
+                        <label for="tipo" class="control-label">Tipo: <span class="text-danger">*</span></label>
+                        <select class="form-control" id="tipo" name="tipo">
+                            <option value="">Seleccionar tipo</option>
+                            <option <?= ($documento->tipo == 'COPIA' ? 'selected' : '' ) ?> value="COPIA">COPIA</option>
+                            <option <?= ($documento->tipo == 'ORIGINAL' ? 'selected' : '' ) ?> value="ORIGINAL">ORIGINAL</option>
+                        </select><script>$(document).ready(function() {
+                                        $("#tipo").select2({theme: "bootstrap4",width:"100%"});
+                                        });</script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-6'>    
                     <div class="form-group">
                         <label for="Activo" class="control-label">Activo:</label>
                         <div class="form-check" >
-                            <input class="form-check-input"  type="checkbox" id="activo" name="activo" <?= ($catalogo->activo == 1 ? 'checked' : '' ) ?>>
+                            <input class="form-check-input" id="activo" name="activo" type="checkbox" <?= ($documento->activo == 1 ? 'checked' : '' ) ?>>
                         </div>
                     </div>
                 </div>
@@ -49,27 +61,27 @@
         <div class="row">
             
             <div class="col-12 col-sm-6 col-md-3 ">    
-                <button id="editMulti" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
+                <button id="editDoc" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
             </div>
         </div>    
     </div>
 </div>
 
 <script>
-     $('#editMulti').click(function (event) {
+     $('#editDoc').click(function (event) {
         event.preventDefault();
         $('#load').addClass( "spinner-border" );
-
+        
         if($('#activo').is(':checked')) {
             val = 1;
         } else {
             val = 0;
         }
-        var formData = new FormData($("form#frmMulticatalogo")[0]);
+        var formData = new FormData($("form#frmDocumento")[0]);
         formData.append('activo', val);
-
+        
         $.ajax({
-            url: base_url + '/EditInfoMulti',
+            url: base_url + '/EditCatDoc',
             type: 'POST',
             dataType: 'json',
             data: formData,
@@ -90,7 +102,7 @@
                     setInterval(function(){
                       count--;
                       if (count == 0) {
-                        window.location = base_url + '/multicatalogo'; 
+                        window.location = base_url + '/catDocumentos'; 
                       }
                     },1000);
 
@@ -114,7 +126,9 @@
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 toastr.error('<?=lang('Layout.toastrError') ?>');
-                $('#load').removeClass( "spinner-border" );           
+
+                $('#load').removeClass( "spinner-border" );
+                           
             }
         });
             
