@@ -58,6 +58,12 @@ $routes->post('SaveUser', 'Administrador::CrearUsuario',['filter' => 'auth']);
 $routes->get('editUser', 'Administrador::EditarUsuario',['filter' => 'auth']);
 $routes->post('EditInfoUser', 'Administrador::EditarUsuarioById',['filter' => 'auth']);
 $routes->post('EditUserPermiso', 'Administrador::EditarPermiso',['filter' => 'auth']);
+$routes->get('sepomex', 'Sepomex::index',['filter' => 'auth']);
+$routes->get('AddSepomex', 'Sepomex::add',['filter' => 'auth']);
+$routes->post('insertDataSepomex', 'Sepomex::insertDataSep',['filter' => 'auth']);
+$routes->get('editSepomex', 'Sepomex::update',['filter' => 'auth']);
+$routes->post('editDataSepomex', 'Sepomex::updateDataSep',['filter' => 'auth']);
+$routes->get('detailSepomex', 'Sepomex::detail',['filter' => 'auth']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing
