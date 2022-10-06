@@ -118,6 +118,8 @@ nb-configuration.xml
 .phpintel
 /api/
 
+app/Config/Email.php
+
 # Visual Studio Code
 .vscode/
 
