@@ -1076,7 +1076,7 @@
                                             <div class="form-group">
                                                 <label for="comentariosreclutador" class=" control-label">COMENTARIOS
                                                     RECLUTADOR:</label>
-                                                <input type="text" class="form-control " id="comentariosreclutador"
+                                                <textarea type="text" class="form-control " id="comentariosreclutador"
                                                     name="comentariosreclutador">
                                             </div>
                                         </div>
