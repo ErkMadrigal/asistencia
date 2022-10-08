@@ -73,6 +73,7 @@ $routes->post('EditCatDoc', 'Documentos::SaveDocumento',['filter' => 'auth']);
 $routes->get('AddCatDoc', 'Documentos::AgregarDocumento',['filter' => 'auth']);
 $routes->post('GuardarCatDocumento', 'Documentos::AgregarDoc',['filter' => 'auth']);
 $routes->get('cuip', 'Cuip::GetDatos',['filter' => 'auth']);
+$routes->get('MediaFiliacion', 'MediaFiliacion::Form',['filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------
