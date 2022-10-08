@@ -120,7 +120,7 @@ nb-configuration.xml
 /api/
 
 app/Config/Email.php
-
+public/index.php
 # Visual Studio Code
 .vscode/
 
