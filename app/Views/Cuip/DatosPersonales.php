@@ -283,40 +283,40 @@
                         <input type="text" class="form-control " id="entrecalle" name="entrecalle">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="ylacalle" class=" control-label">Y la calle :<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="ylacalle" name="ylacalle">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="codigo" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="codigo" name="codigo">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="numero" class=" control-label">Numero
                             Telefónico:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="numero" name="numero">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="entidadF" class=" control-label">Entidad Federativa
                             combo:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="entidadF" name="entidadF">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="municipio" class=" control-label">Municipio
                             combo:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="municipio" name="municipio">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="ciudad" class=" control-label">Ciudad combo:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="ciudad" name="cuidad">
