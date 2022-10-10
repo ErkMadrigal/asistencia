@@ -15,7 +15,7 @@ $encrypt = new Encrypt();
 
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Generales</h3>
+        <h3 class="card-title">GENERALES</h3>
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -81,6 +81,61 @@ $encrypt = new Encrypt();
                         </div>
                     </div>
                 </div>
+                
+                <div class='col-6 col-sm-4'>
+                    <div class="form-group">
+                        <label for="anteojos" class="control-label">Uso de Anteojos: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="anteojos" name="anteojos">
+                                <option value="">Selecciona si Usa Anteojos</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#anteojos").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-6 col-sm-4'>
+                    <div class="form-group">
+                        <label for="estatura" class="control-label">Estatura: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="estatura" name="estatura">
+                                <option value="">Selecciona un Tipo</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#estatura").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-6 col-sm-4'>
+                    <div class="form-group">
+                        <label for="peso" class="control-label">Peso: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="peso" name="peso">
+                                <option value="">Selecciona un Tipo</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#peso").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </form>
@@ -88,7 +143,7 @@ $encrypt = new Encrypt();
 </div>
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Cabello</h3>
+        <h3 class="card-title">CABELLO</h3>
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -197,7 +252,7 @@ $encrypt = new Encrypt();
 </div>
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Frente</h3>
+        <h3 class="card-title">FRENTE</h3>
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -269,7 +324,7 @@ $encrypt = new Encrypt();
 </div>
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Cejas</h3>
+        <h3 class="card-title">CEJAS</h3>
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -359,7 +414,7 @@ $encrypt = new Encrypt();
 </div>
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Ojos</h3>
+        <h3 class="card-title">OJOS</h3>
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -431,7 +486,7 @@ $encrypt = new Encrypt();
 </div>
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Nariz</h3>
+        <h3 class="card-title">NARIZ</h3>
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -539,7 +594,7 @@ $encrypt = new Encrypt();
 </div>
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Boca</h3>
+        <h3 class="card-title">BOCA</h3>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
@@ -592,7 +647,7 @@ $encrypt = new Encrypt();
 </div>
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Labios</h3>
+        <h3 class="card-title">LABIOS</h3>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
@@ -663,7 +718,7 @@ $encrypt = new Encrypt();
 </div>
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Menton</h3>
+        <h3 class="card-title">MENTON</h3>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
@@ -734,7 +789,7 @@ $encrypt = new Encrypt();
 </div>
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Oreja Derecha</h3>
+        <h3 class="card-title">OREJA DERECHA</h3>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
@@ -767,7 +822,7 @@ $encrypt = new Encrypt();
         </form>
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Helix</h3>
+                <h3 class="card-title">HELIX</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -856,7 +911,7 @@ $encrypt = new Encrypt();
         </div>
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Lobulo</h3>
+                <h3 class="card-title">LOBULO</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -947,7 +1002,7 @@ $encrypt = new Encrypt();
 </div>
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Sangre</h3>
+        <h3 class="card-title">SANGRE</h3>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
@@ -994,67 +1049,13 @@ $encrypt = new Encrypt();
                         </div>
                     </div>
                 </div>
-                <div class='col-6 col-sm-4'>
-                    <div class="form-group">
-                        <label for="anteojos" class="control-label">Usa Anteojos: <span class="text-danger">*</span></label>
-                        <div>
-                            <select class="form-control" id="anteojos" name="anteojos">
-                                <option value="">Selecciona si Usa Anteojos</option>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#anteojos").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                </div>
-                <div class='col-6 col-sm-4'>
-                    <div class="form-group">
-                        <label for="estatura" class="control-label">Estatura: <span class="text-danger">*</span></label>
-                        <div>
-                            <select class="form-control" id="estatura" name="estatura">
-                                <option value="">Selecciona un Tipo</option>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#estatura").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                </div>
-                <div class='col-6 col-sm-4'>
-                    <div class="form-group">
-                        <label for="peso" class="control-label">Peso: <span class="text-danger">*</span></label>
-                        <div>
-                            <select class="form-control" id="peso" name="peso">
-                                <option value="">Selecciona un Tipo</option>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#peso").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                </div>
             </div>
         </form>
     </div>
 </div>
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Señas Paticulares</h3>
+        <h3 class="card-title">SEÑALES PARTICULARES</h3>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
