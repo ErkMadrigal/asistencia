@@ -60,13 +60,13 @@
                         <input type="text" class="form-control " id="colonia" name="colonia">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="codigo" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="codigo" name="codigo">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="numero" name="numero">
@@ -78,7 +78,7 @@
                         <input type="text" class="form-control " id="aprobacion" name="aprobacion">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="separacion" class=" control-label">Separación:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="separacion" name="separacion">
@@ -114,13 +114,13 @@
                         <input type="text" class="form-control " id="numero_placa" name="numero_placa">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="numero_empleado" class=" control-label">Numero de empleado :<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="numero_empleado" name="numero_empleado">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="sueldo" class=" control-label">Sueldo Base (Mensual):<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="sueldo" name="sueldo">
