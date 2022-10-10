@@ -14,13 +14,13 @@
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="apellidoPaterno" class=" control-label">Apellido Paterno:</label>
+                        <label for="apellidoPaterno" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="calle" name="calle">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="apellidoMaterno" class=" control-label">Apellido Materno:</label>
+                        <label for="apellidoMaterno" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno">
                     </div>
                 </div>
@@ -38,79 +38,79 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="sexo" class=" control-label">Sexo:</label>
+                        <label for="sexo" class=" control-label">Sexo:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="sexo" name="sexo">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="ocupacion" class=" control-label">Ocupación:</label>
+                        <label for="ocupacion" class=" control-label">Ocupación:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="ocupacion" name="ocupacion">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="parentesco" class=" control-label">Parentesco:</label>
+                        <label for="parentesco" class=" control-label">Parentesco:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="parentesco" name="parentesco">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="calle" class=" control-label">Calle :</label>
+                        <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="calle" name="calle">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="exterior" class=" control-label">No. Exterior:</label>
+                        <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="exterior" name="exterior">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="interior" class=" control-label">No. Interior:</label>
+                        <label for="interior" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="interior" name="interior">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="colonia" class=" control-label">Colonia:</label>
+                        <label for="colonia" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="colonia" name="colonia">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="codigo" class=" control-label">Código Postal :</label>
+                        <label for="codigo" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="codigo" name="codigo">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="numero" class=" control-label">Numero Telefónico:</label>
+                        <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="numero" name="numero">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="pais" class=" control-label">Pais :</label>
+                        <label for="pais" class=" control-label">Pais :<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="pais" name="pais">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="entidad" class=" control-label">Entidad Federativa:</label>
+                        <label for="entidad" class=" control-label">Entidad Federativa:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="entidad" name="entidad">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="municipio" class=" control-label">Municipio:</label>
+                        <label for="municipio" class=" control-label">Municipio:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="municipio" name="municipio">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="ciudad" class=" control-label">Ciudad o Población:</label>
+                        <label for="ciudad" class=" control-label">Ciudad o Población:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="ciudad" name="ciudad">
                     </div>
                 </div>
@@ -135,13 +135,13 @@
             <div class="row">
             <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="apellidoPaterno" class=" control-label">Apellido Paterno:</label>
+                        <label for="apellidoPaterno" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="calle" name="calle">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="apellidoMaterno" class=" control-label">Apellido Materno:</label>
+                        <label for="apellidoMaterno" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno">
                     </div>
                 </div>
@@ -159,79 +159,79 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="sexo" class=" control-label">Sexo:</label>
+                        <label for="sexo" class=" control-label">Sexo:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="sexo" name="sexo">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="ocupacion" class=" control-label">Ocupación:</label>
+                        <label for="ocupacion" class=" control-label">Ocupación:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="ocupacion" name="ocupacion">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="parentesco" class=" control-label">Parentesco:</label>
+                        <label for="parentesco" class=" control-label">Parentesco:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="parentesco" name="parentesco">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="calle" class=" control-label">Calle :</label>
+                        <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="calle" name="calle">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="exterior" class=" control-label">No. Exterior:</label>
+                        <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="exterior" name="exterior">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="interior" class=" control-label">No. Interior:</label>
+                        <label for="interior" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="interior" name="interior">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="colonia" class=" control-label">Colonia:</label>
+                        <label for="colonia" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="colonia" name="colonia">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="codigo" class=" control-label">Código Postal :</label>
+                        <label for="codigo" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="codigo" name="codigo">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="numero" class=" control-label">Numero Telefónico:</label>
+                        <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="numero" name="numero">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="pais" class=" control-label">Pais :</label>
+                        <label for="pais" class=" control-label">Pais :<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="pais" name="pais">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="entidad" class=" control-label">Entidad Federativa:</label>
+                        <label for="entidad" class=" control-label">Entidad Federativa:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="entidad" name="entidad">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="municipio" class=" control-label">Municipio:</label>
+                        <label for="municipio" class=" control-label">Municipio:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="municipio" name="municipio">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="ciudad" class=" control-label">Ciudad o Población:</label>
+                        <label for="ciudad" class=" control-label">Ciudad o Población:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="ciudad" name="ciudad">
                     </div>
                 </div>
@@ -255,13 +255,13 @@
             <div class="row">
             <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="apellidoPaterno" class=" control-label">Apellido Paterno:</label>
+                        <label for="apellidoPaterno" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="calle" name="calle">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="apellidoMaterno" class=" control-label">Apellido Materno:</label>
+                        <label for="apellidoMaterno" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno">
                     </div>
                 </div>
@@ -279,79 +279,79 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="sexo" class=" control-label">Sexo:</label>
+                        <label for="sexo" class=" control-label">Sexo:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="sexo" name="sexo">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="ocupacion" class=" control-label">Ocupación:</label>
+                        <label for="ocupacion" class=" control-label">Ocupación:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="ocupacion" name="ocupacion">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="parentesco" class=" control-label">Parentesco:</label>
+                        <label for="parentesco" class=" control-label">Parentesco:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="parentesco" name="parentesco">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="calle" class=" control-label">Calle :</label>
+                        <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="calle" name="calle">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="exterior" class=" control-label">No. Exterior:</label>
+                        <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="exterior" name="exterior">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="interior" class=" control-label">No. Interior:</label>
+                        <label for="interior" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="interior" name="interior">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="colonia" class=" control-label">Colonia:</label>
+                        <label for="colonia" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="colonia" name="colonia">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="codigo" class=" control-label">Código Postal :</label>
+                        <label for="codigo" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="codigo" name="codigo">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="numero" class=" control-label">Numero Telefónico:</label>
+                        <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="numero" name="numero">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="pais" class=" control-label">Pais :</label>
+                        <label for="pais" class=" control-label">Pais :<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="pais" name="pais">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="entidad" class=" control-label">Entidad Federativa:</label>
+                        <label for="entidad" class=" control-label">Entidad Federativa:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="entidad" name="entidad">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="municipio" class=" control-label">Municipio:</label>
+                        <label for="municipio" class=" control-label">Municipio:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="municipio" name="municipio">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="ciudad" class=" control-label">Ciudad o Población:</label>
+                        <label for="ciudad" class=" control-label">Ciudad o Población:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="ciudad" name="ciudad">
                     </div>
                 </div>
@@ -376,13 +376,13 @@
             <div class="row">
             <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="apellidoPaterno" class=" control-label">Apellido Paterno:</label>
+                        <label for="apellidoPaterno" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="calle" name="calle">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="apellidoMaterno" class=" control-label">Apellido Materno:</label>
+                        <label for="apellidoMaterno" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno">
                     </div>
                 </div>
@@ -400,79 +400,79 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="sexo" class=" control-label">Sexo:</label>
+                        <label for="sexo" class=" control-label">Sexo:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="sexo" name="sexo">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="ocupacion" class=" control-label">Ocupación:</label>
+                        <label for="ocupacion" class=" control-label">Ocupación:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="ocupacion" name="ocupacion">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="parentesco" class=" control-label">Parentesco:</label>
+                        <label for="parentesco" class=" control-label">Parentesco:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="parentesco" name="parentesco">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="calle" class=" control-label">Calle :</label>
+                        <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="calle" name="calle">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="exterior" class=" control-label">No. Exterior:</label>
+                        <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="exterior" name="exterior">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="interior" class=" control-label">No. Interior:</label>
+                        <label for="interior" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="interior" name="interior">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="colonia" class=" control-label">Colonia:</label>
+                        <label for="colonia" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="colonia" name="colonia">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="codigo" class=" control-label">Código Postal :</label>
+                        <label for="codigo" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="codigo" name="codigo">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="numero" class=" control-label">Numero Telefónico:</label>
+                        <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="numero" name="numero">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="pais" class=" control-label">Pais :</label>
+                        <label for="pais" class=" control-label">Pais :<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="pais" name="pais">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="entidad" class=" control-label">Entidad Federativa:</label>
+                        <label for="entidad" class=" control-label">Entidad Federativa:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="entidad" name="entidad">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="municipio" class=" control-label">Municipio:</label>
+                        <label for="municipio" class=" control-label">Municipio:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="municipio" name="municipio">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="ciudad" class=" control-label">Ciudad o Población:</label>
+                        <label for="ciudad" class=" control-label">Ciudad o Población:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="ciudad" name="ciudad">
                     </div>
                 </div>

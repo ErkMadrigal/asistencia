@@ -14,65 +14,65 @@
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="dependencia" class=" control-label">Dependencia responsable:</label>
+                        <label for="dependencia" class=" control-label">Dependencia responsable:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="dependencia" name="dependencia">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="institucion" class=" control-label">Institución Capacitadora:</label>
+                        <label for="institucion" class=" control-label">Institución Capacitadora:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="institucion"
                             name="institucion">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="nombre_curso" class=" control-label">Nombre del curso:</label>
+                        <label for="nombre_curso" class=" control-label">Nombre del curso:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="nombre_curso" name="nombre_curso">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="tema_curso" class=" control-label">Tema del curso:</label>
+                        <label for="tema_curso" class=" control-label">Tema del curso:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="tema_curso"
                             name="tema_curso">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="nivel_curso" class=" control-label">Nivel del curso recibido:</label>
+                        <label for="nivel_curso" class=" control-label">Nivel del curso recibido:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="nivel_curso" name="nivel_curso">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="eficiencia" class=" control-label">Eficiencia terminal:</label>
+                        <label for="eficiencia" class=" control-label">Eficiencia terminal:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="eficiencia"
                             name="eficiencia">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="inicio" class=" control-label">Inicio:</label>
+                        <label for="inicio" class=" control-label">Inicio:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="inicio" name="inicio">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="conclusion" class=" control-label">Conclusión:</label>
+                        <label for="conclusion" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="conclusion"
                             name="conclusion">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="duracion" class=" control-label">Duración en horas:</label>
+                        <label for="duracion" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="duracion" name="duracion">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="comprobante" class=" control-label">Tipo de comprobante:</label>
+                        <label for="comprobante" class=" control-label">Tipo de comprobante:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="comprobante"
                             name="comprobante">
                     </div>
@@ -100,51 +100,51 @@
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="empresa" class=" control-label">Insitutción o Empresa:</label>
+                        <label for="empresa" class=" control-label">Insitutción o Empresa:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="empresa" name="empresa">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="curso" class=" control-label">Estudio o Curso:</label>
+                        <label for="curso" class=" control-label">Estudio o Curso:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="curso"
                             name="curso">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="tipo_curso" class=" control-label">Tipo de curso:</label>
+                        <label for="tipo_curso" class=" control-label">Tipo de curso:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="tipo_curso" name="tipo_curso">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="cuso_tomado" class=" control-label">¿El curso fue?:</label>
+                        <label for="cuso_tomado" class=" control-label">¿El curso fue?:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="cuso_tomado" name="cuso_tomado">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="eficiencia" class=" control-label">Eficiencia terminal:</label>
+                        <label for="eficiencia" class=" control-label">Eficiencia terminal:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="eficiencia"
                             name="eficiencia">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="inicio" class=" control-label">Inicio:</label>
+                        <label for="inicio" class=" control-label">Inicio:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="inicio" name="inicio">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="conclusion" class=" control-label">Conclusión:</label>
+                        <label for="conclusion" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="conclusion" name="conclusion">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="duracion_horas" class=" control-label">Duración en horas:</label>
+                        <label for="duracion_horas" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="duracion_horas"
                             name="duracion_horas">
                     </div>
@@ -170,26 +170,26 @@
 
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="idioma" class=" control-label">Idioma o Dialecto:</label>
+                        <label for="idioma" class=" control-label">Idioma o Dialecto:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="idioma" name="idioma">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="lectura" class=" control-label">% Lectura:</label>
+                        <label for="lectura" class=" control-label">% Lectura:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="lectura"
                             name="lectura">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="escritura" class=" control-label">% Escritura:</label>
+                        <label for="escritura" class=" control-label">% Escritura:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="escritura" name="escritura">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
-                        <label for="conversacion" class=" control-label">% Conversación:</label>
+                        <label for="conversacion" class=" control-label">% Conversación:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="conversacion"
                             name="conversacion">
                     </div>
@@ -215,20 +215,20 @@
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="tipo" class=" control-label">Tipo:</label>
+                        <label for="tipo" class=" control-label">Tipo:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="tipo" name="tipo">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="especificacion" class=" control-label">Especifique:</label>
+                        <label for="especificacion" class=" control-label">Especifique:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="especificacion"
                             name="especificacion">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="dominio" class=" control-label">Grado de aptitude o dominio:</label>
+                        <label for="dominio" class=" control-label">Grado de aptitude o dominio:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="dominio"
                             name="dominio">
                     </div>
@@ -253,40 +253,40 @@
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-12'>
                     <div class="form-group">
-                        <label for="nombre" class=" control-label">Nombre:</label>
+                        <label for="nombre" class=" control-label">Nombre:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="nombre" name="nombre">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="tipo" class=" control-label">Tipo:</label>
+                        <label for="tipo" class=" control-label">Tipo:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="tipo" name="tipo">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="especificacion" class=" control-label">Especifique:</label>
+                        <label for="especificacion" class=" control-label">Especifique:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="especificacion"
                             name="especificacion">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="dominio" class=" control-label">Grado de aptitude o dominio:</label>
+                        <label for="dominio" class=" control-label">Grado de aptitude o dominio:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="dominio"
                             name="dominio">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="desde" class=" control-label">Desde:</label>
+                        <label for="desde" class=" control-label">Desde:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="desde"
                             name="desde">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="hasta" class=" control-label">Hasta:</label>
+                        <label for="hasta" class=" control-label">Hasta:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="hasta"
                             name="hasta">
                     </div>
