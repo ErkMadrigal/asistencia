@@ -64,6 +64,7 @@ writable/debugbar/*
 
 php_errors.log
 
+public/index.php
 #-------------------------
 # User Guide Temp Files
 #-------------------------
@@ -101,9 +102,9 @@ _modules/*
 
 # Netbeans
 nbproject/
-build/
+
 nbbuild/
-dist/
+
 nbdist/
 nbactions.xml
 nb-configuration.xml
@@ -119,7 +120,7 @@ nb-configuration.xml
 /api/
 
 app/Config/Email.php
-
+public/index.php
 # Visual Studio Code
 .vscode/
 
