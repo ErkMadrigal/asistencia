@@ -65,7 +65,7 @@ $encrypt = new Encrypt();
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="cara" class="control-label">cara: <span class="text-danger">*</span></label>
+                        <label for="cara" class="control-label">Cara: <span class="text-danger">*</span></label>
                         <div>
                             <select class="form-control" id="cara" name="cara">
                                 <option value="">Selecciona un tipo de Cara</option>
@@ -138,10 +138,10 @@ $encrypt = new Encrypt();
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="forma_cabello" class="control-label">forma: <span class="text-danger">*</span></label>
+                        <label for="forma_cabello" class="control-label">Forma: <span class="text-danger">*</span></label>
                         <div>
                             <select class="form-control" id="forma_cabello" name="forma_cabello">
-                                <option value="">Seleccionar forma de cabello</option>
+                                <option value="">Seleccionar forma de Cabello</option>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -286,7 +286,7 @@ $encrypt = new Encrypt();
                         <label for="direccion_cejas" class="control-label">Dirección: <span class="text-danger">*</span></label>
                         <div>
                             <select class="form-control" id="direccion_cejas" name="direccion_cejas">
-                                <option value="">Selecciona una Altura</option>
+                                <option value="">Selecciona una Dirección</option>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -304,7 +304,7 @@ $encrypt = new Encrypt();
                         <label for="implantacion_cejas" class="control-label">Implantacion: <span class="text-danger">*</span></label>
                         <div>
                             <select class="form-control" id="implantacion_cejas" name="implantacion_cejas">
-                                <option value="">Selecciona una Inclinación</option>
+                                <option value="">Selecciona una Implantación</option>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -337,10 +337,10 @@ $encrypt = new Encrypt();
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="tamanno" class="control-label">tamaño: <span class="text-danger">*</span></label>
+                        <label for="tamanno" class="control-label">Tamaño: <span class="text-danger">*</span></label>
                         <div>
                             <select class="form-control" id="tamanno" name="tamanno">
-                                <option value="">Selecciona una Forma</option>
+                                <option value="">Selecciona un Tamaño</option>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -409,10 +409,10 @@ $encrypt = new Encrypt();
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="tamanno_ojos" class="control-label">tamaño: <span class="text-danger">*</span></label>
+                        <label for="tamanno_ojos" class="control-label">Tamaño: <span class="text-danger">*</span></label>
                         <div>
                             <select class="form-control" id="tamanno_ojos" name="tamanno_ojos">
-                                <option value="">Selecciona una Forma</option>
+                                <option value="">Selecciona un Tamaño</option>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -697,7 +697,7 @@ $encrypt = new Encrypt();
                         <label for="forma_menton" class="control-label">Forma: <span class="text-danger">*</span></label>
                         <div>
                             <select class="form-control" id="forma_menton" name="forma_menton">
-                                <option value="">Selecciona una Altura Naso-Labial</option>
+                                <option value="">Selecciona una Forma</option>
                             </select>
                             <script>
                                 $(document).ready(function() {
