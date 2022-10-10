@@ -93,11 +93,10 @@
                     <?php echo view('Cuip/SancionesEstimulos') ?> 
 
                 </div>
-
             </div>
-
         </div>
-
+    </div>    
+</div>
 
 
         <?= $this->endSection() ?>
