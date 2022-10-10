@@ -29,4 +29,14 @@ class CuipModel
         return $builder->get()->getResult();
         
     }
+
+    public function GetComplexion(){
+        $builder = $this->db->table('catalogos_detalle');
+        $builder->select('idCatalogo, valor');
+        $builder->where("activo",true);
+        $builder->where("idCatalogo",'98206a2f-1f1a-46a3-a266-3b0d537ee42f');
+        $builder->orderBy("valor","asc");
+        return $builder->get()->getResult();
+        
+    }
 }

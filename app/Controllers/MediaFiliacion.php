@@ -1,6 +1,6 @@
 <?php namespace App\Controllers;
 
-use App\Models\ArmasModel;
+use App\Models\CuipModel;
 use App\Libraries\Crud_email;
 use App\Libraries\Menu;
 use App\Libraries\Encrypt;
@@ -14,7 +14,7 @@ class MediaFiliacion extends BaseController {
 	private $menu;
 	private $encrypt;
 	private $db;
-	private $modelArmas;
+	private $modelCuip;
 
     public function __construct()
 	{
@@ -22,7 +22,7 @@ class MediaFiliacion extends BaseController {
 		$this->encrypt = new Encrypt();
 		$this->encrypter = \Config\Services::encrypter();
         $this->db =  \Config\Database::connect('default');
-		$this->modelArmas = new ArmasModel($this->db);
+		$this->modelCuip = new CuipModel($this->db);
 		
 	}
 
@@ -33,7 +33,7 @@ class MediaFiliacion extends BaseController {
 			$data['modulos'] = $this->menu->Permisos();
 			$empresa = session()->get('empresa');
 			$idEmpresa = $this->encrypter->decrypt($empresa);
-			//$resultData = $this->modelArmas->GetArmas($idEmpresa);
+			$complexion = $this->modelCuip->GetComplexion($idEmpresa);
 			$result = [];
 
 
