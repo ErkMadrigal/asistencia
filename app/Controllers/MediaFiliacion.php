@@ -33,31 +33,38 @@ class MediaFiliacion extends BaseController {
 			$data['modulos'] = $this->menu->Permisos();
 			$empresa = session()->get('empresa');
 			$idEmpresa = $this->encrypter->decrypt($empresa);
-			$complexion = $this->modelCuip->GetComplexion($idEmpresa);
-			$result = [];
-
-
-			// foreach ( $resultData as $v){
-				
-			// 	$id = $this->encrypt->Encrypt($v->id);
-			// 	$result[] = (object) array (
-			// 		'id' => $id ,
-			// 		'matricula' => $v->matricula,
-			// 		'folio_manif' => $v->folio_manif,
-   //                  'idMarca' => $v->idMarca,
-			// 		'activo' => $v->activo
-
-			// 	) ;
-			// }
-		
-			// $dataCrud = [
-   //              'data' => $result]; 
-
-   //      	$data['arma'] = $dataCrud['data'];
-
+			
+			
+			$complexion = $this->modelCuip->GetCatalogoCuip('98206a2f-1f1a-46a3-a266-3b0d537ee42f');
+			
+			$data['complexion'] = $this->cuipCatalgo($complexion);
+        	//////////////////
+        	
+        	$piel = $this->modelCuip->GetCatalogoCuip('043f4aa9-dda9-4b3f-9753-9cebf98578b7');
+			
+        	$data['piel'] = $this->cuipCatalgo($piel);;
+        	//////////////
 			
 			return view('MediaFiliacion/mediaFiliacion', $data);
 		}	
+    }
+
+    private function cuipCatalgo($array){
+
+    	$result = [];
+
+    	foreach ( $array as $value){
+				
+				$id = $this->encrypt->Encrypt($value->idCatalogo);
+				$result[] = (object) array (
+					'id' => $id ,
+					'valor' => $value->valor
+
+				) ;
+			}
+
+		return $result;
+			
     }
 
     

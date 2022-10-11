@@ -33,6 +33,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="complexion" name="complexion">
                                 <option value="">Seleccionar Complexión</option>
+                                <?php
+                                if( !empty($complexion) ):
+                                    foreach($complexion as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -51,6 +59,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="piel" name="piel">
                                 <option value="">Selecciona un tipo de Piel</option>
+                                <?php
+                                if( !empty($piel) ):
+                                    foreach($piel as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
