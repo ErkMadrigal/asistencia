@@ -50,10 +50,11 @@ class Cuip extends BaseController {
 			$dataCrud = [
                 'data' => $result]; 
 
-        	$data['arma'] = $dataCrud['data'];
+        	$data['CuipPersonal'] = $dataCrud['data'];
 
 			
-			return view('Cuip/RegistroCUIP', $data);
+			//return view('Cuip/RegistroCUIP', $data);
+			return view('Cuip/CuipPersonal', $data);
 		}	
     }
 
