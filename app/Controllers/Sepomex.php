@@ -84,11 +84,37 @@ class Sepomex extends BaseController{
 			$data['breadcrumb'] = ["inicio" => 'Sepomex' ,
                     				"url" => 'Sepomex',
                     				"titulo" => 'Agregar Sepomex'];
+			$data['sepomexEstados'] = $this->modelSepomex->GetSepomexEstados();
 			
 			$id = session()->get('IdUser');
 
 
 			return view('sepomex/addSepomex', $data);
+		}	
+    }
+
+	public function getDataSep(){
+		if ($this->request->getMethod() == "post"){
+			$errors = [];
+            $succes = [];
+            $dontSucces = [];
+            $data = [];
+
+			$getDataMunicipio = $this->modelSepomex->GetSepomexMunicipio($_POST["estado"]);
+			// echo json_encode($getDataMunicipio);
+			if ($getDataMunicipio) {
+				$getDataCiudad = $this->modelSepomex->GetSepomexCiudad($_POST["estado"]);
+				if($getDataCiudad){
+					$succes = ["mensaje" => 'Datos Obtenidos con Exito', "succes" => "succes"];
+				}else{
+					$dontSucces = ["error" => "error", "mensaje" => 'Hubo un error al obtener los datos.'];
+				}
+			} else {
+				$dontSucces = ["error" => "error", "mensaje" => 'Hubo un error al obtener los datos.'];
+			}
+
+            echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'dataMunicipio' => $getDataMunicipio, 'dataCiudad' => $getDataCiudad]);
+			
 		}	
     }
 
@@ -138,7 +164,7 @@ class Sepomex extends BaseController{
 			$getId = str_replace(" ", "+", $_GET['id']);
 			$idAdmin = session()->get('IdUser');
 
-			
+			$data['sepomexEstados'] = $this->modelSepomex->GetSepomexEstados();
 			$data['sepomex'] = $this->modelSepomex->GetSepomexById($getId);
             $data['id'] = $getId;
 			$data['breadcrumb'] = ["inicio" => 'sepomex' ,

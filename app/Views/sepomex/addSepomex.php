@@ -1,6 +1,5 @@
 <?= $this->extend('includes/main') ?>
 <?= $this->section('content') ?>
-
 <div id="load" class=" spinner text-secondary" role="status"></div>
 
 <div class="card card-primary">
@@ -27,17 +26,14 @@
                 </div>
                 <div class='col-12 col-sm-6'>    
                     <div class="form-group">
-                        <label for="asentamiento" class="control-label">Asentamiento <span class="text-danger">*</span></label>
+                        <label for="estado" class="control-label">Estado <span class="text-danger">*</span></label>
                         <div >
-                            <input type="text"  class="form-control " id="asentamiento" name="asentamiento" >
-                        </div>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-6'>    
-                    <div class="form-group">
-                        <label for="municipio" class="control-label">Municipio <span class="text-danger">*</span></label>
-                        <div >
-                            <input type="text"  class="form-control " id="municipio" name="municipio" >
+                            <select id="estado" name="estado" class="form-control">
+                                <option selected>Selecciona una Opcion</option>
+                                <?php foreach($sepomexEstados as $estado => $valor):?>
+                                    <option value="<?=$valor->estado?>"><?=$valor->estado?></option>
+                                <?php endforeach;?>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -45,18 +41,32 @@
                     <div class="form-group">
                         <label for="ciudad" class="control-label">Ciudad <span class="text-danger">*</span></label>
                         <div >
-                            <input type="text"  class="form-control " id="ciudad" name="ciudad" >
+                            <select id="ciudad" name="ciudad" class="form-control">
+                                    <option selected>Selecciona una Opción</option>
+                            </select>
                         </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-6'>    
                     <div class="form-group">
-                        <label for="estado" class="control-label">Estado <span class="text-danger">*</span></label>
+                        <label for="municipio" class="control-label">Municipio <span class="text-danger">*</span></label>
                         <div >
-                            <input type="text"  class="form-control " id="estado" name="estado" >
+                            <select id="municipio" name="municipio" class="form-control">
+                                    <option selected>Selecciona una Opción</option>
+                                    
+                            </select>
                         </div>
                     </div>
                 </div>
+                <div class='col-12 col-sm-6'>    
+                    <div class="form-group">
+                        <label for="asentamiento" class="control-label">Asentamiento <span class="text-danger">*</span></label>
+                        <div >
+                            <input type="text"  class="form-control " id="asentamiento" name="asentamiento" >
+                        </div>
+                    </div>
+                </div>
+                
                 <div class='col-12 col-sm-6'>    
                     <div class="form-group">
                         <label for="Activo" class="control-label">Activo:</label>
@@ -83,7 +93,7 @@
         e.preventDefault()
         let chk = $('#activo').prop('checked') ? 1:0
         $('#loadBtn').show();
-        var formData = new FormData($("form#frmSepomex")[0]);
+        let formData = new FormData($("form#frmSepomex")[0]);
         formData.append("chkActivo", chk);
         $.ajax({
             url: base_url + '/insertDataSepomex',
@@ -135,6 +145,48 @@
             }
         });
     }
+
+    let estado = document.querySelector("#estado")
+
+    let selectMunicipio = document.querySelector("#municipio")
+    let selectCiudad = document.querySelector("#ciudad")
+
+    estado.onchange = (e) => {
+        selectCiudad.innerHTML = ''
+        selectMunicipio.innerHTML = ''
+
+        e.preventDefault()
+        let formData = new FormData($("form#frmSepomex")[0]);
+        $.ajax({
+            url: base_url + '/getDataSepomex',
+            type: 'POST',
+            dataType: 'json',
+            data: formData,
+            cache: false,
+            async: true,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                if(response.succes.succes === "succes"){
+                    selectMunicipio.innerHTML = '<option selected>Selecciona una Opción</option>'
+                    selectCiudad.innerHTML = '<option selected>Selecciona una Opción</option>'
+                    response.dataMunicipio.forEach( municipio => {
+                        selectMunicipio.innerHTML += `<option value="${municipio.municipio}">${municipio.municipio}</option>`
+                        
+                    })
+                    response.dataCiudad.forEach( ciudad => {
+                        selectCiudad.innerHTML += `<option value="${ciudad.ciudad}">${ciudad.ciudad}</option>`
+                    })
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                toastr.error('<?=lang('Layout.toastrError') ?>');
+                $('#loadBtn').hide();           
+            }
+        });
+    };
+
+    
 
 </script>
 
