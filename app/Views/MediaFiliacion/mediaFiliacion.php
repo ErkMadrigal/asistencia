@@ -85,7 +85,16 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="cara" name="cara">
                                 <option value="">Selecciona un tipo de Cara</option>
+                                <?php
+                                if( !empty($cara) ):
+                                    foreach($cara as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
+                           
                             <script>
                                 $(document).ready(function() {
                                     $("#cara").select2({
@@ -104,6 +113,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="anteojos" name="anteojos">
                                 <option value="">Selecciona si Usa Anteojos</option>
+                                <?php
+                                if( !empty($anteojos) ):
+                                    foreach($anteojos as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -122,6 +139,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="estatura" name="estatura">
                                 <option value="">Selecciona un Tipo</option>
+                                <?php
+                                if( !empty($estatura) ):
+                                    foreach($estatura as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -140,6 +165,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="peso" name="peso">
                                 <option value="">Selecciona un Tipo</option>
+                                <?php
+                                if( !empty($peso) ):
+                                    foreach($peso as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -173,14 +206,23 @@ $encrypt = new Encrypt();
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="cantidad_cabello" class="control-label">Cantidad: <span class="text-danger">*</span></label>
+                        <label for="cabello_cantidad" class="control-label">Cantidad: <span class="text-danger">*</span></label>
                         <div>
-                            <select class="form-control" id="cantidad_cabello" name="cantidad_cabello">
+                            <select class="form-control" id="cabello_cantidad" name="cabello_cantidad">
                                 <option value="">Selecciona una cantidad de Cabello</option>
+                                <?php
+                                if( !empty($cabello_cantidad) ):
+                                    foreach($cabello_cantidad as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                                
                             </select>
                             <script>
                                 $(document).ready(function() {
-                                    $("#cantidad_cabello").select2({
+                                    $("#cabello_cantidad").select2({
                                         theme: "bootstrap4",
                                         width: "100%"
                                     });
@@ -195,6 +237,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="color_cabello" name="color_cabello">
                                 <option value="">Selecciona un color de Cabello</option>
+                                <?php
+                                if( !empty($color_cabello) ):
+                                    foreach($color_cabello as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -213,6 +263,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="forma_cabello" name="forma_cabello">
                                 <option value="">Seleccionar forma de Cabello</option>
+                                <?php
+                                if( !empty($forma_cabello) ):
+                                    foreach($forma_cabello as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -231,6 +289,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="calvicie_cabello" name="calvicie_cabello">
                                 <option value="">Seleccionar un tipo de Calvicie</option>
+                                <?php
+                                if( !empty($calvicie_cabello) ):
+                                    foreach($calvicie_cabello as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -249,6 +315,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="implatacion_cabello" name="implatacion_cabello">
                                 <option value="">Seleccionar un tipo de Implantación</option>
+                                <?php
+                                if( !empty($implatacion_cabello) ):
+                                    foreach($implatacion_cabello as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -286,6 +360,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="altura" name="altura">
                                 <option value="">Selecciona una Altura</option>
+                                <?php
+                                if( !empty($altura) ):
+                                    foreach($altura as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -304,6 +386,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="inclinacion" name="inclinacion">
                                 <option value="">Selecciona una Inclinación</option>
+                                <?php
+                                if( !empty($inclinacion) ):
+                                    foreach($inclinacion as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -322,6 +412,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="ancho" name="ancho">
                                 <option value="">Selecciona una Anchura</option>
+                                <?php
+                                if( !empty($ancho) ):
+                                    foreach($ancho as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -358,6 +456,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="direccion_cejas" name="direccion_cejas">
                                 <option value="">Selecciona una Dirección</option>
+                                <?php
+                                if( !empty($direccion_cejas) ):
+                                    foreach($direccion_cejas as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -376,6 +482,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="implantacion_cejas" name="implantacion_cejas">
                                 <option value="">Selecciona una Implantación</option>
+                                <?php
+                                if( !empty($implantacion_cejas) ):
+                                    foreach($implantacion_cejas as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -394,6 +508,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="forma" name="forma">
                                 <option value="">Selecciona una Forma</option>
+                                <?php
+                                if( !empty($forma) ):
+                                    foreach($forma as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -412,6 +534,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="tamanno" name="tamanno">
                                 <option value="">Selecciona un Tamaño</option>
+                                <?php
+                                if( !empty($tamanno) ):
+                                    foreach($tamanno as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -448,6 +578,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="color" name="color">
                                 <option value="">Selecciona un Color</option>
+                                <?php
+                                if( !empty($color) ):
+                                    foreach($color as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -466,6 +604,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="forma_ojos" name="forma_ojos">
                                 <option value="">Selecciona una Forma</option>
+                                <?php
+                                if( !empty($forma_ojos) ):
+                                    foreach($forma_ojos as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -484,6 +630,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="tamanno_ojos" name="tamanno_ojos">
                                 <option value="">Selecciona un Tamaño</option>
+                                <?php
+                                if( !empty($tamanno_ojos) ):
+                                    foreach($tamanno_ojos as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -520,6 +674,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="raiz" name="raiz">
                                 <option value="">Selecciona una Raiz</option>
+                                <?php
+                                if( !empty($raiz) ):
+                                    foreach($raiz as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -538,6 +700,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="dorso" name="dorso">
                                 <option value="">Selecciona un Dorso</option>
+                                <?php
+                                if( !empty($dorso) ):
+                                    foreach($dorso as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -556,6 +726,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="ancho_nariz" name="ancho_nariz">
                                 <option value="">Selecciona una Anchura</option>
+                                <?php
+                                if( !empty($ancho_nariz) ):
+                                    foreach($ancho_nariz as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -574,6 +752,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="base_nariz" name="base_nariz">
                                 <option value="">Selecciona una Base</option>
+                                <?php
+                                if( !empty($base_nariz) ):
+                                    foreach($base_nariz as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -592,6 +778,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="altura_nariz" name="altura_nariz">
                                 <option value="">Selecciona una Altura</option>
+                                <?php
+                                if( !empty($altura_nariz) ):
+                                    foreach($altura_nariz as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -627,6 +821,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="tamanno_boca" name="tamanno_boca">
                                 <option value="">Selecciona un Tamaño</option>
+                                <?php
+                                if( !empty($tamanno_boca) ):
+                                    foreach($tamanno_boca as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -645,6 +847,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="comisura_boca" name="comisura_boca">
                                 <option value="">Selecciona una Comisura</option>
+                                <?php
+                                if( !empty($comisura_boca) ):
+                                    foreach($comisura_boca as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -680,6 +890,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="espesor_labios" name="espesor_labios">
                                 <option value="">Selecciona un Espesor</option>
+                                <?php
+                                if( !empty($espesor_labios) ):
+                                    foreach($espesor_labios as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -698,6 +916,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="altura_labial" name="altura_labial">
                                 <option value="">Selecciona una Altura Naso-Labial</option>
+                                <?php
+                                if( !empty($altura_labial) ):
+                                    foreach($altura_labial as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -716,6 +942,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="prominencia" name="prominencia">
                                 <option value="">Selecciona una Prominencia</option>
+                                <?php
+                                if( !empty($prominencia) ):
+                                    foreach($prominencia as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -751,6 +985,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="tipo_menton" name="tipo_menton">
                                 <option value="">Selecciona un Tipo</option>
+                                <?php
+                                if( !empty($tipo_menton) ):
+                                    foreach($tipo_menton as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -769,6 +1011,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="forma_menton" name="forma_menton">
                                 <option value="">Selecciona una Forma</option>
+                                <?php
+                                if( !empty($forma_menton) ):
+                                    foreach($forma_menton as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -787,6 +1037,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="inclinacion_menton" name="inclinacion_menton">
                                 <option value="">Selecciona una Inclinación</option>
+                                <?php
+                                if( !empty($inclinacion_menton) ):
+                                    foreach($inclinacion_menton as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -822,6 +1080,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="forma_ODerecha" name="forma_ODerecha">
                                 <option value="">Selecciona una Forma</option>
+                                <?php
+                                if( !empty($forma_ODerecha) ):
+                                    foreach($forma_ODerecha as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -855,6 +1121,14 @@ $encrypt = new Encrypt();
                                 <div>
                                     <select class="form-control" id="original" name="original">
                                         <option value="">Selecciona una Opcion</option>
+                                        <?php
+                                if( !empty($original) ):
+                                    foreach($original as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                                     </select>
                                     <script>
                                         $(document).ready(function() {
@@ -873,6 +1147,14 @@ $encrypt = new Encrypt();
                                 <div>
                                     <select class="form-control" id="superior" name="superior">
                                         <option value="">Selecciona una Opcion</option>
+                                        <?php
+                                if( !empty($superior) ):
+                                    foreach($superior as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                                     </select>
                                     <script>
                                         $(document).ready(function() {
@@ -891,6 +1173,14 @@ $encrypt = new Encrypt();
                                 <div>
                                     <select class="form-control" id="posterior" name="posterior">
                                         <option value="">Selecciona una Opcion</option>
+                                        <?php
+                                if( !empty($posterior) ):
+                                    foreach($posterior as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                                     </select>
                                     <script>
                                         $(document).ready(function() {
@@ -909,6 +1199,14 @@ $encrypt = new Encrypt();
                                 <div>
                                     <select class="form-control" id="adherencia" name="adherencia">
                                         <option value="">Selecciona una Opcion</option>
+                                        <?php
+                                if( !empty($adherencia) ):
+                                    foreach($adherencia as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                                     </select>
                                     <script>
                                         $(document).ready(function() {
@@ -944,6 +1242,14 @@ $encrypt = new Encrypt();
                                 <div>
                                     <select class="form-control" id="contorno" name="contorno">
                                         <option value="">Selecciona una Opcion</option>
+                                        <?php
+                                if( !empty($contorno) ):
+                                    foreach($contorno as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                                     </select>
                                     <script>
                                         $(document).ready(function() {
@@ -962,6 +1268,14 @@ $encrypt = new Encrypt();
                                 <div>
                                     <select class="form-control" id="adherencia_lobulo" name="adherencia_lobulo">
                                         <option value="">Selecciona una Opcion</option>
+                                        <?php
+                                if( !empty($adherencia_lobulo) ):
+                                    foreach($adherencia_lobulo as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                                     </select>
                                     <script>
                                         $(document).ready(function() {
@@ -980,6 +1294,14 @@ $encrypt = new Encrypt();
                                 <div>
                                     <select class="form-control" id="particularidad" name="particularidad">
                                         <option value="">Selecciona una Opcion</option>
+                                        <?php
+                                if( !empty($particularidad) ):
+                                    foreach($particularidad as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                                     </select>
                                     <script>
                                         $(document).ready(function() {
@@ -998,6 +1320,14 @@ $encrypt = new Encrypt();
                                 <div>
                                     <select class="form-control" id="dimension" name="dimension">
                                         <option value="">Selecciona una Opcion</option>
+                                        <?php
+                                if( !empty($dimension) ):
+                                    foreach($dimension as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                                     </select>
                                     <script>
                                         $(document).ready(function() {
@@ -1035,6 +1365,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="tipo_sangre" name="tipo_sangre">
                                 <option value="">Selecciona un Tipo</option>
+                                <?php
+                                if( !empty($tipo_sangre) ):
+                                    foreach($tipo_sangre as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -1053,6 +1391,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="RH_sangre" name="RH_sangre">
                                 <option value="">Selecciona un RH</option>
+                                <?php
+                                if( !empty($RH_sangre) ):
+                                    foreach($RH_sangre as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -1088,6 +1434,14 @@ $encrypt = new Encrypt();
                         <div>
                             <select class="form-control" id="cicatrices" name="cicatrices">
                                 <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($cicatrices) ):
+                                    foreach($cicatrices as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
