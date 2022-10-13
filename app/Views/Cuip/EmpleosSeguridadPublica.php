@@ -156,16 +156,56 @@
                         <input type="text" class="form-control " id="nombre_jefe" name="nombre_jefe">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="entidad" class=" control-label">Entidad Federativa:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="entidad" name="entidad">
+                        <label for="entidad_federativa" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="entidad_federativa" name="entidad_federativa">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($entidad_federativa) ):
+                                    foreach($entidad_federativa as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#entidad_federativa").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="municipio" class=" control-label">Municipio:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="municipio" name="municipio">
+                        <label for="municipio" class="control-label">Municipio: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="municipio" name="municipio">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($municipio) ):
+                                    foreach($municipio as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#municipio").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>

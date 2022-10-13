@@ -114,10 +114,30 @@
                         <input type="text" class="form-control " id="averiguacion_previa" name="averiguacion_previa">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="tipo_fuero" class=" control-label">Tipo de Fuero:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="tipo_fuero" name="tipo_fuero">
+                        <label for="tipo_fuero" class="control-label">Tipo de Fuero: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="tipo_fuero" name="tipo_fuero">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($tipo_fuero) ):
+                                    foreach($tipo_fuero as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#tipo_fuero").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>

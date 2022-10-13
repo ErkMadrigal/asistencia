@@ -24,12 +24,32 @@
                     <input type="text" class="form-control " id="ingreso" name="ingreso">
                 </div>
             </div>
-            <div class='col-12 col-sm-12 col-md-6'>
-                <div class="form-group">
-                    <label for="domicilio" class=" control-label">Su domicilio es combo:<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="domicilio" name="domicilio">
+            <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="domicilio_tipo" class="control-label">Su domicilio es: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="domicilio_tipo" name="domicilio_tipo">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($domicilio_tipo) ):
+                                    foreach($domicilio_tipo as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#domicilio_tipo").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
                 </div>
-            </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="actividad" class=" control-label">Actividades culturales o deportivas
@@ -152,12 +172,30 @@
 
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="parentesco" class=" control-label"> Parentesco aqui va
-                            combo:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="parentesco" name="parentesco">
-
+                        <label for="parentesco_familiar" class="control-label">Parentesco: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="parentesco_familiar" name="parentesco_familiar">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($parentesco_familiar) ):
+                                    foreach($parentesco_familiar as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#entidad_federativa").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
             </div>

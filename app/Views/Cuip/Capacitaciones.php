@@ -21,8 +21,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="institucion" class=" control-label">Institución Capacitadora:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="institucion"
-                            name="institucion">
+                        <input type="text" class="form-control " id="institucion" name="institucion">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -34,21 +33,59 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="tema_curso" class=" control-label">Tema del curso:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="tema_curso"
-                            name="tema_curso">
+                        <input type="text" class="form-control " id="tema_curso" name="tema_curso">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="nivel_curso" class=" control-label">Nivel del curso recibido:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nivel_curso" name="nivel_curso">
+                        <label for="nivel_curso" class="control-label">Nivel del curso recibido: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="nivel_curso" name="nivel_curso">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if (!empty($nivel_curso)) :
+                                    foreach ($nivel_curso as  $a) {
+                                ?>
+                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
+                                    }
+                                endif; ?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#nivel_curso").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="eficiencia" class=" control-label">Eficiencia terminal:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="eficiencia"
-                            name="eficiencia">
+                        <label for="eficiencia" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="eficiencia" name="eficiencia">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if (!empty($eficiencia)) :
+                                    foreach ($eficiencia as  $a) {
+                                ?>
+                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
+                                    }
+                                endif; ?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#eficiencia").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -60,8 +97,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="conclusion" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="conclusion"
-                            name="conclusion">
+                        <input type="text" class="form-control " id="conclusion" name="conclusion">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -73,8 +109,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="comprobante" class=" control-label">Tipo de comprobante:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="comprobante"
-                            name="comprobante">
+                        <input type="text" class="form-control " id="comprobante" name="comprobante">
                     </div>
                 </div>
 
@@ -86,7 +121,7 @@
 <div class="card card-primary">
     <div class="card-header">
         <h3 class="card-title">CAPACITACIÓN ADICIONAL
-</h3>
+        </h3>
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -107,8 +142,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="curso" class=" control-label">Estudio o Curso:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="curso"
-                            name="curso">
+                        <input type="text" class="form-control " id="curso" name="curso">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -117,17 +151,56 @@
                         <input type="text" class="form-control " id="tipo_curso" name="tipo_curso">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="cuso_tomado" class=" control-label">¿El curso fue?:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="cuso_tomado" name="cuso_tomado">
+                        <label for="cuso_tomado" class="control-label">¿El curso fue?: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="cuso_tomado" name="cuso_tomado">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if (!empty($cuso_tomado)) :
+                                    foreach ($cuso_tomado as  $a) {
+                                ?>
+                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
+                                    }
+                                endif; ?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#cuso_tomado").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="eficiencia" class=" control-label">Eficiencia terminal:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="eficiencia"
-                            name="eficiencia">
+                        <label for="eficiencia" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="eficiencia" name="eficiencia">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if (!empty($eficiencia)) :
+                                    foreach ($eficiencia as  $a) {
+                                ?>
+                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
+                                    }
+                                endif; ?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#eficiencia").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -145,8 +218,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="duracion_horas" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="duracion_horas"
-                            name="duracion_horas">
+                        <input type="text" class="form-control " id="duracion_horas" name="duracion_horas">
                     </div>
                 </div>
             </div>
@@ -167,18 +239,36 @@
     <div class="card-body">
         <form class="form-horizontal" id="">
             <div class="row">
-
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="idioma" class=" control-label">Idioma o Dialecto:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="idioma" name="idioma">
+                        <label for="idioma" class="control-label">Idioma o Dialecto: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="idioma" name="idioma">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if (!empty($idioma)) :
+                                    foreach ($idioma as  $a) {
+                                ?>
+                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
+                                    }
+                                endif; ?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#idioma").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
                         <label for="lectura" class=" control-label">% Lectura:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="lectura"
-                            name="lectura">
+                        <input type="text" class="form-control " id="lectura" name="lectura">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-4'>
@@ -190,8 +280,7 @@
                 <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
                         <label for="conversacion" class=" control-label">% Conversación:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="conversacion"
-                            name="conversacion">
+                        <input type="text" class="form-control " id="conversacion" name="conversacion">
                     </div>
                 </div>
             </div>
@@ -213,29 +302,67 @@
     <div class="card-body">
         <form class="form-horizontal" id="">
             <div class="row">
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="tipo" class=" control-label">Tipo:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="tipo" name="tipo">
+                        <label for="tipo_habilidad" class="control-label">Tipo: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="tipo_habilidad" name="tipo_habilidad">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if (!empty($tipo_habilidad)) :
+                                    foreach ($tipo_habilidad as  $a) {
+                                ?>
+                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
+                                    }
+                                endif; ?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#tipo_habilidad").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="especificacion" class=" control-label">Especifique:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="especificacion"
-                            name="especificacion">
+                        <input type="text" class="form-control " id="especificacion" name="especificacion">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="dominio" class=" control-label">Grado de aptitude o dominio:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="dominio"
-                            name="dominio">
+                        <label for="grado_habilidad" class="control-label">Grado de aptitude o dominio: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="grado_habilidad" name="grado_habilidad">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if (!empty($grado_habilidad)) :
+                                    foreach ($grado_habilidad as  $a) {
+                                ?>
+                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
+                                    }
+                                endif; ?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#grado_habilidad").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
+    </form>
+</div>
 </div>
 <div class="card card-primary">
     <div class="card-header">
@@ -266,29 +393,45 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="especificacion" class=" control-label">Especifique:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="especificacion"
-                            name="especificacion">
+                        <input type="text" class="form-control " id="especificacion" name="especificacion">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="dominio" class=" control-label">Grado de aptitude o dominio:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="dominio"
-                            name="dominio">
+                        <label for="grado_habilidad" class="control-label">Grado de aptitude o dominio: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="grado_habilidad" name="grado_habilidad">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if (!empty($grado_habilidad)) :
+                                    foreach ($grado_habilidad as  $a) {
+                                ?>
+                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
+                                    }
+                                endif; ?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#grado_habilidad").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="desde" class=" control-label">Desde:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="desde"
-                            name="desde">
+                        <input type="text" class="form-control " id="desde" name="desde">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="hasta" class=" control-label">Hasta:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="hasta"
-                            name="hasta">
+                        <input type="text" class="form-control " id="hasta" name="hasta">
                     </div>
                 </div>
             </div>
@@ -302,8 +445,3 @@
         <button type="button" id="SaveProveedor" class="btn btn-primary">Guardar</button>
     </div>
 </div>
-
-
-
-
-            

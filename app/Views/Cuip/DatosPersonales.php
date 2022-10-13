@@ -104,10 +104,30 @@
                         <input type="text" class="form-control " id="pasaporte" name="pasaporte">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="modoNa" class=" control-label">Modo de Nacionalidad combo:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="modoNa" name="modoNa">
+                        <label for="modo_nacionalidad" class="control-label">Modo de Nacionalidad: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="modo_nacionalidad" name="modo_nacionalidad">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($modo_nacionalidad) ):
+                                    foreach($modo_nacionalidad as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#modo_nacionalidad").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-6'>
@@ -129,34 +149,186 @@
                         </script>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="pais" class=" control-label">País de Nacimiento combo:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="pais" name="pais">
+                        <label for="pais_nacimiento" class="control-label">Pais de Nacimiento: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="pais_nacimiento" name="pais_nacimiento">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($pais_nacimiento) ):
+                                    foreach($pais_nacimiento as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#pais_nacimiento").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="entidad" class=" control-label">Entidad de Nacimiento combo:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="entidad" name="entidad">
+                        <label for="entidad_nacimiento" class="control-label">Entidad de Nacimiento: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="entidad_nacimiento" name="entidad_nacimiento">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($entidad_nacimiento) ):
+                                    foreach($entidad_nacimiento as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#entidad_nacimiento").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="nacionalidad" class=" control-label">Nacionalidad combo :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nacionalidad" name="nacionalidad">
+                        <label for="nacionalidad" class="control-label">Nacionalidad: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="nacionalidad" name="nacionalidad">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($nacionalidad) ):
+                                    foreach($nacionalidad as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#nacionalidad").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="estadoCivil" class=" control-label">Estado Civil combo :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="estadoCivil" name="estadoCivil">
+                        <label for="municipio_nacimiento" class="control-label">Municipio de Nacimiento: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="municipio_nacimiento" name="municipio_nacimiento">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($municipio_nacimiento) ):
+                                    foreach($municipio_nacimiento as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#municipio_nacimiento").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="desarrolloA" class=" control-label">Desarrollo Académico combo :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="desarrolloA" name="desarrolloA">
+                        <label for="cuidad_nacimiento" class="control-label">Cuidad de Nacimiento: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="cuidad_nacimiento" name="cuidad_nacimiento">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($cuidad_nacimiento) ):
+                                    foreach($cuidad_nacimiento as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#cuidad_nacimiento").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="estado_civil" class="control-label">Estado Civil: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="estado_civil" name="estado_civil">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($estado_civil) ):
+                                    foreach($estado_civil as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#estado_civil").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="desarrollo_academico" class="control-label">Desarrollo Académico: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="desarrollo_academico" name="desarrollo_academico">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($desarrollo_academico) ):
+                                    foreach($desarrollo_academico as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#desarrollo_academico").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -252,19 +424,19 @@
     <div class="card-body">
         <form class="form-horizontal" id="">
             <div class="row">
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
                         <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="calle" name="calle">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
                         <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="exterior" name="exterior">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-12 col-sm-12 col-md-4'>
                     <div class="form-group">
                         <label for="interior" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="interior" name="interior">
@@ -302,24 +474,82 @@
                         <input type="text" class="form-control " id="numero" name="numero">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="entidadF" class=" control-label">Entidad Federativa
-                            combo:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="entidadF" name="entidadF">
+                        <label for="entidad_federativa" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="entidad_federativa" name="entidad_federativa">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($entidad_federativa) ):
+                                    foreach($entidad_federativa as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#entidad_federativa").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="municipio" class=" control-label">Municipio
-                            combo:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="municipio" name="municipio">
+                        <label for="municipio" class="control-label">Municipio: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="municipio" name="municipio">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($municipio) ):
+                                    foreach($municipio as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#municipio").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="ciudad" class=" control-label">Ciudad combo:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="ciudad" name="cuidad">
+                        <label for="ciudad" class="control-label">Ciudad: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="ciudad" name="ciudad">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($ciudad) ):
+                                    foreach($ciudad as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#ciudad").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
             </div>
