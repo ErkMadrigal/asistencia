@@ -245,10 +245,7 @@ class MediaFiliacion extends BaseController {
         	$data['RH_sangre'] = $this->cuipCatalgo($RH_sangre);;
         	//////////////
 
-			$RH_sangre = $this->modelCuip->GetCatalogoCuip('dcaa7074-ba11-4498-a2d2-c5cf6f0e641a');
 			
-        	$data['RH_sangre'] = $this->cuipCatalgo($RH_sangre);;
-        	//////////////
 
 			
 			return view('MediaFiliacion/mediaFiliacion', $data);
