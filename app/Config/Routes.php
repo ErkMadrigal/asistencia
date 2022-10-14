@@ -58,7 +58,6 @@ $routes->post('SaveUser', 'Administrador::CrearUsuario',['filter' => 'auth']);
 $routes->get('editUser', 'Administrador::EditarUsuario',['filter' => 'auth']);
 $routes->post('EditInfoUser', 'Administrador::EditarUsuarioById',['filter' => 'auth']);
 $routes->post('EditUserPermiso', 'Administrador::EditarPermiso',['filter' => 'auth']);
-<<<<<<< HEAD
 $routes->get('armas', 'Armas::GetArmas',['filter' => 'auth']);
 $routes->get('detailArmas', 'Armas::DetalleArmas',['filter' => 'auth']);
 $routes->get('editArmas', 'Armas::EditarArma',['filter' => 'auth']);
@@ -75,8 +74,7 @@ $routes->get('AddCatDoc', 'Documentos::AgregarDocumento',['filter' => 'auth']);
 $routes->post('GuardarCatDocumento', 'Documentos::AgregarDoc',['filter' => 'auth']);
 $routes->get('cuip', 'Cuip::Form',['filter' => 'auth']);
 $routes->get('MediaFiliacion', 'MediaFiliacion::Form',['filter' => 'auth']);
-$routes->get('carga', 'CargaMasiva::GetDatos',['filter' => 'auth']);//la de ejemplo
-=======
+$routes->get('carga', 'CargaMasiva::GetDatos',['filter' => 'auth']); //la de ejemplo
 $routes->get('sepomex', 'Sepomex::index',['filter' => 'auth']);
 $routes->get('AddSepomex', 'Sepomex::add',['filter' => 'auth']);
 $routes->post('getDataSepomex', 'Sepomex::getDataSep',['filter' => 'auth']);
@@ -84,7 +82,7 @@ $routes->get('insertDataSepomex', 'Sepomex::insertDataSep',['filter' => 'auth'])
 $routes->get('editSepomex', 'Sepomex::update',['filter' => 'auth']);
 $routes->post('editDataSepomex', 'Sepomex::updateDataSep',['filter' => 'auth']);
 $routes->get('detailSepomex', 'Sepomex::detail',['filter' => 'auth']);
->>>>>>> erick
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
