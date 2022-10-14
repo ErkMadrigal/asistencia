@@ -28,6 +28,32 @@ class CataSepomex
         
     }
 
+    public function GetSepomexEstados(){
+        $builder = $this->db->table('sepomex');
+        $builder->select('estado');
+        $builder->groupBy("estado");
+        return $builder->get()->getResult();
+        
+    }
+
+    public function GetSepomexCiudad($estado){
+        $builder = $this->db->table('sepomex');
+        $builder->select('ciudad');
+        $builder->where('estado', $estado);
+        $builder->groupBy("ciudad");
+
+        return $builder->get()->getResult(); 
+    }
+
+    public function GetSepomexMunicipio($estado){
+        $builder = $this->db->table('sepomex');
+        $builder->select('municipio');
+        $builder->where('estado', $estado);
+        $builder->groupBy("municipio");
+
+        return $builder->get()->getResult(); 
+    }
+
     public function GetSepomexById($id){
         $builder = $this->db->table('sepomex s');
         $builder->select("s.id, s.activo, s.codigoPostal, s.asentamiento, s.municipio, s.ciudad, s.estado, s.createddate, s.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
