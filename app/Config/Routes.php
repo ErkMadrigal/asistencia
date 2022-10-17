@@ -72,7 +72,7 @@ $routes->get('editCatDoc', 'Documentos::EditarDocumento',['filter' => 'auth']);
 $routes->post('EditCatDoc', 'Documentos::SaveDocumento',['filter' => 'auth']);
 $routes->get('AddCatDoc', 'Documentos::AgregarDocumento',['filter' => 'auth']);
 $routes->post('GuardarCatDocumento', 'Documentos::AgregarDoc',['filter' => 'auth']);
-$routes->get('cuip', 'Cuip::Form',['filter' => 'auth']);
+$routes->get('cuip', 'Cuip::GetCuip',['filter' => 'auth']);
 $routes->get('MediaFiliacion', 'MediaFiliacion::Form',['filter' => 'auth']);
 $routes->get('carga', 'CargaMasiva::GetDatos',['filter' => 'auth']); //la de ejemplo
 $routes->get('sepomex', 'Sepomex::index',['filter' => 'auth']);
@@ -82,6 +82,18 @@ $routes->get('insertDataSepomex', 'Sepomex::insertDataSep',['filter' => 'auth'])
 $routes->get('editSepomex', 'Sepomex::update',['filter' => 'auth']);
 $routes->post('editDataSepomex', 'Sepomex::updateDataSep',['filter' => 'auth']);
 $routes->get('detailSepomex', 'Sepomex::detail',['filter' => 'auth']);
+$routes->get('AddCUIP', 'Cuip::AgregarCuip',['filter' => 'auth']);
+$routes->post('GuardarDatosPersonales', 'Cuip::AgregarPersonales',['filter' => 'auth']);
+$routes->post('getCiudadEstado', 'Cuip::CiudadEstado',['filter' => 'auth']);
+$routes->post('getSepomex', 'Cuip::getCP',['filter' => 'auth']);
+$routes->post('GuardarSocioEconomico', 'Cuip::AgregarSocioEconomico',['filter' => 'auth']);
+$routes->post('GuardarEmpSegPublica', 'Cuip::AgregarEmpSegPublica',['filter' => 'auth']);
+$routes->post('GuardarSancionesEstimulos', 'Cuip::AgregarSancionesEstimulos',['filter' => 'auth']);
+$routes->post('GuardarCapacitaciones', 'Cuip::AgregarCapacitaciones',['filter' => 'auth']);
+$routes->post('GuardarEmpDiversos', 'Cuip::AgregarEmpDiversos',['filter' => 'auth']);
+$routes->get('mediafiliacion', 'Cuip::getMediafiliacion',['filter' => 'auth']);
+$routes->get('cuipInfo', 'Cuip::getCuipDetail',['filter' => 'auth']);
+$routes->get('expediente', 'Cuip::getExpediente',['filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------

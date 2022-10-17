@@ -14,7 +14,7 @@
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="Nombre" class="control-label">Complexión: <span class="text-danger">*</span></label>
+                        <label for="Nombre" class="control-label">Complexión: </label>
                         <div>
                             <select class="form-control" id="complexion" name="complexion">
                                 <option value="">Seleccionar Complexión</option>
@@ -40,7 +40,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="piel" class="control-label">Piel: <span class="text-danger">*</span></label>
+                        <label for="piel" class="control-label">Piel: </label>
                         <div>
                             <select class="form-control" id="piel" name="piel">
                                 <option value="">Selecciona un tipo de Piel</option>
@@ -66,7 +66,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="cara" class="control-label">Cara: <span class="text-danger">*</span></label>
+                        <label for="cara" class="control-label">Cara: </label>
                         <div>
                             <select class="form-control" id="cara" name="cara">
                                 <option value="">Selecciona un tipo de Cara</option>
@@ -94,7 +94,7 @@
                 
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="anteojos" class="control-label">Uso de Anteojos: <span class="text-danger">*</span></label>
+                        <label for="anteojos" class="control-label">Uso de Anteojos: </label>
                         <div>
                             <select class="form-control" id="anteojos" name="anteojos">
                                 <option value="">Selecciona si Usa Anteojos</option>
@@ -120,7 +120,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="estatura" class="control-label">Estatura: <span class="text-danger">*</span></label>
+                        <label for="estatura" class="control-label">Estatura: </label>
                         <div>
                             <input type="text" class="form-control " id="estatura" name="estatura">
                         </div>
@@ -128,7 +128,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="peso" class="control-label">Peso: <span class="text-danger">*</span></label>
+                        <label for="peso" class="control-label">Peso: </label>
                         <div>
                             <input type="text" class="form-control " id="peso" name="peso">
                         </div>
@@ -155,7 +155,7 @@
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="cabello_cantidad" class="control-label">Cantidad: <span class="text-danger">*</span></label>
+                        <label for="cabello_cantidad" class="control-label">Cantidad: </label>
                         <div>
                             <select class="form-control" id="cabello_cantidad" name="cabello_cantidad">
                                 <option value="">Selecciona una cantidad de Cabello</option>
@@ -182,7 +182,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="color_cabello" class="control-label">Color: <span class="text-danger">*</span></label>
+                        <label for="color_cabello" class="control-label">Color: </label>
                         <div>
                             <select class="form-control" id="color_cabello" name="color_cabello">
                                 <option value="">Selecciona un color de Cabello</option>
@@ -208,7 +208,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="forma_cabello" class="control-label">Forma: <span class="text-danger">*</span></label>
+                        <label for="forma_cabello" class="control-label">Forma: </label>
                         <div>
                             <select class="form-control" id="forma_cabello" name="forma_cabello">
                                 <option value="">Seleccionar forma de Cabello</option>
@@ -234,7 +234,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="calvicie_cabello" class="control-label">Calvicie: <span class="text-danger">*</span></label>
+                        <label for="calvicie_cabello" class="control-label">Calvicie: </label>
                         <div>
                             <select class="form-control" id="calvicie_cabello" name="calvicie_cabello">
                                 <option value="">Seleccionar un tipo de Calvicie</option>
@@ -260,7 +260,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="implatacion_cabello" class="control-label">Implantación: <span class="text-danger">*</span></label>
+                        <label for="implatacion_cabello" class="control-label">Implantación: </label>
                         <div>
                             <select class="form-control" id="implatacion_cabello" name="implatacion_cabello">
                                 <option value="">Seleccionar un tipo de Implantación</option>
@@ -305,7 +305,7 @@
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="altura" class="control-label">Altura: <span class="text-danger">*</span></label>
+                        <label for="altura" class="control-label">Altura: </label>
                         <div>
                             <select class="form-control" id="altura" name="altura">
                                 <option value="">Selecciona una Altura</option>
@@ -331,7 +331,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="inclinacion" class="control-label">Inclinación: <span class="text-danger">*</span></label>
+                        <label for="inclinacion" class="control-label">Inclinación: </label>
                         <div>
                             <select class="form-control" id="inclinacion" name="inclinacion">
                                 <option value="">Selecciona una Inclinación</option>
@@ -357,7 +357,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="ancho" class="control-label">Ancho: <span class="text-danger">*</span></label>
+                        <label for="ancho" class="control-label">Ancho: </label>
                         <div>
                             <select class="form-control" id="ancho" name="ancho">
                                 <option value="">Selecciona una Anchura</option>
@@ -401,7 +401,7 @@
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="direccion_cejas" class="control-label">Dirección: <span class="text-danger">*</span></label>
+                        <label for="direccion_cejas" class="control-label">Dirección: </label>
                         <div>
                             <select class="form-control" id="direccion_cejas" name="direccion_cejas">
                                 <option value="">Selecciona una Dirección</option>
@@ -427,7 +427,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="implantacion_cejas" class="control-label">Implantacion: <span class="text-danger">*</span></label>
+                        <label for="implantacion_cejas" class="control-label">Implantacion: </label>
                         <div>
                             <select class="form-control" id="implantacion_cejas" name="implantacion_cejas">
                                 <option value="">Selecciona una Implantación</option>
@@ -453,7 +453,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="forma" class="control-label">Forma: <span class="text-danger">*</span></label>
+                        <label for="forma" class="control-label">Forma: </label>
                         <div>
                             <select class="form-control" id="forma" name="forma">
                                 <option value="">Selecciona una Forma</option>
@@ -479,7 +479,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="tamanno" class="control-label">Tamaño: <span class="text-danger">*</span></label>
+                        <label for="tamanno" class="control-label">Tamaño: </label>
                         <div>
                             <select class="form-control" id="tamanno" name="tamanno">
                                 <option value="">Selecciona un Tamaño</option>
@@ -523,7 +523,7 @@
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="color" class="control-label">Color: <span class="text-danger">*</span></label>
+                        <label for="color" class="control-label">Color: </label>
                         <div>
                             <select class="form-control" id="color" name="color">
                                 <option value="">Selecciona un Color</option>
@@ -549,7 +549,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="forma_ojos" class="control-label">Forma: <span class="text-danger">*</span></label>
+                        <label for="forma_ojos" class="control-label">Forma: </label>
                         <div>
                             <select class="form-control" id="forma_ojos" name="forma_ojos">
                                 <option value="">Selecciona una Forma</option>
@@ -575,7 +575,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="tamanno_ojos" class="control-label">Tamaño: <span class="text-danger">*</span></label>
+                        <label for="tamanno_ojos" class="control-label">Tamaño: </label>
                         <div>
                             <select class="form-control" id="tamanno_ojos" name="tamanno_ojos">
                                 <option value="">Selecciona un Tamaño</option>
@@ -619,7 +619,7 @@
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="raiz" class="control-label">Raíz: <span class="text-danger">*</span></label>
+                        <label for="raiz" class="control-label">Raíz: </label>
                         <div>
                             <select class="form-control" id="raiz" name="raiz">
                                 <option value="">Selecciona una Raiz</option>
@@ -645,7 +645,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="dorso" class="control-label">Dorso: <span class="text-danger">*</span></label>
+                        <label for="dorso" class="control-label">Dorso: </label>
                         <div>
                             <select class="form-control" id="dorso" name="dorso">
                                 <option value="">Selecciona un Dorso</option>
@@ -671,7 +671,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="ancho_nariz" class="control-label">Ancho: <span class="text-danger">*</span></label>
+                        <label for="ancho_nariz" class="control-label">Ancho: </label>
                         <div>
                             <select class="form-control" id="ancho_nariz" name="ancho_nariz">
                                 <option value="">Selecciona una Anchura</option>
@@ -697,7 +697,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="base_nariz" class="control-label">Base: <span class="text-danger">*</span></label>
+                        <label for="base_nariz" class="control-label">Base: </label>
                         <div>
                             <select class="form-control" id="base_nariz" name="base_nariz">
                                 <option value="">Selecciona una Base</option>
@@ -723,7 +723,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="altura_nariz" class="control-label">Altura: <span class="text-danger">*</span></label>
+                        <label for="altura_nariz" class="control-label">Altura: </label>
                         <div>
                             <select class="form-control" id="altura_nariz" name="altura_nariz">
                                 <option value="">Selecciona una Altura</option>
@@ -766,7 +766,7 @@
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="tamanno_boca" class="control-label">Tamaño: <span class="text-danger">*</span></label>
+                        <label for="tamanno_boca" class="control-label">Tamaño: </label>
                         <div>
                             <select class="form-control" id="tamanno_boca" name="tamanno_boca">
                                 <option value="">Selecciona un Tamaño</option>
@@ -792,7 +792,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="comisura_boca" class="control-label">Comisuras: <span class="text-danger">*</span></label>
+                        <label for="comisura_boca" class="control-label">Comisuras: </label>
                         <div>
                             <select class="form-control" id="comisura_boca" name="comisura_boca">
                                 <option value="">Selecciona una Comisura</option>
@@ -835,7 +835,7 @@
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="espesor_labios" class="control-label">Espesor: <span class="text-danger">*</span></label>
+                        <label for="espesor_labios" class="control-label">Espesor: </label>
                         <div>
                             <select class="form-control" id="espesor_labios" name="espesor_labios">
                                 <option value="">Selecciona un Espesor</option>
@@ -861,7 +861,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="altura_labial" class="control-label">Altura Naso-Labial: <span class="text-danger">*</span></label>
+                        <label for="altura_labial" class="control-label">Altura Naso-Labial: </label>
                         <div>
                             <select class="form-control" id="altura_labial" name="altura_labial">
                                 <option value="">Selecciona una Altura Naso-Labial</option>
@@ -887,7 +887,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="prominencia" class="control-label">Prominencia: <span class="text-danger">*</span></label>
+                        <label for="prominencia" class="control-label">Prominencia: </label>
                         <div>
                             <select class="form-control" id="prominencia" name="prominencia">
                                 <option value="">Selecciona una Prominencia</option>
@@ -930,7 +930,7 @@
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="tipo_menton" class="control-label">Tipo: <span class="text-danger">*</span></label>
+                        <label for="tipo_menton" class="control-label">Tipo: </label>
                         <div>
                             <select class="form-control" id="tipo_menton" name="tipo_menton">
                                 <option value="">Selecciona un Tipo</option>
@@ -956,7 +956,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="forma_menton" class="control-label">Forma: <span class="text-danger">*</span></label>
+                        <label for="forma_menton" class="control-label">Forma: </label>
                         <div>
                             <select class="form-control" id="forma_menton" name="forma_menton">
                                 <option value="">Selecciona una Forma</option>
@@ -982,7 +982,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="inclinacion_menton" class="control-label">Inclinación: <span class="text-danger">*</span></label>
+                        <label for="inclinacion_menton" class="control-label">Inclinación: </label>
                         <div>
                             <select class="form-control" id="inclinacion_menton" name="inclinacion_menton">
                                 <option value="">Selecciona una Inclinación</option>
@@ -1025,7 +1025,7 @@
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="forma_ODerecha" class="control-label">Forma: <span class="text-danger">*</span></label>
+                        <label for="forma_ODerecha" class="control-label">Forma: </label>
                         <div>
                             <select class="form-control" id="forma_ODerecha" name="forma_ODerecha">
                                 <option value="">Selecciona una Forma</option>
@@ -1066,7 +1066,7 @@
                     <div class="row">
                         <div class='col-6 col-sm-4'>
                             <div class="form-group">
-                                <label for="original" class="control-label">Original: <span class="text-danger">*</span></label>
+                                <label for="original" class="control-label">Original: </label>
                                 <div>
                                     <select class="form-control" id="original" name="original">
                                         <option value="">Selecciona una Opcion</option>
@@ -1092,7 +1092,7 @@
                         </div>
                         <div class='col-6 col-sm-4'>
                             <div class="form-group">
-                                <label for="superior" class="control-label">Superior: <span class="text-danger">*</span></label>
+                                <label for="superior" class="control-label">Superior: </label>
                                 <div>
                                     <select class="form-control" id="superior" name="superior">
                                         <option value="">Selecciona una Opcion</option>
@@ -1118,7 +1118,7 @@
                         </div>
                         <div class='col-6 col-sm-4'>
                             <div class="form-group">
-                                <label for="posterior" class="control-label">Posterior: <span class="text-danger">*</span></label>
+                                <label for="posterior" class="control-label">Posterior: </label>
                                 <div>
                                     <select class="form-control" id="posterior" name="posterior">
                                         <option value="">Selecciona una Opcion</option>
@@ -1144,7 +1144,7 @@
                         </div>
                         <div class='col-6 col-sm-4'>
                             <div class="form-group">
-                                <label for="adherencia" class="control-label">Adherencia: <span class="text-danger">*</span></label>
+                                <label for="adherencia" class="control-label">Adherencia: </label>
                                 <div>
                                     <select class="form-control" id="adherencia" name="adherencia">
                                         <option value="">Selecciona una Opcion</option>
@@ -1187,7 +1187,7 @@
                     <div class="row">
                         <div class='col-6 col-sm-4'>
                             <div class="form-group">
-                                <label for="contorno" class="control-label">Contorno: <span class="text-danger">*</span></label>
+                                <label for="contorno" class="control-label">Contorno: </label>
                                 <div>
                                     <select class="form-control" id="contorno" name="contorno">
                                         <option value="">Selecciona una Opcion</option>
@@ -1213,7 +1213,7 @@
                         </div>
                         <div class='col-6 col-sm-4'>
                             <div class="form-group">
-                                <label for="adherencia_lobulo" class="control-label">Adherencia: <span class="text-danger">*</span></label>
+                                <label for="adherencia_lobulo" class="control-label">Adherencia: </label>
                                 <div>
                                     <select class="form-control" id="adherencia_lobulo" name="adherencia_lobulo">
                                         <option value="">Selecciona una Opcion</option>
@@ -1239,7 +1239,7 @@
                         </div>
                         <div class='col-6 col-sm-4'>
                             <div class="form-group">
-                                <label for="particularidad" class="control-label">Particularidad: <span class="text-danger">*</span></label>
+                                <label for="particularidad" class="control-label">Particularidad: </label>
                                 <div>
                                     <select class="form-control" id="particularidad" name="particularidad">
                                         <option value="">Selecciona una Opcion</option>
@@ -1265,7 +1265,7 @@
                         </div>
                         <div class='col-6 col-sm-4'>
                             <div class="form-group">
-                                <label for="dimension" class="control-label">Dimensión: <span class="text-danger">*</span></label>
+                                <label for="dimension" class="control-label">Dimensión: </label>
                                 <div>
                                     <select class="form-control" id="dimension" name="dimension">
                                         <option value="">Selecciona una Opcion</option>
@@ -1310,7 +1310,7 @@
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="tipo_sangre" class="control-label">Tipo: <span class="text-danger">*</span></label>
+                        <label for="tipo_sangre" class="control-label">Tipo: </label>
                         <div>
                             <select class="form-control" id="tipo_sangre" name="tipo_sangre">
                                 <option value="">Selecciona un Tipo</option>
@@ -1336,7 +1336,7 @@
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="RH_sangre" class="control-label">RH: <span class="text-danger">*</span></label>
+                        <label for="RH_sangre" class="control-label">RH: </label>
                         <div>
                             <select class="form-control" id="RH_sangre" name="RH_sangre">
                                 <option value="">Selecciona un RH</option>
@@ -1379,7 +1379,7 @@
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="cicatrices" class="control-label">Cicatrices: <span class="text-danger">*</span></label>
+                        <label for="cicatrices" class="control-label">Cicatrices: </label>
                         <div>
                             <select class="form-control" id="cicatrices" name="cicatrices">
                                 <option value="">Selecciona una Opcion</option>
@@ -1405,13 +1405,13 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="cicatrices_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
+                        <label for="cicatrices_descripcion" class=" control-label">Descripción:</label>
                         <textarea type="text" class="form-control " id="cicatrices_descripcion" name="cicatrices_descripcion"></textarea>
                     </div>
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="tatuajes" class="control-label">Tatuajes: <span class="text-danger">*</span></label>
+                        <label for="tatuajes" class="control-label">Tatuajes: </label>
                         <div>
                             <select class="form-control" id="tatuajes" name="tatuajes">
                                 <option value="">Selecciona una Opcion</option>
@@ -1437,13 +1437,13 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="tatuajes_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
+                        <label for="tatuajes_descripcion" class=" control-label">Descripción:</label>
                         <textarea type="text" class="form-control " id="tatuajes_descripcion" name="tatuajes_descripcion"></textarea>
                     </div>
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="lunares" class="control-label">Lunares: <span class="text-danger">*</span></label>
+                        <label for="lunares" class="control-label">Lunares: </label>
                         <div>
                             <select class="form-control" id="lunares" name="lunares">
                                 <option value="">Selecciona una Opcion</option>
@@ -1469,13 +1469,13 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="lunares_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
+                        <label for="lunares_descripcion" class=" control-label">Descripción:</label>
                         <textarea type="text" class="form-control " id="lunares_descripcion" name="lunares_descripcion"></textarea>
                     </div>
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="fisico" class="control-label">Defectos Fisicos: <span class="text-danger">*</span></label>
+                        <label for="fisico" class="control-label">Defectos Fisicos: </label>
                         <div>
                             <select class="form-control" id="fisico" name="fisico">
                                 <option value="">Selecciona una Opcion</option>
@@ -1501,13 +1501,13 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="fisico_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
+                        <label for="fisico_descripcion" class=" control-label">Descripción:</label>
                         <textarea type="text" class="form-control " id="fisico_descripcion" name="fisico_descripcion"></textarea>
                     </div>
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="protesis" class="control-label">Protesis: <span class="text-danger">*</span></label>
+                        <label for="protesis" class="control-label">Protesis: </label>
                         <div>
                             <select class="form-control" id="protesis" name="protesis">
                                 <option value="">Selecciona una Opcion</option>
@@ -1533,13 +1533,13 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="protesis_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
+                        <label for="protesis_descripcion" class=" control-label">Descripción:</label>
                         <textarea type="text" class="form-control " id="protesis_descripcion" name="protesis_descripcion"></textarea>
                     </div>
                 </div>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="discapacidad" class="control-label">Discapacidad Física: <span class="text-danger">*</span></label>
+                        <label for="discapacidad" class="control-label">Discapacidad Física: </label>
                         <div>
                             <select class="form-control" id="discapacidad" name="discapacidad">
                                 <option value="">Selecciona una Opcion</option>
@@ -1565,7 +1565,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="discapacidad_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
+                        <label for="discapacidad_descripcion" class=" control-label">Descripción:</label>
                         <textarea type="text" class="form-control " id="discapacidad_descripcion" name="discapacidad_descripcion"></textarea>
                     </div>
                 </div>

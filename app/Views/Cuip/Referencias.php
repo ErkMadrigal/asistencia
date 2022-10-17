@@ -1,6 +1,6 @@
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">NOMBRE</h3>
+        <h3 class="card-title">FAMILIAR CERCANO</h3>
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -38,8 +38,26 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="sexo" class=" control-label">Sexo:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="sexo" name="sexo">
+                        <label for="sexo_fam_cer" class=" control-label">Sexo:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="sexo_fam_cer" name="sexo_fam_cer">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($genero) ):
+                                    foreach($genero as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#sexo_fam_cer").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -50,9 +68,9 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="parentesco_familiar" class="control-label">Parentesco: <span class="text-danger">*</span></label>
+                        <label for="parentesco_fam_cercano" class="control-label">Parentesco: <span class="text-danger">*</span></label>
                         <div>
-                            <select class="form-control" id="parentesco_familiar" name="parentesco_familiar">
+                            <select class="form-control" id="parentesco_fam_cercano" name="parentesco_fam_cercano">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
                                 if( !empty($parentesco_familiar) ):
@@ -65,7 +83,7 @@
                             </select>
                             <script>
                                 $(document).ready(function() {
-                                    $("#entidad_federativa").select2({
+                                    $("#parentesco_fam_cercano").select2({
                                         theme: "bootstrap4",
                                         width: "100%"
                                     });
@@ -94,8 +112,8 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="colonia" class=" control-label">Colonia:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="colonia" name="colonia">
+                        <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="numero" name="numero">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -106,8 +124,72 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="numero" name="numero">
+                        <label for="colonia_fam_cercano" class=" control-label">Colonia:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="colonia_fam_cercano" name="colonia_fam_cercano">
+                                <option value="">Selecciona una Opcion</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#colonia_fam_cercano").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                    </div>
+                </div>
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="estado_fam_cerca" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="estado_fam_cerca" name="estado_fam_cerca">
+                                <option value="">Selecciona una Opcion</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#estado_fam_cerca").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="municipio_fam_cerca" class="control-label">Municipio: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="municipio_fam_cerca" name="municipio_fam_cerca">
+                                <option value="">Selecciona una Opcion</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#municipio_fam_cerca").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="ciudad_fam_cerca" class="control-label">Ciudad: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="ciudad_fam_cerca" name="ciudad_fam_cerca">
+                                <option value="">Selecciona una Opcion</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#ciudad_fam_cerca").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
                 <div class='col-6 col-sm-6'>
@@ -128,84 +210,6 @@
                             <script>
                                 $(document).ready(function() {
                                     $("#pais").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                </div>
-                <div class='col-6 col-sm-6'>
-                    <div class="form-group">
-                        <label for="entidad_federativa" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
-                        <div>
-                            <select class="form-control" id="entidad_federativa" name="entidad_federativa">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($entidad_federativa) ):
-                                    foreach($entidad_federativa as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#entidad_federativa").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                </div>
-                <div class='col-6 col-sm-6'>
-                    <div class="form-group">
-                        <label for="municipio" class="control-label">Municipio: <span class="text-danger">*</span></label>
-                        <div>
-                            <select class="form-control" id="municipio" name="municipio">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($municipio) ):
-                                    foreach($municipio as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#municipio").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                </div>
-                <div class='col-6 col-sm-6'>
-                    <div class="form-group">
-                        <label for="ciudad" class="control-label">Ciudad: <span class="text-danger">*</span></label>
-                        <div>
-                            <select class="form-control" id="ciudad" name="ciudad">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($ciudad) ):
-                                    foreach($ciudad as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#ciudad").select2({
                                         theme: "bootstrap4",
                                         width: "100%"
                                     });
@@ -259,8 +263,26 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="sexo" class=" control-label">Sexo:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="sexo" name="sexo">
+                        <label for="sexo_par_cer" class=" control-label">Sexo:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="sexo_par_cer" name="sexo_par_cer">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($genero) ):
+                                    foreach($genero as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#sexo_par_cer").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -271,9 +293,9 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="parentesco_familiar" class="control-label">Parentesco: <span class="text-danger">*</span></label>
+                        <label for="parentesco_cercano" class="control-label">Parentesco: <span class="text-danger">*</span></label>
                         <div>
-                            <select class="form-control" id="parentesco_familiar" name="parentesco_familiar">
+                            <select class="form-control" id="parentesco_cercano" name="parentesco_cercano">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
                                 if( !empty($parentesco_familiar) ):
@@ -286,7 +308,7 @@
                             </select>
                             <script>
                                 $(document).ready(function() {
-                                    $("#entidad_federativa").select2({
+                                    $("#parentesco_cercano").select2({
                                         theme: "bootstrap4",
                                         width: "100%"
                                     });
@@ -367,7 +389,7 @@
                                 if( !empty($entidad_federativa) ):
                                     foreach($entidad_federativa as  $a){
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option value="<?=$a->estado ?>"><?= $a->estado ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -479,8 +501,26 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="sexo" class=" control-label">Sexo:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="sexo" name="sexo">
+                        <label for="sexo_per" class=" control-label">Sexo:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="sexo_per" name="sexo_per">
+                            <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($genero) ):
+                                    foreach($genero as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                        </select>
+                        <script>
+                            $(document).ready(function() {
+                                $("#sexo_per").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                });
+                            });
+                         </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -491,9 +531,9 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="parentesco_familiar" class="control-label">Parentesco: <span class="text-danger">*</span></label>
+                        <label for="parentesco_personal" class="control-label">Parentesco: <span class="text-danger">*</span></label>
                         <div>
-                            <select class="form-control" id="parentesco_familiar" name="parentesco_familiar">
+                            <select class="form-control" id="parentesco_personal" name="parentesco_personal">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
                                 if( !empty($parentesco_familiar) ):
@@ -506,7 +546,7 @@
                             </select>
                             <script>
                                 $(document).ready(function() {
-                                    $("#entidad_federativa").select2({
+                                    $("#parentesco_personal").select2({
                                         theme: "bootstrap4",
                                         width: "100%"
                                     });
@@ -587,7 +627,7 @@
                                 if( !empty($entidad_federativa) ):
                                     foreach($entidad_federativa as  $a){
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option value="<?=$a->estado ?>"><?= $a->estado ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -700,8 +740,26 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="sexo" class=" control-label">Sexo:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="sexo" name="sexo">
+                        <label for="sexo_lab" class=" control-label">Sexo:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="sexo_lab" name="sexo_lab">
+                            <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($genero) ):
+                                    foreach($genero as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                        </select>
+                        <script>
+                            $(document).ready(function() {
+                                $("#sexo_lab").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                });
+                            });
+                         </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -712,9 +770,9 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="parentesco_familiar" class="control-label">Parentesco: <span class="text-danger">*</span></label>
+                        <label for="parentesco_laboral" class="control-label">Parentesco: <span class="text-danger">*</span></label>
                         <div>
-                            <select class="form-control" id="parentesco_familiar" name="parentesco_familiar">
+                            <select class="form-control" id="parentesco_laboral" name="parentesco_laboral">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
                                 if( !empty($parentesco_familiar) ):
@@ -727,7 +785,7 @@
                             </select>
                             <script>
                                 $(document).ready(function() {
-                                    $("#entidad_federativa").select2({
+                                    $("#parentesco_laboral").select2({
                                         theme: "bootstrap4",
                                         width: "100%"
                                     });
@@ -808,7 +866,7 @@
                                 if( !empty($entidad_federativa) ):
                                     foreach($entidad_federativa as  $a){
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option value="<?=$a->estado ?>"><?= $a->estado ?></option>
                                             <?php
                                     }
                                 endif;?>

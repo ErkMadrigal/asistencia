@@ -7,7 +7,7 @@
         <div class="col-12 col-sm-6 col-md-9 ">
         </div>
         <div class="col-12 col-sm-6 col-md-3">
-            <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/AddCUIP " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Agregar Arma</a>
+            <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/AddCUIP " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Nuava CUIP</a>
         </div>
     </div>    
 </div>
@@ -31,8 +31,7 @@
                 <th>Apellido Paterno</th>
                 <th>Apellido Materno</th>
                 <th>CUIP</th>
-                <th>Media Filiación</th>
-                <th>Expediente electrónico</th>
+                <th>Expediente</th>
        		</tr>
             </thead>
         </table>
@@ -68,21 +67,14 @@ function estatusRenderer(data, type, full, meta) {
                       {  data: "CUIP",
                         render: function (data, type, full, meta) {
                     
-                        return "<a href='" + base_url + "/cuip?id=" + full.id + "' class='nav-link'><i class='fa fa-pencil-square-o nav-icon'></i>";
+                        return "<a href='" + base_url + "/cuipInfo?id=" + full.id + "' class='nav-link'><i class='fa fa-address-card'></i>";
                     
                         }
-                    }, {
-                    data: "media filiacion",
-                    render: function (data, type, full, meta) {
-                    
-                        return "<a href='" + base_url + "/mediafiliacion?id=" + full.id + "' class='nav-link'><i class='fa fa-list-alt nav-icon'></i>";
-                    
-                    }
-                }, {
+                    },  {
                     data: "expediente electronico",
                     render: function (data, type, full, meta) {
                     
-                        return "<a href='" + base_url + "/expediente?id=" + full.id + "' class='nav-link'><i class='fa fa-list-alt nav-icon'></i>";
+                        return "<a href='" + base_url + "/expediente?id=" + full.id + "' class='nav-link'><i class='fa fa-file-text'></i>";
                     
                     }
                 }

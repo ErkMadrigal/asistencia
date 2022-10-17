@@ -50,7 +50,7 @@
                 <div class="tab-pane fade show active" id="custom-tabs-five-overlay" role="tabpanel"
                     aria-labelledby="custom-tabs-five-overlay-tab">
 
-                    <?php echo view('Cuip/DatosPersonales') ?>
+                    <?php echo view('Cuip/DatosPersonalesDetail') ?>
 
                 </div>
 
@@ -58,7 +58,7 @@
                 <div class="tab-pane fade" id="custom-tabs-five-overlay-dark" role="tabpanel"
                     aria-labelledby="custom-tabs-five-overlay-dark-tab">
 
-                    <?php echo view('Cuip/EstudioSocioEconomico') ?>  
+                    <?php echo view('Cuip/EstudioSocioEconomicoDetail') ?>  
 
                 </div>
 
@@ -66,14 +66,14 @@
                 <div class="tab-pane fade" id="custom-tabs-five" role="tabpanel"
                     aria-labelledby="custom-tabs-five-overlay-tab">
                     
-                    <?php echo view('Cuip/Referencias') ?> 
+                    <?php echo view('Cuip/ReferenciasDetail') ?> 
 
                 </div>
 
                 <div class="tab-pane fade" id="custom-tabs-five-normal" role="tabpanel"
                     aria-labelledby="custom-tabs-five-normal-tab">
                     
-                    <?php echo view('Cuip/EmpleosDiversos') ?>
+                    <?php echo view('Cuip/EmpleosDiversosDetail') ?>
 
                 </div>
 
@@ -81,7 +81,7 @@
                 <div class="tab-pane fade" id="custom-tabs" role="tabpanel"
                     aria-labelledby="custom-tabs-five-overlay-dark-tab">
                     
-                    <?php echo view('Cuip/EmpleosSeguridadPublica') ?>
+                    <?php echo view('Cuip/EmpleosSeguridadPublicaDetail') ?>
 
                 </div>
 
@@ -89,20 +89,20 @@
                 <div class="tab-pane fade" id="custom-overlay" role="tabpanel"
                     aria-labelledby="custom-tabs-five-overlay-dark-tab">
 
-                    <?php echo view('Cuip/Capacitaciones') ?>  
+                    <?php echo view('Cuip/CapacitacionDetail') ?>  
 
                 </div>
 
                 <div class="tab-pane fade" id="custom-normal" role="tabpanel"
                     aria-labelledby="custom-tabs-five-overlay-tab">
                     
-                    <?php echo view('Cuip/SancionesEstimulos') ?> 
+                    <?php echo view('Cuip/SancionesEstimulosDetail') ?> 
 
                 </div>
                 <div class="tab-pane fade" id="custom-normal-mf" role="tabpanel"
                     aria-labelledby="custom-tabs-five-overlay-tab">
                     
-                    <?php echo view('MediaFiliacion/mediaFiliacion') ?> 
+                    <?php echo view('MediaFiliacion/mediaFiliacionDetail') ?> 
 
                 </div>
             </div>
