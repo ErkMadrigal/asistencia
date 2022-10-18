@@ -16,7 +16,7 @@
                     <div class="form-group">
                         <label for="dependencia" class=" control-label">Dependencia responsable:</label>
                             <div >
-                                <?=$variable->dependencia ?>
+                                <?=$capacitacion->dependencia ?>
                                     
                             </div>
                     </div>
@@ -25,7 +25,7 @@
                     <div class="form-group">
                         <label for="institucion" class=" control-label">Institución Capacitadora: </label>
                             <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->inst_capacitadora ?>
                                     
                             </div>
                     </div>
@@ -34,7 +34,7 @@
                     <div class="form-group">
                         <label for="nombre_curso" class=" control-label">Nombre del curso: </label>
                             <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->nombre_curso ?>
                                     
                             </div>
                     </div>
@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <label for="tema_curso" class=" control-label">Tema del curso: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->tema_curso ?>
                                     
                             </div>
                     </div>
@@ -52,7 +52,7 @@
                     <div class="form-group">
                         <label for="nivel_curso" class=" control-label">Nivel del curso recibido: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->nivel ?>
                                     
                             </div>
                     </div>
@@ -61,7 +61,7 @@
                     <div class="form-group">
                         <label for="eficiencia" class=" control-label">Eficiencia terminal: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->eficiencia ?>
                                     
                             </div>
                     </div>
@@ -70,7 +70,7 @@
                     <div class="form-group">
                         <label for="inicio" class=" control-label">Inicio: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->inicio_curso ?>
                                     
                             </div>
                     </div>
@@ -79,7 +79,7 @@
                     <div class="form-group">
                         <label for="conclusion" class=" control-label">Conclusión: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->conclusion_curso ?>
                                     
                             </div>
                     </div>
@@ -88,7 +88,7 @@
                     <div class="form-group">
                         <label for="duracion" class=" control-label">Duración en horas: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->duracion_horas_curso ?>
                                     
                             </div>
                     </div>
@@ -97,7 +97,7 @@
                     <div class="form-group">
                         <label for="comprobante" class=" control-label">Tipo de comprobante: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->tipo_comprobante ?>
                                     
                             </div>
                     </div>
@@ -127,7 +127,7 @@
                     <div class="form-group">
                         <label for="empresa" class=" control-label">Insitutción o Empresa: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->institucion ?>
                                     
                             </div>
                     </div>
@@ -136,7 +136,7 @@
                     <div class="form-group">
                         <label for="curso" class=" control-label">Estudio o Curso: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->curso ?>
                                     
                             </div>
                     </div>
@@ -145,7 +145,7 @@
                     <div class="form-group">
                         <label for="tipo_curso" class=" control-label">Tipo de curso: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->tipo_curso ?>
                                     
                             </div>
                     </div>
@@ -154,7 +154,7 @@
                     <div class="form-group">
                         <label for="cuso_tomado" class=" control-label">¿El curso fue?: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->cursofue ?>
                                     
                             </div>
                     </div>
@@ -163,7 +163,7 @@
                     <div class="form-group">
                         <label for="eficiencia" class=" control-label">Eficiencia terminal: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->adicional ?>
                                     
                             </div>
                     </div>
@@ -172,7 +172,7 @@
                     <div class="form-group">
                         <label for="inicio" class=" control-label">Inicio: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->inicio_adicional ?>
                                     
                             </div>
                     </div>
@@ -181,7 +181,7 @@
                     <div class="form-group">
                         <label for="conclusion" class=" control-label">Conclusión: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->conclusion_adicional ?>
                                     
                             </div>
                     </div>
@@ -190,7 +190,7 @@
                     <div class="form-group">
                         <label for="duracion_horas" class=" control-label">Duración en horas: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->duracion_horas_adicional ?>
                                     
                             </div>
                     </div>
@@ -218,7 +218,7 @@
                     <div class="form-group">
                         <label for="idioma" class=" control-label">Idioma o Dialecto: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->idioma ?>
                                     
                             </div>
                     </div>
@@ -227,7 +227,7 @@
                     <div class="form-group">
                         <label for="lectura" class=" control-label">% Lectura: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->lectura ?>
                                     
                             </div>
                     </div>
@@ -236,7 +236,7 @@
                     <div class="form-group">
                         <label for="escritura" class=" control-label">% Escritura: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->escritura ?>
                                     
                             </div>
                     </div>
@@ -245,7 +245,7 @@
                     <div class="form-group">
                         <label for="conversacion" class=" control-label">% Conversación: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->conversacion ?>
                                     
                             </div>
                     </div>
@@ -273,7 +273,7 @@
                     <div class="form-group">
                         <label for="tipo" class=" control-label">Tipo: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->habilidad ?>
                                     
                             </div>
                     </div>
@@ -282,7 +282,7 @@
                     <div class="form-group">
                         <label for="especificacion" class=" control-label">Especifique: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->especifique_habilidad ?>
                                     
                             </div>
                     </div>
@@ -291,7 +291,7 @@
                     <div class="form-group">
                         <label for="dominio" class=" control-label">Grado de aptitude o dominio: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->grado ?>
                                     
                             </div>
                     </div>
@@ -318,7 +318,7 @@
                     <div class="form-group">
                         <label for="nombre" class=" control-label">Nombre: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->nombre_agrupacion ?>
                                     
                             </div>
                     </div>
@@ -327,7 +327,7 @@
                     <div class="form-group">
                         <label for="tipo" class=" control-label">Tipo: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->agrupacion ?>
                                     
                             </div>
                     </div>
@@ -336,7 +336,7 @@
                     <div class="form-group">
                         <label for="especificacion" class=" control-label">Especifique: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->especifique_agrupacion ?>
                                     
                             </div>
                     </div>
@@ -345,7 +345,7 @@
                     <div class="form-group">
                         <label for="dominio" class=" control-label">Grado de aptitude o dominio: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->gradohabilidad ?>
                                     
                             </div>
                     </div>
@@ -354,7 +354,7 @@
                     <div class="form-group">
                         <label for="desde" class=" control-label">Desde: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->institucion ?>
                                     
                             </div>
                     </div>
@@ -363,20 +363,13 @@
                     <div class="form-group">
                         <label for="hasta" class=" control-label">Hasta: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$capacitacion->institucion ?>
                                     
                             </div>
                     </div>
                 </div>
             </div>
         </form>
-    </div>
-</div>
-<div class="row">
-    <div class="col-12 col-sm-6 col-md-9 ">
-    </div>
-    <div class="col-12 col-sm-12 col-md-3">
-        <button type="button" id="SaveProveedor" class="btn btn-primary">Guardar</button>
     </div>
 </div>
 

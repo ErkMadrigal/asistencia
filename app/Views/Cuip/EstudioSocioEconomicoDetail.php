@@ -13,9 +13,9 @@
         <div class="row">
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="familia" class="control-label">¿Vive con su Familia? combo: </label>
+                    <label for="familia" class="control-label">¿Vive con su Familia?: </label>
                     <div >
-                                <?=$variable->institucion ?>
+                    <?=$estudio->vive ?>
                                     
                             </div>
                 </div>
@@ -25,16 +25,16 @@
                     <label for="ingreso" class=" control-label">Ingreso familiar adicional
                         (Mensual):</label>
                         <div >
-                                <?=$variable->institucion ?>
+                        <?=$estudio->ingreso_familiar ?>
                                     
                             </div>
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="domicilio" class=" control-label">Su domicilio es combo:</label>
+                    <label for="domicilio" class=" control-label">Su domicilio es:</label>
                     <div >
-                                <?=$variable->institucion ?>
+                                <?=$estudio->domicilio ?>
                                     
                             </div>
                 </div>
@@ -44,7 +44,7 @@
                     <label for="actividad" class=" control-label">Actividades culturales o deportivas
                         que practique:</label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$estudio->actividades_culturales ?>
                                     
                             </div>
                 </div>
@@ -54,7 +54,7 @@
                     <label for="especificacion" class=" control-label">Especifiación de inmueble y
                         costo:</label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$estudio->especificacion_inmueble ?>
                                     
                             </div>
                 </div>
@@ -64,7 +64,7 @@
                     <label for="inversion" class=" control-label">Inversiones y monto
                         aproximado:</label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$estudio->inversiones ?>
                                     
                             </div>
                 </div>
@@ -73,7 +73,7 @@
                 <div class="form-group">
                     <label for="vehiculo" class=" control-label">Vehiculo y costo Aproximado:</label>
                     <div >
-                                <?=$variable->institucion ?>
+                                <?=$estudio->vehiculo ?>
                                     
                             </div>
                 </div>
@@ -82,7 +82,7 @@
                 <div class="form-group">
                     <label for="calidad" class=" control-label">Calidad de Vida:</label>
                     <div >
-                                <?=$variable->institucion ?>
+                                <?=$estudio->calidad_vida?>
                                     
                             </div>
                 </div>
@@ -91,7 +91,7 @@
                 <div class="form-group">
                     <label for="vicio" class=" control-label">Vicios:</label>
                     <div >
-                                <?=$variable->institucion ?>
+                                <?=$estudio->vicios ?>
                                     
                             </div>
                 </div>
@@ -100,7 +100,7 @@
                 <div class="form-group">
                     <label for="imagen" class=" control-label">Imagen Publica:</label>
                     <div >
-                                <?=$variable->institucion ?>
+                                <?=$estudio->imagen_publica ?>
                                     
                             </div>
                 </div>
@@ -109,7 +109,7 @@
                 <div class="form-group">
                     <label for="comportamiento" class=" control-label">Comportamiento Social:</label>
                     <div >
-                                <?=$variable->institucion ?>
+                                <?=$estudio->comportamiento ?>
                                     
                             </div>
                 </div>
@@ -136,7 +136,7 @@
                         <label for="apellidoPaterno" class=" control-label">Apellido
                             Paterno:</label>
                             <div >
-                                <?=$variable->institucion ?>
+                                <?=$estudio->apellido_paterno?>
                                     
                             </div>
                     </div>
@@ -146,7 +146,7 @@
                         <label for="apellidoMaterno" class=" control-label">Apellido
                             Materno:</label>
                             <div >
-                                <?=$variable->institucion ?>
+                                <?=$estudio->apellido_materno ?>
                                     
                             </div>
                     </div>
@@ -155,7 +155,7 @@
                     <div class="form-group">
                         <label for="primerNombre" class="control-label">Primer Nombre: </label>
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$estudio->primer_nombre ?>
                                     
                             </div>
                     </div>
@@ -165,7 +165,7 @@
                         <label for="segundoNombre" class=" control-label">Segundo Nombre:
                             </label>
                             <div >
-                                <?=$variable->institucion ?>
+                                <?=$estudio->segundo_nombre ?>
                                     
                             </div>
                     </div>
@@ -175,7 +175,7 @@
                         <label for="fecha_nacimiento">Fecha de Nacimiento: </label>
                         <div class="input-group date" id="fecha_nacimiento" data-target-input="nearest">
                         <div >
-                                <?=$variable->institucion ?>
+                                <?=$estudio->fecha_nacimiento ?>
                                     
                             </div>
                         </div>
@@ -183,10 +183,9 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="sexo" class=" control-label"> sexo aqui va
-                            combo:</label>
+                        <label for="sexo" class=" control-label"> sexo:</label>
                             <div >
-                                <?=$variable->institucion ?>
+                                <?=$estudio->sexo ?>
                                     
                             </div>
 
@@ -194,10 +193,9 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="parentesco" class=" control-label"> Parentesco aqui va
-                            combo:</label>
+                        <label for="parentesco" class=" control-label"> Parentesco:</label>
                             <div >
-                                <?=$variable->institucion ?>
+                                <?=$estudio->parentesco ?>
                                     
                             </div>
 
@@ -205,12 +203,5 @@
                 </div>
             </div>
         </form>
-    </div>
-</div>
-<div class="row">
-    <div class="col-12 col-sm-6 col-md-9 ">
-    </div>
-    <div class="col-12 col-sm-12 col-md-3">
-        <button type="button" id="SaveProveedor" class="btn btn-primary">Guardar</button>
     </div>
 </div>

@@ -1443,7 +1443,12 @@ class Cuip extends BaseController {
    //              'data' => $result]; 
 
          	$data['variable'] = $this->modelCuip->GetDatosPersonalesById($id);
-
+			$data['estudio'] = $this->modelCuip->GetSocioEconomicoById($id);
+			$data['seguridad'] = $this->modelCuip->GetEmpleosSeridadById($id);
+			$data['diversos'] = $this->modelCuip->GetEmpleosDiversos($id);
+			$data['capacitacion'] = $this->modelCuip->GetCapacitaciones($id);
+			
+			
 			$data['breadcrumb'] = ["inicio" => 'CUIP' ,
                     				"url" => 'cuip',
                     				"titulo" => 'Detalle'];
