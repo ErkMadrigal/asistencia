@@ -9,19 +9,39 @@
         </div>
     </div>
     <!-- /.card-header -->
-    <div class="card-body table-responsive ">
+    <div class="card-body  ">
+        <form class="form-horizontal" id="SocioEconomico">
         <div class="row">
+            
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="familia" class="control-label">¿Vive con su Familia? combo: <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="familia" name="familia">
+                    <label for="familia" class="control-label">¿Vive con su Familia?: <span class="text-danger">*</span></label>
+                    <select class="form-control" id="familia" name="familia">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($SiNo) ):
+                                    foreach($SiNo as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#familia").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="ingreso" class=" control-label">Ingreso familiar adicional
                         (Mensual):<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="ingreso" name="ingreso">
+                    <input type="text" class="form-control " id="ingreso" name="ingreso"><?= csrf_field() ?>
                 </div>
             </div>
             <div class='col-6 col-sm-6'>
@@ -116,13 +136,13 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <form class="form-horizontal" id="">
+        
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="apellidoPaterno" class=" control-label">Apellido
                             Paterno:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="calle" name="calle">
+                        <input type="text" class="form-control " id="apellidoPaterno" name="apellidoPaterno">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -142,21 +162,21 @@
                     <div class="form-group">
                         <label for="segundoNombre" class=" control-label">Segundo Nombre:
                             <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nombre" name="nombre">
+                        <input type="text" class="form-control " id="segundoNombre" name="segundoNombre">
                     </div>
                 </div>
                 <div class='col-12 col-sm-6'>
                     <div class='form-group'>
-                        <label for="fecha_nacimiento">Fecha de Nacimiento: <span class="text-danger">*</span></label>
-                        <div class="input-group date" id="fecha_nacimiento" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_nacimiento" id="datetime-fecha_nacimiento" name="fecha_nacimiento" placeholder="" value="" />
-                            <div class="input-group-append" data-target="#ffecha_nacimiento" data-toggle="datetimepicker">
+                        <label for="fecha_nacimiento_dep">Fecha de Nacimiento: <span class="text-danger">*</span></label>
+                        <div class="input-group date" id="fecha_nacimiento_dep" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_nacimiento_dep" id="datetime-fecha_nacimiento_dep" name="fecha_nacimiento_dep" placeholder="" value="" />
+                            <div class="input-group-append" data-target="#fecha_nacimiento_dep" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
                         </div>
                         <script type="text/javascript">
                             $(function() {
-                                $("#fecha_nacimiento").datetimepicker({
+                                $("#fecha_nacimiento_dep").datetimepicker({
                                     format: 'DD-MM-YYYY',
                                     locale: moment.locale('es')
                                 });
@@ -166,10 +186,26 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="sexo" class=" control-label"> sexo aqui va
-                            combo:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="sexo" name="sexo">
-
+                        <label for="sexo_dep" class=" control-label">Sexo:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="sexo_dep" name="sexo_dep">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($genero) ):
+                                    foreach($genero as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#sexo_dep").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
                 <div class='col-6 col-sm-6'>
@@ -189,7 +225,7 @@
                             </select>
                             <script>
                                 $(document).ready(function() {
-                                    $("#entidad_federativa").select2({
+                                    $("#parentesco_familiar").select2({
                                         theme: "bootstrap4",
                                         width: "100%"
                                     });
@@ -202,10 +238,73 @@
         </form>
     </div>
 </div>
-<div class="row">
-    <div class="col-12 col-sm-6 col-md-9 ">
-    </div>
-    <div class="col-12 col-sm-12 col-md-3">
-        <button type="button" id="SaveProveedor" class="btn btn-primary">Guardar</button>
-    </div>
+<div class="card-footer bg-transparent clearfix">
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-9">
+            
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 ">    
+            <button id="saveSocioEconomico" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" ></i>&nbsp;&nbsp;Guardar</button>
+        </div>
+    </div>    
 </div>
+<script>
+    
+
+    $('#saveSocioEconomico').click(function (event) {
+        event.preventDefault();
+        $('#load').addClass( "spinner-border" );
+
+        var idPersonal = $('#idPersonal').val()
+        var formData = new FormData($("form#SocioEconomico")[0]);
+        formData.append('idPersonal', idPersonal);
+        
+        $.ajax({
+            url: base_url + '/GuardarSocioEconomico',
+            type: 'POST',
+            dataType: 'json',
+            data: formData,
+            cache: false,
+            async: true,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $('.errorField').remove();
+
+                if (response.succes.succes == 'succes') {
+
+                    toastr.success(response.succes.mensaje);
+
+                    
+
+                } else if (response.dontsucces.error == 'error'){
+
+                    toastr.error(response.dontsucces.mensaje);
+                            
+                } else if (Object.keys(response.error).length > 0 ){
+
+                    for (var clave in response.error){
+                                
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                            
+                    }
+                        toastr.error('<?=lang('Layout.camposObligatorios')?>');
+
+                }
+
+                $('#load').removeClass( "spinner-border" );    
+
+                        
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                toastr.error('<?=lang('Layout.toastrError')?>');
+                $('#load').removeClass( "spinner-border" );           
+            }
+        });
+            
+    });
+
+
+    
+
+</script>

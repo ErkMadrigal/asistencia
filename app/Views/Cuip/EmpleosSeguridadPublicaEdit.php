@@ -10,12 +10,12 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <form class="form-horizontal" id="">
+        <form class="form-horizontal" id="EmpleoSeguridadPublica">
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="dependencia" class=" control-label">Dependencia:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="dependencia" name="dependencia">
+                        <input type="text" class="form-control " id="dependencia" name="dependencia"><?= csrf_field() ?>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -33,7 +33,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="segundoNombre" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nombre" name="nombre">
+                        <input type="text" class="form-control " id="segundoNombre" name="segundoNombre">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -56,26 +56,49 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="colonia" class=" control-label">Colonia:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="colonia" name="colonia">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="codigo" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="codigo" name="codigo">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
                         <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="numero" name="numero">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="ingreso" class=" control-label">Ingreso:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="aprobacion" name="aprobacion">
+                        <label for="codigoSegPub" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="codigoSegPub" name="codigoSegPub"  maxlength="5">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="coloniacodigoSegPub" class=" control-label">Colonia:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="coloniacodigoSegPub" name="coloniacodigoSegPub">
+                                <option value="">Selecciona una Opcion</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#coloniacodigoSegPub").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="ingresoEmpPublic" class=" control-label">Ingreso:<span class="text-danger">*</span></label>
+                        <div class="input-group date" id="ingresoEmpPublic" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#ingresoEmpPublic" id="datetime-ingresoEmpPublic" name="ingresoEmpPublic" placeholder="" value="" />
+                            <div class="input-group-append" data-target="#ingresoEmpPublic" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#ingresoEmpPublic").datetimepicker({
+                                    format: 'DD-MM-YYYY',
+                                    locale: moment.locale('es')
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -96,13 +119,13 @@
                         <input type="text" class="form-control " id="funciones" name="funciones">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="especialidad" class=" control-label">Especialidad:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="especialidad" name="especialidad">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="rango" class=" control-label">Rango o categoría:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="rango" name="rango">
@@ -158,22 +181,15 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="entidad_federativa" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
+                        <label for="estadocodigoSegPub" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
                         <div>
-                            <select class="form-control" id="entidad_federativa" name="entidad_federativa">
+                            <select class="form-control" id="estadocodigoSegPub" name="estadocodigoSegPub">
                                 <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($entidad_federativa) ):
-                                    foreach($entidad_federativa as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                
                             </select>
                             <script>
                                 $(document).ready(function() {
-                                    $("#entidad_federativa").select2({
+                                    $("#estadocodigoSegPub").select2({
                                         theme: "bootstrap4",
                                         width: "100%"
                                     });
@@ -184,22 +200,15 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="municipio" class="control-label">Municipio: <span class="text-danger">*</span></label>
+                        <label for="municipiocodigoSegPub" class="control-label">Municipio: <span class="text-danger">*</span></label>
                         <div>
-                            <select class="form-control" id="municipio" name="municipio">
+                            <select class="form-control" id="municipiocodigoSegPub" name="municipiocodigoSegPub">
                                 <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($municipio) ):
-                                    foreach($municipio as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                
                             </select>
                             <script>
                                 $(document).ready(function() {
-                                    $("#municipio").select2({
+                                    $("#municipiocodigoSegPub").select2({
                                         theme: "bootstrap4",
                                         width: "100%"
                                     });
@@ -236,10 +245,76 @@
         </form>
     </div>
 </div>
-<div class="row">
-    <div class="col-12 col-sm-6 col-md-9 ">
-    </div>
-    <div class="col-12 col-sm-12 col-md-3">
-        <button type="button" id="SaveProveedor" class="btn btn-primary">Guardar</button>
-    </div>
+<div class="card-footer bg-transparent clearfix">
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-9">
+            
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 ">    
+            <button id="saveEmpSegPublica" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" ></i>&nbsp;&nbsp;Guardar</button>
+        </div>
+    </div>    
 </div>
+<script>
+    
+    $("#codigoSegPub").on('keyup', function(){
+        getSepomex(this.id)
+    });
+    
+    $('#saveEmpSegPublica').click(function (event) {
+        event.preventDefault();
+        $('#load').addClass( "spinner-border" );
+
+        var idPersonal = $('#idPersonal').val()
+        var formData = new FormData($("form#EmpleoSeguridadPublica")[0]);
+        formData.append('idPersonal', idPersonal);
+        
+        $.ajax({
+            url: base_url + '/GuardarEmpSegPublica',
+            type: 'POST',
+            dataType: 'json',
+            data: formData,
+            cache: false,
+            async: true,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $('.errorField').remove();
+
+                if (response.succes.succes == 'succes') {
+
+                    toastr.success(response.succes.mensaje);
+
+                    
+
+                } else if (response.dontsucces.error == 'error'){
+
+                    toastr.error(response.dontsucces.mensaje);
+                            
+                } else if (Object.keys(response.error).length > 0 ){
+
+                    for (var clave in response.error){
+                                
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                            
+                    }
+                        toastr.error('<?=lang('Layout.camposObligatorios')?>');
+
+                }
+
+                $('#load').removeClass( "spinner-border" );    
+
+                        
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                toastr.error('<?=lang('Layout.toastrError')?>');
+                $('#load').removeClass( "spinner-border" );           
+            }
+        });
+            
+    });
+
+
+    
+
+</script>

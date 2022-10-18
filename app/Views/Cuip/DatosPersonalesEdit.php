@@ -3,6 +3,7 @@
         <h3 class="card-title">DATOS PERSONALES</h3>
 
         <div class="card-tools">
+            <input type="hidden" class="form-control " id="idPersonal" name="idPersonal"  >
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
             </button>
@@ -10,24 +11,24 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <form class="form-horizontal" id="">
+        <form class="form-horizontal" id="DatosPersonales">
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="primerNombre" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="primerNombre" name="primerNombre">
+                        <input type="text" class="form-control " id="primerNombre" name="primerNombre"><?= csrf_field() ?>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="segundoNombre" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nombre" name="nombre">
+                        <input type="text" class="form-control " id="segundoNombre" name="segundoNombre">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="apellidoPaterno" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="calle" name="calle">
+                        <input type="text" class="form-control " id="apellidoPaterno" name="apellidoPaterno">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -39,9 +40,9 @@
                 <div class='col-12 col-sm-6'>
                     <div class='form-group'>
                         <label for="fecha_nacimiento">Fecha de Nacimiento: <span class="text-danger">*</span></label>
-                        <div class="input-group date" id="al_dia" data-target-input="nearest">
+                        <div class="input-group date" id="fecha_nacimiento" data-target-input="nearest">
                             <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_nacimiento" id="datetime-fecha_nacimiento" name="fecha_nacimiento" placeholder="" value="" />
-                            <div class="input-group-append" data-target="#otrogado_estimulo" data-toggle="datetimepicker">
+                            <div class="input-group-append" data-target="#fecha_nacimiento" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
                         </div>
@@ -57,9 +58,26 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="sexo" class=" control-label"> sexo aqui va combo:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="sexo" name="sexo">
-
+                        <label for="sexo" class=" control-label">Sexo:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="sexo" name="sexo">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($genero) ):
+                                    foreach($genero as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#sexo").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -74,22 +92,35 @@
                         <input type="text" class="form-control " id="claveE" name="claveE">
                     </div>
                 </div>
-                <div class='col-6 col-sm-12 col-md-4'>
+                <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="cartilla" class=" control-label">Cartilla SMN:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="cartilla" name="cartilla">
                     </div>
                 </div>
-                <div class='col-6 col-sm-6 col-md-4'>
+                <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="licencia" class=" control-label">Licencia de Conducir:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="licencia" name="licencia">
                     </div>
                 </div>
-                <div class='col-6 col-sm-6 col-md-4'>
+                <div class='col-6 col-sm-12 col-md-6    '>
                     <div class="form-group">
                         <label for="vigenciaLic" class=" control-label">Vigencia de Licencia:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="vigenciaLic" name="vigenciaLic">
+                        <div class="input-group date" id="vigenciaLic" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#vigenciaLic" id="datetime-vigenciaLic" name="vigenciaLic" placeholder="" value="" />
+                            <div class="input-group-append" data-target="#vigenciaLic" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#vigenciaLic").datetimepicker({
+                                    format: 'DD-MM-YYYY',
+                                    locale: moment.locale('es')
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -133,7 +164,7 @@
                 <div class='col-12 col-sm-6'>
                     <div class='form-group'>
                         <label for="fecha_naturalizacion">Fecha de Naturalización: <span class="text-danger">*</span></label>
-                        <div class="input-group date" id="al_dia" data-target-input="nearest">
+                        <div class="input-group date" id="fecha_naturalizacion" data-target-input="nearest">
                             <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_naturalizacion" id="datetime-fecha_naturalizacion" name="fecha_naturalizacion" placeholder="" value="" />
                             <div class="input-group-append" data-target="#fecha_naturalizacion" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
@@ -182,10 +213,10 @@
                             <select class="form-control" id="entidad_nacimiento" name="entidad_nacimiento">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
-                                if( !empty($entidad_nacimiento) ):
-                                    foreach($entidad_nacimiento as  $a){
+                                if( !empty($entidad_federativa) ):
+                                    foreach($entidad_federativa as  $a){
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option value="<?=$a->estado ?>"><?= $a->estado ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -233,14 +264,6 @@
                         <div>
                             <select class="form-control" id="municipio_nacimiento" name="municipio_nacimiento">
                                 <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($municipio_nacimiento) ):
-                                    foreach($municipio_nacimiento as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -352,7 +375,7 @@
                 <div class='col-12 col-sm-6'>
                     <div class='form-group'>
                         <label for="anno_inicio">Año de Inicio: <span class="text-danger">*</span></label>
-                        <div class="input-group date" id="al_dia" data-target-input="nearest">
+                        <div class="input-group date" id="anno_inicio" data-target-input="nearest">
                             <input type="text" required class="form-control datetimepicker-input" data-target="#anno_inicio" id="datetime-anno_inicio" name="anno_inicio" placeholder="" value="" />
                             <div class="input-group-append" data-target="#anno_inicio" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
@@ -361,7 +384,7 @@
                         <script type="text/javascript">
                             $(function() {
                                 $("#anno_inicio").datetimepicker({
-                                    format: 'DD-MM-YYYY',
+                                    format: 'YYYY',
                                     locale: moment.locale('es')
                                 });
                             });
@@ -371,7 +394,7 @@
                 <div class='col-12 col-sm-6'>
                     <div class='form-group'>
                         <label for="anno_termino">Año de Termino: <span class="text-danger">*</span></label>
-                        <div class="input-group date" id="al_dia" data-target-input="nearest">
+                        <div class="input-group date" id="anno_termino" data-target-input="nearest">
                             <input type="text" required class="form-control datetimepicker-input" data-target="#anno_termino" id="datetime-anno_termino" name="anno_termino" placeholder="" value="" />
                             <div class="input-group-append" data-target="#anno_termino" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
@@ -380,33 +403,51 @@
                         <script type="text/javascript">
                             $(function() {
                                 $("#anno_termino").datetimepicker({
-                                    format: 'DD-MM-YYYY',
+                                    format: 'YYYY',
                                     locale: moment.locale('es')
                                 });
                             });
                         </script>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="sep" class=" control-label">Registro SEP combo :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="sep" name="sep">
+                        <label for="sep" class=" control-label">Registro SEP:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="registroSep" name="registroSep">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($SiNo) ):
+                                    foreach($SiNo as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#registroSep").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="certificado" class=" control-label">Num. de Folio Certificado :<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="certificado" name="certificado">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="promedio" class=" control-label">Promedio :<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="promedio" name="promedio">
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 
@@ -422,21 +463,21 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <form class="form-horizontal" id="">
+        
             <div class="row">
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-12 col-sm-12 col-md-12'>
                     <div class="form-group">
                         <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="calle" name="calle">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="exterior" name="exterior">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="interior" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="interior" name="interior">
@@ -444,8 +485,9 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="colonia" class=" control-label">Colonia:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="colonia" name="colonia">
+                        <label for="numeroTelefono" class=" control-label">Numero
+                            Telefónico:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="numeroTelefono" name="numeroTelefono">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -464,34 +506,35 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="codigo" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="codigo" name="codigo">
+                        <input type="text" class="form-control " id="codigo" name="codigo"  maxlength="5">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="numero" class=" control-label">Numero
-                            Telefónico:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="numero" name="numero">
+                        <label for="coloniacodigo" class=" control-label">Colonia:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="coloniacodigo" name="coloniacodigo">
+                                <option value="">Selecciona una Opcion</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#coloniacodigo").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="entidad_federativa" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
+                        <label for="estadocodigo" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
                         <div>
-                            <select class="form-control" id="entidad_federativa" name="entidad_federativa">
+                            <select class="form-control" id="estadocodigo" name="estadocodigo">
                                 <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($entidad_federativa) ):
-                                    foreach($entidad_federativa as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
-                                    $("#entidad_federativa").select2({
+                                    $("#estadocodigo").select2({
                                         theme: "bootstrap4",
                                         width: "100%"
                                     });
@@ -502,22 +545,14 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="municipio" class="control-label">Municipio: <span class="text-danger">*</span></label>
+                        <label for="municipiocodigo" class="control-label">Municipio: <span class="text-danger">*</span></label>
                         <div>
-                            <select class="form-control" id="municipio" name="municipio">
+                            <select class="form-control" id="municipiocodigo" name="municipiocodigo">
                                 <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($municipio) ):
-                                    foreach($municipio as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
-                                    $("#municipio").select2({
+                                    $("#municipiocodigo").select2({
                                         theme: "bootstrap4",
                                         width: "100%"
                                     });
@@ -528,22 +563,14 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="ciudad" class="control-label">Ciudad: <span class="text-danger">*</span></label>
+                        <label for="ciudadcodigo" class="control-label">Ciudad: <span class="text-danger">*</span></label>
                         <div>
-                            <select class="form-control" id="ciudad" name="ciudad">
+                            <select class="form-control" id="ciudadcodigo" name="ciudadcodigo">
                                 <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($ciudad) ):
-                                    foreach($ciudad as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
-                                    $("#ciudad").select2({
+                                    $("#ciudadcodigo").select2({
                                         theme: "bootstrap4",
                                         width: "100%"
                                     });
@@ -553,7 +580,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 
@@ -570,7 +597,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <form class="form-horizontal" id="">
+        
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
@@ -642,7 +669,230 @@
             
         </div>
         <div class="col-12 col-sm-6 col-md-3 ">    
-            <button id="editEmpresa" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" ></i>&nbsp;&nbsp;Guardar</button>
+            <button id="saveDatosPersonales" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" ></i>&nbsp;&nbsp;Guardar</button>
         </div>
     </div>    
 </div>
+<script>
+    
+
+    $('#saveDatosPersonales').click(function (event) {
+        event.preventDefault();
+        $('#load').addClass( "spinner-border" );
+        var formData = new FormData($("form#DatosPersonales")[0]);
+        
+        $.ajax({
+            url: base_url + '/GuardarDatosPersonales',
+            type: 'POST',
+            dataType: 'json',
+            data: formData,
+            cache: false,
+            async: true,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $('.errorField').remove();
+
+                if (response.succes.succes == 'succes') {
+
+                    $('#idPersonal').val(response.data.idPersonal);
+                    toastr.success(response.succes.mensaje);
+
+                    
+
+                } else if (response.dontsucces.error == 'error'){
+
+                    toastr.error(response.dontsucces.mensaje);
+                            
+                } else if (Object.keys(response.error).length > 0 ){
+
+                    for (var clave in response.error){
+                                
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                            
+                    }
+                        toastr.error('<?=lang('Layout.camposObligatorios')?>');
+
+                }
+
+                $('#load').removeClass( "spinner-border" );    
+
+                        
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                toastr.error('<?=lang('Layout.toastrError')?>');
+                $('#load').removeClass( "spinner-border" );           
+            }
+        });
+            
+    });
+
+
+    let estado = document.querySelector("#entidad_nacimiento")
+
+    let selectMunicipio = document.querySelector("#municipio_nacimiento")
+    let selectCiudad = document.querySelector("#cuidad_nacimiento")
+
+
+
+    estado.onchange = (e) => {
+
+        $('#load').addClass( "spinner-border" );
+        selectCiudad.innerHTML = ''
+        selectMunicipio.innerHTML = ''
+
+        e.preventDefault()
+        var estado = $('#entidad_nacimiento').val()
+        var csrfName = $("input[name=app_csrf]").val();
+        
+            var data    = {
+                    estado : estado,
+                    app_csrf: csrfName
+                };
+
+        $.ajax({
+            url: base_url + '/getCiudadEstado',
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            data: data,
+            ache: false,
+            async: true,
+            success: function (response) {
+                if(response.succes.succes === "succes"){
+                    selectMunicipio.innerHTML = response.data.municipio
+                    selectCiudad.innerHTML = response.data.ciudad
+                    
+                }
+
+                $('#load').removeClass( "spinner-border" );
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('#load').removeClass( "spinner-border" );
+                toastr.error('<?=lang('Layout.toastrError') ?>');
+                           
+            }
+        });
+    };
+
+    
+
+
+    $("#codigo").on('keyup', function(){
+        getSepomex(this.id)
+    });
+
+
+    function getSepomex(id) {
+
+
+
+        var elemento = id;
+        
+        var num = $('#'+elemento).val().length
+
+        if (num === 5) {
+
+            $('#load').addClass( "spinner-border" );
+
+            let selectEstadoDom = document.querySelector("#estado"+elemento)
+
+            let selectMunicipioDom = document.querySelector("#municipio"+elemento)
+                
+            let selectColoniaDom = document.querySelector("#colonia"+elemento)
+            
+            switch (elemento) {
+            case "codigo":
+                
+            var selectCiudadDom = document.querySelector("#ciudad"+elemento)
+
+                selectEstadoDom.innerHTML = ''
+                selectMunicipioDom.innerHTML = ''
+                selectCiudadDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+            case "codigoSegPub":
+                 
+
+                selectEstadoDom.innerHTML = ''
+                selectMunicipioDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+            case "codigoEmpDiv":
+                 
+
+                selectEstadoDom.innerHTML = ''
+                selectMunicipioDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+  
+            }
+            
+
+
+
+        
+        var cp = $('#'+elemento).val()
+        var csrfName = $("input[name=app_csrf]").val();
+        
+            var data    = {
+                    cp : cp,
+                    app_csrf: csrfName
+                };
+
+        $.ajax({
+            url: base_url + '/getSepomex',
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            data: data,
+            ache: false,
+            async: true,
+            success: function (response) {
+                if(response.succes.succes === "succes"){
+
+                    switch (elemento) {
+                    case "codigo":
+                
+                        selectEstadoDom.innerHTML = response.data.estado
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectColoniaDom.innerHTML = response.data.colonia
+                    break;
+                    case "codigoSegPub":
+                        
+                        selectEstadoDom.innerHTML = response.data.estado
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                        
+                        selectColoniaDom.innerHTML = response.data.colonia
+
+                
+                    break;
+                    case "codigoEmpDiv":
+                        
+                        selectEstadoDom.innerHTML = response.data.estado
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                        
+                        selectColoniaDom.innerHTML = response.data.colonia
+
+                
+                    break;
+  
+                    }
+                    
+                    
+                }
+
+                $('#load').removeClass( "spinner-border" );
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('#load').removeClass( "spinner-border" );
+                toastr.error('<?=lang('Layout.toastrError') ?>');
+                           
+            }
+        });
+
+    }
+    };
+
+</script>

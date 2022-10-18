@@ -266,5 +266,13 @@ class CuipModel
         return $builder->get()->getRow();
     }
 
-
+    public function GetDocumentos($idEmpresa){
+        $builder = $this->db->table('documentos_expediente_digital');
+        $builder->select('id,documento,tipo');
+        $builder->orderBy("documento","asc");
+        $builder->where('activo', true);
+        $builder->where('idEmpresa', $idEmpresa);
+        return $builder->get()->getResult();
+        
+    }
 }

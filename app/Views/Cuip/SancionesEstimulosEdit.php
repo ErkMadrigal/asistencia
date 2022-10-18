@@ -10,6 +10,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
+        <form class="form-horizontal" id="sancionesEstimulos">
         <div class="row">
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
@@ -19,14 +20,27 @@
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="determinación" class=" control-label">Determinación:<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="determinación" name="determinación">
+                    <label for="determinacion" class=" control-label">Determinación:<span class="text-danger">*</span></label>
+                    <div class="input-group date" id="determinacion" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#determinacion" id="datetime-determinacion" name="determinacion" placeholder="" value="" />
+                            <div class="input-group-append" data-target="#determinacion" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#determinacion").datetimepicker({
+                                    format: 'DD-MM-YYYY',
+                                    locale: moment.locale('es')
+                                });
+                            });
+                        </script>
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="descripcion" name="descripcion">
+                    <input type="text" class="form-control " id="descripcion" name="descripcion"><?= csrf_field() ?>
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
@@ -38,16 +52,42 @@
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="inicio_inhabilitacion" class=" control-label">Inicio de la inhabilitación:<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="inicio_inhabilitacion" name="inicio_inhabilitacion">
+                    <div class="input-group date" id="inicio_inhabilitacion" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#inicio_inhabilitacion" id="datetime-inicio_inhabilitacion" name="inicio_inhabilitacion" placeholder="" value="" />
+                            <div class="input-group-append" data-target="#inicio_inhabilitacion" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#inicio_inhabilitacion").datetimepicker({
+                                    format: 'DD-MM-YYYY',
+                                    locale: moment.locale('es')
+                                });
+                            });
+                        </script>
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="termino_inhabilitacion" class=" control-label">Término de la inhabilitación:<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="termino_inhabilitacion" name="termino_inhabilitacion">
+                    <div class="input-group date" id="termino_inhabilitacion" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#termino_inhabilitacion" id="datetime-termino_inhabilitacion" name="termino_inhabilitacion" placeholder="" value="" />
+                            <div class="input-group-append" data-target="#termino_inhabilitacion" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#termino_inhabilitacion").datetimepicker({
+                                    format: 'DD-MM-YYYY',
+                                    locale: moment.locale('es')
+                                });
+                            });
+                        </script>
                 </div>
             </div>
-            <div class='col-12 col-sm-12 col-md-6'>
+            <div class='col-12 col-sm-12 col-md-12'>
                 <div class="form-group">
                     <label for="organismo" class=" control-label">Dependencia u organismo que emite la determinación :<span class="text-danger">*</span></label>
                     <input type="text" class="form-control " id="organismo" name="organismo">
@@ -68,7 +108,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <form class="form-horizontal" id="">
+        
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
@@ -78,8 +118,26 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="entidad_federativa" class=" control-label">Entidad federativa:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="entidad_federativa" name="entidad_federativa">
+                        <label for="entidad_federativaSE" class=" control-label">Entidad federativa:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="entidad_federativaSE" name="entidad_federativaSE">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($entidad_federativa) ):
+                                    foreach($entidad_federativa as  $a){
+                                        ?>
+                                            <option value="<?=$a->estado ?>"><?= $a->estado ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#entidad_federativaSE").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -184,21 +242,21 @@
                         </script>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="juzgado" class=" control-label">Juzgado:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="juzgado" name="juzgado">
 
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="no_proceso" class=" control-label">No. Proceso:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="no_proceso" name="no_proceso">
 
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="estado_procesal" class=" control-label">Estado Procesal:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="estado_procesal" name="estado_procesal">
@@ -227,7 +285,7 @@
                 <div class='col-12 col-sm-6'>
                     <div class='form-group'>
                         <label for="al_dia_proceso">Al día: <span class="text-danger">*</span></label>
-                        <div class="input-group date" id="al_dia" data-target-input="nearest">
+                        <div class="input-group date" id="al_dia_proceso" data-target-input="nearest">
                             <input type="text" required class="form-control datetimepicker-input" data-target="#al_dia_proceso" id="datetime-al_dia_proceso" name="al_dia_proceso" placeholder="" value="" />
                             <div class="input-group-append" data-target="#al_dia_proceso" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
@@ -244,7 +302,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -259,10 +317,10 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <form class="form-horizontal" id="">
+       
             <div class="row">
 
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="tipo_estimulo" class=" control-label">Tipo:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="tipo_estimulo" name="tipo_estimulo">
@@ -283,7 +341,7 @@
                 <div class='col-12 col-sm-6'>
                     <div class='form-group'>
                         <label for="otrogado_estimulo">Otorgado: <span class="text-danger">*</span></label>
-                        <div class="input-group date" id="al_dia" data-target-input="nearest">
+                        <div class="input-group date" id="otrogado_estimulo" data-target-input="nearest">
                             <input type="text" required class="form-control datetimepicker-input" data-target="#otrogado_estimulo" id="datetime-otrogado_estimulo" name="otrogado_estimulo" placeholder="" value="" />
                             <div class="input-group-append" data-target="#otrogado_estimulo" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
@@ -303,10 +361,73 @@
         </form>
     </div>
 </div>
-<div class="row">
-    <div class="col-12 col-sm-6 col-md-9 ">
-    </div>
-    <div class="col-12 col-sm-12 col-md-3">
-        <button type="button" id="SaveProveedor" class="btn btn-primary">Guardar</button>
-    </div>
+<div class="card-footer bg-transparent clearfix">
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-9">
+            
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 ">    
+            <button id="saveSancionesEstimulos" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" ></i>&nbsp;&nbsp;Guardar</button>
+        </div>
+    </div>    
 </div>
+<script>
+    
+
+    $('#saveSancionesEstimulos').click(function (event) {
+        event.preventDefault();
+        $('#load').addClass( "spinner-border" );
+
+        var idPersonal = $('#idPersonal').val()
+        var formData = new FormData($("form#sancionesEstimulos")[0]);
+        formData.append('idPersonal', idPersonal);
+        
+        $.ajax({
+            url: base_url + '/GuardarSancionesEstimulos',
+            type: 'POST',
+            dataType: 'json',
+            data: formData,
+            cache: false,
+            async: true,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $('.errorField').remove();
+
+                if (response.succes.succes == 'succes') {
+
+                    toastr.success(response.succes.mensaje);
+
+                    
+
+                } else if (response.dontsucces.error == 'error'){
+
+                    toastr.error(response.dontsucces.mensaje);
+                            
+                } else if (Object.keys(response.error).length > 0 ){
+
+                    for (var clave in response.error){
+                                
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                            
+                    }
+                        toastr.error('<?=lang('Layout.camposObligatorios')?>');
+
+                }
+
+                $('#load').removeClass( "spinner-border" );    
+
+                        
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                toastr.error('<?=lang('Layout.toastrError')?>');
+                $('#load').removeClass( "spinner-border" );           
+            }
+        });
+            
+    });
+
+
+    
+
+</script>

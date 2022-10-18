@@ -31,7 +31,9 @@
                 <th>Apellido Paterno</th>
                 <th>Apellido Materno</th>
                 <th>CUIP</th>
+                <th>Media Filiación</th>
                 <th>Expediente</th>
+                <th>Editar CUIP</th>
        		</tr>
             </thead>
         </table>
@@ -70,14 +72,27 @@ function estatusRenderer(data, type, full, meta) {
                         return "<a href='" + base_url + "/cuipInfo?id=" + full.id + "' class='nav-link'><i class='fa fa-address-card'></i>";
                     
                         }
-                    },  {
+                    }, {  data: "MediaFiliación",
+                        render: function (data, type, full, meta) {
+                    
+                        return "<a href='" + base_url + "/mediafiliacion?id=" + full.id + "' class='nav-link'><i class='fa fa-list'></i>";
+                    
+                        }
+                    }, {
                     data: "expediente electronico",
                     render: function (data, type, full, meta) {
                     
                         return "<a href='" + base_url + "/expediente?id=" + full.id + "' class='nav-link'><i class='fa fa-file-text'></i>";
+                        }
+                    }, {
+                    data: "editar",
+                    render: function (data, type, full, meta) {
                     
+                        return "<a href='" + base_url + "/editarCuip?id=" + full.id + "' class='nav-link'><i class='fa fa-pencil-square-o'></i>";
+                        }
                     }
-                }
+
+                
             ]
         });
 

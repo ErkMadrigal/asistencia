@@ -10,12 +10,12 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <form class="form-horizontal" id="">
+        <form class="form-horizontal" id="Capacitaciones">
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="dependencia" class=" control-label">Dependencia responsable:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="dependencia" name="dependencia">
+                        <input type="text" class="form-control " id="dependencia" name="dependencia"><?= csrf_field() ?>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -64,9 +64,9 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="eficiencia" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
+                        <label for="eficienciaCursos" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
                         <div>
-                            <select class="form-control" id="eficiencia" name="eficiencia">
+                            <select class="form-control" id="eficienciaCursos" name="eficienciaCursos">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
                                 if (!empty($eficiencia)) :
@@ -79,7 +79,7 @@
                             </select>
                             <script>
                                 $(document).ready(function() {
-                                    $("#eficiencia").select2({
+                                    $("#eficienciaCursos").select2({
                                         theme: "bootstrap4",
                                         width: "100%"
                                     });
@@ -91,13 +91,39 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="inicio" class=" control-label">Inicio:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="inicio" name="inicio">
+                        <div class="input-group date" id="inicio" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#inicio" id="datetime-inicio" name="inicio" placeholder="" value="" />
+                            <div class="input-group-append" data-target="#inicio" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#inicio").datetimepicker({
+                                    format: 'DD-MM-YYYY',
+                                    locale: moment.locale('es')
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="conclusion" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="conclusion" name="conclusion">
+                        <div class="input-group date" id="conclusion" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#conclusion" id="datetime-conclusion" name="conclusion" placeholder="" value="" />
+                            <div class="input-group-append" data-target="#conclusion" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#conclusion").datetimepicker({
+                                    format: 'DD-MM-YYYY',
+                                    locale: moment.locale('es')
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -114,7 +140,7 @@
                 </div>
 
             </div>
-        </form>
+        
     </div>
 </div>
 
@@ -131,7 +157,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <form class="form-horizontal" id="">
+        
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
@@ -205,14 +231,40 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="inicio" class=" control-label">Inicio:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="inicio" name="inicio">
+                        <label for="inicioAdicional" class=" control-label">Inicio:<span class="text-danger">*</span></label>
+                        <div class="input-group date" id="inicioAdicional" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#inicioAdicional" id="datetime-inicioAdicional" name="inicioAdicional" placeholder="" value="" />
+                            <div class="input-group-append" data-target="#inicioAdicional" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#inicioAdicional").datetimepicker({
+                                    format: 'DD-MM-YYYY',
+                                    locale: moment.locale('es')
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="conclusion" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="conclusion" name="conclusion">
+                        <label for="conclusionAdicional" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
+                        <div class="input-group date" id="conclusionAdicional" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#conclusionAdicional" id="datetime-conclusionAdicional" name="conclusionAdicional" placeholder="" value="" />
+                            <div class="input-group-append" data-target="#conclusionAdicional" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#conclusionAdicional").datetimepicker({
+                                    format: 'DD-MM-YYYY',
+                                    locale: moment.locale('es')
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -222,7 +274,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -237,7 +289,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <form class="form-horizontal" id="">
+        
             <div class="row">
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
@@ -265,26 +317,80 @@
                         </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="lectura" class=" control-label">% Lectura:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="lectura" name="lectura">
+                        <select class="form-control" id="lectura" name="lectura">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if (!empty($porsentajeIdioma)) :
+                                    foreach ($porsentajeIdioma as  $a) {
+                                ?>
+                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
+                                    }
+                                endif; ?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#lectura").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="escritura" class=" control-label">% Escritura:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="escritura" name="escritura">
+                        <select class="form-control" id="escritura" name="escritura">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if (!empty($porsentajeIdioma)) :
+                                    foreach ($porsentajeIdioma as  $a) {
+                                ?>
+                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
+                                    }
+                                endif; ?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#escritura").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="conversacion" class=" control-label">% Conversación:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="conversacion" name="conversacion">
+                        <select class="form-control" id="conversacion" name="conversacion">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if (!empty($porsentajeIdioma)) :
+                                    foreach ($porsentajeIdioma as  $a) {
+                                ?>
+                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
+                                    }
+                                endif; ?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#conversacion").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 
@@ -300,7 +406,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <form class="form-horizontal" id="">
+        
             <div class="row">
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
@@ -336,9 +442,9 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="grado_habilidad" class="control-label">Grado de aptitude o dominio: <span class="text-danger">*</span></label>
+                        <label for="grado_habilidadCap" class="control-label">Grado de aptitude o dominio: <span class="text-danger">*</span></label>
                         <div>
-                            <select class="form-control" id="grado_habilidad" name="grado_habilidad">
+                            <select class="form-control" id="grado_habilidadCap" name="grado_habilidadCap">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
                                 if (!empty($grado_habilidad)) :
@@ -351,7 +457,7 @@
                             </select>
                             <script>
                                 $(document).ready(function() {
-                                    $("#grado_habilidad").select2({
+                                    $("#grado_habilidadCap").select2({
                                         theme: "bootstrap4",
                                         width: "100%"
                                     });
@@ -361,7 +467,7 @@
                     </div>
                 </div>
             </div>
-    </form>
+    
 </div>
 </div>
 <div class="card card-primary">
@@ -376,7 +482,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <form class="form-horizontal" id="">
+        
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-12'>
                     <div class="form-group">
@@ -386,8 +492,26 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="tipo" class=" control-label">Tipo:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="tipo" name="tipo">
+                        <label for="tipoAgrupa" class=" control-label">Tipo:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="tipoAgrupa" name="tipoAgrupa">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if (!empty($tipo_agrupacion)) :
+                                    foreach ($tipo_agrupacion as  $a) {
+                                ?>
+                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
+                                    }
+                                endif; ?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#tipoAgrupa").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -425,23 +549,112 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="desde" class=" control-label">Desde:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="desde" name="desde">
+                        <div class="input-group date" id="desde" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#desde" id="datetime-desde" name="desde" placeholder="" value="" />
+                            <div class="input-group-append" data-target="#desde" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#desde").datetimepicker({
+                                    format: 'DD-MM-YYYY',
+                                    locale: moment.locale('es')
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="hasta" class=" control-label">Hasta:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="hasta" name="hasta">
+                        <div class="input-group date" id="hasta" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#hasta" id="datetime-hasta" name="hasta" placeholder="" value="" />
+                            <div class="input-group-append" data-target="#hasta" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#hasta").datetimepicker({
+                                    format: 'DD-MM-YYYY',
+                                    locale: moment.locale('es')
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
         </form>
     </div>
 </div>
-<div class="row">
-    <div class="col-12 col-sm-6 col-md-9 ">
-    </div>
-    <div class="col-12 col-sm-12 col-md-3">
-        <button type="button" id="SaveProveedor" class="btn btn-primary">Guardar</button>
-    </div>
+<div class="card-footer bg-transparent clearfix">
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-9">
+            
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 ">    
+            <button id="saveCapacitaciones" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" ></i>&nbsp;&nbsp;Guardar</button>
+        </div>
+    </div>    
 </div>
+
+<script>
+    
+
+    $('#saveCapacitaciones').click(function (event) {
+        event.preventDefault();
+        $('#load').addClass( "spinner-border" );
+
+        var idPersonal = $('#idPersonal').val()
+        var formData = new FormData($("form#Capacitaciones")[0]);
+        formData.append('idPersonal', idPersonal);
+        
+        $.ajax({
+            url: base_url + '/GuardarCapacitaciones',
+            type: 'POST',
+            dataType: 'json',
+            data: formData,
+            cache: false,
+            async: true,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $('.errorField').remove();
+
+                if (response.succes.succes == 'succes') {
+
+                    
+                    toastr.success(response.succes.mensaje);
+
+                    
+
+                } else if (response.dontsucces.error == 'error'){
+
+                    toastr.error(response.dontsucces.mensaje);
+                            
+                } else if (Object.keys(response.error).length > 0 ){
+
+                    for (var clave in response.error){
+                                
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                            
+                    }
+                        toastr.error('<?=lang('Layout.camposObligatorios')?>');
+
+                }
+
+                $('#load').removeClass( "spinner-border" );    
+
+                        
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                toastr.error('<?=lang('Layout.toastrError')?>');
+                $('#load').removeClass( "spinner-border" );           
+            }
+        });
+            
+    });
+
+
+</script>
