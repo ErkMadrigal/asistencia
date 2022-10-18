@@ -1,3 +1,14 @@
+<?= $this->extend('includes/main') ?>
+<?= $this->section('content') ?>
+    <div id="load" class=" spinner text-secondary" role="status">
+    </div>
+    <div class=" mb-2">    
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-9 ">
+        </div>
+             
+    </div>
+</div>
 <div class="card card-primary">
     <div class="card-header">
         <h3 class="card-title">GENERALES</h3>
@@ -1573,3 +1584,4 @@
         </form>
     </div>
 </div>
+<?= $this->endSection() ?>

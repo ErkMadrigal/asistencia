@@ -56,7 +56,7 @@
     var table = $('#dataGrid').DataTable({
         data: <?= json_encode($sepomex) ?> ,
         deferRender: true,
-        pageLength: 5,
+        pageLength: 10,
         columns: [{ data: "codigoPostal"},
                     { data: "asentamiento"},
                     { data: "municipio"},

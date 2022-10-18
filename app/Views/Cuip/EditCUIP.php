@@ -42,6 +42,10 @@
                     <a class="nav-link" id="custom-tabs-five-overlay-tab" data-toggle="pill" href="#custom-normal-mf"
                         role="tab" aria-controls="custom-tabs-five-normal" aria-selected="false">Media Filiación</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-five-overlay-tab" data-toggle="pill" href="#custom-normal-ex"
+                        role="tab" aria-controls="custom-tabs-five-normal" aria-selected="false">Expediente</a>
+                </li>
             </ul>
         </div>
 
@@ -103,6 +107,12 @@
                     aria-labelledby="custom-tabs-five-overlay-tab">
                     
                     <?php echo view('MediaFiliacion/mediaFiliacionEdit') ?> 
+
+                </div>
+                <div class="tab-pane fade" id="custom-normal-ex" role="tabpanel"
+                    aria-labelledby="custom-tabs-five-overlay-tab">
+                    
+                    <?php echo view('CargaMasiva/cargaMasivaEdit') ?> 
 
                 </div>
             </div>

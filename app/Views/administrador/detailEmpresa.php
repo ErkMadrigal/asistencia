@@ -18,7 +18,7 @@
                       <p class="text-muted text-sm"><b>teléfonos: </b> <?= $empresa->telefonos ?> </p>
                     </div>
                     <div class="col-5 text-center">
-                      <img src="<?= base_url() ?>/assets/dist/img/empresa.png" alt="user-avatar" class="img-circle img-fluid">
+                      <img src="<?= base_url() ?>/assets/dist/img/logoPanel.png" alt="user-avatar" class=" img-fluid">
                     </div>
                 </div>
                

@@ -24,6 +24,7 @@ class CataSepomex
     public function GetSepomex(){
         $builder = $this->db->table('sepomex');
         $builder->select('id, codigoPostal, asentamiento, municipio, ciudad, estado, activo');
+        $builder->limit(1000);
         return $builder->get()->getResult();
         
     }
