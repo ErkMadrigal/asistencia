@@ -247,14 +247,15 @@ class CuipModel
 
     public function GetCapacitaciones($id){
         $builder = $this->db->table('capacitaciones');
-        $builder->select("dependencia,NC.valor AS nivel,inst_capacitadora,CF.valor AS cursofue,nombre_curso,ID.valor AS idioma,GHA.valor AS gradohabilidad,TA.valor AS agrupacion,IE.valor AS escritura,GH.valor AS grado,IL.valor AS lectura,IC.valor AS conversacion,TH.valor AS habilidad ,tema_curso,NC.valor AS nivel,EC.valor AS eficiencia,inicio_curso,conclusion,duracion_horas_curso,tipo_comprobante,institucion,curso,tipo_curso,EA.valor AS adicional,inicio_adicional,conclusion_adicional,duracion_horas_adicional,especifique_habilidad,nombrea_agrupacion,especifique_agrupacion,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
-        $builder->join("catalogos_detalle NC"," capacitaciones.idNivelCurso= NC.id  ","left");
+        $builder->select("dependencia,NC.valor AS nivel,inst_capacitadora,CF.valor AS cursofue,nombre_curso,ID.valor AS idioma,GHA.valor AS gradohabilidad,TA.valor AS agrupacion,IE.valor AS escritura,GH.valor AS grado,IL.valor AS lectura,IC.valor AS conversacion,TH.valor AS habilidad ,tema_curso,NC.valor AS nivel,EC.valor AS eficiencia,inicio_curso,conclusion_curso,duracion_horas_curso,tipo_comprobante,institucion,curso,tipo_curso,EA.valor AS adicional,inicio_adicional,conclusion_adicional,duracion_horas_adicional,especifique_habilidad,nombre_agrupacion,especifique_agrupacion,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->join("catalogos_detalle NC"," capacitaciones.idNivel_curso= NC.id  ","left");
         $builder->join("catalogos_detalle EC"," capacitaciones.idEficienciaCurso= EC.id  ","left");
         $builder->join("catalogos_detalle CF"," capacitaciones.idCursoFue= CF.id  ","left");
         $builder->join("catalogos_detalle EA"," capacitaciones.idEficienciaAdicional= EA.id  ","left");
         $builder->join("catalogos_detalle ID"," capacitaciones.idIdioma= ID.id  ","left");
         $builder->join("catalogos_detalle IE"," capacitaciones.idIdiomaEscritura= IE.id  ","left");
         $builder->join("catalogos_detalle IL"," capacitaciones.idIdiomaLectura= IL.id  ","left");
+        $builder->join("catalogos_detalle IC"," capacitaciones.idIdiomaConversacion= IC.id  ","left");
         $builder->join("catalogos_detalle TH"," capacitaciones.idTipoHabilidad= TH.id  ","left");
         $builder->join("catalogos_detalle GH"," capacitaciones.idGradoHabilidad= GH.id  ","left");
         $builder->join("catalogos_detalle TA"," capacitaciones.idTipoAgrupacion= TA.id  ","left");
@@ -262,6 +263,7 @@ class CuipModel
         $builder->join("sys_usuarios_admin UA","capacitaciones.createdby = UA.id","left");
         $builder->join("sys_usuarios_admin UU","capacitaciones.updatedby = UU.id","left");
         $builder->where('capacitaciones.idPersonal', $id);
+        return $builder->get()->getRow();
     }
 
 
