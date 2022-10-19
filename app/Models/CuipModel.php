@@ -303,4 +303,22 @@ class CuipModel
 
         return $return; 
     }
+
+
+    public function insertMediaFiliacion($data){
+        $this->db->transStart();
+
+        $this->db->table('media_filiacion')->insert($data);
+
+        $this->db->transComplete();
+
+        if ($this->db->transStatus() === TRUE)
+        {
+            $return = true;
+        } else {
+            $return = false ;
+        }
+
+        return $return; 
+    }
 }

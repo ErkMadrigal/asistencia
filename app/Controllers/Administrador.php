@@ -291,12 +291,12 @@ class Administrador extends BaseController {
     	<tr>
         <td style='background-color: #fff; padding-top:25px; padding-left:10px; padding-right:10px; font-family: Arial;color: #6e2b80; font-size:14px;'>
             <center>
-                <p style='font-weight:bold;color:#171514;'>".lang('Administrador.bienvenido').", ".$_POST['Nombre']."</p>
-                <p style='font-weight:bold;color:#171514;'>".lang('Administrador.bodyAltaUsuario').":</p>
+                <p style='font-weight:bold;color:#171514;'>Bienvenido, ".$_POST['Nombre']."</p>
+                <p style='font-weight:bold;color:#171514;'>Has sido registrado en Serprosep, ingresa al siguiente enlace:</p>
                 <p><a href='".base_url()."'>".base_url()."</a>
                 </p>
-                <p style='font-weight:bold;color:#171514;'>".lang('Administrador.usuario').": ".$trimEmail."</p>
-                <p style='font-weight:bold;color:#171514;'>".lang('Administrador.contrasena').": ".$pass."</p>
+                <p style='font-weight:bold;color:#171514;'>Usuario: ".$trimEmail."</p>
+                <p style='font-weight:bold;color:#171514;'>Contraseña: ".$pass."</p>
             </center>
         </td>
     	</tr>

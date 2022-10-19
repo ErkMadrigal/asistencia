@@ -21,11 +21,11 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        <form class="form-horizontal" id="mediaFiliacion">
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
-                        <label for="Nombre" class="control-label">Complexión: <span class="text-danger">*</span></label>
+                        <label for="Nombre" class="control-label">Complexión: <span class="text-danger">*</span></label><?= csrf_field() ?><input type="hidden" class="form-control " id="idPersonal" name="idPersonal" value="<?= $id ?> " >
                         <div>
                             <select class="form-control" id="complexion" name="complexion">
                                 <option value="">Seleccionar Complexión</option>
@@ -147,7 +147,7 @@
                 </div>
             </div>
 
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -162,7 +162,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -297,7 +297,7 @@
                 </div>
             </div>
 
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -312,7 +312,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -393,7 +393,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -408,7 +408,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -515,7 +515,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -530,7 +530,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -611,7 +611,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+       
     </div>
 </div>
 <div class="card card-primary">
@@ -626,7 +626,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -759,7 +759,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -773,7 +773,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -828,7 +828,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -842,7 +842,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -923,7 +923,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -937,7 +937,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -1018,7 +1018,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -1032,7 +1032,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -1061,7 +1061,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
         <div class="card card-primary">
             <div class="card-header">
                 <h3 class="card-title">HELIX</h3>
@@ -1073,7 +1073,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive ">
-                <form class="form-horizontal" id="frmUsuario">
+                
                     <div class="row">
                         <div class='col-6 col-sm-4'>
                             <div class="form-group">
@@ -1180,7 +1180,7 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                
             </div>
         </div>
         <div class="card card-primary">
@@ -1194,7 +1194,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive ">
-                <form class="form-horizontal" id="frmUsuario">
+                
                     <div class="row">
                         <div class='col-6 col-sm-4'>
                             <div class="form-group">
@@ -1301,7 +1301,7 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                
             </div>
         </div>
     </div>
@@ -1317,7 +1317,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -1372,7 +1372,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -1386,7 +1386,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -1594,4 +1594,62 @@
         </div>
     </div>    
 </div>
+<script>
+
+
+    $('#saveMediaFiliacion').click(function (event) {
+        event.preventDefault();
+        $('#load').addClass( "spinner-border" );
+
+        
+        var formData = new FormData($("form#mediaFiliacion")[0]);
+        
+        $.ajax({
+            url: base_url + '/GuardarMediaFiliacion',
+            type: 'POST',
+            dataType: 'json',
+            data: formData,
+            cache: false,
+            async: true,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $('.errorField').remove();
+
+                if (response.succes.succes == 'succes') {
+
+                    toastr.success(response.succes.mensaje);
+
+                    
+
+                } else if (response.dontsucces.error == 'error'){
+
+                    toastr.error(response.dontsucces.mensaje);
+                            
+                } else if (Object.keys(response.error).length > 0 ){
+
+                    for (var clave in response.error){
+                                
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                            
+                    }
+                        toastr.error('<?=lang('Layout.camposObligatorios')?>');
+
+                }
+
+                $('#load').removeClass( "spinner-border" );    
+
+                        
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                toastr.error('<?=lang('Layout.toastrError')?>');
+                $('#load').removeClass( "spinner-border" );           
+            }
+        });
+            
+    });
+
+
+
+</script>
 <?= $this->endSection() ?>
