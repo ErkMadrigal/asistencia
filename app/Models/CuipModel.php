@@ -286,4 +286,21 @@ class CuipModel
         return $builder->get()->getResult();
         
     }
+
+    public function insertReferencias($data){
+        $this->db->transStart();
+
+        $this->db->table('referencias')->insert($data);
+
+        $this->db->transComplete();
+
+        if ($this->db->transStatus() === TRUE)
+        {
+            $return = true;
+        } else {
+            $return = false ;
+        }
+
+        return $return; 
+    }
 }

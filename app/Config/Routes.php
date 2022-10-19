@@ -95,6 +95,7 @@ $routes->get('mediafiliacion', 'Cuip::getMediafiliacion',['filter' => 'auth']);
 $routes->get('cuipInfo', 'Cuip::getCuipDetail',['filter' => 'auth']);
 $routes->get('expediente', 'Cuip::getExpediente',['filter' => 'auth']);
 $routes->get('editarCuip', 'Cuip::CuipEdit',['filter' => 'auth']);
+$routes->post('GuardarReferencias', 'Cuip::AgregarReferencias',['filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------

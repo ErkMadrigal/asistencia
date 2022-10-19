@@ -6,7 +6,7 @@
     <div class=" mb-2">    
         <div class="row">
             <div class="col-12 col-sm-6 col-md-3">
-                <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/AddCUIP " class='nav-link'><i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp;&nbsp;Capturar numero de CUIP</a>
+                <a class="btn btn-block btn-flat btn-primary" href="#" class='nav-link'><i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp;&nbsp;Capturar numero de CUIP</a>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
                 <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/editarCuip?id=<?= $id ?>" class='nav-link'><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Editar CUIP</a>

@@ -825,6 +825,42 @@
                 selectMunicipioDom.innerHTML = ''
                 selectColoniaDom.innerHTML = ''
             break;
+            case "codigoRefCer":
+                
+            var selectCiudadDom = document.querySelector("#ciudad"+elemento)
+
+                selectEstadoDom.innerHTML = ''
+                selectMunicipioDom.innerHTML = ''
+                selectCiudadDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+            case "codigoParCer":
+                
+            var selectCiudadDom = document.querySelector("#ciudad"+elemento)
+
+                selectEstadoDom.innerHTML = ''
+                selectMunicipioDom.innerHTML = ''
+                selectCiudadDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+            case "codigoPersonal":
+                
+            var selectCiudadDom = document.querySelector("#ciudad"+elemento)
+
+                selectEstadoDom.innerHTML = ''
+                selectMunicipioDom.innerHTML = ''
+                selectCiudadDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+            case "codigoLaboral":
+                
+            var selectCiudadDom = document.querySelector("#ciudad"+elemento)
+
+                selectEstadoDom.innerHTML = ''
+                selectMunicipioDom.innerHTML = ''
+                selectCiudadDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
   
             }
             
@@ -877,6 +913,35 @@
 
                 
                     break;
+                    case "codigoRefCer":
+                
+                        selectEstadoDom.innerHTML = response.data.estado
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectColoniaDom.innerHTML = response.data.colonia
+                    break;
+                    case "codigoParCer":
+                
+                        selectEstadoDom.innerHTML = response.data.estado
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectColoniaDom.innerHTML = response.data.colonia
+                    break;
+                    case "codigoPersonal":
+                
+                        selectEstadoDom.innerHTML = response.data.estado
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectColoniaDom.innerHTML = response.data.colonia
+                    break;
+                    case "codigoLaboral":
+                
+                        selectEstadoDom.innerHTML = response.data.estado
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectColoniaDom.innerHTML = response.data.colonia
+                    break;
+
   
                     }
                     

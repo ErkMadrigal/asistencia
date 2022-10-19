@@ -1802,7 +1802,9 @@ class Cuip extends BaseController {
 			$data['diversos'] = $this->modelCuip->GetEmpleosDiversos($id);
 			$data['capacitacion'] = $this->modelCuip->GetCapacitaciones($id);
 
+			$data['sanciones'] = $this->modelCuip->GetSanciones($id);
 
+			$data['id'] = $this->encrypt->Encrypt($id); 
 			
 			$data['breadcrumb'] = ["inicio" => 'CUIP' ,
                     				"url" => 'cuip',
@@ -1810,6 +1812,175 @@ class Cuip extends BaseController {
 
 			return view('Cuip/EditCUIP', $data);	
 			}
+	}
+
+
+	public function AgregarReferencias(){
+		if ($this->request->getMethod() == "post" && $this->request->getvar([''],FILTER_SANITIZE_STRING)){
+
+				$rules = [
+				'apellidoPaterno' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]']];
+		 
+				$errors = [];
+				$succes = [];
+				$dontSucces = [];
+				$data = [];
+
+				if($this->validate($rules)){
+					
+					$getUser = session()->get('IdUser');
+					$LoggedUserId = $this->encrypter->decrypt($getUser);
+					$empresa = session()->get('empresa');
+					$idEmpresa = $this->encrypter->decrypt($empresa);
+					$uuid = Uuid::uuid4();
+        			$id = $uuid->toString();
+
+        			
+
+        			$getIdPersonal = $this->request->getPost('idPersonal');
+
+        			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
+
+        			
+
+        			$getInicio = $this->request->getPost('inicio');
+
+        			$inicio = date( "Y-m-d" ,strtotime($getInicio));
+
+        			$getConclusion = $this->request->getPost('conclusion');
+
+        			$conclusion = date( "Y-m-d" ,strtotime($getConclusion));
+
+        			$getInicioAdicional = $this->request->getPost('inicioAdicional');
+
+        			$inicioAdicional = date( "Y-m-d" ,strtotime($getInicioAdicional));
+
+        			$getConclusionAdicional = $this->request->getPost('conclusionAdicional');
+
+        			$conclusionAdicional = date( "Y-m-d" ,strtotime($getConclusionAdicional));
+
+        			$getDesde = $this->request->getPost('desde');
+
+        			$desde = date( "Y-m-d" ,strtotime($getDesde));
+
+        			$getHasta = $this->request->getPost('hasta');
+
+        			$hasta = date( "Y-m-d" ,strtotime($getHasta));
+
+        			$getNivel_curso = $this->request->getPost('nivel_curso');
+
+        			$nivel_curso = $this->encrypt->Decrytp($getNivel_curso);
+
+        			$getEficienciaCursos = $this->request->getPost('eficienciaCursos');
+
+        			$eficienciaCursos = $this->encrypt->Decrytp($getEficienciaCursos);
+
+        			$getCuso_tomado = $this->request->getPost('cuso_tomado');
+
+        			$cuso_tomado = $this->encrypt->Decrytp($getCuso_tomado);
+
+        			$getEficiencia = $this->request->getPost('eficiencia');
+
+        			$eficiencia = $this->encrypt->Decrytp($getEficiencia);
+
+        			$getIdioma = $this->request->getPost('idioma');
+
+        			$idioma = $this->encrypt->Decrytp($getIdioma);
+
+        			$getLectura = $this->request->getPost('lectura');
+
+        			$lectura = $this->encrypt->Decrytp($getLectura);
+
+        			$getEscritura = $this->request->getPost('escritura');
+
+        			$escritura = $this->encrypt->Decrytp($getEscritura);
+
+        			$getConversacion = $this->request->getPost('conversacion');
+
+        			$conversacion = $this->encrypt->Decrytp($getConversacion);
+
+        			$getTipo_habilidad = $this->request->getPost('tipo_habilidad');
+
+        			$tipo_habilidad = $this->encrypt->Decrytp($getTipo_habilidad);
+
+        			$getGrado_habilidadCap = $this->request->getPost('grado_habilidadCap');
+
+        			$grado_habilidadCap = $this->encrypt->Decrytp($getGrado_habilidadCap);
+
+        			$getTipoAgrupa = $this->request->getPost('tipoAgrupa');
+
+        			$tipoAgrupa = $this->encrypt->Decrytp($getTipoAgrupa);
+
+        			$getGrado_habilidad = $this->request->getPost('grado_habilidad');
+
+        			$grado_habilidad = $this->encrypt->Decrytp($getGrado_habilidad);
+
+
+					$referencias = array(
+		    					
+		    					
+						"id" => $id  ,
+						"idPersonal" => $idPersonal  , 
+						"idEmpresa" =>  $idEmpresa , 
+						"dependencia"  =>  $this->request->getPost('dependencia') , 
+						"inst_capacitadora"  =>  $this->request->getPost('institucion') , 
+						"nombre_curso"  =>  $this->request->getPost('nombre_curso') , 
+						"tema_curso"  =>  $this->request->getPost('tema_curso') , 
+						"idNivel_curso"  =>  $nivel_curso , 
+						"idEficienciaCurso"  =>  $eficienciaCursos , 
+						"inicio_curso"  =>  $inicio , 
+						"conclusion_curso"  => $conclusion  , 
+						"duracion_horas_curso"  =>  $this->request->getPost('duracion') , 
+						"tipo_comprobante"  =>  $this->request->getPost('comprobante') , 
+						"institucion"  => $this->request->getPost('empresa')  , 
+						"curso"  =>  $this->request->getPost('curso') , 
+						"tipo_curso"  =>  $this->request->getPost('tipo_curso') , 
+						"idCursoFue"  => $cuso_tomado  , 
+						"idEficienciaAdicional"  => $eficiencia  , 
+						"inicio_adicional"  =>  $inicioAdicional , 
+						"conclusion_adicional"  =>  $conclusionAdicional , 
+						"duracion_horas_adicional"  => $this->request->getPost('duracion_horas')  , 
+						"idIdioma"  =>  $idioma , 
+						"idIdiomaLectura"  => $lectura  , 
+						"idIdiomaEscritura"  =>  $escritura , 
+						"idIdiomaConversacion"  => $conversacion  , 
+						"idTipoHabilidad"  =>  $tipo_habilidad , 
+						"especifique_habilidad"  =>  $this->request->getPost('especificacion') , 
+						"idGradoHabilidad"  => $grado_habilidadCap  , 
+						"nombre_agrupacion"  =>  $this->request->getPost('nombre') , 
+						"idTipoAgrupacion"  =>  $tipoAgrupa , 
+						"especifique_agrupacion"  =>  $this->request->getPost('especificacion') , 
+						"idGradoHabilidadAgrup"  =>  $grado_habilidad , 
+						"desde"  =>  $desde , 
+						"hasta"  => $hasta ,
+						"activo" => 1 , 
+						"createdby" => $LoggedUserId , 
+						"createddate" => date("Y-m-d H:i:s") );
+
+
+					$result = $this->modelCuip->insertReferencias( $referencias);
+
+					
+					
+                    if ($result) {
+
+            			
+                    	$succes = ["mensaje" => 'Referencias agregadas con exito' ,
+                            	   "succes" => "succes"];
+
+                           	   
+                    	
+                    } else {
+                    	$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Hubo un error al registrar las Referencias'  ];
+
+                    }
+				} else {	
+					$errors = $this->validator->getErrors();
+				}
+
+				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+		}	
 	}
 
 }
