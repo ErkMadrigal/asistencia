@@ -218,7 +218,52 @@ class Cuip extends BaseController {
 		if ($this->request->getMethod() == "post" && $this->request->getvar(['primerNombre, segundoNombre, apellidoPaterno, apellidoMaterno, fecha_nacimiento, sexo, rfc, claveE, cartilla, licencia, vigenciaLic, CURP, pasaporte, modo_nacionalidad, fecha_naturalizacion, pais_nacimiento, entidad_nacimiento, nacionalidad, municipio_nacimiento, cuidad_nacimiento, estado_civil, desarrollo_academico, escuela, especialidad, cedula, anno_inicio, anno_termino, registroSep, certificado, promedio, calle, exterior, interior, numeroTelefono, entrecalle, ylacalle, codigo, coloniacodigo, estadocodigo, municipiocodigo, ciudadcodigo, nombrecurso, nombreInstitucion, fecha_inicial, fecha_final, certificado'],FILTER_SANITIZE_STRING)){
 
 				$rules = [
-				'primerNombre' =>  ['label' => "Valor", 'rules' => 'required|max_length[255]']];
+				'primerNombre' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
+				'segundoNombre' =>  ['label' => "Segundo Nombre", 'rules' => 'required|max_length[255]'],
+				'apellidoPaterno' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
+				'apellidoMaterno' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
+				'fecha_nacimiento' =>  ['label' => 'Fecha de Nacimiento', 'rules' =>'required'],
+				'getGenero' =>  ['label' => 'Sexo', 'rules' =>'required'],
+				'rfc' =>  ['label' => "RFC", 'rules' => 'required|max_length[20]'],
+				'claveE' =>  ['label' => "Clave Electoral", 'rules' => 'required|max_length[20]'],
+				'cartilla' =>  ['label' => "Cartilla SMN", 'rules' => 'required|max_length[20]'],
+				'licencia' =>  ['label' => "Licencia de Conducir", 'rules' => 'required|max_length[20]'],
+				'vigenciaLic' =>  ['label' => "Vigencia de Licencia", 'rules' => 'required'],
+				'CURP' =>  ['label' => "CURP", 'rules' => 'required|max_length[20]'],
+				'pasaporte' =>  ['label' => "Pasaporte", 'rules' => 'required|max_length[20]'],
+				'modo_nacionalidad' =>  ['label' => "Modo de Nacionalidad", 'rules' => 'required'],
+				'fecha_naturalizacion' =>  ['label' => "Fecha de Naturalización", 'rules' => 'required'],
+				'pais_nacimiento' =>  ['label' => "Pais de Nacimiento", 'rules' => 'required'],
+				'entidad_nacimiento' =>  ['label' => "Entidad de Nacimiento", 'rules' => 'required|max_length[20]'],
+				'municipio_nacimiento' =>  ['label' => "Municipio de Nacimiento", 'rules' => 'required|max_length[20]'],
+				'cuidad_nacimiento' =>  ['label' => "Cuidad de Nacimiento", 'rules' => 'required|max_length[20]'],
+				'nacionalidad' =>  ['label' => "Nacionalidad", 'rules' => 'required'],
+				'estado_civil' =>  ['label' => "Estado Civil", 'rules' => 'required'],
+				'desarrollo_academico' =>  ['label' => "Desarrollo Académico", 'rules' => 'required'],
+				'escuela' =>  ['label' => "Escuela", 'rules' => 'required|max_length[20]'],
+				'especialidad' =>  ['label' => "Especialidad", 'rules' => 'required|max_length[20]'],
+				'cedula' =>  ['label' => "Cedula", 'rules' => 'required|max_length[20]'],
+				'anno_inicio' =>  ['label' => "RFC", 'rules' => 'required'],
+				'anno_inicio' =>  ['label' => "Año de Inicio", 'rules' => 'required'],
+				'anno_termino' =>  ['label' => "Año de Termino", 'rules' => 'required|max_length[20]'],
+				'registroSep' =>  ['label' => "Registro SEP", 'rules' => 'required'],
+				'certificado' =>  ['label' => "Num. de Folio Certificado", 'rules' => 'required|max_length[20]'],
+				'calle' =>  ['label' => "Calle", 'rules' => 'required|max_length[20]'],
+				'exterior' =>  ['label' => "No. Exterior", 'rules' => 'required|max_length[20]'],
+				'interior' =>  ['label' => "No. Interior", 'rules' => 'required|max_length[20]'],
+				'numeroTelefono' =>  ['label' => "Numero Telefónico", 'rules' => 'required|max_length[20]'],
+				'entrecalle' =>  ['label' => "Entre la calle de", 'rules' => 'required|max_length[20]'],
+				'ylacalle' =>  ['label' => "Y la calle ", 'rules' => 'required|max_length[20]'],
+				'codigo' =>  ['label' => "Código Postal", 'rules' => 'required|max_length[20]'],
+				'coloniacodigo' =>  ['label' => "Colonia", 'rules' => 'required'],
+				'estadocodigo' =>  ['label' => "Entidad Federativa", 'rules' => 'required'],
+				'municipiocodigo' =>  ['label' => "Municipio", 'rules' => 'required'],
+				'ciudadcodigo' =>  ['label' => "Ciudad", 'rules' => 'required'],
+				'nombrecurso' =>  ['label' => "Nombre del Curso", 'rules' => 'required|max_length[20]'],
+				'nombreInstitucion' =>  ['label' => "Nombre de la Institución", 'rules' => 'required|max_length[20]'],
+				'fecha_inicial' =>  ['label' => "Fecha de Inicio", 'rules' => 'required'],
+				'fecha_final' =>  ['label' => "Fecha de Término", 'rules' => 'required'],
+				'certificado' =>  ['label' => "Certificado por", 'rules' => 'required|max_length[255]']];
 		 
 				$errors = [];
 				$succes = [];
@@ -521,7 +566,24 @@ class Cuip extends BaseController {
 		if ($this->request->getMethod() == "post" && $this->request->getvar(['familia, ingreso, domicilio_tipo, actividad, especificacion, inversion, vehiculo, calidad, vicio, imagen, comportamiento, calle, apellidoMaterno, primerNombre, nombre, fecha_nacimiento_dep, sexo_dep, parentesco_familiar'],FILTER_SANITIZE_STRING)){
 
 				$rules = [
-				'ingreso' =>  ['label' => "Ingreso familiar adicional (Mensual)", 'rules' => 'required|max_length[255]']];
+				'familia' =>  ['label' => "¿Vive con su Familia?", 'rules' => 'required'],
+				'ingreso' =>  ['label' => "Ingreso familiar adicional (Mensual)", 'rules' => 'required|max_length[255]'],
+				'domicilio_tipo' =>  ['label' => "Su domicilio es", 'rules' => 'required'],
+				'actividad' =>  ['label' => "Actividades culturales o deportivas que practique", 'rules' => 'required|max_length[255]'],
+				'especificacion' =>  ['label' => "Especifiación de inmueble y costo", 'rules' => 'required|max_length[255]'],
+				'inversion' =>  ['label' => "Inversiones y monto aproximado", 'rules' => 'required|max_length[255]'],
+				'vehiculo' =>  ['label' => "Vehiculo y costo Aproximado", 'rules' => 'required|max_length[255]'],
+				'calidad' =>  ['label' => "Calidad de Vida", 'rules' => 'required|max_length[255]'],
+				'vicio' =>  ['label' => "Vicios", 'rules' => 'required|max_length[255]'],
+				'imagen' =>  ['label' => "Imagen Publica", 'rules' => 'required|max_length[255]'],
+				'comportamiento' =>  ['label' => "Comportamiento Social", 'rules' => 'required|max_length[255]'],
+				'apellidoPaterno' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
+				'apellidoMaterno' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
+				'primerNombre' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
+				'segundoNombre' =>  ['label' => "Segundo Nombre", 'rules' => 'required|max_length[255]'],
+				'fecha_nacimiento_dep' =>  ['label' => "Fecha de Nacimiento", 'rules' => 'required'],
+				'sexo_dep' =>  ['label' => "Sexo", 'rules' => 'required'],
+				'parentesco_familiar' =>  ['label' => "Parentesco", 'rules' => 'required']];
 		 
 				$errors = [];
 				$succes = [];
@@ -621,7 +683,36 @@ class Cuip extends BaseController {
 		if ($this->request->getMethod() == "post" && $this->request->getvar(['dependencia, corporacion, primerNombre, nombre, calle, exterior, interior, numero, codigoSegPub, coloniacodigoSegPub, aprobacion, separacion, puesto_funcional, funciones, especialidad, rango, numero_placa, numero_empleado, sueldo, compensaciones, area, division, jefe_inmediato, nombre_jefe, estadocodigoSegPub, municipiocodigoSegPub, motivo_separacion, tipo_separacion, tipo_baja, comentarios'],FILTER_SANITIZE_STRING)){
 
 				$rules = [
-				'dependencia' =>  ['label' => "Dependencia", 'rules' => 'required|max_length[255]']];
+				'dependencia' =>  ['label' => "Dependencia", 'rules' => 'required|max_length[255]'],
+				'corporacion' =>  ['label' => "Corporacióne", 'rules' => 'required|max_length[255]'],
+				'primerNombre' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
+				'segundoNombre' =>  ['label' => "Segundo Nombre", 'rules' => 'required|max_length[255]'],
+				'calle' =>  ['label' => "Calle ", 'rules' => 'required|max_length[255]'],
+				'exterior' =>  ['label' => "No. Exterior", 'rules' => 'required|max_length[255]'],
+				'interior' =>  ['label' => "No. Interior", 'rules' => 'required|max_length[255]'],
+				'numero' =>  ['label' => "Numero Telefónico", 'rules' => 'required|max_length[255]'],
+				'codigoSegPub' =>  ['label' => "Código Postal", 'rules' => 'required|max_length[255]'],
+				'coloniacodigoSegPub' =>  ['label' => "Colonia", 'rules' => 'required'],
+				'ingresoEmpPublic' =>  ['label' => "Ingreso", 'rules' => 'required'],
+				'separacion' =>  ['label' => "Separación", 'rules' => 'required|max_length[255]'],
+				'puesto_funcional' =>  ['label' => "Puesto Funcional", 'rules' => 'required|max_length[255]'],
+				'funciones' =>  ['label' => "Funciones", 'rules' => 'required|max_length[255]'],
+				'especialidad' =>  ['label' => "Especialidad", 'rules' => 'required|max_length[255]'],
+				'rango' =>  ['label' => "Rango o categoría", 'rules' => 'required|max_length[255]'],
+				'numero_placa' =>  ['label' => "Numero de placa", 'rules' => 'required|max_length[255]'],
+				'numero_empleado' =>  ['label' => "Numero de empleado", 'rules' => 'required|max_length[255]'],
+				'sueldo' =>  ['label' => "Sueldo Base (Mensual)", 'rules' => 'required|max_length[255]'],
+				'compensaciones' =>  ['label' => "Compensaciones (Mensual)", 'rules' => 'required|max_length[255]'],
+				'area' =>  ['label' => "Area", 'rules' => 'required|max_length[255]'],
+				'division' =>  ['label' => "División", 'rules' => 'required|max_length[255]'],
+				'jefe_inmediato' =>  ['label' => "CUIP Jefe Inmediato", 'rules' => 'required|max_length[255]'],
+				'nombre_jefe' =>  ['label' => "Nombre del Jefe Inmediato", 'rules' => 'required|max_length[255]'],
+				'estadocodigoSegPub' =>  ['label' => "Entidad Federativa", 'rules' => 'required'],
+				'municipiocodigoSegPub' =>  ['label' => "Municipio", 'rules' => 'required'],
+				'motivo_separacion' =>  ['label' => "Motivo de separación", 'rules' => 'required|max_length[255]'],
+				'tipo_separacion' =>  ['label' => "Tipo de Separación", 'rules' => 'required|max_length[255]'],
+				'tipo_baja' =>  ['label' => "Tipo de Baja", 'rules' => 'required|max_length[255]'],
+				'comentarios' =>  ['label' => "Comentarios", 'rules' => 'required|max_length[255]']];
 		 
 				$errors = [];
 				$succes = [];
@@ -718,7 +809,33 @@ class Cuip extends BaseController {
 		if ($this->request->getMethod() == "post" && $this->request->getvar(['tipo, determinacion, descripcion, situacion, inicio_inhabilitacion, termino_inhabilitacion, organismo, emisora, entidad_federativaSE, delitos, motivo, no_expediente, agencia_mp, averiguacion_previa, tipo_fuero, averiguacion_estado, inicio_averiguacion, al_dia, juzgado, no_proceso, estado_procesal, inicio_proceso, al_dia_proceso, tipo_estimulo, descripcion_estimulo, dependencia, otrogado_estimulo'],FILTER_SANITIZE_STRING)){
 
 				$rules = [
-				'tipo' =>  ['label' => "Tipo", 'rules' => 'required|max_length[255]']];
+				'tipo' =>  ['label' => "Tipo", 'rules' => 'required|max_length[255]'],
+				'determinacion' =>  ['label' => "Determinación", 'rules' => 'required'],
+				'descripcion' =>  ['label' => "Descripción", 'rules' => 'required|max_length[255]'],
+				'situacion' =>  ['label' => "Situación", 'rules' => 'required|max_length[255]'],
+				'inicio_inhabilitacion' =>  ['label' => "Inicio de la inhabilitación", 'rules' => 'required'],
+				'termino_inhabilitacion' =>  ['label' => "Término de la inhabilitación", 'rules' => 'required'],
+				'organismo' =>  ['label' => "Dependencia u organismo que emite la determinación", 'rules' => 'required|max_length[255]'],
+				'emisora' =>  ['label' => "Institución emisora", 'rules' => 'required|max_length[255]'],
+				'entidad_federativaSE' =>  ['label' => "Entidad federativa", 'rules' => 'required'],
+				'delitos' =>  ['label' => "Delitos", 'rules' => 'required|max_length[255]'],
+				'motivo' =>  ['label' => "Motivo", 'rules' => 'required|max_length[255]'],
+				'no_expediente' =>  ['label' => "No. Expediente", 'rules' => 'required|max_length[255]'],
+				'agencia_mp' =>  ['label' => "Agencia del MP", 'rules' => 'required|max_length[255]'],
+				'averiguacion_previa' =>  ['label' => "Averiguación previa", 'rules' => 'required|max_length[255]'],
+				'tipo_fuero' =>  ['label' => "Tipo de Fuero", 'rules' => 'required'],
+				'averiguacion_estado' =>  ['label' => "Estado de la averiguación previa", 'rules' => 'required|max_length[255]'],
+				'inicio_averiguacion' =>  ['label' => "Inicio de la averiguación", 'rules' => 'required'],
+				'al_dia' =>  ['label' => "Al día", 'rules' => 'required'],
+				'juzgado' =>  ['label' => "Juzgado", 'rules' => 'required|max_length[255]'],
+				'no_proceso' =>  ['label' => "No. Proceso", 'rules' => 'required|max_length[255]'],
+				'estado_procesal' =>  ['label' => "Estado Procesal", 'rules' => 'required|max_length[255]'],
+				'inicio_proceso' =>  ['label' => "Inicio del proceso", 'rules' => 'required'],
+				'al_dia_proceso' =>  ['label' => "Al día", 'rules' => 'required'],
+				'tipo_estimulo' =>  ['label' => "Tipo", 'rules' => 'required|max_length[255]'],
+				'descripcion_estimulo' =>  ['label' => "Descripción", 'rules' => 'required|max_length[255]'],
+				'dependencia' =>  ['label' => "Dependencia que otorga", 'rules' => 'required|max_length[255]'],
+				'otrogado_estimulo' =>  ['label' => "Otorgado", 'rules' => 'required']];
 		 
 				$errors = [];
 				$succes = [];
@@ -839,7 +956,36 @@ class Cuip extends BaseController {
 		if ($this->request->getMethod() == "post" && $this->request->getvar(['dependencia, institucion, nombre_curso, tema_curso, nivel_curso, eficienciaCursos, inicio, conclusion, duracion, comprobante, empresa, curso, tipo_curso, cuso_tomado, eficiencia, inicioAdicional, conclusionAdicional, duracion_horas, idioma, lectura, escritura, conversacion, tipo_habilidad, especificacion, grado_habilidadCap, nombre, tipoAgrupa, especificacion, grado_habilidad, desde, hasta'],FILTER_SANITIZE_STRING)){
 
 				$rules = [
-				'dependencia' =>  ['label' => "Tipo", 'rules' => 'required|max_length[255]']];
+				'dependencia' =>  ['label' => "Dependencia responsable", 'rules' => 'required|max_length[255]'],
+				'institucion' =>  ['label' => "Institución Capacitadora", 'rules' => 'required|max_length[255]'],
+				'nombre_curso' =>  ['label' => "Nombre del curso", 'rules' => 'required|max_length[255]'],
+				'tema_curso' =>  ['label' => "Tema del curso", 'rules' => 'required|max_length[255]'],
+				'nivel_curso' =>  ['label' => "Nivel del curso recibido", 'rules' => 'required'],
+				'eficienciaCursos' =>  ['label' => "Eficiencia terminal", 'rules' => 'required'],
+				'inicio' =>  ['label' => "Inicio", 'rules' => 'required'],
+				'conclusion' =>  ['label' => "Conclusión", 'rules' => 'required'],
+				'duracion' =>  ['label' => "Duración en horas", 'rules' => 'required|max_length[255]'],
+				'comprobante' =>  ['label' => "Tipo de comprobante", 'rules' => 'required|max_length[255]'],
+				'empresa' =>  ['label' => "Insitutción o Empresa", 'rules' => 'required|max_length[255]'],
+				'curso' =>  ['label' => "Estudio o Curso", 'rules' => 'required|max_length[255]'],
+				'tipo_curso' =>  ['label' => "Tipo de curso", 'rules' => 'required'],
+				'cuso_tomado' =>  ['label' => "¿El curso fue?", 'rules' => 'required'],
+				'eficiencia' =>  ['label' => "Eficiencia terminal", 'rules' => 'required'],
+				'inicioAdicional' =>  ['label' => "Conclusión", 'rules' => 'required'],
+				'conclusionAdicional' =>  ['label' => "Duración en horas", 'rules' => 'required|max_length[255]'],
+				'duracion_horas' =>  ['label' => "Idioma o Dialecto", 'rules' => 'required'],
+				'idioma' =>  ['label' => "Lectura", 'rules' => 'required'],
+				'escritura' =>  ['label' => "Escritura", 'rules' => 'required'],
+				'conversacion' =>  ['label' => "Conversación", 'rules' => 'required'],
+				'tipo_habilidad' =>  ['label' => "Tipo", 'rules' => 'required'],
+				'especificacion' =>  ['label' => "Especifique", 'rules' => 'required|max_length[255]'],
+				'grado_habilidadCap' =>  ['label' => "Grado de aptitude o dominio", 'rules' => 'required'],
+				'nombre' =>  ['label' => "Nombre", 'rules' => 'required'],
+				'tipoAgrupa' =>  ['label' => "Tipo", 'rules' => 'required'],
+				'especificacion' =>  ['label' => "Especifique", 'rules' => 'required|max_length[255]'],
+				'grado_habilidad' =>  ['label' => "Grado de aptitude o dominio", 'rules' => 'required'],
+				'desde' =>  ['label' => "Desde", 'rules' => 'required'],
+				'hasta' =>  ['label' => "Hasta", 'rules' => 'required']];
 		 
 				$errors = [];
 				$succes = [];
@@ -1009,7 +1155,44 @@ class Cuip extends BaseController {
 		if ($this->request->getMethod() == "post" && $this->request->getvar(['empresa, calle, exterior, interior, codigoEmpDiv, coloniacodigoEmpDiv, estadocodigoEmpDiv, municipiocodigoEmpDiv, numero, ingresoEmpDiv, separacion, puesto_funcional, funciones, sueldo, compensaciones, area, motivo_separacion, tipo_separacion, tipo_baja, comentarios, empleo, puesto, area_gustaria, ascender, reglamentacion, reconomiento, reglamentacion_ascenso, razones_ascenso, capacitacion, desciplina, subtipo_disciplina, motivo, tipo, fecha_inicialDis, fecha_finalDis, licencias_medicas, duracion, cantidad'],FILTER_SANITIZE_STRING)){
 
 				$rules = [
-				'empresa' =>  ['label' => "Empresa", 'rules' => 'required|max_length[255]']];
+				'empresa' =>  ['label' => "Empresa", 'rules' => 'required|max_length[255]'],
+				'calle' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
+				'exterior' =>  ['label' => "No. Exterior", 'rules' => 'required|max_length[255]'],
+				'interior' =>  ['label' => "No. Interior", 'rules' => 'required|max_length[255]'],
+				'coloniacodigoEmpDiv' =>  ['label' => "Código Postal ", 'rules' => 'required|max_length[255]'],
+				'codigoEmpDiv' =>  ['label' => "Colonia", 'rules' => 'required'],
+				'empresa' =>  ['label' => "Entidad Federativa", 'rules' => 'required'],
+				'empresa' =>  ['label' => "Municipio", 'rules' => 'required'],
+				'numero' =>  ['label' => "Numero Telefónico", 'rules' => 'required|max_length[255]'],
+				'ingresoEmpDiv' =>  ['label' => "Ingreso", 'rules' => 'required|max_length[255]'],
+				'separacion' =>  ['label' => "Separación", 'rules' => 'required|max_length[255]'],
+				'puesto_funcional' =>  ['label' => "Puesto Funcional", 'rules' => 'required|max_length[255]'],
+				'funciones' =>  ['label' => "Funciones", 'rules' => 'required|max_length[255]'],
+				'sueldo' =>  ['label' => "Sueldo Base (Mensual)", 'rules' => 'required|max_length[255]'],
+				'compensaciones' =>  ['label' => "Compensaciones (Mensual)", 'rules' => 'required|max_length[255]'],
+				'area' =>  ['label' => "Area", 'rules' => 'required|max_length[255]'],
+				'motivo_separacion' =>  ['label' => "Motivo de separación", 'rules' => 'required|max_length[255]'],
+				'tipo_separacion' =>  ['label' => "Tipo de Separación", 'rules' => 'required|max_length[255]'],
+				'tipo_baja' =>  ['label' => "Tipo de Baja", 'rules' => 'required|max_length[255]'],
+				'comentarios' =>  ['label' => "Comentarios", 'rules' => 'required|max_length[255]'],
+				'empleo' =>  ['label' => "¿Por qué Eligio este empleo?", 'rules' => 'required|max_length[255]'],
+				'puesto' =>  ['label' => "¿Qué puesto le gustaria tener?", 'rules' => 'required|max_length[255]'],
+				'area_gustaria' =>  ['label' => "¿En que area le gustaría estar?", 'rules' => 'required|max_length[255]'],
+				'' =>  ['label' => "¿En que tiempo desea ascender?", 'rules' => 'required|max_length[255]'],
+				'reglamentacion' =>  ['label' => "¿Conoce la reglamentación de los reconocimientos?", 'rules' => 'required'],
+				'ascender' =>  ['label' => "¿Razones por las que no ha recibido un reconocimiento?", 'rules' => 'required|max_length[255]'],
+				'reglamentacion' =>  ['label' => "¿Conoce la reglamentación de los ascensos?", 'rules' => 'required'],
+				'reglamentacion_ascenso' =>  ['label' => "¿Razones por las que no ha recibido un ascenso?", 'rules' => 'required|max_length[255]'],
+				'capacitacion' =>  ['label' => "¿Qué capacitación le gustaría recibir?", 'rules' => 'required|max_length[255]'],
+				'capacitacion' =>  ['label' => "Tipo de Disciplina", 'rules' => 'required'],
+				'subtipo_disciplina' =>  ['label' => "Subtipo de disciplina", 'rules' => 'required|max_length[255]'],
+				'motivo' =>  ['label' => "Motivo", 'rules' => 'required|max_length[255]'],
+				'tipo' =>  ['label' => "Tipo", 'rules' => 'required|max_length[255]'],
+				'fecha_inicialDis' =>  ['label' => "Fecha de Inicio", 'rules' => 'required'],
+				'fecha_finalDis' =>  ['label' => "Fecha de Término", 'rules' => 'required'],
+				'' =>  ['label' => "En caso de licencias médicas", 'rules' => 'required|max_length[255]'],
+				'duracion' =>  ['label' => "Duración", 'rules' => 'required'],
+				'cantidad' =>  ['label' => "Cantidad", 'rules' => 'required|max_length[255]']];
 		 
 				$errors = [];
 				$succes = [];
