@@ -15,25 +15,26 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="dependencia" class=" control-label">Dependencia responsable:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="dependencia" name="dependencia"><?= csrf_field() ?>
+                        <input type="text"  class="form-control " id="dependencia" name="dependencia" value="<?= $capacitacion->dependencia ?>"><input type="hidden"  class="form-control " value =" <?=$id?> " id="id" name="id" ><?= csrf_field() ?>
+
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="institucion" class=" control-label">Institución Capacitadora:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="institucion" name="institucion">
+                        <input type="text"  class="form-control "  id="institucion" name="institucion"  value="  <?=$capacitacion->inst_capacitadora ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="nombre_curso" class=" control-label">Nombre del curso:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nombre_curso" name="nombre_curso">
+                        <input type="text"  class="form-control "  id="nombre_curso" name="nombre_curso"  value="<?=$capacitacion->nombre_curso ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="tema_curso" class=" control-label">Tema del curso:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="tema_curso" name="tema_curso">
+                        <input type="text"  class="form-control "  id="tema_curso" name="tema_curso"  value="<?=$capacitacion->tema_curso ?>">
                     </div>
                 </div>
                 <div class='col-6 col-sm-6'>
@@ -129,13 +130,13 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="duracion" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="duracion" name="duracion">
+                        <input type="text"  class="form-control "  id="duracion" name="duracion"  value=" <?=$capacitacion->duracion_horas_curso ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="comprobante" class=" control-label">Tipo de comprobante:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="comprobante" name="comprobante">
+                        <input type="text"  class="form-control "  id="comprobante" name="comprobante"  value=" <?=$capacitacion->tipo_comprobante ?>">
                     </div>
                 </div>
 
@@ -162,19 +163,19 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="empresa" class=" control-label">Insitutción o Empresa:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="empresa" name="empresa">
+                        <input type="text"  class="form-control "  id="empresa" name="empresa"  value=" <?=$capacitacion->institucion ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="curso" class=" control-label">Estudio o Curso:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="curso" name="curso">
+                        <input type="text"  class="form-control "  id="curso" name="curso"  value=" <?=$capacitacion->curso ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="tipo_curso" class=" control-label">Tipo de curso:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="tipo_curso" name="tipo_curso">
+                        <input type="text"  class="form-control "  id="tipo_curso" name="tipo_curso"  value=" <?=$capacitacion->tipo_curso ?>">
                     </div>
                 </div>
                 <div class='col-6 col-sm-6'>
@@ -270,7 +271,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="duracion_horas" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="duracion_horas" name="duracion_horas">
+                        <input type="text"  class="form-control "  id="duracion_horas" name="duracion_horas"  value=" <?=$capacitacion->duracion_horas_adicional ?>">
                     </div>
                 </div>
             </div>
@@ -437,7 +438,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="especificacion" class=" control-label">Especifique:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="especificacion" name="especificacion">
+                        <input type="text"  class="form-control "  id="comprobante" name="comprobante"  value=" <?=$capacitacion->tipo_comprobante ?>">
                     </div>
                 </div>
                 <div class='col-6 col-sm-6'>
@@ -487,7 +488,7 @@
                 <div class='col-12 col-sm-12 col-md-12'>
                     <div class="form-group">
                         <label for="nombre" class=" control-label">Nombre:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nombre" name="nombre">
+                        <input type="text"  class="form-control "  id="comprobante" name="comprobante"  value=" <?=$capacitacion->tipo_comprobante ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>

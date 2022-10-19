@@ -266,6 +266,17 @@ class CuipModel
         return $builder->get()->getRow();
     }
 
+    public function GetSanciones($id){
+        $builder = $this->db->table('sanciones');
+        $builder->select("tipo_sancion,estado_averiguacion,aldia_averiguacion,juzgado,num_proceso,estado_procesal,inicio_proceso,aldia_proceso,tipo_estimulo,descripcion_estimulo,dependencia_otorga,otorgado,determinacion,descripcion_sancion,situacion,inicio_habilitacion,termino_habilitacion,dependencia,institucion_emisora,ES.valor AS estado,delitos,motivos,numero_expediente,agencia_mp,inicio_averiguacion,averiguacion_previa,TF.valor AS fuero,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->join("catalogos_detalle ES"," sanciones.idEstado= ES.id  ","left");
+        $builder->join("catalogos_detalle TF"," sanciones.idTipoFuero= TF.id  ","left");
+        $builder->join("sys_usuarios_admin UA","sanciones.createdby = UA.id","left");
+        $builder->join("sys_usuarios_admin UU","sanciones.updatedby = UU.id","left");
+        $builder->where('sanciones.idPersonal', $id);
+        return $builder->get()->getRow();
+    }
+
     public function GetDocumentos($idEmpresa){
         $builder = $this->db->table('documentos_expediente_digital');
         $builder->select('id,documento,tipo');

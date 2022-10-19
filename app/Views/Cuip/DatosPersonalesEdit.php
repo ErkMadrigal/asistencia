@@ -16,25 +16,25 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="primerNombre" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="primerNombre" name="primerNombre"><?= csrf_field() ?>
+                        <input type="text"  class="form-control " id="primerNombre" name="primerNombre" value=" <?=$variable->primer_nombre?>"><input type="hidden"  class="form-control " value =" <?=$id?> " id="id" name="id" ><?= csrf_field() ?>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="segundoNombre" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="segundoNombre" name="segundoNombre">
+                        <input type="text"  class="form-control "  id="segundoNombre" name="segundoNombre"  value="   <?=$variable->segundo_nombre?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="apellidoPaterno" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="apellidoPaterno" name="apellidoPaterno">
+                        <input type="text"  class="form-control "  id="apellidoPaterno" name="apellidoPaterno"  value="<?=$variable->apellido_paterno ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="apellidoMaterno" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno">
+                        <input type="text"  class="form-control "  id="apellidoMaterno" name="apellidoMaterno"  value="<?=$variable->apellido_materno ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-6'>
@@ -83,25 +83,25 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="rfc" class=" control-label">R.F.C.:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="rfc" name="rfc">
+                        <input type="text"  class="form-control "  id="rfc" name="rfc"  value="<?=$variable->rfc ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="claveE" class=" control-label">Clave Electoral:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="claveE" name="claveE">
+                        <input type="text"  class="form-control "  id="claveE" name="claveE"  value="<?=$variable->clave_electoral ?>">
                     </div>
                 </div>
                 <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="cartilla" class=" control-label">Cartilla SMN:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="cartilla" name="cartilla">
+                        <input type="text"  class="form-control "  id="cartilla" name="cartilla"  value=" <?=$variable->cartilla_smn ?>">
                     </div>
                 </div>
                 <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="licencia" class=" control-label">Licencia de Conducir:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="licencia" name="licencia">
+                        <input type="text"  class="form-control "  id="licencia" name="licencia"  value="<?=$variable->licencia_conducir ?>">
                     </div>
                 </div>
                 <div class='col-6 col-sm-12 col-md-6    '>
@@ -126,13 +126,13 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="CURP" class=" control-label">CURP:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="CURP" name="CURP">
+                        <input type="text"  class="form-control "  id="CURP" name="CURP"  value="<?=$variable->curp ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="pasaporte" class=" control-label">Pasaporte:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="pasaporte" name="pasaporte">
+                        <input type="text"  class="form-control "  id="pasaporte" name="pasaporte"  value="<?=$variable->pasaporte ?>">
                     </div>
                 </div>
                 <div class='col-6 col-sm-6'>
@@ -357,19 +357,19 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="escuela" class=" control-label">Escuela :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="escuela" name="escuela">
+                        <input type="text"  class="form-control "  id="escuela" name="escuela"  value="<?=$variable->escuela ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="especialidad" class=" control-label">Especialidad o Estudio :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="especialidad" name="especialidad">
+                        <input type="text"  class="form-control "  id="especialidad" name="especialidad"  value="<?=$variable->especialidad ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="cedula" class=" control-label">No. Cédula Profesional:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="cedula" name="cedula">
+                        <input type="text"  class="form-control "  id="cedula" name="cedula"  value="<?=$variable->cedula_profesional ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-6'>
@@ -437,13 +437,13 @@
                 <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="certificado" class=" control-label">Num. de Folio Certificado :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="certificado" name="certificado">
+                        <input type="text"  class="form-control "  id="certificado" name="certificado"  value="<?=$variable->folio_certificado ?>">
                     </div>
                 </div>
                 <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="promedio" class=" control-label">Promedio :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="promedio" name="promedio">
+                        <input type="text"  class="form-control "  id="promedio" name="promedio"  value="<?=$variable->institucion ?>">
                     </div>
                 </div>
             </div>
@@ -468,45 +468,45 @@
                 <div class='col-12 col-sm-12 col-md-12'>
                     <div class="form-group">
                         <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="calle" name="calle">
+                        <input type="text"  class="form-control "  id="calle" name="calle"  value="<?=$variable->calle ?>">
                     </div>
                 </div>
                 <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="exterior" name="exterior">
+                        <input type="text"  class="form-control "  id="exterior" name="exterior"  value="<?=$variable->numero_exterior ?>">
                     </div>
                 </div>
                 <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="interior" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="interior" name="interior">
+                        <input type="text"  class="form-control "  id="interior" name="interior"  value="<?=$variable->numero_interior ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="numeroTelefono" class=" control-label">Numero
                             Telefónico:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="numeroTelefono" name="numeroTelefono">
+                            <input type="text"  class="form-control "  id="numeroTelefono" name="numeroTelefono"  value="<?=$variable->colonia ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="entrecalle" class=" control-label">Entre la calle
                             de:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="entrecalle" name="entrecalle">
+                            <input type="text"  class="form-control "  id="entrecalle" name="entrecalle"  value="<?=$variable->entre_calle1 ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="ylacalle" class=" control-label">Y la calle :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="ylacalle" name="ylacalle">
+                        <input type="text"  class="form-control "  id="ylacalle" name="ylacalle"  value="<?=$variable->entre_calle2 ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="codigo" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="codigo" name="codigo"  maxlength="5">
+                        <input type="text"  class="form-control "  id="codigo" name="codigo"  value="<?=$variable->postal ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -601,16 +601,9 @@
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="nombrecurso" class=" control-label">Nombre del Curso
-                            :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nombrecurso" name="nombrecurso">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
                         <label for="nombreInstitucion" class=" control-label">Nombre de
                             laInstitución:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion">
+                            <input type="text"  class="form-control "  id="nombreInstitucion" name="nombreInstitucion"  value="<?=$variable->nombre_institucion ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-6'>
@@ -656,7 +649,7 @@
                     <div class="form-group">
                         <label for="certificado" class=" control-label">Certificado
                             por:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="certificado" name="certificado">
+                            <input type="text"  class="form-control "  id="certificado" name="certificado"  value="<?=$variable->certificado_por ?>">
                     </div>
                 </div>
             </div>

@@ -15,32 +15,35 @@
             <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="empresa" class=" control-label">Empresa:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="empresa" name="empresa"><?= csrf_field() ?>
+                        <input type="text"  class="form-control " id="empresa" name="empresa" value="<?=$diversos->empresa ?>"><input type="hidden"  class="form-control " value =" <?=$id?> " id="id" name="id" ><?= csrf_field() ?>
                     </div>
                 </div>
                 
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="calle" name="calle">
+                        <input type="text"  class="form-control "  id="calle" name="calle"  value="<?=$diversos->calle ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="exterior" name="exterior">
+                        <input type="text"  class="form-control "  id="exterior" name="exterior"  value="<?=$diversos->numero_exterior ?>">
+
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="interior" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="interior" name="interior">
+                        <input type="text"  class="form-control "  id="interior" name="interior"  value="<?=$diversos->numero_interior ?>">
+
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="codigoEmpDiv" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="codigoEmpDiv" name="codigoEmpDiv"  maxlength="5">
+                        <input type="text"  class="form-control "  id="codigoEmpDiv" name="codigoEmpDiv"  value="<?=$diversos->idCodigoPostal ?>">
+
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -100,7 +103,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="numero" name="numero">
+                        <input type="text"  class="form-control "  id="numero" name="numero"  value="<?=$diversos->numero_telefono ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -144,56 +147,56 @@
                 <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="puesto_funcional" class=" control-label">Puesto Funcional:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="puesto_funcional" name="puesto_funcional">
+                        <input type="text"  class="form-control "  id="puesto_funcional" name="puesto_funcional"  value="<?=$diversos->funcional ?>">
                     </div>
                 </div>
                 <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="funciones" class=" control-label">Funciones:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="funciones" name="funciones">
+                        <input type="text"  class="form-control "  id="funciones" name="funciones"  value="">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="sueldo" class=" control-label">Sueldo Base (Mensual):<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="sueldo" name="sueldo">
+                        <input type="text"  class="form-control "  id="sueldo" name="sueldo"  value="">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="compensaciones" class=" control-label">Compensaciones (Mensual):<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="compensaciones" name="compensaciones">
+                        <input type="text"  class="form-control "  id="compensaciones" name="compensaciones"  value=" ">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="area" class=" control-label">Area:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="area" name="area">
+                        <input type="text"  class="form-control "  id="area" name="area"  value="<?=$diversos->area ?>">
                     </div>
                 </div>
                 
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="motivo_separacion" class=" control-label">Motivo de separación:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="motivo_separacion" name="motivo_separacion">
+                        <input type="text"  class="form-control "  id="motivo_separacion" name="motivo_separacion"  value=" <?=$diversos->separacion ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="tipo_separacion" class=" control-label">Tipo de Separación:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="tipo_separacion" name="tipo_separacion">
+                        <input type="text"  class="form-control "  id="tipo_separacion" name="tipo_separacion"  value="<?=$diversos->tipo_separacion ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="tipo_baja" class=" control-label">Tipo de Baja:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="tipo_baja" name="tipo_baja">
+                        <input type="text"  class="form-control "  id="tipo_baja" name="tipo_baja"  value="<?=$diversos->tipo_baja ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-12'>
                     <div class="form-group">
                         <label for="comentarios" class=" control-label">Comentarios:<span class="text-danger">*</span></label>
-                        <textarea type="text" class="form-control " id="comentarios" name="comentarios"></textarea>
+                        <input type="text"  class="form-control "  id="comentarios" name="comentarios"  value="<?=$diversos->comentarios ?>">
                     </div>
                 </div>
             </div>
@@ -218,28 +221,28 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="empleo" class=" control-label">¿Por qué Eligio este empleo?<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="empleo" name="empleo">
+                        <input type="text"  class="form-control "  id="empleo" name="empleo"  value="<?=$diversos->eligio_empleo ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="puesto" class=" control-label">¿Qué puesto le gustaria tener?<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="puesto"
-                            name="puesto">
+                        <input type="text"  class="form-control "  id="puesto" name="puesto"  value="<?=$diversos->puesto_gustaria ?>">
+                            
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="area_gustaria" class=" control-label">¿En que area le gustaría estar?<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="area_gustaria"
-                            name="area_gustaria">
+                        <input type="text"  class="form-control "  id="area_gustaria" name="area_gustaria"  value="<?=$diversos->area_gustaria ?>">
+                            
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="ascender" class=" control-label">¿En que tiempo desea ascender?<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="ascender"
-                            name="ascender">
+                        <input type="text"  class="form-control "  id="ascender" name="ascender"  value="<?=$diversos->tiempo_ascenso ?>">
+                           
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -269,8 +272,8 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="reconomiento" class=" control-label">¿Razones por las que no ha recibido un reconocimiento?<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="reconomiento"
-                            name="reconomiento">
+                        <input type="text"  class="form-control "  id="reconomiento" name="reconomiento"  value="<?=$diversos->reglamento ?>">
+                            
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -300,15 +303,15 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="razones_ascenso" class=" control-label">¿Razones por las que no ha recibido un ascenso?<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="razones_ascenso"
-                            name="razones_ascenso">
+                        <input type="text"  class="form-control "  id="razones_ascenso" name="razones_ascenso"  value="">
+                            
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="capacitacion" class=" control-label">¿Qué capacitación le gustaría recibir?<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="capacitacion"
-                            name="capacitacion">
+                        <input type="text"  class="form-control "  id="capacitacion" name="capacitacion"  value="<?=$diversos->capacitacion ?>">
+                            
                     </div>
                 </div>
             </div>
@@ -357,22 +360,22 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="subtipo_disciplina" class=" control-label">Subtipo de disciplina<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="subtipo_disciplina"
-                            name="subtipo_disciplina">
+                        <input type="text"  class="form-control "  id="subtipo_disciplina" name="subtipo_disciplina"  value="<?=$diversos->subtipo_disciplina ?>">
+                            
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="motivo" class=" control-label">Motivo<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="motivo"
-                            name="motivo">
+                        <input type="text"  class="form-control "  id="motivo" name="motivo"  value="<?=$diversos->motivo ?>">
+                           
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="tipo" class=" control-label">Tipo<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="tipo"
-                            name="tipo">
+                        <input type="text"  class="form-control "  id="tipo" name="tipo"  value="<?=$diversos->tipo ?>">
+                            
                     </div>
                 </div>
                 <div class='col-12 col-sm-6'>
@@ -417,8 +420,8 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="licencias_medicas" class=" control-label">En caso de licencias médicas:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="licencias_medicas"
-                            name="licencias_medicas">
+                        <input type="text"  class="form-control "  id="licencias_medicas" name="licencias_medicas"  value="">
+                          
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -448,8 +451,8 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="cantidad" class=" control-label">Cantidad:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="cantidad"
-                            name="cantidad">
+                        <input type="text"  class="form-control "  id="cantidad" name="cantidad"  value=" ">
+                           
                     </div>
                 </div>
             </div>

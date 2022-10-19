@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <label for="ingreso" class=" control-label">Ingreso familiar adicional
                         (Mensual):<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="ingreso" name="ingreso"><?= csrf_field() ?>
+                        <input type="text"  class="form-control " id="ingreso" name="ingreso" value="<?=$estudio->ingreso_familiar ?>"><input type="hidden"  class="form-control " value =" <?=$id?> " id="id" name="id" ><?= csrf_field() ?>
                 </div>
             </div>
             <div class='col-6 col-sm-6'>
@@ -74,51 +74,51 @@
                 <div class="form-group">
                     <label for="actividad" class=" control-label">Actividades culturales o deportivas
                         que practique:<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="actividad" name="actividad">
+                        <input type="text"  class="form-control "  id="actividad" name="actividad"  value="<?=$estudio->actividades_culturales ?>">
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="especificacion" class=" control-label">Especifiación de inmueble y
                         costo:<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="especificacion" name="especificacion">
+                        <input type="text"  class="form-control "  id="especificacion" name="especificacion"  value="<?=$estudio->especificacion_inmueble ?>">
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="inversion" class=" control-label">Inversiones y monto
                         aproximado:<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="inversion" name="inversion">
+                        <input type="text"  class="form-control "  id="inversion" name="inversion"  value="<?=$estudio->inversiones ?>">
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="vehiculo" class=" control-label">Vehiculo y costo Aproximado:<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="vehiculo" name="vehiculo">
+                    <input type="text"  class="form-control "  id="vehiculo" name="vehiculo"  value=" <?=$estudio->vehiculo ?>">
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="calidad" class=" control-label">Calidad de Vida:<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="calidad" name="calidad">
+                    <input type="text"  class="form-control "  id="calidad" name="calidad"  value="<?=$estudio->calidad_vida?>">
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="vicio" class=" control-label">Vicios:<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="vicio" name="vicio">
+                    <input type="text"  class="form-control "  id="vicio" name="vicio"  value="<?=$estudio->vicios ?>">
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="imagen" class=" control-label">Imagen Publica:<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="imagen" name="imagen">
+                    <input type="text"  class="form-control "  id="imagen" name="imagen"  value="<?=$estudio->imagen_publica ?>">
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="comportamiento" class=" control-label">Comportamiento Social:<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="comportamiento" name="comportamiento">
+                    <input type="text"  class="form-control "  id="comportamiento" name="comportamiento"  value="<?=$estudio->comportamiento ?>">
                 </div>
             </div>
         </div>
@@ -142,27 +142,27 @@
                     <div class="form-group">
                         <label for="apellidoPaterno" class=" control-label">Apellido
                             Paterno:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="apellidoPaterno" name="apellidoPaterno">
+                            <input type="text"  class="form-control "  id="apellidoPaterno" name="apellidoPaterno"  value="<?=$estudio->apellido_paterno?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="apellidoMaterno" class=" control-label">Apellido
                             Materno:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno">
+                            <input type="text"  class="form-control "  id="apellidoMaterno" name="apellidoMaterno"  value="<?=$estudio->apellido_materno ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="primerNombre" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="primerNombre" name="primerNombre">
+                        <input type="text"  class="form-control "  id="primerNombre" name="primerNombre"  value="<?=$estudio->primer_nombre ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="segundoNombre" class=" control-label">Segundo Nombre:
                             <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="segundoNombre" name="segundoNombre">
+                            <input type="text"  class="form-control "  id="segundoNombre" name="segundoNombre"  value="<?=$estudio->segundo_nombre ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-6'>

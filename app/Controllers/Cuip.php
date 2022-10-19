@@ -1419,6 +1419,7 @@ class Cuip extends BaseController {
 			$data['seguridad'] = $this->modelCuip->GetEmpleosSeridadById($id);
 			$data['diversos'] = $this->modelCuip->GetEmpleosDiversos($id);
 			$data['capacitacion'] = $this->modelCuip->GetCapacitaciones($id);
+			$data['sanciones'] = $this->modelCuip->GetSanciones($id);
 
 			$data['id'] = $this->encrypt->Encrypt($id);;
 			
