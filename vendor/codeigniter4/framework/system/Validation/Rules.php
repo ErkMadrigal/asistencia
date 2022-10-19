@@ -306,4 +306,30 @@ class Rules
 
         return true;
     }
+
+    public function is_not_unique_whitout_log(string $str = null, string $field, array $data): bool
+    {
+        // Grab any data for exclusion of a single row.
+        list($field, $where_field, $where_value) = array_pad(explode(',', $field), 3, null);
+
+        // Break the table and field apart
+        sscanf($field, '%[^.].%[^.]', $table, $field);
+
+        
+
+        $db = Database::connect($data['DBGroup'] ?? null);
+
+        $row = $db->table($table)
+                  ->select('1')
+                  ->where($field, $str)
+                  ->limit(1);
+
+        if (! empty($where_field) && ! empty($where_value))
+        {
+            $row = $row->where($where_field, $where_value);
+        }
+
+        return (bool) ($row->get()
+                        ->getRow() !== null);
+    }
 }
