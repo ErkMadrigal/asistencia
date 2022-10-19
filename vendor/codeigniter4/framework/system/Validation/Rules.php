@@ -332,4 +332,72 @@ class Rules
         return (bool) ($row->get()
                         ->getRow() !== null);
     }
+
+     public function password_regex_special(string $str , string &$error = null ) : bool {
+
+
+        $password = trim($str);
+        $regex_special = '/[!@#$%^&*()\-_=+{};:,<.>§~]/';
+        
+
+        
+        if (preg_match_all($regex_special, $password) < 1)
+        {
+            
+            return FALSE;
+        }
+        
+        return TRUE;
+    }
+
+    public function password_regex_lowercase(string $str , string &$error = null ) : bool {
+
+
+        $password = trim($str);
+        $regex_lowercase = '/[a-z]/';
+        
+
+        if (preg_match_all($regex_lowercase, $password) < 1)
+        {
+            
+            return FALSE;
+        }
+        
+        
+        return TRUE;
+    }
+
+    public function password_regex_uppercase(string $str , string &$error = null ) : bool {
+
+
+        $password = trim($str);
+        $regex_uppercase = '/[A-Z]/';
+       
+        if (preg_match_all($regex_uppercase, $password) < 1)
+        {
+            
+            return FALSE;
+        }
+        
+        
+        return TRUE;
+    }
+
+    public function password_regex_number(string $str , string &$error = null ) : bool {
+
+
+        $password = trim($str);
+        $regex_number = '/[0-9]/';
+        
+
+        
+        if (preg_match_all($regex_number, $password) < 1)
+        {
+            
+            return FALSE;
+        }
+        
+        
+        return TRUE;
+    }
 }
