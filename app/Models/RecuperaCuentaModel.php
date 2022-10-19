@@ -13,7 +13,7 @@ class recuperaCuentaModel extends Model{
 
         $data = array (
             'password' => $password );
-            $this->db->table('SuitePrisma.sys_usuarios_admin')->where('token', $token)->update($data);
+            $this->db->table('sys_usuarios_admin')->where('token', $token)->update($data);
         
         if ($this->db->affectedRows() == 0){
 
@@ -27,7 +27,7 @@ class recuperaCuentaModel extends Model{
     }
 
     public function GetUsuarioByToken($token){
-        $builder = $this->db->table('SuitePrisma.sys_usuarios_admin');
+        $builder = $this->db->table('sys_usuarios_admin');
         $builder->select("nombre,email");
         $builder->where('token', $token);
         
@@ -44,7 +44,7 @@ class recuperaCuentaModel extends Model{
 
         $data = array (
             'token' => '' );
-            $this->db->table('SuitePrisma.sys_usuarios_admin')->where('token', $token)->update($data);
+            $this->db->table('sys_usuarios_admin')->where('token', $token)->update($data);
 
     }
 
