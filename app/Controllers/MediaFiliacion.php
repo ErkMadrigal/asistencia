@@ -270,7 +270,38 @@ class MediaFiliacion extends BaseController {
 		if ($this->request->getMethod() == "post" && $this->request->getvar(['complexion, piel, cara, anteojos, estatura, peso, cabello_cantidad, color_cabello, forma_cabello, calvicie_cabello, implatacion_cabello, altura, inclinacion, ancho, direccion_cejas, implantacion_cejas, forma, tamanno, color, forma_ojos, tamanno_ojos, raiz, dorso, ancho_nariz, base_nariz, altura_nariz, tamanno_boca, comisura_boca, espesor_labios, altura_labial, prominencia, tipo_menton, forma_menton, inclinacion_menton, forma_ODerecha, original, superior, posterior, adherencia, contorno, adherencia_lobulo, particularidad, dimension, tipo_sangre, RH_sangre, cicatrices, cicatrices_descripcion, tatuajes, tatuajes_descripcion, lunares, lunares_descripcion, fisico, fisico_descripcion, protesis, protesis_descripcion, discapacidad, discapacidad_descripcion'],FILTER_SANITIZE_STRING)){
 
 				$rules = [
-				'complexion' =>  ['label' => "Complexión", 'rules' => 'required']];
+				'complexion' =>  ['label' => "Complexión", 'rules' => 'required'],
+				'dependencia' =>  ['label' => "Dependencia", 'rules' => 'required'],
+				'institucion' =>  ['label' => "Institucion", 'rules' => 'required'],
+				'nombre_curso' =>  ['label' => "Nombre Curso", 'rules' => 'required'],
+				'tema_curso' =>  ['label' => "Tema Curso", 'rules' => 'required'],
+				'nivel_curso' =>  ['label' => "Nivel Curso", 'rules' => 'required'],
+				'eficienciaCursos' =>  ['label' => "Eficiencia Cursos", 'rules' => 'required'],
+				'inicio' =>  ['label' => "Inicio", 'rules' => 'required'],
+				'conclusion' =>  ['label' => "Conclusion", 'rules' => 'required'],
+				'duracion' =>  ['label' => "Duracion", 'rules' => 'required'],
+				'empresa' =>  ['label' => "Empresa", 'rules' => 'required'],
+				'curso' =>  ['label' => "Curso", 'rules' => 'required'],
+				'tipo_curso' =>  ['label' => "Tipo Curso", 'rules' => 'required'],
+				'cuso_tomado' =>  ['label' => "Cuso Tomado", 'rules' => 'required'],
+				'eficiencia' =>  ['label' => "Eficiencia", 'rules' => 'required'],
+				'inicioAdicional' =>  ['label' => "Inicio Adicional", 'rules' => 'required'],
+				'conclusionAdicional' =>  ['label' => "Conclusion Adicional", 'rules' => 'required'],
+				'duracion_horas' =>  ['label' => "Duracion Horas", 'rules' => 'required'],
+				'idioma' =>  ['label' => "Idioma", 'rules' => 'required'],
+				'lectura' =>  ['label' => "lectura", 'rules' => 'required'],
+				'escritura' =>  ['label' => "Escritura", 'rules' => 'required'],
+				'conversacion' =>  ['label' => "Conversacion", 'rules' => 'required'],
+				'tipo_habilidad' =>  ['label' => "Tipo Habilidad", 'rules' => 'required'],
+				'especificacion' =>  ['label' => "Especificacion", 'rules' => 'required'],
+				'grado_habilidadCap' =>  ['label' => "Grado Habilidad", 'rules' => 'required'],
+				'nombre' =>  ['label' => "Nombre", 'rules' => 'required'],
+				'tipoAgrupa' =>  ['label' => "Tipo Agrupacion", 'rules' => 'required'],
+				'especificacion' =>  ['label' => "Especificacion", 'rules' => 'required'],
+				'grado_habilidad' =>  ['label' => "Grado Habilidad", 'rules' => 'required'],
+				'conversacion' =>  ['label' => "Complexión", 'rules' => 'required'],
+				'desde' =>  ['label' => "Desde", 'rules' => 'required'],
+				'hasta' =>  ['label' => "Hasta", 'rules' => 'required']];
 		 
 				$errors = [];
 				$succes = [];

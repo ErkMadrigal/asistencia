@@ -41,7 +41,7 @@
                     <div class='form-group'>
                         <label for="fecha_nacimiento">Fecha de Nacimiento: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="fecha_nacimiento" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_nacimiento" id="datetime-fecha_nacimiento" name="fecha_nacimiento" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_nacimiento" id="datetime-fecha_nacimiento" name="fecha_nacimiento" placeholder="" value="<?=$variable->fecha_nacimiento ?>" />
                             <div class="input-group-append" data-target="#fecha_nacimiento" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -65,7 +65,7 @@
                                 if( !empty($genero) ):
                                     foreach($genero as  $a){
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= ($variable->sexo == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>

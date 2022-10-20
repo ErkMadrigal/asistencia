@@ -1,4 +1,4 @@
-<div class="card card-primary">
+<div class="card card-primary" >
     <div class="card-header">
         <h3 class="card-title">DATOS GENERALES: SOCIOECONÓMICO</h3>
 
@@ -124,7 +124,7 @@
         </div>
     </div>
 </div>        
-<div class="card card-primary">
+<div class="card card-primary" id="CardDependientes">
     <div class="card-header">
         <h3 class="card-title">DATOS DEL CONYUGE Y DEPENDIENTES ECONÓMICOS</h3>
 
@@ -285,7 +285,7 @@
 
                     for (var clave in response.error){
                                 
-                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#CardDependientes #"+clave+"" );
                             
                     }
                         toastr.error('<?=lang('Layout.camposObligatorios')?>');
