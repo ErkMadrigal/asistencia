@@ -32,6 +32,8 @@ class Sepomex extends BaseController{
         if ($this->request->getMethod() == "get"){
 			
             $data['modulos'] = $this->menu->Permisos();
+			$data['sepomexEstados'] = $this->modelSepomex->GetSepomexEstados();
+			
 			$resultData = $this->modelSepomex->GetSepomex();
 			$result = [];
 			foreach ( $resultData as $v){
@@ -56,6 +58,56 @@ class Sepomex extends BaseController{
 			return view('sepomex/sepomex', $data);
 		}	
     }
+
+	public function mostrarDatos(){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['cp', 'municipio', 'ciudad', 'estado'],FILTER_SANITIZE_STRING)){
+            
+            $errors = [];
+            $succes = [];
+            $dontSucces = [];
+            $data = [];
+			$validate = [];
+
+			$dataSep = array(
+				"codigoPostal" =>  $_POST["cp"],
+				"municipio" =>  $_POST["municipio"],
+				"ciudad" =>  $_POST["ciudad"],
+				"estado" =>  $_POST["estado"],
+			);		
+
+			if(!empty($dataSep["codigoPostal"])){
+				array_push($validate, 1);
+			}
+			
+			if(!empty($dataSep["municipio"])){
+				array_push($validate, 1);
+			}
+			
+			if(!empty($dataSep["ciudad"])){
+				array_push($validate, 1);
+			}
+			
+			if(!empty($dataSep["estado"])){
+				array_push($validate, 1);
+			}
+			
+			if(count($validate) == 0){
+				$errors = ["error" => "error", "mensaje" => 'Es Requerido alguno de los Campos'];
+			}else{
+
+				$select = $this->modelSepomex->GetSepomexOption( $dataSep );
+
+				if ($select) {
+					$succes = ["mensaje" => 'Exito', "succes" => "succes"];
+					$data = $select;
+				} else {
+					$dontSucces = ["error" => "error", "mensaje" => 'Hubo un error al Obtener los Datos.'];
+				}
+				
+			}
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+		}
+	}
 
     public function detail(){
 

@@ -24,9 +24,28 @@ class CataSepomex
     public function GetSepomex(){
         $builder = $this->db->table('sepomex');
         $builder->select('id, codigoPostal, asentamiento, municipio, ciudad, estado, activo');
-        $builder->limit(1000);
+        $builder->limit("100");
         return $builder->get()->getResult();
         
+    }
+
+    public function GetSepomexOption( $where ){
+        $builder = $this->db->table('sepomex');
+        $builder->select('id, codigoPostal, asentamiento, municipio, ciudad, estado, activo');
+        if(!empty($where["codigoPostal"])){
+            $builder->where('codigoPostal', $where["codigoPostal"]);
+        }
+        if(!empty($where["municipio"])){
+            $builder->where('municipio', $where["municipio"]);
+        }
+        if(!empty($where["ciudad"])){
+            $builder->where('ciudad', $where["ciudad"]);
+        }
+        if(!empty($where["estado"])){
+            $builder->where('estado', $where["estado"]);
+        }
+
+        return $builder->get()->getResult(); 
     }
 
     public function GetSepomexEstados(){
