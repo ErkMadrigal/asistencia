@@ -39,7 +39,6 @@ class CuipModel
         
     }
 
-
     public function insertDatosPersonales($data){
         $this->db->transStart();
 
