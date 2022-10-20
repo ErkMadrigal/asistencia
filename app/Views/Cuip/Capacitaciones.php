@@ -1,4 +1,4 @@
-<div class="card card-primary">
+<div class="card card-primary" id="cardCapPublica">
     <div class="card-header">
         <h3 class="card-title">CAPACITACIÓN EN SEGURIDAD PUBLICA</h3>
 
@@ -144,7 +144,7 @@
     </div>
 </div>
 
-<div class="card card-primary">
+<div class="card card-primary" id="cardCapAdicional">
     <div class="card-header">
         <h3 class="card-title">CAPACITACIÓN ADICIONAL
         </h3>
@@ -277,7 +277,7 @@
         
     </div>
 </div>
-<div class="card card-primary">
+<div class="card card-primary" id="cardCapIdiomas">
     <div class="card-header">
         <h3 class="card-title">IDIOMAS O DIALECTOS</h3>
 
@@ -394,7 +394,7 @@
     </div>
 </div>
 
-<div class="card card-primary">
+<div class="card card-primary" id="cardCapHAbilidades">
     <div class="card-header">
         <h3 class="card-title">HABILIDADES Y APTITUDES</h3>
 
@@ -470,7 +470,7 @@
     
 </div>
 </div>
-<div class="card card-primary">
+<div class="card card-primary" id="cardCapAfiliacion">
     <div class="card-header">
         <h3 class="card-title">AFILIACION A AGRUPACIONES</h3>
 
@@ -637,7 +637,15 @@
 
                     for (var clave in response.error){
                                 
-                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#cardCapPublica #"+clave+"" );
+
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#cardCapAdicional #"+clave+"" );
+
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#cardCapIdiomas #"+clave+"" );
+
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#cardCapHAbilidades #"+clave+"" );
+
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#cardCapAfiliacion #"+clave+"" );
                             
                     }
                         toastr.error('<?=lang('Layout.camposObligatorios')?>');

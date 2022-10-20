@@ -26,6 +26,7 @@
         <table id="dataGrid" class="table  text-center table-hover table-head-fixed text-nowrap">
             <thead>
             <tr>
+                <th>Clase</th>
                 <th>Marca</th>
                 <th>Matricula</th>
                 <th>Folio-Manif</th>
@@ -56,7 +57,9 @@ function estatusRenderer(data, type, full, meta) {
             data: <?= json_encode($arma) ?> ,
             deferRender: true,
             pageLength: 10,
-            columns: [{ data: "idMarca"
+            columns: [{ data: "clase"
+                      },
+                      { data: "idMarca"
                       },
                       { data: "matricula"
                       },
