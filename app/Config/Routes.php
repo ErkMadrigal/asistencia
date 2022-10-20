@@ -94,12 +94,12 @@ $routes->post('GuardarEmpSegPublica', 'Cuip::AgregarEmpSegPublica',['filter' => 
 $routes->post('GuardarSancionesEstimulos', 'Cuip::AgregarSancionesEstimulos',['filter' => 'auth']);
 $routes->post('GuardarCapacitaciones', 'Cuip::AgregarCapacitaciones',['filter' => 'auth']);
 $routes->post('GuardarEmpDiversos', 'Cuip::AgregarEmpDiversos',['filter' => 'auth']);
-$routes->get('mediafiliacion', 'Cuip::getMediafiliacion',['filter' => 'auth']);
+$routes->get('mediafiliacion', 'MediaFiliacion::getMediafiliacion',['filter' => 'auth']);
 $routes->get('cuipInfo', 'Cuip::getCuipDetail',['filter' => 'auth']);
 $routes->get('expediente', 'Cuip::getExpediente',['filter' => 'auth']);
 $routes->get('editarCuip', 'Cuip::CuipEdit',['filter' => 'auth']);
 $routes->post('GuardarReferencias', 'Cuip::AgregarReferencias',['filter' => 'auth']);
-$routes->post('GuardarMediaFiliacion', 'Cuip::AgregarMediaFiliacion',['filter' => 'auth']);
+$routes->post('GuardarMediaFiliacion', 'MediaFiliacion::AgregarMediaFiliacion',['filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------

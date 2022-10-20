@@ -22,8 +22,10 @@ class ArmasModel
 
     public function GetArmas($idEmpresa){
         $builder = $this->db->table('armas');
-        $builder->select('armas.id, armas.matricula, armas.folio_manif,armas.activo, M.valor AS idMarca');
+        $builder->select('armas.id, armas.matricula, armas.folio_manif,armas.activo, M.valor AS idMarca,C.valor AS clase');
         $builder->join("catalogos_detalle M"," armas.idMarca= M.id  ","left");
+        $builder->join("catalogos_detalle C"," armas.idClase= C.id  ","left");
+        $builder->orderBy("clase","asc");
         $builder->orderBy("matricula","asc");
         $builder->where("armas.idempresa",$idEmpresa);
         return $builder->get()->getResult();

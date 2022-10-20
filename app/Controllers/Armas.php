@@ -43,6 +43,7 @@ class Armas extends BaseController {
 				$result[] = (object) array (
 					'id' => $id ,
 					'matricula' => $v->matricula,
+					'clase' => $v->clase,
 					'folio_manif' => $v->folio_manif,
                     'idMarca' => $v->idMarca,
 					'activo' => $v->activo
