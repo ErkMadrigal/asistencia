@@ -1,4 +1,4 @@
-<div class="card card-primary">
+<div class="card card-primary" id="cardEmplSeguridad">
     <div class="card-header">
         <h3 class="card-title">EMPLEOS EN SEGURIDAD PUBLICA</h3>
 
@@ -295,7 +295,7 @@
 
                     for (var clave in response.error){
                                 
-                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#cardEmplSeguridad #"+clave+"" );
                             
                     }
                         toastr.error('<?=lang('Layout.camposObligatorios')?>');

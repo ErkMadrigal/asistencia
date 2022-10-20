@@ -1178,7 +1178,7 @@ class Cuip extends BaseController {
 				'empleo' =>  ['label' => "¿Por qué Eligio este empleo?", 'rules' => 'required|max_length[255]'],
 				'puesto' =>  ['label' => "¿Qué puesto le gustaria tener?", 'rules' => 'required|max_length[255]'],
 				'area_gustaria' =>  ['label' => "¿En que area le gustaría estar?", 'rules' => 'required|max_length[255]'],
-				'' =>  ['label' => "¿En que tiempo desea ascender?", 'rules' => 'required|max_length[255]'],
+				'ascender' =>  ['label' => "¿En que tiempo desea ascender?", 'rules' => 'required|max_length[255]'],
 				'reglamentacion' =>  ['label' => "¿Conoce la reglamentación de los reconocimientos?", 'rules' => 'required'],
 				'ascender' =>  ['label' => "¿Razones por las que no ha recibido un reconocimiento?", 'rules' => 'required|max_length[255]'],
 				'reglamentacion' =>  ['label' => "¿Conoce la reglamentación de los ascensos?", 'rules' => 'required'],
@@ -1190,7 +1190,7 @@ class Cuip extends BaseController {
 				'tipo' =>  ['label' => "Tipo", 'rules' => 'required|max_length[255]'],
 				'fecha_inicialDis' =>  ['label' => "Fecha de Inicio", 'rules' => 'required'],
 				'fecha_finalDis' =>  ['label' => "Fecha de Término", 'rules' => 'required'],
-				'' =>  ['label' => "En caso de licencias médicas", 'rules' => 'required|max_length[255]'],
+				'licencias_medicas' =>  ['label' => "En caso de licencias médicas", 'rules' => 'required|max_length[255]'],
 				'duracion' =>  ['label' => "Duración", 'rules' => 'required'],
 				'cantidad' =>  ['label' => "Cantidad", 'rules' => 'required|max_length[255]']];
 		 

@@ -1,4 +1,4 @@
-<div class="card card-primary">
+<div class="card card-primary" id="cardPersonales">
     <div class="card-header">
         <h3 class="card-title">DATOS PERSONALES</h3>
 
@@ -701,6 +701,10 @@
 
                     for (var clave in response.error){
                                 
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+
                         $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
                             
                     }

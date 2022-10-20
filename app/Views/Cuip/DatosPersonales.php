@@ -1,4 +1,4 @@
-<div class="card card-primary">
+<div class="card card-primary" id="cardPersoanles">
     <div class="card-header">
         <h3 class="card-title">DATOS PERSONALES</h3>
 
@@ -451,7 +451,7 @@
     </div>
 </div>
 
-<div class="card card-primary">
+<div class="card card-primary" id="CardPersoDomicilio">
     <div class="card-header">
         <h3 class="card-title">DATOS DEL DOMICILIO</h3>
 
@@ -585,7 +585,7 @@
 </div>
 
 
-<div class="card card-primary">
+<div class="card card-primary" id="cardPerExpericncia">
     <div class="card-header">
         <h3 class="card-title">DATOS GENERALES: EXPERIENCIA DOCENTE</h3>
 
@@ -708,7 +708,13 @@
 
                     for (var clave in response.error){
                                 
-                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#cardPersoanles #"+clave+"" );
+
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#CardPersoDomicilio #"+clave+"" );
+
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#cardPerExpericncia #"+clave+"" );
+
+
                             
                     }
                         toastr.error('<?=lang('Layout.camposObligatorios')?>');
