@@ -179,6 +179,25 @@
                             </div>
                     </div>
                 </div>
+                
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="municipio" class=" control-label">Municipio de Nacimiento: </label>
+                        <div >
+                                <?=$variable->nacionalidad ?>
+                                    
+                            </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="ciudad" class=" control-label">Cuidad de Nacimiento: </label>
+                        <div >
+                                <?=$variable->nacionalidad ?>
+                                    
+                            </div>
+                    </div>
+                </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="estadoCivil" class=" control-label">Estado Civil : </label>
@@ -246,7 +265,7 @@
                         </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-12 col-sm-6'>
                     <div class="form-group">
                         <label for="sep" class=" control-label">Registro SEP : </label>
                         <div >
@@ -255,7 +274,7 @@
                             </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-12 col-sm-6'>
                     <div class="form-group">
                         <label for="certificado" class=" control-label">Num. de Folio Certificado : </label>
                         <div >
@@ -264,7 +283,7 @@
                             </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-12 col-sm-6'>
                     <div class="form-group">
                         <label for="promedio" class=" control-label">Promedio : </label>
                         <div >
@@ -413,6 +432,15 @@
     <div class="card-body">
         <form class="form-horizontal" id="">
             <div class="row">
+            <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="nombreInstitucion" class=" control-label">Nombre del curso: </label>
+                            <div >
+                                <?=$variable->nombre_curso ?>
+                                    
+                            </div>
+                    </div>
+                </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="nombreInstitucion" class=" control-label">Nombre de
@@ -445,7 +473,7 @@
                         </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-6'>
                     <div class="form-group">
                         <label for="certificado" class=" control-label">Certificado
                             por: </label>

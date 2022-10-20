@@ -20,7 +20,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="corporacion" class=" control-label">Corporacióne:<span class="text-danger">*</span></label>
+                        <label for="corporacion" class=" control-label">Corporación:<span class="text-danger">*</span></label>
                         <input type="text"  class="form-control "  id="corporacion" name="corporacion"  value="<?=$seguridad->corporacion ?>">
                     </div>
                 </div>

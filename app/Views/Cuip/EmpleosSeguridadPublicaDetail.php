@@ -23,7 +23,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="corporacion" class=" control-label">Corporacióne:</label>
+                        <label for="corporacion" class=" control-label">Corporación:</label>
                         <div >
                                 <?=$seguridad->corporacion ?>
                                     
@@ -77,9 +77,9 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="colonia" class=" control-label">Colonia:</label>
+                        <label for="numero" class=" control-label">Numero Telefónico:</label>
                         <div >
-                                <?=$seguridad->colonia ?>
+                                <?=$seguridad->numero_telefono ?>
                                     
                             </div>
                     </div>
@@ -95,9 +95,9 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="numero" class=" control-label">Numero Telefónico:</label>
+                        <label for="colonia" class=" control-label">Colonia:</label>
                         <div >
-                                <?=$seguridad->numero_telefono ?>
+                                <?=$seguridad->colonia ?>
                                     
                             </div>
                     </div>
@@ -120,7 +120,7 @@
                             </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-6'>
                     <div class="form-group">
                         <label for="puesto_funcional" class=" control-label">Puesto Funcional:</label>
                         <div >
@@ -129,7 +129,7 @@
                             </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-6'>
                     <div class="form-group">
                         <label for="funciones" class=" control-label">Funciones:</label>
                         <div >
@@ -138,7 +138,7 @@
                             </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-6'>
                     <div class="form-group">
                         <label for="especialidad" class=" control-label">Especialidad:</label>
                         <div >
@@ -147,7 +147,7 @@
                             </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-6'>
                     <div class="form-group">
                         <label for="rango" class=" control-label">Rango o categoría:</label>
                         <div >
@@ -273,7 +273,7 @@
                             </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-6'>
                     <div class="form-group">
                         <label for="comentarios" class=" control-label">Comentarios:</label>
                         <div >

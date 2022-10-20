@@ -314,7 +314,7 @@
     <div class="card-body">
         <form class="form-horizontal" id="">
             <div class="row">
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="nombre" class=" control-label">Nombre: </label>
                         <div >

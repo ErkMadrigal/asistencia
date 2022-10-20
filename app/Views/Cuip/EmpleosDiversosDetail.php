@@ -14,40 +14,14 @@
             <div class="row">
             <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="dependencia" class=" control-label">Dependencia:</label>
+                        <label for="empresa" class=" control-label">Empresa:</label>
                         <div >
                               <?=$diversos->empresa ?>
                                     
                             </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="corporacion" class=" control-label">Corporacióne:</label>
-                        <div >
-                               
-                                    
-                            </div>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="primerNombre" class="control-label">Primer Nombre: </label>
-                        <div >
-                             
-                                    
-                            </div>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="segundoNombre" class=" control-label">Segundo Nombre: </label>
-                        <div >
-                          
-                                    
-                            </div>
-                    </div>
-                </div>
+                
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="calle" class=" control-label">Calle :</label>
@@ -77,6 +51,15 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
+                        <label for="codigo" class=" control-label">Código Postal :</label>
+                        <div >
+                                <?=$diversos->idCodigoPostal ?>
+                                    
+                            </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
                         <label for="colonia" class=" control-label">Colonia:</label>
                         <div >
                                 <?=$diversos->colonia ?>
@@ -84,11 +67,22 @@
                             </div>
                     </div>
                 </div>
+                
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="codigo" class=" control-label">Código Postal :</label>
+                        <label for="entidad" class=" control-label">Entidad Federativa:</label>
                         <div >
-                                <?=$diversos->idCodigoPostal ?>
+                                <?=$diversos->estado ?>
+                                    
+                            </div>
+                    </div>
+                </div>
+                
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="municipio" class=" control-label">municipio:</label>
+                        <div >
+                                <?=$diversos->municipio ?>
                                     
                             </div>
                     </div>
@@ -120,7 +114,7 @@
                             </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-6'>
                     <div class="form-group">
                         <label for="puesto_funcional" class=" control-label">Puesto Funcional:</label>
                         <div >
@@ -129,7 +123,7 @@
                             </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-6'>
                     <div class="form-group">
                         <label for="funciones" class=" control-label">Funciones:</label>
                         <div >
@@ -138,42 +132,7 @@
                             </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
-                    <div class="form-group">
-                        <label for="especialidad" class=" control-label">Especialidad:</label>
-                        <div >
-                                
-                                    
-                            </div>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-12'>
-                    <div class="form-group">
-                        <label for="rango" class=" control-label">Rango o categoría:</label>
-                        <div >
-                                
-                                    
-                            </div>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="numero_placa" class=" control-label">Numero de placa:</label>
-                        <div >
-                                
-                                    
-                            </div>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="numero_empleado" class=" control-label">Numero de empleado :</label>
-                        <div >
-                                
-                                    
-                            </div>
-                    </div>
-                </div>
+                
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="sueldo" class=" control-label">Sueldo Base (Mensual):</label>
@@ -201,51 +160,7 @@
                             </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="division" class=" control-label">División:</label>
-                        <div >
-                                
-                                    
-                            </div>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="jefe_inmediato" class=" control-label">CUIP Jefe Inmediato:</label>
-                        <div >
-                                
-                                    
-                            </div>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="nombre_jefe" class=" control-label">Nombre del Jefe Inmediato:</label>
-                        <div >
-                                
-                                    
-                            </div>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="entidad" class=" control-label">Entidad Federativa:</label>
-                        <div >
-                                <?=$diversos->estado ?>
-                                    
-                            </div>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="municipio" class=" control-label">Municipio:</label>
-                        <div >
-                                <?=$diversos->municipio ?>
-                                    
-                            </div>
-                    </div>
-                </div>
+                
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="motivo_separacion" class=" control-label">Motivo de separación:</label>
@@ -273,7 +188,7 @@
                             </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-6'>
                     <div class="form-group">
                         <label for="comentarios" class=" control-label">Comentarios:</label>
                         <div >
@@ -462,6 +377,24 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="licencias_medicas" class=" control-label">En caso de licencias médicas:</label>
+                        <div >
+                                
+                                    
+                            </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="duracion" class=" control-label">Duracion:</label>
+                        <div >
+                                
+                                    
+                            </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="cantidad" class=" control-label">Cantidad:</label>
                         <div >
                                 
                                     

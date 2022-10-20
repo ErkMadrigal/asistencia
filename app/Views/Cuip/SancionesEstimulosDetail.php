@@ -183,7 +183,7 @@
                         </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="juzgado" class=" control-label">Juzgado:</label>
                         <div >
@@ -192,7 +192,7 @@
                             </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="no_proceso" class=" control-label">No. Proceso:</label>
                         <div >
@@ -201,7 +201,7 @@
                             </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-4'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="estado_procesal" class=" control-label">Estado Procesal:</label>
                         <div >
@@ -251,7 +251,7 @@
         <form class="form-horizontal" id="">
             <div class="row">
 
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="tipo_estimulo" class=" control-label">Tipo:</label>
                         <div >
