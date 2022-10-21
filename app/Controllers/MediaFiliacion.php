@@ -303,10 +303,12 @@ class MediaFiliacion extends BaseController {
 				'desde' =>  ['label' => "Desde", 'rules' => 'required'],
 				'hasta' =>  ['label' => "Hasta", 'rules' => 'required']];
 		 
+
 				$errors = [];
 				$succes = [];
 				$dontSucces = [];
 				$data = [];
+				
 
 				if($this->validate($rules)){
 					
