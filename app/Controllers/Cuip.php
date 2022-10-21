@@ -222,17 +222,17 @@ class Cuip extends BaseController {
 				'segundoNombre' =>  ['label' => "Segundo Nombre", 'rules' => 'required|max_length[255]'],
 				'apellidoPaterno' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
 				'apellidoMaterno' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
-				'fecha_nacimiento' =>  ['label' => 'Fecha de Nacimiento', 'rules' =>'required'],
+				'fecha_nacimiento' =>  ['label' => 'Fecha de Nacimiento', 'rules' =>'required|valid_only_date_chek'],
 				'getGenero' =>  ['label' => 'Sexo', 'rules' =>'required'],
 				'rfc' =>  ['label' => "RFC", 'rules' => 'required|max_length[20]'],
 				'claveE' =>  ['label' => "Clave Electoral", 'rules' => 'required|max_length[20]'],
 				'cartilla' =>  ['label' => "Cartilla SMN", 'rules' => 'required|max_length[20]'],
 				'licencia' =>  ['label' => "Licencia de Conducir", 'rules' => 'required|max_length[20]'],
-				'vigenciaLic' =>  ['label' => "Vigencia de Licencia", 'rules' => 'required'],
+				'vigenciaLic' =>  ['label' => "Vigencia de Licencia", 'rules' => 'required|valid_only_date_chek'],
 				'CURP' =>  ['label' => "CURP", 'rules' => 'required|max_length[20]'],
 				'pasaporte' =>  ['label' => "Pasaporte", 'rules' => 'required|max_length[20]'],
 				'modo_nacionalidad' =>  ['label' => "Modo de Nacionalidad", 'rules' => 'required'],
-				'fecha_naturalizacion' =>  ['label' => "Fecha de Naturalización", 'rules' => 'required'],
+				'fecha_naturalizacion' =>  ['label' => "Fecha de Naturalización", 'rules' => 'required|valid_only_date_chek'],
 				'pais_nacimiento' =>  ['label' => "Pais de Nacimiento", 'rules' => 'required'],
 				'entidad_nacimiento' =>  ['label' => "Entidad de Nacimiento", 'rules' => 'required|max_length[20]'],
 				'municipio_nacimiento' =>  ['label' => "Municipio de Nacimiento", 'rules' => 'required|max_length[20]'],
@@ -243,26 +243,25 @@ class Cuip extends BaseController {
 				'escuela' =>  ['label' => "Escuela", 'rules' => 'required|max_length[20]'],
 				'especialidad' =>  ['label' => "Especialidad", 'rules' => 'required|max_length[20]'],
 				'cedula' =>  ['label' => "Cedula", 'rules' => 'required|max_length[20]'],
-				'anno_inicio' =>  ['label' => "RFC", 'rules' => 'required'],
-				'anno_inicio' =>  ['label' => "Año de Inicio", 'rules' => 'required'],
-				'anno_termino' =>  ['label' => "Año de Termino", 'rules' => 'required|max_length[20]'],
+				'anno_inicio' =>  ['label' => "Año de Inicio", 'rules' => 'required|max_length[4]|integer'],
+				'anno_termino' =>  ['label' => "Año de Termino", 'rules' => 'required|max_length[4]|integer'],
 				'registroSep' =>  ['label' => "Registro SEP", 'rules' => 'required'],
 				'certificado' =>  ['label' => "Num. de Folio Certificado", 'rules' => 'required|max_length[20]'],
 				'calle' =>  ['label' => "Calle", 'rules' => 'required|max_length[20]'],
 				'exterior' =>  ['label' => "No. Exterior", 'rules' => 'required|max_length[20]'],
 				'interior' =>  ['label' => "No. Interior", 'rules' => 'required|max_length[20]'],
-				'numeroTelefono' =>  ['label' => "Numero Telefónico", 'rules' => 'required|max_length[20]'],
+				'numeroTelefono' =>  ['label' => "Numero Telefónico", 'rules' => 'required|max_length[10]|integer'],
 				'entrecalle' =>  ['label' => "Entre la calle de", 'rules' => 'required|max_length[20]'],
 				'ylacalle' =>  ['label' => "Y la calle ", 'rules' => 'required|max_length[20]'],
-				'codigo' =>  ['label' => "Código Postal", 'rules' => 'required|max_length[20]'],
+				'codigo' =>  ['label' => "Código Postal", 'rules' => 'required|max_length[5]|integer'],
 				'coloniacodigo' =>  ['label' => "Colonia", 'rules' => 'required'],
 				'estadocodigo' =>  ['label' => "Entidad Federativa", 'rules' => 'required'],
 				'municipiocodigo' =>  ['label' => "Municipio", 'rules' => 'required'],
 				'ciudadcodigo' =>  ['label' => "Ciudad", 'rules' => 'required'],
 				'nombrecurso' =>  ['label' => "Nombre del Curso", 'rules' => 'required|max_length[20]'],
 				'nombreInstitucion' =>  ['label' => "Nombre de la Institución", 'rules' => 'required|max_length[20]'],
-				'fecha_inicial' =>  ['label' => "Fecha de Inicio", 'rules' => 'required'],
-				'fecha_final' =>  ['label' => "Fecha de Término", 'rules' => 'required'],
+				'fecha_inicial' =>  ['label' => "Fecha de Inicio", 'rules' => 'required|valid_only_date_chek'],
+				'fecha_final' =>  ['label' => "Fecha de Término", 'rules' => 'required|valid_only_date_chek'],
 				'certificado' =>  ['label' => "Certificado por", 'rules' => 'required|max_length[255]']];
 		 
 				$errors = [];
@@ -581,7 +580,7 @@ class Cuip extends BaseController {
 				'apellidoMaterno' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
 				'primerNombre' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
 				'segundoNombre' =>  ['label' => "Segundo Nombre", 'rules' => 'required|max_length[255]'],
-				'fecha_nacimiento_dep' =>  ['label' => "Fecha de Nacimiento", 'rules' => 'required'],
+				'fecha_nacimiento_dep' =>  ['label' => "Fecha de Nacimiento", 'rules' => 'required|valid_only_date_chek'],
 				'sexo_dep' =>  ['label' => "Sexo", 'rules' => 'required'],
 				'parentesco_familiar' =>  ['label' => "Parentesco", 'rules' => 'required']];
 		 
@@ -690,10 +689,10 @@ class Cuip extends BaseController {
 				'calle' =>  ['label' => "Calle ", 'rules' => 'required|max_length[255]'],
 				'exterior' =>  ['label' => "No. Exterior", 'rules' => 'required|max_length[255]'],
 				'interior' =>  ['label' => "No. Interior", 'rules' => 'required|max_length[255]'],
-				'numero' =>  ['label' => "Numero Telefónico", 'rules' => 'required|max_length[255]'],
-				'codigoSegPub' =>  ['label' => "Código Postal", 'rules' => 'required|max_length[255]'],
+				'numero' =>  ['label' => "Numero Telefónico", 'rules' => 'required|max_length[10]|integer'],
+				'codigoSegPub' =>  ['label' => "Código Postal", 'rules' => 'required|max_length[5]|integer'],
 				'coloniacodigoSegPub' =>  ['label' => "Colonia", 'rules' => 'required'],
-				'ingresoEmpPublic' =>  ['label' => "Ingreso", 'rules' => 'required'],
+				'ingresoEmpPublic' =>  ['label' => "Ingreso", 'rules' => 'required|valid_only_date_chek'],
 				'separacion' =>  ['label' => "Separación", 'rules' => 'required|max_length[255]'],
 				'puesto_funcional' =>  ['label' => "Puesto Funcional", 'rules' => 'required|max_length[255]'],
 				'funciones' =>  ['label' => "Funciones", 'rules' => 'required|max_length[255]'],
@@ -1797,77 +1796,55 @@ class Cuip extends BaseController {
 
         			
 
-        			$getInicio = $this->request->getPost('inicio');
+        			$getSexo_fam_cer = $this->request->getPost('sexo_fam_cer');
 
-        			$inicio = date( "Y-m-d" ,strtotime($getInicio));
+        			$sexo_fam_cer = $this->encrypt->Decrytp($getSexo_fam_cer);
 
-        			$getConclusion = $this->request->getPost('conclusion');
+        			$getParentesco_fam_cercano = $this->request->getPost('parentesco_fam_cercano');
 
-        			$conclusion = date( "Y-m-d" ,strtotime($getConclusion));
+        			$parentesco_fam_cercano = $this->encrypt->Decrytp($getParentesco_fam_cercano);
 
-        			$getInicioAdicional = $this->request->getPost('inicioAdicional');
+        			$getPais = $this->request->getPost('pais');
 
-        			$inicioAdicional = date( "Y-m-d" ,strtotime($getInicioAdicional));
+        			$pais = $this->encrypt->Decrytp($getPais);
 
-        			$getConclusionAdicional = $this->request->getPost('conclusionAdicional');
+        			$getSexo_per = $this->request->getPost('sexo_per');
 
-        			$conclusionAdicional = date( "Y-m-d" ,strtotime($getConclusionAdicional));
+        			$sexo_per = $this->encrypt->Decrytp($getSexo_per);
 
-        			$getDesde = $this->request->getPost('desde');
+        			$getParentesco_personal = $this->request->getPost('parentesco_personal');
 
-        			$desde = date( "Y-m-d" ,strtotime($getDesde));
+        			$parentesco_personal = $this->encrypt->Decrytp($getParentesco_personal);
 
-        			$getHasta = $this->request->getPost('hasta');
+        			$getPaisRefPer = $this->request->getPost('paisRefPer');
 
-        			$hasta = date( "Y-m-d" ,strtotime($getHasta));
+        			$paisRefPer = $this->encrypt->Decrytp($getPaisRefPer);
 
-        			$getNivel_curso = $this->request->getPost('nivel_curso');
+        			$getSexo_lab = $this->request->getPost('sexo_lab');
 
-        			$nivel_curso = $this->encrypt->Decrytp($getNivel_curso);
+        			$sexo_lab = $this->encrypt->Decrytp($getSexo_lab);
 
-        			$getEficienciaCursos = $this->request->getPost('eficienciaCursos');
+        			$getParentesco_laboral = $this->request->getPost('parentesco_laboral');
 
-        			$eficienciaCursos = $this->encrypt->Decrytp($getEficienciaCursos);
+        			$parentesco_laboral = $this->encrypt->Decrytp($getParentesco_laboral);
 
-        			$getCuso_tomado = $this->request->getPost('cuso_tomado');
+        			$getPaisRefLab = $this->request->getPost('paisRefLab');
 
-        			$cuso_tomado = $this->encrypt->Decrytp($getCuso_tomado);
+        			$paisRefLab = $this->encrypt->Decrytp($getPaisRefLab);
 
-        			$getEficiencia = $this->request->getPost('eficiencia');
+        			$getSexo_par_cer = $this->request->getPost('sexo_par_cer');
 
-        			$eficiencia = $this->encrypt->Decrytp($getEficiencia);
+        			$sexo_par_cer = $this->encrypt->Decrytp($getSexo_par_cer);
 
-        			$getIdioma = $this->request->getPost('idioma');
+        			$getParentesco_cercano = $this->request->getPost('parentesco_cercano');
 
-        			$idioma = $this->encrypt->Decrytp($getIdioma);
+        			$parentesco_cercano = $this->encrypt->Decrytp($getParentesco_cercano);
 
-        			$getLectura = $this->request->getPost('lectura');
+        			$getPaisParCer = $this->request->getPost('paisParCer');
 
-        			$lectura = $this->encrypt->Decrytp($getLectura);
+        			$paisParCer = $this->encrypt->Decrytp($getPaisParCer);
 
-        			$getEscritura = $this->request->getPost('escritura');
-
-        			$escritura = $this->encrypt->Decrytp($getEscritura);
-
-        			$getConversacion = $this->request->getPost('conversacion');
-
-        			$conversacion = $this->encrypt->Decrytp($getConversacion);
-
-        			$getTipo_habilidad = $this->request->getPost('tipo_habilidad');
-
-        			$tipo_habilidad = $this->encrypt->Decrytp($getTipo_habilidad);
-
-        			$getGrado_habilidadCap = $this->request->getPost('grado_habilidadCap');
-
-        			$grado_habilidadCap = $this->encrypt->Decrytp($getGrado_habilidadCap);
-
-        			$getTipoAgrupa = $this->request->getPost('tipoAgrupa');
-
-        			$tipoAgrupa = $this->encrypt->Decrytp($getTipoAgrupa);
-
-        			$getGrado_habilidad = $this->request->getPost('grado_habilidad');
-
-        			$grado_habilidad = $this->encrypt->Decrytp($getGrado_habilidad);
+        			
 
 
 					$referencias = array(
@@ -1876,37 +1853,7 @@ class Cuip extends BaseController {
 						"id" => $id  ,
 						"idPersonal" => $idPersonal  , 
 						"idEmpresa" =>  $idEmpresa , 
-						"dependencia"  =>  $this->request->getPost('dependencia') , 
-						"inst_capacitadora"  =>  $this->request->getPost('institucion') , 
-						"nombre_curso"  =>  $this->request->getPost('nombre_curso') , 
-						"tema_curso"  =>  $this->request->getPost('tema_curso') , 
-						"idNivel_curso"  =>  $nivel_curso , 
-						"idEficienciaCurso"  =>  $eficienciaCursos , 
-						"inicio_curso"  =>  $inicio , 
-						"conclusion_curso"  => $conclusion  , 
-						"duracion_horas_curso"  =>  $this->request->getPost('duracion') , 
-						"tipo_comprobante"  =>  $this->request->getPost('comprobante') , 
-						"institucion"  => $this->request->getPost('empresa')  , 
-						"curso"  =>  $this->request->getPost('curso') , 
-						"tipo_curso"  =>  $this->request->getPost('tipo_curso') , 
-						"idCursoFue"  => $cuso_tomado  , 
-						"idEficienciaAdicional"  => $eficiencia  , 
-						"inicio_adicional"  =>  $inicioAdicional , 
-						"conclusion_adicional"  =>  $conclusionAdicional , 
-						"duracion_horas_adicional"  => $this->request->getPost('duracion_horas')  , 
-						"idIdioma"  =>  $idioma , 
-						"idIdiomaLectura"  => $lectura  , 
-						"idIdiomaEscritura"  =>  $escritura , 
-						"idIdiomaConversacion"  => $conversacion  , 
-						"idTipoHabilidad"  =>  $tipo_habilidad , 
-						"especifique_habilidad"  =>  $this->request->getPost('especificacion') , 
-						"idGradoHabilidad"  => $grado_habilidadCap  , 
-						"nombre_agrupacion"  =>  $this->request->getPost('nombre') , 
-						"idTipoAgrupacion"  =>  $tipoAgrupa , 
-						"especifique_agrupacion"  =>  $this->request->getPost('especificacion') , 
-						"idGradoHabilidadAgrup"  =>  $grado_habilidad , 
-						"desde"  =>  $desde , 
-						"hasta"  => $hasta ,
+						
 						"activo" => 1 , 
 						"createdby" => $LoggedUserId , 
 						"createddate" => date("Y-m-d H:i:s") );

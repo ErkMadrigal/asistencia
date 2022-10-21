@@ -1,4 +1,4 @@
-<div class="card card-primary">
+<div class="card card-primary" id="cardRefFamCer">
     <div class="card-header">
         <h3 class="card-title">FAMILIAR CERCANO</h3>
 
@@ -15,7 +15,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="apellidoPaterno" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="calle" name="calle">
+                        <input type="text" class="form-control " id="apellidoPaterno" name="apellidoPaterno">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -33,7 +33,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="segundoNombre" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nombre" name="nombre">
+                        <input type="text" class="form-control " id="segundoNombre" name="segundoNombre">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -223,7 +223,7 @@
     </div>
 </div>
 
-<div class="card card-primary">
+<div class="card card-primary" id="cardrefParCer">
     <div class="card-header">
         <h3 class="card-title">PARIENTE CERCANO</h3>
 
@@ -251,14 +251,14 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="primerNombre" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="primerNombre" name="primerNombre">
+                        <label for="primerNombreParCer" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="primerNombreParCer" name="primerNombreParCer">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="segundoNombre" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nombre" name="nombre">
+                        <label for="segundoNombreParCer" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="segundoNombreParCer" name="segundoNombreParCer">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -287,8 +287,8 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="ocupacion" class=" control-label">Ocupación:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="ocupacion" name="ocupacion">
+                        <label for="ocupacionParCer" class=" control-label">Ocupación:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="ocupacionParCer" name="ocupacionParCer">
                     </div>
                 </div>
                 <div class='col-6 col-sm-6'>
@@ -319,26 +319,26 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="calle" name="calle">
+                        <label for="calleParCer" class=" control-label">Calle :<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="calleParCer" name="calleParCer">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="exterior" name="exterior">
+                        <label for="exteriorParCer" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="exteriorParCer" name="exteriorParCer">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="interior" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="interior" name="interior">
+                        <label for="interiorParCer" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="interiorParCer" name="interiorParCer">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="numero" name="numero">
+                        <label for="numeroParCer" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="numeroParCer" name="numeroParCer">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -419,9 +419,9 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="pais" class="control-label">Pais: <span class="text-danger">*</span></label>
+                        <label for="paisParCer" class="control-label">Pais: <span class="text-danger">*</span></label>
                         <div>
-                            <select class="form-control" id="pais" name="pais">
+                            <select class="form-control" id="paisParCer" name="paisParCer">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
                                 if( !empty($pais) ):
@@ -447,7 +447,8 @@
         
     </div>
 </div>
-<div class="card card-primary">
+
+<div class="card card-primary" id="cardRefPersonal">
     <div class="card-header">
         <h3 class="card-title">PERSONAL</h3>
 
@@ -463,26 +464,26 @@
         <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="apellidoPaterno" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="calle" name="calle">
+                        <label for="apellidoPaternoRefPer" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="apellidoPaternoRefPer" name="apellidoPaternoRefPer">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="apellidoMaterno" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno">
+                        <label for="apellidoMaternoRefPer" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="apellidoMaternoRefPer" name="apellidoMaternoRefPer">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="primerNombre" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="primerNombre" name="primerNombre">
+                        <label for="primerNombreRefPer" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="primerNombreRefPer" name="primerNombreRefPer">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="segundoNombre" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nombre" name="nombre">
+                        <label for="segundoNombreRefPer" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="segundoNombreRefPer" name="segundoNombreRefPer">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -511,8 +512,8 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="ocupacion" class=" control-label">Ocupación:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="ocupacion" name="ocupacion">
+                        <label for="ocupacionRefPer" class=" control-label">Ocupación:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="ocupacionRefPer" name="ocupacionRefPer">
                     </div>
                 </div>
                 <div class='col-6 col-sm-6'>
@@ -543,26 +544,26 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="calle" name="calle">
+                        <label for="calleRefPer" class=" control-label">Calle :<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="calleRefPer" name="calleRefPer">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="exterior" name="exterior">
+                        <label for="exteriorRefPer" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="exteriorRefPer" name="exteriorRefPer">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="interior" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="interior" name="interior">
+                        <label for="interiorRefPer" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="interiorRefPer" name="interiorRefPer">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="numero" name="numero">
+                        <label for="numeroRefPer" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="numeroRefPer" name="numeroRefPer">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -643,9 +644,9 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="pais" class="control-label">Pais: <span class="text-danger">*</span></label>
+                        <label for="paisRefPer" class="control-label">Pais: <span class="text-danger">*</span></label>
                         <div>
-                            <select class="form-control" id="pais" name="pais">
+                            <select class="form-control" id="paisRefPer" name="paisRefPer">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
                                 if( !empty($pais) ):
@@ -672,7 +673,7 @@
     </div>
 </div>
 
-<div class="card card-primary">
+<div class="card card-primary" id="cardRefLaboral">
     <div class="card-header">
         <h3 class="card-title">LABORAL</h3>
 
@@ -688,26 +689,26 @@
         <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="apellidoPaterno" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="calle" name="calle">
+                        <label for="apellidoPaternoRefLab" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="apellidoPaternoRefLab" name="apellidoPaternoRefLab">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="apellidoMaterno" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno">
+                        <label for="apellidoMaternoRefLab" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="apellidoMaternoRefLab" name="apellidoMaternoRefLab">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="primerNombre" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="primerNombre" name="primerNombre">
+                        <label for="primerNombreRefLab" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="primerNombreRefLab" name="primerNombreRefLab">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="segundoNombre" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nombre" name="nombre">
+                        <label for="segundoNombreRefLab" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="segundoNombreRefLab" name="segundoNombreRefLab">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -736,8 +737,8 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="ocupacion" class=" control-label">Ocupación:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="ocupacion" name="ocupacion">
+                        <label for="ocupacionRefLab" class=" control-label">Ocupación:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="ocupacionRefLab" name="ocupacionRefLab">
                     </div>
                 </div>
                 <div class='col-6 col-sm-6'>
@@ -768,26 +769,26 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="calle" name="calle">
+                        <label for="calleRefLab" class=" control-label">Calle :<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="calleRefLab" name="calleRefLab">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="exterior" name="exterior">
+                        <input type="text" class="form-control " id="exteriorRefLab" name="exteriorRefLab">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="interior" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="interior" name="interior">
+                        <label for="interiorRefLab" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="interiorRefLab" name="interiorRefLab">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="numero" name="numero">
+                        <label for="numeroRefLab" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="numeroRefLab" name="numeroRefLab">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -868,9 +869,9 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="pais" class="control-label">Pais: <span class="text-danger">*</span></label>
+                        <label for="paisRefLab" class="control-label">Pais: <span class="text-danger">*</span></label>
                         <div>
-                            <select class="form-control" id="pais" name="pais">
+                            <select class="form-control" id="paisRefLab" name="paisRefLab">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
                                 if( !empty($pais) ):
@@ -959,7 +960,13 @@
 
                     for (var clave in response.error){
                                 
-                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#cardRefFamCer #"+clave+"" );
+
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#cardrefParCer #"+clave+"" );
+
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#cardRefPersonal #"+clave+"" );
+
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#cardRefLaboral #"+clave+"" );
                             
                     }
                         toastr.error('<?=lang('Layout.camposObligatorios')?>');

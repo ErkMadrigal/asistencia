@@ -34,6 +34,14 @@
                                     <option value="<?=$valor->estado?>"><?=$valor->estado?></option>
                                 <?php endforeach;?>
                             </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#estado").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -44,6 +52,14 @@
                             <select id="ciudad" name="ciudad" class="form-control">
                                     <option selected>Selecciona una Opción</option>
                             </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#ciudad").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -55,6 +71,14 @@
                                     <option selected>Selecciona una Opción</option>
                                     
                             </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#municipio").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>

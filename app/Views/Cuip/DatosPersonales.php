@@ -376,7 +376,7 @@
                     <div class='form-group'>
                         <label for="anno_inicio">Año de Inicio: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="anno_inicio" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#anno_inicio" id="datetime-anno_inicio" name="anno_inicio" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#anno_inicio" id="datetime-anno_inicio" name="anno_inicio" placeholder="" value="" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="4" />
                             <div class="input-group-append" data-target="#anno_inicio" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -395,7 +395,7 @@
                     <div class='form-group'>
                         <label for="anno_termino">Año de Termino: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="anno_termino" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#anno_termino" id="datetime-anno_termino" name="anno_termino" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#anno_termino" id="datetime-anno_termino" name="anno_termino" placeholder="" value="" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="4" />
                             <div class="input-group-append" data-target="#anno_termino" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -487,7 +487,7 @@
                     <div class="form-group">
                         <label for="numeroTelefono" class=" control-label">Numero
                             Telefónico:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="numeroTelefono" name="numeroTelefono">
+                        <input type="text" class="form-control " id="numeroTelefono" name="numeroTelefono" maxlength="10" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -506,7 +506,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="codigo" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="codigo" name="codigo"  maxlength="5">
+                        <input type="text" class="form-control " id="codigo" name="codigo" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>

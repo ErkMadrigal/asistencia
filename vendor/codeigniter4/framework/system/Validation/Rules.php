@@ -400,4 +400,15 @@ class Rules
         
         return TRUE;
     }
+
+
+    public function valid_only_date_chek(string $str , string &$error = null): bool
+    {
+        $format = ('d-m-Y');
+
+
+        $date = \DateTime::createFromFormat($format, $str);
+        
+        return (bool) $date && \DateTime::getLastErrors()['warning_count'] === 0 && \DateTime::getLastErrors()['error_count'] === 0;
+    }
 }
