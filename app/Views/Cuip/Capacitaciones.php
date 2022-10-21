@@ -627,6 +627,10 @@
                     
                     toastr.success(response.succes.mensaje);
 
+                    $("html,body").animate({scrollTop: $("#cardSancionesEst").offset().top},2000);
+
+                    $('#tabs a[href="#custom-normal"]').trigger('click');
+
                     
 
                 } else if (response.dontsucces.error == 'error'){

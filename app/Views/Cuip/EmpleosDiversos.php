@@ -497,7 +497,9 @@
                     
                     toastr.success(response.succes.mensaje);
 
-                    
+                    $("html,body").animate({scrollTop: $("#cardCapPublica").offset().top},2000);
+
+                    $('#tabs a[href="#custom-overlay"]').trigger('click');
 
                 } else if (response.dontsucces.error == 'error'){
 

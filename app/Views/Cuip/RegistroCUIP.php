@@ -4,7 +4,7 @@
     <div id="load" class=" spinner text-secondary" role="status">
     </div>
     <div class="card card-primary card-tabs">
-        <div class="card-header p-0 pt-1">
+        <div class="card-header p-0 pt-1" id="tabs">
             <ul class="nav nav-tabs" id="custom-tabs-five-tab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="custom-tabs-five-overlay-tab" data-toggle="pill"

@@ -676,8 +676,11 @@
 <script>
     
 
+
     $('#saveDatosPersonales').click(function (event) {
         event.preventDefault();
+
+
         $('#load').addClass( "spinner-border" );
         var formData = new FormData($("form#DatosPersonales")[0]);
         
@@ -698,7 +701,9 @@
                     $('#idPersonal').val(response.data.idPersonal);
                     toastr.success(response.succes.mensaje);
 
-                    
+                    $("html,body").animate({scrollTop: $("#CardGenerales").offset().top},2000);
+
+                    $('#tabs a[href="#custom-tabs-five-overlay-dark"]').trigger('click');
 
                 } else if (response.dontsucces.error == 'error'){
 
@@ -712,6 +717,8 @@
                             
                     }
                         toastr.error('<?=lang('Layout.camposObligatorios')?>');
+
+                        
 
                 }
 
@@ -959,5 +966,8 @@
 
     }
     };
+
+
+
 
 </script>

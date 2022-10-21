@@ -562,7 +562,15 @@ class Cuip extends BaseController {
 
 
     public function AgregarSocioEconomico(){
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['familia, ingreso, domicilio_tipo, actividad, especificacion, inversion, vehiculo, calidad, vicio, imagen, comportamiento, calle, apellidoMaterno, primerNombre, nombre, fecha_nacimiento_dep, sexo_dep, parentesco_familiar'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['familia, ingreso, domicilio_tipo, actividad, especificacion, inversion, vehiculo, calidad, vicio, imagen, comportamiento, calle, apellidoMaterno, primerNombre, nombre, fecha_nacimiento_dep, sexo_dep, parentesco_familiar,idPersonal'],FILTER_SANITIZE_STRING)){
+
+			$errors = [];
+			$succes = [];
+			$dontSucces = [];
+			$data = [];
+			$getIdPersonal = $this->request->getPost('idPersonal');
+
+			if(!empty($getIdPersonal)){
 
 				$rules = [
 				'familia' =>  ['label' => "¿Vive con su Familia?", 'rules' => 'required'],
@@ -584,10 +592,7 @@ class Cuip extends BaseController {
 				'sexo_dep' =>  ['label' => "Sexo", 'rules' => 'required'],
 				'parentesco_familiar' =>  ['label' => "Parentesco", 'rules' => 'required']];
 		 
-				$errors = [];
-				$succes = [];
-				$dontSucces = [];
-				$data = [];
+				
 
 				if($this->validate($rules)){
 					
@@ -614,7 +619,7 @@ class Cuip extends BaseController {
 
         			$parentesco_familiar = $this->encrypt->Decrytp($getParentesco_familiar);
 
-        			$getIdPersonal = $this->request->getPost('idPersonal');
+        			
 
         			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
 
@@ -673,13 +678,31 @@ class Cuip extends BaseController {
 					$errors = $this->validator->getErrors();
 				}
 
-				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+				
+
+			} else {
+
+				$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Es necesario que primero capture la sección de datos personales'  ];
+
+			}	
+
+
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
 		}	
 	}
 
 
 	public function AgregarEmpSegPublica(){
 		if ($this->request->getMethod() == "post" && $this->request->getvar(['dependencia, corporacion, primerNombre, nombre, calle, exterior, interior, numero, codigoSegPub, coloniacodigoSegPub, aprobacion, separacion, puesto_funcional, funciones, especialidad, rango, numero_placa, numero_empleado, sueldo, compensaciones, area, division, jefe_inmediato, nombre_jefe, estadocodigoSegPub, municipiocodigoSegPub, motivo_separacion, tipo_separacion, tipo_baja, comentarios'],FILTER_SANITIZE_STRING)){
+
+			$errors = [];
+			$succes = [];
+			$dontSucces = [];
+			$data = [];
+			$getIdPersonal = $this->request->getPost('idPersonal');
+
+			if(!empty($getIdPersonal)){	
 
 				$rules = [
 				'dependencia' =>  ['label' => "Dependencia", 'rules' => 'required|max_length[255]'],
@@ -713,10 +736,7 @@ class Cuip extends BaseController {
 				'tipo_baja' =>  ['label' => "Tipo de Baja", 'rules' => 'required|max_length[255]'],
 				'comentarios' =>  ['label' => "Comentarios", 'rules' => 'required|max_length[255]']];
 		 
-				$errors = [];
-				$succes = [];
-				$dontSucces = [];
-				$data = [];
+				
 
 				if($this->validate($rules)){
 					
@@ -804,13 +824,29 @@ class Cuip extends BaseController {
 					$errors = $this->validator->getErrors();
 				}
 
-				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+				
+
+			} else {
+
+				$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Es necesario que primero capture la sección de datos personales'  ];
+			}
+
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);	
 		}	
 	}
 
 
 	public function AgregarSancionesEstimulos(){
 		if ($this->request->getMethod() == "post" && $this->request->getvar(['tipo, determinacion, descripcion, situacion, inicio_inhabilitacion, termino_inhabilitacion, organismo, emisora, entidad_federativaSE, delitos, motivo, no_expediente, agencia_mp, averiguacion_previa, tipo_fuero, averiguacion_estado, inicio_averiguacion, al_dia, juzgado, no_proceso, estado_procesal, inicio_proceso, al_dia_proceso, tipo_estimulo, descripcion_estimulo, dependencia, otrogado_estimulo'],FILTER_SANITIZE_STRING)){
+
+			$errors = [];
+			$succes = [];
+			$dontSucces = [];
+			$data = [];
+			$getIdPersonal = $this->request->getPost('idPersonal');
+
+			if(!empty($getIdPersonal)){
 
 				$rules = [
 				'tipo' =>  ['label' => "Tipo", 'rules' => 'required|max_length[255]'],
@@ -841,11 +877,7 @@ class Cuip extends BaseController {
 				'dependencia' =>  ['label' => "Dependencia que otorga", 'rules' => 'required|max_length[255]'],
 				'otrogado_estimulo' =>  ['label' => "Otorgado", 'rules' => 'required|valid_only_date_chek']];
 		 
-				$errors = [];
-				$succes = [];
-				$dontSucces = [];
-				$data = [];
-
+				
 				if($this->validate($rules)){
 					
 					$getUser = session()->get('IdUser');
@@ -952,12 +984,29 @@ class Cuip extends BaseController {
 					$errors = $this->validator->getErrors();
 				}
 
-				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+				
+
+			} else {
+
+				$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Es necesario que primero capture la sección de datos personales'  ];
+
+			}
+
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);	
 		}	
 	}
 
 	public function AgregarCapacitaciones(){
 		if ($this->request->getMethod() == "post" && $this->request->getvar(['dependencia, institucion, nombre_curso, tema_curso, nivel_curso, eficienciaCursos, inicio, conclusion, duracion, comprobante, empresa, curso, tipo_curso, cuso_tomado, eficiencia, inicioAdicional, conclusionAdicional, duracion_horas, idioma, lectura, escritura, conversacion, tipo_habilidad, especificacion, grado_habilidadCap, nombre, tipoAgrupa, especificacion, grado_habilidad, desde, hasta'],FILTER_SANITIZE_STRING)){
+
+			$errors = [];
+			$succes = [];
+			$dontSucces = [];
+			$data = [];
+			$getIdPersonal = $this->request->getPost('idPersonal');
+
+			if(!empty($getIdPersonal)){
 
 				$rules = [
 				'dependencia' =>  ['label' => "Dependencia responsable", 'rules' => 'required|max_length[255]'],
@@ -991,10 +1040,7 @@ class Cuip extends BaseController {
 				'desde' =>  ['label' => "Desde", 'rules' => 'required|valid_only_date_chek'],
 				'hasta' =>  ['label' => "Hasta", 'rules' => 'required|valid_only_date_chek']];
 		 
-				$errors = [];
-				$succes = [];
-				$dontSucces = [];
-				$data = [];
+				
 
 				if($this->validate($rules)){
 					
@@ -1149,7 +1195,16 @@ class Cuip extends BaseController {
 					$errors = $this->validator->getErrors();
 				}
 
-				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+				
+
+			} else {
+
+				$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Es necesario que primero capture la sección de datos personales'  ];
+
+			}
+
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);	
 		}	
 	}
 	
@@ -1157,6 +1212,15 @@ class Cuip extends BaseController {
 
 	public function AgregarEmpDiversos(){
 		if ($this->request->getMethod() == "post" && $this->request->getvar(['empresa, calle, exterior, interior, codigoEmpDiv, coloniacodigoEmpDiv, estadocodigoEmpDiv, municipiocodigoEmpDiv, numero, ingresoEmpDiv, separacion, puesto_funcional, funciones, sueldo, compensaciones, area, motivo_separacion, tipo_separacion, tipo_baja, comentarios, empleo, puesto, area_gustaria, ascender, reglamentacion, reconomiento, reglamentacion_ascenso, razones_ascenso, capacitacion, desciplina, subtipo_disciplina, motivo, tipo, fecha_inicialDis, fecha_finalDis, licencias_medicas, duracion, cantidad'],FILTER_SANITIZE_STRING)){
+
+
+			$errors = [];
+			$succes = [];
+			$dontSucces = [];
+			$data = [];
+			$getIdPersonal = $this->request->getPost('idPersonal');
+
+			if(!empty($getIdPersonal)){
 
 				$rules = [
 				'empresa' =>  ['label' => "Empresa", 'rules' => 'required|max_length[255]'],
@@ -1198,10 +1262,7 @@ class Cuip extends BaseController {
 				'duracion' =>  ['label' => "Duración", 'rules' => 'required'],
 				'cantidad' =>  ['label' => "Cantidad", 'rules' => 'required|max_length[255]']];
 		 
-				$errors = [];
-				$succes = [];
-				$dontSucces = [];
-				$data = [];
+				
 
 				if($this->validate($rules)){
 					
@@ -1321,7 +1382,17 @@ class Cuip extends BaseController {
 					$errors = $this->validator->getErrors();
 				}
 
-				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+				
+			} else {
+
+				$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Es necesario que primero capture la sección de datos personales'  ];
+
+			}
+
+
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);	
+
 		}	
 	}
 
@@ -1776,6 +1847,14 @@ class Cuip extends BaseController {
 	public function AgregarReferencias(){
 		if ($this->request->getMethod() == "post" && $this->request->getvar(['apellidoPaterno, apellidoMaterno, primerNombre, segundoNombre, sexo_fam_cer, ocupacion, parentesco_fam_cercano, calle, exterior, interior, numero, codigoRefCer, coloniacodigoRefCer, estadocodigoRefCer, municipiocodigoRefCer, ciudadcodigoRefCer, pais, calle, apellidoMaterno, primerNombreParCer, segundoNombreParCer, sexo_par_cer, ocupacionParCer, parentesco_cercano, calleParCer, exteriorParCer, interiorParCer, numeroParCer, codigoParCer, coloniacodigoParCer, estadocodigoParCer, municipiocodigoParCer, ciudadcodigoParCer, paisParCer, apellidoPaternoRefPer, apellidoMaternoRefPer, primerNombreRefPer, segundoNombreRefPer, sexo_per, ocupacionRefPer, parentesco_personal, calleRefPer, exteriorRefPer, interiorRefPer, numeroRefPer, codigoPersonal, coloniacodigoPersonal, estadocodigoPersonal, municipiocodigoPersonal, ciudadcodigoPersonal, paisRefPer, apellidoPaternoRefLab, apellidoMaternoRefLab, primerNombreRefLab, segundoNombreRefLab, sexo_lab, ocupacionRefLab, parentesco_laboral, calleRefLab, exteriorRefLab, interiorRefLab, numeroRefLab, codigoLaboral, coloniacodigoLaboral, estadocodigoLaboral, municipiocodigoLaboral, ciudadcodigoLaboral, paisRefLab, idPersonal'],FILTER_SANITIZE_STRING)){
 
+			$errors = [];
+			$succes = [];
+			$dontSucces = [];
+			$data = [];
+			$getIdPersonal = $this->request->getPost('idPersonal');
+
+			if(!empty($getIdPersonal)){
+
 				$rules = [
 				'apellidoPaterno' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]']];
 		 
@@ -1952,7 +2031,16 @@ class Cuip extends BaseController {
 					$errors = $this->validator->getErrors();
 				}
 
-				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+				
+
+			} else {
+
+				$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Es necesario que primero capture la sección de datos personales'  ];
+
+			}
+
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);	
 		}	
 	}
 

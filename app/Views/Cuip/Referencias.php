@@ -950,6 +950,10 @@
 
                     toastr.success(response.succes.mensaje);
 
+                    $("html,body").animate({scrollTop: $("#cardEmplSeguridad").offset().top},2000);
+
+                    $('#tabs a[href="#custom-tabs"]').trigger('click');
+
                     
 
                 } else if (response.dontsucces.error == 'error'){

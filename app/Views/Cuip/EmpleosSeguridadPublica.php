@@ -298,7 +298,9 @@
 
                     toastr.success(response.succes.mensaje);
 
-                    
+                    $("html,body").animate({scrollTop: $("#cardEmpDiversos").offset().top},2000);
+
+                    $('#tabs a[href="#custom-tabs-five-normal"]').trigger('click');
 
                 } else if (response.dontsucces.error == 'error'){
 

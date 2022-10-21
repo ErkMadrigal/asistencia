@@ -275,6 +275,9 @@
 
                     toastr.success(response.succes.mensaje);
 
+                    $("html,body").animate({scrollTop: $("#cardRefFamCer").offset().top},2000);
+
+                    $('#tabs a[href="#custom-tabs-five"]').trigger('click');
                     
 
                 } else if (response.dontsucces.error == 'error'){
