@@ -22,7 +22,7 @@
                 <div class="form-group">
                     <label for="determinacion" class=" control-label">Determinación:<span class="text-danger">*</span></label>
                     <div class="input-group date" id="determinacion" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#determinacion" id="datetime-determinacion" name="determinacion" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#determinacion" id="datetime-determinacion" name="determinacion" placeholder="" value="<?=$sanciones->determinacion ?>" />
                             <div class="input-group-append" data-target="#determinacion" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -53,7 +53,7 @@
                 <div class="form-group">
                     <label for="inicio_inhabilitacion" class=" control-label">Inicio de la inhabilitación:<span class="text-danger">*</span></label>
                     <div class="input-group date" id="inicio_inhabilitacion" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#inicio_inhabilitacion" id="datetime-inicio_inhabilitacion" name="inicio_inhabilitacion" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#inicio_inhabilitacion" id="datetime-inicio_inhabilitacion" name="inicio_inhabilitacion" placeholder="" value="<?=$sanciones->inicio_habilitacion ?>" />
                             <div class="input-group-append" data-target="#inicio_inhabilitacion" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -72,7 +72,7 @@
                 <div class="form-group">
                     <label for="termino_inhabilitacion" class=" control-label">Término de la inhabilitación:<span class="text-danger">*</span></label>
                     <div class="input-group date" id="termino_inhabilitacion" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#termino_inhabilitacion" id="datetime-termino_inhabilitacion" name="termino_inhabilitacion" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#termino_inhabilitacion" id="datetime-termino_inhabilitacion" name="termino_inhabilitacion" placeholder="" value="<?=$sanciones->termino_habilitacion ?>" />
                             <div class="input-group-append" data-target="#termino_inhabilitacion" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -208,7 +208,7 @@
                     <div class='form-group'>
                         <label for="inicio_averiguacion">Inicio de la averiguación: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="inicio_averiguacion" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#inicio_averiguacion" id="datetime-inicio_averiguacion" name="inicio_averiguacion" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#inicio_averiguacion" id="datetime-inicio_averiguacion" name="inicio_averiguacion" placeholder="" value="<?=$sanciones->inicio_averiguacion ?>" />
                             <div class="input-group-append" data-target="#inicio_averiguacion" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -227,7 +227,7 @@
                     <div class='form-group'>
                         <label for="al_dia">Al día: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="al_dia" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#al_dia" id="datetime-al_dia" name="al_dia" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#al_dia" id="datetime-al_dia" name="al_dia" placeholder="" value="<?=$sanciones->aldia_averiguacion ?>" />
                             <div class="input-group-append" data-target="#al_dia" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -267,7 +267,7 @@
                     <div class='form-group'>
                         <label for="inicio_proceso">Inicio del proceso: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="inicio_proceso" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#inicio_proceso" id="datetime-inicio_proceso" name="inicio_proceso" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#inicio_proceso" id="datetime-inicio_proceso" name="inicio_proceso" placeholder="" value="<?=$sanciones->inicio_proceso ?>" />
                             <div class="input-group-append" data-target="#inicio_proceso" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -286,7 +286,7 @@
                     <div class='form-group'>
                         <label for="al_dia_proceso">Al día: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="al_dia_proceso" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#al_dia_proceso" id="datetime-al_dia_proceso" name="al_dia_proceso" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#al_dia_proceso" id="datetime-al_dia_proceso" name="al_dia_proceso" placeholder="" value="<?=$sanciones->aldia_proceso ?>" />
                             <div class="input-group-append" data-target="#al_dia_proceso" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -342,7 +342,7 @@
                     <div class='form-group'>
                         <label for="otrogado_estimulo">Otorgado: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="otrogado_estimulo" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#otrogado_estimulo" id="datetime-otrogado_estimulo" name="otrogado_estimulo" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#otrogado_estimulo" id="datetime-otrogado_estimulo" name="otrogado_estimulo" placeholder="" value="<?=$sanciones->otorgado ?>" />
                             <div class="input-group-append" data-target="#otrogado_estimulo" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>

@@ -93,7 +93,7 @@
                     <div class="form-group">
                         <label for="inicio" class=" control-label">Inicio:<span class="text-danger">*</span></label>
                         <div class="input-group date" id="inicio" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#inicio" id="datetime-inicio" name="inicio" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#inicio" id="datetime-inicio" name="inicio" placeholder="" value="<?=$capacitacion->inicio_curso ?>" />
                             <div class="input-group-append" data-target="#inicio" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -112,7 +112,7 @@
                     <div class="form-group">
                         <label for="conclusion" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
                         <div class="input-group date" id="conclusion" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#conclusion" id="datetime-conclusion" name="conclusion" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#conclusion" id="datetime-conclusion" name="conclusion" placeholder="" value="<?=$capacitacion->conclusion_curso ?>" />
                             <div class="input-group-append" data-target="#conclusion" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -234,7 +234,7 @@
                     <div class="form-group">
                         <label for="inicioAdicional" class=" control-label">Inicio:<span class="text-danger">*</span></label>
                         <div class="input-group date" id="inicioAdicional" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#inicioAdicional" id="datetime-inicioAdicional" name="inicioAdicional" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#inicioAdicional" id="datetime-inicioAdicional" name="inicioAdicional" placeholder="" value="<?=$capacitacion->inicio_adicional ?>" />
                             <div class="input-group-append" data-target="#inicioAdicional" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -253,7 +253,7 @@
                     <div class="form-group">
                         <label for="conclusionAdicional" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
                         <div class="input-group date" id="conclusionAdicional" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#conclusionAdicional" id="datetime-conclusionAdicional" name="conclusionAdicional" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#conclusionAdicional" id="datetime-conclusionAdicional" name="conclusionAdicional" placeholder="" value="<?=$capacitacion->conclusion_adicional ?>" />
                             <div class="input-group-append" data-target="#conclusionAdicional" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -551,7 +551,7 @@
                     <div class="form-group">
                         <label for="desde" class=" control-label">Desde:<span class="text-danger">*</span></label>
                         <div class="input-group date" id="desde" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#desde" id="datetime-desde" name="desde" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#desde" id="datetime-desde" name="desde" placeholder="" value="<?=$capacitacion->desde ?>" />
                             <div class="input-group-append" data-target="#desde" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -570,7 +570,7 @@
                     <div class="form-group">
                         <label for="hasta" class=" control-label">Hasta:<span class="text-danger">*</span></label>
                         <div class="input-group date" id="hasta" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#hasta" id="datetime-hasta" name="hasta" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#hasta" id="datetime-hasta" name="hasta" placeholder="" value="<?=$capacitacion->hasta ?>" />
                             <div class="input-group-append" data-target="#hasta" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>

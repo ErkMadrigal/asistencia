@@ -63,7 +63,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="codigoSegPub" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
-                        <input type="text"  class="form-control "  id="codigoSegPub" name="codigoSegPub"  value="">
+                        <input type="text"  class="form-control "  id="codigoSegPub" name="codigoSegPub"  value="<?=$seguridad->idCodigoPostal ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -71,6 +71,14 @@
                         <label for="coloniacodigoSegPub" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                         <select class="form-control" id="coloniacodigoSegPub" name="coloniacodigoSegPub">
                                 <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($coloniacodigoSegPub) ):
+                                    foreach($coloniacodigoSegPub as  $a){
+                                        ?>
+                                            <option <?= ($seguridad->colonia == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -86,7 +94,7 @@
                     <div class="form-group">
                         <label for="ingresoEmpPublic" class=" control-label">Ingreso:<span class="text-danger">*</span></label>
                         <div class="input-group date" id="ingresoEmpPublic" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#ingresoEmpPublic" id="datetime-ingresoEmpPublic" name="ingresoEmpPublic" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#ingresoEmpPublic" id="datetime-ingresoEmpPublic" name="ingresoEmpPublic" placeholder="" value="<?=$seguridad->ingreso ?>" />
                             <div class="input-group-append" data-target="#ingresoEmpPublic" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -185,7 +193,7 @@
                         <div>
                             <select class="form-control" id="estadocodigoSegPub" name="estadocodigoSegPub">
                                 <option value="">Selecciona una Opcion</option>
-                                
+                                <option selected value ="<?=$seguridad->estado?>" ><?=$seguridad->estado?> </option>
                             </select>
                             <script>
                                 $(document).ready(function() {

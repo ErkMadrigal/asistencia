@@ -110,7 +110,7 @@
                     <div class="form-group">
                         <label for="ingresoEmpDiv" class=" control-label">Ingreso:<span class="text-danger">*</span></label>
                         <div class="input-group date" id="ingresoEmpDiv" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#ingresoEmpDiv" id="datetime-ingresoEmpDiv" name="ingresoEmpDiv" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#ingresoEmpDiv" id="datetime-ingresoEmpDiv" name="ingresoEmpDiv" placeholder="" value="<?=$diversos->ingreso ?>" />
                             <div class="input-group-append" data-target="#ingresoEmpDiv" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -129,7 +129,7 @@
                     <div class="form-group">
                         <label for="separacion" class=" control-label">Separación:<span class="text-danger">*</span></label>
                         <div class="input-group date" id="separacion" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#separacion" id="datetime-separacion" name="separacion" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#separacion" id="datetime-separacion" name="separacion" placeholder="" value="<?=$diversos->separacion ?>" />
                             <div class="input-group-append" data-target="#separacion" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -382,7 +382,7 @@
                     <div class='form-group'>
                         <label for="fecha_inicialDis">Fecha de Inicio: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="fecha_inicialDis" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_inicialDis" id="datetime-fecha_inicialDis" name="fecha_inicialDis" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_inicialDis" id="datetime-fecha_inicialDis" name="fecha_inicialDis" placeholder="" value="<?=$diversos->fecha_inicio ?>" />
                             <div class="input-group-append" data-target="#fecha_inicialDis" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -401,7 +401,7 @@
                     <div class='form-group'>
                         <label for="fecha_finalDis">Fecha de Término: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="fecha_finalDis" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_finalDis" id="datetime-fecha_finalDis" name="fecha_finalDis" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_finalDis" id="datetime-fecha_finalDis" name="fecha_finalDis" placeholder="" value="<?=$diversos->fecha_termino ?>" />
                             <div class="input-group-append" data-target="#fecha_finalDis" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>

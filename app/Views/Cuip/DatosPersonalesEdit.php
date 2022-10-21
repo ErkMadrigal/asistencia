@@ -108,7 +108,7 @@
                     <div class="form-group">
                         <label for="vigenciaLic" class=" control-label">Vigencia de Licencia:<span class="text-danger">*</span></label>
                         <div class="input-group date" id="vigenciaLic" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#vigenciaLic" id="datetime-vigenciaLic" name="vigenciaLic" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#vigenciaLic" id="datetime-vigenciaLic" name="vigenciaLic" placeholder="" value="<?=$variable->vigencia_licencia ?>" />
                             <div class="input-group-append" data-target="#vigenciaLic" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -145,7 +145,7 @@
                                 if( !empty($modo_nacionalidad) ):
                                     foreach($modo_nacionalidad as  $a){
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= ($variable->nacionalidad == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -165,7 +165,7 @@
                     <div class='form-group'>
                         <label for="fecha_naturalizacion">Fecha de Naturalización: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="fecha_naturalizacion" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_naturalizacion" id="datetime-fecha_naturalizacion" name="fecha_naturalizacion" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_naturalizacion" id="datetime-fecha_naturalizacion" name="fecha_naturalizacion" placeholder="" value="<?=$variable->fecha_naturalizacion ?>" />
                             <div class="input-group-append" data-target="#fecha_naturalizacion" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -190,7 +190,7 @@
                                 if( !empty($pais_nacimiento) ):
                                     foreach($pais_nacimiento as  $a){
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= ($variable->pais == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -216,7 +216,8 @@
                                 if( !empty($entidad_federativa) ):
                                     foreach($entidad_federativa as  $a){
                                         ?>
-                                            <option value="<?=$a->estado ?>"><?= $a->estado ?></option>
+                                            <option <?= ($variable->naciE == $a->estado ? 'selected' : '') ?> value="<?=$a->estado ?>"><?= $a->estado ?></option>
+
                                             <?php
                                     }
                                 endif;?>
@@ -242,7 +243,7 @@
                                 if( !empty($nacionalidad) ):
                                     foreach($nacionalidad as  $a){
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= ($variable->nacionalidad == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -264,6 +265,14 @@
                         <div>
                             <select class="form-control" id="municipio_nacimiento" name="municipio_nacimiento">
                                 <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($municipio_nacimiento) ):
+                                    foreach($municipio_nacimiento as  $a){
+                                        ?>
+                                            <option <?= ($variable->municipio_nacimiento == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -286,7 +295,7 @@
                                 if( !empty($cuidad_nacimiento) ):
                                     foreach($cuidad_nacimiento as  $a){
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= ($variable->cuidad_nacimiento == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -312,7 +321,7 @@
                                 if( !empty($estado_civil) ):
                                     foreach($estado_civil as  $a){
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= ($variable->civil == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -338,7 +347,7 @@
                                 if( !empty($desarrollo_academico) ):
                                     foreach($desarrollo_academico as  $a){
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= ($variable->pais == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -376,7 +385,7 @@
                     <div class='form-group'>
                         <label for="anno_inicio">Año de Inicio: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="anno_inicio" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#anno_inicio" id="datetime-anno_inicio" name="anno_inicio" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#anno_inicio" id="datetime-anno_inicio" name="anno_inicio" placeholder="" value="<?=$variable->año_inicio ?>" />
                             <div class="input-group-append" data-target="#anno_inicio" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -395,7 +404,7 @@
                     <div class='form-group'>
                         <label for="anno_termino">Año de Termino: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="anno_termino" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#anno_termino" id="datetime-anno_termino" name="anno_termino" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#anno_termino" id="datetime-anno_termino" name="anno_termino" placeholder="" value="<?=$variable->año_termino ?>" />
                             <div class="input-group-append" data-target="#anno_termino" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -419,7 +428,7 @@
                                 if( !empty($SiNo) ):
                                     foreach($SiNo as  $a){
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= ($variable->registro_sep == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -610,7 +619,7 @@
                     <div class='form-group'>
                         <label for="fecha_inicial">Fecha de Inicio: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="fecha_inicial" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_inicial" id="datetime-fecha_inicial" name="fecha_inicial" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_inicial" id="datetime-fecha_inicial" name="fecha_inicial" placeholder="" value="<?=$variable->fecha_inicio ?>" />
                             <div class="input-group-append" data-target="#fecha_inicial" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -629,7 +638,7 @@
                     <div class='form-group'>
                         <label for="fecha_final">Fecha de Término: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="fecha_final" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_final" id="datetime-fecha_final" name="fecha_final" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_final" id="datetime-fecha_final" name="fecha_final" placeholder="" value="<?=$variable->fecha_termino ?>" />
                             <div class="input-group-append" data-target="#fecha_final" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
