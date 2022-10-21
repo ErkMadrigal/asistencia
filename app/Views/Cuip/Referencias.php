@@ -113,13 +113,13 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="numero" name="numero">
+                        <input type="text" class="form-control " id="numero" name="numero" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="codigoRefCer" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="codigoRefCer" name="codigoRefCer" maxlength="5">
+                        <input type="text" class="form-control " id="codigoRefCer" name="codigoRefCer" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -239,14 +239,14 @@
         <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="apellidoPaterno" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="calle" name="calle">
+                        <label for="apellidoPaternoParCer" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="apellidoPaternoParCer" name="apellidoPaternoParCer">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="apellidoMaterno" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno">
+                        <label for="apellidoMaternoParCer" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="apellidoMaternoParCer" name="apellidoMaternoParCer">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -338,13 +338,13 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="numeroParCer" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="numeroParCer" name="numeroParCer">
+                        <input type="text" class="form-control " id="numeroParCer" name="numeroParCer" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="codigoParCer" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="codigoParCer" name="codigoParCer">
+                        <input type="text" class="form-control " id="codigoParCer" name="codigoParCer" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -434,7 +434,7 @@
                             </select>
                             <script>
                                 $(document).ready(function() {
-                                    $("#pais").select2({
+                                    $("#paisParCer").select2({
                                         theme: "bootstrap4",
                                         width: "100%"
                                     });
@@ -563,13 +563,13 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="numeroRefPer" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="numeroRefPer" name="numeroRefPer">
+                        <input type="text" class="form-control " id="numeroRefPer" name="numeroRefPer" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="codigoPersonal" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="codigoPersonal" name="codigoPersonal">
+                        <input type="text" class="form-control " id="codigoPersonal" name="codigoPersonal" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -659,7 +659,7 @@
                             </select>
                             <script>
                                 $(document).ready(function() {
-                                    $("#pais").select2({
+                                    $("#paisRefPer").select2({
                                         theme: "bootstrap4",
                                         width: "100%"
                                     });
@@ -788,13 +788,13 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="numeroRefLab" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="numeroRefLab" name="numeroRefLab">
+                        <input type="text" class="form-control " id="numeroRefLab" name="numeroRefLab" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="codigoLaboral" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="codigoLaboral" name="codigoLaboral">
+                        <input type="text" class="form-control " id="codigoLaboral" name="codigoLaboral" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -884,7 +884,7 @@
                             </select>
                             <script>
                                 $(document).ready(function() {
-                                    $("#pais").select2({
+                                    $("#paisRefLab").select2({
                                         theme: "bootstrap4",
                                         width: "100%"
                                     });
