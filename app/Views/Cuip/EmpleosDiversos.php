@@ -40,7 +40,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="codigoEmpDiv" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="codigoEmpDiv" name="codigoEmpDiv"  maxlength="5">
+                        <input type="text" class="form-control " id="codigoEmpDiv" name="codigoEmpDiv"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
