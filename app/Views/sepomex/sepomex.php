@@ -31,6 +31,14 @@
                                     <option value="<?=$valor->estado?>"><?=$valor->estado?></option>
                                 <?php endforeach;?>
                             </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#estado").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -41,6 +49,14 @@
                             <select id="ciudad" name="ciudad" class="form-control">
                                     <option value="" selected>Selecciona una Opción</option>
                             </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#ciudad").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -51,6 +67,14 @@
                             <select id="municipio" name="municipio" class="form-control">
                                     <option value="" selected>Selecciona una Opción</option>
                             </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#municipio").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -78,7 +102,6 @@
                     <th>Codigo Postal</th>
                     <th>Asentamiento</th>
                     <th>Municipio</th>
-                    <th>Ciudad</th>
                     <th>Estado</th>
                     <th>activo</th>
                     <th>Editar</th>
@@ -103,20 +126,6 @@
 
         return src;
     }
-<<<<<<< HEAD
-    var table = $('#dataGrid').DataTable({
-        data: <?= json_encode($sepomex) ?> ,
-        deferRender: true,
-        pageLength: 10,
-        columns: [{ data: "codigoPostal"},
-                    { data: "asentamiento"},
-                    { data: "municipio"},
-                    { data: "ciudad"},
-                    { data: "estado"},
-                    { data: "activo", render: estatusRenderer }, 
-                    {  data: "edit",
-                        render: (data, type, full, meta) => {
-=======
     // var table = $('#dataGrid').DataTable({
     //     data: <?= json_encode($sepomex) ?> ,
     //     deferRender: true,
@@ -129,7 +138,6 @@
     //                 { data: "activo", render: estatusRenderer }, 
     //                 {  data: "edit",
     //                     render: (data, type, full, meta) => {
->>>>>>> erick
                 
     //                         return "<a href='" + base_url + "/editSepomex?id=" + full.id + "' class='nav-link'><i class='fa fa-pencil-square-o nav-icon'></i>";
                 
@@ -204,11 +212,10 @@
                     data: response.data,
                     destroy: true,
                     deferRender: true,
-                    pageLength: 5,
+                    pageLength: 10,
                     columns: [{ data: "codigoPostal"},
                                 { data: "asentamiento"},
                                 { data: "municipio"},
-                                { data: "ciudad"},
                                 { data: "estado"},
                                 { data: "activo", render: estatusRenderer }, 
                                 {  data: "edit",
