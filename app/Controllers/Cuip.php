@@ -693,7 +693,7 @@ class Cuip extends BaseController {
 				'codigoSegPub' =>  ['label' => "Código Postal", 'rules' => 'required|max_length[5]|integer'],
 				'coloniacodigoSegPub' =>  ['label' => "Colonia", 'rules' => 'required'],
 				'ingresoEmpPublic' =>  ['label' => "Ingreso", 'rules' => 'required|valid_only_date_chek'],
-				'separacion' =>  ['label' => "Separación", 'rules' => 'required|max_length[255]'],
+				'separacion' =>  ['label' => "Separación", 'rules' => 'required|valid_only_date_chek'],
 				'puesto_funcional' =>  ['label' => "Puesto Funcional", 'rules' => 'required|max_length[255]'],
 				'funciones' =>  ['label' => "Funciones", 'rules' => 'required|max_length[255]'],
 				'especialidad' =>  ['label' => "Especialidad", 'rules' => 'required|max_length[255]'],
@@ -737,6 +737,11 @@ class Cuip extends BaseController {
 
         			$ingresoEmpPublic = date( "Y-m-d" ,strtotime($getIngresoEmpPublic));
 
+
+        			$getSeparacion = $this->request->getPost('separacionEmpSeg');
+
+        			$separacion = date( "Y-m-d" ,strtotime($getSeparacion));
+
 					$empleosSeguridad = array(
 		    					
 		    					
@@ -754,7 +759,7 @@ class Cuip extends BaseController {
 						"idCodigoPostal" => $this->request->getPost('codigoSegPub')  , 
 						"numero_telefono" => $this->request->getPost('numero')  , 
 						"ingreso" =>  $ingresoEmpPublic , 
-						"separacion" =>  $this->request->getPost('separacion') , 
+						"separacion" =>  $separacion , 
 						"idPuestoFuncional" =>  $this->request->getPost('puesto_funcional') , 
 						"funciones" => $this->request->getPost('funciones')  , 
 						"especialidad" => $this->request->getPost('especialidad')  , 
@@ -809,11 +814,11 @@ class Cuip extends BaseController {
 
 				$rules = [
 				'tipo' =>  ['label' => "Tipo", 'rules' => 'required|max_length[255]'],
-				'determinacion' =>  ['label' => "Determinación", 'rules' => 'required'],
+				'determinacion' =>  ['label' => "Determinación", 'rules' => 'required|valid_only_date_chek'],
 				'descripcion' =>  ['label' => "Descripción", 'rules' => 'required|max_length[255]'],
 				'situacion' =>  ['label' => "Situación", 'rules' => 'required|max_length[255]'],
-				'inicio_inhabilitacion' =>  ['label' => "Inicio de la inhabilitación", 'rules' => 'required'],
-				'termino_inhabilitacion' =>  ['label' => "Término de la inhabilitación", 'rules' => 'required'],
+				'inicio_inhabilitacion' =>  ['label' => "Inicio de la inhabilitación", 'rules' => 'required|valid_only_date_chek'],
+				'termino_inhabilitacion' =>  ['label' => "Término de la inhabilitación", 'rules' => 'required|valid_only_date_chek'],
 				'organismo' =>  ['label' => "Dependencia u organismo que emite la determinación", 'rules' => 'required|max_length[255]'],
 				'emisora' =>  ['label' => "Institución emisora", 'rules' => 'required|max_length[255]'],
 				'entidad_federativaSE' =>  ['label' => "Entidad federativa", 'rules' => 'required'],
@@ -824,17 +829,17 @@ class Cuip extends BaseController {
 				'averiguacion_previa' =>  ['label' => "Averiguación previa", 'rules' => 'required|max_length[255]'],
 				'tipo_fuero' =>  ['label' => "Tipo de Fuero", 'rules' => 'required'],
 				'averiguacion_estado' =>  ['label' => "Estado de la averiguación previa", 'rules' => 'required|max_length[255]'],
-				'inicio_averiguacion' =>  ['label' => "Inicio de la averiguación", 'rules' => 'required'],
-				'al_dia' =>  ['label' => "Al día", 'rules' => 'required'],
+				'inicio_averiguacion' =>  ['label' => "Inicio de la averiguación", 'rules' => 'required|valid_only_date_chek'],
+				'al_dia' =>  ['label' => "Al día", 'rules' => 'required|valid_only_date_chek'],
 				'juzgado' =>  ['label' => "Juzgado", 'rules' => 'required|max_length[255]'],
 				'no_proceso' =>  ['label' => "No. Proceso", 'rules' => 'required|max_length[255]'],
 				'estado_procesal' =>  ['label' => "Estado Procesal", 'rules' => 'required|max_length[255]'],
-				'inicio_proceso' =>  ['label' => "Inicio del proceso", 'rules' => 'required'],
-				'al_dia_proceso' =>  ['label' => "Al día", 'rules' => 'required'],
+				'inicio_proceso' =>  ['label' => "Inicio del proceso", 'rules' => 'required|valid_only_date_chek'],
+				'al_dia_proceso' =>  ['label' => "Al día", 'rules' => 'required|valid_only_date_chek'],
 				'tipo_estimulo' =>  ['label' => "Tipo", 'rules' => 'required|max_length[255]'],
 				'descripcion_estimulo' =>  ['label' => "Descripción", 'rules' => 'required|max_length[255]'],
 				'dependencia' =>  ['label' => "Dependencia que otorga", 'rules' => 'required|max_length[255]'],
-				'otrogado_estimulo' =>  ['label' => "Otorgado", 'rules' => 'required']];
+				'otrogado_estimulo' =>  ['label' => "Otorgado", 'rules' => 'required|valid_only_date_chek']];
 		 
 				$errors = [];
 				$succes = [];
@@ -961,8 +966,8 @@ class Cuip extends BaseController {
 				'tema_curso' =>  ['label' => "Tema del curso", 'rules' => 'required|max_length[255]'],
 				'nivel_curso' =>  ['label' => "Nivel del curso recibido", 'rules' => 'required'],
 				'eficienciaCursos' =>  ['label' => "Eficiencia terminal", 'rules' => 'required'],
-				'inicio' =>  ['label' => "Inicio", 'rules' => 'required'],
-				'conclusion' =>  ['label' => "Conclusión", 'rules' => 'required'],
+				'inicio' =>  ['label' => "Inicio", 'rules' => 'required|valid_only_date_chek'],
+				'conclusion' =>  ['label' => "Conclusión", 'rules' => 'required|valid_only_date_chek'],
 				'duracion' =>  ['label' => "Duración en horas", 'rules' => 'required|max_length[255]'],
 				'comprobante' =>  ['label' => "Tipo de comprobante", 'rules' => 'required|max_length[255]'],
 				'empresa' =>  ['label' => "Insitutción o Empresa", 'rules' => 'required|max_length[255]'],
@@ -970,9 +975,9 @@ class Cuip extends BaseController {
 				'tipo_curso' =>  ['label' => "Tipo de curso", 'rules' => 'required'],
 				'cuso_tomado' =>  ['label' => "¿El curso fue?", 'rules' => 'required'],
 				'eficiencia' =>  ['label' => "Eficiencia terminal", 'rules' => 'required'],
-				'inicioAdicional' =>  ['label' => "Conclusión", 'rules' => 'required'],
-				'conclusionAdicional' =>  ['label' => "Duración en horas", 'rules' => 'required|max_length[255]'],
-				'duracion_horas' =>  ['label' => "Idioma o Dialecto", 'rules' => 'required'],
+				'inicioAdicional' =>  ['label' => "Conclusión", 'rules' => 'required|valid_only_date_chek'],
+				'conclusionAdicional' =>  ['label' => "Duración en horas", 'rules' => 'required|valid_only_date_chek'],
+				'duracion_horas' =>  ['label' => "Idioma o Dialecto", 'rules' => 'required|integer'],
 				'idioma' =>  ['label' => "Lectura", 'rules' => 'required'],
 				'escritura' =>  ['label' => "Escritura", 'rules' => 'required'],
 				'conversacion' =>  ['label' => "Conversación", 'rules' => 'required'],
@@ -983,8 +988,8 @@ class Cuip extends BaseController {
 				'tipoAgrupa' =>  ['label' => "Tipo", 'rules' => 'required'],
 				'especificacion' =>  ['label' => "Especifique", 'rules' => 'required|max_length[255]'],
 				'grado_habilidad' =>  ['label' => "Grado de aptitude o dominio", 'rules' => 'required'],
-				'desde' =>  ['label' => "Desde", 'rules' => 'required'],
-				'hasta' =>  ['label' => "Hasta", 'rules' => 'required']];
+				'desde' =>  ['label' => "Desde", 'rules' => 'required|valid_only_date_chek'],
+				'hasta' =>  ['label' => "Hasta", 'rules' => 'required|valid_only_date_chek']];
 		 
 				$errors = [];
 				$succes = [];
@@ -1159,12 +1164,12 @@ class Cuip extends BaseController {
 				'exterior' =>  ['label' => "No. Exterior", 'rules' => 'required|max_length[255]'],
 				'interior' =>  ['label' => "No. Interior", 'rules' => 'required|max_length[255]'],
 				'coloniacodigoEmpDiv' =>  ['label' => "Código Postal ", 'rules' => 'required|max_length[255]'],
-				'codigoEmpDiv' =>  ['label' => "Colonia", 'rules' => 'required'],
+				'codigoEmpDiv' =>  ['label' => "Colonia", 'rules' => 'required|max_length[5]|integer'],
 				'empresa' =>  ['label' => "Entidad Federativa", 'rules' => 'required'],
 				'empresa' =>  ['label' => "Municipio", 'rules' => 'required'],
 				'numero' =>  ['label' => "Numero Telefónico", 'rules' => 'required|max_length[255]'],
-				'ingresoEmpDiv' =>  ['label' => "Ingreso", 'rules' => 'required|max_length[255]'],
-				'separacion' =>  ['label' => "Separación", 'rules' => 'required|max_length[255]'],
+				'ingresoEmpDiv' =>  ['label' => "Ingreso", 'rules' => 'required|valid_only_date_chek'],
+				'separacion' =>  ['label' => "Separación", 'rules' => 'required|valid_only_date_chek'],
 				'puesto_funcional' =>  ['label' => "Puesto Funcional", 'rules' => 'required|max_length[255]'],
 				'funciones' =>  ['label' => "Funciones", 'rules' => 'required|max_length[255]'],
 				'sueldo' =>  ['label' => "Sueldo Base (Mensual)", 'rules' => 'required|max_length[255]'],
@@ -1187,8 +1192,8 @@ class Cuip extends BaseController {
 				'subtipo_disciplina' =>  ['label' => "Subtipo de disciplina", 'rules' => 'required|max_length[255]'],
 				'motivo' =>  ['label' => "Motivo", 'rules' => 'required|max_length[255]'],
 				'tipo' =>  ['label' => "Tipo", 'rules' => 'required|max_length[255]'],
-				'fecha_inicialDis' =>  ['label' => "Fecha de Inicio", 'rules' => 'required'],
-				'fecha_finalDis' =>  ['label' => "Fecha de Término", 'rules' => 'required'],
+				'fecha_inicialDis' =>  ['label' => "Fecha de Inicio", 'rules' => 'required|valid_only_date_chek'],
+				'fecha_finalDis' =>  ['label' => "Fecha de Término", 'rules' => 'required|valid_only_date_chek'],
 				'licencias_medicas' =>  ['label' => "En caso de licencias médicas", 'rules' => 'required|max_length[255]'],
 				'duracion' =>  ['label' => "Duración", 'rules' => 'required'],
 				'cantidad' =>  ['label' => "Cantidad", 'rules' => 'required|max_length[255]']];

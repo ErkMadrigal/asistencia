@@ -103,8 +103,21 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="separacion" class=" control-label">Separación:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="separacion" name="separacion">
+                        <label for="separacionEmpSeg" class=" control-label">Separación:<span class="text-danger">*</span></label>
+                        <div class="input-group date" id="separacionEmpSeg" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#separacionEmpSeg" id="datetime-separacionEmpSeg" name="separacionEmpSeg" placeholder="" value="" />
+                            <div class="input-group-append" data-target="#separacionEmpSeg" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#separacionEmpSeg").datetimepicker({
+                                    format: 'DD-MM-YYYY',
+                                    locale: moment.locale('es')
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-12'>

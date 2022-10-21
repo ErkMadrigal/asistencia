@@ -129,7 +129,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="duracion" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="duracion" name="duracion">
+                        <input type="text" class="form-control " id="duracion" name="duracion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" >
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
