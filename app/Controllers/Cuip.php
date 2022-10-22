@@ -7,6 +7,11 @@ use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Type\Hexadecimal;
 use Ramsey\Uuid\Provider\Node\StaticNodeProvider;
 
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Cuip extends BaseController { 
 
     private $encrypter;
@@ -223,7 +228,7 @@ class Cuip extends BaseController {
 				'apellidoPaterno' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
 				'apellidoMaterno' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
 				'fecha_nacimiento' =>  ['label' => 'Fecha de Nacimiento', 'rules' =>'required|valid_only_date_chek|date_mayor'],
-				'getGenero' =>  ['label' => 'Sexo', 'rules' =>'required'],
+				'sexo' =>  ['label' => 'Sexo', 'rules' =>'required'],
 				'rfc' =>  ['label' => "RFC", 'rules' => 'required|max_length[10]|min_length[10]'],
 				'claveE' =>  ['label' => "Clave Electoral", 'rules' => 'required|max_length[255]'],
 				'cartilla' =>  ['label' => "Cartilla SMN", 'rules' => 'required|max_length[255]'],
@@ -338,19 +343,19 @@ class Cuip extends BaseController {
 		    					
 						"id" => $id ,
 						"idEmpresa" => $idEmpresa , 
-						"primer_nombre" => $this->request->getPost('primerNombre') , 
-						"segundo_nombre" => $this->request->getPost('segundoNombre') , 
-						"apellido_paterno" => $this->request->getPost('apellidoPaterno') , 
-						"apellido_materno" => $this->request->getPost('apellidoMaterno') , 
+						"primer_nombre" => strtoupper($this->request->getPost('primerNombre')) , 
+						"segundo_nombre" => strtoupper($this->request->getPost('segundoNombre')) , 
+						"apellido_paterno" => strtoupper($this->request->getPost('apellidoPaterno')) , 
+						"apellido_materno" => strtoupper($this->request->getPost('apellidoMaterno')) , 
 						"fecha_nacimiento" => $fecha_nacimiento , 
 						"idGenero" => $getGenero , 
-						"rfc" => $this->request->getPost('rfc') , 
-						"clave_electoral" => $this->request->getPost('claveE') , 
-						"cartilla_smn" => $this->request->getPost('cartilla') , 
-						"licencia_conducir" => $this->request->getPost('licencia') , 
+						"rfc" => strtoupper($this->request->getPost('rfc')) , 
+						"clave_electoral" => strtoupper($this->request->getPost('claveE')) , 
+						"cartilla_smn" => strtoupper($this->request->getPost('cartilla')) , 
+						"licencia_conducir" => strtoupper($this->request->getPost('licencia')) , 
 						"vigencia_licencia" => $vigenciaLic , 
-						"curp" => $this->request->getPost('CURP') , 
-						"pasaporte" => $this->request->getPost('pasaporte') , 
+						"curp" => strtoupper($this->request->getPost('CURP')) , 
+						"pasaporte" => strtoupper($this->request->getPost('pasaporte')) , 
 						"idFormaNacionalidad" =>  $modo_nacionalidad , 
 						"fecha_naturalizacion" => $fecha_naturalizacion , 
 						"idPaisNacimiento" => $pais_nacimiento , 
@@ -360,29 +365,29 @@ class Cuip extends BaseController {
 						"idNacionalidad" => $nacionalidad , 
 						"idEstadoCivil" => $estado_civil , 
 						"idNivelEducativo" => $desarrollo_academico , 
-						"escuela" => $this->request->getPost('escuela') , 
-						"especialidad" => $this->request->getPost('especialidad') , 
-						"cedula_profesional" => $this->request->getPost('cedula') , 
+						"escuela" => strtoupper($this->request->getPost('escuela')) , 
+						"especialidad" => strtoupper($this->request->getPost('especialidad')) , 
+						"cedula_profesional" => strtoupper($this->request->getPost('cedula')) , 
 						"año_inicio" => $this->request->getPost('anno_inicio') , 
 						"año_termino" => $this->request->getPost('anno_termino') , 
 						"registro_sep" => $registroSep , 
-						"folio_certificado" => $this->request->getPost('certificado') , 
-						"calle" => $this->request->getPost('calle') , 
-						"numero_exterior" => $this->request->getPost('exterior') , 
-						"numero_interior" => $this->request->getPost('interior') , 
-						"colonia" => $this->request->getPost('coloniacodigo') , 
-						"entre_calle1" => $this->request->getPost('entrecalle') , 
-						"entre_calle2" => $this->request->getPost('ylacalle') , 
+						"folio_certificado" => strtoupper($this->request->getPost('certificado')) , 
+						"calle" => strtoupper($this->request->getPost('calle')) , 
+						"numero_exterior" => strtoupper($this->request->getPost('exterior')) , 
+						"numero_interior" => strtoupper($this->request->getPost('interior')) , 
+						"colonia" => strtoupper($this->request->getPost('coloniacodigo')) , 
+						"entre_calle1" => strtoupper($this->request->getPost('entrecalle')) , 
+						"entre_calle2" => strtoupper($this->request->getPost('ylacalle')) , 
 						"idCodigoPostal" => $this->request->getPost('codigo') , 
 						"numero_telefono" => $this->request->getPost('numeroTelefono') , 
 						"idEstado" => $this->request->getPost('estadocodigo') , 
 						"municipio" => $this->request->getPost('municipiocodigo') , 
-						"ciudad" => $this->request->getPost('ciudadcodigo') , 
-						"nombre_curso" => $this->request->getPost('nombrecurso') , 
-						"nombre_institucion" => $this->request->getPost('nombreInstitucion') , 
+						"ciudad" => strtoupper($this->request->getPost('ciudadcodigo')) , 
+						"nombre_curso" => strtoupper($this->request->getPost('nombrecurso')) , 
+						"nombre_institucion" => strtoupper($this->request->getPost('nombreInstitucion')) , 
 						"fecha_inicio" => $fecha_inicial , 
 						"fecha_termino" => $fecha_final , 
-						"certificado_por" => $this->request->getPost('certificado') , 
+						"certificado_por" => strtoupper($this->request->getPost('certificado')) , 
 						"activo" => 1 , 
 						"createdby" => $LoggedUserId , 
 						"createddate" => date("Y-m-d H:i:s") );
@@ -635,20 +640,20 @@ class Cuip extends BaseController {
 						"idPersonal" => $idPersonal  , 
 						"idEmpresa" =>  $idEmpresa , 
 						"vive_con_familia" => $familia  , 
-						"ingreso_familiar" =>  $this->request->getPost('ingreso') , 
+						"ingreso_familiar" =>  strtoupper($this->request->getPost('ingreso')) , 
 						"idTipoDomicilio" => $domicilio_tipo , 
-						"actividades_culturales" =>  $this->request->getPost('actividad') , 
-						"especificacion_inmueble" =>  $this->request->getPost('especificacion') , 
-						"inversiones" =>  $this->request->getPost('inversion') , 
-						"vehiculo" =>  $this->request->getPost('vehiculo') , 
-						"calidad_vida" => $this->request->getPost('calidad')  , 
-						"vicios" =>  $this->request->getPost('vicio') , 
-						"imagen_publica" =>  $this->request->getPost('imagen') , 
-						"comportamiento" => $this->request->getPost('comportamiento')  , 
-						"apellido_paterno" => $this->request->getPost('apellidoPaterno')  , 
-						"apellido_materno" => $this->request->getPost('apellidoMaterno')  , 
-						"primer_nombre" => $this->request->getPost('primerNombre')  , 
-						"segundo_nombre" => $this->request->getPost('segundoNombre')  , 
+						"actividades_culturales" =>  strtoupper($this->request->getPost('actividad')) , 
+						"especificacion_inmueble" =>  strtoupper($this->request->getPost('especificacion')) , 
+						"inversiones" =>  strtoupper($this->request->getPost('inversion')) , 
+						"vehiculo" =>  strtoupper($this->request->getPost('vehiculo')) , 
+						"calidad_vida" => strtoupper($this->request->getPost('calidad'))  , 
+						"vicios" =>  strtoupper($this->request->getPost('vicio')) , 
+						"imagen_publica" =>  strtoupper($this->request->getPost('imagen')) , 
+						"comportamiento" => strtoupper($this->request->getPost('comportamiento'))  , 
+						"apellido_paterno" => strtoupper($this->request->getPost('apellidoPaterno'))  , 
+						"apellido_materno" => strtoupper($this->request->getPost('apellidoMaterno'))  , 
+						"primer_nombre" => strtoupper($this->request->getPost('primerNombre'))  , 
+						"segundo_nombre" => strtoupper($this->request->getPost('segundoNombre'))  , 
 						"fecha_nacimiento" => $fecha_nacimiento_dep  , 
 						"idGenero" => $sexo_dep  ,
 						"idParentesco" =>  $parentesco_familiar ,
@@ -694,7 +699,7 @@ class Cuip extends BaseController {
 
 
 	public function AgregarEmpSegPublica(){
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['dependencia, corporacion, primerNombre, nombre, calle, exterior, interior, numero, codigoSegPub, coloniacodigoSegPub, aprobacion, separacion, puesto_funcional, funciones, especialidad, rango, numero_placa, numero_empleado, sueldo, compensaciones, area, division, jefe_inmediato, nombre_jefe, estadocodigoSegPub, municipiocodigoSegPub, motivo_separacion, tipo_separacion, tipo_baja, comentarios'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['dependencia, corporacion, primerNombre, nombre, calle, exterior, interior, numero, codigoSegPub, coloniacodigoSegPub, aprobacion, separacionEmpSeg, puesto_funcional, funciones, especialidad, rango, numero_placa, numero_empleado, sueldo, compensaciones, area, division, jefe_inmediato, nombre_jefe, estadocodigoSegPub, municipiocodigoSegPub, motivo_separacion, tipo_separacion, tipo_baja, comentarios'],FILTER_SANITIZE_STRING)){
 
 			$errors = [];
 			$succes = [];
@@ -716,7 +721,7 @@ class Cuip extends BaseController {
 				'codigoSegPub' =>  ['label' => "Código Postal", 'rules' => 'required|max_length[5]|integer'],
 				'coloniacodigoSegPub' =>  ['label' => "Colonia", 'rules' => 'required'],
 				'ingresoEmpPublic' =>  ['label' => "Ingreso", 'rules' => 'required|valid_only_date_chek'],
-				'separacion' =>  ['label' => "Separación", 'rules' => 'required|valid_only_date_chek'],
+				'separacionEmpSeg' =>  ['label' => "Separación", 'rules' => 'required|valid_only_date_chek'],
 				'puesto_funcional' =>  ['label' => "Puesto Funcional", 'rules' => 'required|max_length[255]'],
 				'funciones' =>  ['label' => "Funciones", 'rules' => 'required|max_length[255]'],
 				'especialidad' =>  ['label' => "Especialidad", 'rules' => 'required|max_length[255]'],
@@ -768,36 +773,36 @@ class Cuip extends BaseController {
 						"id" => $id  ,
 						"idPersonal" => $idPersonal  , 
 						"idEmpresa" =>  $idEmpresa , 
-						"dependencia" =>  $this->request->getPost('dependencia') , 
-						"corporacion" =>  $this->request->getPost('corporacion') , 
-						"primer_nombre" =>  $this->request->getPost('primerNombre') , 
-						"segundo_nombre" =>  $this->request->getPost('segundoNombre') , 
-						"calle" =>  $this->request->getPost('calle') , 
-						"numero_exterior" => $this->request->getPost('exterior')  , 
-						"numero_interior" => $this->request->getPost('interior')  , 
-						"colonia" =>  $this->request->getPost('coloniacodigoSegPub') , 
+						"dependencia" =>  strtoupper($this->request->getPost('dependencia')) , 
+						"corporacion" =>  strtoupper($this->request->getPost('corporacion')) , 
+						"primer_nombre" =>  strtoupper($this->request->getPost('primerNombre')) , 
+						"segundo_nombre" =>  strtoupper($this->request->getPost('segundoNombre')) , 
+						"calle" =>  strtoupper($this->request->getPost('calle')) , 
+						"numero_exterior" => strtoupper($this->request->getPost('exterior'))  , 
+						"numero_interior" => strtoupper($this->request->getPost('interior'))  , 
+						"colonia" =>  strtoupper($this->request->getPost('coloniacodigoSegPub')) , 
 						"idCodigoPostal" => $this->request->getPost('codigoSegPub')  , 
 						"numero_telefono" => $this->request->getPost('numero')  , 
 						"ingreso" =>  $ingresoEmpPublic , 
 						"separacion" =>  $separacion , 
 						"idPuestoFuncional" =>  $this->request->getPost('puesto_funcional') , 
-						"funciones" => $this->request->getPost('funciones')  , 
-						"especialidad" => $this->request->getPost('especialidad')  , 
-						"rango" =>  $this->request->getPost('rango') , 
-						"numero_placa" => $this->request->getPost('numero_placa')  , 
-						"numero_empleado" => $this->request->getPost('numero_empleado')  , 
-						"sueldo_base" => $this->request->getPost('sueldo')  , 
-						"compensacion" =>  $this->request->getPost('compensaciones') , 
-						"area" =>  $this->request->getPost('area') , 
-						"division" =>  $this->request->getPost('division') , 
-						"cuip_jefe" =>  $this->request->getPost('jefe_inmediato') , 
-						"nombre_jefe" =>  $this->request->getPost('nombre_jefe') , 
+						"funciones" => strtoupper($this->request->getPost('funciones'))  , 
+						"especialidad" => strtoupper($this->request->getPost('especialidad'))  , 
+						"rango" =>  strtoupper($this->request->getPost('rango')) , 
+						"numero_placa" => strtoupper($this->request->getPost('numero_placa'))  , 
+						"numero_empleado" => strtoupper($this->request->getPost('numero_empleado'))  , 
+						"sueldo_base" => strtoupper($this->request->getPost('sueldo'))  , 
+						"compensacion" =>  strtoupper($this->request->getPost('compensaciones')) , 
+						"area" =>  strtoupper($this->request->getPost('area')) , 
+						"division" =>  strtoupper($this->request->getPost('division')) , 
+						"cuip_jefe" =>  strtoupper($this->request->getPost('jefe_inmediato')) , 
+						"nombre_jefe" =>  strtoupper($this->request->getPost('nombre_jefe')) , 
 						"idEstado" =>  $this->request->getPost('estadocodigoSegPub') , 
 						"municipio" => $this->request->getPost('municipiocodigoSegPub')  , 
 						"idMotivoSeparacion" =>  $this->request->getPost('motivo_separacion') , 
-						"tipo_separacion" => $this->request->getPost('tipo_separacion')  , 
-						"tipo_baja" =>  $this->request->getPost('tipo_baja') , 
-						"comentarios" => $this->request->getPost('comentarios') , 
+						"tipo_separacion" => strtoupper($this->request->getPost('tipo_separacion'))  , 
+						"tipo_baja" =>  strtoupper($this->request->getPost('tipo_baja')) , 
+						"comentarios" => strtoupper($this->request->getPost('comentarios')) , 
 						"activo" => 1 , 
 						"createdby" => $LoggedUserId , 
 						"createddate" => date("Y-m-d H:i:s") );
@@ -931,32 +936,32 @@ class Cuip extends BaseController {
 						"id" => $id  ,
 						"idPersonal" => $idPersonal  , 
 						"idEmpresa" =>  $idEmpresa , 
-						"tipo_sancion" =>  $this->request->getPost('tipo') , 
+						"tipo_sancion" =>  strtoupper($this->request->getPost('tipo')) , 
 						"determinacion" =>  $determinacion , 
-						"descripcion_sancion" => $this->request->getPost('descripcion')  , 
-						"situacion" =>  $this->request->getPost('situacion') , 
+						"descripcion_sancion" => strtoupper($this->request->getPost('descripcion'))  , 
+						"situacion" =>  strtoupper($this->request->getPost('situacion')) , 
 						"inicio_habilitacion" =>  $inicio_inhabilitacion , 
 						"termino_habilitacion" => $termino_inhabilitacion  , 
-						"dependencia" =>  $this->request->getPost('organismo') , 
-						"institucion_emisora" =>  $this->request->getPost('emisora') , 
+						"dependencia" =>  strtoupper($this->request->getPost('organismo')) , 
+						"institucion_emisora" =>  strtoupper($this->request->getPost('emisora')) , 
 						"idEstado" =>  $this->request->getPost('entidad_federativaSE') , 
-						"delitos" =>  $this->request->getPost('delitos') , 
-						"motivos" =>  $this->request->getPost('motivo') , 
-						"numero_expediente" =>  $this->request->getPost('no_expediente') , 
-						"agencia_mp" =>  $this->request->getPost('agencia_mp') , 
-						"averiguacion_previa" =>  $this->request->getPost('averiguacion_previa') , 
+						"delitos" =>  strtoupper($this->request->getPost('delitos')) , 
+						"motivos" =>  strtoupper($this->request->getPost('motivo')) , 
+						"numero_expediente" =>  strtoupper($this->request->getPost('no_expediente')) , 
+						"agencia_mp" =>  strtoupper($this->request->getPost('agencia_mp')) , 
+						"averiguacion_previa" =>  strtoupper($this->request->getPost('averiguacion_previa')) , 
 						"idTipoFuero" =>  $this->request->getPost('tipo_fuero') , 
-						"estado_averiguacion" =>  $this->request->getPost('averiguacion_estado') , 
+						"estado_averiguacion" =>  strtoupper($this->request->getPost('averiguacion_estado')) , 
 						"inicio_averiguacion" =>  $inicio_averiguacion , 
 						"aldia_averiguacion" => $al_dia  , 
-						"juzgado" =>  $this->request->getPost('juzgado') , 
-						"num_proceso" =>  $this->request->getPost('no_proceso') , 
-						"estado_procesal" => $this->request->getPost('estado_procesal')  , 
+						"juzgado" =>  strtoupper($this->request->getPost('juzgado')) , 
+						"num_proceso" =>  strtoupper($this->request->getPost('no_proceso')) , 
+						"estado_procesal" => strtoupper($this->request->getPost('estado_procesal'))  , 
 						"inicio_proceso" => $inicio_proceso  , 
 						"aldia_proceso" =>  $al_dia_proceso , 
-						"tipo_estimulo" => $this->request->getPost('tipo_estimulo')  , 
-						"descripcion_estimulo" => $this->request->getPost('descripcion_estimulo')  , 
-						"dependencia_otorga" => $this->request->getPost('dependencia')  , 
+						"tipo_estimulo" => strtoupper($this->request->getPost('tipo_estimulo'))  , 
+						"descripcion_estimulo" => strtoupper($this->request->getPost('descripcion_estimulo'))  , 
+						"dependencia_otorga" => strtoupper($this->request->getPost('dependencia'))  , 
 						"otorgado" =>  $otrogado_estimulo ,
 						"activo" => 1 , 
 						"createdby" => $LoggedUserId , 
@@ -1138,19 +1143,19 @@ class Cuip extends BaseController {
 						"id" => $id  ,
 						"idPersonal" => $idPersonal  , 
 						"idEmpresa" =>  $idEmpresa , 
-						"dependencia"  =>  $this->request->getPost('dependencia') , 
-						"inst_capacitadora"  =>  $this->request->getPost('institucion') , 
-						"nombre_curso"  =>  $this->request->getPost('nombre_curso') , 
-						"tema_curso"  =>  $this->request->getPost('tema_curso') , 
+						"dependencia"  =>  strtoupper($this->request->getPost('dependencia')) , 
+						"inst_capacitadora"  =>  strtoupper($this->request->getPost('institucion')) , 
+						"nombre_curso"  =>  strtoupper($this->request->getPost('nombre_curso')) , 
+						"tema_curso"  =>  strtoupper($this->request->getPost('tema_curso')) , 
 						"idNivel_curso"  =>  $nivel_curso , 
 						"idEficienciaCurso"  =>  $eficienciaCursos , 
 						"inicio_curso"  =>  $inicio , 
 						"conclusion_curso"  => $conclusion  , 
 						"duracion_horas_curso"  =>  $this->request->getPost('duracion') , 
-						"tipo_comprobante"  =>  $this->request->getPost('comprobante') , 
-						"institucion"  => $this->request->getPost('empresa')  , 
-						"curso"  =>  $this->request->getPost('curso') , 
-						"tipo_curso"  =>  $this->request->getPost('tipo_curso') , 
+						"tipo_comprobante"  =>  strtoupper($this->request->getPost('comprobante')) , 
+						"institucion"  => strtoupper($this->request->getPost('empresa'))  , 
+						"curso"  =>  strtoupper($this->request->getPost('curso')) , 
+						"tipo_curso"  =>  strtoupper($this->request->getPost('tipo_curso')) , 
 						"idCursoFue"  => $cuso_tomado  , 
 						"idEficienciaAdicional"  => $eficiencia  , 
 						"inicio_adicional"  =>  $inicioAdicional , 
@@ -1161,11 +1166,11 @@ class Cuip extends BaseController {
 						"idIdiomaEscritura"  =>  $escritura , 
 						"idIdiomaConversacion"  => $conversacion  , 
 						"idTipoHabilidad"  =>  $tipo_habilidad , 
-						"especifique_habilidad"  =>  $this->request->getPost('especificacion') , 
+						"especifique_habilidad"  =>  strtoupper($this->request->getPost('especificacion')) , 
 						"idGradoHabilidad"  => $grado_habilidadCap  , 
-						"nombre_agrupacion"  =>  $this->request->getPost('nombre') , 
+						"nombre_agrupacion"  =>  strtoupper($this->request->getPost('nombre')) , 
 						"idTipoAgrupacion"  =>  $tipoAgrupa , 
-						"especifique_agrupacion"  =>  $this->request->getPost('especificacion') , 
+						"especifique_agrupacion"  =>  strtoupper($this->request->getPost('especificacion')) , 
 						"idGradoHabilidadAgrup"  =>  $grado_habilidad , 
 						"desde"  =>  $desde , 
 						"hasta"  => $hasta ,
@@ -1322,40 +1327,40 @@ class Cuip extends BaseController {
 						"id" => $id  ,
 						"idPersonal" => $idPersonal  , 
 						"idEmpresa" =>  $idEmpresa , 
-						"empresa"  => $this->request->getPost('empresa')  , 
-						"calle"  => $this->request->getPost('calle')  , 
-						"numero_exterior"  => $this->request->getPost('exterior')  , 
-						"numero_interior"  =>  $this->request->getPost('interior') , 
-						"colonia"  =>  $this->request->getPost('coloniacodigoEmpDiv') , 
+						"empresa"  => strtoupper($this->request->getPost('empresa'))  , 
+						"calle"  => strtoupper($this->request->getPost('calle'))  , 
+						"numero_exterior"  => strtoupper($this->request->getPost('exterior'))  , 
+						"numero_interior"  =>  strtoupper($this->request->getPost('interior')) , 
+						"colonia"  =>  strtoupper($this->request->getPost('coloniacodigoEmpDiv')) , 
 						"idCodigoPostal"  =>  $this->request->getPost('codigoEmpDiv') , 
 						"numero_telefono"  =>  $this->request->getPost('numero') , 
 						"ingreso"  =>  $ingresoEmpDiv , 
 						"separacion"  => $separacion  , 
 						"idPuestoFuncional"  => $this->request->getPost('puesto_funcional')  , 
-						"area"  =>  $this->request->getPost('area') , 
-						"sueldo_base"  => $this->request->getPost('sueldo')  , 
-						"compensacion"  => $this->request->getPost('compensaciones')  , 
+						"area"  =>  strtoupper($this->request->getPost('area')) , 
+						"sueldo_base"  => strtoupper($this->request->getPost('sueldo'))  , 
+						"compensacion"  => strtoupper($this->request->getPost('compensaciones'))  , 
 						"idEstado"  =>  $this->request->getPost('estadocodigoEmpDiv') , 
 						"municipio"  =>  $this->request->getPost('municipiocodigoEmpDiv') , 
 						"idMotivoSeparacion"  => $this->request->getPost('motivo_separacion')  , 
-						"tipo_separacion"  => $this->request->getPost('tipo_separacion')  , 
-						"tipo_baja"  => $this->request->getPost('tipo_baja')  , 
-						"comentarios"  => $this->request->getPost('comentarios')  , 
-						"eligio_empleo"  =>  $this->request->getPost('empleo') , 
-						"puesto_gustaria"  =>  $this->request->getPost('puesto') , 
-						"area_gustaria"  =>  $this->request->getPost('area_gustaria') , 
-						"tiempo_ascenso"  =>  $this->request->getPost('ascender') , 
+						"tipo_separacion"  => strtoupper($this->request->getPost('tipo_separacion'))  , 
+						"tipo_baja"  => strtoupper($this->request->getPost('tipo_baja'))  , 
+						"comentarios"  => strtoupper($this->request->getPost('comentarios'))  , 
+						"eligio_empleo"  =>  strtoupper($this->request->getPost('empleo')) , 
+						"puesto_gustaria"  =>  strtoupper($this->request->getPost('puesto')) , 
+						"area_gustaria"  =>  strtoupper($this->request->getPost('area_gustaria')) , 
+						"tiempo_ascenso"  =>  strtoupper($this->request->getPost('ascender')) , 
 						"reglamento"  =>  $reglamentacion , 
 						"razon_ascenso"  => $reglamentacion_ascenso  , 
-						"capacitacion"  =>  $this->request->getPost('capacitacion') , 
+						"capacitacion"  =>  strtoupper($this->request->getPost('capacitacion')) , 
 						"idTipoDisciplina"  =>  $desciplina , 
-						"subtipo_disciplina"  =>  $this->request->getPost('subtipo_disciplina') , 
-						"motivo"  => $this->request->getPost('motivo')  , 
-						"tipo"  =>  $this->request->getPost('tipo') , 
+						"subtipo_disciplina"  =>  strtoupper($this->request->getPost('subtipo_disciplina')) , 
+						"motivo"  => strtoupper($this->request->getPost('motivo'))  , 
+						"tipo"  =>  strtoupper($this->request->getPost('tipo')) , 
 						"fecha_inicio"  =>  $fecha_inicialDis , 
 						"fecha_termino"  => $fecha_finalDis  , 
 						"idDuracion"  => $duracion   , 
-						"cantidad" => $this->request->getPost('cantidad') , 
+						"cantidad" => strtoupper($this->request->getPost('cantidad')) , 
 						"activo" => 1 , 
 						"createdby" => $LoggedUserId , 
 						"createddate" => date("Y-m-d H:i:s") );
@@ -1419,9 +1424,12 @@ class Cuip extends BaseController {
 				) ;
 			}
 
-		
+			$getId = str_replace(" ", "+", $_GET['id']);
+			$idDec = $this->encrypt->Decrytp($getId);
+			$id = $this->encrypt->Encrypt($idDec);
 			
-			$data['documentos'] = $result; 
+			$data['documentos'] = $result;
+			$data['idPersonal'] = $id; 
 
 			$data['breadcrumb'] = ["inicio" => 'CUIP' ,
                     				"url" => 'cuip',
@@ -1449,6 +1457,26 @@ class Cuip extends BaseController {
 			$data['diversos'] = $this->modelCuip->GetEmpleosDiversos($id);
 			$data['capacitacion'] = $this->modelCuip->GetCapacitaciones($id);
 			$data['sanciones'] = $this->modelCuip->GetSanciones($id);
+
+			$documentos = $this->modelCuip->GetDocumentosById($id);
+
+
+			$result = [];
+
+    		foreach ( $documentos as $value){
+				
+				$id = $this->encrypt->Encrypt($value->idDocumento);
+				$result[] = (object) array (
+					'id' => $id ,
+					'documento' => $value->documento,
+					'tipo' => $value->tipo
+
+				) ;
+			}
+
+			$data['documentos'] = $result;
+
+
 
 			$data['id'] = $this->encrypt->Encrypt($id);;
 			
@@ -1937,74 +1965,74 @@ class Cuip extends BaseController {
 						"id" => $id  ,
 						"idPersonal" => $idPersonal  , 
 						"idEmpresa" =>  $idEmpresa , 
-						"apellido_paterno_fam" => $this->request->getPost('apellidoPaterno') , 
-						"apellido_materno_fam" => $this->request->getPost('apellidoMaterno') , 
-						"primer_nombre_fam" => $this->request->getPost('primerNombre') , 
-						"segundo_nombre_fam" => $this->request->getPost('segundoNombre') , 
+						"apellido_paterno_fam" => strtoupper($this->request->getPost('apellidoPaterno')) , 
+						"apellido_materno_fam" => strtoupper($this->request->getPost('apellidoMaterno')) , 
+						"primer_nombre_fam" => strtoupper($this->request->getPost('primerNombre')) , 
+						"segundo_nombre_fam" => strtoupper($this->request->getPost('segundoNombre')) , 
 						"idGenero_fam" => $getSexo_fam_cer , 
-						"ocupacion_fam" => $this->request->getPost('ocupacion') , 
+						"ocupacion_fam" => strtoupper($this->request->getPost('ocupacion')) , 
 						"idParentesco_fam" => $parentesco_fam_cercano , 
-						"calle_fam" => $this->request->getPost('calle') , 
-						"numero_exterior_fam" => $this->request->getPost('exterior') , 
-						"numero_interior_fam" => $this->request->getPost('interior') , 
-						"colonia_fam" => $this->request->getPost('coloniacodigoRefCer') , 
+						"calle_fam" => strtoupper($this->request->getPost('calle')) , 
+						"numero_exterior_fam" => strtoupper($this->request->getPost('exterior')) , 
+						"numero_interior_fam" => strtoupper($this->request->getPost('interior')) , 
+						"colonia_fam" => strtoupper($this->request->getPost('coloniacodigoRefCer')) , 
 						"idCodigoPostal_fam" => $this->request->getPost('codigoRefCer') , 
 						"numero_telefono_fam" => $this->request->getPost('numero') , 
 						"idPaisNacimiento_fam" => $pais , 
 						"idEstado_fam" => $this->request->getPost('estadocodigoRefCer') , 
 						"municipio_fam" => $this->request->getPost('municipiocodigoRefCer') , 
-						"ciudad_fam" => $this->request->getPost('ciudadcodigoRefCer') , 
-						"apellido_paterno_pariente" => $this->request->getPost('apellidoPaternoParCer') , 
-						"apellido_materno_pariente" => $this->request->getPost('apellidoMaternoParCer') , 
-						"primer_nombre_pariente" => $this->request->getPost('primerNombreParCer') , 
-						"segundo_nombre_pariente" => $this->request->getPost('segundoNombreParCer') , 
+						"ciudad_fam" => strtoupper($this->request->getPost('ciudadcodigoRefCer')) , 
+						"apellido_paterno_pariente" => strtoupper($this->request->getPost('apellidoPaternoParCer')) , 
+						"apellido_materno_pariente" => strtoupper($this->request->getPost('apellidoMaternoParCer')) , 
+						"primer_nombre_pariente" => strtoupper($this->request->getPost('primerNombreParCer')) , 
+						"segundo_nombre_pariente" => strtoupper($this->request->getPost('segundoNombreParCer')) , 
 						"idGenero_pariente" => $sexo_par_cer , 
-						"ocupacion_pariente" => $this->request->getPost('ocupacionParCer') , 
+						"ocupacion_pariente" => strtoupper($this->request->getPost('ocupacionParCer')) , 
 						"idParentesco_pariente" => $parentesco_cercano , 
-						"calle_pariente" => $this->request->getPost('calleParCer') , 
-						"numero_exterior_pariente" => $this->request->getPost('exteriorParCer') , 
-						"numero_interior_pariente" => $this->request->getPost('interiorParCer') , 
-						"colonia_pariente" => $this->request->getPost('coloniacodigoParCer') , 
+						"calle_pariente" => strtoupper($this->request->getPost('calleParCer')) , 
+						"numero_exterior_pariente" => strtoupper($this->request->getPost('exteriorParCer')) , 
+						"numero_interior_pariente" => strtoupper($this->request->getPost('interiorParCer')) , 
+						"colonia_pariente" => strtoupper($this->request->getPost('coloniacodigoParCer')) , 
 						"idCodigoPostal_pariente" => $this->request->getPost('codigoParCer') , 
 						"numero_telefono_pariente" => $this->request->getPost('numeroParCer') , 
 						"idPaisNacimiento_pariente" => $paisParCer , 
 						"idEstado_pariente" => $this->request->getPost('estadocodigoParCer') , 
 						"municipio_pariente" => $this->request->getPost('municipiocodigoParCer') , 
-						"ciudad_pariente" => $this->request->getPost('ciudadcodigoParCer') , 
-						"apellido_paterno_personal" => $this->request->getPost('apellidoPaternoRefPer') , 
-						"apellido_materno_personal" => $this->request->getPost('apellidoMaternoRefPer') , 
-						"primer_nombre_personal" => $this->request->getPost('primerNombreRefPer') , 
-						"segundo_nombre_personal" => $this->request->getPost('segundoNombreRefPer') , 
+						"ciudad_pariente" => strtoupper($this->request->getPost('ciudadcodigoParCer')) , 
+						"apellido_paterno_personal" => strtoupper($this->request->getPost('apellidoPaternoRefPer')) , 
+						"apellido_materno_personal" => strtoupper($this->request->getPost('apellidoMaternoRefPer')) , 
+						"primer_nombre_personal" => strtoupper($this->request->getPost('primerNombreRefPer')) , 
+						"segundo_nombre_personal" => strtoupper($this->request->getPost('segundoNombreRefPer')) , 
 						"idGenero_personal" => $sexo_per , 
-						"ocupacion_personal" => $this->request->getPost('ocupacionRefPer') , 
+						"ocupacion_personal" => strtoupper($this->request->getPost('ocupacionRefPer')) , 
 						"idParentesco_personal" => $parentesco_personal , 
-						"calle_personal" => $this->request->getPost('calleRefPer') , 
-						"numero_exterior_personal" => $this->request->getPost('exteriorRefPer') , 
-						"numero_interior_personal" => $this->request->getPost('interiorRefPer') , 
-						"colonia_personal" => $this->request->getPost('coloniacodigoPersonal') , 
+						"calle_personal" => strtoupper($this->request->getPost('calleRefPer')) , 
+						"numero_exterior_personal" => strtoupper($this->request->getPost('exteriorRefPer')) , 
+						"numero_interior_personal" => strtoupper($this->request->getPost('interiorRefPer')) , 
+						"colonia_personal" => strtoupper($this->request->getPost('coloniacodigoPersonal')) , 
 						"idCodigoPostal_personal" => $this->request->getPost('codigoPersonal') , 
 						"numero_telefono_personal" => $this->request->getPost('numeroRefPer') , 
 						"idPaisNacimiento_personal" => $paisRefPer, 
 						"idEstado_personal" => $this->request->getPost('estadocodigoPersonal') , 
 						"municipio_personal" => $this->request->getPost('municipiocodigoPersonal') , 
-						"ciudad_personal" => $this->request->getPost('ciudadcodigoPersonal') ,
-						"apellido_paterno_laboral" => $this->request->getPost('apellidoPaternoRefLab') , 
-						"apellido_materno_laboral" => $this->request->getPost('apellidoMaternoRefLab') , 
-						"primer_nombre_laboral" => $this->request->getPost('primerNombreRefLab') , 
-						"segundo_nombre_laboral" => $this->request->getPost('segundoNombreRefLab') , 
+						"ciudad_personal" => strtoupper($this->request->getPost('ciudadcodigoPersonal')) ,
+						"apellido_paterno_laboral" => strtoupper($this->request->getPost('apellidoPaternoRefLab')) , 
+						"apellido_materno_laboral" => strtoupper($this->request->getPost('apellidoMaternoRefLab')) , 
+						"primer_nombre_laboral" => strtoupper($this->request->getPost('primerNombreRefLab')) , 
+						"segundo_nombre_laboral" => strtoupper($this->request->getPost('segundoNombreRefLab')) , 
 						"idGenero_laboral" => $sexo_lab , 
-						"ocupacion_laboral" => $this->request->getPost('ocupacionRefLab') , 
+						"ocupacion_laboral" => strtoupper($this->request->getPost('ocupacionRefLab')) , 
 						"idParentesco_laboral" => $parentesco_laboral , 
-						"calle_laboral" => $this->request->getPost('calleRefLab') , 
-						"numero_exterior_laboral" => $this->request->getPost('exteriorRefLab') , 
-						"numero_interior_laboral" => $this->request->getPost('interiorRefLab') , 
-						"colonia_laboral" => $this->request->getPost('coloniacodigoLaboral') , 
+						"calle_laboral" => strtoupper($this->request->getPost('calleRefLab')) , 
+						"numero_exterior_laboral" => strtoupper($this->request->getPost('exteriorRefLab')) , 
+						"numero_interior_laboral" => strtoupper($this->request->getPost('interiorRefLab')) , 
+						"colonia_laboral" => strtoupper($this->request->getPost('coloniacodigoLaboral')) , 
 						"idCodigoPostal_laboral" => $this->request->getPost('codigoLaboral') , 
 						"numero_telefono_laboral" => $this->request->getPost('numeroRefLab') , 
 						"idPaisNacimiento_laboral" => $paisRefLab , 
 						"idEstado_laboral" => $this->request->getPost('estadocodigoLaboral') , 
 						"municipio_laboral" => $this->request->getPost('municipiocodigoLaboral') , 
-						"ciudad_laboral" => $this->request->getPost('ciudadcodigoLaboral') ,
+						"ciudad_laboral" => strtoupper($this->request->getPost('ciudadcodigoLaboral')) ,
 						"activo" => 1 , 
 						"createdby" => $LoggedUserId , 
 						"createddate" => date("Y-m-d H:i:s") );
@@ -2042,6 +2070,63 @@ class Cuip extends BaseController {
 
 			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);	
 		}	
+	}
+
+
+	function export()
+	{
+		$data = $this->modelCuip->GetCuipExcel();
+
+		$file_name = 'data.xlsx';
+
+		$spreadsheet = new Spreadsheet();
+
+		$sheet = $spreadsheet->getActiveSheet();
+
+		$sheet->setCellValue('A1', 'Employee Name');
+
+		$sheet->setCellValue('B1', 'Email Address');
+
+		$sheet->setCellValue('C1', 'Mobile No.');
+
+		$sheet->setCellValue('D1', 'Department');
+
+		$count = 2;
+
+		foreach($data as $row)
+		{
+			$sheet->setCellValue('A' . $count, $row['employee_name']);
+
+			$sheet->setCellValue('B' . $count, $row['employee_email']);
+
+			$sheet->setCellValue('C' . $count, $row['employee_mobile']);
+
+			$sheet->setCellValue('D' . $count, $row['employee_department']);
+
+			$count++;
+		}
+
+		$writer = new Xlsx($spreadsheet);
+
+		$writer->save($file_name);
+
+		header("Content-Type: application/vnd.ms-excel");
+
+		header('Content-Disposition: attachment; filename="' . basename($file_name) . '"');
+
+		header('Expires: 0');
+
+		header('Cache-Control: must-revalidate');
+
+		header('Pragma: public');
+
+		header('Content-Length:' . filesize($file_name));
+
+		flush();
+
+		readfile($file_name);
+
+		exit;
 	}
 
 
