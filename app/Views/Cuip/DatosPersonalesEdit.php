@@ -265,14 +265,15 @@
                         <div>
                             <select class="form-control" id="municipio_nacimiento" name="municipio_nacimiento">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$variable->municipio?>" ><?=$variable->municipio?> </option>
                                 <?php
-                                if( !empty($municipio_nacimiento) ):
-                                    foreach($municipio_nacimiento as  $a){
-                                        ?>
-                                            <option <?= ($variable->municipio_nacimiento == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
+                                if (!empty($municipio_nacimiento)) :
+                                    foreach ($municipio_nacimiento as  $a) {
+                                ?>
+                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
                                     }
-                                endif;?>
+                                endif; ?>  
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -291,14 +292,15 @@
                         <div>
                             <select class="form-control" id="cuidad_nacimiento" name="cuidad_nacimiento">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$variable->ciudad?>" ><?=$variable->ciudad?> </option>
                                 <?php
-                                if( !empty($cuidad_nacimiento) ):
-                                    foreach($cuidad_nacimiento as  $a){
-                                        ?>
-                                            <option <?= ($variable->cuidad_nacimiento == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
+                                if (!empty($cuidad_nacimiento)) :
+                                    foreach ($cuidad_nacimiento as  $a) {
+                                ?>
+                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
                                     }
-                                endif;?>
+                                endif; ?>  
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -343,14 +345,8 @@
                         <div>
                             <select class="form-control" id="desarrollo_academico" name="desarrollo_academico">
                                 <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($desarrollo_academico) ):
-                                    foreach($desarrollo_academico as  $a){
-                                        ?>
-                                            <option <?= ($variable->pais == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                <option selected value ="<?=$variable->desarrollo_academico?>" ><?=$variable->desarrollo_academico?> </option>
+                                   
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -424,14 +420,8 @@
                         <label for="sep" class=" control-label">Registro SEP:<span class="text-danger">*</span></label>
                         <select class="form-control" id="registroSep" name="registroSep">
                                 <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($SiNo) ):
-                                    foreach($SiNo as  $a){
-                                        ?>
-                                            <option <?= ($variable->registro_sep == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                <option selected value ="<?=$variable->registro_sep?>" ><?=$variable->registro_sep?> </option>
+                                       
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -452,7 +442,7 @@
                 <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="promedio" class=" control-label">Promedio :<span class="text-danger">*</span></label>
-                        <input type="text"  class="form-control "  id="promedio" name="promedio"  value="<?=$variable->institucion ?>">
+                        <input type="text"  class="form-control "  id="promedio" name="promedio"  value="<?=$variable->institucion?>">
                     </div>
                 </div>
             </div>
@@ -523,6 +513,7 @@
                         <label for="coloniacodigo" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                         <select class="form-control" id="coloniacodigo" name="coloniacodigo">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$variable->colonia?>" ><?=$variable->colonia?> </option>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -540,6 +531,8 @@
                         <div>
                             <select class="form-control" id="estadocodigo" name="estadocodigo">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$variable->naciE?>" ><?=$variable->naciE?> </option>
+
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -558,6 +551,7 @@
                         <div>
                             <select class="form-control" id="municipiocodigo" name="municipiocodigo">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$variable->naciE?>" ><?=$variable->naciE?> </option>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -576,6 +570,7 @@
                         <div>
                             <select class="form-control" id="ciudadcodigo" name="ciudadcodigo">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$variable->ciudad?>" ><?=$variable->ciudad?> </option>
                             </select>
                             <script>
                                 $(document).ready(function() {

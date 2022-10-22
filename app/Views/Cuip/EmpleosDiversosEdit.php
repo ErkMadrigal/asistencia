@@ -51,7 +51,7 @@
                         <label for="coloniacodigoEmpDiv" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                         <select class="form-control" id="coloniacodigoEmpDiv" name="coloniacodigoEmpDiv">
                                 <option value="">Selecciona una Opcion</option>
-                                
+                                <option selected value ="<?=$diversos->colonia?>" ><?=$diversos->colonia?> </option>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -69,7 +69,7 @@
                         <div>
                             <select class="form-control" id="estadocodigoEmpDiv" name="estadocodigoEmpDiv">
                                 <option value="">Selecciona una Opcion</option>
-                                
+                                <option selected value ="<?=$diversos->estado?>" ><?=$diversos->estado?> </option>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -88,6 +88,8 @@
                         <div>
                             <select class="form-control" id="municipiocodigoEmpDiv" name="municipiocodigoEmpDiv">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$diversos->municipio?>" ><?=$diversos->municipio?> </option>
+
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -159,13 +161,13 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="sueldo" class=" control-label">Sueldo Base (Mensual):<span class="text-danger">*</span></label>
-                        <input type="text"  class="form-control "  id="sueldo" name="sueldo"  value="">
+                        <input type="text"  class="form-control "  id="sueldo" name="sueldo"  value="<?=$diversos->sueldo_base ?>">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="compensaciones" class=" control-label">Compensaciones (Mensual):<span class="text-danger">*</span></label>
-                        <input type="text"  class="form-control "  id="compensaciones" name="compensaciones"  value=" ">
+                        <input type="text"  class="form-control "  id="compensaciones" name="compensaciones"  value="<?=$diversos->compensacion ?> ">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -250,11 +252,12 @@
                         <label for="reglamentacion" class=" control-label">¿Conoce la reglamentación de los reconocimientos?<span class="text-danger">*</span></label>
                         <select class="form-control" id="reglamentacion" name="reglamentacion">
                                 <option value="">Selecciona una Opcion</option>
+
                                 <?php
                                 if( !empty($SiNo) ):
                                     foreach($SiNo as  $a){
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= ($diversos->reglamento == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -303,7 +306,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="razones_ascenso" class=" control-label">¿Razones por las que no ha recibido un ascenso?<span class="text-danger">*</span></label>
-                        <input type="text"  class="form-control "  id="razones_ascenso" name="razones_ascenso"  value="">
+                        <input type="text"  class="form-control "  id="razones_ascenso" name="razones_ascenso"  value="<?=$diversos->razon_ascenso ?>">
                             
                     </div>
                 </div>
@@ -429,6 +432,7 @@
                         <label for="duracion" class=" control-label">Duración:<span class="text-danger">*</span></label>
                         <select class="form-control" id="duracion" name="duracion">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$diversos->duracion?>" ><?=$diversos->duracion?> </option>
                                 <?php
                                 if( !empty($duracion) ):
                                     foreach($duracion as  $a){
@@ -451,7 +455,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="cantidad" class=" control-label">Cantidad:<span class="text-danger">*</span></label>
-                        <input type="text"  class="form-control "  id="cantidad" name="cantidad"  value=" ">
+                        <input type="text"  class="form-control "  id="cantidad" name="cantidad"  value=" <?=$diversos->cantidad ?>">
                            
                     </div>
                 </div>

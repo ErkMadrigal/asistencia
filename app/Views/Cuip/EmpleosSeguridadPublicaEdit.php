@@ -71,14 +71,7 @@
                         <label for="coloniacodigoSegPub" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                         <select class="form-control" id="coloniacodigoSegPub" name="coloniacodigoSegPub">
                                 <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($coloniacodigoSegPub) ):
-                                    foreach($coloniacodigoSegPub as  $a){
-                                        ?>
-                                            <option <?= ($seguridad->colonia == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                <option selected value ="<?=$seguridad->colonia?>" ><?=$seguridad->colonia?> </option>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -115,13 +108,13 @@
                         <input type="text"  class="form-control "  id="separacion" name="separacion"  value="<?=$seguridad->separacion ?>">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="puesto_funcional" class=" control-label">Puesto Funcional:<span class="text-danger">*</span></label>
                         <input type="text"  class="form-control "  id="puesto_funcional" name="puesto_funcional"  value="<?=$seguridad->funcional ?>">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="funciones" class=" control-label">Funciones:<span class="text-danger">*</span></label>
                         <input type="text"  class="form-control "  id="funciones" name="funciones"  value="<?=$seguridad->funciones ?>">
@@ -212,6 +205,7 @@
                         <div>
                             <select class="form-control" id="municipiocodigoSegPub" name="municipiocodigoSegPub">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$seguridad->municipio?>" ><?=$seguridad->municipio?> </option>
                                 
                             </select>
                             <script>
