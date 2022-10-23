@@ -100,6 +100,10 @@ $routes->get('expediente', 'Cuip::getExpediente',['filter' => 'auth']);
 $routes->get('editarCuip', 'Cuip::CuipEdit',['filter' => 'auth']);
 $routes->post('GuardarReferencias', 'Cuip::AgregarReferencias',['filter' => 'auth']);
 $routes->post('GuardarMediaFiliacion', 'MediaFiliacion::AgregarMediaFiliacion',['filter' => 'auth']);
+$routes->post('uploadFile', 'CargaMasiva::uploadFile',['filter' => 'auth']);
+$routes->get('getFileIni', 'CargaMasiva::FileIni',['filter' => 'auth']);
+$routes->post('eliminaDocumento', 'CargaMasiva::deleteDocumento',['filter' => 'auth']);
+$routes->get('exportCuip', 'Cuip::export',['filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------

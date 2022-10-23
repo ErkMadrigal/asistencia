@@ -4,8 +4,13 @@
     </div>
 <div class=" mb-2">    
     <div class="row">
-        <div class="col-12 col-sm-6 col-md-9 ">
+        <div class="col-12 col-sm-6 col-md-6 ">
+            
         </div>
+        <div class="col-12 col-sm-6 col-md-3 ">
+            <a href="<?php echo base_url('/exportCuip'); ?>" class="btn btn-block btn-flat btn-secondary"><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Crear Plantilla CUIP</a>
+        </div>
+
         <div class="col-12 col-sm-6 col-md-3">
             <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/AddCUIP " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Nueva CUIP</a>
         </div>
@@ -58,6 +63,9 @@ function estatusRenderer(data, type, full, meta) {
             data: <?= json_encode($CuipPersonal) ?> ,
             deferRender: true,
             pageLength: 10,
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
+            },
             columns: [  { data: "nCuip"
                         },
                         { data: "primer_nombre"

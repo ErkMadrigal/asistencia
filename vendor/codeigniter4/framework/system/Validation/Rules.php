@@ -411,4 +411,24 @@ class Rules
         
         return (bool) $date && \DateTime::getLastErrors()['warning_count'] === 0 && \DateTime::getLastErrors()['error_count'] === 0;
     }
+
+    public function date_mayor(string $str , string &$error = null ) : bool {
+        
+        
+        
+        $date = $str;
+
+        $entrada = strtotime($date);
+
+        $today = strtotime(date("Y-m-d"));
+
+        if(($today - $entrada) < 18 ){
+            return false;
+            
+        }
+
+        return true;
+
+        
+    }
 }

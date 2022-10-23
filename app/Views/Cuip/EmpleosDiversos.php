@@ -100,7 +100,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="numero" name="numero">
+                        <input type="text" class="form-control " id="numero" name="numero" maxlength="10" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>

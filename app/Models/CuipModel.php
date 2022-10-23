@@ -304,5 +304,27 @@ class CuipModel
     }
 
 
+    public function GetDocumentosById($id){
+        $builder = $this->db->table('documentos_expediente_digital');
+        $builder->select('documentos.idDocumento,documento,tipo');
+        $builder->join("documentos"," documentos_expediente_digital.id= documentos.idDocExp  ","left");
+        $builder->orderBy("documento","asc");
+        $builder->where('activo', true);
+        $builder->where('idPersonal', $id);
+        return $builder->get()->getResult();
+        
+    }
+
+    public function GetCuipExcel(){
+        $builder = $this->db->table("datos_personales");
+        $builder->select("*");
+        $builder->where("activo",true);
+        $builder->where("Cuip",'');
+        $builder->orderBy("primer_nombre","asc");
+        return $builder->get()->getResult();
+        
+    }
+
+
     
 }

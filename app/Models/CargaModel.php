@@ -39,4 +39,48 @@ class CargaModel
         return $builder->get()->getResult();
         
     }
+
+
+    public function insertExpDoc($data,$idPersonal,$idDocExp){
+        $this->db->transStart();
+
+        $this->db->table('documentos')->where('idPersonal', $idPersonal)->where('idDocExp', $idDocExp)->delete();
+
+        $this->db->table('documentos')->insert($data);
+
+        $this->db->transComplete();
+
+        if ($this->db->transStatus() === TRUE)
+        {
+            $return = true;
+        } else {
+            $return = false ;
+        }
+
+        return $return; 
+    }
+
+
+    public function FileIni($id){
+        $builder = $this->db->table('documentos');
+        $builder->select('ruta,nombre_almacen,extension_documento');
+        $builder->where("idDocumento",$id);
+        return $builder->get()->getRow();
+        
+    }
+
+    public function deleteDocumento($id){
+
+
+        $return = false;
+        $this->db->table('documentos')->where('idDocumento', $id)->delete();
+
+
+        if ($this->db->affectedRows() > 0){
+            $return = true;
+            
+        } 
+
+        return $return; 
+    }
 }
