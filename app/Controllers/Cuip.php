@@ -6,10 +6,7 @@ use App\Libraries\Encrypt;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Type\Hexadecimal;
 use Ramsey\Uuid\Provider\Node\StaticNodeProvider;
-
-
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
-
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Cuip extends BaseController { 
@@ -2095,13 +2092,11 @@ class Cuip extends BaseController {
 
 		foreach($data as $row)
 		{
-			$sheet->setCellValue('A' . $count, $row['employee_name']);
+			$sheet->setCellValue('A' . $count, $row->primer_nombre);
 
-			$sheet->setCellValue('B' . $count, $row['employee_email']);
+			$sheet->setCellValue('B' . $count, $row->segundo_nombre);
 
-			$sheet->setCellValue('C' . $count, $row['employee_mobile']);
-
-			$sheet->setCellValue('D' . $count, $row['employee_department']);
+		
 
 			$count++;
 		}
@@ -2110,7 +2105,8 @@ class Cuip extends BaseController {
 
 		$writer->save($file_name);
 
-		header("Content-Type: application/vnd.ms-excel");
+		
+		$this->response->setHeader('Content-Type', 'application/vnd.ms-excel');
 
 		header('Content-Disposition: attachment; filename="' . basename($file_name) . '"');
 
@@ -2121,6 +2117,8 @@ class Cuip extends BaseController {
 		header('Pragma: public');
 
 		header('Content-Length:' . filesize($file_name));
+
+
 
 		flush();
 
