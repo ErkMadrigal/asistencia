@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <label for="ingreso" class=" control-label">Ingreso familiar adicional
                         (Mensual):<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="ingreso" name="ingreso"><?= csrf_field() ?>
+                    <input type="text" class="form-control " id="ingreso" name="ingreso">
                 </div>
             </div>
             <div class='col-6 col-sm-6'>
@@ -255,9 +255,12 @@
         event.preventDefault();
         $('#load').addClass( "spinner-border" );
 
-        var idPersonal = $('#idPersonal').val()
+        var idPersonal = $('#idPersonal').val();
+        var csrfName = $("input[name=app_csrf]").val();
+            
         var formData = new FormData($("form#SocioEconomico")[0]);
         formData.append('idPersonal', idPersonal);
+        formData.append('app_csrf', csrfName);
         
         $.ajax({
             url: base_url + '/GuardarSocioEconomico',
@@ -272,6 +275,8 @@
                 $('.errorField').remove();
 
                 if (response.succes.succes == 'succes') {
+
+                    $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
 
                     toastr.success(response.succes.mensaje);
 

@@ -21,7 +21,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="apellidoMaterno" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno"><?= csrf_field() ?>
+                        <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -931,8 +931,10 @@
         $('#load').addClass( "spinner-border" );
 
         var idPersonal = $('#idPersonal').val()
+        var csrfName = $("input[name=app_csrf]").val();
         var formData = new FormData($("form#referencias")[0]);
         formData.append('idPersonal', idPersonal);
+        formData.append('app_csrf', csrfName);
         
         $.ajax({
             url: base_url + '/GuardarReferencias',
@@ -947,6 +949,8 @@
                 $('.errorField').remove();
 
                 if (response.succes.succes == 'succes') {
+
+                    $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
 
                     toastr.success(response.succes.mensaje);
 

@@ -15,7 +15,7 @@
             <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="empresa" class=" control-label">Empresa:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="empresa" name="empresa"><?= csrf_field() ?>
+                        <input type="text" class="form-control " id="empresa" name="empresa">
                     </div>
                 </div>
                 
@@ -477,8 +477,10 @@
         $('#load').addClass( "spinner-border" );
 
         var idPersonal = $('#idPersonal').val()
+        var csrfName = $("input[name=app_csrf]").val();
         var formData = new FormData($("form#EmpleosDiversos")[0]);
         formData.append('idPersonal', idPersonal);
+        formData.append('app_csrf', csrfName);
         
         $.ajax({
             url: base_url + '/GuardarEmpDiversos',
@@ -494,7 +496,9 @@
 
                 if (response.succes.succes == 'succes') {
 
-                    
+                    $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
+
+
                     toastr.success(response.succes.mensaje);
 
                     $("html,body").animate({scrollTop: $("#cardCapPublica").offset().top},2000);

@@ -2,11 +2,35 @@
 <?= $this->section('content') ?>
     <div id="load" class=" spinner text-secondary" role="status">
     </div>
-    <div class=" mb-2">    
-    <div class="row">
-        <div class="col-12 col-sm-6 col-md-9 ">
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">FOTOS</h3>
+
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
         </div>
-             
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body table-responsive ">
+        <div class="row">
+            <div class='col-12 col-sm-4'>
+                <div class="form-group">
+                    <img src="<?= base_url() ?>/assets/dist/img/logoPanel.png" alt="user-avatar" class=" img-fluid">
+                </div>
+            </div>
+            <div class='col-12 col-sm-4'>
+                <div class="form-group">
+                    <img src="<?= base_url() ?>/assets/dist/img/logoPanel.png" alt="user-avatar" class=" img-fluid">
+                </div>
+            </div>        
+            <div class='col-12 col-sm-4'>
+                <div class="form-group">
+                    <img src="<?= base_url() ?>/assets/dist/img/logoPanel.png" alt="user-avatar" class=" img-fluid">
+                </div>
+            </div>             
+        </div>            
     </div>
 </div>
 <div class="card card-primary">
