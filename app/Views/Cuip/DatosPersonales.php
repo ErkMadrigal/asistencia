@@ -83,7 +83,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="rfc" class=" control-label">R.F.C.:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="rfc" name="rfc">
+                        <input type="text" class="form-control " id="rfc" name="rfc" maxlength="10">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -126,7 +126,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="CURP" class=" control-label">CURP:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="CURP" name="CURP">
+                        <input type="text" class="form-control " id="CURP" name="CURP" maxlength="18">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>

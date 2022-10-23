@@ -337,6 +337,14 @@ class MediaFiliacion extends BaseController {
 				
 
 				if($this->validate($rules)){
+
+					$getIdPersonal = $this->request->getPost('idPersonal');
+
+        			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
+
+					$fotos  = $this->modelMediaFiliacion->GetFotos($idPersonal);
+
+					if ($fotos->count >= 3){ 
 					
 					$getUser = session()->get('IdUser');
 					$LoggedUserId = $this->encrypter->decrypt($getUser);
@@ -346,13 +354,6 @@ class MediaFiliacion extends BaseController {
         			$id = $uuid->toString();
 
         			
-
-        			$getIdPersonal = $this->request->getPost('idPersonal');
-
-        			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
-
-        			
-
         			$getComplexion = $this->request->getPost('complexion');
 
         			$complexion = $this->encrypt->Decrytp($getComplexion);
@@ -637,6 +638,16 @@ class MediaFiliacion extends BaseController {
                     				  "mensaje" => 	'Hubo un error al guardar la Información'  ];
 
                     }
+
+                } else {
+
+                	$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Aun no se han cargado Fotos y Huellas'  ];
+
+                }
+
+
+
 				} else {	
 					$errors = $this->validator->getErrors();
 				}

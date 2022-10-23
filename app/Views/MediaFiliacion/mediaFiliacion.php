@@ -2,11 +2,35 @@
 <?= $this->section('content') ?>
     <div id="load" class=" spinner text-secondary" role="status">
     </div>
-    <div class=" mb-2">    
-    <div class="row">
-        <div class="col-12 col-sm-6 col-md-9 ">
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">FOTOS</h3>
+
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
         </div>
-             
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body table-responsive ">
+        <div class="row">
+            <div class='col-12 col-sm-4'>
+                <div class="form-group">
+                    <img src="<?= base_url() ?>/assets/dist/img/logoPanel.png" alt="user-avatar" class=" img-fluid">
+                </div>
+            </div>
+            <div class='col-12 col-sm-4'>
+                <div class="form-group">
+                    <img src="<?= base_url() ?>/assets/dist/img/logoPanel.png" alt="user-avatar" class=" img-fluid">
+                </div>
+            </div>        
+            <div class='col-12 col-sm-4'>
+                <div class="form-group">
+                    <img src="<?= base_url() ?>/assets/dist/img/logoPanel.png" alt="user-avatar" class=" img-fluid">
+                </div>
+            </div>             
+        </div>            
     </div>
 </div>
 <div class="card card-primary">
@@ -1416,7 +1440,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="cicatrices_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
+                        <label for="cicatrices_descripcion" class=" control-label">Descripción:</label>
                         <textarea type="text" class="form-control " id="cicatrices_descripcion" name="cicatrices_descripcion"></textarea>
                     </div>
                 </div>
@@ -1448,7 +1472,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="tatuajes_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
+                        <label for="tatuajes_descripcion" class=" control-label">Descripción:</label>
                         <textarea type="text" class="form-control " id="tatuajes_descripcion" name="tatuajes_descripcion"></textarea>
                     </div>
                 </div>
@@ -1480,7 +1504,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="lunares_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
+                        <label for="lunares_descripcion" class=" control-label">Descripción:</label>
                         <textarea type="text" class="form-control " id="lunares_descripcion" name="lunares_descripcion"></textarea>
                     </div>
                 </div>
@@ -1512,7 +1536,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="fisico_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
+                        <label for="fisico_descripcion" class=" control-label">Descripción:</label>
                         <textarea type="text" class="form-control " id="fisico_descripcion" name="fisico_descripcion"></textarea>
                     </div>
                 </div>
@@ -1544,7 +1568,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="protesis_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
+                        <label for="protesis_descripcion" class=" control-label">Descripción:</label>
                         <textarea type="text" class="form-control " id="protesis_descripcion" name="protesis_descripcion"></textarea>
                     </div>
                 </div>
@@ -1576,7 +1600,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="discapacidad_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
+                        <label for="discapacidad_descripcion" class=" control-label">Descripción:</label>
                         <textarea type="text" class="form-control " id="discapacidad_descripcion" name="discapacidad_descripcion"></textarea>
                     </div>
                 </div>

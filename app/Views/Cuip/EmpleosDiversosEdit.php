@@ -198,7 +198,7 @@
                 <div class='col-12 col-sm-12 col-md-12'>
                     <div class="form-group">
                         <label for="comentarios" class=" control-label">Comentarios:<span class="text-danger">*</span></label>
-                        <input type="text"  class="form-control "  id="comentarios" name="comentarios"  value="<?=$diversos->comentarios ?>">
+                        <textarea type="text" class="form-control " id="comentarios" name="comentarios"><?=$diversos->comentarios ?></textarea>
                     </div>
                 </div>
             </div>

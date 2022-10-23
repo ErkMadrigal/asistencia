@@ -49,5 +49,17 @@ class MediaFiliacionModel
     }
 
 
+
+    public function GetFotos($idPersonal){
+        
+        $query = "SELECT COUNT(idPersonal) AS count FROM documentos WHERE idPersonal = '$idPersonal' AND idDocExp IN ('cf82912d-8f84-4e79-afb2-e60622ff72c5','d2282fcc-76ba-410e-828b-2fe365e874ff','d9289eb1-c76d-4945-9f59-4618b146dabe') ";
+
+        $result = $this->db->query($query)->getRow();
+
+        return $result ;
+        
+    }
+
+
     
 }
