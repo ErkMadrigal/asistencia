@@ -104,6 +104,8 @@ $routes->post('uploadFile', 'CargaMasiva::uploadFile',['filter' => 'auth']);
 $routes->get('getFileIni', 'CargaMasiva::FileIni',['filter' => 'auth']);
 $routes->post('eliminaDocumento', 'CargaMasiva::deleteDocumento',['filter' => 'auth']);
 $routes->get('exportCuip', 'Cuip::export',['filter' => 'auth']);
+$routes->get('preconsulta', 'Cuip::GetPreconsulta',['filter' => 'auth']);
+$routes->get('exportPreconsulta', 'Cuip::exportPreconsulta',['filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------

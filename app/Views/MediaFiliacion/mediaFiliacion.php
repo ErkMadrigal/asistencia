@@ -22,6 +22,7 @@
             </div>
             <div class='col-12 col-sm-4'>
                 <div class="form-group">
+                    
                     <img src="<?= base_url() ?>/assets/dist/img/logoPanel.png" alt="user-avatar" class=" img-fluid">
                 </div>
             </div>        
@@ -1643,6 +1644,14 @@
                 if (response.succes.succes == 'succes') {
 
                     toastr.success(response.succes.mensaje);
+
+                    var count = 2;
+                    setInterval(function(){
+                      count--;
+                      if (count == 0) {
+                        window.location = base_url + '/cuip'; 
+                      }
+                    },1000);
 
                     
 

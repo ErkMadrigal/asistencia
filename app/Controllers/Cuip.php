@@ -2128,6 +2128,99 @@ class Cuip extends BaseController {
 	}
 
 
+	public function GetPreconsulta(){
+		if ($this->request->getMethod() == "get"){
+
+			$data['modulos'] = $this->menu->Permisos();
+			$empresa = session()->get('empresa');
+			$idEmpresa = $this->encrypter->decrypt($empresa);
+			$resultData = $this->modelCuip->GetCuip($idEmpresa);
+			$result = [];
+
+
+			foreach ( $resultData as $v){
+				
+				$id = $this->encrypt->Encrypt($v->id);
+				$result[] = (object) array (
+					'id' => $id ,
+					'nCuip' => '' ,
+					'primer_nombre' => $v->primer_nombre,
+					'segundo_nombre' => $v->segundo_nombre,
+                    'apellido_paterno' => $v->apellido_paterno,
+                    'apellido_materno' => $v->apellido_materno
+				) ;
+			}
+		
+			$dataCrud = [
+                'data' => $result]; 
+
+        	$data['CuipPersonal'] = $dataCrud['data'];
+
+			
+			
+			return view('Cuip/Preconsulta', $data);
+		}	
+    }
+
+
+    function exportPreconsulta()
+	{
+		$data = $this->modelCuip->GetCuipExcel();
+
+		$file_name = 'data.xlsx';
+
+		$spreadsheet = new Spreadsheet();
+
+		$sheet = $spreadsheet->getActiveSheet();
+
+		$sheet->setCellValue('A1', 'Employee Name');
+
+		$sheet->setCellValue('B1', 'Email Address');
+
+		$sheet->setCellValue('C1', 'Mobile No.');
+
+		$sheet->setCellValue('D1', 'Department');
+
+		$count = 2;
+
+		foreach($data as $row)
+		{
+			$sheet->setCellValue('A' . $count, $row->primer_nombre);
+
+			$sheet->setCellValue('B' . $count, $row->segundo_nombre);
+
+		
+
+			$count++;
+		}
+
+		$writer = new Xlsx($spreadsheet);
+
+		$writer->save($file_name);
+
+		
+		$this->response->setHeader('Content-Type', 'application/vnd.ms-excel');
+
+		header('Content-Disposition: attachment; filename="' . basename($file_name) . '"');
+
+		header('Expires: 0');
+
+		header('Cache-Control: must-revalidate');
+
+		header('Pragma: public');
+
+		header('Content-Length:' . filesize($file_name));
+
+
+
+		flush();
+
+		readfile($file_name);
+
+		exit;
+	}
+
+
 	
 
 }
