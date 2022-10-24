@@ -654,9 +654,9 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-12'>
                     <div class="form-group">
-                        <label for="certificado" class=" control-label">Certificado
+                        <label for="certificado_por" class=" control-label">Certificado
                             por:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="certificado" name="certificado">
+                        <input type="text" class="form-control " id="certificado_por" name="certificado_por">
                     </div>
                 </div>
             </div>

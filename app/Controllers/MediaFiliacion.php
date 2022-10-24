@@ -255,15 +255,19 @@ class MediaFiliacion extends BaseController {
 			
 			$data['SiNo'] = $this->GetDatos($SiNo);
 
+			$data['foto'] = '';
+
 			$foto = $this->modelMediaFiliacion->GetFotoById($id);
+			if ($foto){
+				$path = $this->encrypt->Decrytp($foto->ruta);
 
-			$path = $this->encrypt->Decrytp($foto->ruta);
+				$fileName = $this->encrypt->Decrytp($foto->nombre_almacen);
 
-			$fileName = $this->encrypt->Decrytp($foto->nombre_almacen);
+				$img = $path.'/'.$fileName;
 
-			$img = $path.'/'.$fileName;
+				$data['foto'] = $img;
 
-			$data['foto'] = $img;
+			}	
 
 
         	$data['id'] = $this->encrypt->Encrypt($id);
@@ -290,7 +294,7 @@ class MediaFiliacion extends BaseController {
 				'forma_cabello' =>  ['label' => "Forma Cabello", 'rules' => 'required'],
 				'calvicie_cabello' =>  ['label' => "Calvicie Cabello", 'rules' => 'required'],
 				'implatacion_cabello' =>  ['label' => "implatacion cabello", 'rules' => 'required'],
-				'altura' =>  ['label' => "Duracion", 'Altura' => 'required'],
+				'altura' =>  ['label' => "Altura", 'rules' => 'required'],
 				'inclinacion' =>  ['label' => "Inclinacion", 'rules' => 'required'],
 				'ancho' =>  ['label' => "Ancho", 'rules' => 'required'],
 				'direccion_cejas' =>  ['label' => "Direccion Cejas", 'rules' => 'required'],
@@ -325,8 +329,8 @@ class MediaFiliacion extends BaseController {
 				'tipo_sangre' =>  ['label' => "Tipo Sangre", 'rules' => 'required'],
 				'RH_sangre' =>  ['label' => "RH Sangre", 'rules' => 'required'],
 				'anteojos' =>  ['label' => "Anteojos", 'rules' => 'required'],
-				'estatura' =>  ['label' => "Estatura", 'rules' => 'required'],
-				'peso' =>  ['label' => "Peso", 'rules' => 'required'],
+				'estatura' =>  ['label' => "Estatura", 'rules' => 'required|decimal'],
+				'peso' =>  ['label' => "Peso", 'rules' => 'required|decimal'],
 				'cicatrices' =>  ['label' => "Cicatrices", 'rules' => 'required'],
 				'tatuajes' =>  ['label' => "Tatuajes", 'rules' => 'required'],
 				'lunares' =>  ['label' => "Lunares", 'rules' => 'required'],

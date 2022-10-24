@@ -217,7 +217,7 @@ class Cuip extends BaseController {
 
 
 	public function AgregarPersonales(){
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['primerNombre, segundoNombre, apellidoPaterno, apellidoMaterno, fecha_nacimiento, sexo, rfc, claveE, cartilla, licencia, vigenciaLic, CURP, pasaporte, modo_nacionalidad, fecha_naturalizacion, pais_nacimiento, entidad_nacimiento, nacionalidad, municipio_nacimiento, cuidad_nacimiento, estado_civil, desarrollo_academico, escuela, especialidad, cedula, anno_inicio, anno_termino, registroSep, certificado, promedio, calle, exterior, interior, numeroTelefono, entrecalle, ylacalle, codigo, coloniacodigo, estadocodigo, municipiocodigo, ciudadcodigo, nombrecurso, nombreInstitucion, fecha_inicial, fecha_final, certificado'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['primerNombre, segundoNombre, apellidoPaterno, apellidoMaterno, fecha_nacimiento, sexo, rfc, claveE, cartilla, licencia, vigenciaLic, CURP, pasaporte, modo_nacionalidad, fecha_naturalizacion, pais_nacimiento, entidad_nacimiento, nacionalidad, municipio_nacimiento, cuidad_nacimiento, estado_civil, desarrollo_academico, escuela, especialidad, cedula, anno_inicio, anno_termino, registroSep, certificado, promedio, calle, exterior, interior, numeroTelefono, entrecalle, ylacalle, codigo, coloniacodigo, estadocodigo, municipiocodigo, ciudadcodigo, nombrecurso, nombreInstitucion, fecha_inicial, fecha_final, certificado_por'],FILTER_SANITIZE_STRING)){
 
 				$rules = [
 				'primerNombre' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
@@ -249,6 +249,7 @@ class Cuip extends BaseController {
 				'anno_termino' =>  ['label' => "Año de Termino", 'rules' => 'required|max_length[4]|integer'],
 				'registroSep' =>  ['label' => "Registro SEP", 'rules' => 'required'],
 				'certificado' =>  ['label' => "Num. de Folio Certificado", 'rules' => 'required|max_length[255]'],
+				'promedio' =>  ['label' => "Promedio", 'rules' => 'required|max_length[255]'],
 				'calle' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
 				'exterior' =>  ['label' => "No. Exterior", 'rules' => 'required|max_length[255]'],
 				'interior' =>  ['label' => "No. Interior", 'rules' => 'required|max_length[255]'],
@@ -264,7 +265,7 @@ class Cuip extends BaseController {
 				'nombreInstitucion' =>  ['label' => "Nombre de la Institución", 'rules' => 'required|max_length[255]'],
 				'fecha_inicial' =>  ['label' => "Fecha de Inicio", 'rules' => 'required|valid_only_date_chek'],
 				'fecha_final' =>  ['label' => "Fecha de Término", 'rules' => 'required|valid_only_date_chek'],
-				'certificado' =>  ['label' => "Certificado por", 'rules' => 'required|max_length[255]']];
+				'certificado_por' =>  ['label' => "Certificado por", 'rules' => 'required|max_length[255]']];
 		 
 				$errors = [];
 				$succes = [];
@@ -384,7 +385,7 @@ class Cuip extends BaseController {
 						"nombre_institucion" => strtoupper($this->request->getPost('nombreInstitucion')) , 
 						"fecha_inicio" => $fecha_inicial , 
 						"fecha_termino" => $fecha_final , 
-						"certificado_por" => strtoupper($this->request->getPost('certificado')) , 
+						"certificado_por" => strtoupper($this->request->getPost('certificado_por')) , 
 						"activo" => 1 , 
 						"createdby" => $LoggedUserId , 
 						"createddate" => date("Y-m-d H:i:s") );
@@ -589,7 +590,7 @@ class Cuip extends BaseController {
 				'apellidoPaterno' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
 				'apellidoMaterno' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
 				'primerNombre' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
-				'segundoNombre' =>  ['label' => "Segundo Nombre", 'rules' => 'required|max_length[255]'],
+				
 				'fecha_nacimiento_dep' =>  ['label' => "Fecha de Nacimiento", 'rules' => 'required|valid_only_date_chek'],
 				'sexo_dep' =>  ['label' => "Sexo", 'rules' => 'required'],
 				'parentesco_familiar' =>  ['label' => "Parentesco", 'rules' => 'required']];
@@ -696,7 +697,7 @@ class Cuip extends BaseController {
 
 
 	public function AgregarEmpSegPublica(){
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['dependencia, corporacion, primerNombre, nombre, calle, exterior, interior, numero, codigoSegPub, coloniacodigoSegPub, aprobacion, separacionEmpSeg, puesto_funcional, funciones, especialidad, rango, numero_placa, numero_empleado, sueldo, compensaciones, area, division, jefe_inmediato, nombre_jefe, estadocodigoSegPub, municipiocodigoSegPub, motivo_separacion, tipo_separacion, tipo_baja, comentarios'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['dependencia, corporacion, calle, exterior, interior, numero, codigoSegPub, coloniacodigoSegPub, aprobacion, separacionEmpSeg, puesto_funcional, funciones, especialidad, rango, numero_placa, numero_empleado, sueldo, compensaciones, area, division, jefe_inmediato, nombre_jefe, estadocodigoSegPub, municipiocodigoSegPub, motivo_separacion, tipo_separacion, tipo_baja, comentarios'],FILTER_SANITIZE_STRING)){
 
 			$errors = [];
 			$succes = [];
@@ -709,11 +710,9 @@ class Cuip extends BaseController {
 				$rules = [
 				'dependencia' =>  ['label' => "Dependencia", 'rules' => 'required|max_length[255]'],
 				'corporacion' =>  ['label' => "Corporacióne", 'rules' => 'required|max_length[255]'],
-				'primerNombre' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
-				'segundoNombre' =>  ['label' => "Segundo Nombre", 'rules' => 'required|max_length[255]'],
 				'calle' =>  ['label' => "Calle ", 'rules' => 'required|max_length[255]'],
 				'exterior' =>  ['label' => "No. Exterior", 'rules' => 'required|max_length[255]'],
-				'interior' =>  ['label' => "No. Interior", 'rules' => 'required|max_length[255]'],
+				
 				'numero' =>  ['label' => "Numero Telefónico", 'rules' => 'required|max_length[10]|integer|min_length[10]'],
 				'codigoSegPub' =>  ['label' => "Código Postal", 'rules' => 'required|max_length[5]|integer'],
 				'coloniacodigoSegPub' =>  ['label' => "Colonia", 'rules' => 'required'],
@@ -772,8 +771,7 @@ class Cuip extends BaseController {
 						"idEmpresa" =>  $idEmpresa , 
 						"dependencia" =>  strtoupper($this->request->getPost('dependencia')) , 
 						"corporacion" =>  strtoupper($this->request->getPost('corporacion')) , 
-						"primer_nombre" =>  strtoupper($this->request->getPost('primerNombre')) , 
-						"segundo_nombre" =>  strtoupper($this->request->getPost('segundoNombre')) , 
+						
 						"calle" =>  strtoupper($this->request->getPost('calle')) , 
 						"numero_exterior" => strtoupper($this->request->getPost('exterior'))  , 
 						"numero_interior" => strtoupper($this->request->getPost('interior'))  , 
@@ -1000,7 +998,7 @@ class Cuip extends BaseController {
 	}
 
 	public function AgregarCapacitaciones(){
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['dependencia, institucion, nombre_curso, tema_curso, nivel_curso, eficienciaCursos, inicio, conclusion, duracion, comprobante, empresa, curso, tipo_curso, cuso_tomado, eficiencia, inicioAdicional, conclusionAdicional, duracion_horas, idioma, lectura, escritura, conversacion, tipo_habilidad, especificacion, grado_habilidadCap, nombre, tipoAgrupa, especificacion, grado_habilidad, desde, hasta'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['dependencia, institucion, nombre_curso, tema_curso, nivel_curso, eficienciaCursos, inicio, conclusion, duracion, comprobante, empresa, curso, tipo_curso, cuso_tomado, eficiencia, inicioAdicional, conclusionAdicional, duracion_horas, idioma, lectura, escritura, conversacion, tipo_habilidad, nombre, tipoAgrupa, especificacion, grado_habilidad, desde, hasta'],FILTER_SANITIZE_STRING)){
 
 			$errors = [];
 			$succes = [];
@@ -1031,14 +1029,14 @@ class Cuip extends BaseController {
 				'duracion_horas' =>  ['label' => "Idioma o Dialecto", 'rules' => 'required|integer'],
 				'idioma' =>  ['label' => "Lectura", 'rules' => 'required'],
 				'escritura' =>  ['label' => "Escritura", 'rules' => 'required'],
+				'lectura' =>  ['label' => "Lectura", 'rules' => 'required'],
 				'conversacion' =>  ['label' => "Conversación", 'rules' => 'required'],
 				'tipo_habilidad' =>  ['label' => "Tipo", 'rules' => 'required'],
 				'especificacion' =>  ['label' => "Especifique", 'rules' => 'required|max_length[255]'],
 				'grado_habilidadCap' =>  ['label' => "Grado de aptitude o dominio", 'rules' => 'required'],
 				'nombre' =>  ['label' => "Nombre", 'rules' => 'required'],
 				'tipoAgrupa' =>  ['label' => "Tipo", 'rules' => 'required'],
-				'especificacion' =>  ['label' => "Especifique", 'rules' => 'required|max_length[255]'],
-				'grado_habilidad' =>  ['label' => "Grado de aptitude o dominio", 'rules' => 'required'],
+				
 				'desde' =>  ['label' => "Desde", 'rules' => 'required|valid_only_date_chek'],
 				'hasta' =>  ['label' => "Hasta", 'rules' => 'required|valid_only_date_chek']];
 		 
@@ -1129,9 +1127,7 @@ class Cuip extends BaseController {
 
         			$tipoAgrupa = $this->encrypt->Decrytp($getTipoAgrupa);
 
-        			$getGrado_habilidad = $this->request->getPost('grado_habilidad');
-
-        			$grado_habilidad = $this->encrypt->Decrytp($getGrado_habilidad);
+        			
 
 
 					$capacitaciones = array(
@@ -1167,8 +1163,7 @@ class Cuip extends BaseController {
 						"idGradoHabilidad"  => $grado_habilidadCap  , 
 						"nombre_agrupacion"  =>  strtoupper($this->request->getPost('nombre')) , 
 						"idTipoAgrupacion"  =>  $tipoAgrupa , 
-						"especifique_agrupacion"  =>  strtoupper($this->request->getPost('especificacion')) , 
-						"idGradoHabilidadAgrup"  =>  $grado_habilidad , 
+						 
 						"desde"  =>  $desde , 
 						"hasta"  => $hasta ,
 						"activo" => 1 , 
@@ -1213,7 +1208,7 @@ class Cuip extends BaseController {
 
 
 	public function AgregarEmpDiversos(){
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['empresa, calle, exterior, interior, codigoEmpDiv, coloniacodigoEmpDiv, estadocodigoEmpDiv, municipiocodigoEmpDiv, numero, ingresoEmpDiv, separacion, puesto_funcional, funciones, sueldo, compensaciones, area, motivo_separacion, tipo_separacion, tipo_baja, comentarios, empleo, puesto, area_gustaria, ascender, reglamentacion, reconomiento, reglamentacion_ascenso, razones_ascenso, capacitacion, desciplina, subtipo_disciplina, motivo, tipo, fecha_inicialDis, fecha_finalDis, licencias_medicas, duracion, cantidad'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['empresa, calle, exterior, interior, codigoEmpDiv, coloniacodigoEmpDiv, estadocodigoEmpDiv, municipiocodigoEmpDiv, numero, ingresoEmpDiv,  funciones, sueldo, area, motivo_separacion, tipo_separacion, comentarios, empleo, puesto, area_gustaria, ascender, reglamentacion, reconomiento, reglamentacion_ascenso, razones_ascenso, capacitacion, desciplina, subtipo_disciplina, motivo, tipo, fecha_inicialDis, fecha_finalDis, licencias_medicas, duracion, cantidad'],FILTER_SANITIZE_STRING)){
 
 			$errors = [];
 			$succes = [];
@@ -1227,33 +1222,30 @@ class Cuip extends BaseController {
 				'empresa' =>  ['label' => "Empresa", 'rules' => 'required|max_length[255]'],
 				'calle' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
 				'exterior' =>  ['label' => "No. Exterior", 'rules' => 'required|max_length[255]'],
-				'interior' =>  ['label' => "No. Interior", 'rules' => 'required|max_length[255]'],
+				
 				'codigoEmpDiv' =>  ['label' => "Código Postal ", 'rules' => 'required|max_length[255]'],
 				'coloniacodigoEmpDiv' =>  ['label' => "Colonia", 'rules' => 'required|max_length[5]|integer'],
 				'estadocodigoEmpDiv' =>  ['label' => "Entidad Federativa", 'rules' => 'required'],
 				'municipiocodigoEmpDiv' =>  ['label' => "Municipio", 'rules' => 'required'],
 				'numero' =>  ['label' => "Numero Telefónico", 'rules' => 'required|max_length[10]|min_length[10]'],
 				'ingresoEmpDiv' =>  ['label' => "Ingreso", 'rules' => 'required|valid_only_date_chek'],
-				'separacion' =>  ['label' => "Separación", 'rules' => 'required|valid_only_date_chek'],
-				'puesto_funcional' =>  ['label' => "Puesto Funcional", 'rules' => 'required|max_length[255]'],
 				'funciones' =>  ['label' => "Funciones", 'rules' => 'required|max_length[255]'],
-				'sueldo' =>  ['label' => "Sueldo Base (Mensual)", 'rules' => 'required|max_length[255]'],
-				'compensaciones' =>  ['label' => "Compensaciones (Mensual)", 'rules' => 'required|max_length[255]'],
+				'sueldo' =>  ['label' => "Ingreso Neto (Mensual)", 'rules' => 'required|max_length[255]'],
 				'area' =>  ['label' => "Area", 'rules' => 'required|max_length[255]'],
 				'motivo_separacion' =>  ['label' => "Motivo de separación", 'rules' => 'required|max_length[255]'],
 				'tipo_separacion' =>  ['label' => "Tipo de Separación", 'rules' => 'required|max_length[255]'],
-				'tipo_baja' =>  ['label' => "Tipo de Baja", 'rules' => 'required|max_length[255]'],
+				
 				'comentarios' =>  ['label' => "Comentarios", 'rules' => 'required|max_length[255]'],
 				'empleo' =>  ['label' => "¿Por qué Eligio este empleo?", 'rules' => 'required|max_length[255]'],
 				'puesto' =>  ['label' => "¿Qué puesto le gustaria tener?", 'rules' => 'required|max_length[255]'],
 				'area_gustaria' =>  ['label' => "¿En que area le gustaría estar?", 'rules' => 'required|max_length[255]'],
 				'ascender' =>  ['label' => "¿En que tiempo desea ascender?", 'rules' => 'required|max_length[255]'],
 				'reglamentacion' =>  ['label' => "¿Conoce la reglamentación de los reconocimientos?", 'rules' => 'required'],
-				'reglamentacion' =>  ['label' => "¿Razones por las que no ha recibido un reconocimiento?", 'rules' => 'required|max_length[255]'],
-				'reglamentacion' =>  ['label' => "¿Conoce la reglamentación de los ascensos?", 'rules' => 'required'],
-				'reglamentacion_ascenso' =>  ['label' => "¿Razones por las que no ha recibido un ascenso?", 'rules' => 'required|max_length[255]'],
+				'reconomiento' =>  ['label' => "¿Razones por las que no ha recibido un reconocimiento?", 'rules' => 'required|max_length[255]'],
+				'reglamentacion_ascenso' =>  ['label' => "¿Conoce la reglamentación de los ascensos?", 'rules' => 'required'],
+				'razones_ascenso' =>  ['label' => "¿Razones por las que no ha recibido un ascenso?", 'rules' => 'required|max_length[255]'],
 				'capacitacion' =>  ['label' => "¿Qué capacitación le gustaría recibir?", 'rules' => 'required|max_length[255]'],
-				'capacitacion' =>  ['label' => "Tipo de Disciplina", 'rules' => 'required'],
+				'desciplina' =>  ['label' => "Tipo de Disciplina", 'rules' => 'required'],
 				'subtipo_disciplina' =>  ['label' => "Subtipo de disciplina", 'rules' => 'required|max_length[255]'],
 				'motivo' =>  ['label' => "Motivo", 'rules' => 'required|max_length[255]'],
 				'tipo' =>  ['label' => "Tipo", 'rules' => 'required|max_length[255]'],
@@ -1286,10 +1278,7 @@ class Cuip extends BaseController {
 
         			$ingresoEmpDiv = date( "Y-m-d" ,strtotime($getingresoEmpDiv));
 
-        			$getSeparacion = $this->request->getPost('separacion');
-
-        			$separacion = date( "Y-m-d" ,strtotime($getSeparacion));
-
+        			
         			$getFecha_inicialDis = $this->request->getPost('fecha_inicialDis');
 
         			$fecha_inicialDis = date( "Y-m-d" ,strtotime($getFecha_inicialDis));
@@ -1331,16 +1320,15 @@ class Cuip extends BaseController {
 						"idCodigoPostal"  =>  $this->request->getPost('codigoEmpDiv') , 
 						"numero_telefono"  =>  $this->request->getPost('numero') , 
 						"ingreso"  =>  $ingresoEmpDiv , 
-						"separacion"  => $separacion  , 
-						"idPuestoFuncional"  => $this->request->getPost('puesto_funcional')  , 
+						
 						"area"  =>  strtoupper($this->request->getPost('area')) , 
 						"sueldo_base"  => strtoupper($this->request->getPost('sueldo'))  , 
-						"compensacion"  => strtoupper($this->request->getPost('compensaciones'))  , 
+						 
 						"idEstado"  =>  $this->request->getPost('estadocodigoEmpDiv') , 
 						"municipio"  =>  $this->request->getPost('municipiocodigoEmpDiv') , 
 						"idMotivoSeparacion"  => $this->request->getPost('motivo_separacion')  , 
 						"tipo_separacion"  => strtoupper($this->request->getPost('tipo_separacion'))  , 
-						"tipo_baja"  => strtoupper($this->request->getPost('tipo_baja'))  , 
+						
 						"comentarios"  => strtoupper($this->request->getPost('comentarios'))  , 
 						"eligio_empleo"  =>  strtoupper($this->request->getPost('empleo')) , 
 						"puesto_gustaria"  =>  strtoupper($this->request->getPost('puesto')) , 
@@ -1884,12 +1872,12 @@ class Cuip extends BaseController {
 				'apellidoPaterno' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
 				'apellidoMaterno' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
 				'primerNombre' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
-				'getSexo_fam_cer' =>  ['label' => "Sexo", 'rules' => 'required'],
+				'sexo_fam_cer' =>  ['label' => "Sexo", 'rules' => 'required'],
 				'ocupacion' =>  ['label' => "Ocupacion", 'rules' => 'required|max_length[255]'],
 				'parentesco_fam_cercano' =>  ['label' => "Parentesco", 'rules' => 'required'],
 				'calle' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
 				'exterior' =>  ['label' => "Exterior", 'rules' => 'required|max_length[255]'],
-				'interior' =>  ['label' => "Interior", 'rules' => 'required|max_length[255]'],
+				
 				'coloniacodigoRefCer' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
 				'codigoRefCer' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'],
 				'numero' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'],
@@ -1901,38 +1889,54 @@ class Cuip extends BaseController {
 				'apellidoPaternoParCer' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
 				'apellidoMaternoParCer' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
 				'primerNombreParCer' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
-				'segundoNombreParCer' =>  ['label' => "Segundo Nombre", 'rules' => 'required|max_length[255]'],
+				
 				'sexo_par_cer' =>  ['label' => "Sexo", 'rules' => 'required|max_length[255]'],
 				'ocupacionParCer' =>  ['label' => "Ocupacion", 'rules' => 'required|max_length[255]'],
 				'parentesco_cercano' =>  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'],
 				'calleParCer' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
-				'exteriorRefPer' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
-				'interiorRefPer' =>  ['label' => "NO.Interior", 'rules' => 'required|max_length[255]'],
-				'numeroRefPer' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[255]'],
-				'codigoPersonal' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'],
-				'coloniacodigoPersonal' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
+				'exteriorParCer' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
+				
+				'codigoParCer' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'],
+				'coloniacodigoParCer' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
 				'numeroParCer' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'],
 				'estadocodigoParCer' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
-				'municipiocodigoPersonal' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
-				'ciudadcodigoPersonal' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
-				'paisRefPer' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]'],
+				'municipiocodigoParCer' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
+				'ciudadcodigoParCer' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
+				'paisParCer' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]'],
 				'apellidoPaternoRefLab' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
 				'apellidoMaternoRefLab' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
 				'primerNombreRefLab' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
-				'segundoNombreRefLab' =>  ['label' => "Segundo Nombre", 'rules' => 'required|max_length[255]'],
+				
 				'sexo_lab' =>  ['label' => "Sexo", 'rules' => 'required|max_length[255]'],
 				'ocupacionRefLab' =>  ['label' => "Ocupacion", 'rules' => 'required|max_length[255]'],
 				'parentesco_laboral' =>  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'],
 				'calleRefLab' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
 				'exteriorRefLab' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
-				'interiorRefLab' =>  ['label' => "NO.Interior", 'rules' => 'required|max_length[255]'],
+				
 				'numeroRefLab' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'],
 				'codigoLaboral' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'],
 				'coloniacodigoLaboral' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
 				'estadocodigoLaboral' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
 				'municipiocodigoLaboral' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
 				'ciudadcodigoLaboral' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
-				'paisRefLab' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]']];
+				'paisRefLab' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]'],
+				'apellidoPaternoRefPer' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
+				'apellidoMaternoRefPer' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
+				'primerNombreRefPer' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
+				
+				'sexo_per' =>  ['label' => "Sexo", 'rules' => 'required|max_length[255]'],
+				'ocupacionRefPer' =>  ['label' => "Ocupacion", 'rules' => 'required|max_length[255]'],
+				'parentesco_personal' =>  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'],
+				'calleRefPer' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
+				'exteriorRefPer' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
+				
+				'numeroRefPer' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'],
+				'codigoPersonal' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'],
+				'coloniacodigoPersonal' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
+				'estadocodigoPersonal' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
+				'municipiocodigoPersonal' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
+				'ciudadcodigoPersonal' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
+				'paisRefPer' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]']];
 		 
 				$errors = [];
 				$succes = [];

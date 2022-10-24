@@ -106,7 +106,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="interior" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
+                        <label for="interior" class=" control-label">No. Interior:</label>
                         <input type="text" class="form-control " id="interior" name="interior">
                     </div>
                 </div>
@@ -257,7 +257,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="segundoNombreParCer" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
+                        <label for="segundoNombreParCer" class=" control-label">Segundo Nombre:</label>
                         <input type="text" class="form-control " id="segundoNombreParCer" name="segundoNombreParCer">
                     </div>
                 </div>
@@ -331,7 +331,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="interiorParCer" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
+                        <label for="interiorParCer" class=" control-label">No. Interior:</label>
                         <input type="text" class="form-control " id="interiorParCer" name="interiorParCer">
                     </div>
                 </div>
@@ -482,7 +482,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="segundoNombreRefPer" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
+                        <label for="segundoNombreRefPer" class=" control-label">Segundo Nombre:</label>
                         <input type="text" class="form-control " id="segundoNombreRefPer" name="segundoNombreRefPer">
                     </div>
                 </div>
@@ -556,7 +556,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="interiorRefPer" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
+                        <label for="interiorRefPer" class=" control-label">No. Interior:</label>
                         <input type="text" class="form-control " id="interiorRefPer" name="interiorRefPer">
                     </div>
                 </div>
@@ -707,7 +707,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="segundoNombreRefLab" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
+                        <label for="segundoNombreRefLab" class=" control-label">Segundo Nombre:</label>
                         <input type="text" class="form-control " id="segundoNombreRefLab" name="segundoNombreRefLab">
                     </div>
                 </div>
@@ -781,7 +781,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="interiorRefLab" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
+                        <label for="interiorRefLab" class=" control-label">No. Interior:</label>
                         <input type="text" class="form-control " id="interiorRefLab" name="interiorRefLab">
                     </div>
                 </div>

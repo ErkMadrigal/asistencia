@@ -516,38 +516,6 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="especificacion" class=" control-label">Especifique:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="especificacion" name="especificacion">
-                    </div>
-                </div>
-                <div class='col-6 col-sm-6'>
-                    <div class="form-group">
-                        <label for="grado_habilidad" class="control-label">Grado de aptitude o dominio: <span class="text-danger">*</span></label>
-                        <div>
-                            <select class="form-control" id="grado_habilidad" name="grado_habilidad">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if (!empty($grado_habilidad)) :
-                                    foreach ($grado_habilidad as  $a) {
-                                ?>
-                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                                <?php
-                                    }
-                                endif; ?>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#grado_habilidad").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
                         <label for="desde" class=" control-label">Desde:<span class="text-danger">*</span></label>
                         <div class="input-group date" id="desde" data-target-input="nearest">
                             <input type="text" required class="form-control datetimepicker-input" data-target="#desde" id="datetime-desde" name="desde" placeholder="" value="" />

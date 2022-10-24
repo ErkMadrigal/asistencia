@@ -33,7 +33,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="interior" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
+                        <label for="interior" class=" control-label">No. Interior:</label>
                         <input type="text" class="form-control " id="interior" name="interior">
                     </div>
                 </div>
@@ -122,31 +122,7 @@
                         </script>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="separacion" class=" control-label">Separación:<span class="text-danger">*</span></label>
-                        <div class="input-group date" id="separacion" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#separacion" id="datetime-separacion" name="separacion" placeholder="" value="" />
-                            <div class="input-group-append" data-target="#separacion" data-toggle="datetimepicker">
-                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
-                            </div>
-                        </div>
-                        <script type="text/javascript">
-                            $(function() {
-                                $("#separacion").datetimepicker({
-                                    format: 'DD-MM-YYYY',
-                                    locale: moment.locale('es')
-                                });
-                            });
-                        </script>
-                    </div>
-                </div>
-                <div class='col-6 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="puesto_funcional" class=" control-label">Puesto Funcional:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="puesto_funcional" name="puesto_funcional">
-                    </div>
-                </div>
+                
                 <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="funciones" class=" control-label">Funciones:<span class="text-danger">*</span></label>
@@ -155,16 +131,11 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="sueldo" class=" control-label">Sueldo Base (Mensual):<span class="text-danger">*</span></label>
+                        <label for="sueldo" class=" control-label">Ingreso Neto (Mensual):<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="sueldo" name="sueldo">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="compensaciones" class=" control-label">Compensaciones (Mensual):<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="compensaciones" name="compensaciones">
-                    </div>
-                </div>
+                
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="area" class=" control-label">Area:<span class="text-danger">*</span></label>
@@ -184,12 +155,7 @@
                         <input type="text" class="form-control " id="tipo_separacion" name="tipo_separacion">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="tipo_baja" class=" control-label">Tipo de Baja:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="tipo_baja" name="tipo_baja">
-                    </div>
-                </div>
+                
                 <div class='col-12 col-sm-12 col-md-12'>
                     <div class="form-group">
                         <label for="comentarios" class=" control-label">Comentarios:<span class="text-danger">*</span></label>

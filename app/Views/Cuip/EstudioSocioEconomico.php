@@ -160,8 +160,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="segundoNombre" class=" control-label">Segundo Nombre:
-                            <span class="text-danger">*</span></label>
+                        <label for="segundoNombre" class=" control-label">Segundo Nombre:</label>
                         <input type="text" class="form-control " id="segundoNombre" name="segundoNombre">
                     </div>
                 </div>

@@ -24,18 +24,7 @@
                         <input type="text" class="form-control " id="corporacion" name="corporacion">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="primerNombre" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="primerNombre" name="primerNombre">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="segundoNombre" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="segundoNombre" name="segundoNombre">
-                    </div>
-                </div>
+                
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
@@ -50,7 +39,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="interior" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
+                        <label for="interior" class=" control-label">No. Interior:</label>
                         <input type="text" class="form-control " id="interior" name="interior">
                     </div>
                 </div>
