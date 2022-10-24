@@ -66,6 +66,17 @@ $routes->get('insertDataSepomex', 'Sepomex::insertDataSep',['filter' => 'auth'])
 $routes->get('editSepomex', 'Sepomex::update',['filter' => 'auth']);
 $routes->post('editDataSepomex', 'Sepomex::updateDataSep',['filter' => 'auth']);
 $routes->get('detailSepomex', 'Sepomex::detail',['filter' => 'auth']);
+
+$routes->get('estados', 'Estados::index',['filter' => 'auth']);
+$routes->post('mostrarDatosEstados', 'Estados::mostrarDatos',['filter' => 'auth']);
+$routes->get('editEstado', 'Estados::update',['filter' => 'auth']);
+$routes->post('getDatosEstado', 'Estados::GetDatosEst',['filter' => 'auth']);
+$routes->post('editDataEstado', 'Estados::updateDataEstado',['filter' => 'auth']);
+$routes->get('detailEstado', 'Estados::detail',['filter' => 'auth']);
+$routes->get('addEstado', 'Estados::add',['filter' => 'auth']);
+$routes->post('addDataEstado', 'Estados::insertDataEstado',['filter' => 'auth']);
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
