@@ -221,6 +221,7 @@ class Cuip extends BaseController {
 
 				$rules = [
 				'primerNombre' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
+				'segundoNombre' =>  ['label' => "Segundo Nombre", 'rules' => 'required|max_length[255]'],
 				'apellidoPaterno' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
 				'apellidoMaterno' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
 				'fecha_nacimiento' =>  ['label' => 'Fecha de Nacimiento', 'rules' =>'required|valid_only_date_chek|date_mayor'],
@@ -228,9 +229,10 @@ class Cuip extends BaseController {
 				'rfc' =>  ['label' => "RFC", 'rules' => 'required|max_length[10]|min_length[10]'],
 				'claveE' =>  ['label' => "Clave Electoral", 'rules' => 'required|max_length[255]'],
 				'cartilla' =>  ['label' => "Cartilla SMN", 'rules' => 'required|max_length[255]'],
+				'licencia' =>  ['label' => "Licencia de Conducir", 'rules' => 'required|max_length[255]'],
 				'vigenciaLic' =>  ['label' => "Vigencia de Licencia", 'rules' => 'required|valid_only_date_chek'],
 				'CURP' =>  ['label' => "CURP", 'rules' => 'required|max_length[18]|min_length[18]'],
-				
+				'pasaporte' =>  ['label' => "Pasaporte", 'rules' => 'required|max_length[55]'],
 				'modo_nacionalidad' =>  ['label' => "Modo de Nacionalidad", 'rules' => 'required'],
 				'fecha_naturalizacion' =>  ['label' => "Fecha de Naturalización", 'rules' => 'required|valid_only_date_chek'],
 				'pais_nacimiento' =>  ['label' => "Pais de Nacimiento", 'rules' => 'required'],
@@ -240,7 +242,7 @@ class Cuip extends BaseController {
 				'nacionalidad' =>  ['label' => "Nacionalidad", 'rules' => 'required'],
 				'estado_civil' =>  ['label' => "Estado Civil", 'rules' => 'required'],
 				'desarrollo_academico' =>  ['label' => "Desarrollo Académico", 'rules' => 'required'],
-				'escuela' =>  ['label' => "Escuela", 'rules|max_length[255]' => 'required|max_length[255]'],
+				'escuela' =>  ['label' => "Escuela", 'rules' => 'required|max_length[255]'],
 				'especialidad' =>  ['label' => "Especialidad", 'rules' => 'required|max_length[255]'],
 				'cedula' =>  ['label' => "Cedula", 'rules' => 'required|max_length[255]'],
 				'anno_inicio' =>  ['label' => "Año de Inicio", 'rules' => 'required|max_length[4]|integer'],
@@ -249,6 +251,7 @@ class Cuip extends BaseController {
 				'certificado' =>  ['label' => "Num. de Folio Certificado", 'rules' => 'required|max_length[255]'],
 				'calle' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
 				'exterior' =>  ['label' => "No. Exterior", 'rules' => 'required|max_length[255]'],
+				'interior' =>  ['label' => "No. Interior", 'rules' => 'required|max_length[255]'],
 				'numeroTelefono' =>  ['label' => "Numero Telefónico", 'rules' => 'required|max_length[10]|integer|min_length[10]'],
 				'entrecalle' =>  ['label' => "Entre la calle de", 'rules' => 'required|max_length[255]'],
 				'ylacalle' =>  ['label' => "Y la calle ", 'rules' => 'required|max_length[255]'],
@@ -1212,7 +1215,6 @@ class Cuip extends BaseController {
 	public function AgregarEmpDiversos(){
 		if ($this->request->getMethod() == "post" && $this->request->getvar(['empresa, calle, exterior, interior, codigoEmpDiv, coloniacodigoEmpDiv, estadocodigoEmpDiv, municipiocodigoEmpDiv, numero, ingresoEmpDiv, separacion, puesto_funcional, funciones, sueldo, compensaciones, area, motivo_separacion, tipo_separacion, tipo_baja, comentarios, empleo, puesto, area_gustaria, ascender, reglamentacion, reconomiento, reglamentacion_ascenso, razones_ascenso, capacitacion, desciplina, subtipo_disciplina, motivo, tipo, fecha_inicialDis, fecha_finalDis, licencias_medicas, duracion, cantidad'],FILTER_SANITIZE_STRING)){
 
-
 			$errors = [];
 			$succes = [];
 			$dontSucces = [];
@@ -1226,10 +1228,10 @@ class Cuip extends BaseController {
 				'calle' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
 				'exterior' =>  ['label' => "No. Exterior", 'rules' => 'required|max_length[255]'],
 				'interior' =>  ['label' => "No. Interior", 'rules' => 'required|max_length[255]'],
-				'coloniacodigoEmpDiv' =>  ['label' => "Código Postal ", 'rules' => 'required|max_length[255]'],
-				'codigoEmpDiv' =>  ['label' => "Colonia", 'rules' => 'required|max_length[5]|integer'],
-				'empresa' =>  ['label' => "Entidad Federativa", 'rules' => 'required'],
-				'empresa' =>  ['label' => "Municipio", 'rules' => 'required'],
+				'codigoEmpDiv' =>  ['label' => "Código Postal ", 'rules' => 'required|max_length[255]'],
+				'coloniacodigoEmpDiv' =>  ['label' => "Colonia", 'rules' => 'required|max_length[5]|integer'],
+				'estadocodigoEmpDiv' =>  ['label' => "Entidad Federativa", 'rules' => 'required'],
+				'municipiocodigoEmpDiv' =>  ['label' => "Municipio", 'rules' => 'required'],
 				'numero' =>  ['label' => "Numero Telefónico", 'rules' => 'required|max_length[10]|min_length[10]'],
 				'ingresoEmpDiv' =>  ['label' => "Ingreso", 'rules' => 'required|valid_only_date_chek'],
 				'separacion' =>  ['label' => "Separación", 'rules' => 'required|valid_only_date_chek'],
@@ -1247,7 +1249,7 @@ class Cuip extends BaseController {
 				'area_gustaria' =>  ['label' => "¿En que area le gustaría estar?", 'rules' => 'required|max_length[255]'],
 				'ascender' =>  ['label' => "¿En que tiempo desea ascender?", 'rules' => 'required|max_length[255]'],
 				'reglamentacion' =>  ['label' => "¿Conoce la reglamentación de los reconocimientos?", 'rules' => 'required'],
-				'ascender' =>  ['label' => "¿Razones por las que no ha recibido un reconocimiento?", 'rules' => 'required|max_length[255]'],
+				'reglamentacion' =>  ['label' => "¿Razones por las que no ha recibido un reconocimiento?", 'rules' => 'required|max_length[255]'],
 				'reglamentacion' =>  ['label' => "¿Conoce la reglamentación de los ascensos?", 'rules' => 'required'],
 				'reglamentacion_ascenso' =>  ['label' => "¿Razones por las que no ha recibido un ascenso?", 'rules' => 'required|max_length[255]'],
 				'capacitacion' =>  ['label' => "¿Qué capacitación le gustaría recibir?", 'rules' => 'required|max_length[255]'],
@@ -1878,6 +1880,7 @@ class Cuip extends BaseController {
 			if(!empty($getIdPersonal)){
 
 				$rules = [
+					////////////////////familiar cercano//////////////////
 				'apellidoPaterno' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
 				'apellidoMaterno' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
 				'primerNombre' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
@@ -1892,8 +1895,9 @@ class Cuip extends BaseController {
 				'numero' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'],
 				'pais' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]'],
 				'estadocodigoRefCer' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
-				'municipiocodigoParCer' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
+				'municipiocodigoRefCer' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
 				'ciudadcodigoRefCer' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
+				//////////////////////pariente cercano///////////////////////
 				'apellidoPaternoParCer' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
 				'apellidoMaternoParCer' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
 				'primerNombreParCer' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
@@ -1904,7 +1908,8 @@ class Cuip extends BaseController {
 				'calleParCer' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
 				'exteriorRefPer' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
 				'interiorRefPer' =>  ['label' => "NO.Interior", 'rules' => 'required|max_length[255]'],
-				'codigoParCer' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'],
+				'numeroRefPer' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[255]'],
+				'codigoPersonal' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'],
 				'coloniacodigoPersonal' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
 				'numeroParCer' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'],
 				'estadocodigoParCer' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
@@ -2042,6 +2047,7 @@ class Cuip extends BaseController {
 						"idEstado_pariente" => $this->request->getPost('estadocodigoParCer') , 
 						"municipio_pariente" => $this->request->getPost('municipiocodigoParCer') , 
 						"ciudad_pariente" => strtoupper($this->request->getPost('ciudadcodigoParCer')) , 
+
 						"apellido_paterno_personal" => strtoupper($this->request->getPost('apellidoPaternoRefPer')) , 
 						"apellido_materno_personal" => strtoupper($this->request->getPost('apellidoMaternoRefPer')) , 
 						"primer_nombre_personal" => strtoupper($this->request->getPost('primerNombreRefPer')) , 
@@ -2059,6 +2065,7 @@ class Cuip extends BaseController {
 						"idEstado_personal" => $this->request->getPost('estadocodigoPersonal') , 
 						"municipio_personal" => $this->request->getPost('municipiocodigoPersonal') , 
 						"ciudad_personal" => strtoupper($this->request->getPost('ciudadcodigoPersonal')) ,
+
 						"apellido_paterno_laboral" => strtoupper($this->request->getPost('apellidoPaternoRefLab')) , 
 						"apellido_materno_laboral" => strtoupper($this->request->getPost('apellidoMaternoRefLab')) , 
 						"primer_nombre_laboral" => strtoupper($this->request->getPost('primerNombreRefLab')) , 
@@ -2208,52 +2215,59 @@ class Cuip extends BaseController {
 
     function exportPreconsulta()
 	{
-		$data = $this->modelCuip->GetPreConsulta();
+		$data = $this->modelCuip->GetCuipExcel();
 
-		$file_name = 'PRECONSULTA.xlsx';
+		$file_name = 'data.xlsx';
 
-		$getRuta = WRITEPATH . 'uploads/files/';
-
-		$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($getRuta.$file_name);;
+		$spreadsheet = new Spreadsheet();
 
 		$sheet = $spreadsheet->getActiveSheet();
 
-		
+		$sheet->setCellValue('A1', 'Employee Name');
 
-		$count = 12;
+		$sheet->setCellValue('B1', 'Email Address');
+
+		$sheet->setCellValue('C1', 'Mobile No.');
+
+		$sheet->setCellValue('D1', 'Department');
+
+		$count = 2;
 
 		foreach($data as $row)
 		{
-			
-			$sheet->setCellValue('B' . $count, $row->apellido_paterno);
+			$sheet->setCellValue('A' . $count, $row->primer_nombre);
 
-			$sheet->setCellValue('C' . $count, $row->apellido_materno);
-
-			$sheet->setCellValue('D' . $count, $row->nombre);
-
-			$sheet->setCellValue('E' . $count, $row->curp);
-
-			$sheet->setCellValue('F' . $count, $row->rfc);
-
-			$sheet->setCellValue('G' . $count, date( "d/m/Y" ,strtotime($row->fecha_nacimiento)));
+			$sheet->setCellValue('B' . $count, $row->segundo_nombre);
 
 		
 
 			$count++;
 		}
 
-		$writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
+		$writer = new Xlsx($spreadsheet);
 
-		
-
-		$writer->save($getRuta.$file_name);
+		$writer->save($file_name);
 
 		
 		$this->response->setHeader('Content-Type', 'application/vnd.ms-excel');
 
-		
-			
-		readfile($getRuta.$file_name);
+		header('Content-Disposition: attachment; filename="' . basename($file_name) . '"');
+
+		header('Expires: 0');
+
+		header('Cache-Control: must-revalidate');
+
+		header('Pragma: public');
+
+		header('Content-Length:' . filesize($file_name));
+
+
+
+		flush();
+
+		readfile($file_name);
+
+		exit;
 	}
 
 
