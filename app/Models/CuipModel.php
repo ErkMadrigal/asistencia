@@ -318,7 +318,18 @@ class CuipModel
 
     public function GetCuipExcel(){
         $builder = $this->db->table("datos_personales");
-        $builder->select("*");
+        $builder->select("apellido_paterno,apellido_materno, CONCAT(primer_nombre,' ' ,segundo_nombre) AS nombre,curp,rfc,fecha_nacimiento");
+        $builder->where("activo",true);
+        $builder->where("Cuip",'');
+        $builder->orderBy("primer_nombre","asc");
+        return $builder->get()->getResult();
+        
+    }
+
+
+    public function GetPreConsulta(){
+        $builder = $this->db->table("datos_personales");
+        $builder->select("apellido_paterno,apellido_materno, CONCAT(primer_nombre,' ' ,segundo_nombre) AS nombre,curp,rfc,fecha_nacimiento");
         $builder->where("activo",true);
         $builder->where("Cuip",'');
         $builder->orderBy("primer_nombre","asc");

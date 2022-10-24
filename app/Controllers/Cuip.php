@@ -221,7 +221,6 @@ class Cuip extends BaseController {
 
 				$rules = [
 				'primerNombre' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
-				'segundoNombre' =>  ['label' => "Segundo Nombre", 'rules' => 'required|max_length[255]'],
 				'apellidoPaterno' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
 				'apellidoMaterno' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
 				'fecha_nacimiento' =>  ['label' => 'Fecha de Nacimiento', 'rules' =>'required|valid_only_date_chek|date_mayor'],
@@ -229,10 +228,9 @@ class Cuip extends BaseController {
 				'rfc' =>  ['label' => "RFC", 'rules' => 'required|max_length[10]|min_length[10]'],
 				'claveE' =>  ['label' => "Clave Electoral", 'rules' => 'required|max_length[255]'],
 				'cartilla' =>  ['label' => "Cartilla SMN", 'rules' => 'required|max_length[255]'],
-				'licencia' =>  ['label' => "Licencia de Conducir", 'rules' => 'required|max_length[255]'],
 				'vigenciaLic' =>  ['label' => "Vigencia de Licencia", 'rules' => 'required|valid_only_date_chek'],
 				'CURP' =>  ['label' => "CURP", 'rules' => 'required|max_length[18]|min_length[18]'],
-				'pasaporte' =>  ['label' => "Pasaporte", 'rules' => 'required|max_length[55]'],
+				
 				'modo_nacionalidad' =>  ['label' => "Modo de Nacionalidad", 'rules' => 'required'],
 				'fecha_naturalizacion' =>  ['label' => "Fecha de Naturalización", 'rules' => 'required|valid_only_date_chek'],
 				'pais_nacimiento' =>  ['label' => "Pais de Nacimiento", 'rules' => 'required'],
@@ -242,7 +240,7 @@ class Cuip extends BaseController {
 				'nacionalidad' =>  ['label' => "Nacionalidad", 'rules' => 'required'],
 				'estado_civil' =>  ['label' => "Estado Civil", 'rules' => 'required'],
 				'desarrollo_academico' =>  ['label' => "Desarrollo Académico", 'rules' => 'required'],
-				'escuela' =>  ['label' => "Escuela", 'rules' => 'required|max_length[255]'],
+				'escuela' =>  ['label' => "Escuela", 'rules|max_length[255]' => 'required|max_length[255]'],
 				'especialidad' =>  ['label' => "Especialidad", 'rules' => 'required|max_length[255]'],
 				'cedula' =>  ['label' => "Cedula", 'rules' => 'required|max_length[255]'],
 				'anno_inicio' =>  ['label' => "Año de Inicio", 'rules' => 'required|max_length[4]|integer'],
@@ -251,7 +249,6 @@ class Cuip extends BaseController {
 				'certificado' =>  ['label' => "Num. de Folio Certificado", 'rules' => 'required|max_length[255]'],
 				'calle' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
 				'exterior' =>  ['label' => "No. Exterior", 'rules' => 'required|max_length[255]'],
-				'interior' =>  ['label' => "No. Interior", 'rules' => 'required|max_length[255]'],
 				'numeroTelefono' =>  ['label' => "Numero Telefónico", 'rules' => 'required|max_length[10]|integer|min_length[10]'],
 				'entrecalle' =>  ['label' => "Entre la calle de", 'rules' => 'required|max_length[255]'],
 				'ylacalle' =>  ['label' => "Y la calle ", 'rules' => 'required|max_length[255]'],
@@ -1892,8 +1889,8 @@ class Cuip extends BaseController {
 				'exterior' =>  ['label' => "Exterior", 'rules' => 'required|max_length[255]'],
 				'interior' =>  ['label' => "Interior", 'rules' => 'required|max_length[255]'],
 				'coloniacodigoRefCer' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
-				'codigoRefCer' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[255]'],
-				'numero' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[255]'],
+				'codigoRefCer' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'],
+				'numero' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'],
 				'pais' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]'],
 				'estadocodigoRefCer' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
 				'municipiocodigoParCer' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
@@ -1908,9 +1905,9 @@ class Cuip extends BaseController {
 				'calleParCer' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
 				'exteriorRefPer' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
 				'interiorRefPer' =>  ['label' => "NO.Interior", 'rules' => 'required|max_length[255]'],
-				'codigoParCer' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[255]'],
+				'codigoParCer' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'],
 				'coloniacodigoPersonal' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
-				'numeroParCer' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[255]'],
+				'numeroParCer' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'],
 				'estadocodigoParCer' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
 				'municipiocodigoPersonal' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
 				'ciudadcodigoPersonal' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
@@ -1925,8 +1922,8 @@ class Cuip extends BaseController {
 				'calleRefLab' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
 				'exteriorRefLab' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
 				'interiorRefLab' =>  ['label' => "NO.Interior", 'rules' => 'required|max_length[255]'],
-				'numeroRefLab' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[255]'],
-				'codigoLaboral' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[255]'],
+				'numeroRefLab' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'],
+				'codigoLaboral' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'],
 				'coloniacodigoLaboral' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
 				'estadocodigoLaboral' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
 				'municipiocodigoLaboral' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
@@ -2124,57 +2121,54 @@ class Cuip extends BaseController {
 	{
 		$data = $this->modelCuip->GetCuipExcel();
 
-		$file_name = 'data.xlsx';
+		if($data){
 
-		$spreadsheet = new Spreadsheet();
+		$file_name = '45_CAMPOS_14_ELEMENTOS(1944).xlsx';
+
+		$getRuta = WRITEPATH . 'uploads/files/';
+
+		$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($getRuta.$file_name);;
 
 		$sheet = $spreadsheet->getActiveSheet();
 
-		$sheet->setCellValue('A1', 'Employee Name');
-
-		$sheet->setCellValue('B1', 'Email Address');
-
-		$sheet->setCellValue('C1', 'Mobile No.');
-
-		$sheet->setCellValue('D1', 'Department');
+		
 
 		$count = 2;
 
 		foreach($data as $row)
 		{
-			$sheet->setCellValue('A' . $count, $row->primer_nombre);
+			
+			$sheet->setCellValue('B' . $count, $row->apellido_paterno);
 
-			$sheet->setCellValue('B' . $count, $row->segundo_nombre);
+			$sheet->setCellValue('C' . $count, $row->apellido_materno);
+
+			$sheet->setCellValue('D' . $count, $row->nombre);
+
+			$sheet->setCellValue('E' . $count, $row->curp);
+
+			$sheet->setCellValue('F' . $count, $row->rfc);
+
+			$sheet->setCellValue('G' . $count, date( "d/m/Y" ,strtotime($row->fecha_nacimiento)));
 
 		
 
 			$count++;
 		}
 
-		$writer = new Xlsx($spreadsheet);
+		$writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
 
-		$writer->save($file_name);
+		
+
+		$writer->save($getRuta.$file_name);
 
 		
 		$this->response->setHeader('Content-Type', 'application/vnd.ms-excel');
 
-		header('Content-Disposition: attachment; filename="' . basename($file_name) . '"');
+		
+			
+		readfile($getRuta.$file_name);
+		}
 
-		header('Expires: 0');
-
-		header('Cache-Control: must-revalidate');
-
-		header('Pragma: public');
-
-		header('Content-Length:' . filesize($file_name));
-
-
-
-		flush();
-
-		readfile($file_name);
-
-		exit;
 	}
 
 
@@ -2215,59 +2209,52 @@ class Cuip extends BaseController {
 
     function exportPreconsulta()
 	{
-		$data = $this->modelCuip->GetCuipExcel();
+		$data = $this->modelCuip->GetPreConsulta();
 
-		$file_name = 'data.xlsx';
+		$file_name = 'PRECONSULTA.xlsx';
 
-		$spreadsheet = new Spreadsheet();
+		$getRuta = WRITEPATH . 'uploads/files/';
+
+		$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($getRuta.$file_name);;
 
 		$sheet = $spreadsheet->getActiveSheet();
 
-		$sheet->setCellValue('A1', 'Employee Name');
+		
 
-		$sheet->setCellValue('B1', 'Email Address');
-
-		$sheet->setCellValue('C1', 'Mobile No.');
-
-		$sheet->setCellValue('D1', 'Department');
-
-		$count = 2;
+		$count = 12;
 
 		foreach($data as $row)
 		{
-			$sheet->setCellValue('A' . $count, $row->primer_nombre);
+			
+			$sheet->setCellValue('B' . $count, $row->apellido_paterno);
 
-			$sheet->setCellValue('B' . $count, $row->segundo_nombre);
+			$sheet->setCellValue('C' . $count, $row->apellido_materno);
+
+			$sheet->setCellValue('D' . $count, $row->nombre);
+
+			$sheet->setCellValue('E' . $count, $row->curp);
+
+			$sheet->setCellValue('F' . $count, $row->rfc);
+
+			$sheet->setCellValue('G' . $count, date( "d/m/Y" ,strtotime($row->fecha_nacimiento)));
 
 		
 
 			$count++;
 		}
 
-		$writer = new Xlsx($spreadsheet);
+		$writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
 
-		$writer->save($file_name);
+		
+
+		$writer->save($getRuta.$file_name);
 
 		
 		$this->response->setHeader('Content-Type', 'application/vnd.ms-excel');
 
-		header('Content-Disposition: attachment; filename="' . basename($file_name) . '"');
-
-		header('Expires: 0');
-
-		header('Cache-Control: must-revalidate');
-
-		header('Pragma: public');
-
-		header('Content-Length:' . filesize($file_name));
-
-
-
-		flush();
-
-		readfile($file_name);
-
-		exit;
+		
+			
+		readfile($getRuta.$file_name);
 	}
 
 
