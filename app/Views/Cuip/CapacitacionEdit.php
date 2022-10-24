@@ -43,6 +43,7 @@
                         <div>
                             <select class="form-control" id="nivel_curso" name="nivel_curso">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$capacitacion->nivel?>" ><?=$capacitacion->nivel?> </option>
                                 <?php
                                 if (!empty($nivel_curso)) :
                                     foreach ($nivel_curso as  $a) {
@@ -69,6 +70,7 @@
                         <div>
                             <select class="form-control" id="eficienciaCursos" name="eficienciaCursos">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$capacitacion->eficiencia?>" ><?=$capacitacion->eficiencia?> </option>
                                 <?php
                                 if (!empty($eficiencia)) :
                                     foreach ($eficiencia as  $a) {
@@ -184,6 +186,7 @@
                         <div>
                             <select class="form-control" id="cuso_tomado" name="cuso_tomado">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$capacitacion->cursofue?>" ><?=$capacitacion->cursofue?> </option>
                                 <?php
                                 if (!empty($cuso_tomado)) :
                                     foreach ($cuso_tomado as  $a) {
@@ -210,6 +213,7 @@
                         <div>
                             <select class="form-control" id="eficiencia" name="eficiencia">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$capacitacion->adicional?>" ><?=$capacitacion->adicional?> </option>
                                 <?php
                                 if (!empty($eficiencia)) :
                                     foreach ($eficiencia as  $a) {
@@ -298,6 +302,7 @@
                         <div>
                             <select class="form-control" id="idioma" name="idioma">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$capacitacion->idioma?>" ><?=$capacitacion->idioma?> </option>
                                 <?php
                                 if (!empty($idioma)) :
                                     foreach ($idioma as  $a) {
@@ -323,6 +328,7 @@
                         <label for="lectura" class=" control-label">% Lectura:<span class="text-danger">*</span></label>
                         <select class="form-control" id="lectura" name="lectura">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$capacitacion->lectura?>" ><?=$capacitacion->lectura?> </option>
                                 <?php
                                 if (!empty($porsentajeIdioma)) :
                                     foreach ($porsentajeIdioma as  $a) {
@@ -347,6 +353,7 @@
                         <label for="escritura" class=" control-label">% Escritura:<span class="text-danger">*</span></label>
                         <select class="form-control" id="escritura" name="escritura">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$capacitacion->escritura?>" ><?=$capacitacion->escritura?> </option>
                                 <?php
                                 if (!empty($porsentajeIdioma)) :
                                     foreach ($porsentajeIdioma as  $a) {
@@ -371,6 +378,7 @@
                         <label for="conversacion" class=" control-label">% Conversación:<span class="text-danger">*</span></label>
                         <select class="form-control" id="conversacion" name="conversacion">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$capacitacion->conversacion?>" ><?=$capacitacion->conversacion?> </option>
                                 <?php
                                 if (!empty($porsentajeIdioma)) :
                                     foreach ($porsentajeIdioma as  $a) {
@@ -415,6 +423,7 @@
                         <div>
                             <select class="form-control" id="tipo_habilidad" name="tipo_habilidad">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$capacitacion->habilidad?>" ><?=$capacitacion->habilidad?> </option>
                                 <?php
                                 if (!empty($tipo_habilidad)) :
                                     foreach ($tipo_habilidad as  $a) {
@@ -447,6 +456,7 @@
                         <div>
                             <select class="form-control" id="grado_habilidadCap" name="grado_habilidadCap">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$capacitacion->grado?>" ><?=$capacitacion->grado?> </option>
                                 <?php
                                 if (!empty($grado_habilidad)) :
                                     foreach ($grado_habilidad as  $a) {
@@ -496,6 +506,7 @@
                         <label for="tipoAgrupa" class=" control-label">Tipo:<span class="text-danger">*</span></label>
                         <select class="form-control" id="tipoAgrupa" name="tipoAgrupa">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$capacitacion->agrupacion?>" ><?=$capacitacion->agrupacion?> </option>
                                 <?php
                                 if (!empty($tipo_agrupacion)) :
                                     foreach ($tipo_agrupacion as  $a) {
@@ -527,6 +538,7 @@
                         <div>
                             <select class="form-control" id="grado_habilidad" name="grado_habilidad">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$capacitacion->gradohabilidad?>" ><?=$capacitacion->gradohabilidad?> </option>
                                 <?php
                                 if (!empty($grado_habilidad)) :
                                     foreach ($grado_habilidad as  $a) {

@@ -1881,7 +1881,57 @@ class Cuip extends BaseController {
 			if(!empty($getIdPersonal)){
 
 				$rules = [
-				'apellidoPaterno' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]']];
+				'apellidoPaterno' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
+				'apellidoMaterno' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
+				'primerNombre' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
+				'segundoNombre' =>  ['label' => "Segundo Nombre", 'rules' => 'required|max_length[255]'],
+				'getSexo_fam_cer' =>  ['label' => "Sexo", 'rules' => 'required'],
+				'ocupacion' =>  ['label' => "Ocupacion", 'rules' => 'required|max_length[255]'],
+				'parentesco_fam_cercano' =>  ['label' => "Parentesco", 'rules' => 'required'],
+				'calle' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
+				'exterior' =>  ['label' => "Exterior", 'rules' => 'required|max_length[255]'],
+				'interior' =>  ['label' => "Interior", 'rules' => 'required|max_length[255]'],
+				'coloniacodigoRefCer' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
+				'codigoRefCer' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[255]'],
+				'numero' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[255]'],
+				'pais' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]'],
+				'estadocodigoRefCer' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
+				'municipiocodigoParCer' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
+				'ciudadcodigoRefCer' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
+				'apellidoPaternoParCer' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
+				'apellidoMaternoParCer' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
+				'primerNombreParCer' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
+				'segundoNombreParCer' =>  ['label' => "Segundo Nombre", 'rules' => 'required|max_length[255]'],
+				'sexo_par_cer' =>  ['label' => "Sexo", 'rules' => 'required|max_length[255]'],
+				'ocupacionParCer' =>  ['label' => "Ocupacion", 'rules' => 'required|max_length[255]'],
+				'parentesco_cercano' =>  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'],
+				'calleParCer' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
+				'exteriorRefPer' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
+				'interiorRefPer' =>  ['label' => "NO.Interior", 'rules' => 'required|max_length[255]'],
+				'codigoParCer' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[255]'],
+				'coloniacodigoPersonal' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
+				'numeroParCer' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[255]'],
+				'estadocodigoParCer' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
+				'municipiocodigoPersonal' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
+				'ciudadcodigoPersonal' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
+				'paisRefPer' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]'],
+				'apellidoPaternoRefLab' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
+				'apellidoMaternoRefLab' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
+				'primerNombreRefLab' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
+				'segundoNombreRefLab' =>  ['label' => "Segundo Nombre", 'rules' => 'required|max_length[255]'],
+				'sexo_lab' =>  ['label' => "Sexo", 'rules' => 'required|max_length[255]'],
+				'ocupacionRefLab' =>  ['label' => "Ocupacion", 'rules' => 'required|max_length[255]'],
+				'parentesco_laboral' =>  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'],
+				'calleRefLab' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
+				'exteriorRefLab' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
+				'interiorRefLab' =>  ['label' => "NO.Interior", 'rules' => 'required|max_length[255]'],
+				'numeroRefLab' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[255]'],
+				'codigoLaboral' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[255]'],
+				'coloniacodigoLaboral' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
+				'estadocodigoLaboral' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
+				'municipiocodigoLaboral' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
+				'ciudadcodigoLaboral' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
+				'paisRefLab' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]']];
 		 
 				$errors = [];
 				$succes = [];
@@ -2071,6 +2121,99 @@ class Cuip extends BaseController {
 
 
 	function export()
+	{
+		$data = $this->modelCuip->GetCuipExcel();
+
+		$file_name = 'data.xlsx';
+
+		$spreadsheet = new Spreadsheet();
+
+		$sheet = $spreadsheet->getActiveSheet();
+
+		$sheet->setCellValue('A1', 'Employee Name');
+
+		$sheet->setCellValue('B1', 'Email Address');
+
+		$sheet->setCellValue('C1', 'Mobile No.');
+
+		$sheet->setCellValue('D1', 'Department');
+
+		$count = 2;
+
+		foreach($data as $row)
+		{
+			$sheet->setCellValue('A' . $count, $row->primer_nombre);
+
+			$sheet->setCellValue('B' . $count, $row->segundo_nombre);
+
+		
+
+			$count++;
+		}
+
+		$writer = new Xlsx($spreadsheet);
+
+		$writer->save($file_name);
+
+		
+		$this->response->setHeader('Content-Type', 'application/vnd.ms-excel');
+
+		header('Content-Disposition: attachment; filename="' . basename($file_name) . '"');
+
+		header('Expires: 0');
+
+		header('Cache-Control: must-revalidate');
+
+		header('Pragma: public');
+
+		header('Content-Length:' . filesize($file_name));
+
+
+
+		flush();
+
+		readfile($file_name);
+
+		exit;
+	}
+
+
+	public function GetPreconsulta(){
+		if ($this->request->getMethod() == "get"){
+
+			$data['modulos'] = $this->menu->Permisos();
+			$empresa = session()->get('empresa');
+			$idEmpresa = $this->encrypter->decrypt($empresa);
+			$resultData = $this->modelCuip->GetCuip($idEmpresa);
+			$result = [];
+
+
+			foreach ( $resultData as $v){
+				
+				$id = $this->encrypt->Encrypt($v->id);
+				$result[] = (object) array (
+					'id' => $id ,
+					'nCuip' => '' ,
+					'primer_nombre' => $v->primer_nombre,
+					'segundo_nombre' => $v->segundo_nombre,
+                    'apellido_paterno' => $v->apellido_paterno,
+                    'apellido_materno' => $v->apellido_materno
+				) ;
+			}
+		
+			$dataCrud = [
+                'data' => $result]; 
+
+        	$data['CuipPersonal'] = $dataCrud['data'];
+
+			
+			
+			return view('Cuip/Preconsulta', $data);
+		}	
+    }
+
+
+    function exportPreconsulta()
 	{
 		$data = $this->modelCuip->GetCuipExcel();
 

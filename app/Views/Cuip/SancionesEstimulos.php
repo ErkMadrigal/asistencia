@@ -40,7 +40,7 @@
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="descripcion" name="descripcion"><?= csrf_field() ?>
+                    <input type="text" class="form-control " id="descripcion" name="descripcion">
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
@@ -379,8 +379,10 @@
         $('#load').addClass( "spinner-border" );
 
         var idPersonal = $('#idPersonal').val()
+        var csrfName = $("input[name=app_csrf]").val();
         var formData = new FormData($("form#sancionesEstimulos")[0]);
         formData.append('idPersonal', idPersonal);
+        formData.append('app_csrf', csrfName);
         
         $.ajax({
             url: base_url + '/GuardarSancionesEstimulos',

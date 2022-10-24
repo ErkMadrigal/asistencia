@@ -178,6 +178,7 @@
                         <div>
                             <select class="form-control" id="tipo_fuero" name="tipo_fuero">
                                 <option value="">Selecciona una Opcion</option>
+                                <option selected value ="<?=$sanciones->fuero?>" ><?=$sanciones->fuero?> </option>
                                 <?php
                                 if( !empty($tipo_fuero) ):
                                     foreach($tipo_fuero as  $a){

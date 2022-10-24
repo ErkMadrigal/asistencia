@@ -26,7 +26,6 @@
         <table id="dataGrid" class="table  text-center table-hover table-head-fixed text-nowrap">
             <thead>
             <tr>
-                <th>Modalidad</th>
                 <th>Documento</th>
                 <th>Tipo</th>
                 <th>Activo</th>
@@ -56,8 +55,7 @@ function estatusRenderer(data, type, full, meta) {
             data: <?= json_encode($documentos) ?> ,
             deferRender: true,
             pageLength: 10,
-            columns: [{ data: "valor"
-                      },
+            columns: [
                       { data: "documento"
                       },
                       { data: "tipo"

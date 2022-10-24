@@ -17,7 +17,7 @@
     <div class="card-body table-responsive ">
         <form class="form-horizontal" id="frmDocumento">
             <div class="row">
-                <div class='col-12 col-sm-6'>
+                <!-- <div class='col-12 col-sm-6'>
                     <div class="form-group">
                         <label for="modalidad" class="control-label">Modalidad: </label>
                         <div >
@@ -25,7 +25,7 @@
                             
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class='col-12 col-sm-6'>    
                     <div class="form-group">
                         <label for="documento" class="control-label">Documento: </label>
