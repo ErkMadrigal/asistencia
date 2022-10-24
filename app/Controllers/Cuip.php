@@ -2219,59 +2219,55 @@ class Cuip extends BaseController {
 
     function exportPreconsulta()
 	{
-		$data = $this->modelCuip->GetCuipExcel();
+		$data = $this->modelCuip->GetPreConsulta();
 
-		$file_name = 'data.xlsx';
+		if($data){
 
-		$spreadsheet = new Spreadsheet();
+		$file_name = 'PRECONSULTA.xlsx';
+
+		$getRuta = WRITEPATH . 'uploads/files/';
+
+		$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($getRuta.$file_name);;
 
 		$sheet = $spreadsheet->getActiveSheet();
 
-		$sheet->setCellValue('A1', 'Employee Name');
-
-		$sheet->setCellValue('B1', 'Email Address');
-
-		$sheet->setCellValue('C1', 'Mobile No.');
-
-		$sheet->setCellValue('D1', 'Department');
+		
 
 		$count = 2;
 
 		foreach($data as $row)
 		{
-			$sheet->setCellValue('A' . $count, $row->primer_nombre);
+			
+			$sheet->setCellValue('B' . $count, $row->apellido_paterno);
 
-			$sheet->setCellValue('B' . $count, $row->segundo_nombre);
+			$sheet->setCellValue('C' . $count, $row->apellido_materno);
+
+			$sheet->setCellValue('D' . $count, $row->nombre);
+
+			$sheet->setCellValue('E' . $count, $row->curp);
+
+			$sheet->setCellValue('F' . $count, $row->rfc);
+
+			$sheet->setCellValue('G' . $count, date( "d/m/Y" ,strtotime($row->fecha_nacimiento)));
 
 		
 
 			$count++;
 		}
 
-		$writer = new Xlsx($spreadsheet);
+		$writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
 
-		$writer->save($file_name);
+		
+
+		$writer->save($getRuta.$file_name);
 
 		
 		$this->response->setHeader('Content-Type', 'application/vnd.ms-excel');
 
-		header('Content-Disposition: attachment; filename="' . basename($file_name) . '"');
-
-		header('Expires: 0');
-
-		header('Cache-Control: must-revalidate');
-
-		header('Pragma: public');
-
-		header('Content-Length:' . filesize($file_name));
-
-
-
-		flush();
-
-		readfile($file_name);
-
-		exit;
+		
+			
+		readfile($getRuta.$file_name);
+		}
 	}
 
 
