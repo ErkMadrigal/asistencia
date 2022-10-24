@@ -1252,7 +1252,7 @@ class Cuip extends BaseController {
 				'reglamentacion' =>  ['label' => "¿Conoce la reglamentación de los reconocimientos?", 'rules' => 'required'],
 				'reglamentacion' =>  ['label' => "¿Razones por las que no ha recibido un reconocimiento?", 'rules' => 'required|max_length[255]'],
 				'reglamentacion' =>  ['label' => "¿Conoce la reglamentación de los ascensos?", 'rules' => 'required'],
-				'reglamentacion' =>  ['label' => "¿Razones por las que no ha recibido un ascenso?", 'rules' => 'required|max_length[255]'],
+				'reglamentacion_ascenso' =>  ['label' => "¿Razones por las que no ha recibido un ascenso?", 'rules' => 'required|max_length[255]'],
 				'capacitacion' =>  ['label' => "¿Qué capacitación le gustaría recibir?", 'rules' => 'required|max_length[255]'],
 				'capacitacion' =>  ['label' => "Tipo de Disciplina", 'rules' => 'required'],
 				'subtipo_disciplina' =>  ['label' => "Subtipo de disciplina", 'rules' => 'required|max_length[255]'],
@@ -1893,8 +1893,8 @@ class Cuip extends BaseController {
 				'exterior' =>  ['label' => "Exterior", 'rules' => 'required|max_length[255]'],
 				'interior' =>  ['label' => "Interior", 'rules' => 'required|max_length[255]'],
 				'coloniacodigoRefCer' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
-				'codigoRefCer' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[255]'],
-				'numero' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[255]'],
+				'codigoRefCer' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'],
+				'numero' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'],
 				'pais' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]'],
 				'estadocodigoRefCer' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
 				'municipiocodigoRefCer' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
@@ -1908,51 +1908,33 @@ class Cuip extends BaseController {
 				'ocupacionParCer' =>  ['label' => "Ocupacion", 'rules' => 'required|max_length[255]'],
 				'parentesco_cercano' =>  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'],
 				'calleParCer' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
-				'exteriorParCer' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
-				'interiorParCer' =>  ['label' => "NO.Interior", 'rules' => 'required|max_length[255]'],
-				'codigoParCer' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[255]'],
-				'coloniacodigoParCer' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
-				'numeroParCer' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[255]'],
-				'estadocodigoParCer' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
-				'municipiocodigoPersonal' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
-				'ciudadcodigoParCer' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
-				'paisParCer' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]'],
-				///////////////personal//////////
-				'apellidoPaternoRefPer' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
-				'apellidoMaternoRefPer' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
-				'primerNombreRefPer' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
-				'segundoNombreRefPer' =>  ['label' => "Segundo Nombre", 'rules' => 'required|max_length[255]'],
-				'sexo_per' =>  ['label' => "Sexo", 'rules' => 'required|max_length[255]'],
-				'ocupacionRefPer' =>  ['label' => "Ocupacion", 'rules' => 'required|max_length[255]'],
-				'parentesco_personal' =>  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'],
-				'calleRefPer' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
 				'exteriorRefPer' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
 				'interiorRefPer' =>  ['label' => "NO.Interior", 'rules' => 'required|max_length[255]'],
 				'numeroRefPer' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[255]'],
-				'codigoPersonal' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[255]'],
+				'codigoPersonal' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'],
 				'coloniacodigoPersonal' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
-				'estadocodigoPersonal' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
+				'numeroParCer' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'],
+				'estadocodigoParCer' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
 				'municipiocodigoPersonal' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
 				'ciudadcodigoPersonal' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
 				'paisRefPer' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]'],
-			///////////////////laboral/////////////////
-			'apellidoPaternoRefLab' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
-			'apellidoMaternoRefLab' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
-			'primerNombreRefLab' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
-			'segundoNombreRefLab' =>  ['label' => "Segundo Nombre", 'rules' => 'required|max_length[255]'],
-			'sexo_lab' =>  ['label' => "Sexo", 'rules' => 'required|max_length[255]'],
-			'ocupacionRefLab' =>  ['label' => "Ocupacion", 'rules' => 'required|max_length[255]'],
-			'parentesco_laboral' =>  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'],
-			'calleRefLab' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
-			'exteriorRefLab' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
-			'interiorRefLab' =>  ['label' => "NO.Interior", 'rules' => 'required|max_length[255]'],
-			'numeroRefLab' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[255]'],
-			'codigoLaboral' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[255]'],
-			'coloniacodigoLaboral' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
-			'estadocodigoLaboral' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
-			'municipiocodigoLaboral' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
-			'ciudadcodigoLaboral' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
-			'paisRefLab' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]']];
+				'apellidoPaternoRefLab' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
+				'apellidoMaternoRefLab' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
+				'primerNombreRefLab' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
+				'segundoNombreRefLab' =>  ['label' => "Segundo Nombre", 'rules' => 'required|max_length[255]'],
+				'sexo_lab' =>  ['label' => "Sexo", 'rules' => 'required|max_length[255]'],
+				'ocupacionRefLab' =>  ['label' => "Ocupacion", 'rules' => 'required|max_length[255]'],
+				'parentesco_laboral' =>  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'],
+				'calleRefLab' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
+				'exteriorRefLab' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
+				'interiorRefLab' =>  ['label' => "NO.Interior", 'rules' => 'required|max_length[255]'],
+				'numeroRefLab' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'],
+				'codigoLaboral' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'],
+				'coloniacodigoLaboral' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
+				'estadocodigoLaboral' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
+				'municipiocodigoLaboral' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
+				'ciudadcodigoLaboral' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
+				'paisRefLab' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]']];
 		 
 				$errors = [];
 				$succes = [];
@@ -2147,57 +2129,54 @@ class Cuip extends BaseController {
 	{
 		$data = $this->modelCuip->GetCuipExcel();
 
-		$file_name = 'data.xlsx';
+		if($data){
 
-		$spreadsheet = new Spreadsheet();
+		$file_name = '45_CAMPOS_14_ELEMENTOS(1944).xlsx';
+
+		$getRuta = WRITEPATH . 'uploads/files/';
+
+		$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($getRuta.$file_name);;
 
 		$sheet = $spreadsheet->getActiveSheet();
 
-		$sheet->setCellValue('A1', 'Employee Name');
-
-		$sheet->setCellValue('B1', 'Email Address');
-
-		$sheet->setCellValue('C1', 'Mobile No.');
-
-		$sheet->setCellValue('D1', 'Department');
+		
 
 		$count = 2;
 
 		foreach($data as $row)
 		{
-			$sheet->setCellValue('A' . $count, $row->primer_nombre);
+			
+			$sheet->setCellValue('B' . $count, $row->apellido_paterno);
 
-			$sheet->setCellValue('B' . $count, $row->segundo_nombre);
+			$sheet->setCellValue('C' . $count, $row->apellido_materno);
+
+			$sheet->setCellValue('D' . $count, $row->nombre);
+
+			$sheet->setCellValue('E' . $count, $row->curp);
+
+			$sheet->setCellValue('F' . $count, $row->rfc);
+
+			$sheet->setCellValue('G' . $count, date( "d/m/Y" ,strtotime($row->fecha_nacimiento)));
 
 		
 
 			$count++;
 		}
 
-		$writer = new Xlsx($spreadsheet);
+		$writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
 
-		$writer->save($file_name);
+		
+
+		$writer->save($getRuta.$file_name);
 
 		
 		$this->response->setHeader('Content-Type', 'application/vnd.ms-excel');
 
-		header('Content-Disposition: attachment; filename="' . basename($file_name) . '"');
+		
+			
+		readfile($getRuta.$file_name);
+		}
 
-		header('Expires: 0');
-
-		header('Cache-Control: must-revalidate');
-
-		header('Pragma: public');
-
-		header('Content-Length:' . filesize($file_name));
-
-
-
-		flush();
-
-		readfile($file_name);
-
-		exit;
 	}
 
 

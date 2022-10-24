@@ -21,7 +21,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="segundoNombre" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
+                        <label for="segundoNombre" class=" control-label">Segundo Nombre:</label>
                         <input type="text" class="form-control " id="segundoNombre" name="segundoNombre">
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                 </div>
                 <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="licencia" class=" control-label">Licencia de Conducir:<span class="text-danger">*</span></label>
+                        <label for="licencia" class=" control-label">Licencia de Conducir:</label>
                         <input type="text" class="form-control " id="licencia" name="licencia">
                     </div>
                 </div>
@@ -131,7 +131,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="pasaporte" class=" control-label">Pasaporte:<span class="text-danger">*</span></label>
+                        <label for="pasaporte" class=" control-label">Pasaporte:</label>
                         <input type="text" class="form-control " id="pasaporte" name="pasaporte">
                     </div>
                 </div>
@@ -368,7 +368,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="cedula" class=" control-label">No. Cédula Profesional:<span class="text-danger">*</span></label>
+                        <label for="cedula" class=" control-label">No. Cédula Profesional:</label>
                         <input type="text" class="form-control " id="cedula" name="cedula">
                     </div>
                 </div>
@@ -479,7 +479,7 @@
                 </div>
                 <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="interior" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
+                        <label for="interior" class=" control-label">No. Interior:</label>
                         <input type="text" class="form-control " id="interior" name="interior">
                     </div>
                 </div>

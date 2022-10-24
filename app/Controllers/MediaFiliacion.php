@@ -328,17 +328,11 @@ class MediaFiliacion extends BaseController {
 				'estatura' =>  ['label' => "Estatura", 'rules' => 'required'],
 				'peso' =>  ['label' => "Peso", 'rules' => 'required'],
 				'cicatrices' =>  ['label' => "Cicatrices", 'rules' => 'required'],
-				'cicatrices_descripcion' =>  ['label' => "Cicatrices Descripcion", 'rules' => 'required'],
 				'tatuajes' =>  ['label' => "Tatuajes", 'rules' => 'required'],
-				'tatuajes_descripcion' =>  ['label' => "Tatuajes Descripcion", 'rules' => 'required'],
 				'lunares' =>  ['label' => "Lunares", 'rules' => 'required'],
-				'lunares_descripcion' =>  ['label' => "Lunares Descripcion", 'rules' => 'required'],
 				'fisico' =>  ['label' => "Fisico", 'rules' => 'required'],
-				'fisico_descripcion' =>  ['label' => "Fisico Descripcion", 'rules' => 'required'],
 				'protesis' =>  ['label' => "Protesis", 'rules' => 'required'],
-				'protesis_descripcion' =>  ['label' => "Protesis Descripcion", 'rules' => 'required'],
-				'discapacidad' =>  ['label' => "Discapacidad", 'rules' => 'required'],
-				'discapacidad_descripcion' =>  ['label' => "Discapacidad Descripcion", 'rules' => 'required']];
+				'discapacidad' =>  ['label' => "Discapacidad", 'rules' => 'required']];
 		 
 
 				$errors = [];
