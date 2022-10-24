@@ -1215,7 +1215,6 @@ class Cuip extends BaseController {
 	public function AgregarEmpDiversos(){
 		if ($this->request->getMethod() == "post" && $this->request->getvar(['empresa, calle, exterior, interior, codigoEmpDiv, coloniacodigoEmpDiv, estadocodigoEmpDiv, municipiocodigoEmpDiv, numero, ingresoEmpDiv, separacion, puesto_funcional, funciones, sueldo, compensaciones, area, motivo_separacion, tipo_separacion, tipo_baja, comentarios, empleo, puesto, area_gustaria, ascender, reglamentacion, reconomiento, reglamentacion_ascenso, razones_ascenso, capacitacion, desciplina, subtipo_disciplina, motivo, tipo, fecha_inicialDis, fecha_finalDis, licencias_medicas, duracion, cantidad'],FILTER_SANITIZE_STRING)){
 
-
 			$errors = [];
 			$succes = [];
 			$dontSucces = [];
