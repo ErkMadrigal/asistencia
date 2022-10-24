@@ -701,9 +701,9 @@
                     $('#idPersonal').val(response.data.idPersonal);
                     toastr.success(response.succes.mensaje);
 
-                    $("html,body").animate({scrollTop: $("#CardGenerales").offset().top},2000);
+                    $("html,body").animate({scrollTop: $("#cardRefFamCer").offset().top},2000);
 
-                    $('#tabs a[href="#custom-tabs-five-overlay-dark"]').trigger('click');
+                    $('#tabs a[href="#custom-tabs-five"]').trigger('click');
 
                 } else if (response.dontsucces.error == 'error'){
 

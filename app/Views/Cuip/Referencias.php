@@ -32,7 +32,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="segundoNombre" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
+                        <label for="segundoNombre" class=" control-label">Segundo Nombre:</label>
                         <input type="text" class="form-control " id="segundoNombre" name="segundoNombre">
                     </div>
                 </div>
@@ -954,9 +954,9 @@
 
                     toastr.success(response.succes.mensaje);
 
-                    $("html,body").animate({scrollTop: $("#cardEmplSeguridad").offset().top},2000);
+                    $("html,body").animate({scrollTop: $("#CardGenerales").offset().top},2000);
 
-                    $('#tabs a[href="#custom-tabs"]').trigger('click');
+                    $('#tabs a[href="#custom-tabs-five-overlay-dark"]').trigger('click');
 
                     
 

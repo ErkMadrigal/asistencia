@@ -1881,7 +1881,6 @@ class Cuip extends BaseController {
 				'apellidoPaterno' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
 				'apellidoMaterno' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
 				'primerNombre' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
-				'segundoNombre' =>  ['label' => "Segundo Nombre", 'rules' => 'required|max_length[255]'],
 				'getSexo_fam_cer' =>  ['label' => "Sexo", 'rules' => 'required'],
 				'ocupacion' =>  ['label' => "Ocupacion", 'rules' => 'required|max_length[255]'],
 				'parentesco_fam_cercano' =>  ['label' => "Parentesco", 'rules' => 'required'],
