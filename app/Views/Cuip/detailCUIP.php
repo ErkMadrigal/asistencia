@@ -1,20 +1,6 @@
 <?= $this->extend('includes/main') ?>
 <?= $this->section('content') ?>
-<div class="col-md-12">
-    <div id="load" class=" spinner text-secondary" role="status">
-    </div>
-    <div class=" mb-2">    
-        <div class="row">
-            <div class="col-12 col-sm-6 col-md-3">
-                <a class="btn btn-block btn-flat btn-primary" href="#" class='nav-link'><i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp;&nbsp;Capturar numero de CUIP</a>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3">
-                <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/editarCuip?id=<?= $id ?>" class='nav-link'><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Editar CUIP</a>
-            </div>
-            <div class="col-12 col-sm-6 col-md-9 ">
-            </div>
-        </div>
-    </div>
+
     <div class="card card-primary card-tabs">
         <div class="card-header p-0 pt-1">
             <ul class="nav nav-tabs" id="custom-tabs-five-tab" role="tablist">
@@ -24,13 +10,13 @@
                         aria-selected="true">Datos Personales</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-five-overlay-tab" data-toggle="pill" href="#custom-tabs-five"
+                        role="tab" aria-controls="custom-tabs-five-normal" aria-selected="false">Referencias</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" id="custom-tabs-five-overlay-dark-tab" data-toggle="pill"
                         href="#custom-tabs-five-overlay-dark" role="tab" aria-controls="custom-tabs-five-overlay-dark"
                         aria-selected="false">Socio Economico</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="custom-tabs-five-overlay-tab" data-toggle="pill" href="#custom-tabs-five"
-                        role="tab" aria-controls="custom-tabs-five-normal" aria-selected="false">Referencias</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="custom-tabs-five-overlay-dark-tab" data-toggle="pill" href="#custom-tabs"
@@ -69,23 +55,18 @@
                     <?php echo view('Cuip/DatosPersonalesDetail') ?>
 
                 </div>
-
-
-                <div class="tab-pane fade" id="custom-tabs-five-overlay-dark" role="tabpanel"
-                    aria-labelledby="custom-tabs-five-overlay-dark-tab">
-
-                    <?php echo view('Cuip/EstudioSocioEconomicoDetail') ?>  
-
-                </div>
-
-
                 <div class="tab-pane fade" id="custom-tabs-five" role="tabpanel"
                     aria-labelledby="custom-tabs-five-overlay-tab">
                     
                     <?php echo view('Cuip/ReferenciasDetail') ?> 
 
                 </div>
+                <div class="tab-pane fade" id="custom-tabs-five-overlay-dark" role="tabpanel"
+                    aria-labelledby="custom-tabs-five-overlay-dark-tab">
 
+                    <?php echo view('Cuip/EstudioSocioEconomicoDetail') ?>  
+
+                </div>
                 <div class="tab-pane fade" id="custom-tabs-five-normal" role="tabpanel"
                     aria-labelledby="custom-tabs-five-normal-tab">
                     
@@ -130,7 +111,7 @@
             </div>
         </div>
     </div>    
-</div>
+
 
 
         <?= $this->endSection() ?>

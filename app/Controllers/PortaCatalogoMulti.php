@@ -163,8 +163,7 @@ class PortaCatalogoMulti extends BaseController {
 
 				$rules = [
 				'valor' =>  ['label' => "Valor", 'rules' => 'required|max_length[255]'],
-                'catalogo' =>  ['label' => "Catalogo", 'rules' => 'required'],
-				'referencia' =>  ['label' => "Referencia", 'rules' => 'required']];
+                'catalogo' =>  ['label' => "Catalogo", 'rules' => 'required']];
 		 
 				$errors = [];
 				$succes = [];

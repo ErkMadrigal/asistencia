@@ -12,13 +12,13 @@
                         aria-selected="true">Datos Personales</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-five-overlay-tab" data-toggle="pill" href="#custom-tabs-five"
+                        role="tab" aria-controls="custom-tabs-five-normal" aria-selected="false">Referencias</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" id="custom-tabs-five-overlay-dark-tab" data-toggle="pill"
                         href="#custom-tabs-five-overlay-dark" role="tab" aria-controls="custom-tabs-five-overlay-dark"
                         aria-selected="false">Socio Economico</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="custom-tabs-five-overlay-tab" data-toggle="pill" href="#custom-tabs-five"
-                        role="tab" aria-controls="custom-tabs-five-normal" aria-selected="false">Referencias</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="custom-tabs-five-overlay-dark-tab" data-toggle="pill" href="#custom-tabs"
@@ -57,23 +57,18 @@
                     <?php echo view('Cuip/DatosPersonalesEdit') ?>
 
                 </div>
-
-
-                <div class="tab-pane fade" id="custom-tabs-five-overlay-dark" role="tabpanel"
-                    aria-labelledby="custom-tabs-five-overlay-dark-tab">
-
-                    <?php echo view('Cuip/EstudioSocioEconomicoEdit') ?>  
-
-                </div>
-
-
                 <div class="tab-pane fade" id="custom-tabs-five" role="tabpanel"
                     aria-labelledby="custom-tabs-five-overlay-tab">
                     
                     <?php echo view('Cuip/ReferenciasEdit') ?> 
 
                 </div>
+                <div class="tab-pane fade" id="custom-tabs-five-overlay-dark" role="tabpanel"
+                    aria-labelledby="custom-tabs-five-overlay-dark-tab">
 
+                    <?php echo view('Cuip/EstudioSocioEconomicoEdit') ?>  
+
+                </div>    
                 <div class="tab-pane fade" id="custom-tabs-five-normal" role="tabpanel"
                     aria-labelledby="custom-tabs-five-normal-tab">
                     

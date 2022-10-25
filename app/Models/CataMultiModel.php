@@ -83,7 +83,7 @@ class CataMultiModel
         $return = false;
         $this->db->transStart();
 
-        $query = "INSERT INTO catalogos_detalle (idCatalogo, valor, activo, createdby, createddate, idEmpresa) VALUES ('".$idCatalogo."','".$data['valor']."',1,'".$LoggedUserId."', now() ,'".$idEmpresa."')";
+        $query = "INSERT INTO catalogos_detalle (idCatalogo, valor,idReferencia ,activo, createdby, createddate, idEmpresa) VALUES ('".$idCatalogo."','".$data['valor']."','".$data['referencia']."',1,'".$LoggedUserId."', now() ,'".$idEmpresa."')";
 
         $this->db->query($query);
         
