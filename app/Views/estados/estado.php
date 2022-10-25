@@ -83,14 +83,13 @@
     let btnMostrar = document.querySelector("#btnMostrar")
 
     let btnLimpiar = document.querySelector("#btnLimpiar")
-    let capital = document.querySelector("#capital")
-    let estado = document.querySelector("#estado")
+    let boxCapital = document.querySelector("#capital")
+    let boxEstado = document.querySelector("#estado")
 
     btnLimpiar.onclick = (e) => {
         e.preventDefault()
-        capital.value = ''
-        estado.value = ''
-        
+        boxCapital.value = ''
+        boxEstado.value = ''
     }  
 
     const  estatusRenderer = (data, type, full, meta) => {
