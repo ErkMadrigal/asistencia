@@ -586,15 +586,18 @@ class Cuip extends BaseController {
 				'calidad' =>  ['label' => "Calidad de Vida", 'rules' => 'required|max_length[255]'],
 				'vicio' =>  ['label' => "Vicios", 'rules' => 'required|max_length[255]'],
 				'imagen' =>  ['label' => "Imagen Publica", 'rules' => 'required|max_length[255]'],
-				'comportamiento' =>  ['label' => "Comportamiento Social", 'rules' => 'required|max_length[255]'],
-				'apellidoPaterno' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
-				'apellidoMaterno' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
-				'primerNombre' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
-				
-				'fecha_nacimiento_dep' =>  ['label' => "Fecha de Nacimiento", 'rules' => 'required|valid_only_date_chek'],
-				'sexo_dep' =>  ['label' => "Sexo", 'rules' => 'required'],
-				'parentesco_familiar' =>  ['label' => "Parentesco", 'rules' => 'required']];
+				'comportamiento' =>  ['label' => "Comportamiento Social", 'rules' => 'required|max_length[255]']];
 		 
+
+
+		 		if($this->request->getPost('activo') == 0)
+				$rules['apellidoPaterno'] =  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'];
+				$rules['apellidoMaterno'] =  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'];
+				$rules['primerNombre'] =  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'];
+				
+				$rules['fecha_nacimiento_dep'] =  ['label' => "Fecha de Nacimiento", 'rules' => 'required|valid_only_date_chek'];
+				$rules['sexo_dep'] =  ['label' => "Sexo", 'rules' => 'required'];
+				$rules['parentesco_familiar'] =  ['label' => "Parentesco", 'rules' => 'required'];
 				
 
 				if($this->validate($rules)){
@@ -1223,8 +1226,8 @@ class Cuip extends BaseController {
 				'calle' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
 				'exterior' =>  ['label' => "No. Exterior", 'rules' => 'required|max_length[255]'],
 				
-				'codigoEmpDiv' =>  ['label' => "Código Postal ", 'rules' => 'required|max_length[255]'],
-				'coloniacodigoEmpDiv' =>  ['label' => "Colonia", 'rules' => 'required|max_length[5]|integer'],
+				'codigoEmpDiv' =>  ['label' => "Código Postal ", 'rules' => 'required|max_length[5]|integer'],
+				'coloniacodigoEmpDiv' =>  ['label' => "Colonia", 'rules' => 'required'],
 				'estadocodigoEmpDiv' =>  ['label' => "Entidad Federativa", 'rules' => 'required'],
 				'municipiocodigoEmpDiv' =>  ['label' => "Municipio", 'rules' => 'required'],
 				'numero' =>  ['label' => "Numero Telefónico", 'rules' => 'required|max_length[10]|min_length[10]'],
