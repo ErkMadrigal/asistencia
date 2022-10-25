@@ -18,7 +18,7 @@
                       <p class="text-muted text-sm"><b>teléfonos: </b> <?= $empresa->telefonos ?> </p>
                     </div>
                     <div class="col-5 text-center">
-                      <img src="<?= base_url() ?>/assets/dist/img/empresa.png" alt="user-avatar" class="img-circle img-fluid">
+                      <img src="<?= base_url() ?>/assets/dist/img/logoPanel.png" alt="user-avatar" class=" img-fluid">
                     </div>
                 </div>
                
@@ -26,7 +26,7 @@
     <div class="card-footer bg-transparent clearfix">
         <div class="row">
             <div class="col-12 col-sm-6 col-md-3  ">
-                <a class="btn btn-block btn-flat btn-primary" href="<?= base_url() ?>/editEmpresa\">Editar</a>
+                <a class="btn btn-block btn-flat btn-primary" href="<?= base_url() ?>/editEmpresa\"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Editar</a>
             </div>
         </div>    
     </div>

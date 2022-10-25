@@ -25,6 +25,7 @@ class CataMultiModel
         $builder = $this->db->table('catalogos_detalle');
         $builder->select('catalogos_detalle.id,catalogos.valor as tipo_combo, catalogos_detalle.valor,activo');
         $builder->join("catalogos","catalogos_detalle.idCatalogo = catalogos.idCatalogo","left");
+        $builder->orderBy("tipo_combo","asc");
         $builder->orderBy("valor","asc");
         $builder->where("idempresa",$idEmpresa);
         return $builder->get()->getResult();
@@ -33,8 +34,9 @@ class CataMultiModel
 
     public function GetMultiById($id){
         $builder = $this->db->table('catalogos_detalle');
-        $builder->select("catalogos.valor as tipo_combo, catalogos_detalle.valor,catalogos_detalle.activo, catalogos_detalle.createddate, catalogos_detalle.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->select("catalogos.valor as tipo_combo, idReferencia, catalogos_detalle.valor,catalogos_detalle.activo, catalogos_detalle.createddate, catalogos_detalle.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
         $builder->join("catalogos","catalogos_detalle.idCatalogo = catalogos.idCatalogo","left");
+       // $builder->join("referencias","catalogos_detalle.idReferencia = referencias.idReferencia","left");
        $builder->join("sys_usuarios_admin UA","catalogos_detalle.createdby = UA.id","left");
        $builder->join("sys_usuarios_admin UU","catalogos_detalle.updatedby = UU.id","left");
        $builder->orderBy("valor","asc");
@@ -64,4 +66,38 @@ class CataMultiModel
 
         return $return; 
     }
+
+    //obtener los catlago padre se muestra en el combo
+    public function GetCatalogos(){
+        $builder = $this->db->table('catalogos');
+        $builder->select('idCatalogo, valor');
+        //$builder->where("activo",true);
+        $builder->orderBy("valor","asc");
+        return $builder->get()->getResult();
+        
+    }
+
+    public function insertItemAndSelect($table, $data , $tableSelect , $idCatalogo , $LoggedUserId, $idEmpresa)
+    {
+
+        $return = false;
+        $this->db->transStart();
+
+        $query = "INSERT INTO catalogos_detalle (idCatalogo, valor,idReferencia ,activo, createdby, createddate, idEmpresa) VALUES ('".$idCatalogo."','".$data['valor']."','".$data['referencia']."',1,'".$LoggedUserId."', now() ,'".$idEmpresa."')";
+
+        $this->db->query($query);
+        
+
+        $this->db->transComplete();
+
+        if ($this->db->transStatus() === TRUE)
+        {
+            $return = true;
+        } 
+
+        return $return;
+    }
+
+
+
 }

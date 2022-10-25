@@ -16,7 +16,7 @@ use App\Libraries\Encrypt;
 
 <div class="card card-primary">
     <div class="card-header" >
-        <h3 class="card-title">Usuarios</h3>
+        <h3 class="card-title">Editar Usuario</h3>
     
     <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -68,7 +68,7 @@ use App\Libraries\Encrypt;
         <div class="row">
             
             <div class="col-12 col-sm-6 col-md-3 ">    
-                <button id="SaveUsuario" class="btn btn-block btn-flat btn-primary " type="button">Guardar</button>
+                <button id="SaveUsuario" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
             </div>
         </div>    
     </div>
@@ -171,8 +171,8 @@ if($parentStatus == 1){
                 <p><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;Esta seguro de editar el permiso ?</p>
             </div>
             <div class="modal-footer justify-content-between">
-                <a href="#" id="closeModal" class="btn btn-secondary">Cerrar</a>
-                <a href="#" id="editPermiso" class="btn btn-primary">Guardar</a>
+                <a href="#" id="closeModal" class="btn btn-secondary btn-flat">Cerrar</a>
+                <a href="#" id="editPermiso" class="btn btn-primary btn-flat"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</a>
             </div>
                 </form>
         </div>
@@ -229,7 +229,7 @@ if($parentStatus == 1){
 
     $('#SaveUsuario').click(function (event) {
         event.preventDefault();
-        $("#load").show();
+        $('#load').addClass( "spinner-border" );
         var val = 0;
         if($("#activo").is(':checked')) {
             val = 1;
@@ -269,13 +269,13 @@ if($parentStatus == 1){
 
                 }
 
-                $("#load").attr("style", "display: none !important");    
+                $('#load').removeClass( "spinner-border" );    
 
                         
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 toastr.error('<?= lang('Layout.toastrError') ?>');
-                $("#load").attr("style", "display: none !important");           
+                $('#load').removeClass( "spinner-border" );           
             }
         });
             

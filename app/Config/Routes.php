@@ -11,6 +11,7 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
     require SYSTEMPATH . 'Config/Routes.php';
 }
 
+
 /*
  * --------------------------------------------------------------------
  * Router Setup
@@ -44,6 +45,8 @@ $routes->get('dash', 'Dashboard::index',['filter' => 'auth']);
 $routes->get('Confirmar/(:any)', 'ConfirmaCuenta::Confirmar',['filter' => 'noauth']);
 $routes->get('forgotPass', 'User::olvide_contrasena',['filter' => 'noauth']);
 $routes->post('recoveryPass','User::recuperarContrasena',['filter' => 'noauth']);
+$routes->get('Recuperar/(:any)', 'RecuperarCuenta::Recuperar',['filter' => 'noauth']);
+$routes->post('asignaPass', 'RecuperarCuenta::asignar_contrasena',['filter' => 'noauth']);
 $routes->get('empresa', 'Administrador::InfoEmpresa',['filter' => 'auth']);
 $routes->get('editEmpresa', 'Administrador::EditarEmpresa',['filter' => 'auth']);
 $routes->post('EditInfoEmpresa', 'Administrador::SaveEmpresa',['filter' => 'auth']);
@@ -58,6 +61,23 @@ $routes->post('SaveUser', 'Administrador::CrearUsuario',['filter' => 'auth']);
 $routes->get('editUser', 'Administrador::EditarUsuario',['filter' => 'auth']);
 $routes->post('EditInfoUser', 'Administrador::EditarUsuarioById',['filter' => 'auth']);
 $routes->post('EditUserPermiso', 'Administrador::EditarPermiso',['filter' => 'auth']);
+$routes->get('armas', 'Armas::GetArmas',['filter' => 'auth']);
+$routes->get('detailArmas', 'Armas::DetalleArmas',['filter' => 'auth']);
+$routes->get('editArmas', 'Armas::EditarArma',['filter' => 'auth']);
+$routes->post('EditInfoArma', 'Armas::SaveArma',['filter' => 'auth']);
+$routes->get('AddArmas', 'Armas::AgreArma',['filter' => 'auth']);
+$routes->post('GuardarArma', 'Armas::AgregarArma',['filter' => 'auth']);
+$routes->get('AddMulti', 'PortaCatalogoMulti::AgregarMulti',['filter' => 'auth']);
+$routes->post('GuardarMulti', 'PortaCatalogoMulti::AgregarMulticatalogo',['filter' => 'auth']);
+$routes->get('catDocumentos', 'Documentos::GetDocumentos',['filter' => 'auth']);
+$routes->get('detailCatDoc', 'Documentos::DetalleDocumentos',['filter' => 'auth']);
+$routes->get('editCatDoc', 'Documentos::EditarDocumento',['filter' => 'auth']);
+$routes->post('EditCatDoc', 'Documentos::SaveDocumento',['filter' => 'auth']);
+$routes->get('AddCatDoc', 'Documentos::AgregarDocumento',['filter' => 'auth']);
+$routes->post('GuardarCatDocumento', 'Documentos::AgregarDoc',['filter' => 'auth']);
+$routes->get('cuip', 'Cuip::GetCuip',['filter' => 'auth']);
+$routes->get('MediaFiliacion', 'MediaFiliacion::Form',['filter' => 'auth']);
+$routes->get('carga', 'CargaMasiva::GetDatos',['filter' => 'auth']); //la de ejemplo
 $routes->get('sepomex', 'Sepomex::index',['filter' => 'auth']);
 $routes->post('mostrarDatosSepomex', 'Sepomex::mostrarDatos',['filter' => 'auth']);
 $routes->get('AddSepomex', 'Sepomex::add',['filter' => 'auth']);
@@ -76,6 +96,28 @@ $routes->get('detailEstado', 'Estados::detail',['filter' => 'auth']);
 $routes->get('addEstado', 'Estados::add',['filter' => 'auth']);
 $routes->post('addDataEstado', 'Estados::insertDataEstado',['filter' => 'auth']);
 
+
+$routes->get('AddCUIP', 'Cuip::AgregarCuip',['filter' => 'auth']);
+$routes->post('GuardarDatosPersonales', 'Cuip::AgregarPersonales',['filter' => 'auth']);
+$routes->post('getCiudadEstado', 'Cuip::CiudadEstado',['filter' => 'auth']);
+$routes->post('getSepomex', 'Cuip::getCP',['filter' => 'auth']);
+$routes->post('GuardarSocioEconomico', 'Cuip::AgregarSocioEconomico',['filter' => 'auth']);
+$routes->post('GuardarEmpSegPublica', 'Cuip::AgregarEmpSegPublica',['filter' => 'auth']);
+$routes->post('GuardarSancionesEstimulos', 'Cuip::AgregarSancionesEstimulos',['filter' => 'auth']);
+$routes->post('GuardarCapacitaciones', 'Cuip::AgregarCapacitaciones',['filter' => 'auth']);
+$routes->post('GuardarEmpDiversos', 'Cuip::AgregarEmpDiversos',['filter' => 'auth']);
+$routes->get('mediafiliacion', 'MediaFiliacion::getMediafiliacion',['filter' => 'auth']);
+$routes->get('cuipInfo', 'Cuip::getCuipDetail',['filter' => 'auth']);
+$routes->get('expediente', 'Cuip::getExpediente',['filter' => 'auth']);
+$routes->get('editarCuip', 'Cuip::CuipEdit',['filter' => 'auth']);
+$routes->post('GuardarReferencias', 'Cuip::AgregarReferencias',['filter' => 'auth']);
+$routes->post('GuardarMediaFiliacion', 'MediaFiliacion::AgregarMediaFiliacion',['filter' => 'auth']);
+$routes->post('uploadFile', 'CargaMasiva::uploadFile',['filter' => 'auth']);
+$routes->get('getFileIni', 'CargaMasiva::FileIni',['filter' => 'auth']);
+$routes->post('eliminaDocumento', 'CargaMasiva::deleteDocumento',['filter' => 'auth']);
+$routes->get('exportCuip', 'Cuip::export',['filter' => 'auth']);
+$routes->get('preconsulta', 'Cuip::GetPreconsulta',['filter' => 'auth']);
+$routes->get('exportPreconsulta', 'Cuip::exportPreconsulta',['filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------

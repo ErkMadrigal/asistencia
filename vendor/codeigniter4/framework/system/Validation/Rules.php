@@ -306,4 +306,129 @@ class Rules
 
         return true;
     }
+
+    public function is_not_unique_whitout_log(string $str = null, string $field, array $data): bool
+    {
+        // Grab any data for exclusion of a single row.
+        list($field, $where_field, $where_value) = array_pad(explode(',', $field), 3, null);
+
+        // Break the table and field apart
+        sscanf($field, '%[^.].%[^.]', $table, $field);
+
+        
+
+        $db = Database::connect($data['DBGroup'] ?? null);
+
+        $row = $db->table($table)
+                  ->select('1')
+                  ->where($field, $str)
+                  ->limit(1);
+
+        if (! empty($where_field) && ! empty($where_value))
+        {
+            $row = $row->where($where_field, $where_value);
+        }
+
+        return (bool) ($row->get()
+                        ->getRow() !== null);
+    }
+
+     public function password_regex_special(string $str , string &$error = null ) : bool {
+
+
+        $password = trim($str);
+        $regex_special = '/[!@#$%^&*()\-_=+{};:,<.>§~]/';
+        
+
+        
+        if (preg_match_all($regex_special, $password) < 1)
+        {
+            
+            return FALSE;
+        }
+        
+        return TRUE;
+    }
+
+    public function password_regex_lowercase(string $str , string &$error = null ) : bool {
+
+
+        $password = trim($str);
+        $regex_lowercase = '/[a-z]/';
+        
+
+        if (preg_match_all($regex_lowercase, $password) < 1)
+        {
+            
+            return FALSE;
+        }
+        
+        
+        return TRUE;
+    }
+
+    public function password_regex_uppercase(string $str , string &$error = null ) : bool {
+
+
+        $password = trim($str);
+        $regex_uppercase = '/[A-Z]/';
+       
+        if (preg_match_all($regex_uppercase, $password) < 1)
+        {
+            
+            return FALSE;
+        }
+        
+        
+        return TRUE;
+    }
+
+    public function password_regex_number(string $str , string &$error = null ) : bool {
+
+
+        $password = trim($str);
+        $regex_number = '/[0-9]/';
+        
+
+        
+        if (preg_match_all($regex_number, $password) < 1)
+        {
+            
+            return FALSE;
+        }
+        
+        
+        return TRUE;
+    }
+
+
+    public function valid_only_date_chek(string $str , string &$error = null): bool
+    {
+        $format = ('d-m-Y');
+
+
+        $date = \DateTime::createFromFormat($format, $str);
+        
+        return (bool) $date && \DateTime::getLastErrors()['warning_count'] === 0 && \DateTime::getLastErrors()['error_count'] === 0;
+    }
+
+    public function date_mayor(string $str , string &$error = null ) : bool {
+        
+        
+        
+        $date = $str;
+
+        $entrada = strtotime($date);
+
+        $today = strtotime(date("Y-m-d"));
+
+        if(($today - $entrada) < 18 ){
+            return false;
+            
+        }
+
+        return true;
+
+        
+    }
 }

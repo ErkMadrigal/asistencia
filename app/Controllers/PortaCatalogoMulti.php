@@ -86,8 +86,6 @@ class PortaCatalogoMulti extends BaseController {
 				$data = [];
 				
 				if($this->validate($rules)){
-					//$getEmpresa = session()->get('empresa');
-					//$idEmpresa = $this->encrypter->decrypt($getEmpresa);
                     $getUser = session()->get('IdUser');
 					$LoggedUserId = $this->encrypter->decrypt($getUser);
 					$TodayDate = date("Y-m-d H:i:s");
@@ -97,7 +95,7 @@ class PortaCatalogoMulti extends BaseController {
                         "activo" => $this->request->getPost('activo'),
 		    			"valor" =>  $_POST["valor"],
                         "updatedby" => $LoggedUserId,
-                				"updateddate" => $TodayDate
+                		"updateddate" => $TodayDate
                     );
 
 					$registrar = $this->modelMulticatalogo->saveMulti($updateEmpresa, $idCatalogo);
@@ -140,6 +138,67 @@ class PortaCatalogoMulti extends BaseController {
                     				"titulo" => 'Detalle'];
 		
 			return view('Multicatalogo/detailMulti', $data);
+		}	
+	}
+
+    public function AgregarMulti(){
+		if ($this->request->getMethod() == "get" && $this->request->getvar(['id'],FILTER_SANITIZE_STRING)){
+
+			$data['modulos'] = $this->menu->Permisos();
+
+			$data['catalogo'] = $this->modelMulticatalogo->GetCatalogos();
+
+			$data['breadcrumb'] = ["inicio" => 'Multicatalogo' ,
+                    				"url" => 'multicatalogo',
+                    				"titulo" => 'Agregar'];
+			$id = session()->get('IdUser');
+        	$idUser = $this->encrypter->decrypt($id);
+			
+			return view('Multicatalogo/addMulti', $data);
+		}	
+	}
+	
+	public function AgregarMulticatalogo(){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['catalogo,valor,referencia'],FILTER_SANITIZE_STRING)){
+
+				$rules = [
+				'valor' =>  ['label' => "Valor", 'rules' => 'required|max_length[255]'],
+                'catalogo' =>  ['label' => "Catalogo", 'rules' => 'required']];
+		 
+				$errors = [];
+				$succes = [];
+				$dontSucces = [];
+				$data = [];
+
+				if($this->validate($rules)){
+					
+					$getUser = session()->get('IdUser');
+					$LoggedUserId = $this->encrypter->decrypt($getUser);
+					$empresa = session()->get('empresa');
+					$idEmpresa = $this->encrypter->decrypt($empresa);
+					$getCatalogo = $this->request->getPost('catalogo');
+					$idCatalogo = $this->encrypt->Decrytp($getCatalogo);
+					$idReferencia = $this->request->getPost('referencia');
+					$result = $this->modelMulticatalogo->insertItemAndSelect('catalogos_detalle', $this->request->getPost(),'catalogos_detalle',$idCatalogo, $idReferencia ,$LoggedUserId , $idEmpresa);
+					
+                    if ($result) {
+
+            			
+                    	$succes = ["mensaje" => 'Multicatalogo Agregado con exito' ,
+                            	   "succes" => "succes"];
+
+                           	   
+                    	
+                    } else {
+                    	$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Hubo un error al agregar el documento'  ];
+
+                    }
+				} else {	
+					$errors = $this->validator->getErrors();
+				}
+
+				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
 		}	
 	}
 

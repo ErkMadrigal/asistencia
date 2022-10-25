@@ -25,9 +25,17 @@
                     </div>
                     <div class='col-12 col-sm-6'>    
                         <div class="form-group">
-                            <label for="oficina" class="control-label">valor: </label>
+                            <label for="oficina" class="control-label">Valor: </label>
                             <div >
                             <?= $catalogo->valor ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-6'>    
+                        <div class="form-group">
+                            <label for="referencia" class="control-label">Referencia: </label>
+                            <div >
+                            <?= $catalogo->idReferencia ?>
                             </div>
                         </div>
                     </div>

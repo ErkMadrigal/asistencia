@@ -26,7 +26,7 @@
       <p class="login-box-msg">Iniciar sesión</p>
 
       <?php if(session()->get('succes')):?>
-        <div class="alert alert-succes role="alert">
+        <div class="alert alert-succes" role="alert">
             <?= session()->get('succes') ?>
         </div>
       <?php endif;?>
@@ -51,7 +51,7 @@
         </div>
         <?php if(isset($validation)):?>
           <div class="col-12">
-        <div class="alert alert-danger role="alert">
+        <div class="alert alert-danger" role="alert">
             <?= $validation->listErrors() ?>
         </div>
       <?php endif;?>
@@ -66,7 +66,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+            <button type="submit" class="btn btn-primary btn-flat btn-block">Ingresar</button>
           </div>
           <!-- /.col -->
         </div>
