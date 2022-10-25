@@ -11,6 +11,7 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
     require SYSTEMPATH . 'Config/Routes.php';
 }
 
+
 /*
  * --------------------------------------------------------------------
  * Router Setup

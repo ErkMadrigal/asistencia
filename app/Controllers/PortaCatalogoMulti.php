@@ -157,6 +157,7 @@ class PortaCatalogoMulti extends BaseController {
 			return view('Multicatalogo/addMulti', $data);
 		}	
 	}
+	
 	public function AgregarMulticatalogo(){
 		if ($this->request->getMethod() == "post" && $this->request->getvar(['catalogo,valor,referencia'],FILTER_SANITIZE_STRING)){
 
