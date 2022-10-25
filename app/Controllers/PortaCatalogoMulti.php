@@ -158,11 +158,12 @@ class PortaCatalogoMulti extends BaseController {
 		}	
 	}
 	public function AgregarMulticatalogo(){
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['catalogo,valor'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['catalogo,valor,referencia'],FILTER_SANITIZE_STRING)){
 
 				$rules = [
 				'valor' =>  ['label' => "Valor", 'rules' => 'required|max_length[255]'],
-                'catalogo' =>  ['label' => "Catalogo", 'rules' => 'required']];
+                'catalogo' =>  ['label' => "Catalogo", 'rules' => 'required'],
+				'referencia' =>  ['label' => "Referencia", 'rules' => 'required']];
 		 
 				$errors = [];
 				$succes = [];
@@ -177,7 +178,8 @@ class PortaCatalogoMulti extends BaseController {
 					$idEmpresa = $this->encrypter->decrypt($empresa);
 					$getCatalogo = $this->request->getPost('catalogo');
 					$idCatalogo = $this->encrypt->Decrytp($getCatalogo);
-					$result = $this->modelMulticatalogo->insertItemAndSelect('catalogos_detalle', $this->request->getPost() , 'catalogos_detalle' , $idCatalogo ,$LoggedUserId , $idEmpresa);
+					$idReferencia = $this->request->getPost('referencia');
+					$result = $this->modelMulticatalogo->insertItemAndSelect('catalogos_detalle', $this->request->getPost(),'catalogos_detalle',$idCatalogo, $idReferencia ,$LoggedUserId , $idEmpresa);
 					
                     if ($result) {
 

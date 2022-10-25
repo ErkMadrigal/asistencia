@@ -53,6 +53,14 @@ use App\Libraries\Encrypt;
                         </div>
                     </div>
                 </div>
+                <div class='col-12 col-sm-6'>
+                    <div class="form-group">
+                        <label for="referencia" class="control-label">Referencia: <span class="text-danger">*</span></label>
+                        <div >
+                            <input type="text"  class="form-control " id="referencia" name="referencia">
+                        </div>
+                    </div>
+                </div>
             </div>        
         
     </div>

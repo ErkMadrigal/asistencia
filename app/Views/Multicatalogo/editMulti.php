@@ -26,6 +26,15 @@
                         </div>
                     </div>
                 </div>
+                <div class='col-12 col-sm-6'>
+                    <div class="form-group">
+                        <label for="referencia" class="control-label">Referencia: </label>
+                        <div >
+                        <input type="text"  class="form-control " disabled id="referencia" name="referencia" value="<?= $catalogo->idReferencia ?>">
+                            
+                        </div>
+                    </div>
+                </div>
                 <div class='col-12 col-sm-6'>    
                     <div class="form-group">
                         <label for="valor" class="control-label">valor: <span class="text-danger">*</span></label>
