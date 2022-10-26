@@ -24,6 +24,14 @@
                                     <option value="<?=$est->estado?>"><?=$est->estado?></option>
                                 <?php endforeach;?>
                             </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#estado").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -37,6 +45,14 @@
                                         <option value="<?=$est->capital?>"><?=$est->capital?></option>
                                     <?php endforeach;?>
                             </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#capital").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -90,6 +106,14 @@
         e.preventDefault()
         boxCapital.value = ''
         boxEstado.value = ''
+        $("#estado").select2({
+            allowClear: true,
+            placeholder: "Selecciona una Opción"
+        });
+        $("#capital").select2({
+            allowClear: true,
+            placeholder: "Selecciona una Opción"
+        });
     }  
 
     const  estatusRenderer = (data, type, full, meta) => {

@@ -65,10 +65,11 @@ class CataSepomex
         return $builder->get()->getResult(); 
     }
 
-    public function GetSepomexMunicipio($estado){
+    public function GetSepomexMunicipio($estado, $ciudad){
         $builder = $this->db->table('sepomex');
         $builder->select('municipio');
         $builder->where('estado', $estado);
+        $builder->where('ciudad', $ciudad);
         $builder->groupBy("municipio");
 
         return $builder->get()->getResult(); 
