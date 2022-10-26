@@ -20,7 +20,7 @@
                     <div class="form-group">
                         <label for="cp" class="control-label">Codigo Postal <span class="text-danger">*</span></label>
                         <div >
-                            <input type="text"  class="form-control " id="cp" name="cp" ><?= csrf_field() ?>
+                            <input type="text"  class="form-control " id="cp" name="cp" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" ><?= csrf_field() ?>
                         </div>
                     </div>
                 </div>

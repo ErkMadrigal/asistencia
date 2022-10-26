@@ -121,7 +121,7 @@ class Sepomex extends BaseController{
         	$data['sepomex'] = $this->modelSepomex->GetSepomexById($id);
         	
 			
-			$data['breadcrumb'] = ["inicio" => 'sepomex' ,
+			$data['breadcrumb'] = ["inicio" => 'Sepomex' ,
                     				"url" => 'sepomex',
                     				"titulo" => 'Detalle'];
 
@@ -219,7 +219,7 @@ class Sepomex extends BaseController{
 			$data['sepomexEstados'] = $this->modelSepomex->GetSepomexEstados();
 			$data['sepomex'] = $this->modelSepomex->GetSepomexById($getId);
             $data['id'] = $getId;
-			$data['breadcrumb'] = ["inicio" => 'sepomex' ,
+			$data['breadcrumb'] = ["inicio" => 'Sepomex' ,
                     				"url" => 'sepomex',
                     				"titulo" => 'Editar'];
 			return view('sepomex/editSepomex', $data);

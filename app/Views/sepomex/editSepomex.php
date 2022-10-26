@@ -20,7 +20,7 @@
                     <div class="form-group">
                         <label for="CP" class="control-label">Codigo Postal: </label>
                         <div >
-                            <input type="text"  class="form-control " id="cp" name="cp"  value="<?=$sepomex->codigoPostal?>"><input type="hidden"  class="form-control " value =" <?=$id?> " id="id" name="id" ><?= csrf_field() ?>
+                            <input type="text"  class="form-control " id="cp" name="cp"  value="<?=$sepomex->codigoPostal?>" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5"><input type="hidden"  class="form-control " value =" <?=$id?> " id="id" name="id" ><?= csrf_field() ?>
                             
                         </div>
                     </div>
