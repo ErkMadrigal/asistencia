@@ -43,9 +43,14 @@
                 
             </div> 
         </form>
-        <div class="col-12 col-sm-6 col-md-3 ">    
-            <button id="btnMostrar" class="btn btn-block btn-flat btn-primary" type="button"><i id="loadBtn" class="fa fa-circle-o-notch fa-spin" style="display:none;"></i>&nbsp&nbspMostrar</button>
-        </div>       
+        <div class="row">
+            <div class="col-4 col-sm-4 col-md-3 ">    
+                <button id="btnMostrar" class="btn btn-block btn-flat btn-primary" type="button"><i id="loadBtn" class="fa fa-circle-o-notch fa-spin" style="display:none;"></i>&nbsp&nbspMostrar</button>
+            </div> 
+            <div class="col-4 col-sm-4 col-md-3 ">    
+                <button id="btnLimpiar" class="btn btn-block btn-flat btn-danger" type="button">Limpiar</button>
+            </div>      
+        </div>
     </div> 
     <div class="card card-primary ">
         <div class="card-header" id="tabMain">
@@ -75,6 +80,18 @@
         
     </div>
     <script>
+    let btnMostrar = document.querySelector("#btnMostrar")
+
+    let btnLimpiar = document.querySelector("#btnLimpiar")
+    let boxCapital = document.querySelector("#capital")
+    let boxEstado = document.querySelector("#estado")
+
+    btnLimpiar.onclick = (e) => {
+        e.preventDefault()
+        boxCapital.value = ''
+        boxEstado.value = ''
+    }  
+
     const  estatusRenderer = (data, type, full, meta) => {
         var src;
         
@@ -87,7 +104,6 @@
         return src;
     };
 
-    let btnMostrar = document.querySelector("#btnMostrar")
 
     btnMostrar.onclick = (e) => {
         e.preventDefault()
