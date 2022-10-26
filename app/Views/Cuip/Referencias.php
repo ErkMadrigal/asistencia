@@ -63,7 +63,25 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="ocupacion" class=" control-label">Ocupación:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="ocupacion" name="ocupacion">
+                        <select class="form-control" id="ocupacion" name="ocupacion">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($ocupacion) ):
+                                    foreach($ocupacion as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#ocupacion").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
                 <div class='col-6 col-sm-6'>
@@ -288,7 +306,25 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="ocupacionParCer" class=" control-label">Ocupación:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="ocupacionParCer" name="ocupacionParCer">
+                        <select class="form-control" id="ocupacionParCer" name="ocupacionParCer">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($ocupacion) ):
+                                    foreach($ocupacion as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#ocupacionParCer").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
                 <div class='col-6 col-sm-6'>
@@ -298,8 +334,8 @@
                             <select class="form-control" id="parentesco_cercano" name="parentesco_cercano">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
-                                if( !empty($parentesco_familiar) ):
-                                    foreach($parentesco_familiar as  $a){
+                                if( !empty($parentesco_pariente) ):
+                                    foreach($parentesco_pariente as  $a){
                                         ?>
                                             <option value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
@@ -513,7 +549,25 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="ocupacionRefPer" class=" control-label">Ocupación:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="ocupacionRefPer" name="ocupacionRefPer">
+                        <select class="form-control" id="ocupacionRefPer" name="ocupacionRefPer">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($ocupacion) ):
+                                    foreach($ocupacion as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#ocupacionRefPer").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
                 <div class='col-6 col-sm-6'>
@@ -523,8 +577,8 @@
                             <select class="form-control" id="parentesco_personal" name="parentesco_personal">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
-                                if( !empty($parentesco_familiar) ):
-                                    foreach($parentesco_familiar as  $a){
+                                if( !empty($parentesco_personal) ):
+                                    foreach($parentesco_personal as  $a){
                                         ?>
                                             <option value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
@@ -738,7 +792,25 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="ocupacionRefLab" class=" control-label">Ocupación:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="ocupacionRefLab" name="ocupacionRefLab">
+                        <select class="form-control" id="ocupacionRefLab" name="ocupacionRefLab">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($ocupacion) ):
+                                    foreach($ocupacion as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#ocupacionRefLab").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
                 <div class='col-6 col-sm-6'>
@@ -748,8 +820,8 @@
                             <select class="form-control" id="parentesco_laboral" name="parentesco_laboral">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
-                                if( !empty($parentesco_familiar) ):
-                                    foreach($parentesco_familiar as  $a){
+                                if( !empty($parentesco_laboral) ):
+                                    foreach($parentesco_laboral as  $a){
                                         ?>
                                             <option value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php

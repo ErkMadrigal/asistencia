@@ -106,7 +106,7 @@
                 </div>
                 <div class='col-6 col-sm-12 col-md-6    '>
                     <div class="form-group">
-                        <label for="vigenciaLic" class=" control-label">Vigencia de Licencia:<span class="text-danger">*</span></label>
+                        <label for="vigenciaLic" class=" control-label">Vigencia de Licencia:</label>
                         <div class="input-group date" id="vigenciaLic" data-target-input="nearest">
                             <input type="text" required class="form-control datetimepicker-input" data-target="#vigenciaLic" id="datetime-vigenciaLic" name="vigenciaLic" placeholder="" value="" />
                             <div class="input-group-append" data-target="#vigenciaLic" data-toggle="datetimepicker">

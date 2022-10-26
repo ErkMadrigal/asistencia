@@ -337,6 +337,25 @@ class CuipModel
         
     }
 
+    public function GetParenteco($tipo){
+        $builder = $this->db->table('catalogo_referencias');
+        $builder->select('id, parentesco AS valor');
+        $builder->where("activo",true);
+        $builder->where("cve_parentesco",$tipo);
+        $builder->orderBy("valor","asc");
+        return $builder->get()->getResult();
+        
+    }
 
+
+    public function GetParentecoAll(){
+        $builder = $this->db->table('catalogo_referencias');
+        $builder->select('id, parentesco AS valor');
+        $builder->where("activo",true);
+        
+        $builder->orderBy("valor","asc");
+        return $builder->get()->getResult();
+        
+    }
     
 }

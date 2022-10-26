@@ -123,9 +123,29 @@ class Cuip extends BaseController {
 			////////////////////////////////////////////////
 
 
-			$parentesco_familiar = $this->modelCuip->GetCatalogoCuip('e608d93e-8d57-4378-a867-1a98dfb538be');
+			$parentesco_pariente = $this->modelCuip->GetParenteco(2);
+			
+			$data['parentesco_pariente'] = $this->GetDatos($parentesco_pariente);
+			////////////////////////////////////////////////
+
+			$parentesco_personal = $this->modelCuip->GetParenteco(3);
+			
+			$data['parentesco_personal'] = $this->GetDatos($parentesco_personal);
+			////////////////////////////////////////////////
+
+			$parentesco_laboral = $this->modelCuip->GetParenteco(4);
+			
+			$data['parentesco_laboral'] = $this->GetDatos($parentesco_laboral);
+			////////////////////////////////////////////////
+
+			$parentesco_familiar = $this->modelCuip->GetParenteco(1);
 			
 			$data['parentesco_familiar'] = $this->GetDatos($parentesco_familiar);
+			////////////////////////////////////////////////
+
+			$parentesco_todos = $this->modelCuip->GetParentecoAll();
+			
+			$data['parentesco_todos'] = $this->GetDatos($parentesco_todos);
 			////////////////////////////////////////////////
 
 			$pais = $this->modelCuip->GetCatalogoCuip('2d688512-aae8-4626-a47d-506a8138e5ba');
@@ -209,6 +229,10 @@ class Cuip extends BaseController {
 
 			///////////////////////////////////
 			
+			$getOcupacion = $this->modelCuip->GetCatalogoCuip('478159d8-3e20-11ed-b4f6-50a1320785a8');
+			
+        	$data['ocupacion'] = $this->cuipCatalgo($getOcupacion);
+        	//////////////
 
 			return view('Cuip/RegistroCUIP', $data);	
 			}
@@ -221,7 +245,7 @@ class Cuip extends BaseController {
 
 				$rules = [
 				'primerNombre' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
-				'segundoNombre' =>  ['label' => "Segundo Nombre", 'rules' => 'required|max_length[255]'],
+				
 				'apellidoPaterno' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
 				'apellidoMaterno' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
 				'fecha_nacimiento' =>  ['label' => 'Fecha de Nacimiento', 'rules' =>'required|valid_only_date_chek|date_mayor'],
@@ -229,12 +253,12 @@ class Cuip extends BaseController {
 				'rfc' =>  ['label' => "RFC", 'rules' => 'required|max_length[10]|min_length[10]'],
 				'claveE' =>  ['label' => "Clave Electoral", 'rules' => 'required|max_length[255]'],
 				'cartilla' =>  ['label' => "Cartilla SMN", 'rules' => 'required|max_length[255]'],
-				'licencia' =>  ['label' => "Licencia de Conducir", 'rules' => 'required|max_length[255]'],
-				'vigenciaLic' =>  ['label' => "Vigencia de Licencia", 'rules' => 'required|valid_only_date_chek'],
+				'licencia' =>  ['label' => "Licencia", 'rules' => 'required_with[vigenciaLic]'],
+				'vigenciaLic' =>  ['label' => "Vigencia de Licencia", 'rules' => 'required_with[licencia]'],
 				'CURP' =>  ['label' => "CURP", 'rules' => 'required|max_length[18]|min_length[18]'],
-				'pasaporte' =>  ['label' => "Pasaporte", 'rules' => 'required|max_length[55]'],
-				'modo_nacionalidad' =>  ['label' => "Modo de Nacionalidad", 'rules' => 'required'],
-				'fecha_naturalizacion' =>  ['label' => "Fecha de Naturalización", 'rules' => 'required|valid_only_date_chek'],
+				
+				'modo_nacionalidad' =>  ['label' => "Modo de Nacionalidad", 'rules' => 'required_with[fecha_naturalizacion]'],
+				'fecha_naturalizacion' =>  ['label' => "Fecha de Naturalización", 'rules' => 'required_with[modo_nacionalidad]'],
 				'pais_nacimiento' =>  ['label' => "Pais de Nacimiento", 'rules' => 'required'],
 				'entidad_nacimiento' =>  ['label' => "Entidad de Nacimiento", 'rules' => 'required|max_length[255]'],
 				'municipio_nacimiento' =>  ['label' => "Municipio de Nacimiento", 'rules' => 'required|max_length[255]'],
@@ -244,7 +268,7 @@ class Cuip extends BaseController {
 				'desarrollo_academico' =>  ['label' => "Desarrollo Académico", 'rules' => 'required'],
 				'escuela' =>  ['label' => "Escuela", 'rules' => 'required|max_length[255]'],
 				'especialidad' =>  ['label' => "Especialidad", 'rules' => 'required|max_length[255]'],
-				'cedula' =>  ['label' => "Cedula", 'rules' => 'required|max_length[255]'],
+				
 				'anno_inicio' =>  ['label' => "Año de Inicio", 'rules' => 'required|max_length[4]|integer'],
 				'anno_termino' =>  ['label' => "Año de Termino", 'rules' => 'required|max_length[4]|integer'],
 				'registroSep' =>  ['label' => "Registro SEP", 'rules' => 'required'],
@@ -1211,7 +1235,7 @@ class Cuip extends BaseController {
 
 
 	public function AgregarEmpDiversos(){
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['empresa, calle, exterior, interior, codigoEmpDiv, coloniacodigoEmpDiv, estadocodigoEmpDiv, municipiocodigoEmpDiv, numero, ingresoEmpDiv,  funciones, sueldo, area, motivo_separacion, tipo_separacion, comentarios, empleo, puesto, area_gustaria, ascender, reglamentacion, reconomiento, reglamentacion_ascenso, razones_ascenso, capacitacion, desciplina, subtipo_disciplina, motivo, tipo, fecha_inicialDis, fecha_finalDis, licencias_medicas, duracion, cantidad'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['empresa, calle, exterior, interior, codigoEmpDiv, coloniacodigoEmpDiv, estadocodigoEmpDiv, municipiocodigoEmpDiv, numero, ingresoEmpDiv,  funciones, sueldo, area, motivo_separacion, tipo_separacion, comentarios, empleo, puesto, area_gustaria, ascender, reglamentacion, reconomiento, reglamentacion_ascenso, razones_ascenso, capacitacion, desciplina, subtipo_disciplina, motivo, tipo, fecha_inicialDis, fecha_finalDis, duracion, cantidad'],FILTER_SANITIZE_STRING)){
 
 			$errors = [];
 			$succes = [];
@@ -1254,9 +1278,9 @@ class Cuip extends BaseController {
 				'tipo' =>  ['label' => "Tipo", 'rules' => 'required|max_length[255]'],
 				'fecha_inicialDis' =>  ['label' => "Fecha de Inicio", 'rules' => 'required|valid_only_date_chek'],
 				'fecha_finalDis' =>  ['label' => "Fecha de Término", 'rules' => 'required|valid_only_date_chek'],
-				'licencias_medicas' =>  ['label' => "En caso de licencias médicas", 'rules' => 'required|max_length[255]'],
-				'duracion' =>  ['label' => "Duración", 'rules' => 'required'],
-				'cantidad' =>  ['label' => "Cantidad", 'rules' => 'required|max_length[255]']];
+				
+				'duracion' =>  ['label' => "Duración", 'rules' => 'required_with[cantidad]'],
+				'cantidad' =>  ['label' => "Cantidad", 'rules' => 'required_with[duracion]']];
 		 
 				
 
@@ -1837,6 +1861,11 @@ class Cuip extends BaseController {
         	$data['RH_sangre'] = $this->cuipCatalgo($RH_sangre);
         	//////////////
 
+        	$getOcupacion = $this->modelCuip->GetCatalogoCuip('478159d8-3e20-11ed-b4f6-50a1320785a8');
+			
+        	$data['ocupacion'] = $this->cuipCatalgo($getOcupacion);
+        	//////////////
+
         	$getId = str_replace(" ", "+", $_GET['id']);
 			$id = $this->encrypt->Decrytp($getId);
 
@@ -1876,7 +1905,7 @@ class Cuip extends BaseController {
 				'apellidoMaterno' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
 				'primerNombre' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
 				'sexo_fam_cer' =>  ['label' => "Sexo", 'rules' => 'required'],
-				'ocupacion' =>  ['label' => "Ocupacion", 'rules' => 'required|max_length[255]'],
+				'ocupacion' =>  ['label' => "Ocupacion", 'rules' => 'required'],
 				'parentesco_fam_cercano' =>  ['label' => "Parentesco", 'rules' => 'required'],
 				'calle' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
 				'exterior' =>  ['label' => "Exterior", 'rules' => 'required|max_length[255]'],
@@ -1894,7 +1923,7 @@ class Cuip extends BaseController {
 				'primerNombreParCer' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
 				
 				'sexo_par_cer' =>  ['label' => "Sexo", 'rules' => 'required|max_length[255]'],
-				'ocupacionParCer' =>  ['label' => "Ocupacion", 'rules' => 'required|max_length[255]'],
+				'ocupacionParCer' =>  ['label' => "Ocupacion", 'rules' => 'required'],
 				'parentesco_cercano' =>  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'],
 				'calleParCer' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
 				'exteriorParCer' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
@@ -1911,7 +1940,7 @@ class Cuip extends BaseController {
 				'primerNombreRefLab' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
 				
 				'sexo_lab' =>  ['label' => "Sexo", 'rules' => 'required|max_length[255]'],
-				'ocupacionRefLab' =>  ['label' => "Ocupacion", 'rules' => 'required|max_length[255]'],
+				'ocupacionRefLab' =>  ['label' => "Ocupacion", 'rules' => 'required'],
 				'parentesco_laboral' =>  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'],
 				'calleRefLab' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
 				'exteriorRefLab' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
@@ -1928,7 +1957,7 @@ class Cuip extends BaseController {
 				'primerNombreRefPer' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
 				
 				'sexo_per' =>  ['label' => "Sexo", 'rules' => 'required|max_length[255]'],
-				'ocupacionRefPer' =>  ['label' => "Ocupacion", 'rules' => 'required|max_length[255]'],
+				'ocupacionRefPer' =>  ['label' => "Ocupacion", 'rules' => 'required'],
 				'parentesco_personal' =>  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'],
 				'calleRefPer' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
 				'exteriorRefPer' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
@@ -2011,6 +2040,22 @@ class Cuip extends BaseController {
 
         			$paisParCer = $this->encrypt->Decrytp($getPaisParCer);
 
+        			$getOcupacion = $this->request->getPost('ocupacion');
+
+        			$ocupacion = $this->encrypt->Decrytp($getOcupacion);
+
+        			$getOcupacionParCer = $this->request->getPost('ocupacionParCer');
+
+        			$ocupacionParCer = $this->encrypt->Decrytp($getOcupacionParCer);
+
+        			$getOcupacionRefPer = $this->request->getPost('ocupacionRefPer');
+
+        			$ocupacionRefPer = $this->encrypt->Decrytp($getOcupacionRefPer);
+
+        			$getOcupacionRefLab = $this->request->getPost('ocupacionRefLab');
+
+        			$ocupacionRefLab = $this->encrypt->Decrytp($getOcupacionRefLab);
+
         			
 
 
@@ -2025,7 +2070,7 @@ class Cuip extends BaseController {
 						"primer_nombre_fam" => strtoupper($this->request->getPost('primerNombre')) , 
 						"segundo_nombre_fam" => strtoupper($this->request->getPost('segundoNombre')) , 
 						"idGenero_fam" => $getSexo_fam_cer , 
-						"ocupacion_fam" => strtoupper($this->request->getPost('ocupacion')) , 
+						"ocupacion_fam" => $ocupacion , 
 						"idParentesco_fam" => $parentesco_fam_cercano , 
 						"calle_fam" => strtoupper($this->request->getPost('calle')) , 
 						"numero_exterior_fam" => strtoupper($this->request->getPost('exterior')) , 
@@ -2042,7 +2087,7 @@ class Cuip extends BaseController {
 						"primer_nombre_pariente" => strtoupper($this->request->getPost('primerNombreParCer')) , 
 						"segundo_nombre_pariente" => strtoupper($this->request->getPost('segundoNombreParCer')) , 
 						"idGenero_pariente" => $sexo_par_cer , 
-						"ocupacion_pariente" => strtoupper($this->request->getPost('ocupacionParCer')) , 
+						"ocupacion_pariente" => $ocupacionParCer , 
 						"idParentesco_pariente" => $parentesco_cercano , 
 						"calle_pariente" => strtoupper($this->request->getPost('calleParCer')) , 
 						"numero_exterior_pariente" => strtoupper($this->request->getPost('exteriorParCer')) , 
@@ -2060,7 +2105,7 @@ class Cuip extends BaseController {
 						"primer_nombre_personal" => strtoupper($this->request->getPost('primerNombreRefPer')) , 
 						"segundo_nombre_personal" => strtoupper($this->request->getPost('segundoNombreRefPer')) , 
 						"idGenero_personal" => $sexo_per , 
-						"ocupacion_personal" => strtoupper($this->request->getPost('ocupacionRefPer')) , 
+						"ocupacion_personal" => $ocupacionRefPer , 
 						"idParentesco_personal" => $parentesco_personal , 
 						"calle_personal" => strtoupper($this->request->getPost('calleRefPer')) , 
 						"numero_exterior_personal" => strtoupper($this->request->getPost('exteriorRefPer')) , 
@@ -2078,7 +2123,7 @@ class Cuip extends BaseController {
 						"primer_nombre_laboral" => strtoupper($this->request->getPost('primerNombreRefLab')) , 
 						"segundo_nombre_laboral" => strtoupper($this->request->getPost('segundoNombreRefLab')) , 
 						"idGenero_laboral" => $sexo_lab , 
-						"ocupacion_laboral" => strtoupper($this->request->getPost('ocupacionRefLab')) , 
+						"ocupacion_laboral" => $ocupacionRefLab , 
 						"idParentesco_laboral" => $parentesco_laboral , 
 						"calle_laboral" => strtoupper($this->request->getPost('calleRefLab')) , 
 						"numero_exterior_laboral" => strtoupper($this->request->getPost('exteriorRefLab')) , 

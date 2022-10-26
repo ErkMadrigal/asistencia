@@ -380,16 +380,15 @@
                         </script>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-12 col-sm-12 col-md-12'>
                     <div class="form-group">
-                        <label for="licencias_medicas" class=" control-label">En caso de licencias médicas:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="licencias_medicas"
-                            name="licencias_medicas">
+                        <label for="licencias_medicas" class=" control-label">En caso de licencias médicas:</label>
+                        
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="duracion" class=" control-label">Duración:<span class="text-danger">*</span></label>
+                        <label for="duracion" class=" control-label">Duración:</label>
                         <select class="form-control" id="duracion" name="duracion">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
@@ -413,7 +412,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="cantidad" class=" control-label">Cantidad:<span class="text-danger">*</span></label>
+                        <label for="cantidad" class=" control-label">Cantidad:</label>
                         <input type="text" class="form-control " id="cantidad"
                             name="cantidad">
                     </div>

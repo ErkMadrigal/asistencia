@@ -222,8 +222,8 @@
                             <select class="form-control" id="parentesco_familiar" name="parentesco_familiar[]">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
-                                if( !empty($parentesco_familiar) ):
-                                    foreach($parentesco_familiar as  $a){
+                                if( !empty($parentesco_todos) ):
+                                    foreach($parentesco_todos as  $a){
                                         ?>
                                             <option value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
