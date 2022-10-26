@@ -119,6 +119,11 @@ $routes->get('exportCuip', 'Cuip::export',['filter' => 'auth']);
 $routes->get('preconsulta', 'Cuip::GetPreconsulta',['filter' => 'auth']);
 $routes->get('exportPreconsulta', 'Cuip::exportPreconsulta',['filter' => 'auth']);
 
+$routes->get('referencias', 'Referencia::GetReferencias',['filter' => 'auth']);
+$routes->get('detailReferencia', 'Referencia::DetalleReferencia',['filter' => 'auth']);
+$routes->get('editReferencia', 'Referencia::EditarReferencia',['filter' => 'auth']);
+$routes->post('EditInfoReferenci', 'Referencia::SaveReferencia',['filter' => 'auth']);
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
