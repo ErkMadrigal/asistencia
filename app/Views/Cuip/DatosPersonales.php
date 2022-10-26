@@ -531,6 +531,14 @@
                         <div>
                             <select class="form-control" id="estadocodigo" name="estadocodigo">
                                 <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($entidad_federativa) ):
+                                    foreach($entidad_federativa as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->estado ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -813,8 +821,6 @@
                 
             var selectCiudadDom = document.querySelector("#ciudad"+elemento)
 
-                selectEstadoDom.innerHTML = ''
-                selectMunicipioDom.innerHTML = ''
                 selectCiudadDom.innerHTML = ''
                 selectColoniaDom.innerHTML = ''
             break;
@@ -897,8 +903,7 @@
                     switch (elemento) {
                     case "codigo":
                 
-                        selectEstadoDom.innerHTML = response.data.estado
-                        selectMunicipioDom.innerHTML = response.data.municipio
+                        
                         selectCiudadDom.innerHTML = response.data.ciudad
                         selectColoniaDom.innerHTML = response.data.colonia
                     break;

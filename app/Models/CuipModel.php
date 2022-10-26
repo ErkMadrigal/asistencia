@@ -57,10 +57,8 @@ class CuipModel
     }
 
     public function GetEstados(){
-        $builder = $this->db->table("sepomex");
-        $builder->select("estado");
-        $builder->where("activo",true);
-        $builder->groupBy("estado");
+        $builder = $this->db->table("estados");
+        $builder->select("id,estado");
         $builder->orderBy("estado","asc");
         return $builder->get()->getResult();
         
