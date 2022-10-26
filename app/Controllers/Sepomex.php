@@ -152,20 +152,20 @@ class Sepomex extends BaseController{
             $dontSucces = [];
             $data = [];
 
-			$getDataMunicipio = $this->modelSepomex->GetSepomexMunicipio($_POST["estado"]);
-			// echo json_encode($getDataMunicipio);
-			if ($getDataMunicipio) {
-				$getDataCiudad = $this->modelSepomex->GetSepomexCiudad($_POST["estado"]);
-				if($getDataCiudad){
-					$succes = ["mensaje" => 'Datos Obtenidos con Exito', "succes" => "succes"];
-				}else{
-					$dontSucces = ["error" => "error", "mensaje" => 'Hubo un error al obtener los datos.'];
-				}
-			} else {
+			if($_POST["tipo"] == "ciudad"){
+				$getData = $this->modelSepomex->GetSepomexCiudad($_POST["estado"]);
+			}
+			if($_POST["tipo"] == "municipio"){
+				$getData = $this->modelSepomex->GetSepomexMunicipio($_POST["estado"], $_POST["ciudad"]);
+			}
+			
+			if($getData){
+				$succes = ["mensaje" => 'Datos Obtenidos con Exito', "succes" => "succes"];
+			}else{
 				$dontSucces = ["error" => "error", "mensaje" => 'Hubo un error al obtener los datos.'];
 			}
 
-            echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'dataMunicipio' => $getDataMunicipio, 'dataCiudad' => $getDataCiudad]);
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $getData]);
 			
 		}	
     }

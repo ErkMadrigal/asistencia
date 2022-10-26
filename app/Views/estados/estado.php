@@ -106,6 +106,14 @@
         e.preventDefault()
         boxCapital.value = ''
         boxEstado.value = ''
+        $("#estado").select2({
+            allowClear: true,
+            placeholder: "Selecciona una Opción"
+        });
+        $("#capital").select2({
+            allowClear: true,
+            placeholder: "Selecciona una Opción"
+        });
     }  
 
     const  estatusRenderer = (data, type, full, meta) => {
