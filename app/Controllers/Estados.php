@@ -90,7 +90,7 @@ class Estados extends BaseController{
 			$data['estados'] = $this->modelEstados->GetEstados();
 			$data['dataEstado'] = $this->modelEstados->GetEstadoById($getId);
             $data['id'] = $getId;
-			$data['breadcrumb'] = ["inicio" => 'estados' ,
+			$data['breadcrumb'] = ["inicio" => 'Estados' ,
                     				"url" => 'estados',
                     				"titulo" => 'Editar'];
 			return view('estados/editEstado', $data);
@@ -177,7 +177,7 @@ class Estados extends BaseController{
         	$data['estado'] = $this->modelEstados->GetEstadoById($id);
         	
 			
-			$data['breadcrumb'] = ["inicio" => 'estados' ,
+			$data['breadcrumb'] = ["inicio" => 'Estados' ,
                                     "url" => 'estados',
                     				"titulo" => 'Detalle'];
 
@@ -189,7 +189,7 @@ class Estados extends BaseController{
 		if ($this->request->getMethod() == "get"){
 
 			$data['modulos'] = $this->menu->Permisos();
-			$data['breadcrumb'] = ["inicio" => 'estados' ,
+			$data['breadcrumb'] = ["inicio" => 'Estados' ,
                     				"url" => 'estados',
                     				"titulo" => 'Agregar'];
 			$data['estados'] = $this->modelEstados->GetEstados();

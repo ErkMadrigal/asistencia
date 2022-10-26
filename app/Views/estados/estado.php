@@ -24,6 +24,14 @@
                                     <option value="<?=$est->estado?>"><?=$est->estado?></option>
                                 <?php endforeach;?>
                             </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#estado").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -37,6 +45,14 @@
                                         <option value="<?=$est->capital?>"><?=$est->capital?></option>
                                     <?php endforeach;?>
                             </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#capital").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -122,7 +138,10 @@
                     data: response.data,
                     destroy: true,
                     deferRender: true,
-                    pageLength: 5,
+                    pageLength: 10,
+                    language: {
+                url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
+            },
                     columns: [{ data: "estado"},
                                 { data: "capital"},
                                 { data: "descripcion"},

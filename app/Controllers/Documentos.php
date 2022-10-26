@@ -166,7 +166,7 @@ class Documentos extends BaseController {
 				
 
 				$rules = [
-				'modalidad' =>  ['label' => "Modalidad", 'rules' => 'required'],
+				// 'modalidad' =>  ['label' => "Modalidad", 'rules' => 'required'],
 				'documento' =>  ['label' => "Documento", 'rules' => 'required|max_length[255]'],
                 'tipo' =>  ['label' => "Tipo", 'rules' => 'required|in_list[ORIGINAL,COPIA]']];
 		 
@@ -182,8 +182,10 @@ class Documentos extends BaseController {
 					$LoggedUserId = $this->encrypter->decrypt($getUser);
 					$empresa = session()->get('empresa');
 					$idEmpresa = $this->encrypter->decrypt($empresa);
-					$getModalidad = $this->request->getPost('modalidad');
-					$idModalidad = $this->encrypt->Decrytp($getModalidad);
+					// $getModalidad = $this->request->getPost('modalidad');
+					// $idModalidad = $this->encrypt->Decrytp($getModalidad);
+
+					$idModalidad = 360;
                     
 					$result = $this->modelDocumentos->insertItemAndSelect('documentos_expediente_digital', $this->request->getPost() ,$LoggedUserId , $idEmpresa, $idModalidad);
 

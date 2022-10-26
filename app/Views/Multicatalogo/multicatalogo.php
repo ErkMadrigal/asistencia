@@ -55,6 +55,9 @@ function estatusRenderer(data, type, full, meta) {
             data: <?= json_encode($catalogo) ?> ,
             deferRender: true,
             pageLength: 10,
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
+            },
             columns: [{ data: "tipo_combo"
                       },
                       { data: "valor"

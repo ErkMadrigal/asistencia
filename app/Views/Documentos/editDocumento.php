@@ -21,7 +21,7 @@
                     <div class="form-group">
                         <label for="modalidad" class="control-label">Modalidad: </label>
                         <div >
-                            <input type="text"  class="form-control " disabled id="modalidad" name="modalidad"  value="<?= $documento->valor ?>"><input type="hidden"  class="form-control " value =" <?=$id?> " id="id" name="id" ><?= csrf_field() ?>
+                            <input type="text"  class="form-control " disabled id="modalidad" name="modalidad"  value="<?= $documento->valor ?>">
                             
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                     <div class="form-group">
                         <label for="documento" class="control-label">Documento: </label>
                         <div >
-                            <input type="text"  class="form-control " disabled id="documento" name="documento" value="<?= $documento->documento ?>">
+                            <input type="text"  class="form-control " disabled id="documento" name="documento" value="<?= $documento->documento ?>"><input type="hidden"  class="form-control " value =" <?=$id?> " id="id" name="id" ><?= csrf_field() ?>
                         </div>
                     </div>
                 </div>

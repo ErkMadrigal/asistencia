@@ -16,14 +16,6 @@
     <div class="card-body table-responsive ">
         <form class="form-horizontal needs-validation" id="frmEstado">
             <div class="row">
-                <div class='col-12 col-sm-6'>
-                    <div class="form-group">
-                        <label for="claveEstado" class="control-label">Clave Estado </label>
-                        <div >
-                            <input type="text" disabled class="form-control " id="claveEstado" name="claveEstado"  value=""><?= csrf_field() ?>
-                        </div>
-                    </div>
-                </div>
                 <div class='col-12 col-sm-6'>    
                     <div class="form-group">
                         <label for="estado" class="control-label">Estado: <span class="text-danger">*</span></label>
@@ -34,9 +26,26 @@
                                     <option value="<?=$est->estado?>"><?=$est->estado?></option>
                                 <?php endforeach;?>
                             </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#estado").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
+                <div class='col-12 col-sm-6'>
+                    <div class="form-group">
+                        <label for="claveEstado" class="control-label">Clave Estado </label>
+                        <div >
+                            <input type="text" disabled class="form-control " id="claveEstado" name="claveEstado"  value=""><?= csrf_field() ?>
+                        </div>
+                    </div>
+                </div>
+
                 <div class='col-12 col-sm-6'>
                     <div class="form-group">
                         <label for="claveCapital" class="control-label">Clave Capital </label>

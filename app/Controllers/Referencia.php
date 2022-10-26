@@ -41,7 +41,8 @@ class Referencia extends BaseController {
 				$result[] = (object) array (
 					'id' => $id ,
 					'parentesco' => $v->parentesco,
-					'idReferencia' => $v->tipo_referencia
+					'idReferencia' => $v->tipo_referencia,
+					'activo' => $v->activo
 				) ;
 			}
 		
