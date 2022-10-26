@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 
 use App\Models\CuipModel;
+use App\Models\ReferenciaModel;
 use App\Libraries\Menu;
 use App\Libraries\Encrypt;
 use Ramsey\Uuid\Uuid;
@@ -16,6 +17,8 @@ class Cuip extends BaseController {
 	private $encrypt;
 	private $db;
 	private $modelCuip;
+	private $modelReferencia;
+
     public function __construct()
 	{
 		$this->menu = new Menu();
@@ -23,6 +26,8 @@ class Cuip extends BaseController {
 		$this->encrypter = \Config\Services::encrypter();
         $this->db =  \Config\Database::connect('default');
 		$this->modelCuip = new CuipModel($this->db);
+		$this->modelReferencia = new ReferenciaModel($this->db);
+
 		
 	}
 
@@ -1444,6 +1449,7 @@ class Cuip extends BaseController {
 			$data['diversos'] = $this->modelCuip->GetEmpleosDiversos($id);
 			$data['capacitacion'] = $this->modelCuip->GetCapacitaciones($id);
 			$data['sanciones'] = $this->modelCuip->GetSanciones($id);
+			$data['referencia'] = $this->modelReferencia->GetReferencia($id);
 
 			$documentos = $this->modelCuip->GetDocumentosById($id);
 
@@ -1845,6 +1851,7 @@ class Cuip extends BaseController {
 			$data['seguridad'] = $this->modelCuip->GetEmpleosSeridadById($id);
 			$data['diversos'] = $this->modelCuip->GetEmpleosDiversos($id);
 			$data['capacitacion'] = $this->modelCuip->GetCapacitaciones($id);
+			$data['referencia'] = $this->modelReferencia->GetReferencia($id);
 
 			$data['sanciones'] = $this->modelCuip->GetSanciones($id);
 
