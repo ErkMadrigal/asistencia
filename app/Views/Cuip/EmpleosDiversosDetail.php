@@ -15,41 +15,50 @@
             <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="empresa" class=" control-label">Empresa:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="empresa" name="empresa">
+                        <div>
+                            <?= isset($diversos->empresa) ? $diversos->empresa : ''  ?>
+                        </div>
                     </div>
                 </div>
                 
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="calle" name="calle">
+                        <div>
+                            <?= isset($diversos->calle) ? $diversos->calle : ''  ?>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="exterior" name="exterior">
+                        <div>
+                            <?= isset($diversos->numero_exterior) ? $diversos->numero_exterior : ''  ?>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="interior" class=" control-label">No. Interior:</label>
-                        <input type="text" class="form-control " id="interior" name="interior">
+                        <div>
+                            <?= isset($diversos->numero_interior) ? $diversos->numero_interior : ''  ?>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="codigoEmpDiv" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="codigoEmpDiv" name="codigoEmpDiv"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5">
+                        <div>
+                            <?= isset($diversos->idCodigoPostal) ? $diversos->idCodigoPostal : ''  ?>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="coloniacodigoEmpDiv" class=" control-label">Colonia:<span class="text-danger">*</span></label>
-                        <select class="form-control" id="coloniacodigoEmpDiv" name="coloniacodigoEmpDiv">
-                                <option value="">Selecciona una Opcion</option>
-                                
-                            </select>
+                        <div>
+                            <?= isset($diversos->colonia) ? $diversos->colonia : ''  ?>
+                        </div>
                             <script>
                                 $(document).ready(function() {
                                     $("#coloniacodigoEmpDiv").select2({
@@ -64,10 +73,9 @@
                     <div class="form-group">
                         <label for="estadocodigoEmpDiv" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
                         <div>
-                            <select class="form-control" id="estadocodigoEmpDiv" name="estadocodigoEmpDiv">
-                                <option value="">Selecciona una Opcion</option>
-                                
-                            </select>
+                        <div>
+                            <?= isset($diversos->estado) ? $diversos->estado : ''  ?>
+                        </div>
                             <script>
                                 $(document).ready(function() {
                                     $("#estadocodigoEmpDiv").select2({
@@ -83,9 +91,9 @@
                     <div class="form-group">
                         <label for="municipiocodigoEmpDiv" class="control-label">Municipio: <span class="text-danger">*</span></label>
                         <div>
-                            <select class="form-control" id="municipiocodigoEmpDiv" name="municipiocodigoEmpDiv">
-                                <option value="">Selecciona una Opcion</option>
-                            </select>
+                        <div>
+                            <?= isset($diversos->municipio) ? $diversos->municipio : ''  ?>
+                        </div>
                             <script>
                                 $(document).ready(function() {
                                     $("#municipiocodigoEmpDiv").select2({
@@ -100,17 +108,18 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="numero" name="numero" maxlength="10" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+                        <div>
+                            <?= isset($diversos->numero_telefono) ? $diversos->numero_telefono : ''  ?>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="ingresoEmpDiv" class=" control-label">Ingreso:<span class="text-danger">*</span></label>
                         <div class="input-group date" id="ingresoEmpDiv" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#ingresoEmpDiv" id="datetime-ingresoEmpDiv" name="ingresoEmpDiv" placeholder="" value="" />
-                            <div class="input-group-append" data-target="#ingresoEmpDiv" data-toggle="datetimepicker">
-                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
-                            </div>
+                        <div>
+                            <?= isset($diversos->ingreso) ? $diversos->ingreso : ''  ?>
+                        </div>
                         </div>
                         <script type="text/javascript">
                             $(function() {
@@ -126,40 +135,52 @@
                 <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="funciones" class=" control-label">Funciones:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="funciones" name="funciones">
+                        <div>
+                            <?= isset($diversos->dependencia) ? $diversos->dependencia : ''  ?>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="sueldo" class=" control-label">Ingreso Neto (Mensual):<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="sueldo" name="sueldo">
+                        <div>
+                            <?= isset($diversos->sueldo_base) ? $diversos->sueldo_base : ''  ?>
+                        </div>
                     </div>
                 </div>
                 
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="area" class=" control-label">Area:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="area" name="area">
+                        <div>
+                            <?= isset($diversos->dependencia) ? $diversos->dependencia : ''  ?>
+                        </div>
                     </div>
                 </div>
                 
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="motivo_separacion" class=" control-label">Motivo de separación:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="motivo_separacion" name="motivo_separacion">
+                        <div>
+                            <?= isset($diversos->area) ? $diversos->area : ''  ?>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="tipo_separacion" class=" control-label">Tipo de Separación:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="tipo_separacion" name="tipo_separacion">
+                        <div>
+                            <?= isset($diversos->tipo_separacion) ? $diversos->tipo_separacion : ''  ?>
+                        </div>
                     </div>
                 </div>
                 
                 <div class='col-12 col-sm-12 col-md-12'>
                     <div class="form-group">
                         <label for="comentarios" class=" control-label">Comentarios:<span class="text-danger">*</span></label>
-                        <textarea type="text" class="form-control " id="comentarios" name="comentarios"></textarea>
+                        <div>
+                            <?= isset($diversos->comentarios) ? $diversos->comentarios : ''  ?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -184,44 +205,40 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="empleo" class=" control-label">¿Por qué Eligio este empleo?<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="empleo" name="empleo">
-                    </div>
+                        <div>
+                            <?= isset($diversos->eligio_empleo) ? $diversos->eligio_empleo : ''  ?>
+                        </div>                    </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="puesto" class=" control-label">¿Qué puesto le gustaria tener?<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="puesto"
-                            name="puesto">
+                        <div>
+                            <?= isset($diversos->puesto_gustaria) ? $diversos->puesto_gustaria : ''  ?>
+                        </div>                           
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="area_gustaria" class=" control-label">¿En que area le gustaría estar?<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="area_gustaria"
-                            name="area_gustaria">
+                        <div>
+                            <?= isset($diversos->area_gustaria) ? $diversos->area_gustaria : ''  ?>
+                        </div>                            
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="ascender" class=" control-label">¿En que tiempo desea ascender?<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="ascender"
-                            name="ascender">
+                        <div>
+                            <?= isset($diversos->tiempo_ascenso) ? $diversos->tiempo_ascenso : ''  ?>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="reglamentacion" class=" control-label">¿Conoce la reglamentación de los reconocimientos?<span class="text-danger">*</span></label>
-                        <select class="form-control" id="reglamentacion" name="reglamentacion">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($SiNo) ):
-                                    foreach($SiNo as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
-                            </select>
+                        <div>
+                            <?= isset($diversos->reglamento) ? $diversos->reglamento : ''  ?>
+                        </div>
                             <script>
                                 $(document).ready(function() {
                                     $("#reglamentacion").select2({
@@ -235,24 +252,17 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="reconomiento" class=" control-label">¿Razones por las que no ha recibido un reconocimiento?<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="reconomiento"
-                            name="reconomiento">
+                        <div>
+                            <?= isset($diversos->razon_ascenso) ? $diversos->razon_ascenso : ''  ?>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="reglamentacion_ascenso" class=" control-label">¿Conoce la reglamentación de los ascensos?<span class="text-danger">*</span></label>
-                        <select class="form-control" id="reglamentacion_ascenso" name="reglamentacion_ascenso">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($SiNo) ):
-                                    foreach($SiNo as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
-                            </select>
+                        <div>
+                            <?= isset($diversos->reglamento) ? $diversos->reglamento : ''  ?>
+                        </div>
                             <script>
                                 $(document).ready(function() {
                                     $("#reglamentacion_ascenso").select2({
@@ -266,15 +276,17 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="razones_ascenso" class=" control-label">¿Razones por las que no ha recibido un ascenso?<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="razones_ascenso"
-                            name="razones_ascenso">
+                        <div>
+                            <?= isset($diversos->razon_ascenso) ? $diversos->razon_ascenso : ''  ?>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="capacitacion" class=" control-label">¿Qué capacitación le gustaría recibir?<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="capacitacion"
-                            name="capacitacion">
+                        <div>
+                            <?= isset($diversos->capacitacion) ? $diversos->capacitacion : ''  ?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -299,17 +311,9 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="desciplina" class=" control-label">Tipo de Disciplina:<span class="text-danger">*</span></label>
-                        <select class="form-control" id="desciplina" name="desciplina">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($tipoDisciplina) ):
-                                    foreach($tipoDisciplina as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
-                            </select>
+                        <div>
+                            <?= isset($diversos->disciplina) ? $diversos->disciplina : ''  ?>
+                        </div>
                             <script>
                                 $(document).ready(function() {
                                     $("#desciplina").select2({
@@ -323,32 +327,34 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="subtipo_disciplina" class=" control-label">Subtipo de disciplina<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="subtipo_disciplina"
-                            name="subtipo_disciplina">
+                        <div>
+                            <?= isset($diversos->subtipo_disciplina) ? $diversos->subtipo_disciplina : ''  ?>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="motivo" class=" control-label">Motivo<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="motivo"
-                            name="motivo">
+                        <div>
+                            <?= isset($diversos->motivo) ? $diversos->motivo : ''  ?>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="tipo" class=" control-label">Tipo<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="tipo"
-                            name="tipo">
+                        <div>
+                            <?= isset($diversos->tipo) ? $diversos->tipo : ''  ?>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-6'>
                     <div class='form-group'>
                         <label for="fecha_inicialDis">Fecha de Inicio: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="fecha_inicialDis" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_inicialDis" id="datetime-fecha_inicialDis" name="fecha_inicialDis" placeholder="" value="" />
-                            <div class="input-group-append" data-target="#fecha_inicialDis" data-toggle="datetimepicker">
-                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
-                            </div>
+                        <div>
+                            <?= isset($diversos->fecha_inicio) ? $diversos->fecha_inicio : ''  ?>
+                        </div>
                         </div>
                         <script type="text/javascript">
                             $(function() {
@@ -364,10 +370,9 @@
                     <div class='form-group'>
                         <label for="fecha_finalDis">Fecha de Término: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="fecha_finalDis" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_finalDis" id="datetime-fecha_finalDis" name="fecha_finalDis" placeholder="" value="" />
-                            <div class="input-group-append" data-target="#fecha_finalDis" data-toggle="datetimepicker">
-                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
-                            </div>
+                        <div>
+                            <?= isset($diversos->fecha_termino) ? $diversos->fecha_termino : ''  ?>
+                        </div>
                         </div>
                         <script type="text/javascript">
                             $(function() {
@@ -383,24 +388,17 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="licencias_medicas" class=" control-label">En caso de licencias médicas:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="licencias_medicas"
-                            name="licencias_medicas">
+                        <div>
+                            <?= isset($diversos->dependencia) ? $diversos->dependencia : ''  ?>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="duracion" class=" control-label">Duración:<span class="text-danger">*</span></label>
-                        <select class="form-control" id="duracion" name="duracion">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($duracion) ):
-                                    foreach($duracion as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
-                            </select>
+                        <div>
+                            <?= isset($diversos->duracion) ? $diversos->duracion : ''  ?>
+                        </div>
                             <script>
                                 $(document).ready(function() {
                                     $("#duracion").select2({
@@ -414,8 +412,9 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="cantidad" class=" control-label">Cantidad:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="cantidad"
-                            name="cantidad">
+                        <div>
+                            <?= isset($diversos->cantidad) ? $diversos->cantidad : ''  ?>
+                        </div>
                     </div>
                 </div>
             </div>
