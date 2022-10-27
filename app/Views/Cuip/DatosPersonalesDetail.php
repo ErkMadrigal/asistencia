@@ -912,7 +912,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="poblacion_adscripcion" class=" control-label">Ciudad o Poblacion:<span class="text-danger">*</span></label>
-                        <div>
+                          <div>
                         <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
                     </div>
                     </div>
