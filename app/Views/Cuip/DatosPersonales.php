@@ -716,25 +716,25 @@
                         </script>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="puesto_adscripcion" class=" control-label">Puesto:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="puesto_adscripcion" name="puesto_adscripcion">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="especialidad_adscripcion" class=" control-label">Especialidad:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="especialidad_adscripcion" name="especialidad_adscripcion">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="rango_adscripcion" class=" control-label">Rango o Categoria:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="rango_adscripcion" name="rango_adscripcion">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="nivel_adscripcion" class=" control-label">Nivel de Mando:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="nivel_adscripcion" name="nivel_adscripcion">
@@ -764,43 +764,43 @@
                         <input type="text" class="form-control " id="compensacion_adscripcion" name="compensacion_adscripcion">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="area_adscripcion" class=" control-label">Àrea:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="area_adscripcion" name="area_adscripcion">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="division_adscripcion" class=" control-label">División:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="division_adscripcion" name="division_adscripcion">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="funciones_adscripcion" class=" control-label">Funciones:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="funciones_adscripcion" name="funciones_adscripcion">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="cuipjefe_adscripcion" class=" control-label">CUIP del jefe inmediato:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="cuipjefe_adscripcion" name="cuipjefe_adscripcion">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="nombrejefe_adscripcion" class=" control-label">Nombre del jefe inmediato:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="nombrejefe_adscripcion" name="nombrejefe_adscripcion">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="entidad_adscripcion" class=" control-label">Entidad Federativa:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="entidad_adscripcion" name="entidad_adscripcion">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="municipio_adscripcion" class=" control-label">Municipio:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="municipio_adscripcion" name="municipio_adscripcion">
@@ -833,22 +833,17 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="exterior_adscripcion" class=" control-label">N0. Exterior:<span class="text-danger">*</span></label>
+                        <label for="exterior_adscripcion" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="exterior_adscripcion" name="exterior_adscripcion">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="interior_adscripcion" class=" control-label">N0. Interior:<span class="text-danger">*</span></label>
+                        <label for="interior_adscripcion" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="interior_adscripcion" name="interior_adscripcion">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
-                    <div class="form-group">
-                        <label for="colonia_adscripcion" class=" control-label">Colonia:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="colonia_adscripcion" name="colonia_adscripcion">
-                    </div>
-                </div>
+                
                 <div class='col-12 col-sm-12 col-md-12'>
                     <div class="form-group">
                         <label for="entrecalle_adscripcion" class=" control-label">Entre la calle de:<span class="text-danger">*</span></label>
@@ -873,7 +868,13 @@
                         <input type="text" class="form-control " id="postal_adscripcion" name="postal_adscripcion">
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12'>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="colonia_adscripcion" class=" control-label">Colonia:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="colonia_adscripcion" name="colonia_adscripcion">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="federativa_adscripcion" class=" control-label">Entidad Federativa:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="federativa_adscripcion" name="federativa_adscripcion">
