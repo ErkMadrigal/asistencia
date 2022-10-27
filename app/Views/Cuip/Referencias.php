@@ -1007,7 +1007,7 @@
             
         </div>
         <div class="col-12 col-sm-6 col-md-3 ">    
-            <button id="saveReferencias" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" ></i>&nbsp;&nbsp;Guardar</button>
+            <button id="saveReferencias" disabled class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" ></i>&nbsp;&nbsp;Guardar</button>
         </div>
     </div>    
 </div>
@@ -1027,6 +1027,22 @@
 
     $("#codigoLaboral").on('keyup', function(){
         getSepomex(this.id)
+    });
+
+    $("#estadocodigoRefCer").on('change', function(){
+        getEstado(this.id)
+    });
+
+    $("#estadocodigoParCer").on('change', function(){
+        getEstado(this.id)
+    });
+
+    $("#estadocodigoPersonal").on('change', function(){
+        getEstado(this.id)
+    });
+
+    $("#estadocodigoLaboral").on('change', function(){
+        getEstado(this.id)
     });
 
 
@@ -1057,6 +1073,10 @@
                     $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
 
                     toastr.success(response.succes.mensaje);
+
+                    $('#saveReferencias').addClass( "btn-success" );
+                    $('#saveReferencias').prop( "disabled",true );
+                    $('#saveReferencias').html( "Guardado&nbsp;<i class='fa fa-thumbs-up'></i>" );
 
                     $("html,body").animate({scrollTop: $("#CardGenerales").offset().top},2000);
 
