@@ -577,8 +577,7 @@
         <div class="row">
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="nombrecurso" class=" control-label">Nombre del Curso
-                        :</label>
+                    <label for="nombrecurso" class=" control-label">Nombre del Curso:</label>
                     <div>
                         <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
                     </div>
@@ -586,8 +585,7 @@
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="nombreInstitucion" class=" control-label">Nombre de
-                        la Institución:</label>
+                    <label for="nombreInstitucion" class=" control-label">Nombre de la Institución:</label>
                     <div>
                         <?= isset($variable->nombre_institucion) ? $variable->nombre_institucion : ''  ?>
                     </div>
@@ -640,6 +638,286 @@
                 </div>
             </div>
         </div>
+        </form>
+    </div>
+</div>
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">ADSCRIPCION</h3>
+
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        
+            <div class="row">
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="dependencia_adscripcion" class=" control-label">Dependencia:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="institucion_adscripcion" class=" control-label">Institución:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-6'>
+                    <div class='form-group'>
+                        <label for="fechaingreso_adscripcion">Fecha de Ingreso: <span class="text-danger">*</span></label>
+                        <div class="input-group date" id="fechaingreso_adscripcion" data-target-input="nearest">
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#fechaingreso_adscripcion").datetimepicker({
+                                    format: 'DD-MM-YYYY',
+                                    locale: moment.locale('es')
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="puesto_adscripcion" class=" control-label">Puesto:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="especialidad_adscripcion" class=" control-label">Especialidad:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="rango_adscripcion" class=" control-label">Rango o Categoria:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="nivel_adscripcion" class=" control-label">Nivel de Mando:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="placas_adscripcion" class=" control-label">Número de placas:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="expediente_adscripcion" class=" control-label">Número de Expediente:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="sueldo_adscripcion" class=" control-label">Sueldo Base:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="compensacion_adscripcion" class=" control-label">Compensación:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="area_adscripcion" class=" control-label">Àrea:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="division_adscripcion" class=" control-label">División:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="funciones_adscripcion" class=" control-label">Funciones:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="cuipjefe_adscripcion" class=" control-label">CUIP del jefe inmediato:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="nombrejefe_adscripcion" class=" control-label">Nombre del jefe inmediato:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="entidad_adscripcion" class=" control-label">Entidad Federativa:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="municipio_adscripcion" class=" control-label">Municipio:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+</div>
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">ADSCRIPCION: DOMICILIO DE ADSCRIPCION</h3>
+
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        
+            <div class="row">
+                <div class='col-12 col-sm-12 col-md-12'>
+                    <div class="form-group">
+                        <label for="calle_adscripcion" class=" control-label">Calle:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="exterior_adscripcion" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="interior_adscripcion" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                
+                <div class='col-12 col-sm-12 col-md-12'>
+                    <div class="form-group">
+                        <label for="entrecalle_adscripcion" class=" control-label">Entre la calle de:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-12'>
+                    <div class="form-group">
+                        <label for="ylacalle_adscripcion" class=" control-label">Y la calle:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="telefono_adscripcion" class=" control-label">Número Telefonico:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="postal_adscripcion" class=" control-label">Código Postal:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="colonia_adscripcion" class=" control-label">Colonia:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="federativa_adscripcion" class=" control-label">Entidad Federativa:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="delegacion_adscripcion" class=" control-label">Municipio o Delegación:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="poblacion_adscripcion" class=" control-label">Ciudad o Poblacion:<span class="text-danger">*</span></label>
+                        <div>
+                        <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                    </div>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 </div>
