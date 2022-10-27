@@ -123,7 +123,8 @@ $routes->get('referencias', 'Referencia::GetReferencias',['filter' => 'auth']);
 $routes->get('detailReferencia', 'Referencia::DetalleReferencia',['filter' => 'auth']);
 $routes->get('editReferencia', 'Referencia::EditarReferencia',['filter' => 'auth']);
 $routes->post('EditInfoReferenci', 'Referencia::SaveReferencia',['filter' => 'auth']);
-
+$routes->get('AddReferencia', 'Referencia::AgreRefe',['filter' => 'auth']);
+$routes->post('GuardarRefe', 'Referencia::AgregarReferencia',['filter' => 'auth']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing
