@@ -709,6 +709,10 @@
                     $('#idPersonal').val(response.data.idPersonal);
                     toastr.success(response.succes.mensaje);
 
+                    $('#saveDatosPersonales').addClass( "btn-success" );
+                    $('#saveDatosPersonales').prop( "disabled",true );
+                    $('#saveDatosPersonales').html( "Guardado&nbsp;<i class='fa fa-thumbs-up'></i>" ); 
+
                     $("html,body").animate({scrollTop: $("#cardRefFamCer").offset().top},2000);
 
                     $('#tabs a[href="#custom-tabs-five"]').trigger('click');
@@ -743,100 +747,148 @@
     });
 
 
-    let estado = document.querySelector("#entidad_nacimiento")
-
-    let estadocodigo = document.querySelector("#estadocodigo")
-
-    let selectMunicipio = document.querySelector("#municipio_nacimiento")
-
-    let municipiocodigo = document.querySelector("#municipiocodigo")
-    let selectCiudad = document.querySelector("#cuidad_nacimiento")
-
-
-
-    estado.onchange = (e) => {
-
-        $('#load').addClass( "spinner-border" );
-        selectCiudad.innerHTML = ''
-        selectMunicipio.innerHTML = ''
-
-        e.preventDefault()
-        var estado = $('#entidad_nacimiento').val()
-        var csrfName = $("input[name=app_csrf]").val();
-        
-            var data    = {
-                    estado : estado,
-                    app_csrf: csrfName
-                };
-
-        $.ajax({
-            url: base_url + '/getCiudadEstado',
-            type: 'POST',
-            dataType: 'json',
-            data: data,
-            data: data,
-            ache: false,
-            async: true,
-            success: function (response) {
-                if(response.succes.succes === "succes"){
-                    selectMunicipio.innerHTML = response.data.municipio
-                    selectCiudad.innerHTML = response.data.ciudad
-                    
-                }
-
-                $('#load').removeClass( "spinner-border" );
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                $('#load').removeClass( "spinner-border" );
-                toastr.error('<?=lang('Layout.toastrError') ?>');
-                           
-            }
-        });
-    };
-
-
-    estadocodigo.onchange = (e) => {
-
-        $('#load').addClass( "spinner-border" );
-        
-        municipiocodigo.innerHTML = ''
-
-        e.preventDefault()
-        var estado = $('#estadocodigo').val()
-        var csrfName = $("input[name=app_csrf]").val();
-        
-            var data    = {
-                    estado : estado,
-                    app_csrf: csrfName
-                };
-
-        $.ajax({
-            url: base_url + '/getCiudadEstado',
-            type: 'POST',
-            dataType: 'json',
-            data: data,
-            data: data,
-            ache: false,
-            async: true,
-            success: function (response) {
-                if(response.succes.succes === "succes"){
-                    municipiocodigo.innerHTML = response.data.municipio
-                    
-                    
-                }
-
-                $('#load').removeClass( "spinner-border" );
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                $('#load').removeClass( "spinner-border" );
-                toastr.error('<?=lang('Layout.toastrError') ?>');
-                           
-            }
-        });
-    };
     
+    $("#entidad_nacimiento").on('change', function(){
+        getEstado(this.id)
+    });
+
+    $("#estadocodigo").on('change', function(){
+        getEstado(this.id)
+    });
 
 
+    function getEstado(id)  {
+
+        $('#load').addClass( "spinner-border" );
+        
+        var elemento = id;
+
+        var estado = $('#'+elemento).val();
+
+
+        switch (elemento) {
+            case "entidad_nacimiento":
+                
+            var selectCiudadDom = document.querySelector("#cuidad_nacimiento")
+
+            var selectMunicipioDom = document.querySelector("#municipio_nacimiento")
+
+                selectCiudadDom.innerHTML = ''
+                selectMunicipioDom.innerHTML = ''
+            break;
+            case "estadocodigo":
+                
+            
+            var selectMunicipioDom = document.querySelector("#municipiocodigo")
+
+                
+                selectMunicipioDom.innerHTML = ''
+            break;
+            case "estadocodigoRefCer":
+                
+            
+            var selectMunicipioDom = document.querySelector("#municipiocodigoRefCer")
+
+                
+                selectMunicipioDom.innerHTML = ''
+            break;
+            case "estadocodigoParCer":
+                
+            
+            var selectMunicipioDom = document.querySelector("#municipiocodigoParCer")
+
+                
+                selectMunicipioDom.innerHTML = ''
+            break;
+            case "estadocodigoPersonal":
+                
+            
+            var selectMunicipioDom = document.querySelector("#municipiocodigoPersonal")
+
+                
+                selectMunicipioDom.innerHTML = ''
+            break;
+            case "estadocodigoLaboral":
+                
+            
+            var selectMunicipioDom = document.querySelector("#municipiocodigoLaboral")
+
+                
+                selectMunicipioDom.innerHTML = ''
+            break;
+  
+            }
+
+        
+        var csrfName = $("input[name=app_csrf]").val();
+        
+            var data    = {
+                    estado : estado,
+                    app_csrf: csrfName
+                };
+
+        $.ajax({
+            url: base_url + '/getCiudadEstado',
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            data: data,
+            ache: false,
+            async: true,
+            success: function (response) {
+                if(response.succes.succes === "succes"){
+                        
+                        
+                    switch (elemento) {
+                    case "entidad_nacimiento":
+                
+                        
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                    break;
+                    case "estadocodigo":
+                
+                        
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                    break;
+                    case "estadocodigoRefCer":
+                
+                        
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                    break;
+                    case "estadocodigoParCer":
+                
+                        
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                    break;
+                    case "estadocodigoPersonal":
+                
+                        
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                    break;
+                    case "estadocodigoLaboral":
+                
+                        
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                    break;
+
+  
+                     }
+                    
+                }
+
+                $('#load').removeClass( "spinner-border" );
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('#load').removeClass( "spinner-border" );
+                toastr.error('<?=lang('Layout.toastrError') ?>');
+                           
+            }
+        });
+    };
+
+
+    
     $("#codigo").on('keyup', function(){
         getSepomex(this.id)
     });

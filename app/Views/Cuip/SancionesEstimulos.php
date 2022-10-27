@@ -400,6 +400,10 @@
 
                     toastr.success(response.succes.mensaje);
 
+                    $('#saveSancionesEstimulos').addClass( "btn-success" );
+                    $('#saveSancionesEstimulos').prop( "disabled",true );
+                    $('#saveSancionesEstimulos').html( "Guardado&nbsp;<i class='fa fa-thumbs-up'></i>" );
+
                     
 
                 } else if (response.dontsucces.error == 'error'){

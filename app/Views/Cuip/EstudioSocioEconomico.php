@@ -307,6 +307,10 @@
 
                     toastr.success(response.succes.mensaje);
 
+                    $('#saveSocioEconomico').addClass( "btn-success" );
+                    $('#saveSocioEconomico').prop( "disabled",true );
+                    $('#saveSocioEconomico').html( "Guardado&nbsp;<i class='fa fa-thumbs-up'></i>" );
+
                     $("html,body").animate({scrollTop: $("#cardEmplSeguridad").offset().top},2000);
 
                     $('#tabs a[href="#custom-tabs"]').trigger('click');
