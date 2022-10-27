@@ -124,7 +124,7 @@ class Cuip extends BaseController {
 
 			$getEstados = $this->modelCuip->GetEstados();
 
-			$data['entidad_federativa'] = $getEstados;
+			$data['entidad_federativa'] = $this->GetDatos($getEstados);
 			////////////////////////////////////////////////
 
 
@@ -467,29 +467,30 @@ class Cuip extends BaseController {
 				if($this->validate($rules)){
 					
 
-					$estado = $this->request->getPost('estado');
+					$getEstado = $this->request->getPost('estado');
+
+					$estado = $this->encrypt->Decrytp($getEstado);
+
+
 					
 					$getMunicipios = $this->modelCuip->getMunicipios($estado);
 
-					$getCiudades = $this->modelCuip->getCiudades($estado);
+					
 
-                    if ($getMunicipios && $getCiudades) {
+                    if ($getMunicipios ) {
 
                     	$municipio = '<option value="">Selecciona una Opcion</option>';
+                    	$ciudad = '<option value="">Selecciona una Opcion</option>';
                     	foreach ( $getMunicipios as $v){
 				
-							
-							$municipio.=  '<option value="'.$v->municipio.'">'.$v->municipio.'</option>';
+							$id = $this->encrypt->Encrypt($v->id);
+							$municipio.=  '<option value="'.$id.'">'.$v->descripcion.'</option>';
+
+							$ciudad.=  '<option value="'.$id.'">'.$v->descripcion.'</option>';
 						
 						}
 
-						$ciudad = '<option value="">Selecciona una Opcion</option>';
-                    	foreach ( $getCiudades as $v){
-				
-							
-							$ciudad.=  '<option value="'.$v->ciudad.'">'.$v->ciudad.'</option>';
 						
-						}
                     	
                     	$data['municipio']= $municipio;
                     	$data['ciudad']= $ciudad;

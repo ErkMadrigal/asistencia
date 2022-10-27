@@ -58,19 +58,18 @@ class CuipModel
 
     public function GetEstados(){
         $builder = $this->db->table("estados");
-        $builder->select("id,estado");
+        $builder->select("claveEstado AS id,estado AS valor");
         $builder->orderBy("estado","asc");
         return $builder->get()->getResult();
         
     }
 
     public function getMunicipios($estado){
-        $builder = $this->db->table("sepomex");
-        $builder->select("municipio");
+        $builder = $this->db->table("estados_detalles");
+        $builder->select("id, descripcion");
         $builder->where("activo",true);
-        $builder->where("estado",$estado);
-        $builder->groupBy("municipio");
-        $builder->orderBy("municipio","asc");
+        $builder->where("claveEstado",$estado);
+        $builder->orderBy("descripcion","asc");
         return $builder->get()->getResult();
         
     }

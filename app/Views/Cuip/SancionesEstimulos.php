@@ -125,7 +125,7 @@
                                 if( !empty($entidad_federativa) ):
                                     foreach($entidad_federativa as  $a){
                                         ?>
-                                            <option value="<?=$a->estado ?>"><?= $a->estado ?></option>
+                                            <option value="<?=$a->id?>"><?= $a->valor?></option>
                                             <?php
                                     }
                                 endif;?>
