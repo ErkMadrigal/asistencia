@@ -745,7 +745,11 @@
 
     let estado = document.querySelector("#entidad_nacimiento")
 
+    let estadocodigo = document.querySelector("#estadocodigo")
+
     let selectMunicipio = document.querySelector("#municipio_nacimiento")
+
+    let municipiocodigo = document.querySelector("#municipiocodigo")
     let selectCiudad = document.querySelector("#cuidad_nacimiento")
 
 
@@ -790,6 +794,46 @@
         });
     };
 
+
+    estadocodigo.onchange = (e) => {
+
+        $('#load').addClass( "spinner-border" );
+        
+        municipiocodigo.innerHTML = ''
+
+        e.preventDefault()
+        var estado = $('#estadocodigo').val()
+        var csrfName = $("input[name=app_csrf]").val();
+        
+            var data    = {
+                    estado : estado,
+                    app_csrf: csrfName
+                };
+
+        $.ajax({
+            url: base_url + '/getCiudadEstado',
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            data: data,
+            ache: false,
+            async: true,
+            success: function (response) {
+                if(response.succes.succes === "succes"){
+                    municipiocodigo.innerHTML = response.data.municipio
+                    
+                    
+                }
+
+                $('#load').removeClass( "spinner-border" );
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('#load').removeClass( "spinner-border" );
+                toastr.error('<?=lang('Layout.toastrError') ?>');
+                           
+            }
+        });
+    };
     
 
 
@@ -842,8 +886,7 @@
                 
             var selectCiudadDom = document.querySelector("#ciudad"+elemento)
 
-                selectEstadoDom.innerHTML = ''
-                selectMunicipioDom.innerHTML = ''
+                
                 selectCiudadDom.innerHTML = ''
                 selectColoniaDom.innerHTML = ''
             break;
@@ -851,8 +894,7 @@
                 
             var selectCiudadDom = document.querySelector("#ciudad"+elemento)
 
-                selectEstadoDom.innerHTML = ''
-                selectMunicipioDom.innerHTML = ''
+                
                 selectCiudadDom.innerHTML = ''
                 selectColoniaDom.innerHTML = ''
             break;
@@ -860,8 +902,7 @@
                 
             var selectCiudadDom = document.querySelector("#ciudad"+elemento)
 
-                selectEstadoDom.innerHTML = ''
-                selectMunicipioDom.innerHTML = ''
+                
                 selectCiudadDom.innerHTML = ''
                 selectColoniaDom.innerHTML = ''
             break;
@@ -869,8 +910,7 @@
                 
             var selectCiudadDom = document.querySelector("#ciudad"+elemento)
 
-                selectEstadoDom.innerHTML = ''
-                selectMunicipioDom.innerHTML = ''
+                
                 selectCiudadDom.innerHTML = ''
                 selectColoniaDom.innerHTML = ''
             break;
@@ -927,29 +967,25 @@
                     break;
                     case "codigoRefCer":
                 
-                        selectEstadoDom.innerHTML = response.data.estado
-                        selectMunicipioDom.innerHTML = response.data.municipio
+                        
                         selectCiudadDom.innerHTML = response.data.ciudad
                         selectColoniaDom.innerHTML = response.data.colonia
                     break;
                     case "codigoParCer":
                 
-                        selectEstadoDom.innerHTML = response.data.estado
-                        selectMunicipioDom.innerHTML = response.data.municipio
+                        
                         selectCiudadDom.innerHTML = response.data.ciudad
                         selectColoniaDom.innerHTML = response.data.colonia
                     break;
                     case "codigoPersonal":
                 
-                        selectEstadoDom.innerHTML = response.data.estado
-                        selectMunicipioDom.innerHTML = response.data.municipio
+                        
                         selectCiudadDom.innerHTML = response.data.ciudad
                         selectColoniaDom.innerHTML = response.data.colonia
                     break;
                     case "codigoLaboral":
                 
-                        selectEstadoDom.innerHTML = response.data.estado
-                        selectMunicipioDom.innerHTML = response.data.municipio
+                        
                         selectCiudadDom.innerHTML = response.data.ciudad
                         selectColoniaDom.innerHTML = response.data.colonia
                     break;

@@ -153,6 +153,9 @@ class Referencia extends BaseController {
             $idEmpresa = $this->encrypter->decrypt($getEmpresa);
 
 			$data['modulos'] = $this->menu->Permisos();
+			$data['tipo'] = $this->modelReferencia->GetTipoReferencia();
+
+
 			$data['breadcrumb'] = ["inicio" => 'Referencia' ,
                     				"url" => 'referencias',
                     				"titulo" => 'Agregar Referencia'];
@@ -164,7 +167,7 @@ class Referencia extends BaseController {
 
     public function AgregarReferencia(){
 		//helper(['form']);
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['parentesco,cve_parentesco,idReferencia'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['parentesco,cve_parentesco,tipo_referencia'],FILTER_SANITIZE_STRING)){
 
 				$getEmpresa = session()->get('empresa');
 				$idEmpresa = $this->encrypter->decrypt($getEmpresa);
@@ -174,7 +177,7 @@ class Referencia extends BaseController {
 				$rules = [
 				'parentesco' =>  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'],
 				'cve_parentesco' =>  ['label' => "Clave Parentesco", 'rules' => 'required|max_length[255]'],
-                'idReferencia' =>  ['label' => "Tipo Referencia", 'rules' => 'required']];
+                'tipo_referencia' =>  ['label' => "Tipo Referencia", 'rules' => 'required|integer|in_list[1,2,3,4]']];
 		 
 				$errors = [];
 				$succes = [];
@@ -189,15 +192,15 @@ class Referencia extends BaseController {
 					$empresa = session()->get('empresa');
 					$idEmpresa = $this->encrypter->decrypt($empresa);
 					
-					
-                    $getReferencia= $this->request->getPost('idReferencia');
-					$idReferencia = $this->encrypt->Decrytp($getReferencia);
+					$uuid = Uuid::uuid4();
+        			$idReferencia = $uuid->toString();
+                    
 					$result = $this->modelReferencia->insertItemAndSelect('catalogo_referencias', $this->request->getPost() , 'catalogo_referencias',$LoggedUserId , $idEmpresa, $idReferencia);
 
                     if ($result) {
 
             			
-                    	$succes = ["mensaje" => 'Arma Agregada con exito' ,
+                    	$succes = ["mensaje" => 'Referencia agregada con exito' ,
                             	   "succes" => "succes"];
 
                            	   

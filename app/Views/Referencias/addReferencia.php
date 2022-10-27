@@ -46,13 +46,13 @@ use App\Libraries\Encrypt;
                 <div class='col-12 col-sm-6'>    
                     <div class="form-group">
                         <label for="tipo_referencia" class="control-label">Tipo Referencia: <span class="text-danger">*</span></label>
-                        <select class="form-control" id="clase" name="clase">
+                        <select class="form-control" id="tipo_referencia" name="tipo_referencia">
                         <option value="">Selecciona una Opcion</option>';
                         <?php
-                                if( !empty($tipo_referencia) ):
-                                    foreach($tipo_referencia as  $a){
-                                        $idReferencia = $encrypt->Encrypt($a->id);?>
-                                            <option value="<?=$idReferencia?>"><?= $a->valor ?></option>
+                                if( !empty($tipo) ):
+                                    foreach($tipo as  $a){
+                                        ?>
+                                            <option value="<?= $a->cve_parentesco ?>"><?= $a->cve_parentesco ?></option>
                                             <?php
                                     }
                                 endif;?>

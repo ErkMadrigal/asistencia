@@ -58,11 +58,8 @@ class ReferenciaModel {
         $return = false;
         $this->db->transStart();
         
-        $uuid = Uuid::uuid4();
         
-        $idArma = $uuid->toString();
-
-        $query = "INSERT INTO catalogo_referencias (id, parentesco,cve_parentesco, idReferencia, activo,createdby,createddate,idEmpresa) VALUES ('".$data['parentesco']."','".$data['cve_parentesco']."','".$idReferencia."'1,'".$LoggedUserId."', now() ,'".$idEmpresa."')";
+        $query = "INSERT INTO catalogo_referencias (id, parentesco,cve_parentesco, idReferencia, activo,createdby,createddate,idEmpresa) VALUES ('".$idReferencia."','".$data['parentesco']."','".$data['cve_parentesco']."','".$data['tipo_referencia']."',1,'".$LoggedUserId."', now() ,'".$idEmpresa."')";
 
         $this->db->query($query);
         
@@ -75,5 +72,16 @@ class ReferenciaModel {
         } 
 
         return $return;
+    }
+
+
+    public function GetTipoReferencia(){
+        $builder = $this->db->table('catalogo_referencias');
+        $builder->select('cve_parentesco');
+        $builder->orderBy("cve_parentesco","asc");
+        $builder->groupBy("cve_parentesco","asc");
+        $builder->where("activo",true);
+        return $builder->get()->getResult();
+
     }
 }

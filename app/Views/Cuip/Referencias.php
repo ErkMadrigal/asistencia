@@ -162,6 +162,14 @@
                         <div>
                             <select class="form-control" id="estadocodigoRefCer" name="estadocodigoRefCer">
                                 <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($entidad_federativa) ):
+                                    foreach($entidad_federativa as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -405,6 +413,14 @@
                         <div>
                             <select class="form-control" id="estadocodigoParCer" name="estadocodigoParCer">
                                 <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($entidad_federativa) ):
+                                    foreach($entidad_federativa as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -648,6 +664,14 @@
                         <div>
                             <select class="form-control" id="estadocodigoPersonal" name="estadocodigoPersonal">
                                 <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($entidad_federativa) ):
+                                    foreach($entidad_federativa as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -891,6 +915,14 @@
                         <div>
                             <select class="form-control" id="estadocodigoLaboral" name="estadocodigoLaboral">
                                 <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($entidad_federativa) ):
+                                    foreach($entidad_federativa as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
