@@ -146,5 +146,73 @@ class Referencia extends BaseController {
 			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
 	}
 
+	public function AgreRefe(){
+		if ($this->request->getMethod() == "get"){
+
+            $getEmpresa = session()->get('empresa');
+            $idEmpresa = $this->encrypter->decrypt($getEmpresa);
+
+			$data['modulos'] = $this->menu->Permisos();
+			$data['breadcrumb'] = ["inicio" => 'Referencia' ,
+                    				"url" => 'referencias',
+                    				"titulo" => 'Agregar Referencia'];
+
+			
+			return view('Referencias/addReferencia', $data);
+		}	
+	}
+
+    public function AgregarReferencia(){
+		//helper(['form']);
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['parentesco,cve_parentesco,idReferencia'],FILTER_SANITIZE_STRING)){
+
+				$getEmpresa = session()->get('empresa');
+				$idEmpresa = $this->encrypter->decrypt($getEmpresa);
+
+				
+
+				$rules = [
+				'parentesco' =>  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'],
+				'cve_parentesco' =>  ['label' => "Clave Parentesco", 'rules' => 'required|max_length[255]'],
+                'idReferencia' =>  ['label' => "Tipo Referencia", 'rules' => 'required']];
+		 
+				$errors = [];
+				$succes = [];
+				$dontSucces = [];
+				$data = [];
+
+
+				if($this->validate($rules)){
+					
+					$getUser = session()->get('IdUser');
+					$LoggedUserId = $this->encrypter->decrypt($getUser);
+					$empresa = session()->get('empresa');
+					$idEmpresa = $this->encrypter->decrypt($empresa);
+					
+					
+                    $getReferencia= $this->request->getPost('idReferencia');
+					$idReferencia = $this->encrypt->Decrytp($getReferencia);
+					$result = $this->modelReferencia->insertItemAndSelect('catalogo_referencias', $this->request->getPost() , 'catalogo_referencias',$LoggedUserId , $idEmpresa, $idReferencia);
+
+                    if ($result) {
+
+            			
+                    	$succes = ["mensaje" => 'Arma Agregada con exito' ,
+                            	   "succes" => "succes"];
+
+                           	   
+                    	
+                    } else {
+                    	$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	lang('Layout.toastrError')  ];
+
+                    }
+				} else {	
+					$errors = $this->validator->getErrors();
+				}
+
+				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+		}	
+	}
     
 }

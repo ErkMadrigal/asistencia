@@ -52,4 +52,28 @@ class ReferenciaModel {
 
         return $return; 
     }
+    public function insertItemAndSelect($table, $data , $tableSelect , $LoggedUserId, $idEmpresa, $idReferencia)
+    {
+
+        $return = false;
+        $this->db->transStart();
+        
+        $uuid = Uuid::uuid4();
+        
+        $idArma = $uuid->toString();
+
+        $query = "INSERT INTO catalogo_referencias (id, parentesco,cve_parentesco, idReferencia, activo,createdby,createddate,idEmpresa) VALUES ('".$data['parentesco']."','".$data['cve_parentesco']."','".$idReferencia."'1,'".$LoggedUserId."', now() ,'".$idEmpresa."')";
+
+        $this->db->query($query);
+        
+
+        $this->db->transComplete();
+
+        if ($this->db->transStatus() === TRUE)
+        {
+            $return = true;
+        } 
+
+        return $return;
+    }
 }
