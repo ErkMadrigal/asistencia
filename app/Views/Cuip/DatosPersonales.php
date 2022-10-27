@@ -877,6 +877,8 @@
                     
                 }
 
+                $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
+
                 $('#load').removeClass( "spinner-border" );
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -970,7 +972,7 @@
             }
             
 
-
+            $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
 
         
         var cp = $('#'+elemento).val()
