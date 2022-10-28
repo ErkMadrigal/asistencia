@@ -53,17 +53,17 @@ function estatusRenderer(data, type, full, meta) {
     return src;
 }
 	var table = $('#dataGrid').DataTable({
-            data: <?= json_encode($catalogo) ?> ,
+            data: <?= json_encode($cliente) ?> ,
             deferRender: true,
             pageLength: 10,
             language: {
                 url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
             },
-            columns: [{ data: "tipo_combo"
+            columns: [{ data: "razon_social"
                       },
-                      { data: "valor"
+                      { data: "nombre_corto"
                       },
-                      { data: "tipo_combo"
+                      { data: "email"
                       },
                       { data: "activo",
                         render: estatusRenderer
