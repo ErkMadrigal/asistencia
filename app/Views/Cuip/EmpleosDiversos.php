@@ -466,6 +466,10 @@
 
                     toastr.success(response.succes.mensaje);
 
+                    $('#saveEmpleosDiversos').addClass( "btn-success" );
+                    $('#saveEmpleosDiversos').prop( "disabled",true );
+                    $('#saveEmpleosDiversos').html( "Guardado&nbsp;<i class='fa fa-thumbs-up'></i>" );
+
                     $("html,body").animate({scrollTop: $("#cardCapPublica").offset().top},2000);
 
                     $('#tabs a[href="#custom-overlay"]').trigger('click');

@@ -83,10 +83,10 @@
          
         <div class="row">
             <div class="col-4 col-sm-4 col-md-3 ">    
-                <button id="btnMostrar" class="btn btn-block btn-flat btn-primary" type="button"><i class="fa fa-window-restore" aria-hidden="true"></i>&nbsp&nbspMostrar</button>
+                <button id="btnMostrar" class="btn btn-block btn-flat btn-primary" type="button"><i class="fa fa-window-restore" aria-hidden="true"></i>&nbsp;&nbsp;Mostrar</button>
             </div> 
             <div class="col-4 col-sm-4 col-md-3 ">    
-                <button id="btnLimpiar" class="btn btn-block btn-flat btn-danger" type="button"><i class="fa fa-undo" aria-hidden="true"></i>  Limpiar</button>
+                <button id="btnLimpiar" class="btn btn-block btn-flat btn-danger" type="button"><i class="fa fa-undo" aria-hidden="true"></i>&nbsp;&nbsp;Limpiar</button>
             </div>      
         </div>   
     </div> 

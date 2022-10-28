@@ -600,6 +600,10 @@
                     
                     toastr.success(response.succes.mensaje);
 
+                    $('#saveCapacitaciones').addClass( "btn-success" );
+                    $('#saveCapacitaciones').prop( "disabled",true );
+                    $('#saveCapacitaciones').html( "Guardado&nbsp;<i class='fa fa-thumbs-up'></i>" );
+
                     $("html,body").animate({scrollTop: $("#cardSancionesEst").offset().top},2000);
 
                     $('#tabs a[href="#custom-normal"]').trigger('click');

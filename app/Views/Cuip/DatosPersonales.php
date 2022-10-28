@@ -598,6 +598,25 @@
         <h3 class="card-title">DATOS GENERALES: EXPERIENCIA DOCENTE</h3>
 
         <div class="card-tools">
+            <div class="row">
+                  <div class="col-12 col-md-6">
+                    
+                    <nav class="navbar navbar-expand navbar-light">
+                      <!-- Left navbar links -->
+                      <ul class="navbar-nav">
+                        
+                        <li class="nav-item d-none d-sm-inline-block">
+                          <a href="#" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item d-none d-sm-inline-block">
+                          <a href="#" class="nav-link">Contact</a>
+                        </li>
+                      </ul>
+
+                      
+                    </nav>
+                  </div>
+            </div>
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
             </button>
@@ -797,13 +816,41 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="entidad_adscripcion" class=" control-label">Entidad Federativa:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="entidad_adscripcion" name="entidad_adscripcion">
+                        <select class="form-control" id="entidad_adscripcion" name="entidad_adscripcion">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($entidad_federativa) ):
+                                    foreach($entidad_federativa as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#entidad_adscripcion").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="municipio_adscripcion" class=" control-label">Municipio:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="municipio_adscripcion" name="municipio_adscripcion">
+                        <select class="form-control" id="municipio_adscripcion" name="municipio_adscripcion">
+                                <option value="">Selecciona una Opcion</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#municipio_adscripcion").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
                 
@@ -859,37 +906,85 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="telefono_adscripcion" class=" control-label">Número Telefonico:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="telefono_adscripcion" name="telefono_adscripcion">
+                        <input type="text" class="form-control " id="telefono_adscripcion" name="telefono_adscripcion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="postal_adscripcion" class=" control-label">Código Postal:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="postal_adscripcion" name="postal_adscripcion">
+                        <label for="codigoAds" class=" control-label">Código Postal:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="codigoAds" name="codigoAds" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="colonia_adscripcion" class=" control-label">Colonia:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="colonia_adscripcion" name="colonia_adscripcion">
+                        <label for="coloniacodigoAds" class=" control-label">Colonia:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="coloniacodigoAds" name="coloniacodigoAds">
+                                <option value="">Selecciona una Opcion</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#coloniacodigoAds").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="federativa_adscripcion" class=" control-label">Entidad Federativa:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="federativa_adscripcion" name="federativa_adscripcion">
+                        <select class="form-control" id="federativa_adscripcion" name="federativa_adscripcion">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($entidad_federativa) ):
+                                    foreach($entidad_federativa as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#federativa_adscripcion").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="delegacion_adscripcion" class=" control-label">Municipio o Delegación:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="delegacion_adscripcion" name="delegacion_adscripcion">
+                        <select class="form-control" id="delegacion_adscripcion" name="delegacion_adscripcion">
+                                <option value="">Selecciona una Opcion</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#delegacion_adscripcion").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="poblacion_adscripcion" class=" control-label">Ciudad o Poblacion:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="poblacion_adscripcion" name="poblacion_adscripcion">
+                        <label for="ciudadcodigoAds" class=" control-label">Ciudad o Poblacion:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="ciudadcodigoAds" name="ciudadcodigoAds">
+                                <option value="">Selecciona una Opcion</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#ciudadcodigoAds").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
             </div>
@@ -908,8 +1003,6 @@
 </div>
 <script>
     
-
-
     $('#saveDatosPersonales').click(function (event) {
         event.preventDefault();
 
@@ -933,6 +1026,10 @@
 
                     $('#idPersonal').val(response.data.idPersonal);
                     toastr.success(response.succes.mensaje);
+
+                    $('#saveDatosPersonales').addClass( "btn-success" );
+                    $('#saveDatosPersonales').prop( "disabled",true );
+                    $('#saveDatosPersonales').html( "Guardado&nbsp;<i class='fa fa-thumbs-up'></i>" ); 
 
                     $("html,body").animate({scrollTop: $("#cardRefFamCer").offset().top},2000);
 
@@ -968,101 +1065,191 @@
     });
 
 
-    let estado = document.querySelector("#entidad_nacimiento")
+    
+    $("#entidad_nacimiento").on('change', function(){
+        getEstado(this.id)
+    });
 
-    let estadocodigo = document.querySelector("#estadocodigo")
+    $("#estadocodigo").on('change', function(){
+        getEstado(this.id)
+    });
 
-    let selectMunicipio = document.querySelector("#municipio_nacimiento")
+    $("#entidad_adscripcion").on('change', function(){
+        getEstado(this.id)
+    });
 
-    let municipiocodigo = document.querySelector("#municipiocodigo")
-    let selectCiudad = document.querySelector("#cuidad_nacimiento")
+    $("#federativa_adscripcion").on('change', function(){
+        getEstado(this.id)
+    });
 
-
-
-    estado.onchange = (e) => {
-
-        $('#load').addClass( "spinner-border" );
-        selectCiudad.innerHTML = ''
-        selectMunicipio.innerHTML = ''
-
-        e.preventDefault()
-        var estado = $('#entidad_nacimiento').val()
-        var csrfName = $("input[name=app_csrf]").val();
-        
-            var data    = {
-                    estado : estado,
-                    app_csrf: csrfName
-                };
-
-        $.ajax({
-            url: base_url + '/getCiudadEstado',
-            type: 'POST',
-            dataType: 'json',
-            data: data,
-            data: data,
-            ache: false,
-            async: true,
-            success: function (response) {
-                if(response.succes.succes === "succes"){
-                    selectMunicipio.innerHTML = response.data.municipio
-                    selectCiudad.innerHTML = response.data.ciudad
-                    
-                }
-
-                $('#load').removeClass( "spinner-border" );
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                $('#load').removeClass( "spinner-border" );
-                toastr.error('<?=lang('Layout.toastrError') ?>');
-                           
-            }
-        });
-    };
-
-
-    estadocodigo.onchange = (e) => {
-
-        $('#load').addClass( "spinner-border" );
-        
-        municipiocodigo.innerHTML = ''
-
-        e.preventDefault()
-        var estado = $('#estadocodigo').val()
-        var csrfName = $("input[name=app_csrf]").val();
-        
-            var data    = {
-                    estado : estado,
-                    app_csrf: csrfName
-                };
-
-        $.ajax({
-            url: base_url + '/getCiudadEstado',
-            type: 'POST',
-            dataType: 'json',
-            data: data,
-            data: data,
-            ache: false,
-            async: true,
-            success: function (response) {
-                if(response.succes.succes === "succes"){
-                    municipiocodigo.innerHTML = response.data.municipio
-                    
-                    
-                }
-
-                $('#load').removeClass( "spinner-border" );
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                $('#load').removeClass( "spinner-border" );
-                toastr.error('<?=lang('Layout.toastrError') ?>');
-                           
-            }
-        });
-    };
     
 
 
+    function getEstado(id)  {
+
+        $('#load').addClass( "spinner-border" );
+        
+        var elemento = id;
+
+        var estado = $('#'+elemento).val();
+
+
+        switch (elemento) {
+            case "entidad_nacimiento":
+                
+            var selectCiudadDom = document.querySelector("#cuidad_nacimiento")
+
+            var selectMunicipioDom = document.querySelector("#municipio_nacimiento")
+
+                selectCiudadDom.innerHTML = ''
+                selectMunicipioDom.innerHTML = ''
+            break;
+            case "estadocodigo":
+                
+            
+            var selectMunicipioDom = document.querySelector("#municipiocodigo")
+
+                
+                selectMunicipioDom.innerHTML = ''
+            break;
+            case "estadocodigoRefCer":
+                
+            
+            var selectMunicipioDom = document.querySelector("#municipiocodigoRefCer")
+
+                
+                selectMunicipioDom.innerHTML = ''
+            break;
+            case "estadocodigoParCer":
+                
+            
+            var selectMunicipioDom = document.querySelector("#municipiocodigoParCer")
+
+                
+                selectMunicipioDom.innerHTML = ''
+            break;
+            case "estadocodigoPersonal":
+                
+            
+            var selectMunicipioDom = document.querySelector("#municipiocodigoPersonal")
+
+                
+                selectMunicipioDom.innerHTML = ''
+            break;
+            case "estadocodigoLaboral":
+                
+            
+            var selectMunicipioDom = document.querySelector("#municipiocodigoLaboral")
+
+                
+                selectMunicipioDom.innerHTML = ''
+            break;
+            case "entidad_adscripcion":
+                
+            
+            var selectMunicipioDom = document.querySelector("#municipio_adscripcion")
+
+                
+                selectMunicipioDom.innerHTML = ''
+            break;
+            case "federativa_adscripcion":
+                
+            
+            var selectMunicipioDom = document.querySelector("#delegacion_adscripcion")
+
+                
+                selectMunicipioDom.innerHTML = ''
+            break;
+
+  
+            }
+
+        
+        var csrfName = $("input[name=app_csrf]").val();
+        
+            var data    = {
+                    estado : estado,
+                    app_csrf: csrfName
+                };
+
+        $.ajax({
+            url: base_url + '/getCiudadEstado',
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            data: data,
+            ache: false,
+            async: true,
+            success: function (response) {
+                if(response.succes.succes === "succes"){
+                        
+                        
+                    switch (elemento) {
+                    case "entidad_nacimiento":
+                
+                        
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                    break;
+                    case "estadocodigo":
+                
+                        
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                    break;
+                    case "estadocodigoRefCer":
+                
+                        
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                    break;
+                    case "estadocodigoParCer":
+                
+                        
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                    break;
+                    case "estadocodigoPersonal":
+                
+                        
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                    break;
+                    case "estadocodigoLaboral":
+                
+                        
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                    break;
+                    case "entidad_adscripcion":
+                
+                        
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                    break;
+                    case "federativa_adscripcion":
+                
+                        
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                    break;
+  
+                     }
+                    
+                }
+
+                $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
+
+                $('#load').removeClass( "spinner-border" );
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('#load').removeClass( "spinner-border" );
+                toastr.error('<?=lang('Layout.toastrError') ?>');
+                           
+            }
+        });
+    };
+
+
+    
     $("#codigo").on('keyup', function(){
+        getSepomex(this.id)
+    });
+
+    $("#codigoAds").on('keyup', function(){
         getSepomex(this.id)
     });
 
@@ -1139,11 +1326,16 @@
                 selectCiudadDom.innerHTML = ''
                 selectColoniaDom.innerHTML = ''
             break;
+            case "codigoAds":
+                var selectCiudadDom = document.querySelector("#ciudad"+elemento)    
+                selectCiudadDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
   
             }
             
 
-
+            $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
 
         
         var cp = $('#'+elemento).val()
@@ -1214,7 +1406,12 @@
                         selectCiudadDom.innerHTML = response.data.ciudad
                         selectColoniaDom.innerHTML = response.data.colonia
                     break;
-
+                    case "codigoAds":
+                
+                        
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectColoniaDom.innerHTML = response.data.colonia
+                    break;
   
                     }
                     
@@ -1232,8 +1429,5 @@
 
     }
     };
-
-
-
 
 </script>
