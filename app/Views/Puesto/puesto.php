@@ -7,7 +7,7 @@
         <div class="col-12 col-sm-6 col-md-9 ">
         </div>
             <div class="col-12 col-sm-6 col-md-3">
-                <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/AddPuesto " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i> Agregar Cliente</a>
+                <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/AddPuesto " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i> Agregar Puesto</a>
             </div>   
     </div>
 </div>
@@ -54,17 +54,19 @@ function estatusRenderer(data, type, full, meta) {
     return src;
 }
 	var table = $('#dataGrid').DataTable({
-            data: <?= json_encode($cliente) ?> ,
+            data: <?= json_encode($puesto) ?> ,
             deferRender: true,
             pageLength: 10,
             language: {
                 url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
             },
-            columns: [{ data: "razon_social"
+            columns: [{ data: "idCliente"
                       },
-                      { data: "nombre_corto"
+                      { data: "idUbicacion"
                       },
-                      { data: "email"
+                      { data: "idTurno"
+                      },
+                      { data: "idPuestos"
                       },
                       { data: "activo",
                         render: estatusRenderer
@@ -72,14 +74,14 @@ function estatusRenderer(data, type, full, meta) {
                       {  data: "edit",
                     render: function (data, type, full, meta) {
                     
-                        return "<a href='" + base_url + "/editCliente?id=" + full.id + "' class='nav-link'><i class='fa fa-pencil-square-o nav-icon'></i>";
+                        return "<a href='" + base_url + "/editPuesto?id=" + full.id + "' class='nav-link'><i class='fa fa-pencil-square-o nav-icon'></i>";
                     
                     }
                 }, {
                     data: "detail",
                     render: function (data, type, full, meta) {
                     
-                        return "<a href='" + base_url + "/detailCliente?id=" + full.id + "' class='nav-link'><i class='fa fa-list-alt nav-icon'></i>";
+                        return "<a href='" + base_url + "/detailPuesto?id=" + full.id + "' class='nav-link'><i class='fa fa-list-alt nav-icon'></i>";
                     
                     }
                 }
