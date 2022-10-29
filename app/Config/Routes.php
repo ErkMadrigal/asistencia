@@ -129,7 +129,6 @@ $routes->post('GuardarRefe', 'Referencia::AgregarReferencia',['filter' => 'auth'
 $routes->get('clientes', 'Cliente::GetCliente',['filter' => 'auth']);
 $routes->get('detailCliente', 'Cliente::DetalleReferencia',['filter' => 'auth']);
 $routes->get('editCliente', 'Cliente::EditarCliente',['filter' => 'auth']);
-
 $routes->post('EditInfoCliente', 'Cliente::SaveClientes',['filter' => 'auth']);
 $routes->get('AddCliente', 'Cliente::Agrecliente',['filter' => 'auth']);
 $routes->post('GuardarCliente', 'Cliente::AgregarClientes',['filter' => 'auth']);
