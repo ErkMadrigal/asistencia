@@ -29,7 +29,7 @@
                         <label for="estado" class="control-label">Estado <span class="text-danger">*</span></label>
                         <div >
                             <select id="estado" name="estado" class="form-control">
-                                <option selected>Selecciona una Opcion</option>
+                                <option value="" selected>Selecciona una Opcion</option>
                                 <?php foreach($sepomexEstados as $estado => $valor):?>
                                     <option value="<?=$valor->estado?>"><?=$valor->estado?></option>
                                 <?php endforeach;?>
@@ -50,7 +50,7 @@
                         <label for="ciudad" class="control-label">Ciudad <span class="text-danger">*</span></label>
                         <div >
                             <select id="ciudad" name="ciudad" class="form-control">
-                                    <option selected>Selecciona una Opción</option>
+                                    <option value="" selected>Selecciona una Opción</option>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -68,7 +68,7 @@
                         <label for="municipio" class="control-label">Municipio <span class="text-danger">*</span></label>
                         <div >
                             <select id="municipio" name="municipio" class="form-control">
-                                    <option selected>Selecciona una Opción</option>
+                                    <option value="" selected>Selecciona una Opción</option>
                                     
                             </select>
                             <script>
