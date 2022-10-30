@@ -239,6 +239,22 @@ class Cuip extends BaseController {
         	$data['ocupacion'] = $this->cuipCatalgo($getOcupacion);
         	//////////////
 
+        	$getRango = $this->modelCuip->GetCatalogoCuip('190ea697-f3c7-44f3-832b-02e063d9a518');
+			
+        	$data['rango'] = $this->cuipCatalgo($getRango);
+        	//////////////
+
+        	$getMando = $this->modelCuip->GetCatalogoCuip('448ea88c-222f-4bf4-a157-7bac6846d822');
+			
+        	$data['mando'] = $this->cuipCatalgo($getMando);
+        	//////////////
+
+        	$getPuesto = $this->modelCuip->GetCatalogoCuip('29773b6a-a69c-4245-ba1c-755e17398d73');
+			
+        	$data['puesto'] = $this->cuipCatalgo($getPuesto);
+        	//////////////
+
+
 			return view('Cuip/RegistroCUIP', $data);	
 			}
 	}
@@ -297,7 +313,7 @@ class Cuip extends BaseController {
 				'certificado_por' =>  ['label' => "Certificado por", 'rules' => 'required|max_length[255]'],
 				'dependencia_adscripcion' =>  ['label' => "Dependencia", 'rules' => 'required|max_length[255]'],
 				'institucion_adscripcion' =>  ['label' => "Institución", 'rules' => 'required|max_length[255]'],
-				'fechaingreso_adscripcion' =>  ['label' => "Fecha de Ingreso", 'rules' => 'required|max_length[255]'],
+				'fechaingreso_adscripcion' =>  ['label' => "Fecha de Ingreso", 'rules' => 'required|valid_only_date_chek'],
 				'puesto_adscripcion' =>  ['label' => "Puesto", 'rules' => 'required|max_length[255]'],
 				'especialidad_adscripcion' =>  ['label' => "Especialidad", 'rules' => 'required|max_length[255]'],
 				'certificado_por' =>  ['label' => "Certificado por", 'rules' => 'required|max_length[255]'],
@@ -317,15 +333,15 @@ class Cuip extends BaseController {
 				
 				'calle_adscripcion' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
 				'exterior_adscripcion' =>  ['label' => "No. Exterior", 'rules' => 'required|max_length[255]'],
-				'interior_adscripcion' =>  ['label' => "No. Interior", 'rules' => 'required|max_length[255]'],
+				
 				'entrecalle_adscripcion' =>  ['label' => "Entre la calle de", 'rules' => 'required|max_length[255]'],
 				'ylacalle_adscripcion' =>  ['label' => "Y la calle", 'rules' => 'required|max_length[255]'],
-				'telefono_adscripcion' =>  ['label' => "Número Telefonico", 'rules' => 'required|max_length[255]'],
-				'postal_adscripcion' =>  ['label' => "Código Postal", 'rules' => 'required|max_length[255]'],
-				'colonia_adscripcion' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
+				'telefono_adscripcion' =>  ['label' => "Número Telefonico", 'rules' => 'required|max_length[10]|integer'],
+				'codigoAds' =>  ['label' => "Código Postal", 'rules' => 'required|max_length[5]|integer'],
+				'coloniacodigoAds' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
 				'federativa_adscripcion' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
 				'delegacion_adscripcion' =>  ['label' => "Municipio o Delegación", 'rules' => 'required|max_length[255]'],
-				'poblacion_adscripcion' =>  ['label' => "Ciudad o Poblacion", 'rules' => 'required|max_length[255]']];
+				'ciudadcodigoAds' =>  ['label' => "Ciudad o Poblacion", 'rules' => 'required|max_length[255]']];
 		 
 				$errors = [];
 				$succes = [];

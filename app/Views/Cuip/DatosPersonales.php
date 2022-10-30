@@ -588,63 +588,54 @@
                     </div>
                 </div>
             </div>
-        
+        </form>
     </div>
 </div>
 
 
 <div class="card card-primary">
-    <div class="card-header">
+    <div class="card-header ">
+        
         <h3 class="card-title">DATOS GENERALES: EXPERIENCIA DOCENTE</h3>
+                         
 
         <div class="card-tools">
-            <div class="row">
-                  <div class="col-12 col-md-6">
-                    
-                    <nav class="navbar navbar-expand navbar-light">
-                      <!-- Left navbar links -->
-                      <ul class="navbar-nav">
-                        
-                        <li class="nav-item d-none d-sm-inline-block">
-                          <a href="#" class="nav-link">Home</a>
-                        </li>
-                        <li class="nav-item d-none d-sm-inline-block">
-                          <a href="#" class="nav-link">Contact</a>
-                        </li>
-                      </ul>
 
-                      
-                    </nav>
-                  </div>
-            </div>
-            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" class="form-check-input mt-2" id="btnNingunodged">
+                 
+            <a href="#" class="btn btn-tool form-check-label add-more-btn-dged" id="btnAdddged" >Agregar +</a>
+            
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" >
                 <i class="fas fa-minus"></i>
             </button>
-        </div>
+        </div>           
     </div>
+    
     <!-- /.card-header -->
     <div class="card-body">
-        
-            <div class="row">
+        <form class="form-horizontal" id="FormDatosGeneralesDocente">
+        <div id="CardDatosGeneralesDocente">
+            <div class="row form-block-dged">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="nombrecurso" class=" control-label">Nombre del Curso
                             :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nombrecurso" name="nombrecurso">
+                        <input type="text" class="form-control " id="nombrecurso" name="nombrecurso[]">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="nombreInstitucion" class=" control-label">Nombre de
                             la Institución:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion">
+                        <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion[]">
                     </div>
                 </div>
                 <div class='col-12 col-sm-6'>
                     <div class='form-group'>
                         <label for="fecha_inicial">Fecha de Inicio: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="fecha_inicial" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_inicial" id="datetime-fecha_inicial" name="fecha_inicial" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_inicial" id="datetime-fecha_inicial" name="fecha_inicial[]" placeholder="" value="" />
                             <div class="input-group-append" data-target="#fecha_inicial" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -683,10 +674,14 @@
                     <div class="form-group">
                         <label for="certificado_por" class=" control-label">Certificado
                             por:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="certificado_por" name="certificado_por">
+                        <input type="text" class="form-control " id="certificado_por" name="certificado_por[]">
                     </div>
                 </div>
             </div>
+        </div>
+        <hr  class="mt-3 mb-3"/>
+        <div id="CardDatosGeneralesDocenteB">
+        </div>    
         </form>
     </div>
 </div>
@@ -738,7 +733,25 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="puesto_adscripcion" class=" control-label">Puesto:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="puesto_adscripcion" name="puesto_adscripcion">
+                        <select class="form-control" id="puesto_adscripcion" name="puesto_adscripcion">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($puesto) ):
+                                    foreach($puesto as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#puesto_adscripcion").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -750,13 +763,49 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="rango_adscripcion" class=" control-label">Rango o Categoria:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="rango_adscripcion" name="rango_adscripcion">
+                        <select class="form-control" id="rango_adscripcion" name="rango_adscripcion">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($rango) ):
+                                    foreach($rango as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#rango_adscripcion").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="nivel_adscripcion" class=" control-label">Nivel de Mando:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nivel_adscripcion" name="nivel_adscripcion">
+                        <select class="form-control" id="nivel_adscripcion" name="nivel_adscripcion">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($mando) ):
+                                    foreach($mando as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#nivel_adscripcion").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -886,7 +935,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="interior_adscripcion" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
+                        <label for="interior_adscripcion" class=" control-label">No. Interior:</label>
                         <input type="text" class="form-control " id="interior_adscripcion" name="interior_adscripcion">
                     </div>
                 </div>
@@ -1429,5 +1478,36 @@
 
     }
     };
+
+    $(document).on('click','.add-more-btn-dged',function(){
+    
+    var clone = $('#CardDatosGeneralesDocente').clone('.form-block-dged');
+    $('#CardDatosGeneralesDocenteB').append(clone);
+    $('#btnAdddged').removeClass('add-more-btn');
+    $('#btnAdddged').addClass('remove-more-btn');
+    $('#btnAdddged').text('Remover -');
+});
+
+$(document).on('click','.remove-more-btn',function(){    
+    $('#CardDatosGeneralesDocenteB').empty();
+    $('#btnAdddged').removeClass('remove-more-btn');
+    $('#btnAdddged').addClass('add-more-btn');
+    $('#btnAdddged').text('Agregar +');
+});
+
+$(document).on('click','#btnNingunodged',function(){ 
+
+        if($('#btnNingunodged').is(':checked')) {
+
+
+            $('#FormDatosGeneralesDocente input').attr('disabled','disabled');
+            $('#FormDatosGeneralesDocente select').attr('disabled','disabled');
+        } else {
+            $('#FormDatosGeneralesDocente input').attr('disabled',false);
+            $('#FormDatosGeneralesDocente select').attr('disabled',false);
+        }
+        
+        
+    });
 
 </script>
