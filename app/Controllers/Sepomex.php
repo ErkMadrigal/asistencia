@@ -183,6 +183,7 @@ class Sepomex extends BaseController{
 			$succes = [];
 			$dontSucces = [];
 			$data = [];
+			$validate = [];
 			if($this->validate($rules)){
 				$insertSep = array(
 					"codigoPostal" =>  $_POST["cp"],
