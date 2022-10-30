@@ -125,7 +125,7 @@ $routes->get('editReferencia', 'Referencia::EditarReferencia',['filter' => 'auth
 $routes->post('EditInfoReferenci', 'Referencia::SaveReferencia',['filter' => 'auth']);
 $routes->get('AddReferencia', 'Referencia::AgreRefe',['filter' => 'auth']);
 $routes->post('GuardarRefe', 'Referencia::AgregarReferencia',['filter' => 'auth']);
-////clientes////
+//clientes//
 $routes->get('clientes', 'Cliente::GetCliente',['filter' => 'auth']);
 $routes->get('detailCliente', 'Cliente::DetalleReferencia',['filter' => 'auth']);
 $routes->get('editCliente', 'Cliente::EditarCliente',['filter' => 'auth']);
@@ -133,7 +133,7 @@ $routes->post('EditInfoCliente', 'Cliente::SaveClientes',['filter' => 'auth']);
 $routes->get('AddCliente', 'Cliente::Agrecliente',['filter' => 'auth']);
 $routes->post('GuardarCliente', 'Cliente::AgregarClientes',['filter' => 'auth']);
 
-/////puesto/////
+///puesto///
 $routes->get('puesto', 'Puesto::GetPuestos',['filter' => 'auth']);
 $routes->get('detailPuesto', 'Puesto::DetallePuesto',['filter' => 'auth']);
 $routes->get('editPuesto', 'Puesto::EditarCliente',['filter' => 'auth']);
@@ -141,7 +141,7 @@ $routes->post('EditInfoPuesto', 'Puesto::SavePuesto',['filter' => 'auth']);
 $routes->get('AddPuesto', 'Puesto::AgregaPuesto',['filter' => 'auth']);
 $routes->post('GuardarPuesto', 'Puesto::AgregarClientes',['filter' => 'auth']);
 
-/////ubicacion////
+///ubicacion//
 $routes->get('ubicacion', 'Ubicacion::GetUbica',['filter' => 'auth']);
 $routes->get('detailUbicacion', 'Ubicacion::DetalleUbicacion',['filter' => 'auth']);
 $routes->get('editUbicacion', 'Ubicacion::EditarUbicacion',['filter' => 'auth']);
