@@ -102,7 +102,7 @@ class Ubicacion extends BaseController {
 
     public function SaveUbicacion(){
 
-		if($this->request->getMethod() == "post" && $this->request->getvar(['cliente, ubicacion, calle, codigo, 6coloniacodigo, municipiocodigo, ciudadcodigo, estadocodigo'],FILTER_SANITIZE_STRING)) {
+		if($this->request->getMethod() == "post" && $this->request->getvar(['id'],FILTER_SANITIZE_STRING)) {
 
 			$rules = ['id' =>  ['label' => '', 'rules' =>'required']];
 
@@ -116,7 +116,7 @@ class Ubicacion extends BaseController {
 					$LoggedUserId = $this->encrypter->decrypt($getUser);
 					$TodayDate = date("Y-m-d H:i:s");
 					$idModi = $this->request->getPost('id');
-					$idCliente = $this->encrypt->Decrytp($idModi);	
+					$idUbicacion = $this->encrypt->Decrytp($idModi);	
 					$ubicacion = array(
 
 						
@@ -125,7 +125,7 @@ class Ubicacion extends BaseController {
                 		"updateddate" => $TodayDate
                     );
 
-					$ubi = $this->modelCliente->Savecliente($ubicacion);
+					$ubi = $this->modelUbica->Savecliente($ubicacion, $idUbicacion);
 
 					if ($ubi){
 

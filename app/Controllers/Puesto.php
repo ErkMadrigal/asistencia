@@ -116,15 +116,14 @@ class Puesto extends BaseController {
 					$LoggedUserId = $this->encrypter->decrypt($getUser);
 					$TodayDate = date("Y-m-d H:i:s");
 					$idModi = $this->request->getPost('id');
-					$idCliente = $this->encrypt->Decrytp($idModi);	
-					$updateEmpresa = array(
-
+					$idPuesto = $this->encrypt->Decrytp($idModi);	
+					$updatePuesto = array(
                         "activo" => $this->request->getPost('activo'),
                         "updatedby" => $LoggedUserId,
                 		"updateddate" => $TodayDate
                     );
 
-					$puesto = $this->modelCliente->Savecliente($updateEmpresa, $idC);
+					$puesto = $this->modelPuesto->Savecliente($updatePuesto, $idPuesto);
 
 					if ($puesto){
 

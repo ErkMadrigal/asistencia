@@ -50,10 +50,10 @@ class PuestoModel
 
 
 
-   public function Savecliente( $updateEmpresa, $idCatalogo ){
+   public function Savecliente( $updatePuesto, $idPuesto ){
 
         $return = false;
-        $this->db->table('cliente')->where('id')->update($updateEmpresa);
+        $this->db->table('puestos')->where('id',$idPuesto)->update($updatePuesto);
 
         if ($this->db->affectedRows() > 0){
             $return = true;
