@@ -173,7 +173,10 @@ class Turno extends BaseController {
 
 
 				$rules = [
-				'cliente' =>  ['label' => "Cliente", 'rules' => 'required']];
+				'cliente' =>  ['label' => "Cliente", 'rules' => 'required'],
+				'ubicacion' =>  ['label' => "Ubicación", 'rules' => 'required'],
+				'turno' =>  ['label' => "Turno", 'rules' => 'required'],
+				'horario' =>  ['label' => "Horario", 'rules' => 'required']];
 		 
 				$errors = [];
 				$succes = [];

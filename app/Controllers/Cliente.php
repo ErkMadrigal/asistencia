@@ -175,7 +175,27 @@ class Cliente extends BaseController {
 				$rules = [
 				'razon_social' =>  ['label' => "Razon social", 'rules' => 'required|max_length[255]'],
 				'nombre_corto' =>  ['label' => "Nombre Corto", 'rules' => 'required|max_length[255]'],
-                'email' =>  ['label' => "Email", 'rules' => 'required|integer|max_length[255]']];
+                'email' =>  ['label' => "Email", 'rules' => 'required|integer|max_length[255]'],
+				'nombre_contacto' =>  ['label' => "Nombre del contacto", 'rules' => 'required|max_length[255]'],
+				'puesto_contacto' =>  ['label' => "Puesto del Contacto", 'rules' => 'required|max_length[255]'],
+				'whatsApp' =>  ['label' => "WhatsApp", 'rules' => 'required|max_length[255]'],
+				'telefono_oficina' =>  ['label' => "Teléfono Oficina", 'rules' => 'required|max_length[255]'],
+				'fecha_inicio_servicio' =>  ['label' => "Fecha de Inicio Servicio", 'rules' => 'required|max_length[255]'],
+				'fecha_fin_servicio' =>  ['label' => "Fecha Fin Servicio:", 'rules' => 'required|max_length[255]'],
+				'calle' =>  ['label' => "Calle y Número", 'rules' => 'required|max_length[255]'],
+				'codigo' =>  ['label' => "Código Postal", 'rules' => 'required|max_length[255]'],
+				'coloniacodigo' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
+				'municipiocodigo' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
+				'ciudadcodigo' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
+				'estadocodigo' =>  ['label' => "Estado", 'rules' => 'required|max_length[255]'],
+				'rfc' =>  ['label' => "R.F.C", 'rules' => 'required|max_length[255]'],
+				'calleFiscales' =>  ['label' => "Calle y Número", 'rules' => 'required|max_length[255]'],
+				'codigoDatosFis' =>  ['label' => "Código Postal", 'rules' => 'required|max_length[255]'],
+				'coloniacodigoDatosFis' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
+				'municipiocodigoDatosFis' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
+				'ciudadcodigoDatosFis' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
+				'estadocodigoDatosFis' =>  ['label' => "Estado", 'rules' => 'required|max_length[255]']];
+				
 		 
 				$errors = [];
 				$succes = [];

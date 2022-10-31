@@ -172,7 +172,14 @@ class Ubicacion extends BaseController {
 
 
 				$rules = [
-				'ubicacion' =>  ['label' => "Ubicación", 'rules' => 'required|max_length[255]']];
+				'cliente' =>  ['label' => "Cliente", 'rules' => 'required|max_length[255]'],
+				'ubicacion' =>  ['label' => "Ubicación", 'rules' => 'required|max_length[255]'],
+				'calle' =>  ['label' => "Calle y Número", 'rules' => 'required|max_length[255]'],
+				'codigo' =>  ['label' => "Código Postal", 'rules' => 'required|max_length[255]'],
+				'coloniacodigo' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
+				'municipiocodigo' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
+				'ciudadcodigo' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
+				'estadocodigo' =>  ['label' => "Estado", 'rules' => 'required|max_length[255]']];
 		 
 				$errors = [];
 				$succes = [];
