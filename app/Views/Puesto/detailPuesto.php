@@ -23,11 +23,19 @@
                             </div>
                         </div>
                     </div>
+                    <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="nombre_corto" class=" control-label">Nombre Corto: </label>
+                        <div>
+                            <?= $Puesto->nombre_corto ?>
+                        </div>
+                    </div>
+                </div>
                     <div class='col-12 col-sm-6'>    
                         <div class="form-group">
                             <label for="idReferencia" class="control-label">Ubicacion: </label>
                             <div >
-                            <?= $Puesto->idUbicacion ?>
+                            <?= $Puesto->nombre_ubicacion ?>
                             </div>
                         </div>
                     </div>
@@ -35,7 +43,7 @@
                         <div class="form-group">
                             <label for="idReferencia" class="control-label">Turno: </label>
                             <div >
-                            <?= $Puesto->idTurno ?>
+                            <?= $Puesto->turnos ?>
                             </div>
                         </div>
                     </div>
@@ -47,6 +55,38 @@
                             </div>
                         </div>
                     </div>
+                    <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="numGuardias" class=" control-label">Numero de Guardias:</label>
+                        <div >
+                            <?= $Puesto->num_guardias ?>
+                            </div>                        
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="cantArmaCorta" class=" control-label">Cantidad Arma Corta:</label>
+                        <div >
+                            <?= $Puesto->cant_arma_corta ?>
+                            </div>                        
+                    </div>
+                </div>  
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="cantSinarmas" class=" control-label">Cantidad Sin Arma:</label>
+                        <div >
+                            <?= $Puesto->cant_arma_larga ?>
+                            </div>                        
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="cantArmaLarga" class=" control-label">Cantidad Arma Larga:</label>
+                        <div >
+                            <?= $Puesto->cant_sin_arma ?>
+                            </div>                        
+                    </div>
+                </div>
                     <div class='col-12 col-sm-6'>    
                         <div class="form-group">
                             <label for="Activo" class="control-label">Activo: </label>
