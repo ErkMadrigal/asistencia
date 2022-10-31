@@ -41,14 +41,18 @@
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="nombre_corto" class=" control-label">Nombre Corto: <span class="text-danger">*</span></label>
+                        <label for="nombre_corto" class=" control-label">Nombre Corto: </label>
+                        <div>
                         <?= $turno->nombre_corto ?>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="nombre_corto" class=" control-label">Nombre Corto: <span class="text-danger">*</span></label>
+                        <label for="nombre_corto" class=" control-label">Nombre Corto: </label>
+                        <div>
                         <?= $turno->horario ?>
+                        </div>
                     </div>
                 </div>
                     <div class='col-12 col-sm-6'>    

@@ -166,11 +166,18 @@ class Puesto extends BaseController {
 
     public function AgregarPuesto(){
 		//helper(['form']);
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['cliente, ubicacion, turno, puesto, numGuardias, cantSinarmas, cantArmaLarga'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['cliente, ubicacion, turno, puesto, numGuardias, cantSinarmas,cantArmaCorta, cantArmaLarga'],FILTER_SANITIZE_STRING)){
 
 
 				$rules = [
-				'cliente' =>  ['label' => "Razon social", 'rules' => 'required']];
+				'cliente' =>  ['label' => "Razon social", 'rules' => 'required'],
+				'ubicacion' =>  ['label' => "Ubicación", 'rules' => 'required'],
+				'turno' =>  ['label' => "Turno", 'rules' => 'required'],
+				'puesto' =>  ['label' => "Puesto", 'rules' => 'required'],
+				'numGuardias' =>  ['label' => "Numero de Guardias", 'rules' => 'required'],
+				'cantArmaCorta' =>  ['label' => "Cantidad Arma Corta", 'rules' => 'required'],
+				'cantSinarmas' =>  ['label' => "Cantidad Sin Arma", 'rules' => 'required'],
+				'cantArmaLarga' =>  ['label' => "Cantidad Arma Larga", 'rules' => 'required']];
 		 
 				$errors = [];
 				$succes = [];

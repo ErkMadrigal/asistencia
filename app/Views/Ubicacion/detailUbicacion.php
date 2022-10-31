@@ -25,8 +25,10 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="nombre_corto" class=" control-label">Nombre Corto: <span class="text-danger">*</span></label>
+                        <label for="nombre_corto" class=" control-label">Nombre Corto: </label>
+                        <div>
                         <?= $ubicacion->nombre_corto ?>
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-6'>
@@ -39,20 +41,26 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="calle" class=" control-label">Calle y Número:<span class="text-danger">*</span></label>
-                        <?= $ubicacion->calle_num ?>            
+                        <label for="calle" class=" control-label">Calle y Número:</label>
+                        <div>
+                        <?= $ubicacion->calle_num ?>   
+                        </div>         
                             </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="codigo" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
+                        <label for="codigo" class=" control-label">Código Postal :</label>
+                        <div>
                         <?= $ubicacion->idCodigoPostal ?>     
+                        </div>
                                    </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="coloniacodigo" class=" control-label">Colonia:<span class="text-danger">*</span></label>
+                        <label for="coloniacodigo" class=" control-label">Colonia:</label>
+                        <div>
                         <?= $ubicacion->colonia ?>
+                        </div>
                             <script>
                                 $(document).ready(function() {
                                     $("#coloniacodigo").select2({
@@ -66,7 +74,7 @@
                 
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="municipiocodigo" class="control-label">Municipio: <span class="text-danger">*</span></label>
+                        <label for="municipiocodigo" class="control-label">Municipio: </label>
                         <div>
                         <?= $ubicacion->municipio ?>
                             <script>
@@ -83,7 +91,7 @@
                 
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="ciudadcodigo" class="control-label">Ciudad: <span class="text-danger">*</span></label>
+                        <label for="ciudadcodigo" class="control-label">Ciudad: </label>
                         <div>
                         <?= $ubicacion->ciudad ?>
                             <script>
@@ -99,7 +107,7 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="estadocodigo" class="control-label">Estado: <span class="text-danger">*</span></label>
+                        <label for="estadocodigo" class="control-label">Estado: </label>
                         <div>
                         <?= $ubicacion->nombre_ubicacion ?>
                             <script>
