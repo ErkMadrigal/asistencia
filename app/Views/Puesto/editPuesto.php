@@ -21,9 +21,7 @@
                     <div class="form-group">
                         <label for="parentesco" class="control-label">Cliente: </label>
                         <div>
-                        <input type="text"  class="form-control " disabled id="idCliente" name="idCliente" value="<?= $Puesto->idCliente ?>">
-
-
+                        <input type="text"  class="form-control " disabled id="idCliente" name="idCliente" value="<?= $Puesto->idCliente ?>"><input type="hidden" class="form-control " value=" <?= $id ?> " id="id" name="id"><?= csrf_field() ?>
                         </div>
                     </div>
                 </div>

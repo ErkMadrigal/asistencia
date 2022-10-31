@@ -167,7 +167,7 @@
             formData.append('activo', val);
 
             $.ajax({
-                url: base_url + '/EditInfoubicacion',
+                url: base_url + '/EditInfoUbicacion',
                 type: 'POST',
                 dataType: 'json',
                 data: formData,

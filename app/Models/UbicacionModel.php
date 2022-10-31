@@ -43,10 +43,10 @@ class UbicacionModel
 
 
 
-   public function Savecliente( $updateEmpresa, $idCatalogo ){
+   public function Savecliente( $ubicacion, $idUbicacion ){
 
         $return = false;
-        $this->db->table('cliente')->where('id')->update($updateEmpresa);
+        $this->db->table('ubicacion')->where('id', $idUbicacion)->update($ubicacion);
 
         if ($this->db->affectedRows() > 0){
             $return = true;

@@ -145,7 +145,7 @@ $routes->post('GuardarPuesto', 'Puesto::AgregarPuesto',['filter' => 'auth']);
 $routes->get('ubicacion', 'Ubicacion::GetUbica',['filter' => 'auth']);
 $routes->get('detailUbicacion', 'Ubicacion::DetalleUbicacion',['filter' => 'auth']);
 $routes->get('editUbicacion', 'Ubicacion::EditarUbicacion',['filter' => 'auth']);
-$routes->post('EditInfoubicacion', 'Ubicacion::SaveUbicacion',['filter' => 'auth']);
+$routes->post('EditInfoUbicacion', 'Ubicacion::SaveUbicacion',['filter' => 'auth']);
 $routes->get('AddUbicacion', 'Ubicacion::AgregaUbicacion',['filter' => 'auth']);
 $routes->post('GuardarUbicacion', 'Ubicacion::AgregarUbicacion',['filter' => 'auth']);
 
