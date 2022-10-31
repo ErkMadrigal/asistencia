@@ -31,7 +31,28 @@
                         </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-6'>
+                
+            </div>
+        </form>
+    </div>
+   
+</div>
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title"> DETALLE DATOS DEL DOMICILIO</h3>
+
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+
+        <div class="row">
+
+        <div class='col-12 col-sm-6'>
                     <div class="form-group">
                         <label for="ubicacion" class="control-label">Ubicacion: </label>
                         <div>
@@ -121,6 +142,7 @@
                         </div>
                     </div>
                 </div>
+            
 
                 <div class='col-12 col-sm-6'>
                     <div class="form-group">
@@ -130,10 +152,13 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
+        
+          
+        </div>
+
     </div>
-    <div class="card-footer  clearfix  ">
+</div>
+<div class="card-footer  clearfix  ">
         <div class="row callout callout-warning">
             <div class='col-12 col-sm-6'>
                 <div class="form-group">
@@ -174,6 +199,4 @@
             </div>
         </div>
     </div>
-
-</div>
 <?= $this->endSection() ?>

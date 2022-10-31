@@ -77,15 +77,14 @@
                         <div class="input-group date" id="fecha_fin_servicio" data-target-input="nearest">
                             <?= $cliente->fecha_inicio ?>
                         </div>
-                        
                         <script type="text/javascript">
-                            $(function() {
-                                $("#fecha_inicio_servicio").datetimepicker({
-                                    format: 'DD-MM-YYYY',
-                                    locale: moment.locale('es')
-                                });
+                        $(function() {
+                            $("#fecha_inicio_servicio").datetimepicker({
+                                format: 'DD-MM-YYYY',
+                                locale: moment.locale('es')
                             });
-                        </script>
+                        });
+                    </script>
                     </div>
                 </div>
                 <div class='col-6 col-sm-12 col-md-6    '>
