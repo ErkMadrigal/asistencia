@@ -175,7 +175,7 @@ class Cliente extends BaseController {
 				$rules = [
 				'razon_social' =>  ['label' => "Razon social", 'rules' => 'required|max_length[255]'],
 				'nombre_corto' =>  ['label' => "Nombre Corto", 'rules' => 'required|max_length[255]'],
-                'email' =>  ['label' => "Email", 'rules' => 'required|integer|max_length[255]'],
+                'email' =>  ['label' => "Email", 'rules' => 'required|max_length[255]'],
 				'nombre_contacto' =>  ['label' => "Nombre del contacto", 'rules' => 'required|max_length[255]'],
 				'puesto_contacto' =>  ['label' => "Puesto del Contacto", 'rules' => 'required|max_length[255]'],
 				'whatsApp' =>  ['label' => "WhatsApp", 'rules' => 'required|max_length[255]'],
