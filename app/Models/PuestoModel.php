@@ -35,7 +35,9 @@ class PuestoModel
 
     public function GetPuestoById($id){
         $builder = $this->db->table('puestos');
-        $builder->select("idCliente,idUbicacion,idTurno,idPuestos,puestos.activo, puestos.createddate, puestos.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->select("idCliente,idUbicacion,idTurno,puesto,puestos.activo, puestos.createddate, puestos.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->join("sys_usuarios_admin UA","puestos.createdby = UA.id","left");
+       $builder->join("sys_usuarios_admin UU","puestos.updatedby = UU.id","left");
        $builder->orderBy("idCliente","asc");
        $builder->where('puestos.id', $id);
         return $builder->get()->getRow();

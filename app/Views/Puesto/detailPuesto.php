@@ -43,7 +43,7 @@
                         <div class="form-group">
                             <label for="idReferencia" class="control-label">Puesto: </label>
                             <div >
-                            <?= $Puesto->idPuestos ?>
+                            <?= $Puesto->puesto ?>
                             </div>
                         </div>
                     </div>
