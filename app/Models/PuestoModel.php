@@ -35,7 +35,7 @@ class PuestoModel
 
     public function GetPuestoById($id){
         $builder = $this->db->table('puestos');
-        $builder->select("razon_social AS idCliente,catalogos_detalle.valor AS turnos,nombre_ubicacion,puestos.puesto,puestos.activo,cliente.nombre_corto, puestos.createddate, puestos.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->select("razon_social AS idCliente,catalogos_detalle.valor AS turnos,num_guardias,cant_arma_corta,cant_arma_larga,cant_sin_arma,nombre_ubicacion,puestos.puesto,puestos.activo,cliente.nombre_corto, puestos.createddate, puestos.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
         $builder->join("cliente","puestos.idCliente = cliente.id","left");
 
         $builder->join("ubicacion","puestos.idUbicacion = ubicacion.id","left");
