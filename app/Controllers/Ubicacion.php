@@ -239,4 +239,7 @@ class Ubicacion extends BaseController {
 		}	
 	}
 
+
+	
+
 }

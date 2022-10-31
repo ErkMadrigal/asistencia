@@ -469,5 +469,50 @@
     }
     };
 
+
+    $('#cliente').on('select2:select',
+        function (e) {    
+        
+        $('#ubicacion').val(null).empty();
+        var cliente = $('#cliente').val()
+        var csrfName = $("input[name=app_csrf]").val();
+        
+            var data    = {
+                    cliente : cliente,
+                    app_csrf: csrfName
+                };
+
+        $.ajax({
+            url: base_url + '/getUbicaciones',
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            data: data,
+            ache: false,
+            async: true,
+            success: function (response) {
+                if(response.succes.succes === "succes"){
+
+                    $('#ubicacion').append(response.data.ubicaciones);
+                        
+                    
+                    } else {
+
+
+                        toastr.error(response.dontsucces.mensaje);
+                    }
+
+                $('#load').removeClass( "spinner-border" );
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('#load').removeClass( "spinner-border" );
+                toastr.error('<?=lang('Layout.toastrError') ?>');
+                           
+            }
+        });
+
+    
+    });
+
 </script>
 <?= $this->endSection() ?>

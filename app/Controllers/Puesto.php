@@ -32,7 +32,7 @@ class Puesto extends BaseController {
 			$data['modulos'] = $this->menu->Permisos();
 			$empresa = session()->get('empresa');
 			$idEmpresa = $this->encrypter->decrypt($empresa);
-			$resultData = $this->modelPuesto->GetPuesto($idEmpresa);
+			$resultData = $this->modelPuesto->GetPuesto();
 			$result = [];
 
 
@@ -41,8 +41,8 @@ class Puesto extends BaseController {
 				$id = $this->encrypt->Encrypt($v->id);
 				$result[] = (object) array (
 					'id' => $id ,
-					'idCliente' => $v->cliente,
-					'idUbicacion' => $v->ubicacion,
+					'idCliente' => $v->razon_social,
+					'idUbicacion' => $v->nombre_ubicacion,
                     'idTurno' => $v->turnos,
 					'idPuestos' => $v->puesto,
 					'activo' => $v->activo
@@ -152,31 +152,25 @@ class Puesto extends BaseController {
             $idEmpresa = $this->encrypter->decrypt($getEmpresa);
 
 			$data['modulos'] = $this->menu->Permisos();
-            $data['Puesto'] = $this->modelPuesto->GetPuestoById($id);
-
+            
+			$data['cliente'] = $this->modelPuesto->getClientes();
 
 			$data['breadcrumb'] = ["inicio" => 'Puesto' ,
                     				"url" => 'puesto',
-                    				"titulo" => 'Agregar Puesto'];
+                    				"titulo" => 'Agregar'];
 
 			
 			return view('Puesto/addPuesto', $data);
 		}	
 	}
 
-    public function AgregarClientes(){
+    public function AgregarPuesto(){
 		//helper(['form']);
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['parentesco,cve_parentesco,tipo_referencia'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['cliente, ubicacion, turno, puesto, numGuardias, cantSinarmas, cantArmaLarga'],FILTER_SANITIZE_STRING)){
 
-				$getEmpresa = session()->get('empresa');
-				$idEmpresa = $this->encrypter->decrypt($getEmpresa);
-
-				
 
 				$rules = [
-				'razon_social' =>  ['label' => "Razon social", 'rules' => 'required|max_length[255]'],
-				'nombre_corto' =>  ['label' => "Nombre Corto", 'rules' => 'required|max_length[255]'],
-                'email' =>  ['label' => "Email", 'rules' => 'required|integer|max_length[255]']];
+				'cliente' =>  ['label' => "Razon social", 'rules' => 'required']];
 		 
 				$errors = [];
 				$succes = [];
@@ -193,12 +187,44 @@ class Puesto extends BaseController {
 					
 				
                     
-					$result = $this->modelCliente->insertItemAndSelect('cliente', $this->request->getPost() , 'cliente',$LoggedUserId , $idEmpresa);
+					$uuid = Uuid::uuid4();
+        			$id = $uuid->toString();
+
+        			$getCliente = $this->request->getPost('cliente');
+					$idCliente = $this->encrypt->Decrytp($getCliente);
+
+
+					$getUbicacion = $this->request->getPost('ubicacion');
+					$ubicacion = $this->encrypt->Decrytp($getUbicacion);
+
+					$getTurno = $this->request->getPost('turno');
+					$turno = $this->encrypt->Decrytp($getTurno);
+
+					$TodayDate = date("Y-m-d H:i:s");
+                    
+					$puesto = array(
+
+						"id" =>  $id , 
+						"idCliente" =>  $idCliente , 
+						"idUbicacion" =>  $ubicacion , 
+						"idTurno" =>  $turno , 
+						"puesto" =>  $this->request->getPost('puesto') , 
+						"num_guardias" =>  $this->request->getPost('numGuardias') , 
+						"cant_arma_corta" =>  $this->request->getPost('cantArmaCorta') , 
+						"cant_arma_larga" => $this->request->getPost('cantArmaLarga')  , 
+						"cant_sin_arma" => $this->request->getPost('cantSinarmas')  , 
+						"activo" =>  1 , 
+						"createdby" =>  $LoggedUserId , 
+						"createddate" => $TodayDate
+                        
+                    );
+
+					$result = $this->modelPuesto->SavePuesto($puesto);
 
                     if ($result) {
 
             			
-                    	$succes = ["mensaje" => 'El cliente agregada con exito' ,
+                    	$succes = ["mensaje" => 'Puesto agregado con exito' ,
                             	   "succes" => "succes"];
 
                            	   
@@ -215,5 +241,71 @@ class Puesto extends BaseController {
 				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
 		}	
 	}
+
+
+	public function Turnos(){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['ubicacion'])){
+			$errors = [];
+            $succes = [];
+            $dontSucces = [];
+            $data = [];
+
+			$rules = [
+				'ubicacion' =>  'required'];
+				
+				$errors = [];
+				$succes = [];
+				$dontSucces = [];
+				$data = [];
+				
+				if($this->validate($rules)){
+					
+
+					$getUbicacion = $this->request->getPost('ubicacion');
+
+					$ubicacion = $this->encrypt->Decrytp($getUbicacion);
+
+
+					
+					$getTurnos = $this->modelPuesto->getTurnos($ubicacion);
+
+					
+
+                    if ($getTurnos ) {
+
+                    	$turnos = '<option value="">Selecciona una Ubicación</option>';
+                    	
+                    	foreach ( $getTurnos as $v){
+				
+							$id = $this->encrypt->Encrypt($v->id);
+							$turnos.=  '<option value="'.$id.'">'.$v->turno.'</option>';
+
+							
+						
+						}
+
+						
+                    	
+                    	$data['turnos']= $turnos;
+                    	
+                    	$succes = ["mensaje" => 'Exito.' ,
+                            	   "succes" => "succes"];
+                    	
+                    } else {
+                    		
+                    	$dontSucces = ["error" => "error" ,
+                    				   "mensaje" => 'Hubo un error al obtener los datos.'];
+
+                    }
+                    		
+
+				} else {	
+					$errors = $this->validator->getErrors();
+				}
+
+				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+			
+		}	
+    }
 
 }

@@ -139,7 +139,7 @@ $routes->get('detailPuesto', 'Puesto::DetallePuesto',['filter' => 'auth']);
 $routes->get('editPuesto', 'Puesto::EditarCliente',['filter' => 'auth']);
 $routes->post('EditInfoPuesto', 'Puesto::SavePuesto',['filter' => 'auth']);
 $routes->get('AddPuesto', 'Puesto::AgregaPuesto',['filter' => 'auth']);
-$routes->post('GuardarPuesto', 'Puesto::AgregarClientes',['filter' => 'auth']);
+$routes->post('GuardarPuesto', 'Puesto::AgregarPuesto',['filter' => 'auth']);
 
 ///ubicacion//
 $routes->get('ubicacion', 'Ubicacion::GetUbica',['filter' => 'auth']);
@@ -159,6 +159,7 @@ $routes->get('AddTurno', 'Turno::AgregaTurno',['filter' => 'auth']);
 $routes->post('GuardarTurno', 'Turno::AgregarTurnos',['filter' => 'auth']);
 
 $routes->post('getUbicaciones', 'Turno::Ubicaciones',['filter' => 'auth']);
+$routes->post('getTurnos', 'Puesto::Turnos',['filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------

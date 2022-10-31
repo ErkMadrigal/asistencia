@@ -20,14 +20,15 @@ class PuestoModel
 
     }
 
-    public function GetPuesto($idEmpresa){
+    public function GetPuesto(){
         $builder = $this->db->table('puestos');
-        $builder->select('puestos.id, idCliente,idUbicacion,idTurno,idPuestos,activo');
-//$builder->join("cliente C"," puestos.idCliente= C.id  ","left");
-        //$builder->join("ubicacion UB"," puestos.idUbicacion= UB.id  ","left");
-        //$builder->join("turnos TU"," puestos.idTurno= TU.id  ","left");
-//$builder->join("puestos PU"," puestos.idPuestos= PU.id  ","left");
-        $builder->where("puestos.id");
+        $builder->select('puestos.id, ,razon_social,nombre_ubicacion,puestos.activo,puestos.puesto,catalogos_detalle.valor AS turnos');
+        $builder->join("cliente","puestos.idCliente = cliente.id","left");
+        $builder->join("ubicacion","puestos.idUbicacion = ubicacion.id","left");
+
+        $builder->join("turnos","puestos.idTurno = turnos.id","left");    
+        $builder->join("catalogos_detalle","turnos.idTurnos = catalogos_detalle.id","left");
+        $builder->orderBy("puestos.puesto");
         return $builder->get()->getResult();
         
     }
@@ -54,29 +55,46 @@ class PuestoModel
 
         return $return; 
     }
-    public function insertItemAndSelect($table, $data , $tableSelect , $LoggedUserId, $idEmpresa, $idClase, $idCalibre, $idMarca, $idModelo)
+    public function SavePuesto($puesto)
     {
 
-        $return = false;
         $this->db->transStart();
-        
-        $uuid = Uuid::uuid4();
-        
-        $idArma = $uuid->toString();
 
-        $query = "INSERT INTO armas (id, matricula,folio_manif, idClase, idCalibre, idMarca, idModelo, activo,createdby,createddate,idEmpresa) VALUES ('".$idArma."','".$data['matricula']."','".$data['folio_manif']."','".$idClase."','".$idCalibre."','".$idMarca."','".$idModelo."',1,'".$LoggedUserId."', now() ,'".$idEmpresa."')";
-
-        $this->db->query($query);
-        
+        $this->db->table('puestos')->insert($puesto);
 
         $this->db->transComplete();
 
         if ($this->db->transStatus() === TRUE)
         {
             $return = true;
-        } 
+        } else {
+            $return = false ;
+        }
 
         return $return;
+    }
+
+
+    public function getClientes(){
+        $builder = $this->db->table('cliente');
+        $builder->select('id,   razon_social');
+        $builder->where("activo",true);
+        $builder->orderBy("razon_social");
+        return $builder->get()->getResult();
+        
+    }
+
+
+
+    public function getTurnos($idUbicacion){
+        $builder = $this->db->table('turnos');
+        $builder->select('turnos.id,catalogos_detalle.valor AS turno');
+        $builder->where("turnos.activo",true);
+        $builder->where("idUbicacion",$idUbicacion);
+        $builder->join("catalogos_detalle","turnos.idTurnos = catalogos_detalle.id","left");
+        $builder->orderBy("turno");
+        return $builder->get()->getResult();
+        
     }
 
 
