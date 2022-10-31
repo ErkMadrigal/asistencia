@@ -182,7 +182,7 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="estadocodigo" class="control-label">Entado: <span class="text-danger">*</span></label>
+                        <label for="estadocodigo" class="control-label">Estado: <span class="text-danger">*</span></label>
                         <div>
                             <select class="form-control" id="estadocodigo" name="estadocodigo">
                                 <option value="">Selecciona una Opcion</option>
@@ -294,7 +294,7 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="estadocodigoDatosFis" class="control-label">Entado: <span class="text-danger">*</span></label>
+                        <label for="estadocodigoDatosFis" class="control-label">Estado: <span class="text-danger">*</span></label>
                         <div>
                             <select class="form-control" id="estadocodigoDatosFis" name="estadocodigoDatosFis">
                                 <option value="">Selecciona una Opcion</option>
