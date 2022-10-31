@@ -126,7 +126,8 @@ use App\Libraries\Encrypt;
                     <button id="SaveArmas" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
                 </div>
             </div>
-            </form><script>
+            </form>
+            <script>
     
     $('#SaveArmas').click(function (event) {
         event.preventDefault();

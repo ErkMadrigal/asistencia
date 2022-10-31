@@ -82,7 +82,7 @@ $routes->get('sepomex', 'Sepomex::index',['filter' => 'auth']);
 $routes->post('mostrarDatosSepomex', 'Sepomex::mostrarDatos',['filter' => 'auth']);
 $routes->get('AddSepomex', 'Sepomex::add',['filter' => 'auth']);
 $routes->post('getDataSepomex', 'Sepomex::getDataSep',['filter' => 'auth']);
-$routes->get('insertDataSepomex', 'Sepomex::insertDataSep',['filter' => 'auth']);
+$routes->post('insertDataSepomex', 'Sepomex::insertDataSep',['filter' => 'auth']);
 $routes->get('editSepomex', 'Sepomex::update',['filter' => 'auth']);
 $routes->post('editDataSepomex', 'Sepomex::updateDataSep',['filter' => 'auth']);
 $routes->get('detailSepomex', 'Sepomex::detail',['filter' => 'auth']);
@@ -125,6 +125,41 @@ $routes->get('editReferencia', 'Referencia::EditarReferencia',['filter' => 'auth
 $routes->post('EditInfoReferenci', 'Referencia::SaveReferencia',['filter' => 'auth']);
 $routes->get('AddReferencia', 'Referencia::AgreRefe',['filter' => 'auth']);
 $routes->post('GuardarRefe', 'Referencia::AgregarReferencia',['filter' => 'auth']);
+//clientes//
+$routes->get('clientes', 'Cliente::GetCliente',['filter' => 'auth']);
+$routes->get('detailCliente', 'Cliente::DetalleReferencia',['filter' => 'auth']);
+$routes->get('editCliente', 'Cliente::EditarCliente',['filter' => 'auth']);
+$routes->post('EditInfoCliente', 'Cliente::SaveClientes',['filter' => 'auth']);
+$routes->get('AddCliente', 'Cliente::Agrecliente',['filter' => 'auth']);
+$routes->post('GuardarCliente', 'Cliente::AgregarClientes',['filter' => 'auth']);
+
+///puesto///
+$routes->get('puesto', 'Puesto::GetPuestos',['filter' => 'auth']);
+$routes->get('detailPuesto', 'Puesto::DetallePuesto',['filter' => 'auth']);
+$routes->get('editPuesto', 'Puesto::EditarCliente',['filter' => 'auth']);
+$routes->post('EditInfoPuesto', 'Puesto::SavePuesto',['filter' => 'auth']);
+$routes->get('AddPuesto', 'Puesto::AgregaPuesto',['filter' => 'auth']);
+$routes->post('GuardarPuesto', 'Puesto::AgregarClientes',['filter' => 'auth']);
+
+///ubicacion//
+$routes->get('ubicacion', 'Ubicacion::GetUbica',['filter' => 'auth']);
+$routes->get('detailUbicacion', 'Ubicacion::DetalleUbicacion',['filter' => 'auth']);
+$routes->get('editUbicacion', 'Ubicacion::EditarUbicacion',['filter' => 'auth']);
+$routes->post('EditInfoubicacion', 'Ubicacion::SaveUbicacion',['filter' => 'auth']);
+$routes->get('AddUbicacion', 'Ubicacion::AgregaUbicacion',['filter' => 'auth']);
+$routes->post('GuardarUbicacion', 'Ubicacion::AgregarUbicacion',['filter' => 'auth']);
+
+
+////turno/////
+$routes->get('turnos', 'Turno::GetTurno',['filter' => 'auth']);
+$routes->get('detailTurno', 'Turno::DetalleTurno',['filter' => 'auth']);
+$routes->get('editTurno', 'Turno::EditarTurno',['filter' => 'auth']);
+$routes->post('EditInfoturno', 'Turno::SaveTurno',['filter' => 'auth']);
+$routes->get('AddTurno', 'Turno::AgregaTurno',['filter' => 'auth']);
+$routes->post('GuardarTurno', 'Turno::AgregarTurnos',['filter' => 'auth']);
+
+$routes->post('getUbicaciones', 'Turno::Ubicaciones',['filter' => 'auth']);
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

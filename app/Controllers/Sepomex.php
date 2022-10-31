@@ -171,7 +171,7 @@ class Sepomex extends BaseController{
     }
 
 	public function insertDataSep(){
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['cp', 'asentamiento', 'municipio', 'ciudad', 'estado', 'activo'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['cp', 'asentamiento', 'municipio', 'ciudad', 'estado'],FILTER_SANITIZE_STRING)){
 			$rules = [
 				'cp' => ['label' => '', 'rules' => 'required'],
 				'asentamiento' => ['label' => '', 'rules' => 'required'],
@@ -183,6 +183,7 @@ class Sepomex extends BaseController{
 			$succes = [];
 			$dontSucces = [];
 			$data = [];
+			$validate = [];
 			if($this->validate($rules)){
 				$insertSep = array(
 					"codigoPostal" =>  $_POST["cp"],
@@ -190,20 +191,26 @@ class Sepomex extends BaseController{
 					"municipio" =>  $_POST["municipio"],
 					"ciudad" =>  $_POST["ciudad"],
 					"estado" =>  $_POST["estado"],
-					"activo" =>  $_POST["chkActivo"],
+					"activo" =>  1,
 					"createddate" =>  date("Y-m-d H:i:s"),
 				);		
-				
-				$insert = $this->modelSepomex->addSepomex($insertSep);
-				if ($insert) {
-					$succes = ["mensaje" => 'Registrado con Exito', "succes" => "succes"];
-				} else {
-					$dontSucces = ["error" => "error", "mensaje" => 'Hubo un error al Registrar.'];
+				$validate = $this->modelSepomex->checkCP($_POST["cp"]);
+
+				if(count($validate) > 0){
+					$dontSucces = ["error" => "error", "mensaje" => 'El Codigo Postal ya Existe.'];
+				}else{
+					$insert = $this->modelSepomex->addSepomex($insertSep);
+					if ($insert) {
+						$succes = ["mensaje" => 'Registrado con Exito', "succes" => "succes"];
+					} else {
+						$dontSucces = ["error" => "error", "mensaje" => 'Hubo un error al Registrar.'];
+					}
 				}
+
 			} else {	
 				$errors = $this->validator->getErrors();
 			}
-			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data, "validate" => count($validate)]);
 	
 		}	
 	}

@@ -111,4 +111,11 @@ class CataSepomex
         return $return; 
     }
 
+    public function checkCP( $where ){
+        $builder = $this->db->table('sepomex');
+        $builder->select('id, codigoPostal, asentamiento, municipio, ciudad, estado, activo');
+        $builder->where('codigoPostal', $where);
+
+        return $builder->get()->getResult(); 
+    }
 }

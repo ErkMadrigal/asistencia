@@ -29,7 +29,7 @@
                         <label for="estado" class="control-label">Estado <span class="text-danger">*</span></label>
                         <div >
                             <select id="estado" name="estado" class="form-control">
-                                <option selected>Selecciona una Opcion</option>
+                                <option value="" selected>Selecciona una Opcion</option>
                                 <?php foreach($sepomexEstados as $estado => $valor):?>
                                     <option value="<?=$valor->estado?>"><?=$valor->estado?></option>
                                 <?php endforeach;?>
@@ -50,7 +50,7 @@
                         <label for="ciudad" class="control-label">Ciudad <span class="text-danger">*</span></label>
                         <div >
                             <select id="ciudad" name="ciudad" class="form-control">
-                                    <option selected>Selecciona una Opción</option>
+                                    <option value="" selected>Selecciona una Opción</option>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -68,7 +68,7 @@
                         <label for="municipio" class="control-label">Municipio <span class="text-danger">*</span></label>
                         <div >
                             <select id="municipio" name="municipio" class="form-control">
-                                    <option selected>Selecciona una Opción</option>
+                                    <option value="" selected>Selecciona una Opción</option>
                                     
                             </select>
                             <script>
@@ -87,15 +87,6 @@
                         <label for="asentamiento" class="control-label">Asentamiento <span class="text-danger">*</span></label>
                         <div >
                             <input type="text"  class="form-control " id="asentamiento" name="asentamiento" >
-                        </div>
-                    </div>
-                </div>
-                
-                <div class='col-12 col-sm-6'>    
-                    <div class="form-group">
-                        <label for="Activo" class="control-label">Activo:</label>
-                        <div class="form-check" >
-                            <input class="form-check-input"  type="checkbox" name="activo" id="activo" value="">
                         </div>
                     </div>
                 </div>
@@ -118,7 +109,6 @@
         let chk = $('#activo').prop('checked') ? 1:0
         $('#loadBtn').show();
         let formData = new FormData($("form#frmSepomex")[0]);
-        formData.append("chkActivo", chk);
         $.ajax({
             url: base_url + '/insertDataSepomex',
             type: 'POST',
@@ -177,10 +167,11 @@
 
     estado.onchange = (e) => {
         selectCiudad.innerHTML = ''
-        selectMunicipio.innerHTML = ''
+        // selectMunicipio.innerHTML = ''
 
         e.preventDefault()
         let formData = new FormData($("form#frmSepomex")[0]);
+        formData.append("tipo", 'ciudad');
         $.ajax({
             url: base_url + '/getDataSepomex',
             type: 'POST',
@@ -191,15 +182,53 @@
             contentType: false,
             processData: false,
             success: function (response) {
+                
                 if(response.succes.succes === "succes"){
-                    selectMunicipio.innerHTML = '<option selected>Selecciona una Opción</option>'
-                    selectCiudad.innerHTML = '<option selected>Selecciona una Opción</option>'
-                    response.dataMunicipio.forEach( municipio => {
-                        selectMunicipio.innerHTML += `<option value="${municipio.municipio}">${municipio.municipio}</option>`
-                        
+                    selectCiudad.innerHTML = '<option value="" selected>Selecciona una Opción</option>'
+                    response.data.forEach( ciudad => {
+                        if(ciudad.ciudad == "undefined"){
+                            selectCiudad.innerHTML += `<option value="undefined">No Asignados</option>`
+                        }else{
+                            selectCiudad.innerHTML += `<option value="${ciudad.ciudad}">${ciudad.ciudad}</option>`
+                        }
                     })
-                    response.dataCiudad.forEach( ciudad => {
-                        selectCiudad.innerHTML += `<option value="${ciudad.ciudad}">${ciudad.ciudad}</option>`
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                toastr.error('<?=lang('Layout.toastrError') ?>');
+                $('#loadBtn').hide();           
+            }
+        });
+    };
+
+    selectCiudad.onchange = (e) => {
+        selectMunicipio.innerHTML = ''
+
+        e.preventDefault()
+        let formData = new FormData($("form#frmSepomex")[0]);
+        formData.append("tipo", 'municipio');
+        formData.append("ciudad", selectCiudad.value);
+
+        $.ajax({
+            url: base_url + '/getDataSepomex',
+            type: 'POST',
+            dataType: 'json',
+            data: formData,
+            cache: false,
+            async: true,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                
+                if(response.succes.succes === "succes"){
+                    selectMunicipio.innerHTML = '<option value="" selected>Selecciona una Opción</option>'
+                    response.data.forEach( municipio => {
+                        if(municipio.municipio == "undefined"){
+                            selectMunicipio.innerHTML += `<option value="undefined">No Asignados</option>`
+                        }else{
+                            selectMunicipio.innerHTML += `<option value="${municipio.municipio}">${municipio.municipio}</option>`
+                        }
+                        
                     })
                 }
             },

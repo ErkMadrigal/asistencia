@@ -588,44 +588,54 @@
                     </div>
                 </div>
             </div>
-        
+        </form>
     </div>
 </div>
 
 
 <div class="card card-primary">
-    <div class="card-header">
+    <div class="card-header ">
+        
         <h3 class="card-title">DATOS GENERALES: EXPERIENCIA DOCENTE</h3>
+                         
 
         <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+
+            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" class="form-check-input mt-2" id="btnNingunodged">
+                 
+            <a href="#" class="btn btn-tool form-check-label add-more-btn-dged" id="btnAdddged" >Agregar +</a>
+            
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" >
                 <i class="fas fa-minus"></i>
             </button>
-        </div>
+        </div>           
     </div>
+    
     <!-- /.card-header -->
     <div class="card-body">
-        
-            <div class="row">
+        <form class="form-horizontal" id="FormDatosGeneralesDocente">
+        <div id="CardDatosGeneralesDocente">
+            <div class="row form-block-dged">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="nombrecurso" class=" control-label">Nombre del Curso
                             :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nombrecurso" name="nombrecurso">
+                        <input type="text" class="form-control " id="nombrecurso" name="nombrecurso[]">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="nombreInstitucion" class=" control-label">Nombre de
                             la Institución:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion">
+                        <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion[]">
                     </div>
                 </div>
                 <div class='col-12 col-sm-6'>
                     <div class='form-group'>
                         <label for="fecha_inicial">Fecha de Inicio: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="fecha_inicial" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_inicial" id="datetime-fecha_inicial" name="fecha_inicial" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_inicial" id="datetime-fecha_inicial" name="fecha_inicial[]" placeholder="" value="" />
                             <div class="input-group-append" data-target="#fecha_inicial" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -664,7 +674,366 @@
                     <div class="form-group">
                         <label for="certificado_por" class=" control-label">Certificado
                             por:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="certificado_por" name="certificado_por">
+                        <input type="text" class="form-control " id="certificado_por" name="certificado_por[]">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr  class="mt-3 mb-3"/>
+        <div id="CardDatosGeneralesDocenteB">
+        </div>    
+        </form>
+    </div>
+</div>
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">ADSCRIPCION</h3>
+
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        
+            <div class="row">
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="dependencia_adscripcion" class=" control-label">Dependencia:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="dependencia_adscripcion" name="dependencia_adscripcion">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="institucion_adscripcion" class=" control-label">Institución:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="institucion_adscripcion" name="institucion_adscripcion">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-6'>
+                    <div class='form-group'>
+                        <label for="fechaingreso_adscripcion">Fecha de Ingreso: <span class="text-danger">*</span></label>
+                        <div class="input-group date" id="fechaingreso_adscripcion" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fechaingreso_adscripcion" id="datetime-fechaingreso_adscripcion" name="fechaingreso_adscripcion" placeholder="" value="" />
+                            <div class="input-group-append" data-target="#fechaingreso_adscripcion" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#fechaingreso_adscripcion").datetimepicker({
+                                    format: 'DD-MM-YYYY',
+                                    locale: moment.locale('es')
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="puesto_adscripcion" class=" control-label">Puesto:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="puesto_adscripcion" name="puesto_adscripcion">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($puesto) ):
+                                    foreach($puesto as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#puesto_adscripcion").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="especialidad_adscripcion" class=" control-label">Especialidad:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="especialidad_adscripcion" name="especialidad_adscripcion">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="rango_adscripcion" class=" control-label">Rango o Categoria:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="rango_adscripcion" name="rango_adscripcion">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($rango) ):
+                                    foreach($rango as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#rango_adscripcion").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="nivel_adscripcion" class=" control-label">Nivel de Mando:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="nivel_adscripcion" name="nivel_adscripcion">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($mando) ):
+                                    foreach($mando as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#nivel_adscripcion").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="placas_adscripcion" class=" control-label">Número de placas:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="placas_adscripcion" name="placas_adscripcion">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="expediente_adscripcion" class=" control-label">Número de Expediente:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="expediente_adscripcion" name="expediente_adscripcion">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="sueldo_adscripcion" class=" control-label">Sueldo Base:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="sueldo_adscripcion" name="sueldo_adscripcion">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="compensacion_adscripcion" class=" control-label">Compensación:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="compensacion_adscripcion" name="compensacion_adscripcion">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="area_adscripcion" class=" control-label">Àrea:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="area_adscripcion" name="area_adscripcion">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="division_adscripcion" class=" control-label">División:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="division_adscripcion" name="division_adscripcion">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="funciones_adscripcion" class=" control-label">Funciones:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="funciones_adscripcion" name="funciones_adscripcion">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="cuipjefe_adscripcion" class=" control-label">CUIP del jefe inmediato:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="cuipjefe_adscripcion" name="cuipjefe_adscripcion">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="nombrejefe_adscripcion" class=" control-label">Nombre del jefe inmediato:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="nombrejefe_adscripcion" name="nombrejefe_adscripcion">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="entidad_adscripcion" class=" control-label">Entidad Federativa:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="entidad_adscripcion" name="entidad_adscripcion">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($entidad_federativa) ):
+                                    foreach($entidad_federativa as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#entidad_adscripcion").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="municipio_adscripcion" class=" control-label">Municipio:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="municipio_adscripcion" name="municipio_adscripcion">
+                                <option value="">Selecciona una Opcion</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#municipio_adscripcion").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                    </div>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+</div>
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">ADSCRIPCION: DOMICILIO DE ADSCRIPCION</h3>
+
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        
+            <div class="row">
+                <div class='col-12 col-sm-12 col-md-12'>
+                    <div class="form-group">
+                        <label for="calle_adscripcion" class=" control-label">Calle:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="calle_adscripcion" name="calle_adscripcion">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="exterior_adscripcion" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="exterior_adscripcion" name="exterior_adscripcion">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="interior_adscripcion" class=" control-label">No. Interior:</label>
+                        <input type="text" class="form-control " id="interior_adscripcion" name="interior_adscripcion">
+                    </div>
+                </div>
+                
+                <div class='col-12 col-sm-12 col-md-12'>
+                    <div class="form-group">
+                        <label for="entrecalle_adscripcion" class=" control-label">Entre la calle de:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="entrecalle_adscripcion" name="entrecalle_adscripcion">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-12'>
+                    <div class="form-group">
+                        <label for="ylacalle_adscripcion" class=" control-label">Y la calle:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="ylacalle_adscripcion" name="ylacalle_adscripcion">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="telefono_adscripcion" class=" control-label">Número Telefonico:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="telefono_adscripcion" name="telefono_adscripcion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="codigoAds" class=" control-label">Código Postal:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="codigoAds" name="codigoAds" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="coloniacodigoAds" class=" control-label">Colonia:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="coloniacodigoAds" name="coloniacodigoAds">
+                                <option value="">Selecciona una Opcion</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#coloniacodigoAds").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="federativa_adscripcion" class=" control-label">Entidad Federativa:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="federativa_adscripcion" name="federativa_adscripcion">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($entidad_federativa) ):
+                                    foreach($entidad_federativa as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#federativa_adscripcion").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="delegacion_adscripcion" class=" control-label">Municipio o Delegación:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="delegacion_adscripcion" name="delegacion_adscripcion">
+                                <option value="">Selecciona una Opcion</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#delegacion_adscripcion").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="ciudadcodigoAds" class=" control-label">Ciudad o Poblacion:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="ciudadcodigoAds" name="ciudadcodigoAds">
+                                <option value="">Selecciona una Opcion</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#ciudadcodigoAds").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
             </div>
@@ -683,8 +1052,6 @@
 </div>
 <script>
     
-
-
     $('#saveDatosPersonales').click(function (event) {
         event.preventDefault();
 
@@ -756,6 +1123,17 @@
         getEstado(this.id)
     });
 
+    $("#entidad_adscripcion").on('change', function(){
+        getEstado(this.id)
+    });
+
+    $("#federativa_adscripcion").on('change', function(){
+        getEstado(this.id)
+    });
+
+    
+
+        var estado = $('#'+elemento).val();
 
     function getEstado(id)  {
 
@@ -816,6 +1194,23 @@
                 
                 selectMunicipioDom.innerHTML = ''
             break;
+            case "entidad_adscripcion":
+                
+            
+            var selectMunicipioDom = document.querySelector("#municipio_adscripcion")
+
+                
+                selectMunicipioDom.innerHTML = ''
+            break;
+            case "federativa_adscripcion":
+                
+            
+            var selectMunicipioDom = document.querySelector("#delegacion_adscripcion")
+
+                
+                selectMunicipioDom.innerHTML = ''
+            break;
+
   
             }
 
@@ -871,7 +1266,16 @@
                         
                         selectMunicipioDom.innerHTML = response.data.municipio
                     break;
-
+                    case "entidad_adscripcion":
+                
+                        
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                    break;
+                    case "federativa_adscripcion":
+                
+                        
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                    break;
   
                      }
                     
@@ -892,6 +1296,10 @@
 
     
     $("#codigo").on('keyup', function(){
+        getSepomex(this.id)
+    });
+
+    $("#codigoAds").on('keyup', function(){
         getSepomex(this.id)
     });
 
@@ -965,6 +1373,11 @@
             var selectCiudadDom = document.querySelector("#ciudad"+elemento)
 
                 
+                selectCiudadDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+            case "codigoAds":
+                var selectCiudadDom = document.querySelector("#ciudad"+elemento)    
                 selectCiudadDom.innerHTML = ''
                 selectColoniaDom.innerHTML = ''
             break;
@@ -1043,7 +1456,12 @@
                         selectCiudadDom.innerHTML = response.data.ciudad
                         selectColoniaDom.innerHTML = response.data.colonia
                     break;
-
+                    case "codigoAds":
+                
+                        
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectColoniaDom.innerHTML = response.data.colonia
+                    break;
   
                     }
                     
@@ -1062,7 +1480,35 @@
     }
     };
 
+    $(document).on('click','.add-more-btn-dged',function(){
+    
+    var clone = $('#CardDatosGeneralesDocente').clone('.form-block-dged');
+    $('#CardDatosGeneralesDocenteB').append(clone);
+    $('#btnAdddged').removeClass('add-more-btn');
+    $('#btnAdddged').addClass('remove-more-btn');
+    $('#btnAdddged').text('Remover -');
+});
+
+$(document).on('click','.remove-more-btn',function(){    
+    $('#CardDatosGeneralesDocenteB').empty();
+    $('#btnAdddged').removeClass('remove-more-btn');
+    $('#btnAdddged').addClass('add-more-btn');
+    $('#btnAdddged').text('Agregar +');
+});
+
+$(document).on('click','#btnNingunodged',function(){ 
+
+        if($('#btnNingunodged').is(':checked')) {
 
 
+            $('#FormDatosGeneralesDocente input').attr('disabled','disabled');
+            $('#FormDatosGeneralesDocente select').attr('disabled','disabled');
+        } else {
+            $('#FormDatosGeneralesDocente input').attr('disabled',false);
+            $('#FormDatosGeneralesDocente select').attr('disabled',false);
+        }
+        
+        
+    });
 
 </script>
