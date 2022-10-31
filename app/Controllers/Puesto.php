@@ -170,14 +170,14 @@ class Puesto extends BaseController {
 
 
 				$rules = [
-				'cliente' =>  ['label' => "Razon social", 'rules' => 'required'],
+				'cliente' =>  ['label' => "Cliente", 'rules' => 'required'],
 				'ubicacion' =>  ['label' => "Ubicación", 'rules' => 'required'],
 				'turno' =>  ['label' => "Turno", 'rules' => 'required'],
-				'puesto' =>  ['label' => "Puesto", 'rules' => 'required'],
-				'numGuardias' =>  ['label' => "Numero de Guardias", 'rules' => 'required'],
-				'cantArmaCorta' =>  ['label' => "Cantidad Arma Corta", 'rules' => 'required'],
-				'cantSinarmas' =>  ['label' => "Cantidad Sin Arma", 'rules' => 'required'],
-				'cantArmaLarga' =>  ['label' => "Cantidad Arma Larga", 'rules' => 'required']];
+				'puesto' =>  ['label' => "Puesto", 'rules' => 'required|max_length[255]'],
+				'numGuardias' =>  ['label' => "Numero de Guardias", 'rules' => 'required|max_length[255]'],
+				'cantArmaCorta' =>  ['label' => "Cantidad Arma Corta", 'rules' => 'required|max_length[255]'],
+				'cantSinarmas' =>  ['label' => "Cantidad Sin Arma", 'rules' => 'required|max_length[255]'],
+				'cantArmaLarga' =>  ['label' => "Cantidad Arma Larga", 'rules' => 'required|max_length[255]']];
 		 
 				$errors = [];
 				$succes = [];
