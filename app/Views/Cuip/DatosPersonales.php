@@ -1133,8 +1133,6 @@
 
     
 
-        var estado = $('#'+elemento).val();
-
     function getEstado(id)  {
 
         $('#load').addClass( "spinner-border" );
