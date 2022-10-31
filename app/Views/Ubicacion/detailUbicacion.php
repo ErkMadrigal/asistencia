@@ -101,7 +101,7 @@
                     <div class="form-group">
                         <label for="estadocodigo" class="control-label">Estado: <span class="text-danger">*</span></label>
                         <div>
-                        <?= $ubicacion->idEstado ?>
+                        <?= $ubicacion->nombre_ubicacion ?>
                             <script>
                                 $(document).ready(function() {
                                     $("#estadocodigo").select2({

@@ -41,11 +41,11 @@ class TurnoModel
 
     public function GetTurnoById($id){
         $builder = $this->db->table('turnos');
-        $builder->select("turnos.id, razon_social,catalogos_detalle.valor As turno,horario,cliente.nombre_corto,turnos.activo,ubicacion.nombre_ubicacion, turnos.createddate, turnos.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->select("turnos.id, razon_social,catalogos_detalle.valor As turno,H.valor AS horario,cliente.nombre_corto,turnos.activo,ubicacion.nombre_ubicacion, turnos.createddate, turnos.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
         $builder->join("cliente","turnos.idCliente = cliente.id","left");
         $builder->join("ubicacion","turnos.idUbicacion = ubicacion.id","left");
-        $builder->join("cliente","ubicacion.nombre_corto = cliente.id","left"); 
         $builder->join("catalogos_detalle","turnos.idTurnos = catalogos_detalle.id","left");
+        $builder->join("catalogos_detalle H","turnos.idHorario = H.id","left");
         $builder->join("sys_usuarios_admin UA","turnos.createdby = UA.id","left");
        $builder->join("sys_usuarios_admin UU","turnos.updatedby = UU.id","left");
        

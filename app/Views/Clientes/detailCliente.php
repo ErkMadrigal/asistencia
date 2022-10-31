@@ -36,7 +36,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="puesto_contacto" class=" control-label">cliente del Contacto:<span class="text-danger">*</span></label>
-                        <?= $cliente->idPuesto ?>
+                        <?= $cliente->puesto ?>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
