@@ -15,7 +15,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal">
+        <form class="form-horizontal" id="puesto">
             <div class="row">
                 <div class='col-12 col-sm-6'>
                     <div class="form-group">
@@ -122,13 +122,13 @@
         event.preventDefault();
         $('#load').addClass("spinner-border");
 
-        if ($('#activo').is(':checked')) {
-            val = 1;
-        } else {
-            val = 0;
-        }
-        var formData = new FormData($("form#frmMulticatalogo")[0]);
-        formData.append('activo', val);
+            if ($('#activo').is(':checked')) {
+                val = 1;
+            } else {
+                val = 0;
+            }
+            var formData = new FormData($("form#puesto")[0]);
+            formData.append('activo', val);
 
         $.ajax({
             url: base_url + '/EditInfoPuesto',
@@ -146,7 +146,28 @@
 
                     $("#exampleModal").modal("hide");
 
+<<<<<<< HEAD
                     toastr.success(response.succes.mensaje);
+=======
+                        toastr.success(response.succes.mensaje);
+
+                        var count = 2;
+                        setInterval(function() {
+                            count--;
+                            if (count == 0) {
+                                window.location = base_url + '/puesto';
+                            }
+                        }, 1000);
+
+                    } else if (response.dontsucces.error == 'error') {
+                        toastr.error(response.dontsucces.mensaje);
+
+                    } else if (Object.keys(response.error).length > 0) {
+
+                        for (var clave in response.error) {
+
+                            $("<div class='errorField text-danger'>" + response.error[clave] + "</div>").insertAfter("#" + clave + "");
+>>>>>>> fer
 
                     var count = 2;
                     setInterval(function() {
