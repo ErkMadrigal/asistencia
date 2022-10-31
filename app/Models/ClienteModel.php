@@ -30,7 +30,7 @@ class ClienteModel
 
     public function GetClienteById($id){
         $builder = $this->db->table('cliente');
-        $builder->select("razon_social,nombre_corto,cliente.email,cliente.activo, cliente.createddate, cliente.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->select("razon_social,nombre_corto,nombre_contacto,whatsapp,tel_oficina,fecha_inicio,fecha_fin,calle_num,idCodigoPostal,idPuesto,colonia,municipio,ciudad,estado,rfc,calle_num_fiscal,idCodigoPostal_fiscal,colonia_fiscal,municipio_fiscal,ciudad_fiscal,estado_fiscal,cliente.email,cliente.activo, cliente.createddate, cliente.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
        $builder->join("sys_usuarios_admin UA","cliente.createdby = UA.id","left");
        $builder->join("sys_usuarios_admin UU","cliente.updatedby = UU.id","left"); 
        $builder->orderBy("razon_social","asc");
