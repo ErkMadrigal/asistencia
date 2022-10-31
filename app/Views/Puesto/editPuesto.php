@@ -15,7 +15,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal">
+        <form class="form-horizontal" id="puesto">
             <div class="row">
                 <div class='col-12 col-sm-6'>
                     <div class="form-group">
@@ -126,7 +126,7 @@
             } else {
                 val = 0;
             }
-            var formData = new FormData($("form#frmMulticatalogo")[0]);
+            var formData = new FormData($("form#puesto")[0]);
             formData.append('activo', val);
 
             $.ajax({
@@ -151,7 +151,7 @@
                         setInterval(function() {
                             count--;
                             if (count == 0) {
-                                window.location = base_url + '/Puestos';
+                                window.location = base_url + '/puesto';
                             }
                         }, 1000);
 
