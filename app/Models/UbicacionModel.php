@@ -32,8 +32,9 @@ class UbicacionModel
 
     public function GetUbicacionById($id){
         $builder = $this->db->table('ubicacion');
-        $builder->select("razon_social AS idCliente,nombre_ubicacion,ubicacion.activo,idCodigoPostal,calle_num,colonia,municipio,ciudad,idEstado, ubicacion.createddate, ubicacion.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->select("razon_social AS idCliente,cliente.nombre_cortonombre_ubicacion,ubicacion.activo,idCodigoPostal,calle_num,colonia,municipio,ciudad,idEstado, ubicacion.createddate, ubicacion.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
        $builder->join("cliente","ubicacion.idCliente = cliente.id","left"); 
+       $builder->join("cliente","ubicacion.nombre_corto = cliente.id","left"); 
        $builder->join("sys_usuarios_admin UA","ubicacion.createdby = UA.id","left");
        $builder->join("sys_usuarios_admin UU","ubicacion.updatedby = UU.id","left");
        $builder->where('ubicacion.id', $id);
