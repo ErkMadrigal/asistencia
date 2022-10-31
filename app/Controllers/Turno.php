@@ -115,15 +115,15 @@ class Turno extends BaseController {
 					$LoggedUserId = $this->encrypter->decrypt($getUser);
 					$TodayDate = date("Y-m-d H:i:s");
 					$idModi = $this->request->getPost('id');
-					$idCliente = $this->encrypt->Decrytp($idModi);	
-					$updateEmpresa = array(
+					$idTurno = $this->encrypt->Decrytp($idModi);	
+					$updateTurno = array(
 
                         "activo" => $this->request->getPost('activo'),
                         "updatedby" => $LoggedUserId,
                 		"updateddate" => $TodayDate
                     );
 
-					$turno = $this->modelCliente->Savecliente($updateEmpresa, $idC);
+					$turno = $this->modelTurno->Savecliente($updateTurno, $idTurno);
 
 					if ($turno){
 

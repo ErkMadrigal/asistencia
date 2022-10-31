@@ -55,10 +55,10 @@ class TurnoModel
 
 
 
-   public function Savecliente( $updateEmpresa, $idCatalogo ){
+   public function Savecliente( $updateTurno, $idTurno ){
 
         $return = false;
-        $this->db->table('cliente')->where('id')->update($updateEmpresa);
+        $this->db->table('turnos')->where('id',$idTurno)->update($updateTurno);
 
         if ($this->db->affectedRows() > 0){
             $return = true;

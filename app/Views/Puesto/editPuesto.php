@@ -48,7 +48,7 @@
                     <div class="form-group">
                         <label for="puesto" class="control-label">Puesto: </label>
                         <div >
-                        <input type="text"  class="form-control " disabled id="puesto" name="puesto" value="<?= $Puesto->idPuestos ?>">
+                        <input type="text"  class="form-control " disabled id="puesto" name="puesto" value="<?= $Puesto->puesto ?>">
                             
                         </div>
                     </div>

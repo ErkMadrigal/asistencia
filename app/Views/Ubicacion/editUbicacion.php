@@ -30,7 +30,7 @@
                     <div class="form-group">
                         <label for="ubicacion" class="control-label">Ubicacion: </label>
                         <div >
-                        <input type="text"  class="form-control " disabled id="ubicacion" name="ubicacion" value="<?= $ubicacion->idUbicacion ?>">
+                        <input type="text"  class="form-control " disabled id="ubicacion" name="ubicacion" value="<?= $ubicacion->nombre_ubicacion ?>">
                             
                         </div>
                     </div>
@@ -55,7 +55,109 @@
         </div>    
     </div>
 </div>
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">DATOS DEL DOMICILIO</h3>
 
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        
+            <div class="row">
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="calle" class=" control-label">Calle y Número:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="calle" name="calle">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="codigo" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="codigo" name="codigo" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5"><?= csrf_field() ?>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="coloniacodigo" class=" control-label">Colonia:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="coloniacodigo" name="coloniacodigo">
+                                <option value="">Selecciona una Opcion</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#coloniacodigo").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                    </div>
+                </div>
+                
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="municipiocodigo" class="control-label">Municipio: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="municipiocodigo" name="municipiocodigo">
+                                <option value="">Selecciona una Opcion</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#municipiocodigo").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="ciudadcodigo" class="control-label">Ciudad: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="ciudadcodigo" name="ciudadcodigo">
+                                <option value="">Selecciona una Opcion</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#ciudadcodigo").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="estadocodigo" class="control-label">Estado: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="estadocodigo" name="estadocodigo">
+                                <option value="">Selecciona una Opcion</option>
+                                
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#estadocodigo").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+    </div>
+</div>
 <script>
      $('#editubicacion').click(function (event) {
         event.preventDefault();

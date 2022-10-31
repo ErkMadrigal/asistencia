@@ -21,7 +21,16 @@
                     <div class="form-group">
                         <label for="cliente" class="control-label">Cliente: </label>
                         <div >
-                            <input type="text"  class="form-control " disabled id="cliente" name="cliente"  value="<?= $turno->idCliente ?>"><input type="hidden"  class="form-control " value =" <?=$id?> " id="id" name="id" ><?= csrf_field() ?>
+                            <input type="text"  class="form-control " disabled id="cliente" name="cliente"  value="<?= $turno->razon_social ?>"><input type="hidden"  class="form-control " value =" <?=$id?> " id="id" name="id" ><?= csrf_field() ?>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-6'>
+                    <div class="form-group">
+                        <label for="cliente" class="control-label">Nombre Corto: </label>
+                        <div >
+                            <input type="text"  class="form-control " disabled id="cliente" name="cliente"  value="<?= $turno->nombre_corto ?>">
                             
                         </div>
                     </div>
@@ -30,7 +39,7 @@
                     <div class="form-group">
                         <label for="ubicacion" class="control-label">Ubicacion: </label>
                         <div >
-                        <input type="text"  class="form-control " disabled id="ubicacion" name="ubicacion" value="<?= $turno->idUbicacion ?>">
+                        <input type="text"  class="form-control " disabled id="ubicacion" name="ubicacion" value="<?= $turno->nombre_ubicacion ?>">
                             
                         </div>
                     </div>
@@ -39,7 +48,16 @@
                     <div class="form-group">
                         <label for="turno" class="control-label">Turno: </label>
                         <div >
-                        <input type="text"  class="form-control " disabled id="turno" name="turno" value="<?= $turno->idTurno ?>">
+                        <input type="text"  class="form-control " disabled id="turno" name="turno" value="<?= $turno->turno ?>">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-6'>
+                    <div class="form-group">
+                        <label for="horario" class="control-label">Horario: </label>
+                        <div >
+                        <input type="text"  class="form-control " disabled id="horario" name="horario" value="<?= $turno->horario ?>">
                             
                         </div>
                     </div>

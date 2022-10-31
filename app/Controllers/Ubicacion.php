@@ -88,8 +88,10 @@ class Ubicacion extends BaseController {
 			$idAdmin = session()->get('IdUser');
 
 			
-            $data['turno'] = $this->modelTurno->GetTurnoById($id);
+            
             $data['id'] = $this->encrypt->Encrypt($id);
+
+            $data['ubicacion'] = $this->modelUbica->GetUbicacionById($id);
 
 			$data['breadcrumb'] = ["inicio" => 'Ubicacion' ,
                     				"url" => 'ubicacion',
@@ -172,14 +174,14 @@ class Ubicacion extends BaseController {
 
 
 				$rules = [
-				'cliente' =>  ['label' => "Cliente", 'rules' => 'required|max_length[255]'],
+				'cliente' =>  ['label' => "Cliente", 'rules' => 'required'],
 				'ubicacion' =>  ['label' => "Ubicación", 'rules' => 'required|max_length[255]'],
 				'calle' =>  ['label' => "Calle y Número", 'rules' => 'required|max_length[255]'],
-				'codigo' =>  ['label' => "Código Postal", 'rules' => 'required|max_length[255]'],
-				'coloniacodigo' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
-				'municipiocodigo' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
-				'ciudadcodigo' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
-				'estadocodigo' =>  ['label' => "Estado", 'rules' => 'required|max_length[255]']];
+				'codigo' =>  ['label' => "Código Postal", 'rules' => 'required|integer|max_length[5]'],
+				'coloniacodigo' =>  ['label' => "Colonia", 'rules' => 'required'],
+				'municipiocodigo' =>  ['label' => "Municipio", 'rules' => 'required'],
+				'ciudadcodigo' =>  ['label' => "Ciudad", 'rules' => 'required'],
+				'estadocodigo' =>  ['label' => "Estado", 'rules' => 'required']];
 		 
 				$errors = [];
 				$succes = [];
