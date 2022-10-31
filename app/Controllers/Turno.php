@@ -32,7 +32,7 @@ class Turno extends BaseController {
 			$data['modulos'] = $this->menu->Permisos();
 			$empresa = session()->get('empresa');
 			$idEmpresa = $this->encrypter->decrypt($empresa);
-			$resultData = $this->modelTurno->GetTurnos($idEmpresa);
+			$resultData = $this->modelTurno->GetTurnosAll();
 			$result = [];
 
 
@@ -41,9 +41,9 @@ class Turno extends BaseController {
 				$id = $this->encrypt->Encrypt($v->id);
 				$result[] = (object) array (
 					'id' => $id ,
-					'idCliente' => $v->cliente,
-					'idUbicacion' => $v->ubicacion,
-                    'idTurno' => $v->turnos,
+					'idCliente' => $v->razon_social,
+					'idUbicacion' => $v->nombre_ubicacion,
+                    'idTurno' => $v->turno,
 					'activo' => $v->activo
 
 				) ;
@@ -151,31 +151,29 @@ class Turno extends BaseController {
             $idEmpresa = $this->encrypter->decrypt($getEmpresa);
 
 			$data['modulos'] = $this->menu->Permisos();
-            $data['turno'] = $this->modelTurno->GetTurnoById($id);
+            
+			$data['cliente'] = $this->modelTurno->getClientes();
 
+			$data['turnos'] = $this->modelTurno->GetTurnos();
+
+			$data['horarios'] = $this->modelTurno->GetHorarios();
 
 			$data['breadcrumb'] = ["inicio" => 'Turno' ,
                     				"url" => 'turnos',
-                    				"titulo" => 'Agregar Turno'];
+                    				"titulo" => 'Agregar'];
 
 			
-			return view('Puesto/addPuesto', $data);
+			return view('Turnos/addTurnos', $data);
 		}	
 	}
 
     public function AgregarTurnos(){
 		//helper(['form']);
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['parentesco,cve_parentesco,tipo_referencia'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['cliente, ubicacion, turno, horario'],FILTER_SANITIZE_STRING)){
 
-				$getEmpresa = session()->get('empresa');
-				$idEmpresa = $this->encrypter->decrypt($getEmpresa);
-
-				
 
 				$rules = [
-				'razon_social' =>  ['label' => "Razon social", 'rules' => 'required|max_length[255]'],
-				'nombre_corto' =>  ['label' => "Nombre Corto", 'rules' => 'required|max_length[255]'],
-                'email' =>  ['label' => "Email", 'rules' => 'required|integer|max_length[255]']];
+				'cliente' =>  ['label' => "Cliente", 'rules' => 'required']];
 		 
 				$errors = [];
 				$succes = [];
@@ -189,15 +187,41 @@ class Turno extends BaseController {
 					$LoggedUserId = $this->encrypter->decrypt($getUser);
 					$empresa = session()->get('empresa');
 					$idEmpresa = $this->encrypter->decrypt($empresa);
-					
-				
+					$TodayDate = date("Y-m-d H:i:s");
+					$uuid = Uuid::uuid4();
+        			$id = $uuid->toString();
+
+        			$getCliente = $this->request->getPost('cliente');
+					$cliente = $this->encrypt->Decrytp($getCliente);
+
+					$getUbicacion = $this->request->getPost('ubicacion');
+					$ubicacion = $this->encrypt->Decrytp($getUbicacion);
+
+					$getTurno = $this->request->getPost('turno');
+					$turno = $this->encrypt->Decrytp($getTurno);
+
+					$getHorario = $this->request->getPost('horario');
+					$horario = $this->encrypt->Decrytp($getHorario);
                     
-					$result = $this->modelCliente->insertItemAndSelect('cliente', $this->request->getPost() , 'cliente',$LoggedUserId , $idEmpresa);
+					$turnoArray = array(
+
+						"id" =>  $id , 
+						"idCliente" =>  $cliente , 
+						"idUbicacion" =>  $ubicacion , 
+						"idTurnos" =>  $turno , 
+						"idHorario" => $horario  , 
+						"activo" =>  1 , 
+						"createdby" =>  $LoggedUserId , 
+						"createddate" => $TodayDate
+                        
+                    );
+
+					$result = $this->modelTurno->SaveTurno($turnoArray);
 
                     if ($result) {
 
             			
-                    	$succes = ["mensaje" => 'El cliente agregada con exito' ,
+                    	$succes = ["mensaje" => 'Turno agregado con exito' ,
                             	   "succes" => "succes"];
 
                            	   
@@ -214,5 +238,71 @@ class Turno extends BaseController {
 				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
 		}	
 	}
+
+
+	public function Ubicaciones(){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['cliente'])){
+			$errors = [];
+            $succes = [];
+            $dontSucces = [];
+            $data = [];
+
+			$rules = [
+				'cliente' =>  'required'];
+				
+				$errors = [];
+				$succes = [];
+				$dontSucces = [];
+				$data = [];
+				
+				if($this->validate($rules)){
+					
+
+					$getCliente = $this->request->getPost('cliente');
+
+					$cliente = $this->encrypt->Decrytp($getCliente);
+
+
+					
+					$getUbicaciones = $this->modelTurno->getUbicaciones($cliente);
+
+					
+
+                    if ($getUbicaciones ) {
+
+                    	$ubicaciones = '<option value="">Selecciona una Ubicación</option>';
+                    	
+                    	foreach ( $getUbicaciones as $v){
+				
+							$id = $this->encrypt->Encrypt($v->id);
+							$ubicaciones.=  '<option value="'.$id.'">'.$v->nombre_ubicacion.'</option>';
+
+							
+						
+						}
+
+						
+                    	
+                    	$data['ubicaciones']= $ubicaciones;
+                    	
+                    	$succes = ["mensaje" => 'Exito.' ,
+                            	   "succes" => "succes"];
+                    	
+                    } else {
+                    		
+                    	$dontSucces = ["error" => "error" ,
+                    				   "mensaje" => 'Hubo un error al obtener los datos.'];
+
+                    }
+                    		
+
+				} else {	
+					$errors = $this->validator->getErrors();
+				}
+
+				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+			
+		}	
+    }
 
 }

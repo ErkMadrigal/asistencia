@@ -20,22 +20,34 @@ class TurnoModel
 
     }
 
-    public function GetTurnos($idEmpresa){
-        $builder = $this->db->table('turnos');
-        $builder->select('turnos.id, idCliente,idUbicacion,idTurnos,activo');
-//$builder->join("cliente C"," puestos.idCliente= C.id  ","left");
-        //$builder->join("ubicacion UB"," puestos.idUbicacion= UB.id  ","left");
-        //$builder->join("turnos TU"," puestos.idTurno= TU.id  ","left");
-//$builder->join("puestos PU"," puestos.idPuestos= PU.id  ","left");
-        $builder->where("turnos.id");
+    public function GetTurnos(){
+        $builder = $this->db->table('catalogos_detalle');
+        $builder->select('id,valor');
+        $builder->where("idCatalogo","0d1f3b8d-ecdb-400b-bfeb-dc362dde9929");
+        $builder->where("activo",true);
+        return $builder->get()->getResult();
+        
+    }
+
+
+    public function GetHorarios(){
+        $builder = $this->db->table('catalogos_detalle');
+        $builder->select('id,valor');
+        $builder->where("idCatalogo","13ec8413-c313-4e70-9c18-ee60705be252");
+        $builder->where("activo",true);
         return $builder->get()->getResult();
         
     }
 
     public function GetTurnoById($id){
         $builder = $this->db->table('turnos');
-        $builder->select("idCliente,idUbicacion,idTurnos,turnos.activo, turnos.createddate, turnos.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
-       $builder->orderBy("idCliente","asc");
+        $builder->select("turnos.id, razon_social,catalogos_detalle.valor As turno, turnos.activo,ubicacion.nombre_ubicacion, turnos.createddate, turnos.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->join("cliente","turnos.idCliente = cliente.id","left");
+        $builder->join("ubicacion","turnos.idUbicacion = ubicacion.id","left");
+        $builder->join("catalogos_detalle","turnos.idTurnos = catalogos_detalle.id","left");
+        $builder->join("sys_usuarios_admin UA","turnos.createdby = UA.id","left");
+       $builder->join("sys_usuarios_admin UU","turnos.updatedby = UU.id","left");
+       
        $builder->where('turnos.id', $id);
         return $builder->get()->getRow();
     }
@@ -54,32 +66,56 @@ class TurnoModel
 
         return $return; 
     }
-    public function insertItemAndSelect($table, $data , $tableSelect , $LoggedUserId, $idEmpresa, $idClase, $idCalibre, $idMarca, $idModelo)
+    public function SaveTurno($data)
     {
 
-        $return = false;
         $this->db->transStart();
-        
-        $uuid = Uuid::uuid4();
-        
-        $idArma = $uuid->toString();
 
-        $query = "INSERT INTO armas (id, matricula,folio_manif, idClase, idCalibre, idMarca, idModelo, activo,createdby,createddate,idEmpresa) VALUES ('".$idArma."','".$data['matricula']."','".$data['folio_manif']."','".$idClase."','".$idCalibre."','".$idMarca."','".$idModelo."',1,'".$LoggedUserId."', now() ,'".$idEmpresa."')";
-
-        $this->db->query($query);
-        
+        $this->db->table('turnos')->insert($data);
 
         $this->db->transComplete();
 
         if ($this->db->transStatus() === TRUE)
         {
             $return = true;
-        } 
+        } else {
+            $return = false ;
+        }
 
         return $return;
     }
 
 
-    
+    public function getClientes(){
+        $builder = $this->db->table('cliente');
+        $builder->select('id,   razon_social');
+        $builder->where("activo",true);
+        $builder->orderBy("razon_social");
+        return $builder->get()->getResult();
+        
+    }
+
+
+    public function getUbicaciones($idCliente){
+        $builder = $this->db->table('ubicacion');
+        $builder->select('id,nombre_ubicacion');
+        $builder->where("activo",true);
+        $builder->where("idCliente",$idCliente);
+        $builder->orderBy("nombre_ubicacion");
+        return $builder->get()->getResult();
+        
+    }
+
+    public function GetTurnosAll(){
+        $builder = $this->db->table('turnos');
+        $builder->select('turnos.id, razon_social,catalogos_detalle.valor As turno, turnos.activo,ubicacion.nombre_ubicacion');
+        $builder->join("cliente","turnos.idCliente = cliente.id","left");
+        $builder->join("ubicacion","turnos.idUbicacion = ubicacion.id","left");
+        $builder->join("catalogos_detalle","turnos.idTurnos = catalogos_detalle.id","left");
+        $builder->orderBy('razon_social');
+        $builder->orderBy('turno');
+        return $builder->get()->getResult();
+        
+    }
     
 }

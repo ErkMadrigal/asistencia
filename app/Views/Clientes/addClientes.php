@@ -1,3 +1,5 @@
+<?= $this->extend('includes/main') ?>
+<?= $this->section('content') ?>
 <div class="card card-primary">
     <div class="card-header">
         <h3 class="card-title">DATOS GENERALES</h3>
@@ -21,7 +23,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="nombre_corto" class=" control-label">Nombre Corto:</label>
+                        <label for="nombre_corto" class=" control-label">Nombre Corto: <span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="nombre_corto" name="nombre_corto">
                     </div>
                 </div>
@@ -39,14 +41,14 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="whatsApp" class=" control-label">WhatsApp:</label>
-                        <input type="text" class="form-control " id="whatsApp" name="whatsApp">
+                        <label for="whatsApp" class=" control-label">WhatsApp:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="whatsApp" name="whatsApp" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="telefono_oficina" class=" control-label">Teléfono Oficina:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="telefono_oficina" name="telefono_oficina">
+                        <input type="text" class="form-control " id="telefono_oficina" name="telefono_oficina" maxlength="10" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-12'>
@@ -100,7 +102,7 @@
 
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">DATOS DEL DOMICILIO BASE SEPOMEX</h3>
+        <h3 class="card-title">DATOS DEL DOMICILIO</h3>
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -184,14 +186,7 @@
                         <div>
                             <select class="form-control" id="estadocodigo" name="estadocodigo">
                                 <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($entidad_federativa) ):
-                                    foreach($entidad_federativa as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -227,31 +222,31 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="rfc" class=" control-label">R.F.C:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="rfc" name="rfc">
+                        <input type="text" class="form-control " id="rfc" name="rfc" maxlength="13">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="nombreInstitucion" class=" control-label">Calle y Número:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion">
+                        <label for="calleFiscales" class=" control-label">Calle y Número:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="calleFiscales" name="calleFiscales">
                     </div>
                 </div>
                 
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="codigo" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="codigo" name="codigo" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5">
+                        <label for="codigoDatosFis" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="codigoDatosFis" name="codigoDatosFis" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="coloniacodigo" class=" control-label">Colonia:<span class="text-danger">*</span></label>
-                        <select class="form-control" id="coloniacodigo" name="coloniacodigo">
+                        <label for="coloniacodigoDatosFis" class=" control-label">Colonia:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="coloniacodigoDatosFis" name="coloniacodigoDatosFis">
                                 <option value="">Selecciona una Opcion</option>
                             </select>
                             <script>
                                 $(document).ready(function() {
-                                    $("#coloniacodigo").select2({
+                                    $("#coloniacodigoDatosFis").select2({
                                         theme: "bootstrap4",
                                         width: "100%"
                                     });
@@ -262,33 +257,14 @@
                 
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="municipiocodigo" class="control-label">Municipio: <span class="text-danger">*</span></label>
+                        <label for="municipiocodigoDatosFis" class="control-label">Municipio: <span class="text-danger">*</span></label>
                         <div>
-                            <select class="form-control" id="municipiocodigo" name="municipiocodigo">
+                            <select class="form-control" id="municipiocodigoDatosFis" name="municipiocodigoDatosFis">
                                 <option value="">Selecciona una Opcion</option>
                             </select>
                             <script>
                                 $(document).ready(function() {
-                                    $("#municipiocodigo").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class='col-6 col-sm-6'>
-                    <div class="form-group">
-                        <label for="ciudadcodigo" class="control-label">Ciudad: <span class="text-danger">*</span></label>
-                        <div>
-                            <select class="form-control" id="ciudadcodigo" name="ciudadcodigo">
-                                <option value="">Selecciona una Opcion</option>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#ciudadcodigo").select2({
+                                    $("#municipiocodigoDatosFis").select2({
                                         theme: "bootstrap4",
                                         width: "100%"
                                     });
@@ -297,24 +273,36 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="estadocodigo" class="control-label">Entado: <span class="text-danger">*</span></label>
+                        <label for="ciudadcodigoDatosFis" class="control-label">Ciudad: <span class="text-danger">*</span></label>
                         <div>
-                            <select class="form-control" id="estadocodigo" name="estadocodigo">
+                            <select class="form-control" id="ciudadcodigoDatosFis" name="ciudadcodigoDatosFis">
                                 <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($entidad_federativa) ):
-                                    foreach($entidad_federativa as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
-                                    $("#estadocodigo").select2({
+                                    $("#ciudadcodigoDatosFis").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="estadocodigoDatosFis" class="control-label">Entado: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="estadocodigoDatosFis" name="estadocodigoDatosFis">
+                                <option value="">Selecciona una Opcion</option>
+                                
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#estadocodigoDatosFis").select2({
                                         theme: "bootstrap4",
                                         width: "100%"
                                     });
@@ -342,7 +330,7 @@
     $('#saveCliente').click(function (event) {
         event.preventDefault();
         $('#load').addClass( "spinner-border" );
-        var formData = new FormData($("form#frmArmas")[0]);
+        var formData = new FormData($("form#DatosPersonales")[0]);
         
         $.ajax({
             url: base_url + '/GuardarCliente',
@@ -395,4 +383,91 @@
             
     });
 
+
+    $("#codigo").on('keyup', function(){
+        getSepomex(this.id)
+    });
+
+    $("#codigoDatosFis").on('keyup', function(){
+        getSepomex(this.id)
+    });
+
+
+    function getSepomex(id) {
+
+
+
+        var elemento = id;
+        
+        var num = $('#'+elemento).val().length
+
+        if (num === 5) {
+
+            $('#load').addClass( "spinner-border" );
+
+            let selectEstadoDom = document.querySelector("#estado"+elemento)
+
+            let selectMunicipioDom = document.querySelector("#municipio"+elemento)
+                
+            let selectColoniaDom = document.querySelector("#colonia"+elemento)
+
+            let selectCiudadDom = document.querySelector("#ciudad"+elemento)
+            
+              
+
+                selectCiudadDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+                selectEstadoDom.innerHTML = ''
+                selectMunicipioDom.innerHTML = ''
+              
+            
+            
+
+            $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
+
+        
+        var cp = $('#'+elemento).val()
+        var csrfName = $("input[name=app_csrf]").val();
+        
+            var data    = {
+                    cp : cp,
+                    app_csrf: csrfName
+                };
+
+        $.ajax({
+            url: base_url + '/getSepomex',
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            data: data,
+            ache: false,
+            async: true,
+            success: function (response) {
+                if(response.succes.succes === "succes"){
+
+                        
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectColoniaDom.innerHTML = response.data.colonia
+                    
+                        selectEstadoDom.innerHTML = response.data.estado
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                        
+                
+                    
+                    
+                }
+
+                $('#load').removeClass( "spinner-border" );
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('#load').removeClass( "spinner-border" );
+                toastr.error('<?=lang('Layout.toastrError') ?>');
+                           
+            }
+        });
+
+    }
+    };
+
 </script>
+<?= $this->endSection() ?>

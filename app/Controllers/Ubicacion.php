@@ -32,7 +32,7 @@ class Ubicacion extends BaseController {
 			$data['modulos'] = $this->menu->Permisos();
 			$empresa = session()->get('empresa');
 			$idEmpresa = $this->encrypter->decrypt($empresa);
-			$resultData = $this->modelUbica->GetUbicacion($idEmpresa);
+			$resultData = $this->modelUbica->GetUbicacion();
 			$result = [];
 
 
@@ -41,8 +41,8 @@ class Ubicacion extends BaseController {
 				$id = $this->encrypt->Encrypt($v->id);
 				$result[] = (object) array (
 					'id' => $id ,
-					'idCliente' => $v->cliente,
-					'nombre_ubicacion' => $v->ubicacion,
+					'idCliente' => $v->razon_social,
+					'nombre_ubicacion' => $v->nombre_ubicacion,
 					'activo' => $v->activo
 
 				) ;
@@ -100,7 +100,7 @@ class Ubicacion extends BaseController {
 
     public function SaveUbicacion(){
 
-		if($this->request->getMethod() == "post" && $this->request->getvar(['id'],FILTER_SANITIZE_STRING)) {
+		if($this->request->getMethod() == "post" && $this->request->getvar(['cliente, ubicacion, calle, codigo, 6coloniacodigo, municipiocodigo, ciudadcodigo, estadocodigo'],FILTER_SANITIZE_STRING)) {
 
 			$rules = ['id' =>  ['label' => '', 'rules' =>'required']];
 
@@ -115,14 +115,15 @@ class Ubicacion extends BaseController {
 					$TodayDate = date("Y-m-d H:i:s");
 					$idModi = $this->request->getPost('id');
 					$idCliente = $this->encrypt->Decrytp($idModi);	
-					$updateEmpresa = array(
+					$ubicacion = array(
 
+						
                         "activo" => $this->request->getPost('activo'),
                         "updatedby" => $LoggedUserId,
                 		"updateddate" => $TodayDate
                     );
 
-					$ubi = $this->modelCliente->Savecliente($updateEmpresa, $idC);
+					$ubi = $this->modelCliente->Savecliente($ubicacion);
 
 					if ($ubi){
 
@@ -150,31 +151,28 @@ class Ubicacion extends BaseController {
             $idEmpresa = $this->encrypter->decrypt($getEmpresa);
 
 			$data['modulos'] = $this->menu->Permisos();
-            $data['turno'] = $this->modelTurno->GetTurnoById($id);
+
+
+			$data['cliente'] = $this->modelUbica->getClientes();
+            
 
 
 			$data['breadcrumb'] = ["inicio" => 'Ubicacion' ,
                     				"url" => 'ubicacion',
-                    				"titulo" => 'Agregar Ubicacion'];
+                    				"titulo" => 'Agregar'];
 
 			
-			return view('Puesto/addPuesto', $data);
+			return view('Ubicacion/addUbicacion', $data);
 		}	
 	}
 
     public function AgregarUbicacion(){
 		//helper(['form']);
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['parentesco,cve_parentesco,tipo_referencia'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['cliente, ubicacion, calle, codigo, coloniacodigo, municipiocodigo, ciudadcodigo, estadocodigo'],FILTER_SANITIZE_STRING)){
 
-				$getEmpresa = session()->get('empresa');
-				$idEmpresa = $this->encrypter->decrypt($getEmpresa);
-
-				
 
 				$rules = [
-				'razon_social' =>  ['label' => "Razon social", 'rules' => 'required|max_length[255]'],
-				'nombre_corto' =>  ['label' => "Nombre Corto", 'rules' => 'required|max_length[255]'],
-                'email' =>  ['label' => "Email", 'rules' => 'required|integer|max_length[255]']];
+				'ubicacion' =>  ['label' => "Ubicación", 'rules' => 'required|max_length[255]']];
 		 
 				$errors = [];
 				$succes = [];
@@ -186,17 +184,37 @@ class Ubicacion extends BaseController {
 					
 					$getUser = session()->get('IdUser');
 					$LoggedUserId = $this->encrypter->decrypt($getUser);
-					$empresa = session()->get('empresa');
-					$idEmpresa = $this->encrypter->decrypt($empresa);
+					$TodayDate = date("Y-m-d H:i:s");
 					
-				
+					$uuid = Uuid::uuid4();
+        			$id = $uuid->toString();
+
+        			$getCliente = $this->request->getPost('cliente');
+					$idCliente = $this->encrypt->Decrytp($getCliente);
                     
-					$result = $this->modelCliente->insertItemAndSelect('cliente', $this->request->getPost() , 'cliente',$LoggedUserId , $idEmpresa);
+					$ubicacion = array(
+
+						"id" =>  $id , 
+						"idCliente" =>  $idCliente , 
+						"nombre_ubicacion" =>  $this->request->getPost('ubicacion') , 
+						"calle_num" =>  $this->request->getPost('calle') , 
+						"idCodigoPostal" =>  $this->request->getPost('codigo') , 
+						"colonia" =>  $this->request->getPost('coloniacodigo') , 
+						"municipio" => $this->request->getPost('municipiocodigo')  , 
+						"ciudad" => $this->request->getPost('ciudadcodigo')  , 
+						"estado" =>  $this->request->getPost('estadocodigo') , 
+						"activo" =>  1 , 
+						"createdby" =>  $LoggedUserId , 
+						"createddate" => $TodayDate
+                        
+                    );
+
+					$result = $this->modelUbica->SaveUbicacion($ubicacion);
 
                     if ($result) {
 
             			
-                    	$succes = ["mensaje" => 'El cliente agregada con exito' ,
+                    	$succes = ["mensaje" => 'Ubicación agregada con exito' ,
                             	   "succes" => "succes"];
 
                            	   

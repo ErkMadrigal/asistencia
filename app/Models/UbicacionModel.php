@@ -20,18 +20,22 @@ class UbicacionModel
 
     }
 
-    public function GetUbicacion($idEmpresa){
+    public function GetUbicacion(){
         $builder = $this->db->table('ubicacion');
-        $builder->select('ubicacion.id, idCliente,nombre_ubicacion,activo');
-        $builder->where("ubicacion.id");
+        $builder->select('ubicacion.id, razon_social,nombre_ubicacion,ubicacion.activo');
+        $builder->join("cliente","ubicacion.idCliente = cliente.id","left");
+        $builder->orderBy('razon_social');
+        $builder->orderBy('nombre_ubicacion');
         return $builder->get()->getResult();
         
     }
 
     public function GetUbicacionById($id){
         $builder = $this->db->table('ubicacion');
-        $builder->select("idCliente,idUbicacion,ubicacion.activo, ubicacion.createddate, ubicacion.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
-       $builder->orderBy("idCliente","asc");
+        $builder->select("razon_social AS idCliente,nombre_ubicacion,ubicacion.activo, ubicacion.createddate, ubicacion.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+       $builder->join("cliente","ubicacion.idCliente = cliente.id","left"); 
+       $builder->join("sys_usuarios_admin UA","ubicacion.createdby = UA.id","left");
+       $builder->join("sys_usuarios_admin UU","ubicacion.updatedby = UU.id","left");
        $builder->where('ubicacion.id', $id);
         return $builder->get()->getRow();
     }
@@ -50,29 +54,33 @@ class UbicacionModel
 
         return $return; 
     }
-    public function insertItemAndSelect($table, $data , $tableSelect , $LoggedUserId, $idEmpresa, $idClase, $idCalibre, $idMarca, $idModelo)
+    public function SaveUbicacion($ubicacion)
     {
 
-        $return = false;
         $this->db->transStart();
-        
-        $uuid = Uuid::uuid4();
-        
-        $idArma = $uuid->toString();
 
-        $query = "INSERT INTO armas (id, matricula,folio_manif, idClase, idCalibre, idMarca, idModelo, activo,createdby,createddate,idEmpresa) VALUES ('".$idArma."','".$data['matricula']."','".$data['folio_manif']."','".$idClase."','".$idCalibre."','".$idMarca."','".$idModelo."',1,'".$LoggedUserId."', now() ,'".$idEmpresa."')";
-
-        $this->db->query($query);
-        
+        $this->db->table('ubicacion')->insert($ubicacion);
 
         $this->db->transComplete();
 
         if ($this->db->transStatus() === TRUE)
         {
             $return = true;
-        } 
+        } else {
+            $return = false ;
+        }
 
         return $return;
+    }
+
+
+    public function getClientes(){
+        $builder = $this->db->table('cliente');
+        $builder->select('id,   razon_social');
+        $builder->where("activo",true);
+        $builder->orderBy("razon_social");
+        return $builder->get()->getResult();
+        
     }
 
 

@@ -1,9 +1,20 @@
+<?= $this->extend('includes/main') ?>
+<?= $this->section('content') ?>
+<?php
+
+use CodeIgniter\HTTP\RequestInterface;
+use App\Models\ArmasModel;
+use App\Libraries\Encrypt;
+
+ $encrypt = new Encrypt();
+
+?>
 <div class="card card-primary">
     <div class="card-header">
         <h3 class="card-title">DATOS GENERALES</h3>
 
         <div class="card-tools">
-            <input type="hidden" class="form-control " id="idPersonal" name="idPersonal"  >
+            
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
             </button>
@@ -11,24 +22,71 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <form class="form-horizontal" id="DatosPersonales">
+        <form class="form-horizontal" id="Turnos">
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="cliente" class="control-label">Cliente: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="cliente" name="cliente"><?= csrf_field() ?>
+                        <?= csrf_field() ?>
+                        <select class="form-control" id="cliente" name="cliente">
+                        <option value="">Seleccione un Cliente</option>;
+                        <?php
+                                if( !empty($cliente) ):
+                                    foreach($cliente as  $a){
+                                        $idCliente = $encrypt->Encrypt($a->id);?>
+                                            <option value="<?=$idCliente?>"><?= $a->razon_social ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                                    </select><script>$(document).ready(function() {
+                                        $("#cliente").select2({theme: "bootstrap4",width:"100%"});
+                                        });</script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="ubicacion" class=" control-label">Ubicacion:</label>
-                        <input type="text" class="form-control " id="ubicacion" name="ubicacion">
+                        <label for="ubicacion" class="control-label">Ubicación: <span class="text-danger">*</span></label>
+                        <select class="form-control" id="ubicacion" name="ubicacion">
+                        <option value="">Selecciona una Ubicación</option>;
+                                    </select><script>$(document).ready(function() {
+                                        $("#ubicacion").select2({theme: "bootstrap4",width:"100%"});
+                                        });</script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="turno" class=" control-label">Turno:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="turno" name="turno">
+                        <select class="form-control" id="turno" name="turno">
+                        <option value="">Seleccione un Turno</option>;
+                        <?php
+                                if( !empty($turnos) ):
+                                    foreach($turnos as  $a){
+                                        $idTurno = $encrypt->Encrypt($a->id);?>
+                                            <option value="<?=$idTurno?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                                    </select><script>$(document).ready(function() {
+                                        $("#turno").select2({theme: "bootstrap4",width:"100%"});
+                                        });</script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="horario" class=" control-label">Horario:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="horario" name="horario">
+                        <option value="">Seleccione un Horario</option>;
+                        <?php
+                                if( !empty($horarios) ):
+                                    foreach($horarios as  $a){
+                                        $idHorario = $encrypt->Encrypt($a->id);?>
+                                            <option value="<?=$idHorario?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                                    </select><script>$(document).ready(function() {
+                                        $("#horario").select2({theme: "bootstrap4",width:"100%"});
+                                        });</script>
                     </div>
                 </div>
             </div>
@@ -50,7 +108,7 @@
     $('#saveTurno').click(function (event) {
         event.preventDefault();
         $('#load').addClass( "spinner-border" );
-        var formData = new FormData($("form#frmArmas")[0]);
+        var formData = new FormData($("form#Turnos")[0]);
         
         $.ajax({
             url: base_url + '/GuardarTurno',
@@ -103,4 +161,51 @@
             
     });
 
+
+
+    $('#cliente').on('select2:select',
+        function (e) {    
+        
+        $('#ubicacion').val(null).empty();
+        var cliente = $('#cliente').val()
+        var csrfName = $("input[name=app_csrf]").val();
+        
+            var data    = {
+                    cliente : cliente,
+                    app_csrf: csrfName
+                };
+
+        $.ajax({
+            url: base_url + '/getUbicaciones',
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            data: data,
+            ache: false,
+            async: true,
+            success: function (response) {
+                if(response.succes.succes === "succes"){
+
+                    $('#ubicacion').append(response.data.ubicaciones);
+                        
+                    
+                    } else {
+
+
+                        toastr.error(response.dontsucces.mensaje);
+                    }
+
+                $('#load').removeClass( "spinner-border" );
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('#load').removeClass( "spinner-border" );
+                toastr.error('<?=lang('Layout.toastrError') ?>');
+                           
+            }
+        });
+
+    
+    });
+
 </script>
+<?= $this->endSection() ?>

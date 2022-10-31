@@ -151,21 +151,21 @@ class Cliente extends BaseController {
             $idEmpresa = $this->encrypter->decrypt($getEmpresa);
 
 			$data['modulos'] = $this->menu->Permisos();
-			$data['tipo'] = $this->modelReferencia->GetTipoReferencia();
+			
 
 
-			$data['breadcrumb'] = ["inicio" => 'Referencia' ,
-                    				"url" => 'referencias',
-                    				"titulo" => 'Agregar Referencia'];
+			$data['breadcrumb'] = ["inicio" => 'Clientes' ,
+                    				"url" => 'clientes',
+                    				"titulo" => 'Agregar'];
 
 			
-			return view('Referencias/addReferencia', $data);
+			return view('Clientes/addClientes', $data);
 		}	
 	}
 
     public function AgregarClientes(){
 		//helper(['form']);
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['parentesco,cve_parentesco,tipo_referencia'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['razon_social, nombre_corto, nombre_contacto, puesto_contacto, whatsApp, telefono_oficina, email, fecha_inicio_servicio, fecha_fin_servicio, calle, codigo, coloniacodigo, municipiocodigo, ciudadcodigo, estadocodigo, rfc, nombreInstitucion, codigoDatosFis, coloniacodigoDatosFis, municipiocodigoDatosFis, ciudadcodigoDatosFis, estadocodigoDatosFis'],FILTER_SANITIZE_STRING)){
 
 				$getEmpresa = session()->get('empresa');
 				$idEmpresa = $this->encrypter->decrypt($getEmpresa);
@@ -187,12 +187,50 @@ class Cliente extends BaseController {
 					
 					$getUser = session()->get('IdUser');
 					$LoggedUserId = $this->encrypter->decrypt($getUser);
-					$empresa = session()->get('empresa');
-					$idEmpresa = $this->encrypter->decrypt($empresa);
 					
-				
-                    
-					$result = $this->modelCliente->insertItemAndSelect('cliente', $this->request->getPost() , 'cliente',$LoggedUserId , $idEmpresa);
+					$uuid = Uuid::uuid4();
+        			$id = $uuid->toString();
+					
+					$TodayDate = date("Y-m-d H:i:s");
+
+					$getFecha_inicio_servicio = $this->request->getPost('fecha_inicio_servicio');
+
+        			$fecha_inicio_servicio = date( "Y-m-d" ,strtotime($getFecha_inicio_servicio));
+
+        			$getFecha_fin_servicio = $this->request->getPost('fecha_fin_servicio');
+
+        			$fecha_fin_servicio = date( "Y-m-d" ,strtotime($getFecha_fin_servicio));
+					
+					$Cliente = array(
+                        "id" => $id  , 
+                        "razon_social" =>  $this->request->getPost('razon_social') , 
+                        "nombre_corto" =>  $this->request->getPost('nombre_corto') , 
+                        "nombre_contacto" =>  $this->request->getPost('nombre_contacto') , 
+                        "puesto" =>  $this->request->getPost('puesto_contacto') , 
+                        "whatsapp" => $this->request->getPost('whatsApp')  , 
+                        "tel_oficina" =>  $this->request->getPost('telefono_oficina') , 
+                        "email" => $this->request->getPost('email')  , 
+                        "fecha_inicio" => $fecha_inicio_servicio  , 
+                        "fecha_fin" => $fecha_fin_servicio  , 
+                        "calle_num" =>  $this->request->getPost('calle') , 
+                        "idCodigoPostal" =>  $this->request->getPost('codigo') , 
+                        "colonia" =>  $this->request->getPost('coloniacodigo') , 
+                        "municipio" =>  $this->request->getPost('municipiocodigo') , 
+                        "ciudad" =>  $this->request->getPost('ciudadcodigo') , 
+                        "estado" =>  $this->request->getPost('estadocodigo') , 
+                        "rfc" =>  $this->request->getPost('rfc') , 
+                        "calle_num_fiscal" =>   $this->request->getPost('calleFiscales'), 
+                        "idCodigoPostal_fiscal" =>  $this->request->getPost('codigoDatosFis') , 
+                        "colonia_fiscal" =>  $this->request->getPost('coloniacodigoDatosFis') , 
+                        "municipio_fiscal" => $this->request->getPost('municipiocodigoDatosFis')  , 
+                        "ciudad_fiscal" => $this->request->getPost('ciudadcodigoDatosFis')  , 
+                        "estado_fiscal" => $this->request->getPost('estadocodigoDatosFis')  , 
+                        "activo" =>  1 , 
+                        "createdby" =>  $LoggedUserId , 
+                        "createddate" =>  $TodayDate 
+                    );
+
+					$result = $this->modelCliente->saveCliente($Cliente);
 
                     if ($result) {
 

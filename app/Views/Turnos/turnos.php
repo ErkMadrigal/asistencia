@@ -7,7 +7,7 @@
         <div class="col-12 col-sm-6 col-md-9 ">
         </div>
             <div class="col-12 col-sm-6 col-md-3">
-                <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/AddTurno " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i> Agregar Puesto</a>
+                <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/AddTurno " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i> Agregar Turno</a>
             </div>   
     </div>
 </div>
@@ -63,7 +63,7 @@ function estatusRenderer(data, type, full, meta) {
                       },
                       { data: "idUbicacion"
                       },
-                      { data: "idTurnos"
+                      { data: "idTurno"
                       },
                       { data: "activo",
                         render: estatusRenderer

@@ -20,17 +20,19 @@ class ClienteModel
 
     }
 
-    public function GetClientes($idEmpresa){
+    public function GetClientes(){
         $builder = $this->db->table('cliente');
         $builder->select('cliente.id, razon_social, nombre_corto,email,activo');
-        $builder->where("cliente.id");
+        
         return $builder->get()->getResult();
         
     }
 
     public function GetClienteById($id){
         $builder = $this->db->table('cliente');
-        $builder->select("razon_social,nombre_corto,email,cliente.activo, cliente.createddate, cliente.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->select("razon_social,nombre_corto,cliente.email,cliente.activo, cliente.createddate, cliente.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+       $builder->join("sys_usuarios_admin UA","cliente.createdby = UA.id","left");
+       $builder->join("sys_usuarios_admin UU","cliente.updatedby = UU.id","left"); 
        $builder->orderBy("razon_social","asc");
        $builder->where('cliente.id', $id);
         return $builder->get()->getRow();
@@ -38,7 +40,7 @@ class ClienteModel
 
 
 
-   public function Savecliente( $updateEmpresa, $idCatalogo ){
+   public function Updatecliente( $updateEmpresa, $idCatalogo ){
 
         $return = false;
         $this->db->table('cliente')->where('id')->update($updateEmpresa);
@@ -50,27 +52,21 @@ class ClienteModel
 
         return $return; 
     }
-    public function insertItemAndSelect($table, $data , $tableSelect , $LoggedUserId, $idEmpresa, $idClase, $idCalibre, $idMarca, $idModelo)
+    public function saveCliente($cliente)
     {
 
-        $return = false;
         $this->db->transStart();
-        
-        $uuid = Uuid::uuid4();
-        
-        $idArma = $uuid->toString();
 
-        $query = "INSERT INTO armas (id, matricula,folio_manif, idClase, idCalibre, idMarca, idModelo, activo,createdby,createddate,idEmpresa) VALUES ('".$idArma."','".$data['matricula']."','".$data['folio_manif']."','".$idClase."','".$idCalibre."','".$idMarca."','".$idModelo."',1,'".$LoggedUserId."', now() ,'".$idEmpresa."')";
-
-        $this->db->query($query);
-        
+        $this->db->table('cliente')->insert($cliente);
 
         $this->db->transComplete();
 
         if ($this->db->transStatus() === TRUE)
         {
             $return = true;
-        } 
+        } else {
+            $return = false ;
+        }
 
         return $return;
     }

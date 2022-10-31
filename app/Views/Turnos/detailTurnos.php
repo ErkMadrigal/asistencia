@@ -18,7 +18,7 @@
                         <div class="form-group">
                             <label for="cliente" class="control-label">Cliente: </label>
                             <div >
-                            <?=$turno->idCliente ?>
+                            <?=$turno->razon_social ?>
                                 
                             </div>
                         </div>
@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <label for="ubicacion" class="control-label">Ubicacion: </label>
                             <div >
-                            <?= $turno->idUbicacion ?>
+                            <?= $turno->nombre_ubicacion ?>
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                         <div class="form-group">
                             <label for="idReferencia" class="control-label">turno: </label>
                             <div >
-                            <?= $turno->idturnos ?>
+                            <?= $turno->turno ?>
                             </div>
                         </div>
                     </div>

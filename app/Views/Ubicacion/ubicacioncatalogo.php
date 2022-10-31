@@ -60,7 +60,7 @@ function estatusRenderer(data, type, full, meta) {
             },
             columns: [{ data: "idCliente"
                       },
-                      { data: "idUbicacion"
+                      { data: "nombre_ubicacion"
                       },
                       { data: "activo",
                         render: estatusRenderer

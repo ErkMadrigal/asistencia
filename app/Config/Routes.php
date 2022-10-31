@@ -158,6 +158,8 @@ $routes->post('EditInfoturno', 'Turno::SaveTurno',['filter' => 'auth']);
 $routes->get('AddTurno', 'Turno::AgregaTurno',['filter' => 'auth']);
 $routes->post('GuardarTurno', 'Turno::AgregarTurnos',['filter' => 'auth']);
 
+$routes->post('getUbicaciones', 'Turno::Ubicaciones',['filter' => 'auth']);
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
