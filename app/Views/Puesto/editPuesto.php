@@ -146,28 +146,7 @@
 
                     $("#exampleModal").modal("hide");
 
-<<<<<<< HEAD
                     toastr.success(response.succes.mensaje);
-=======
-                        toastr.success(response.succes.mensaje);
-
-                        var count = 2;
-                        setInterval(function() {
-                            count--;
-                            if (count == 0) {
-                                window.location = base_url + '/puesto';
-                            }
-                        }, 1000);
-
-                    } else if (response.dontsucces.error == 'error') {
-                        toastr.error(response.dontsucces.mensaje);
-
-                    } else if (Object.keys(response.error).length > 0) {
-
-                        for (var clave in response.error) {
-
-                            $("<div class='errorField text-danger'>" + response.error[clave] + "</div>").insertAfter("#" + clave + "");
->>>>>>> fer
 
                     var count = 2;
                     setInterval(function() {
