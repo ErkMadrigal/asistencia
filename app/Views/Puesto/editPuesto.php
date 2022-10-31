@@ -2,7 +2,6 @@
 <?= $this->section('content') ?>
 <div id="load" class=" spinner text-secondary" role="status">
 </div>
-
 <div class="card card-primary">
     <div class="card-header">
         <h3 class="card-title">Detalle Puesto</h3>
