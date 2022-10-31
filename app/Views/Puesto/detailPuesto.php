@@ -23,11 +23,19 @@
                             </div>
                         </div>
                     </div>
+                    <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="nombre_corto" class=" control-label">Nombre Corto: </label>
+                        <div>
+                            <?= $Puesto->nombre_corto ?>
+                        </div>
+                    </div>
+                </div>
                     <div class='col-12 col-sm-6'>    
                         <div class="form-group">
                             <label for="idReferencia" class="control-label">Ubicacion: </label>
                             <div >
-                            <?= $Puesto->idUbicacion ?>
+                            <?= $Puesto->nombre_ubicacion ?>
                             </div>
                         </div>
                     </div>
@@ -35,7 +43,7 @@
                         <div class="form-group">
                             <label for="idReferencia" class="control-label">Turno: </label>
                             <div >
-                            <?= $Puesto->idTurno ?>
+                            <?= $Puesto->turnos ?>
                             </div>
                         </div>
                     </div>
