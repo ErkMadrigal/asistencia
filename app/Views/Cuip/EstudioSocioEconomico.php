@@ -156,33 +156,33 @@
                         <div class="form-group">
                             <label for="apellidoPaterno" class=" control-label">Apellido
                                 Paterno:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="apellidoPaterno" name="apellidoPaterno[]">
+                            <input type="text" class="form-control " id="apellidoPaterno" name="apellidoPaterno">
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="apellidoMaterno" class=" control-label">Apellido
                                 Materno:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno[]">
+                            <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno">
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="primerNombre" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="primerNombre" name="primerNombre[]">
+                            <input type="text" class="form-control " id="primerNombre" name="primerNombre">
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="segundoNombre" class=" control-label">Segundo Nombre:</label>
-                            <input type="text" class="form-control " id="segundoNombre" name="segundoNombre[]">
+                            <input type="text" class="form-control " id="segundoNombre" name="segundoNombre">
                         </div>
                     </div>
                     <div class='col-12 col-sm-6'>
                         <div class='form-group'>
                             <label for="fecha_nacimiento_dep">Fecha de Nacimiento: <span class="text-danger">*</span></label>
                             <div class="input-group date" id="fecha_nacimiento_dep" data-target-input="nearest">
-                                <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_nacimiento_dep" id="datetime-fecha_nacimiento_dep" name="fecha_nacimiento_dep[]" placeholder="" value="" />
+                                <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_nacimiento_dep" id="datetime-fecha_nacimiento_dep" name="fecha_nacimiento_dep" placeholder="" value="" />
                                 <div class="input-group-append" data-target="#fecha_nacimiento_dep" data-toggle="datetimepicker">
                                     <div class="input-group-text"><i class="far fa-calendar"></i></div>
                                 </div>
@@ -200,7 +200,7 @@
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="sexo_dep" class=" control-label">Sexo:<span class="text-danger">*</span></label>
-                            <select class="form-control" id="sexo_dep" name="sexo_dep[]">
+                            <select class="form-control" id="sexo_dep" name="sexo_dep">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
                                 if (!empty($genero)) :
@@ -225,7 +225,7 @@
                         <div class="form-group">
                             <label for="parentesco_familiar" class="control-label">Parentesco: <span class="text-danger">*</span></label>
                             <div>
-                                <select class="form-control" id="parentesco_familiar" name="parentesco_familiar[]">
+                                <select class="form-control" id="parentesco_familiar" name="parentesco_familiar">
                                     <option value="">Selecciona una Opcion</option>
                                     <?php
                                     if (!empty($parentesco_todos)) :
@@ -276,7 +276,7 @@
         var formData = new FormData($("form#SocioEconomico")[0]);
 
 
-        if ($('#activo').is(':checked')) {
+        if ($('#btnNingunConyuge').is(':checked')) {
             val = 1;
 
         } else {
@@ -360,7 +360,7 @@
 
     $(document).on('click', '.add-more-btn-dged', function() {
 
-        var clone = $('#CardConyuge').clone('.form-block-dged');
+        var clone = '<div class="row" class="form-block">    <div class="col-12 col-sm-12 col-md-6">        <div class="form-group">            <label for="apellidoPaternoB" class=" control-label">Apellido                Paterno:<span class="text-danger">*</span></label>            <input type="text" class="form-control " id="apellidoPaternoB" name="apellidoPaternoB">        </div>    </div>    <div class="col-12 col-sm-12 col-md-6">        <div class="form-group">            <label for="apellidoMaternoB" class=" control-label">Apellido                Materno:<span class="text-danger">*</span></label>            <input type="text" class="form-control " id="apellidoMaternoB" name="apellidoMaternoB">        </div>    </div>    <div class="col-12 col-sm-12 col-md-6">        <div class="form-group">            <label for="primerNombreB" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>            <input type="text" class="form-control " id="primerNombreB" name="primerNombreB">        </div>    </div>    <div class="col-12 col-sm-12 col-md-6">        <div class="form-group">            <label for="segundoNombreB" class=" control-label">Segundo Nombre:</label>            <input type="text" class="form-control " id="segundoNombreB" name="segundoNombreB">        </div>    </div>    <div class="col-12 col-sm-6">        <div class="form-group">            <label for="fecha_nacimiento_depB">Fecha de Nacimiento: <span class="text-danger">*</span></label>            <div class="input-group date" id="fecha_nacimiento_depB" data-target-input="nearest">                <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_nacimiento_depB" id="datetime-fecha_nacimiento_depB" name="fecha_nacimiento_depB" placeholder="" value="" />                <div class="input-group-append" data-target="#fecha_nacimiento_depB" data-toggle="datetimepicker">                    <div class="input-group-text"><i class="far fa-calendar"></i></div>                </div>            </div>            <script type="text/javascript">                $(function() {                    $("#fecha_nacimiento_depB").datetimepicker({                        format: "DD-MM-YYYY",                        locale: moment.locale("es")                    });                });            <\/script>        </div>    </div>    <div class="col-12 col-sm-12 col-md-6">        <div class="form-group">            <label for="sexo_depB" class=" control-label">Sexo:<span class="text-danger">*</span></label>            <select class="form-control" id="sexo_depB" name="sexo_depB">                <option value="">Selecciona una Opcion</option>                <?php                if (!empty($genero)) :                    foreach ($genero as  $a) {                ?>                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>                <?php                    }                endif; ?>            </select>            <script>                $(document).ready(function() {                    $("#sexo_depB").select2({                        theme: "bootstrap4",                        width: "100%"                    });                });            <\/script>        </div>    </div>    <div class="col-6 col-sm-6">        <div class="form-group">            <label for="parentesco_familiarB" class="control-label">Parentesco: <span class="text-danger">*</span></label>            <div>                <select class="form-control" id="parentesco_familiarB" name="parentesco_familiarB">                    <option value="">Selecciona una Opcion</option>                    <?php                    if (!empty($parentesco_todos)) :                        foreach ($parentesco_todos as  $a) {                    ?>                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>                    <?php                        }                    endif; ?>                </select>                <script>                    $(document).ready(function() {                        $("#parentesco_familiarB").select2({                            theme: "bootstrap4",                            width: "100%"                        });                    });                <\/script>            </div>        </div>    </div></div>';
         $('#CardConyugeB').append(clone);
         $('#btnAdddConyuge').removeClass('add-more-btn');
         $('#btnAdddConyuge').addClass('remove-more-btn');

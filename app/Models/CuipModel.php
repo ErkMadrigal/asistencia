@@ -98,10 +98,15 @@ class CuipModel
         
     }
 
-    public function insertSocioEconomico($data){
+    public function insertSocioEconomico($data,$datosDependientesArray,$datos){
         $this->db->transStart();
 
         $this->db->table('estudio_socioeconomico')->insert($data);
+
+        if($datos == 0){
+
+           $this->db->table('estudio_socioeconomico_dependientes')->insert($datosDependientesArray); 
+        }
 
         $this->db->transComplete();
 

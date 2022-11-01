@@ -3,7 +3,7 @@
         <h3 class="card-title">DATOS PERSONALES</h3>
 
         <div class="card-tools">
-            <input type="hidden" class="form-control " id="idPersonal" name="idPersonal"  >
+            <input type="hidden" class="form-control " id="idPersonal" name="idPersonal" value="c6209492-f61d-409b-9b08-96cd888a8192" >
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
             </button>
