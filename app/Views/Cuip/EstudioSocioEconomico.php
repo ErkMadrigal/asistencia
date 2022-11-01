@@ -13,7 +13,7 @@
     <!-- /.card-header -->
     <div class="card-body  ">
         <form class="form-horizontal" id="SocioEconomico">
-            <div id="CardSocio">
+            
                 <div class="row">
 
                     <div class='col-12 col-sm-12 col-md-6'>
@@ -125,8 +125,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            </div>
+            
+            
         </form>
     </div>
 </div>
@@ -249,6 +249,7 @@
                     </div>
                 </div>
             </div>
+            <hr class="mt-3 mb-3" />
             <div id="CardConyugeB">
             </div>
         </form>
