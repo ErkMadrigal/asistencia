@@ -306,27 +306,16 @@ class Cuip extends BaseController {
 				'estadocodigo' =>  ['label' => "Entidad Federativa", 'rules' => 'required'],
 				'municipiocodigo' =>  ['label' => "Municipio", 'rules' => 'required'],
 				'ciudadcodigo' =>  ['label' => "Ciudad", 'rules' => 'required'],
-				'nombrecurso' =>  ['label' => "Nombre del Curso", 'rules' => 'required|max_length[255]'],
-				'nombreInstitucion' =>  ['label' => "Nombre de la Institución", 'rules' => 'required|max_length[255]'],
-				'fecha_inicial' =>  ['label' => "Fecha de Inicio", 'rules' => 'required|valid_only_date_chek'],
-				'fecha_final' =>  ['label' => "Fecha de Término", 'rules' => 'required|valid_only_date_chek'],
-				'certificado_por' =>  ['label' => "Certificado por", 'rules' => 'required|max_length[255]'],
+				
 				'dependencia_adscripcion' =>  ['label' => "Dependencia", 'rules' => 'required|max_length[255]'],
 				'institucion_adscripcion' =>  ['label' => "Institución", 'rules' => 'required|max_length[255]'],
 				'fechaingreso_adscripcion' =>  ['label' => "Fecha de Ingreso", 'rules' => 'required|valid_only_date_chek'],
 				'puesto_adscripcion' =>  ['label' => "Puesto", 'rules' => 'required|max_length[255]'],
-				'especialidad_adscripcion' =>  ['label' => "Especialidad", 'rules' => 'required|max_length[255]'],
-				'certificado_por' =>  ['label' => "Certificado por", 'rules' => 'required|max_length[255]'],
+				
+				
 				'rango_adscripcion' =>  ['label' => "Rango o Categoria", 'rules' => 'required|max_length[255]'],
 				'nivel_adscripcion' =>  ['label' => "Nivel de Mando", 'rules' => 'required|max_length[255]'],
-				'placas_adscripcion' =>  ['label' => "Número de placas", 'rules' => 'required|max_length[255]'],
-				'expediente_adscripcion' =>  ['label' => "Número de Expediente", 'rules' => 'required|max_length[255]'],
-				'sueldo_adscripcion' =>  ['label' => "Sueldo Base", 'rules' => 'required|max_length[255]'],
-				'compensacion_adscripcion' =>  ['label' => "Compensación", 'rules' => 'required|max_length[255]'],
-				'area_adscripcion' =>  ['label' => "Àrea", 'rules' => 'required|max_length[255]'],
-				'division_adscripcion' =>  ['label' => "División", 'rules' => 'required|max_length[255]'],
-				'funciones_adscripcion' =>  ['label' => "Funciones", 'rules' => 'required|max_length[255]'],
-				'cuipjefe_adscripcion' =>  ['label' => "CUIP del jefe inmediato", 'rules' => 'required|max_length[255]'],
+				
 				'nombrejefe_adscripcion' =>  ['label' => "Nombre del jefe inmediato", 'rules' => 'required|max_length[255]'],
 				'entidad_adscripcion' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
 				'municipio_adscripcion' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
@@ -342,6 +331,32 @@ class Cuip extends BaseController {
 				'federativa_adscripcion' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
 				'delegacion_adscripcion' =>  ['label' => "Municipio o Delegación", 'rules' => 'required|max_length[255]'],
 				'ciudadcodigoAds' =>  ['label' => "Ciudad o Poblacion", 'rules' => 'required|max_length[255]']];
+
+				$expDocente = $this->request->getPost('expDocente');
+
+				
+				if ($expDocente == 0){
+
+					$rules['nombrecurso'] =  ['label' => "Nombre del Curso", 'rules' => 'required|max_length[255]'];
+					$rules['nombreInstitucion'] =  ['label' => "Nombre de la Institución", 'rules' => 'required|max_length[255]'];
+					$rules['fecha_inicial'] =  ['label' => "Fecha de Inicio", 'rules' => 'required|valid_only_date_chek'];
+					$rules['fecha_final'] =  ['label' => "Fecha de Término", 'rules' => 'required|valid_only_date_chek'];
+					$rules['certificado_por'] =  ['label' => "Certificado por", 'rules' => 'required|max_length[255]'];
+
+
+					$rules['nombrecursoB'] =  ['label' => "Nombre del Curso", 'rules' => 'required_with[nombreInstitucionB,fecha_inicialB,fecha_finalB,certificado_porB]|max_length[255]'];
+
+
+					$rules['fecha_inicialB'] =  ['label' => "Fecha de Inicio", 'rules' => 'required_with[nombreInstitucionB,nombrecursoB,fecha_finalB,certificado_porB]'];
+
+					$rules['fecha_finalB'] =  ['label' => "Fecha de Término", 'rules' => 'required_with[nombreInstitucionB,nombrecursoB,fecha_inicialB,certificado_porB]'];
+
+					$rules['certificado_porB'] =  ['label' => "Certificado por", 'rules' => 'required_with[nombrecursoB,nombreInstitucionB,fecha_inicialB,fecha_finalB]|max_length[255]'];
+
+					$rules['nombreInstitucionB'] =  ['label' => "Nombre de la Institución", 'rules' => 'required_with[nombrecursoB,,fecha_inicialB,fecha_finalB,certificado_porB]|max_length[255]'];
+
+
+				}
 		 
 				$errors = [];
 				$succes = [];
@@ -401,13 +416,7 @@ class Cuip extends BaseController {
         			$vigenciaLic = date( "Y-m-d" ,strtotime($getVigenciaLic));
 
 
-        			$getFecha_final = $this->request->getPost('fecha_final');
-
-        			$fecha_final = date( "Y-m-d" ,strtotime($getFecha_final));
-
-        			$getFecha_inicial = $this->request->getPost('fecha_inicial');
-
-        			$fecha_inicial = date( "Y-m-d" ,strtotime($getFecha_inicial));
+        			
 
 
 
@@ -457,17 +466,46 @@ class Cuip extends BaseController {
 						"idEstado" => $this->request->getPost('estadocodigo') , 
 						"municipio" => $this->request->getPost('municipiocodigo') , 
 						"ciudad" => strtoupper($this->request->getPost('ciudadcodigo')) , 
-						"nombre_curso" => strtoupper($this->request->getPost('nombrecurso')) , 
-						"nombre_institucion" => strtoupper($this->request->getPost('nombreInstitucion')) , 
-						"fecha_inicio" => $fecha_inicial , 
-						"fecha_termino" => $fecha_final , 
-						"certificado_por" => strtoupper($this->request->getPost('certificado_por')) , 
 						"activo" => 1 , 
 						"createdby" => $LoggedUserId , 
 						"createddate" => date("Y-m-d H:i:s") );
 
+					$expDocenteArray="";
+					
+				if ($expDocente == 0){	
+					$val ="";
 
-					$result = $this->modelCuip->insertDatosPersonales( $datosPersonales);
+					for ($i = 1; $i <= 2; $i++) {
+  					
+  						$idExp = $uuid->toString();
+
+  						$getFecha_final = $this->request->getPost('fecha_final'.$val);
+
+        				$fecha_final = date( "Y-m-d" ,strtotime($getFecha_final));
+
+        				$getFecha_inicial = $this->request->getPost('fecha_inicial'.$val);
+
+        				$fecha_inicial = date( "Y-m-d" ,strtotime($getFecha_inicial));
+
+					$expDocenteArray = array(
+
+						"id" => $idExp ,
+						"idPersoanles" => $id , 
+						"nombre_curso" => strtoupper($this->request->getPost('nombrecurso'.$val)) , 
+						"nombre_institucion" => strtoupper($this->request->getPost('nombreInstitucion'.$val)) , 
+						"fecha_inicio" => $fecha_inicial , 
+						"fecha_termino" => $fecha_final , 
+						"certificado_por" => strtoupper($this->request->getPost('certificado_por'.$val)) , 
+						"activo" => 1 , 
+						"createdby" => $LoggedUserId , 
+						"createddate" => date("Y-m-d H:i:s"));
+
+						$val ="B";
+					}
+				}	
+
+
+					$result = $this->modelCuip->insertDatosPersonales( $datosPersonales,$expDocenteArray,$expDocente);
 
 					
 					
