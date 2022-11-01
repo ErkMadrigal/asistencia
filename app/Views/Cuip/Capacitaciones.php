@@ -302,7 +302,6 @@
 <div class="card card-primary" id="cardCapIdiomas">
     <div class="card-header">
         <h3 class="card-title">IDIOMAS O DIALECTOS</h3>
-
         <div class="card-tools">
 
             <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
@@ -317,7 +316,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <form class="form-horizontal" id="idioma">
+        <form class="form-horizontal" id="idiomas">
             <div id="CardDatosidioma">
                 <div class="row">
                     <div class='col-6 col-sm-6'>
@@ -788,11 +787,11 @@
         if ($('#btnNingunIdioma').is(':checked')) {
 
 
-            $('#idioma input').attr('disabled', 'disabled');
-            $('#idioma select').attr('disabled', 'disabled');
+            $('#idiomas input').attr('disabled', 'disabled');
+            $('#idiomas select').attr('disabled', 'disabled');
         } else {
-            $('#idioma input').attr('disabled', false);
-            $('#idioma select').attr('disabled', false);
+            $('#idiomas input').attr('disabled', false);
+            $('#idiomas select').attr('disabled', false);
         }
 
 
