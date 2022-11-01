@@ -130,6 +130,7 @@
         <h3 class="card-title">DATOS DEL CONYUGE Y DEPENDIENTES ECONÓMICOS</h3>
 
         <div class="card-tools">
+           
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
             </button>
@@ -137,12 +138,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body" >
-        <label  class="">Ninguno:</label>
-            <input class="form-check-input btnNinguno"  type="checkbox" id="activo" name="activo" >
-                        
-            <button type="button" class="btn 
-             add-more-btn"  id="btnAdd" name="btnAdd" >Agregar Dependiente +
-            </button>
+        
         <form class="form-horizontal" id="DatosDependientes">
         <div id="CardSocioEconomico">
             <div class="row" class="form-block">
@@ -345,35 +341,7 @@
             
     });
 
-    $(document).on('click','.add-more-btn',function(){
     
-        var clone = $('#CardSocioEconomico').clone('.form-block');
-        $('#CardSocioEconomicoB').append(clone);
-        $('#btnAdd').removeClass('add-more-btn');
-        $('#btnAdd').addClass('remove-more-btn');
-        $('#btnAdd').text('Remover Dependiente -');
-    });
-
-    $(document).on('click','.remove-more-btn',function(){    
-        $('#CardSocioEconomicoB').empty();
-        $('#btnAdd').removeClass('remove-more-btn');
-        $('#btnAdd').addClass('add-more-btn');
-        $('#btnAdd').text('Agregar Dependiente +');
-    });
-
-
-    $(document).on('click','.btnNinguno',function(){ 
-
-        if($('#activo').is(':checked')) {
-            $('#DatosDependientes input').attr('disabled','disabled');
-            $('#DatosDependientes select').attr('disabled','disabled');
-        } else {
-            $('#DatosDependientes input').attr('disabled',false);
-            $('#DatosDependientes select').attr('disabled',false);
-        }
-        
-        
-    });
     
 
 </script>
