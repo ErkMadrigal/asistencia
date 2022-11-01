@@ -4,10 +4,6 @@
 
         <div class="card-tools">
 
-            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" class="form-check-input mt-2" id="btnNingunSocioemonomico">
-
-            <a href="#" class="btn btn-tool form-check-label add-more-btn-dged" id="btnAdddSocioemonomico">Agregar +</a>
 
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
@@ -130,8 +126,6 @@
                     </div>
                 </div>
             </div>
-            <hr class="mt-3 mb-3" />
-            <div id="CardSocioB">
             </div>
         </form>
     </div>
@@ -358,38 +352,7 @@
     });
 
 
-    /*generales */
-
-    $(document).on('click', '.add-more-btn-dged', function() {
-
-        var clone = $('#CardSocio').clone('.form-block-dged');
-        $('#CardSocioB').append(clone);
-        $('#btnAdddSocioemonomico').removeClass('add-more-btn');
-        $('#btnAdddSocioemonomico').addClass('remove-more-btn');
-        $('#btnAdddSocioemonomico').text('Remover -');
-    });
-
-    $(document).on('click', '.remove-more-btn', function() {
-        $('#CardSocioB').empty();
-        $('#btnAdddSocioemonomico').removeClass('remove-more-btn');
-        $('#btnAdddSocioemonomico').addClass('add-more-btn');
-        $('#btnAdddSocioemonomico').text('Agregar +');
-    });
-
-    $(document).on('click', '#btnNingunSocioemonomico', function() {
-
-        if ($('#btnNingunSocioemonomico').is(':checked')) {
-
-
-            $('#SocioEconomico input').attr('disabled', 'disabled');
-            $('#SocioEconomico select').attr('disabled', 'disabled');
-        } else {
-            $('#SocioEconomico input').attr('disabled', false);
-            $('#SocioEconomico select').attr('disabled', false);
-        }
-
-
-    });
+  
 
 
     /*CONYUGE */
