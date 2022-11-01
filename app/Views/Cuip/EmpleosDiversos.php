@@ -508,9 +508,11 @@
 
             $('#EmpleosDiversos input').attr('disabled', 'disabled');
             $('#EmpleosDiversos select').attr('disabled', 'disabled');
+            $('#EmpleosDiversos textarea').attr('disabled', 'disabled');
         } else {
             $('#EmpleosDiversos input').attr('disabled', false);
             $('#EmpleosDiversos select').attr('disabled', false);
+            $('#EmpleosDiversos textarea').attr('disabled', false);
         }
 
 

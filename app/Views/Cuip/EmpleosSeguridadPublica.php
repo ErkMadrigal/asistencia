@@ -335,21 +335,7 @@
             
     });
 
-    $(document).on('click','.add-more-btn-dged',function(){
     
-    var clone = $('#CardEMPLEOS').clone('.form-block-dged');
-    $('#CardEMPLEOS').append(clone);
-    $('#btnAdddged').removeClass('add-more-btn');
-    $('#btnAdddged').addClass('remove-more-btn');
-    $('#btnAdddged').text('Remover -');
-});
-
-$(document).on('click','.remove-more-btn',function(){    
-    $('#CardEMPLEOS').empty();
-    $('#btnAdddged').removeClass('remove-more-btn');
-    $('#btnAdddged').addClass('add-more-btn');
-    $('#btnAdddged').text('Agregar +');
-});
 
     $(document).on('click','#btnNinguno',function(){ 
 
@@ -358,9 +344,11 @@ if($('#btnNinguno').is(':checked')) {
 
     $('#EmpleoSeguridadPublica input').attr('disabled','disabled');
     $('#EmpleoSeguridadPublica select').attr('disabled','disabled');
+    $('#EmpleoSeguridadPublica textarea').attr('disabled','disabled');
 } else {
     $('#EmpleoSeguridadPublica input').attr('disabled',false);
     $('#EmpleoSeguridadPublica select').attr('disabled',false);
+    $('#EmpleoSeguridadPublica textarea').attr('disabled',false);
 }
 
 
