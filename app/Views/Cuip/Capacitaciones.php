@@ -2,7 +2,6 @@
     <div class="card-header">
         <h3 class="card-title">CAPACITACIÓN EN SEGURIDAD PUBLICA</h3>
 
-
         <div class="card-tools">
 
             <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
