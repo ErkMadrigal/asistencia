@@ -304,6 +304,12 @@
         <h3 class="card-title">IDIOMAS O DIALECTOS</h3>
 
         <div class="card-tools">
+
+            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" class="form-check-input mt-2" id="btnNingunoIDIOMAS">
+
+            <a href="#" class="btn btn-tool form-check-label add-more-btn-idioma" id="btnAdddadicionalIdioma">Agregar +</a>
+
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
             </button>
@@ -311,7 +317,8 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-
+<form class="form-horizontal" id="IDIOMAS">
+    <div id="CardIdiomas">
         <div class="row">
             <div class='col-6 col-sm-6'>
                 <div class="form-group">
@@ -412,7 +419,11 @@
                 </div>
             </div>
         </div>
-
+    </div>
+    <hr class="mt-3 mb-3" />
+            <div id="CardIdiomasB">
+            </div>
+</form>        
     </div>
 </div>
 
@@ -425,7 +436,7 @@
             <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
             <input type="checkbox" class="form-check-input mt-2" id="btnNingunHABILIDAD">
 
-            <a href="#" class="btn btn-tool form-check-label add-more-btn-dged" id="btnAdddHABILIDAD">Agregar +</a>
+            <a href="#" class="btn btn-tool form-check-label add-more-btn-hab" id="btnAdddHABILIDAD">Agregar +</a>
 
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
@@ -512,7 +523,7 @@
             <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
             <input type="checkbox" class="form-check-input mt-2" id="btnNingunAFILIACION">
 
-            <a href="#" class="btn btn-tool form-check-label add-more-btn-dged" id="btnAdddAFILIACION">Agregar +</a>
+            <a href="#" class="btn btn-tool form-check-label add-more-btn-afil" id="btnAdddAFILIACION">Agregar +</a>
 
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
@@ -521,7 +532,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <form class="form-horizontal" id="HABILIDAD">
+        <form class="form-horizontal" id="AFILIACION">
             <div id="CardDatosAfiliacion">
                 <div class="row">
                     <div class='col-12 col-sm-12 col-md-12'>
@@ -754,55 +765,55 @@
     });
 
 
-    /*IDIOMA 
+    /*IDIOMA*/ 
 
-    $(document).on('click', '.add-more-btn-dged', function() {
+    $(document).on('click', '.add-more-btn-idioma', function() {
 
-        var clone = $('#CardDatosHabilidad').clone('.form-block-dged');
-        $('#CardDatosHabilidadB').append(clone);
-        $('#btnAdddIDIOMA').removeClass('add-more-btn');
-        $('#btnAdddIDIOMA').addClass('remove-more-btn');
-        $('#btnAdddIDIOMA').text('Remover -');
+        var clone = $('#CardIdiomas').clone('.form-block-dged');
+        $('#CardIdiomasB').append(clone);
+        $('#btnAdddadicionalIdioma').removeClass('add-more-btn-idioma');
+        $('#btnAdddadicionalIdioma').addClass('remove-more-btn-idioma');
+        $('#btnAdddadicionalIdioma').text('Remover -');
     });
 
-    $(document).on('click', '.remove-more-btn', function() {
-        $('#CardDatosHabilidadB').empty();
-        $('#btnAdddIDIOMA').removeClass('remove-more-btn');
-        $('#btnAdddIDIOMA').addClass('add-more-btn');
-        $('#btnAdddIDIOMA').text('Agregar +');
+    $(document).on('click', '.remove-more-btn-idioma', function() {
+        $('#CardIdiomasB').empty();
+        $('#btnAdddadicionalIdioma').removeClass('remove-more-btn-idioma');
+        $('#btnAdddadicionalIdioma').addClass('add-more-btn-idioma');
+        $('#btnAdddadicionalIdioma').text('Agregar +');
     });
 
-    $(document).on('click', '#btnNingunIDIOMA', function() {
+    $(document).on('click', '#btnNingunoIDIOMAS', function() {
 
-        if ($('#btnNingunIDIOMA').is(':checked')) {
+        if ($('#btnNingunoIDIOMAS').is(':checked')) {
 
 
-            $('#idioma input').attr('disabled', 'disabled');
-            $('#idioma select').attr('disabled', 'disabled');
+            $('#IDIOMAS input').attr('disabled', 'disabled');
+            $('#IDIOMAS select').attr('disabled', 'disabled');
         } else {
-            $('#idioma input').attr('disabled', false);
-            $('#idioma select').attr('disabled', false);
+            $('#IDIOMAS input').attr('disabled', false);
+            $('#IDIOMAS select').attr('disabled', false);
         }
 
 
-    });*/
+    });
 
 
     /*HABILIDADES */
 
-    $(document).on('click', '.add-more-btn-dged', function() {
+    $(document).on('click', '.add-more-btn-hab', function() {
 
-        var clone = $('#CardDatoscapacitacion').clone('.form-block-dged');
-        $('#CardDatoscapacitacionB').append(clone);
-        $('#btnAdddHABILIDAD').removeClass('add-more-btn');
-        $('#btnAdddHABILIDAD').addClass('remove-more-btn');
+        var clone = $('#CardDatosHabilidad').clone('.form-block-hab');
+        $('#CardDatosHabilidadB').append(clone);
+        $('#btnAdddHABILIDAD').removeClass('add-more-btn-hab');
+        $('#btnAdddHABILIDAD').addClass('remove-btn-hab');
         $('#btnAdddHABILIDAD').text('Remover -');
     });
 
-    $(document).on('click', '.remove-more-btn', function() {
-        $('#CardDatoscapacitacionB').empty();
-        $('#btnAdddHABILIDAD').removeClass('remove-more-btn');
-        $('#btnAdddHABILIDAD').addClass('add-more-btn');
+    $(document).on('click', '.remove-btn-hab', function() {
+        $('#CardDatosHabilidadB').empty();
+        $('#btnAdddHABILIDAD').removeClass('remove-btn-hab');
+        $('#btnAdddHABILIDAD').addClass('add-more-btn-hab');
         $('#btnAdddHABILIDAD').text('Agregar +');
     });
 
@@ -825,20 +836,20 @@
 
     /*AFILIACION */
 
-    $(document).on('click', '.add-more-btn-dged', function() {
+    $(document).on('click', '.add-more-btn-afil', function() {
 
-        var clone = $('#CardDatosAfiliacion').clone('.form-block-dged');
+        var clone = $('#CardDatosAfiliacion').clone('.form-block-afil');
         $('#CardDatosAfiliacionB').append(clone);
-        $('#btnAdddHABILIDAD').removeClass('add-more-btn');
-        $('#btnAdddHABILIDAD').addClass('remove-more-btn');
-        $('#btnAdddHABILIDAD').text('Remover -');
+        $('#btnAdddAFILIACION').removeClass('add-more-btn-afil');
+        $('#btnAdddAFILIACION').addClass('remove-more-btn-afil');
+        $('#btnAdddAFILIACION').text('Remover -');
     });
 
-    $(document).on('click', '.remove-more-btn', function() {
+    $(document).on('click', '.remove-more-btn-afil', function() {
         $('#CardDatosAfiliacionB').empty();
-        $('#btnAdddHABILIDAD').removeClass('remove-more-btn');
-        $('#btnAdddHABILIDAD').addClass('add-more-btn');
-        $('#btnAdddHABILIDAD').text('Agregar +');
+        $('#btnAdddAFILIACION').removeClass('remove-more-btn-afil');
+        $('#btnAdddAFILIACION').addClass('add-more-btn-afil');
+        $('#btnAdddAFILIACION').text('Agregar +');
     });
 
     $(document).on('click', '#btnNingunAFILIACION', function() {
@@ -846,11 +857,11 @@
         if ($('#btnNingunAFILIACION').is(':checked')) {
 
 
-            $('#Capacitaciones input').attr('disabled', 'disabled');
-            $('#Capacitaciones select').attr('disabled', 'disabled');
+            $('#AFILIACION input').attr('disabled', 'disabled');
+            $('#AFILIACION select').attr('disabled', 'disabled');
         } else {
-            $('#Capacitaciones input').attr('disabled', false);
-            $('#Capacitaciones select').attr('disabled', false);
+            $('#AFILIACION input').attr('disabled', false);
+            $('#AFILIACION select').attr('disabled', false);
         }
 
 

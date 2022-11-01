@@ -470,15 +470,16 @@ class Cuip extends BaseController {
 						"createdby" => $LoggedUserId , 
 						"createddate" => date("Y-m-d H:i:s") );
 
-					$expDocenteArray="";
+					$expDocenteArray=[];
 					
 				if ($expDocente == 0){	
 					$val ="";
-
+					 $clockSequence = 16383;
 					for ($i = 1; $i <= 2; $i++) {
-  					
-  						$idExp = $uuid->toString();
-
+  						
+  						 $uuid1 = Uuid::uuid1($clockSequence);
+        				$idExp = $uuid1->toString();
+  						 
   						$getFecha_final = $this->request->getPost('fecha_final'.$val);
 
         				$fecha_final = date( "Y-m-d" ,strtotime($getFecha_final));
@@ -487,7 +488,7 @@ class Cuip extends BaseController {
 
         				$fecha_inicial = date( "Y-m-d" ,strtotime($getFecha_inicial));
 
-					$expDocenteArray = array(
+					$expDocenteArray[] = array(
 
 						"id" => $idExp ,
 						"idPersoanles" => $id , 
@@ -501,6 +502,13 @@ class Cuip extends BaseController {
 						"createddate" => date("Y-m-d H:i:s"));
 
 						$val ="B";
+
+						$valB =$this->request->getPost('nombrecursoB');
+
+        				if (!isset($valB) || empty($valB)){
+
+            				$i = 3;
+        				}
 					}
 				}	
 
@@ -709,10 +717,18 @@ class Cuip extends BaseController {
 				$rules['apellidoPaterno'] =  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'];
 				$rules['apellidoMaterno'] =  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'];
 				$rules['primerNombre'] =  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'];
-				
+				$rules['segundoNombre'] =  ['label' => "Segundo Nombre Nombre", 'rules' => 'required|max_length[255]'];
 				$rules['fecha_nacimiento_dep'] =  ['label' => "Fecha de Nacimiento", 'rules' => 'required|valid_only_date_chek'];
 				$rules['sexo_dep'] =  ['label' => "Sexo", 'rules' => 'required'];
 				$rules['parentesco_familiar'] =  ['label' => "Parentesco", 'rules' => 'required'];
+
+				$rules['apellidoPaternoB'] =  ['label' => "Apellido Paterno", 'rules' => 'required_with[apellidoMaternoB,primerNombreB,segundoNombreB,fecha_nacimiento_depB,sexo_depB,parentesco_familiarB]|max_length[255]'];
+				$rules['apellidoMaternoB'] =  ['label' => "Apellido Materno", 'rules' => 'required_with[apellidoPaternoB,primerNombreB,segundoNombreB,fecha_nacimiento_depB,sexo_depB,parentesco_familiarB]|max_length[255]'];
+				$rules['primerNombreB'] =  ['label' => "Primer Nombre", 'rules' => 'required_with[apellidoPaternoB,apellidoMaternoB,segundoNombreB,fecha_nacimiento_depB,sexo_depB,parentesco_familiarB]|max_length[255]'];
+				$rules['segundoNombreB'] =  ['label' => "Segundo Nombre Nombre", 'rules' => 'required_with[apellidoPaternoB,apellidoMaternoB,primerNombreB,fecha_nacimiento_depB,sexo_depB,parentesco_familiarB]|max_length[255]'];
+				$rules['fecha_nacimiento_depB'] =  ['label' => "Fecha de Nacimiento", 'rules' => 'required_with[apellidoPaternoB,apellidoMaternoB,primerNombreB,segundoNombreB,sexo_depB,parentesco_familiarB]'];
+				$rules['sexo_depB'] =  ['label' => "Sexo", 'rules' => 'required_with[apellidoPaternoB,apellidoMaternoB,primerNombreB,segundoNombreB,fecha_nacimiento_depB,parentesco_familiarB]'];
+				$rules['parentesco_familiarB'] =  ['label' => "Parentesco", 'rules' => 'required_with[apellidoPaternoB,apellidoMaternoB,primerNombreB,segundoNombreB,fecha_nacimiento_depB,sexo_depB]'];
 			}	
 
 				if($this->validate($rules)){
@@ -760,14 +776,15 @@ class Cuip extends BaseController {
 						"createddate" => date("Y-m-d H:i:s") );
 
 
-					$datosDependientesArray="";
+					$datosDependientesArray=[];
 					
 				if ($datos == 0){	
 					$val ="";
-
+					$clockSequence = 16383;
 					for ($i = 1; $i <= 2; $i++) {
-  					
-  						$idDep = $uuid->toString();
+  						
+  						$uuid1 = Uuid::uuid1($clockSequence);
+                        $idDep = $uuid1->toString();
 
   						$getFecha_nacimiento_dep = $this->request->getPost('fecha_nacimiento_dep'.$val);
 
@@ -781,7 +798,7 @@ class Cuip extends BaseController {
 
         				$parentesco_familiar = $this->encrypt->Decrytp($getParentesco_familiar);
 
-					$datosDependientesArray = array(
+					$datosDependientesArray[] = array(
 
 						"id" => $idDep ,
 						"idSocioeconomico" => $id , 
@@ -797,6 +814,13 @@ class Cuip extends BaseController {
 						"createddate" => date("Y-m-d H:i:s"));
 
 						$val ="B";
+
+						$valB =$this->request->getPost('apellidoPaternoB');
+
+						if (!isset($valB) || empty($valB)){
+
+							$i = 3;
+						}
 					}
 				}
 
