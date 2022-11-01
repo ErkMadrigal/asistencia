@@ -3,6 +3,12 @@
         <h3 class="card-title">SANCIONES / ESTIMULOS</h3>
 
         <div class="card-tools">
+
+            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" class="form-check-input mt-2" id="btnNingunsanciones">
+
+            <a href="#" class="btn btn-tool form-check-label add-more-btn-dged" id="btnAdddsanciones">Agregar +</a>
+
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
             </button>
@@ -11,6 +17,7 @@
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
         <form class="form-horizontal" id="sancionesEstimulos">
+        <div id="CardDatossanciones">
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
@@ -94,6 +101,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <hr class="mt-3 mb-3" />
+            <div id="CardDatossancionesB">
+            </div>
+        </form>
     </div>
 </div>
 <div class="card card-primary" id="cardSanciRes">
@@ -522,4 +534,37 @@
 
 
     });
+
+        /*SANCIONES */
+
+        $(document).on('click', '.add-more-btn-dged', function() {
+
+var clone = $('#CardDatossanciones').clone('.form-block-dged');
+$('#CardDatossancionesB').append(clone);
+$('#btnAdddsanciones').removeClass('add-more-btn');
+$('#btnAdddsanciones').addClass('remove-more-btn');
+$('#btnAdddsanciones').text('Remover -');
+});
+
+$(document).on('click', '.remove-more-btn', function() {
+$('#CardDatossancionesB').empty();
+$('#btnAdddsanciones').removeClass('remove-more-btn');
+$('#btnAdddsanciones').addClass('add-more-btn');
+$('#btnAdddsanciones').text('Agregar +');
+});
+
+$(document).on('click', '#btnNingunsanciones', function() {
+
+if ($('#btnNingunsanciones').is(':checked')) {
+
+
+    $('#sancionesEstimulos input').attr('disabled', 'disabled');
+    $('#sancionesEstimulos select').attr('disabled', 'disabled');
+} else {
+    $('#sancionesEstimulos input').attr('disabled', false);
+    $('#sancionesEstimulos select').attr('disabled', false);
+}
+
+
+});
 </script>
