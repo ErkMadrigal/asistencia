@@ -151,7 +151,7 @@
                     setInterval(function() {
                         count--;
                         if (count == 0) {
-                            window.location = base_url + '/Puestos';
+                            window.location = base_url + '/puesto';
                         }
                     }, 1000);
 
