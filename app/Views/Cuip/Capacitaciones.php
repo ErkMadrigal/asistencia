@@ -802,15 +802,15 @@
 
     $(document).on('click', '.add-more-btn-dged', function() {
 
-        var clone = $('#CardDatoscapacitacion').clone('.form-block-dged');
-        $('#CardDatoscapacitacionB').append(clone);
+        var clone = $('#CardDatosHabilidad').clone('.form-block-dged');
+        $('#CardDatosHabilidadB').append(clone);
         $('#btnAdddHABILIDAD').removeClass('add-more-btn');
         $('#btnAdddHABILIDAD').addClass('remove-more-btn');
         $('#btnAdddHABILIDAD').text('Remover -');
     });
 
     $(document).on('click', '.remove-more-btn', function() {
-        $('#CardDatoscapacitacionB').empty();
+        $('#CardDatosHabilidadB').empty();
         $('#btnAdddHABILIDAD').removeClass('remove-more-btn');
         $('#btnAdddHABILIDAD').addClass('add-more-btn');
         $('#btnAdddHABILIDAD').text('Agregar +');
