@@ -165,7 +165,7 @@ class Cliente extends BaseController {
 
     public function AgregarClientes(){
 		//helper(['form']);
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['razon_social, nombre_corto, nombre_contacto, puesto_contacto, whatsApp, telefono_oficina, email, fecha_inicio_servicio, fecha_fin_servicio, calle, codigo, coloniacodigo, municipiocodigo, ciudadcodigo, estadocodigo, rfc, nombreInstitucion, codigoDatosFis, coloniacodigoDatosFis, municipiocodigoDatosFis, ciudadcodigoDatosFis, estadocodigoDatosFis'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['razon_social, nombre_corto, nombre_contacto, puesto_contacto, whatsApp, telefono_oficina, email, fecha_inicio_servicio, fecha_fin_servicio, calle, codigo, coloniacodigo, municipiocodigo, ciudadcodigo, estadocodigo, rfc, nombreInstitucion, codigoDatosFis, coloniacodigoDatosFis, municipiocodigoDatosFis, ciudadcodigoDatosFis, estadocodigoDatosFis,datosFiscales'],FILTER_SANITIZE_STRING)){
 
 				$getEmpresa = session()->get('empresa');
 				$idEmpresa = $this->encrypter->decrypt($getEmpresa);
@@ -189,13 +189,21 @@ class Cliente extends BaseController {
 				'ciudadcodigo' =>  ['label' => "Ciudad", 'rules' => 'required'],
 				'estadocodigo' =>  ['label' => "Estado", 'rules' => 'required'],
 				'rfc' =>  ['label' => "R.F.C", 'rules' => 'required|max_length[13]'],
-				'calleFiscales' =>  ['label' => "Calle y Número", 'rules' => 'required|max_length[255]'],
-				'codigoDatosFis' =>  ['label' => "Código Postal", 'rules' => 'required|max_length[5]|integer'],
-				'coloniacodigoDatosFis' =>  ['label' => "Colonia", 'rules' => 'required'],
-				'municipiocodigoDatosFis' =>  ['label' => "Municipio", 'rules' => 'required'],
-				'ciudadcodigoDatosFis' =>  ['label' => "Ciudad", 'rules' => 'required'],
-				'estadocodigoDatosFis' =>  ['label' => "Estado", 'rules' => 'required']];
-				
+				];
+
+
+				$fiscales = $this->request->getPost('datosFiscales');
+
+				if($fiscales == 0){
+
+					
+					$rules['calleFiscales'] =  ['label' => "Calle y Número", 'rules' => 'required|max_length[255]'];
+					$rules['codigoDatosFis'] =  ['label' => "Código Postal", 'rules' => 'required|max_length[5]|integer'];
+					$rules['coloniacodigoDatosFis'] =  ['label' => "Colonia", 'rules' => 'required'];
+					$rules['municipiocodigoDatosFis'] =  ['label' => "Municipio", 'rules' => 'required'];
+					$rules['ciudadcodigoDatosFis'] =  ['label' => "Ciudad", 'rules' => 'required'];
+					$rules['estadocodigoDatosFis'] =  ['label' => "Estado", 'rules' => 'required'];
+				}
 		 
 				$errors = [];
 				$succes = [];
@@ -220,6 +228,28 @@ class Cliente extends BaseController {
         			$getFecha_fin_servicio = $this->request->getPost('fecha_fin_servicio');
 
         			$fecha_fin_servicio = date( "Y-m-d" ,strtotime($getFecha_fin_servicio));
+
+        			if($fiscales == 0){
+
+        				$fisCalle = $this->request->getPost('calleFiscales');
+        				$fisCodigo = $this->request->getPost('codigoDatosFis');
+        				$fisColonia = $this->request->getPost('coloniacodigoDatosFis');
+        				$fismunicipio = $this->request->getPost('municipiocodigoDatosFis');
+        				$fisCiudad = $this->request->getPost('ciudadcodigoDatosFis') ;
+        				$fisEstado = $this->request->getPost('estadocodigoDatosFis') ;
+
+        				
+
+        			} else {
+
+        				$fisCalle = $this->request->getPost('calle');
+        				$fisCodigo = $this->request->getPost('codigo');
+        				$fisColonia = $this->request->getPost('coloniacodigo');
+        				$fismunicipio = $this->request->getPost('municipiocodigo');
+        				$fisCiudad = $this->request->getPost('ciudadcodigo');
+        				$fisEstado = $this->request->getPost('estadocodigo');
+        				
+        			}
 					
 					$Cliente = array(
                         "id" => $id  , 
@@ -239,12 +269,12 @@ class Cliente extends BaseController {
                         "ciudad" =>  $this->request->getPost('ciudadcodigo') , 
                         "estado" =>  $this->request->getPost('estadocodigo') , 
                         "rfc" =>  $this->request->getPost('rfc') , 
-                        "calle_num_fiscal" =>   $this->request->getPost('calleFiscales'), 
-                        "idCodigoPostal_fiscal" =>  $this->request->getPost('codigoDatosFis') , 
-                        "colonia_fiscal" =>  $this->request->getPost('coloniacodigoDatosFis') , 
-                        "municipio_fiscal" => $this->request->getPost('municipiocodigoDatosFis')  , 
-                        "ciudad_fiscal" => $this->request->getPost('ciudadcodigoDatosFis')  , 
-                        "estado_fiscal" => $this->request->getPost('estadocodigoDatosFis')  , 
+                        "calle_num_fiscal" => $fisCalle  , 
+                        "idCodigoPostal_fiscal" => $fisCodigo  , 
+                        "colonia_fiscal" => $fisColonia  , 
+                        "municipio_fiscal" =>  $fismunicipio , 
+                        "ciudad_fiscal" =>  $fisCiudad , 
+                        "estado_fiscal" => $fisEstado  , 
                         "activo" =>  1 , 
                         "createdby" =>  $LoggedUserId , 
                         "createddate" =>  $TodayDate 

@@ -39,11 +39,14 @@ class CuipModel
         
     }
 
-    public function insertDatosPersonales($data){
+    public function insertDatosPersonales($data,$expDocenteArray,$expDocente){
         $this->db->transStart();
 
         $this->db->table('datos_personales')->insert($data);
 
+        if ($expDocente == 0){
+            $this->db->table('datos_personales_experiencia')->insert($expDocenteArray);
+        }
         $this->db->transComplete();
 
         if ($this->db->transStatus() === TRUE)
@@ -95,10 +98,15 @@ class CuipModel
         
     }
 
-    public function insertSocioEconomico($data){
+    public function insertSocioEconomico($data,$datosDependientesArray,$datos){
         $this->db->transStart();
 
         $this->db->table('estudio_socioeconomico')->insert($data);
+
+        if($datos == 0){
+
+           $this->db->table('estudio_socioeconomico_dependientes')->insert($datosDependientesArray); 
+        }
 
         $this->db->transComplete();
 

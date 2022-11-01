@@ -437,9 +437,20 @@
 
         var idPersonal = $('#idPersonal').val()
         var csrfName = $("input[name=app_csrf]").val();
+
+        if($('#btnNingunodiversos').is(':checked')) {
+            val = 1;
+            
+        } else {
+            val = 0;
+
+        }
+
         var formData = new FormData($("form#EmpleosDiversos")[0]);
         formData.append('idPersonal', idPersonal);
         formData.append('app_csrf', csrfName);
+
+        formData.append('diversos', val);
 
         $.ajax({
             url: base_url + '/GuardarEmpDiversos',

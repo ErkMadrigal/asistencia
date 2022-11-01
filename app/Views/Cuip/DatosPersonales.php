@@ -3,7 +3,7 @@
         <h3 class="card-title">DATOS PERSONALES</h3>
 
         <div class="card-tools">
-            <input type="hidden" class="form-control " id="idPersonal" name="idPersonal"  >
+            <input type="hidden" class="form-control " id="idPersonal" name="idPersonal" value="c6209492-f61d-409b-9b08-96cd888a8192" >
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
             </button>
@@ -621,21 +621,21 @@
                     <div class="form-group">
                         <label for="nombrecurso" class=" control-label">Nombre del Curso
                             :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nombrecurso" name="nombrecurso[]">
+                        <input type="text" class="form-control " id="nombrecurso" name="nombrecurso">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="nombreInstitucion" class=" control-label">Nombre de
                             la Institución:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion[]">
+                        <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion">
                     </div>
                 </div>
                 <div class='col-12 col-sm-6'>
                     <div class='form-group'>
                         <label for="fecha_inicial">Fecha de Inicio: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="fecha_inicial" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_inicial" id="datetime-fecha_inicial" name="fecha_inicial[]" placeholder="" value="" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_inicial" id="datetime-fecha_inicial" name="fecha_inicial" placeholder="" value="" />
                             <div class="input-group-append" data-target="#fecha_inicial" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -674,7 +674,7 @@
                     <div class="form-group">
                         <label for="certificado_por" class=" control-label">Certificado
                             por:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="certificado_por" name="certificado_por[]">
+                        <input type="text" class="form-control " id="certificado_por" name="certificado_por">
                     </div>
                 </div>
             </div>
@@ -697,7 +697,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        
+        <form class="form-horizontal" id="FormAdscripcion">
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
@@ -754,12 +754,7 @@
                             </script>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="especialidad_adscripcion" class=" control-label">Especialidad:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="especialidad_adscripcion" name="especialidad_adscripcion">
-                    </div>
-                </div>
+                
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="rango_adscripcion" class=" control-label">Rango o Categoria:<span class="text-danger">*</span></label>
@@ -808,54 +803,7 @@
                             </script>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="placas_adscripcion" class=" control-label">Número de placas:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="placas_adscripcion" name="placas_adscripcion">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="expediente_adscripcion" class=" control-label">Número de Expediente:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="expediente_adscripcion" name="expediente_adscripcion">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="sueldo_adscripcion" class=" control-label">Sueldo Base:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="sueldo_adscripcion" name="sueldo_adscripcion">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="compensacion_adscripcion" class=" control-label">Compensación:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="compensacion_adscripcion" name="compensacion_adscripcion">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="area_adscripcion" class=" control-label">Àrea:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="area_adscripcion" name="area_adscripcion">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="division_adscripcion" class=" control-label">División:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="division_adscripcion" name="division_adscripcion">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="funciones_adscripcion" class=" control-label">Funciones:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="funciones_adscripcion" name="funciones_adscripcion">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="cuipjefe_adscripcion" class=" control-label">CUIP del jefe inmediato:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="cuipjefe_adscripcion" name="cuipjefe_adscripcion">
-                    </div>
-                </div>
+                
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="nombrejefe_adscripcion" class=" control-label">Nombre del jefe inmediato:<span class="text-danger">*</span></label>
@@ -904,7 +852,7 @@
                 </div>
                 
             </div>
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -1057,7 +1005,34 @@
 
 
         $('#load').addClass( "spinner-border" );
+
         var formData = new FormData($("form#DatosPersonales")[0]);
+
+        if($('#btnNingunodged').is(':checked')) {
+            val = 1;
+            
+        } else {
+            val = 0;
+
+            var formDataB = new FormData($("form#FormDatosGeneralesDocente")[0]);
+
+
+            for (let [key, value] of formDataB.entries()) {
+                formData.append(key, value);
+            }
+            
+        }
+
+        var formDataC = new FormData($("form#FormAdscripcion")[0]);
+
+
+            for (let [key, value] of formDataC.entries()) {
+                formData.append(key, value);
+            }
+
+        formData.append('expDocente', val);
+
+        
         
         $.ajax({
             url: base_url + '/GuardarDatosPersonales',
@@ -1480,7 +1455,7 @@
 
     $(document).on('click','.add-more-btn-dged',function(){
     
-    var clone = $('#CardDatosGeneralesDocente').clone('.form-block-dged');
+    var clone = '<div class="row form-block-dged">                <div class="col-12 col-sm-12 col-md-6">                    <div class="form-group">                        <label for="nombrecursoB" class=" control-label">Nombre del Curso                            :<span class="text-danger">*</span></label>                        <input type="text" class="form-control " id="nombrecursoB" name="nombrecursoB">                    </div>                </div>                <div class="col-12 col-sm-12 col-md-6">                    <div class="form-group">                        <label for="nombreInstitucionB" class=" control-label">Nombre de                            la Institución:<span class="text-danger">*</span></label>                        <input type="text" class="form-control " id="nombreInstitucionB" name="nombreInstitucionB">                    </div>                </div>                <div class="col-12 col-sm-6">                    <div class="form-group">                        <label for="fecha_inicialB">Fecha de Inicio: <span class="text-danger">*</span></label>                        <div class="input-group date" id="fecha_inicialB" data-target-input="nearest">                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_inicialB" id="datetime-fecha_inicialB" name="fecha_inicialB" placeholder="" value="" />                            <div class="input-group-append" data-target="#fecha_inicialB" data-toggle="datetimepicker">                                <div class="input-group-text"><i class="far fa-calendar"></i></div>                            </div>                        </div>                        <script type="text/javascript">                            $(function() {                                $("#fecha_inicialB").datetimepicker({                                    format: "DD-MM-YYYY",                                    locale: moment.locale("es")                                });                            });                        <\/script>                    </div>                </div>                <div class="col-12 col-sm-6">                    <div class="form-group">                        <label for="fecha_finalB">Fecha de Término: <span class="text-danger">*</span></label>                        <div class="input-group date" id="fecha_finalB" data-target-input="nearest">                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_finalB" id="datetime-fecha_finalB" name="fecha_finalB" placeholder="" value="" />                            <div class="input-group-append" data-target="#fecha_finalB" data-toggle="datetimepicker">                                <div class="input-group-text"><i class="far fa-calendar"></i></div>                            </div>                        </div>                        <script type="text/javascript">                            $(function() {                                $("#fecha_finalB").datetimepicker({                                    format: "DD-MM-YYYY",                                    locale: moment.locale("es")                                });                            });                        <\/script>                    </div>                </div>                <div class="col-12 col-sm-12 col-md-12">                    <div class="form-group">                        <label for="certificado_porB" class=" control-label">Certificado                            por:<span class="text-danger">*</span></label>                        <input type="text" class="form-control " id="certificado_porB" name="certificado_porB">                    </div>                </div>            </div>';
     $('#CardDatosGeneralesDocenteB').append(clone);
     $('#btnAdddged').removeClass('add-more-btn');
     $('#btnAdddged').addClass('remove-more-btn');

@@ -278,9 +278,19 @@
 
         var idPersonal = $('#idPersonal').val()
         var csrfName = $("input[name=app_csrf]").val();
+
+        if($('#btnNinguno').is(':checked')) {
+            val = 1;
+            
+        } else {
+            val = 0;
+
+        }
+
         var formData = new FormData($("form#EmpleoSeguridadPublica")[0]);
         formData.append('idPersonal', idPersonal);
         formData.append('app_csrf', csrfName);
+        formData.append('empleo', val);
         
         $.ajax({
             url: base_url + '/GuardarEmpSegPublica',

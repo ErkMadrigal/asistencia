@@ -210,6 +210,8 @@
         <h3 class="card-title">DATOS FISCALES</h3>
 
         <div class="card-tools">
+            <a href="#" class="btn btn-tool form-check-label">Mismos datos fiscales</a>&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" class="form-check-input mt-2" id="btnNingunodged">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
             </button>
@@ -331,6 +333,18 @@
         event.preventDefault();
         $('#load').addClass( "spinner-border" );
         var formData = new FormData($("form#DatosPersonales")[0]);
+
+
+
+        if($('#btnNingunodged').is(':checked')) {
+            val = 1;
+            
+        } else {
+            val = 0;
+            
+        }
+
+        formData.append('datosFiscales', val);
         
         $.ajax({
             url: base_url + '/GuardarCliente',
@@ -512,6 +526,30 @@
         });
 
     
+    });
+
+
+    $(document).on('click','#btnNingunodged',function(){ 
+
+        if($('#btnNingunodged').is(':checked')) {
+
+
+            $('#calleFiscales').attr('disabled','disabled');
+            $('#codigoDatosFis').attr('disabled','disabled');
+            $('#coloniacodigoDatosFis').attr('disabled','disabled');
+            $('#municipiocodigoDatosFis').attr('disabled','disabled');
+            $('#ciudadcodigoDatosFis').attr('disabled','disabled');
+            $('#estadocodigoDatosFis').attr('disabled','disabled');
+        } else {
+            $('#calleFiscales').attr('disabled',false);
+            $('#codigoDatosFis').attr('disabled',false);
+            $('#coloniacodigoDatosFis').attr('disabled',false);
+            $('#municipiocodigoDatosFis').attr('disabled',false);
+            $('#ciudadcodigoDatosFis').attr('disabled',false);
+            $('#estadocodigoDatosFis').attr('disabled',false);
+        }
+        
+        
     });
 
 </script>
