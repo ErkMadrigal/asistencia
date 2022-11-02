@@ -45,7 +45,7 @@ class CuipModel
         $this->db->table('datos_personales')->insert($data);
 
         if ($expDocente == 0){
-            $this->db->table('datos_personales_experiencia')->insert($expDocenteArray);
+            $this->db->table('datos_personales_experiencia')->insertBatch($expDocenteArray);
         }
         $this->db->transComplete();
 
@@ -105,7 +105,7 @@ class CuipModel
 
         if($datos == 0){
 
-           $this->db->table('estudio_socioeconomico_dependientes')->insert($datosDependientesArray); 
+           $this->db->table('estudio_socioeconomico_dependientes')->insertBatch($datosDependientesArray); 
         }
 
         $this->db->transComplete();

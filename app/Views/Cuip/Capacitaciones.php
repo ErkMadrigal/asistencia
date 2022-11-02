@@ -305,9 +305,9 @@
         <div class="card-tools">
 
             <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" class="form-check-input mt-2" id="btnNingunIdioma">
+            <input type="checkbox" class="form-check-input mt-2" id="btnNingunoIDIOMAS">
 
-            <a href="#" class="btn btn-tool form-check-label add-more-btn-dged" id="btnAdddIdioma">Agregar +</a>
+            <a href="#" class="btn btn-tool form-check-label add-more-btn-idioma" id="btnAdddadicionalIdioma">Agregar +</a>
 
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
@@ -316,113 +316,113 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <form class="form-horizontal" id="idiomas">
-            <div id="CardDatosidioma">
-                <div class="row">
-                    <div class='col-6 col-sm-6'>
-                        <div class="form-group">
-                            <label for="idioma" class="control-label">Idioma o Dialecto: <span class="text-danger">*</span></label>
-                            <div>
-                                <select class="form-control" id="idioma" name="idioma">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($idioma)) :
-                                        foreach ($idioma as  $a) {
-                                    ?>
-                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                                    <?php
-                                        }
-                                    endif; ?>
-                                </select>
-                                <script>
-                                    $(document).ready(function() {
-                                        $("#idioma").select2({
-                                            theme: "bootstrap4",
-                                            width: "100%"
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-6 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="lectura" class=" control-label">% Lectura:<span class="text-danger">*</span></label>
-                            <select class="form-control" id="lectura" name="lectura">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if (!empty($porsentajeIdioma)) :
-                                    foreach ($porsentajeIdioma as  $a) {
-                                ?>
-                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                                <?php
-                                    }
-                                endif; ?>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#lectura").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
+<form class="form-horizontal" id="IDIOMAS">
+    <div id="CardIdiomas">
+        <div class="row">
+            <div class='col-6 col-sm-6'>
+                <div class="form-group">
+                    <label for="idioma" class="control-label">Idioma o Dialecto: <span class="text-danger">*</span></label>
+                    <div>
+                        <select class="form-control" id="idioma" name="idioma">
+                            <option value="">Selecciona una Opcion</option>
+                            <?php
+                            if (!empty($idioma)) :
+                                foreach ($idioma as  $a) {
+                            ?>
+                                    <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                            <?php
+                                }
+                            endif; ?>
+                        </select>
+                        <script>
+                            $(document).ready(function() {
+                                $("#idioma").select2({
+                                    theme: "bootstrap4",
+                                    width: "100%"
                                 });
-                            </script>
-                        </div>
-                    </div>
-                    <div class='col-6 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="escritura" class=" control-label">% Escritura:<span class="text-danger">*</span></label>
-                            <select class="form-control" id="escritura" name="escritura">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if (!empty($porsentajeIdioma)) :
-                                    foreach ($porsentajeIdioma as  $a) {
-                                ?>
-                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                                <?php
-                                    }
-                                endif; ?>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#escritura").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                    <div class='col-6 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="conversacion" class=" control-label">% Conversación:<span class="text-danger">*</span></label>
-                            <select class="form-control" id="conversacion" name="conversacion">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if (!empty($porsentajeIdioma)) :
-                                    foreach ($porsentajeIdioma as  $a) {
-                                ?>
-                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                                <?php
-                                    }
-                                endif; ?>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#conversacion").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
-                        </div>
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
-            <hr class="mt-3 mb-3" />
-            <div id="CardDatosidiomaB">
+            <div class='col-6 col-sm-12 col-md-6'>
+                <div class="form-group">
+                    <label for="lectura" class=" control-label">% Lectura:<span class="text-danger">*</span></label>
+                    <select class="form-control" id="lectura" name="lectura">
+                        <option value="">Selecciona una Opcion</option>
+                        <?php
+                        if (!empty($porsentajeIdioma)) :
+                            foreach ($porsentajeIdioma as  $a) {
+                        ?>
+                                <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                        <?php
+                            }
+                        endif; ?>
+                    </select>
+                    <script>
+                        $(document).ready(function() {
+                            $("#lectura").select2({
+                                theme: "bootstrap4",
+                                width: "100%"
+                            });
+                        });
+                    </script>
+                </div>
             </div>
-        </form>
+            <div class='col-6 col-sm-12 col-md-6'>
+                <div class="form-group">
+                    <label for="escritura" class=" control-label">% Escritura:<span class="text-danger">*</span></label>
+                    <select class="form-control" id="escritura" name="escritura">
+                        <option value="">Selecciona una Opcion</option>
+                        <?php
+                        if (!empty($porsentajeIdioma)) :
+                            foreach ($porsentajeIdioma as  $a) {
+                        ?>
+                                <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                        <?php
+                            }
+                        endif; ?>
+                    </select>
+                    <script>
+                        $(document).ready(function() {
+                            $("#escritura").select2({
+                                theme: "bootstrap4",
+                                width: "100%"
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class='col-6 col-sm-12 col-md-6'>
+                <div class="form-group">
+                    <label for="conversacion" class=" control-label">% Conversación:<span class="text-danger">*</span></label>
+                    <select class="form-control" id="conversacion" name="conversacion">
+                        <option value="">Selecciona una Opcion</option>
+                        <?php
+                        if (!empty($porsentajeIdioma)) :
+                            foreach ($porsentajeIdioma as  $a) {
+                        ?>
+                                <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                        <?php
+                            }
+                        endif; ?>
+                    </select>
+                    <script>
+                        $(document).ready(function() {
+                            $("#conversacion").select2({
+                                theme: "bootstrap4",
+                                width: "100%"
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="mt-3 mb-3" />
+            <div id="CardIdiomasB">
+            </div>
+</form>        
     </div>
 </div>
 
@@ -435,7 +435,7 @@
             <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
             <input type="checkbox" class="form-check-input mt-2" id="btnNingunHABILIDAD">
 
-            <a href="#" class="btn btn-tool form-check-label add-more-btn-dged" id="btnAdddHABILIDAD">Agregar +</a>
+            <a href="#" class="btn btn-tool form-check-label add-more-btn-hab" id="btnAdddHABILIDAD">Agregar +</a>
 
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
@@ -522,7 +522,7 @@
             <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
             <input type="checkbox" class="form-check-input mt-2" id="btnNingunAFILIACION">
 
-            <a href="#" class="btn btn-tool form-check-label add-more-btn-dged" id="btnAdddAFILIACION">Agregar +</a>
+            <a href="#" class="btn btn-tool form-check-label add-more-btn-afil" id="btnAdddAFILIACION">Agregar +</a>
 
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
@@ -531,7 +531,11 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
+<<<<<<< HEAD
         <form class="form-horizontal" id="afiliacion">
+=======
+        <form class="form-horizontal" id="AFILIACION">
+>>>>>>> fer
             <div id="CardDatosAfiliacion">
                 <div class="row">
                     <div class='col-12 col-sm-12 col-md-12'>
@@ -764,10 +768,15 @@
     });
 
 
+<<<<<<< HEAD
     /*IDIOMA */
+=======
+    /*IDIOMA*/ 
+>>>>>>> fer
 
-    $(document).on('click', '.add-more-btn-dged', function() {
+    $(document).on('click', '.add-more-btn-idioma', function() {
 
+<<<<<<< HEAD
         var clone = $('#CardDatosidioma').clone('.form-block-dged');
         $('#CardDatosidiomaB').append(clone);
         $('#btnAdddIdioma').removeClass('add-more-btn');
@@ -792,6 +801,32 @@
         } else {
             $('#idiomas input').attr('disabled', false);
             $('#idiomas select').attr('disabled', false);
+=======
+        var clone = $('#CardIdiomas').clone('.form-block-dged');
+        $('#CardIdiomasB').append(clone);
+        $('#btnAdddadicionalIdioma').removeClass('add-more-btn-idioma');
+        $('#btnAdddadicionalIdioma').addClass('remove-more-btn-idioma');
+        $('#btnAdddadicionalIdioma').text('Remover -');
+    });
+
+    $(document).on('click', '.remove-more-btn-idioma', function() {
+        $('#CardIdiomasB').empty();
+        $('#btnAdddadicionalIdioma').removeClass('remove-more-btn-idioma');
+        $('#btnAdddadicionalIdioma').addClass('add-more-btn-idioma');
+        $('#btnAdddadicionalIdioma').text('Agregar +');
+    });
+
+    $(document).on('click', '#btnNingunoIDIOMAS', function() {
+
+        if ($('#btnNingunoIDIOMAS').is(':checked')) {
+
+
+            $('#IDIOMAS input').attr('disabled', 'disabled');
+            $('#IDIOMAS select').attr('disabled', 'disabled');
+        } else {
+            $('#IDIOMAS input').attr('disabled', false);
+            $('#IDIOMAS select').attr('disabled', false);
+>>>>>>> fer
         }
 
 
@@ -800,8 +835,9 @@
 
     /*HABILIDADES */
 
-    $(document).on('click', '.add-more-btn-dged', function() {
+    $(document).on('click', '.add-more-btn-hab', function() {
 
+<<<<<<< HEAD
         var clone = $('#CardDatosHabilidad').clone('.form-block-dged');
         $('#CardDatosHabilidadB').append(clone);
         $('#btnAdddHABILIDAD').removeClass('add-more-btn');
@@ -813,6 +849,19 @@
         $('#CardDatosHabilidadB').empty();
         $('#btnAdddHABILIDAD').removeClass('remove-more-btn');
         $('#btnAdddHABILIDAD').addClass('add-more-btn');
+=======
+        var clone = $('#CardDatosHabilidad').clone('.form-block-hab');
+        $('#CardDatosHabilidadB').append(clone);
+        $('#btnAdddHABILIDAD').removeClass('add-more-btn-hab');
+        $('#btnAdddHABILIDAD').addClass('remove-btn-hab');
+        $('#btnAdddHABILIDAD').text('Remover -');
+    });
+
+    $(document).on('click', '.remove-btn-hab', function() {
+        $('#CardDatosHabilidadB').empty();
+        $('#btnAdddHABILIDAD').removeClass('remove-btn-hab');
+        $('#btnAdddHABILIDAD').addClass('add-more-btn-hab');
+>>>>>>> fer
         $('#btnAdddHABILIDAD').text('Agregar +');
     });
 
@@ -835,20 +884,20 @@
 
     /*AFILIACION */
 
-    $(document).on('click', '.add-more-btn-dged', function() {
+    $(document).on('click', '.add-more-btn-afil', function() {
 
-        var clone = $('#CardDatosAfiliacion').clone('.form-block-dged');
+        var clone = $('#CardDatosAfiliacion').clone('.form-block-afil');
         $('#CardDatosAfiliacionB').append(clone);
-        $('#btnAdddHABILIDAD').removeClass('add-more-btn');
-        $('#btnAdddHABILIDAD').addClass('remove-more-btn');
-        $('#btnAdddHABILIDAD').text('Remover -');
+        $('#btnAdddAFILIACION').removeClass('add-more-btn-afil');
+        $('#btnAdddAFILIACION').addClass('remove-more-btn-afil');
+        $('#btnAdddAFILIACION').text('Remover -');
     });
 
-    $(document).on('click', '.remove-more-btn', function() {
+    $(document).on('click', '.remove-more-btn-afil', function() {
         $('#CardDatosAfiliacionB').empty();
-        $('#btnAdddHABILIDAD').removeClass('remove-more-btn');
-        $('#btnAdddHABILIDAD').addClass('add-more-btn');
-        $('#btnAdddHABILIDAD').text('Agregar +');
+        $('#btnAdddAFILIACION').removeClass('remove-more-btn-afil');
+        $('#btnAdddAFILIACION').addClass('add-more-btn-afil');
+        $('#btnAdddAFILIACION').text('Agregar +');
     });
 
     $(document).on('click', '#btnNingunAFILIACION', function() {
@@ -856,11 +905,19 @@
         if ($('#btnNingunAFILIACION').is(':checked')) {
 
 
+<<<<<<< HEAD
             $('#afiliacion input').attr('disabled', 'disabled');
             $('#afiliacion select').attr('disabled', 'disabled');
         } else {
             $('#afiliacion input').attr('disabled', false);
             $('#afiliacion select').attr('disabled', false);
+=======
+            $('#AFILIACION input').attr('disabled', 'disabled');
+            $('#AFILIACION select').attr('disabled', 'disabled');
+        } else {
+            $('#AFILIACION input').attr('disabled', false);
+            $('#AFILIACION select').attr('disabled', false);
+>>>>>>> fer
         }
 
 
