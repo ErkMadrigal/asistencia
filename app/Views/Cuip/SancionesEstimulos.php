@@ -468,9 +468,7 @@
         });
 
     });
-
     /*RESOLUCIONES */
-
     $(document).on('click', '.add-more-btn-dged', function() {
 
         var clone = '<div class="row">   <div class="col-6 col-sm-12 col-md-6">  <div class="form-group"> <label for="tipo_estimuloB" class=" control-label">Tipo:<span class="text-danger">*</span></label>  <input type="text" class="form-control " id="tipo_estimuloB" name="tipo_estimuloB">  </div>  </div> <div class="col-12 col-sm-12 col-md-6"> <div class="form-group">  <label for="descripcion_estimuloB" class=" control-label">Descripción:<span class="text-danger">*</span></label>    <input type="text" class="form-control " id="descripcion_estimuloB" name="descripcion_estimuloB">  </div>  </div>   <div class="col-12 col-sm-12 col-md-6">  <div class="form-group">   <label for="dependenciaB" class=" control-label">Dependencia que otorga:<span class="text-danger">*</span></label>  <input type="text" class="form-control " id="dependenciaB" name="dependenciaB">  </div>   </div>   <div class="col-12 col-sm-6">   <div class="form-group">  <label for="otrogado_estimuloB">Otorgado: <span class="text-danger">*</span></label>   <div class="input-group date" id="otrogado_estimuloB" data-target-input="nearest">   <input type="text" required class="form-control datetimepicker-input" data-target="#otrogado_estimuloB" id="datetime-otrogado_estimuloB" name="otrogado_estimuloB" placeholder="" value="" />  <div class="input-group-append" data-target="#otrogado_estimuloB" data-toggle="datetimepicker">    <div class="input-group-text"><i class="far fa-calendar"></i></div>   </div>   </div>   <script type="text/javascript">   $(function() {   $("#otrogado_estimuloB").datetimepicker({  format: "DD-MM-YYYY",   locale: moment.locale("es")   });  });  <\/script>  </div>  </div> </div>';  
