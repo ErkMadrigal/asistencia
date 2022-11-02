@@ -730,7 +730,6 @@
             $('#Capacitaciones select').attr('disabled', false);
         }
 
-
     });
 
     /*ADICIONAL */
@@ -767,7 +766,6 @@
     });
 
 
-
     $(document).on('click', '.add-more-btn-idioma', function() {
 
 
@@ -797,10 +795,7 @@
             $('#IDIOMAS select').attr('disabled', false);
 
         }
-
-
     });
-
 
     /*HABILIDADES */
 
@@ -837,8 +832,6 @@
 
     });
 
-
-
     /*AFILIACION */
 
     $(document).on('click', '.add-more-btn-afil', function() {
@@ -870,6 +863,7 @@
             $('#AFILIACION select').attr('disabled', false);
         }
 
-
     });
+
+
 </script>
