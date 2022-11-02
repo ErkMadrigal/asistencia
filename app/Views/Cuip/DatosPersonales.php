@@ -1,4 +1,5 @@
-<div class="card card-primary">
+<div class="card card-pri
+mary">
     <div class="card-header">
         <h3 class="card-title">DATOS PERSONALES</h3>
 

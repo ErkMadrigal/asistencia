@@ -138,10 +138,19 @@ class CuipModel
     }
 
 
-    public function insertSancionesEstimulos($data){
+    public function insertSancionesEstimulos($datosEstimulos,$datosResoluciones,$datosSanciones){
         $this->db->transStart();
 
-        $this->db->table('sanciones')->insert($data);
+        
+        $this->db->table('resoluciones_ministeriales')->insertBatch($datosResoluciones);
+        
+
+
+        $this->db->table('sanciones')->insertBatch($datosSanciones);
+        
+
+        $this->db->table('estimulos_recibidos')->insertBatch($datosEstimulos);
+        
 
         $this->db->transComplete();
 

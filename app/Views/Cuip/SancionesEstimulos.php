@@ -412,9 +412,59 @@
 
         var idPersonal = $('#idPersonal').val()
         var csrfName = $("input[name=app_csrf]").val();
-        var formData = new FormData($("form#sancionesEstimulos")[0]);
+        var formData = new FormData();
+
+        if($('#btnNingunsanciones').is(':checked')) {
+            valSanciones = 1;
+            
+        } else {
+            valSanciones = 0;
+
+            var formDataB = new FormData($("form#sancionesEstimulos")[0]);
+
+
+            for (let [key, value] of formDataB.entries()) {
+                formData.append(key, value);
+            }
+            
+        }
+
+
+        if($('#btnNingunResolucion').is(':checked')) {
+            valResoluciones = 1;
+            
+        } else {
+            valResoluciones = 0;
+
+            var formDataC = new FormData($("form#resoluciones")[0]);
+
+
+            for (let [key, value] of formDataC.entries()) {
+                formData.append(key, value);
+            }
+            
+        }
+
+        if($('#btnNingunoestimulo').is(':checked')) {
+            valEstimulo = 1;
+            
+        } else {
+            valEstimulo = 0;
+
+            var formDataD = new FormData($("form#estimulo")[0]);
+
+
+            for (let [key, value] of formDataD.entries()) {
+                formData.append(key, value);
+            }
+            
+        }
+
         formData.append('idPersonal', idPersonal);
         formData.append('app_csrf', csrfName);
+        formData.append('sanciones', valSanciones);
+        formData.append('resoluciones', valResoluciones);
+        formData.append('estimulo', valEstimulo);
 
         $.ajax({
             url: base_url + '/GuardarSancionesEstimulos',
