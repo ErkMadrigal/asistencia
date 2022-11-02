@@ -531,11 +531,10 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-<<<<<<< HEAD
-        <form class="form-horizontal" id="afiliacion">
-=======
+
+
         <form class="form-horizontal" id="AFILIACION">
->>>>>>> fer
+
             <div id="CardDatosAfiliacion">
                 <div class="row">
                     <div class='col-12 col-sm-12 col-md-12'>
@@ -768,40 +767,10 @@
     });
 
 
-<<<<<<< HEAD
-    /*IDIOMA */
-=======
-    /*IDIOMA*/ 
->>>>>>> fer
 
     $(document).on('click', '.add-more-btn-idioma', function() {
 
-<<<<<<< HEAD
-        var clone = $('#CardDatosidioma').clone('.form-block-dged');
-        $('#CardDatosidiomaB').append(clone);
-        $('#btnAdddIdioma').removeClass('add-more-btn');
-        $('#btnAdddIdioma').addClass('remove-more-btn');
-        $('#btnAdddIdioma').text('Remover -');
-    });
 
-    $(document).on('click', '.remove-more-btn', function() {
-        $('#CardDatosidiomaB').empty();
-        $('#btnAdddIdioma').removeClass('remove-more-btn');
-        $('#btnAdddIdioma').addClass('add-more-btn');
-        $('#btnAdddIdioma').text('Agregar +');
-    });
-
-    $(document).on('click', '#btnNingunIdioma', function() {
-
-        if ($('#btnNingunIdioma').is(':checked')) {
-
-
-            $('#idiomas input').attr('disabled', 'disabled');
-            $('#idiomas select').attr('disabled', 'disabled');
-        } else {
-            $('#idiomas input').attr('disabled', false);
-            $('#idiomas select').attr('disabled', false);
-=======
         var clone = $('#CardIdiomas').clone('.form-block-dged');
         $('#CardIdiomasB').append(clone);
         $('#btnAdddadicionalIdioma').removeClass('add-more-btn-idioma');
@@ -826,7 +795,7 @@
         } else {
             $('#IDIOMAS input').attr('disabled', false);
             $('#IDIOMAS select').attr('disabled', false);
->>>>>>> fer
+
         }
 
 
@@ -837,19 +806,7 @@
 
     $(document).on('click', '.add-more-btn-hab', function() {
 
-<<<<<<< HEAD
-        var clone = $('#CardDatosHabilidad').clone('.form-block-dged');
-        $('#CardDatosHabilidadB').append(clone);
-        $('#btnAdddHABILIDAD').removeClass('add-more-btn');
-        $('#btnAdddHABILIDAD').addClass('remove-more-btn');
-        $('#btnAdddHABILIDAD').text('Remover -');
-    });
 
-    $(document).on('click', '.remove-more-btn', function() {
-        $('#CardDatosHabilidadB').empty();
-        $('#btnAdddHABILIDAD').removeClass('remove-more-btn');
-        $('#btnAdddHABILIDAD').addClass('add-more-btn');
-=======
         var clone = $('#CardDatosHabilidad').clone('.form-block-hab');
         $('#CardDatosHabilidadB').append(clone);
         $('#btnAdddHABILIDAD').removeClass('add-more-btn-hab');
@@ -861,7 +818,7 @@
         $('#CardDatosHabilidadB').empty();
         $('#btnAdddHABILIDAD').removeClass('remove-btn-hab');
         $('#btnAdddHABILIDAD').addClass('add-more-btn-hab');
->>>>>>> fer
+
         $('#btnAdddHABILIDAD').text('Agregar +');
     });
 
@@ -905,19 +862,12 @@
         if ($('#btnNingunAFILIACION').is(':checked')) {
 
 
-<<<<<<< HEAD
-            $('#afiliacion input').attr('disabled', 'disabled');
-            $('#afiliacion select').attr('disabled', 'disabled');
-        } else {
-            $('#afiliacion input').attr('disabled', false);
-            $('#afiliacion select').attr('disabled', false);
-=======
+
             $('#AFILIACION input').attr('disabled', 'disabled');
             $('#AFILIACION select').attr('disabled', 'disabled');
         } else {
             $('#AFILIACION input').attr('disabled', false);
             $('#AFILIACION select').attr('disabled', false);
->>>>>>> fer
         }
 
 
