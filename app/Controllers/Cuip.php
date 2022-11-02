@@ -1037,36 +1037,106 @@ class Cuip extends BaseController {
 			$data = [];
 			$getIdPersonal = $this->request->getPost('idPersonal');
 
+
+
 			if(!empty($getIdPersonal)){
 
+				
+				$sanciones = $this->request->getPost('sanciones');
+				$resoluciones = $this->request->getPost('resoluciones');
+				$estimulo = $this->request->getPost('estimulo');
+
+			if($sanciones == 0){
+				
+				$rules['tipo'] =  ['label' => "Tipo", 'rules' => 'required|max_length[255]'];
+				$rules['determinacion'] =  ['label' => "Determinación", 'rules' => 'required'];
+				$rules['descripcion'] =  ['label' => "Descripción", 'rules' => 'required|max_length[255]'];
+				$rules['situacion'] =  ['label' => "Situación", 'rules' => 'required|max_length[255]'];
+				$rules['inicio_inhabilitacion'] =  ['label' => "Inicio de la inhabilitación", 'rules' => 'required'];
+				$rules['termino_inhabilitacion'] =  ['label' => "Término de la inhabilitación", 'rules' => 'required'];
+				$rules['organismo'] =  ['label' => "Dependencia u organismo que emite la determinación", 'rules' => 'required|max_length[255]'];
+
+				$rules['tipoB'] =  ['label' => "Tipo", 'rules' => 'required_with[determinacionB,descripcionB,situacionB,inicio_inhabilitacionB,termino_inhabilitacionB,organismoB]|max_length[255]'];
+				$rules['determinacionB'] =  ['label' => "Determinación", 'rules' => 'required_with[tipoB,descripcionB,situacionB,inicio_inhabilitacionB,termino_inhabilitacionB,organismoB]'];
+				$rules['descripcionB'] =  ['label' => "Descripción", 'rules' => 'required_with[tipoB,determinacionB,situacionB,inicio_inhabilitacionB,termino_inhabilitacionB,organismoB]|max_length[255]'];
+				$rules['situacionB'] =  ['label' => "Situación", 'rules' => 'required_with[tipoB,determinacionB,descripcionB,inicio_inhabilitacionB,termino_inhabilitacionB,organismoB]|max_length[255]'];
+				$rules['inicio_inhabilitacionB'] =  ['label' => "Inicio de la inhabilitación", 'rules' => 'required_with[tipoB,determinacionB,descripcionB,situacionB,termino_inhabilitacionB,organismoB]'];
+				$rules['termino_inhabilitacionB'] =  ['label' => "Término de la inhabilitación", 'rules' => 'required_with[tipoB,determinacionB,descripcionB,situacionB,inicio_inhabilitacionB,organismoB]'];
+				$rules['organismoB'] =  ['label' => "Dependencia u organismo que emite la determinación", 'rules' => 'required_with[tipoB,determinacionB,descripcionB,situacionB,inicio_inhabilitacionB,termino_inhabilitacionB]|max_length[255]'];
+
+			}  else {
+
 				$rules = [
-				'tipo' =>  ['label' => "Tipo", 'rules' => 'required|max_length[255]'],
-				'determinacion' =>  ['label' => "Determinación", 'rules' => 'required|valid_only_date_chek'],
-				'descripcion' =>  ['label' => "Descripción", 'rules' => 'required|max_length[255]'],
-				'situacion' =>  ['label' => "Situación", 'rules' => 'required|max_length[255]'],
-				'inicio_inhabilitacion' =>  ['label' => "Inicio de la inhabilitación", 'rules' => 'required|valid_only_date_chek'],
-				'termino_inhabilitacion' =>  ['label' => "Término de la inhabilitación", 'rules' => 'required|valid_only_date_chek'],
-				'organismo' =>  ['label' => "Dependencia u organismo que emite la determinación", 'rules' => 'required|max_length[255]'],
-				'emisora' =>  ['label' => "Institución emisora", 'rules' => 'required|max_length[255]'],
-				'entidad_federativaSE' =>  ['label' => "Entidad federativa", 'rules' => 'required'],
-				'delitos' =>  ['label' => "Delitos", 'rules' => 'required|max_length[255]'],
-				'motivo' =>  ['label' => "Motivo", 'rules' => 'required|max_length[255]'],
-				'no_expediente' =>  ['label' => "No. Expediente", 'rules' => 'required|max_length[255]'],
-				'agencia_mp' =>  ['label' => "Agencia del MP", 'rules' => 'required|max_length[255]'],
-				'averiguacion_previa' =>  ['label' => "Averiguación previa", 'rules' => 'required|max_length[255]'],
-				'tipo_fuero' =>  ['label' => "Tipo de Fuero", 'rules' => 'required'],
-				'averiguacion_estado' =>  ['label' => "Estado de la averiguación previa", 'rules' => 'required|max_length[255]'],
-				'inicio_averiguacion' =>  ['label' => "Inicio de la averiguación", 'rules' => 'required|valid_only_date_chek'],
-				'al_dia' =>  ['label' => "Al día", 'rules' => 'required|valid_only_date_chek'],
-				'juzgado' =>  ['label' => "Juzgado", 'rules' => 'required|max_length[255]'],
-				'no_proceso' =>  ['label' => "No. Proceso", 'rules' => 'required|max_length[255]'],
-				'estado_procesal' =>  ['label' => "Estado Procesal", 'rules' => 'required|max_length[255]'],
-				'inicio_proceso' =>  ['label' => "Inicio del proceso", 'rules' => 'required|valid_only_date_chek'],
-				'al_dia_proceso' =>  ['label' => "Al día", 'rules' => 'required|valid_only_date_chek'],
-				'tipo_estimulo' =>  ['label' => "Tipo", 'rules' => 'required|max_length[255]'],
-				'descripcion_estimulo' =>  ['label' => "Descripción", 'rules' => 'required|max_length[255]'],
-				'dependencia' =>  ['label' => "Dependencia que otorga", 'rules' => 'required|max_length[255]'],
-				'otrogado_estimulo' =>  ['label' => "Otorgado", 'rules' => 'required|valid_only_date_chek']];
+					'sanciones' =>  ['label' => "", 'rules' => 'required']];
+
+			}
+
+			if($resoluciones == 0){
+
+				
+				
+				$rules['emisora'] =  ['label' => "Institución emisora", 'rules' => 'required|max_length[255]'];
+				$rules['entidad_federativaSE'] =  ['label' => "Entidad federativa", 'rules' => 'required'];
+				$rules['delitos'] =  ['label' => "Delitos", 'rules' => 'required|max_length[255]'];
+				$rules['motivo'] =  ['label' => "Motivo", 'rules' => 'required|max_length[255]'];
+				$rules['no_expediente'] =  ['label' => "No. Expediente", 'rules' => 'required|max_length[255]'];
+				$rules['agencia_mp'] =  ['label' => "Agencia del MP", 'rules' => 'required|max_length[255]'];
+				$rules['averiguacion_previa'] =  ['label' => "Averiguación previa", 'rules' => 'required|max_length[255]'];
+				$rules['tipo_fuero'] =  ['label' => "Tipo de Fuero", 'rules' => 'required'];
+				$rules['averiguacion_estado'] =  ['label' => "Estado de la averiguación previa", 'rules' => 'required|max_length[255]'];
+				$rules['inicio_averiguacion'] =  ['label' => "Inicio de la averiguación", 'rules' => 'required'];
+				$rules['al_dia'] =  ['label' => "Al día", 'rules' => 'required'];
+				$rules['juzgado'] =  ['label' => "Juzgado", 'rules' => 'required|max_length[255]'];
+				$rules['no_proceso'] =  ['label' => "No. Proceso", 'rules' => 'required|max_length[255]'];
+				$rules['estado_procesal'] =  ['label' => "Estado Procesal", 'rules' => 'required|max_length[255]'];
+				$rules['inicio_proceso'] =  ['label' => "Inicio del proceso", 'rules' => 'required'];
+				$rules['al_dia_proceso'] =  ['label' => "Al día", 'rules' => 'required'];
+
+				/////
+
+				$rules['emisoraB'] =  ['label' => "Institución emisora", 'rules' => 'required_with[entidad_federativaSEB,delitosB,motivoB,no_expedienteB,agencia_mpB,averiguacion_previaB,tipo_fueroB,averiguacion_estadoB,inicio_averiguacionB,al_diaB,juzgadoB,no_procesoB,estado_procesalB,inicio_procesoB,al_dia_procesoB]|max_length[255]'];
+				$rules['entidad_federativaSEB'] =  ['label' => "Entidad federativa", 'rules' => 'required_with[emisoraB,delitosB,motivoB,no_expedienteB,agencia_mpB,averiguacion_previaB,tipo_fueroB,averiguacion_estadoB,inicio_averiguacionB,al_diaB,juzgadoB,no_procesoB,estado_procesalB,inicio_procesoB,al_dia_procesoB]'];
+				$rules['delitosB'] =  ['label' => "Delitos", 'rules' => 'required_with[emisoraB,entidad_federativaSEB,motivoB,no_expedienteB,agencia_mpB,averiguacion_previaB,tipo_fueroB,averiguacion_estadoB,inicio_averiguacionB,al_diaB,juzgadoB,no_procesoB,estado_procesalB,inicio_procesoB,al_dia_procesoB]|max_length[255]'];
+				$rules['motivoB'] =  ['label' => "Motivo", 'rules' => 'required_with[emisoraB,entidad_federativaSEB,delitosB,no_expedienteB,agencia_mpB,averiguacion_previaB,tipo_fueroB,averiguacion_estadoB,inicio_averiguacionB,al_diaB,juzgadoB,no_procesoB,estado_procesalB,inicio_procesoB,al_dia_procesoB]|max_length[255]'];
+				$rules['no_expedienteB'] =  ['label' => "No. Expediente", 'rules' => 'required_with[emisoraB,entidad_federativaSEB,delitosB,motivoB,agencia_mpB,averiguacion_previaB,tipo_fueroB,averiguacion_estadoB,inicio_averiguacionB,al_diaB,juzgadoB,no_procesoB,estado_procesalB,inicio_procesoB,al_dia_procesoB]|max_length[255]'];
+				$rules['agencia_mpB'] =  ['label' => "Agencia del MP", 'rules' => 'required_with[emisoraB,entidad_federativaSEB,delitosB,motivoB,no_expedienteB,averiguacion_previaB,tipo_fueroB,averiguacion_estadoB,inicio_averiguacionB,al_diaB,juzgadoB,no_procesoB,estado_procesalB,inicio_procesoB,al_dia_procesoB]|max_length[255]'];
+				$rules['averiguacion_previaB'] =  ['label' => "Averiguación previa", 'rules' => 'required_with[emisoraB,entidad_federativaSEB,delitosB,motivoB,no_expedienteB,agencia_mpB,tipo_fueroB,averiguacion_estadoB,inicio_averiguacionB,al_diaB,juzgadoB,no_procesoB,estado_procesalB,inicio_procesoB,al_dia_procesoB]|max_length[255]'];
+				$rules['tipo_fueroB'] =  ['label' => "Tipo de Fuero", 'rules' => 'required_with[emisoraB,entidad_federativaSEB,delitosB,motivoB,no_expedienteB,agencia_mpB,averiguacion_previaB,averiguacion_estadoB,inicio_averiguacionB,al_diaB,juzgadoB,no_procesoB,estado_procesalB,inicio_procesoB,al_dia_procesoB]'];
+				$rules['averiguacion_estadoB'] =  ['label' => "Estado de la averiguación previa", 'rules' => 'required_with[emisoraB,entidad_federativaSEB,delitosB,motivoB,no_expedienteB,agencia_mpB,averiguacion_previaB,tipo_fueroB,inicio_averiguacionB,al_diaB,juzgadoB,no_procesoB,estado_procesalB,inicio_procesoB,al_dia_procesoB]|max_length[255]'];
+				$rules['inicio_averiguacionB'] =  ['label' => "Inicio de la averiguación", 'rules' => 'required_with[emisoraB,entidad_federativaSEB,delitosB,motivoB,no_expedienteB,agencia_mpB,averiguacion_previaB,tipo_fueroB,averiguacion_estadoB,al_diaB,juzgadoB,no_procesoB,estado_procesalB,inicio_procesoB,al_dia_procesoB]'];
+				$rules['al_diaB'] =  ['label' => "Al día", 'rules' => 'required_with[emisoraB,entidad_federativaSEB,delitosB,motivoB,no_expedienteB,agencia_mpB,averiguacion_previaB,tipo_fueroB,averiguacion_estadoB,inicio_averiguacionB,juzgadoB,no_procesoB,estado_procesalB,inicio_procesoB,al_dia_procesoB]'];
+				$rules['juzgadoB'] =  ['label' => "Juzgado", 'rules' => 'required_with[emisoraB,entidad_federativaSEB,delitosB,motivoB,no_expedienteB,agencia_mpB,averiguacion_previaB,tipo_fueroB,averiguacion_estadoB,inicio_averiguacionB,al_diaB,no_procesoB,estado_procesalB,inicio_procesoB,al_dia_procesoB]|max_length[255]'];
+				$rules['no_procesoB'] =  ['label' => "No. Proceso", 'rules' => 'required_with[emisoraB,entidad_federativaSEB,delitosB,motivoB,no_expedienteB,agencia_mpB,averiguacion_previaB,tipo_fueroB,averiguacion_estadoB,inicio_averiguacionB,al_diaB,juzgadoB,estado_procesalB,inicio_procesoB,al_dia_procesoB]|max_length[255]'];
+				$rules['estado_procesalB'] =  ['label' => "Estado Procesal", 'rules' => 'required_with[emisoraB,entidad_federativaSEB,delitosB,motivoB,no_expedienteB,agencia_mpB,averiguacion_previaB,tipo_fueroB,averiguacion_estadoB,inicio_averiguacionB,al_diaB,juzgadoB,no_procesoB,inicio_procesoB,al_dia_procesoB]|max_length[255]'];
+				$rules['inicio_procesoB'] =  ['label' => "Inicio del proceso", 'rules' => 'required_with[emisoraB,entidad_federativaSEB,delitosB,motivoB,no_expedienteB,agencia_mpB,averiguacion_previaB,tipo_fueroB,averiguacion_estadoB,inicio_averiguacionB,al_diaB,juzgadoB,no_procesoB,estado_procesalB,al_dia_procesoB]'];
+				$rules['al_dia_procesoB'] =  ['label' => "Al día", 'rules' => 'required_with[emisoraB,entidad_federativaSEB,delitosB,motivoB,no_expedienteB,agencia_mpB,averiguacion_previaB,tipo_fueroB,averiguacion_estadoB,inicio_averiguacionB,al_diaB,juzgadoB,no_procesoB,estado_procesalB,inicio_procesoB]'];
+
+			} else {
+
+				$rules = [
+					'resoluciones' =>  ['label' => "", 'rules' => 'required']];
+
+			}
+
+			if($estimulo == 0){
+
+				$rules['tipo_estimulo'] =  ['label' => "Tipo", 'rules' => 'required|max_length[255]'];
+				$rules['descripcion_estimulo'] =  ['label' => "Descripción", 'rules' => 'required|max_length[255]'];
+				$rules['dependencia'] =  ['label' => "Dependencia que otorga", 'rules' => 'required|max_length[255]'];
+				$rules['otrogado_estimulo'] =  ['label' => "Otorgado", 'rules' => 'required'];
+
+
+				$rules['tipo_estimuloB'] =  ['label' => "Tipo", 'rules' => 'required_with[descripcion_estimuloB,dependenciaB,otrogado_estimuloB]|max_length[255]'];
+				$rules['descripcion_estimuloB'] =  ['label' => "Descripción", 'rules' => 'required_with[tipo_estimuloB,dependenciaB,otrogado_estimuloB]|max_length[255]'];
+				$rules['dependenciaB'] =  ['label' => "Dependencia que otorga", 'rules' => 'required_with[tipo_estimuloB,descripcion_estimuloB,otrogado_estimuloB]|max_length[255]'];
+				$rules['otrogado_estimuloB'] =  ['label' => "Otorgado", 'rules' => 'required_with[tipo_estimuloB,descripcion_estimuloB,dependenciaB]'];
+				
+			} else {
+
+				$rules = [
+					'estimulo' =>  ['label' => "", 'rules' => 'required']];
+
+			}	 
 		 
 				
 				if($this->validate($rules)){
@@ -1076,85 +1146,196 @@ class Cuip extends BaseController {
 					$empresa = session()->get('empresa');
 					$idEmpresa = $this->encrypter->decrypt($empresa);
 					$uuid = Uuid::uuid4();
-        			$id = $uuid->toString();
-
         			
-
-        			$getIdPersonal = $this->request->getPost('idPersonal');
 
         			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
 
-        			$getDeterminacion = $this->request->getPost('determinacion');
+        			
+        			$datosSanciones=[];
+        			$datosResoluciones=[];
+        			$datosEstimulos=[];
+					
+				if ($sanciones == 0){	
+					$val ="";
+					$clockSequence = 16383;
+					for ($i = 1; $i <= 2; $i++) {
+  						
+  						$uuid1 = Uuid::uuid1($clockSequence);
+                        $idSan = $uuid1->toString();
 
-        			$determinacion = date( "Y-m-d" ,strtotime($getDeterminacion));
+  						$getDeterminacion = $this->request->getPost('determinacion'.$val);
 
-        			$getInicio_inhabilitacion = $this->request->getPost('inicio_inhabilitacion');
+        				$determinacion = date( "Y-m-d" ,strtotime($getDeterminacion));
 
-        			$inicio_inhabilitacion = date( "Y-m-d" ,strtotime($getInicio_inhabilitacion));
+        				$getInicio_inhabilitacion = $this->request->getPost('inicio_inhabilitacion'.$val);
 
-        			$getTermino_inhabilitacion = $this->request->getPost('termino_inhabilitacion');
+        				$inicio_inhabilitacion = date( "Y-m-d" ,strtotime($getInicio_inhabilitacion));
 
-        			$termino_inhabilitacion = date( "Y-m-d" ,strtotime($getTermino_inhabilitacion));
+        				$getTermino_inhabilitacion = $this->request->getPost('termino_inhabilitacion'.$val);
 
-        			$getInicio_averiguacion = $this->request->getPost('inicio_averiguacion');
+        				$termino_inhabilitacion = date( "Y-m-d" ,strtotime($getTermino_inhabilitacion));
 
-        			$inicio_averiguacion = date( "Y-m-d" ,strtotime($getInicio_averiguacion));
+					$datosSanciones[] = array(
 
-        			$getAl_dia = $this->request->getPost('al_dia');
+						"id" => $idSan ,
+						"idPersonal" => $idPersonal , 
+						"idEmpresa" => $idEmpresa ,
+						"tipo_sancion" =>  strtoupper($this->request->getPost('tipo'.$val)) , 
+						"determinacion" =>  $determinacion , 
+						"descripcion_sancion" => strtoupper($this->request->getPost('descripcion'.$val))  , 
+						"situacion" =>  strtoupper($this->request->getPost('situacion'.$val)) , 
+						"inicio_habilitacion" =>  $inicio_inhabilitacion , 
+						"termino_habilitacion" => $termino_inhabilitacion  , 
+						"dependencia" =>  strtoupper($this->request->getPost('organismo'.$val)) ,
+						"activo" => 1 , 
+						"createdby" => $LoggedUserId , 
+						"createddate" => date("Y-m-d H:i:s"));
 
-        			$al_dia = date( "Y-m-d" ,strtotime($getAl_dia));
+						$val ="B";
 
-        			$getInicio_proceso = $this->request->getPost('inicio_proceso');
+						$valB =$this->request->getPost('tipo_sancionB');
 
-        			$inicio_proceso = date( "Y-m-d" ,strtotime($getInicio_proceso));
+						if (!isset($valB) || empty($valB)){
 
-        			$getAl_dia_proceso = $this->request->getPost('al_dia_proceso');
+							$i = 3;
+						}
+					}
+				} else {
 
-        			$al_dia_proceso = date( "Y-m-d" ,strtotime($getAl_dia_proceso));
+					$idSan = $uuid->toString();
+					$datosSanciones[] = array(
 
-        			$getOtrogado_estimulo = $this->request->getPost('otrogado_estimulo');
+						"id" => $idSan ,
+						"idPersonal" => $idPersonal , 
+						"idEmpresa" => $idEmpresa ,
+						"activo" => 1 , 
+						"createdby" => $LoggedUserId , 
+						"createddate" => date("Y-m-d H:i:s"));
+				}
+
+				if ($resoluciones == 0){	
+					$val ="";
+					$clockSequence = 16383;
+					for ($i = 1; $i <= 2; $i++) {
+  						
+  						$uuid1 = Uuid::uuid1($clockSequence);
+                        $idRes = $uuid1->toString();
+
+  						$getInicio_averiguacion = $this->request->getPost('inicio_averiguacion'.$val);
+
+        				$inicio_averiguacion = date( "Y-m-d" ,strtotime($getInicio_averiguacion));
+
+        				$getAl_dia = $this->request->getPost('al_dia'.$val);
+
+        				$al_dia = date( "Y-m-d" ,strtotime($getAl_dia));
+
+        				$getInicio_proceso = $this->request->getPost('inicio_proceso'.$val);
+
+        				$inicio_proceso = date( "Y-m-d" ,strtotime($getInicio_proceso));
+
+        				$getAl_dia_proceso = $this->request->getPost('al_dia_proceso'.$val);
+
+        				$al_dia_proceso = date( "Y-m-d" ,strtotime($getAl_dia_proceso));
+
+					$datosResoluciones[] = array(
+
+						"id" => $idRes ,
+						"idPersonal" => $idPersonal , 
+						"idEmpresa" => $idEmpresa ,
+						"institucion_emisora" =>  strtoupper($this->request->getPost('emisora'.$val)) , 
+						"idEstado" =>  $this->request->getPost('entidad_federativaSE'.$val) , 
+						"delitos" =>  strtoupper($this->request->getPost('delitos'.$val)) , 
+						"motivos" =>  strtoupper($this->request->getPost('motivo'.$val)) , 
+						"numero_expediente" =>  strtoupper($this->request->getPost('no_expediente'.$val)) , 
+						"agencia_mp" =>  strtoupper($this->request->getPost('agencia_mp'.$val)) , 
+						"averiguacion_previa" =>  strtoupper($this->request->getPost('averiguacion_previa'.$val)) , 
+						"idTipoFuero" =>  $this->request->getPost('tipo_fuero'.$val) , 
+						"estado_averiguacion" =>  strtoupper($this->request->getPost('averiguacion_estado'.$val)) , 
+						"inicio_averiguacion" =>  $inicio_averiguacion , 
+						"aldia_averiguacion" => $al_dia  , 
+						"juzgado" =>  strtoupper($this->request->getPost('juzgado'.$val)) , 
+						"num_proceso" =>  strtoupper($this->request->getPost('no_proceso'.$val)) , 
+						"estado_procesal" => strtoupper($this->request->getPost('estado_procesal'.$val))  , 
+						"inicio_proceso" => $inicio_proceso  , 
+						"aldia_proceso" =>  $al_dia_proceso ,
+						"activo" => 1 , 
+						"createdby" => $LoggedUserId , 
+						"createddate" => date("Y-m-d H:i:s"));
+
+						$val ="B";
+
+						$valB =$this->request->getPost('emisoraB');
+
+						if (!isset($valB) || empty($valB)){
+
+							$i = 3;
+						}
+					}
+				} else {
+
+					$idRes = $uuid->toString();
+					$datosResoluciones[] = array(
+
+						"id" => $idRes ,
+						"idPersonal" => $idPersonal , 
+						"idEmpresa" => $idEmpresa ,
+						"activo" => 1 , 
+						"createdby" => $LoggedUserId , 
+						"createddate" => date("Y-m-d H:i:s"));
+				}
+
+
+				if ($estimulo == 0){	
+					$val ="";
+					$clockSequence = 16383;
+					for ($i = 1; $i <= 2; $i++) {
+  						
+  						$uuid1 = Uuid::uuid1($clockSequence);
+                        $idEst = $uuid1->toString();
+
+  						$getOtrogado_estimulo = $this->request->getPost('otrogado_estimulo'.$val);
 
         			$otrogado_estimulo = date( "Y-m-d" ,strtotime($getOtrogado_estimulo));
 
-					$sancionesEstimulos = array(
-		    					
-		    					
-						"id" => $id  ,
-						"idPersonal" => $idPersonal  , 
-						"idEmpresa" =>  $idEmpresa , 
-						"tipo_sancion" =>  strtoupper($this->request->getPost('tipo')) , 
-						"determinacion" =>  $determinacion , 
-						"descripcion_sancion" => strtoupper($this->request->getPost('descripcion'))  , 
-						"situacion" =>  strtoupper($this->request->getPost('situacion')) , 
-						"inicio_habilitacion" =>  $inicio_inhabilitacion , 
-						"termino_habilitacion" => $termino_inhabilitacion  , 
-						"dependencia" =>  strtoupper($this->request->getPost('organismo')) , 
-						"institucion_emisora" =>  strtoupper($this->request->getPost('emisora')) , 
-						"idEstado" =>  $this->request->getPost('entidad_federativaSE') , 
-						"delitos" =>  strtoupper($this->request->getPost('delitos')) , 
-						"motivos" =>  strtoupper($this->request->getPost('motivo')) , 
-						"numero_expediente" =>  strtoupper($this->request->getPost('no_expediente')) , 
-						"agencia_mp" =>  strtoupper($this->request->getPost('agencia_mp')) , 
-						"averiguacion_previa" =>  strtoupper($this->request->getPost('averiguacion_previa')) , 
-						"idTipoFuero" =>  $this->request->getPost('tipo_fuero') , 
-						"estado_averiguacion" =>  strtoupper($this->request->getPost('averiguacion_estado')) , 
-						"inicio_averiguacion" =>  $inicio_averiguacion , 
-						"aldia_averiguacion" => $al_dia  , 
-						"juzgado" =>  strtoupper($this->request->getPost('juzgado')) , 
-						"num_proceso" =>  strtoupper($this->request->getPost('no_proceso')) , 
-						"estado_procesal" => strtoupper($this->request->getPost('estado_procesal'))  , 
-						"inicio_proceso" => $inicio_proceso  , 
-						"aldia_proceso" =>  $al_dia_proceso , 
-						"tipo_estimulo" => strtoupper($this->request->getPost('tipo_estimulo'))  , 
-						"descripcion_estimulo" => strtoupper($this->request->getPost('descripcion_estimulo'))  , 
-						"dependencia_otorga" => strtoupper($this->request->getPost('dependencia'))  , 
+					$datosEstimulos[] = array(
+
+						"id" => $idEst ,
+						"idPersonal" => $idPersonal , 
+						"idEmpresa" => $idEmpresa ,
+						"tipo_estimulo" => strtoupper($this->request->getPost('tipo_estimulo'.$val))  , 
+						"descripcion_estimulo" => strtoupper($this->request->getPost('descripcion_estimulo'.$val))  , 
+						"dependencia_otorga" => strtoupper($this->request->getPost('dependencia'.$val))  , 
 						"otorgado" =>  $otrogado_estimulo ,
 						"activo" => 1 , 
 						"createdby" => $LoggedUserId , 
-						"createddate" => date("Y-m-d H:i:s") );
+						"createddate" => date("Y-m-d H:i:s"));
+
+						$val ="B";
+
+						$valB =$this->request->getPost('tipo_estimuloB');
+
+						if (!isset($valB) || empty($valB)){
+
+							$i = 3;
+						}
+					}
+				} else {
+
+					$idEst = $uuid->toString();
+					$datosEstimulos[] = array(
+
+						"id" => $idEst ,
+						"idPersonal" => $idPersonal , 
+						"idEmpresa" => $idEmpresa, 
+						"activo" => 1 , 
+						"createdby" => $LoggedUserId , 
+						"createddate" => date("Y-m-d H:i:s"));
+					
+				}
 
 
-					$result = $this->modelCuip->insertSancionesEstimulos( $sancionesEstimulos);
+					
+					$result = $this->modelCuip->insertSancionesEstimulos($datosEstimulos,$datosResoluciones,$datosSanciones);
 
 					
 					
