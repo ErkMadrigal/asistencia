@@ -138,19 +138,21 @@ class CuipModel
     }
 
 
-    public function insertSancionesEstimulos($datosEstimulos,$datosResoluciones,$datosSanciones){
+    public function insertSancionesEstimulos($datosEstimulos,$datosResoluciones,$datosSanciones,$sanciones,$resoluciones,$estimulo){
         $this->db->transStart();
 
+        if($resoluciones == 0){
+            $this->db->table('resoluciones_ministeriales')->insertBatch($datosResoluciones);
         
-        $this->db->table('resoluciones_ministeriales')->insertBatch($datosResoluciones);
-        
+        }
 
+        if($sanciones == 0){
+            $this->db->table('sanciones')->insertBatch($datosSanciones);
+        }
 
-        $this->db->table('sanciones')->insertBatch($datosSanciones);
-        
-
-        $this->db->table('estimulos_recibidos')->insertBatch($datosEstimulos);
-        
+        if($estimulo == 0){
+            $this->db->table('estimulos_recibidos')->insertBatch($datosEstimulos);
+        }
 
         $this->db->transComplete();
 
@@ -165,11 +167,24 @@ class CuipModel
     }
 
 
-    public function insertCapacitaciones($data){
+    public function insertCapacitaciones($datosPublica,$datosCapacitacion,$datosIdioma,$datosHabilidad,$datosAfiliacion,$publica,$capacitacion,$idioma,$habilidad,$afiliacion){
         $this->db->transStart();
 
-        $this->db->table('capacitaciones')->insert($data);
-
+        if($publica == 0){
+            $this->db->table('capacitacion_publica')->insertBatch($datosPublica);
+        }
+        if($capacitacion == 0){
+            $this->db->table('capacitaciones')->insertBatch($datosCapacitacion);
+        }
+        if($idioma == 0){
+            $this->db->table('idiomas_dialectos')->insertBatch($datosIdioma);
+        }
+        if($habilidad == 0){
+            $this->db->table('habilidades_haptitudes')->insertBatch($datosHabilidad);
+        }
+        if($afiliacion == 0){
+            $this->db->table('afiliacion_agrupaciones')->insertBatch($datosAfiliacion);
+        }
         $this->db->transComplete();
 
         if ($this->db->transStatus() === TRUE)

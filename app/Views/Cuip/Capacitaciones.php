@@ -7,7 +7,7 @@
             <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
             <input type="checkbox" class="form-check-input mt-2" id="btnNingunocapa">
 
-            <a href="#" class="btn btn-tool form-check-label add-more-btn-dged" id="btnAdddcapacitacion">Agregar +</a>
+            <a href="#" class="btn btn-tool form-check-label add-more-btn-public" id="btnAdddcapacitacion">Agregar +</a>
 
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
@@ -165,7 +165,7 @@
             <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
             <input type="checkbox" class="form-check-input mt-2" id="btnNingunOADICIONAL">
 
-            <a href="#" class="btn btn-tool form-check-label add-more-btn-dged" id="btnAdddadicional">Agregar +</a>
+            <a href="#" class="btn btn-tool form-check-label add-more-btn-adi" id="btnAdddadicional">Agregar +</a>
 
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
@@ -632,9 +632,92 @@
         var idPersonal = $('#idPersonal').val()
         var csrfName = $("input[name=app_csrf]").val();
 
-        var formData = new FormData($("form#Capacitaciones")[0]);
+        var formData = new FormData();
+
+        if($('#btnNingunocapa').is(':checked')) {
+            valPublica = 1;
+            
+        } else {
+            valPublica = 0;
+
+            var formDataB = new FormData($("form#Capacitaciones")[0]);
+
+
+            for (let [key, value] of formDataB.entries()) {
+                formData.append(key, value);
+            }
+            
+        }
+
+
+        if($('#btnNingunOADICIONAL').is(':checked')) {
+            valCapacitacion = 1;
+            
+        } else {
+            valCapacitacion = 0;
+
+            var formDataC = new FormData($("form#adicional")[0]);
+
+
+            for (let [key, value] of formDataC.entries()) {
+                formData.append(key, value);
+            }
+            
+        }
+
+        if($('#btnNingunoIDIOMAS').is(':checked')) {
+            valIdioma = 1;
+            
+        } else {
+            valIdioma = 0;
+
+            var formDataD = new FormData($("form#IDIOMAS")[0]);
+
+
+            for (let [key, value] of formDataD.entries()) {
+                formData.append(key, value);
+            }
+            
+        }
+
+        if($('#btnNingunHABILIDAD').is(':checked')) {
+            valHabilidad = 1;
+            
+        } else {
+            valHabilidad = 0;
+
+            var formDataF = new FormData($("form#HABILIDAD")[0]);
+
+
+            for (let [key, value] of formDataF.entries()) {
+                formData.append(key, value);
+            }
+            
+        }
+
+        if($('#btnNingunAFILIACION').is(':checked')) {
+            valAfiliacion = 1;
+            
+        } else {
+            valAfiliacion = 0;
+
+            var formDataD = new FormData($("form#AFILIACION")[0]);
+
+
+            for (let [key, value] of formDataD.entries()) {
+                formData.append(key, value);
+            }
+            
+        }
+
         formData.append('idPersonal', idPersonal);
         formData.append('app_csrf', csrfName);
+
+        formData.append('publica', valPublica);
+        formData.append('capacitacion', valCapacitacion);
+        formData.append('valIdioma', valIdioma);
+        formData.append('habilidad', valHabilidad);
+        formData.append('afiliacion', valAfiliacion);
 
         $.ajax({
             url: base_url + '/GuardarCapacitaciones',
@@ -702,19 +785,19 @@
 
     });
 
-    $(document).on('click', '.add-more-btn-dged', function() {
+    $(document).on('click', '.add-more-btn-public', function() {
 
-        var clone = '<div class="row">   <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">    <label for="dependenciaB" class=" control-label">Dependencia responsable:<span class="text-danger">*</span></label>   <input type="text" class="form-control " id="dependenciaB" name="dependenciaB">   </div>  </div>   <div class="col-12 col-sm-12 col-md-6">    <div class="form-group">    <label for="institucionB" class=" control-label">Institución Capacitadora:<span class="text-danger">*</span></label>   <input type="text" class="form-control " id="institucionB" name="institucionB">   </div>  </div>   <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">    <label for="nombre_cursoB" class=" control-label">Nombre del curso:<span class="text-danger">*</span></label>    <input type="text" class="form-control " id="nombre_cursoB" name="nombre_cursoB">   </div>   </div>   <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">nivel_curso   <label for="tema_cursoB" class=" control-label">Tema del curso:<span class="text-danger">*</span></label>   <input type="text" class="form-control " id="tema_cursoB" name="tema_cursoB">   </div>   </div>    <div class="col-6 col-sm-6">    <div class="form-group">    <label for="nivel_cursoB" class="control-label">Nivel del curso recibido: <span class="text-danger">*</span></label>    <div>    <select class="form-control" id="nivel_cursoB" name="nivel_cursoB">     <option value="">Selecciona una Opcion</option>    <?php   if (!empty($nivel_cursoB)) :  foreach ($nivel_cursoB as  $a) {    ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>    <?php    }    endif; ?>    <\/select>    <script>    $(document).ready(function() { $("#nivel_cursoB").select2({    theme: "bootstrap4",     width: "100%"    });   });     <\/script> </div>    </div>   </div>   <div class="col-6 col-sm-6"> <div class="form-group">    <label for="eficienciaCursosB" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>   <div>    <select class="form-control" id="eficienciaCursosB" name="eficienciaCursosB">    <option value="">Selecciona una Opcion</option>    <?php    if (!empty($eficiencia)) :   foreach ($eficiencia as  $a) {   ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>    <?php    }    endif; ?> </select>   <script>    $(document).ready(function() {   $("#eficienciaCursosB").select2({    theme: "bootstrap4",    width: "100%"    });    });     <\/script>    </div>   </div> </div>    <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">    <label for="inicioB" class=" control-label">inicio:<span class="text-danger">*</span></label>    <div class="input-group date" id="inicioB" data-target-input="nearest">    <input type="text" required class="form-control datetimepicker-input" data-target="#inicioB" id="datetime-inicioB" name="inicioB" placeholder="" value="" />    <div class="input-group-append" data-target="#inicioB" data-toggle="datetimepicker"> <div class="input-group-text"><i class="far fa-calendar"></i></div>    </div>   </div>    <script type="text/javascript">    $(function() {    $("#inicioB").datetimepicker({    format: "DD-MM-YYYY", locale: moment.locale("es")    });    });    <\/script>    </div>   </div>   <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">   <label for="conclusionB" class=" control-label">Conclusión:<span class="text-danger">*</span></label>    <div class="input-group date" id="conclusionB" data-target-input="nearest">    <input type="text" required class="form-control datetimepicker-input" data-target="#conclusionB" id="datetime-conclusionB" name="conclusionB" placeholder="" value="" />    <div class="input-group-append" data-target="#conclusionB" data-toggle="datetimepicker">   <div class="input-group-text"><i class="far fa-calendar"></i></div>    </div>   </div>     <script type="text/javascript">    $(function() {    $("#conclusionB").datetimepicker({    format: "DD-MM-YYYY",    locale: moment.locale("es")    });    });    <\/script>  </div>   </div>  <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">  <label for="duracionB" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>   <input type="text" class="form-control " id="duracionB" name="duracionB" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">   </div>   </div>   <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">   <label for="comprobanteB" class=" control-label">Tipo de comprobante:<span class="text-danger">*</span></label>   <input type="text" class="form-control " id="comprobanteB" name="comprobanteB">   </div>  </div> </div>';
+        var clone = '<div class="row">   <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">    <label for="dependenciaB" class=" control-label">Dependencia responsable:<span class="text-danger">*</span></label>   <input type="text" class="form-control " id="dependenciaB" name="dependenciaB">   </div>  </div>   <div class="col-12 col-sm-12 col-md-6">    <div class="form-group">    <label for="institucionB" class=" control-label">Institución Capacitadora:<span class="text-danger">*</span></label>   <input type="text" class="form-control " id="institucionB" name="institucionB">   </div>  </div>   <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">    <label for="nombre_cursoB" class=" control-label">Nombre del curso:<span class="text-danger">*</span></label>    <input type="text" class="form-control " id="nombre_cursoB" name="nombre_cursoB">   </div>   </div>   <div class="col-12 col-sm-12 col-md-6">   <div class="form-group"><label for="tema_cursoB" class=" control-label">Tema del curso:<span class="text-danger">*</span></label>   <input type="text" class="form-control " id="tema_cursoB" name="tema_cursoB">   </div>   </div>    <div class="col-6 col-sm-6">    <div class="form-group">    <label for="nivel_cursoB" class="control-label">Nivel del curso recibido: <span class="text-danger">*</span></label>    <div>    <select class="form-control" id="nivel_cursoB" name="nivel_cursoB">     <option value="">Selecciona una Opcion</option>    <?php   if (!empty($nivel_curso)) :  foreach ($nivel_curso as  $a) {    ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>    <?php    }    endif; ?>    <\/select>    <script>    $(document).ready(function() { $("#nivel_cursoB").select2({    theme: "bootstrap4",     width: "100%"    });   });     <\/script> </div>    </div>   </div>   <div class="col-6 col-sm-6"> <div class="form-group">    <label for="eficienciaCursosB" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>   <div>    <select class="form-control" id="eficienciaCursosB" name="eficienciaCursosB">    <option value="">Selecciona una Opcion</option>    <?php    if (!empty($eficiencia)) :   foreach ($eficiencia as  $a) {   ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>    <?php    }    endif; ?> </select>   <script>    $(document).ready(function() {   $("#eficienciaCursosB").select2({    theme: "bootstrap4",    width: "100%"    });    });     <\/script>    </div>   </div> </div>    <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">    <label for="inicioB" class=" control-label">inicio:<span class="text-danger">*</span></label>    <div class="input-group date" id="inicioB" data-target-input="nearest">    <input type="text" required class="form-control datetimepicker-input" data-target="#inicioB" id="datetime-inicioB" name="inicioB" placeholder="" value="" />    <div class="input-group-append" data-target="#inicioB" data-toggle="datetimepicker"> <div class="input-group-text"><i class="far fa-calendar"></i></div>    </div>   </div>    <script type="text/javascript">    $(function() {    $("#inicioB").datetimepicker({    format: "DD-MM-YYYY", locale: moment.locale("es")    });    });    <\/script>    </div>   </div>   <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">   <label for="conclusionB" class=" control-label">Conclusión:<span class="text-danger">*</span></label>    <div class="input-group date" id="conclusionB" data-target-input="nearest">    <input type="text" required class="form-control datetimepicker-input" data-target="#conclusionB" id="datetime-conclusionB" name="conclusionB" placeholder="" value="" />    <div class="input-group-append" data-target="#conclusionB" data-toggle="datetimepicker">   <div class="input-group-text"><i class="far fa-calendar"></i></div>    </div>   </div>     <script type="text/javascript">    $(function() {    $("#conclusionB").datetimepicker({    format: "DD-MM-YYYY",    locale: moment.locale("es")    });    });    <\/script>  </div>   </div>  <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">  <label for="duracionB" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>   <input type="text" class="form-control " id="duracionB" name="duracionB" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">   </div>   </div>   <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">   <label for="comprobanteB" class=" control-label">Tipo de comprobante:<span class="text-danger">*</span></label>   <input type="text" class="form-control " id="comprobanteB" name="comprobanteB">   </div>  </div> </div>';
         $('#CardDatoscapacitacionB').append(clone);
-        $('#btnAdddcapacitacion').removeClass('add-more-btn');
-        $('#btnAdddcapacitacion').addClass('remove-more-btn');
+        $('#btnAdddcapacitacion').removeClass('add-more-btn-public');
+        $('#btnAdddcapacitacion').addClass('remove-more-btn-public');
         $('#btnAdddcapacitacion').text('Remover -');
     });
 
-    $(document).on('click', '.remove-more-btn', function() {
+    $(document).on('click', '.remove-more-btn-public', function() {
         $('#CardDatoscapacitacionB').empty();
-        $('#btnAdddcapacitacion').removeClass('remove-more-btn');
-        $('#btnAdddcapacitacion').addClass('add-more-btn');
+        $('#btnAdddcapacitacion').removeClass('remove-more-btn-public');
+        $('#btnAdddcapacitacion').addClass('add-more-btn-public');
         $('#btnAdddcapacitacion').text('Agregar +');
     });
 
@@ -734,19 +817,19 @@
 
     /*ADICIONAL */
 
-    $(document).on('click', '.add-more-btn-dged', function() {
+    $(document).on('click', '.add-more-btn-adi', function() {
 
-        var clone = '<div class="row">   <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">   <label for="empresaB" class=" control-label">Insitutción o Empresa:<span class="text-danger">*</span></label>    <input type="text" class="form-control " id="empresaB" name="empresaB"> </div>  </div>    <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">   <label for="cursoB" class=" control-label">Estudio o Curso:<span class="text-danger">*</span></label>    <input type="text" class="form-control " id="cursoB" name="cursoB">    </div>   </div>   <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">    <label for="tipo_cursoB" class=" control-label">Tipo de curso:<span class="text-danger">*</span></label>   <input type="text" class="form-control " id="tipo_cursoB" name="tipo_cursoB">   </div>   </div>    <div class="col-6 col-sm-6">    <div class="form-group">    <label for="cuso_tomadoB" class="control-label">¿El curso fue?: <span class="text-danger">*</span></label>    <div>   <select class="form-control" id="cuso_tomadoB" name="cuso_tomadoB">   <option value="">Selecciona una Opcion</option>    <?php   if (!empty($cuso_tomadoB)) :   foreach ($cuso_tomadoB as  $a) {    ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>    <?php     }   endif; ?>    </select>   <script>   $(document).ready(function() {    $("#cuso_tomadoB").select2({    theme: "bootstrap4",    width: "100%"    });    });    <\/script>    </div>   </div>   </div> <div class="col-6 col-sm-6">  <div class="form-group">    <label for="eficienciaB" class="control-label">eficiencia terminal: <span class="text-danger">*</span></label>    <div>    <select class="form-control" id="eficienciaB" name="eficienciaB">   <option value="">Selecciona una Opcion</option>    <?php    if (!empty($eficienciaB)) :    foreach ($eficienciaB as  $a) {    ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>    <?php    }    endif; ?>    </select>   <script>    $(document).ready(function() {    $("#eficienciaB").select2({     theme: "bootstrap4",    width: "100%"    });    });   <\/script>  </div>   </div>   </div>  <div class="col-12 col-sm-12 col-md-6">  <div class="form-group">   <label for="inicioAdicionalB" class=" control-label">Inicio:<span class="text-danger">*</span></label>  <div class="input-group date" id="inicioAdicionalB" data-target-input="nearest">     <input type="text" required class="form-control datetimepicker-input" data-target="#inicioAdicionalB" id="datetime-inicioAdicionalB" name="inicioAdicionalB" placeholder="" value="" /> <div class="input-group-append" data-target="#inicioAdicionalB" data-toggle="datetimepicker">    <div class="input-group-text"><i class="far fa-calendar"></i></div>    </div>    </div>   <script type="text/javascript"> $(function() {   $("#inicioAdicionalB").datetimepicker({    format: "DD-MM-YYYY",     locale: moment.locale("es")    });    });   <\/script>   </div>  </div> <div class="col-12 col-sm-12 col-md-6"> <div class="form-group">    <label for="conclusionAdicionalB" class=" control-label">Conclusión:<span class="text-danger">*</span></label>   <div class="input-group date" id="conclusionAdicionalB" data-target-input="nearest">    <input type="text" required class="form-control datetimepicker-input" data-target="#conclusionAdicionalB" id="datetime-conclusionAdicionalB" name="conclusionAdicionalB" placeholder="" value="" />   <div class="input-group-append" data-target="#conclusionAdicionalB" data-toggle="datetimepicker">    <div class="input-group-text"><i class="far fa-calendar"></i></div>   </div> </div>  <script type="text/javascript">   $(function() {    $("#conclusionAdicionalB").datetimepicker({    format: "DD-MM-YYYY",    locale: moment.locale("es")    });   });   <\/script>  </div>  </div>  <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">    <label for="duracion_horasB" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>   <input type="text" class="form-control " id="duracion_horasB" name="duracion_horasB" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">  </div>   </div> </div>';
+        var clone = '<div class="row">   <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">   <label for="empresaB" class=" control-label">Insitutción o Empresa:<span class="text-danger">*</span></label>    <input type="text" class="form-control " id="empresaB" name="empresaB"> </div>  </div>    <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">   <label for="cursoB" class=" control-label">Estudio o Curso:<span class="text-danger">*</span></label>    <input type="text" class="form-control " id="cursoB" name="cursoB">    </div>   </div>   <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">    <label for="tipo_cursoB" class=" control-label">Tipo de curso:<span class="text-danger">*</span></label>   <input type="text" class="form-control " id="tipo_cursoB" name="tipo_cursoB">   </div>   </div>    <div class="col-6 col-sm-6">    <div class="form-group">    <label for="cuso_tomadoB" class="control-label">¿El curso fue?: <span class="text-danger">*</span></label>    <div>   <select class="form-control" id="cuso_tomadoB" name="cuso_tomadoB">   <option value="">Selecciona una Opcion</option>    <?php   if (!empty($cuso_tomado)) :   foreach ($cuso_tomado as  $a) {    ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>    <?php     }   endif; ?>    </select>   <script>   $(document).ready(function() {    $("#cuso_tomadoB").select2({    theme: "bootstrap4",    width: "100%"    });    });    <\/script>    </div>   </div>   </div> <div class="col-6 col-sm-6">  <div class="form-group">    <label for="eficienciaB" class="control-label">eficiencia terminal: <span class="text-danger">*</span></label>    <div>    <select class="form-control" id="eficienciaB" name="eficienciaB">   <option value="">Selecciona una Opcion</option>    <?php    if (!empty($eficiencia)) :    foreach ($eficiencia as  $a) {    ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>    <?php    }    endif; ?>    </select>   <script>    $(document).ready(function() {    $("#eficienciaB").select2({     theme: "bootstrap4",    width: "100%"    });    });   <\/script>  </div>   </div>   </div>  <div class="col-12 col-sm-12 col-md-6">  <div class="form-group">   <label for="inicioAdicionalB" class=" control-label">Inicio:<span class="text-danger">*</span></label>  <div class="input-group date" id="inicioAdicionalB" data-target-input="nearest">     <input type="text" required class="form-control datetimepicker-input" data-target="#inicioAdicionalB" id="datetime-inicioAdicionalB" name="inicioAdicionalB" placeholder="" value="" /> <div class="input-group-append" data-target="#inicioAdicionalB" data-toggle="datetimepicker">    <div class="input-group-text"><i class="far fa-calendar"></i></div>    </div>    </div>   <script type="text/javascript"> $(function() {   $("#inicioAdicionalB").datetimepicker({    format: "DD-MM-YYYY",     locale: moment.locale("es")    });    });   <\/script>   </div>  </div> <div class="col-12 col-sm-12 col-md-6"> <div class="form-group">    <label for="conclusionAdicionalB" class=" control-label">Conclusión:<span class="text-danger">*</span></label>   <div class="input-group date" id="conclusionAdicionalB" data-target-input="nearest">    <input type="text" required class="form-control datetimepicker-input" data-target="#conclusionAdicionalB" id="datetime-conclusionAdicionalB" name="conclusionAdicionalB" placeholder="" value="" />   <div class="input-group-append" data-target="#conclusionAdicionalB" data-toggle="datetimepicker">    <div class="input-group-text"><i class="far fa-calendar"></i></div>   </div> </div>  <script type="text/javascript">   $(function() {    $("#conclusionAdicionalB").datetimepicker({    format: "DD-MM-YYYY",    locale: moment.locale("es")    });   });   <\/script>  </div>  </div>  <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">    <label for="duracion_horasB" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>   <input type="text" class="form-control " id="duracion_horasB" name="duracion_horasB" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">  </div>   </div> </div>';
         $('#CardDatosAdicionalB').append(clone);
-        $('#btnAdddadicional').removeClass('add-more-btn');
-        $('#btnAdddadicional').addClass('remove-more-btn');
+        $('#btnAdddadicional').removeClass('add-more-btn-adi');
+        $('#btnAdddadicional').addClass('remove-more-btn-adi');
         $('#btnAdddadicional').text('Remover -');
     });
 
-    $(document).on('click', '.remove-more-btn', function() {
+    $(document).on('click', '.remove-more-btn-adi', function() {
         $('#CardDatosAdicionalB').empty();
-        $('#btnAdddadicional').removeClass('remove-more-btn');
-        $('#btnAdddadicional').addClass('add-more-btn');
+        $('#btnAdddadicional').removeClass('remove-more-btn-adi');
+        $('#btnAdddadicional').addClass('add-more-btn-adi');
         $('#btnAdddadicional').text('Agregar +');
     });
 
@@ -769,7 +852,7 @@
     $(document).on('click', '.add-more-btn-idioma', function() {
 
 
-        var clone = '<div class="row">   <div class="col-6 col-sm-6">    <div class="form-group">    <label for="idiomaB" class="control-label">Idioma o Dialecto: <span class="text-danger">*</span></label>   <div>   <select class="form-control" id="idiomaB" name="idiomaB">   <option value="">Selecciona una Opcion</option>  <?php   if (!empty($idiomaB)) :   foreach ($idiomaB as  $a) {    ?>     <option value="<?= $a->id ?>"><?= $a->valor ?></option>    <?php    }    endif; ?>    </select>    <script>    $(document).ready(function() {   $("#idiomaB").select2({    theme: "bootstrap4",    width: "100%"   });    });    <\/script>    </div>   </div>   </div>  <div class="col-6 col-sm-12 col-md-6">  <div class="form-group">   <label for="lecturaB" class=" control-label">% Lectura:<span class="text-danger">*</span></label>   <select class="form-control" id="lecturaB" name="lecturaB">     <option value="">Selecciona una Opcion</option>    <?php    if (!empty($porsentajeIdioma)) :    foreach ($porsentajeIdioma as  $a) {   ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>   <?php   }    endif; ?>    </select>    <script>    $(document).ready(function() {    $("#lecturaB").select2({    theme: "bootstrap4",    width: "100%"    });    });    <\/script>    </div>   </div>  <div class="col-6 col-sm-12 col-md-6">  <div class="form-group">   <label for="escrituraB" class=" control-label">% Escritura:<span class="text-danger">*</span></label>   <select class="form-control" id="escrituraB" name="escrituraB">  <option value="">Selecciona una Opcion</option>   <?php    if (!empty($porsentajeIdioma)) :   foreach ($porsentajeIdioma as  $a) {   ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>    <?php    }    endif; ?>  </select>  <script>   $(document).ready(function() {   $("#escrituraB").select2({    theme: "bootstrap4",    width: "100%"    });    });   <\/script>    </div>  </div> <div class="col-6 col-sm-12 col-md-6">  <div class="form-group">   <label for="conversacionB" class=" control-label">% Conversación:<span class="text-danger">*</span></label>   <select class="form-control" id="conversacionB" name="conversacionB">  <option value="">Selecciona una Opcion</option>  <?php   if (!empty($porsentajeIdioma)) :    foreach ($porsentajeIdioma as  $a) {   ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>   <?php    }     endif; ?>   </select>    <script>    $(document).ready(function() {    $("#conversacionB").select2({    theme: "bootstrap4",    width: "100%"    });    });   <\/script>   </div>   </div> </div>';
+        var clone = '<div class="row">   <div class="col-6 col-sm-6">    <div class="form-group">    <label for="idiomaB" class="control-label">Idioma o Dialecto: <span class="text-danger">*</span></label>   <div>   <select class="form-control" id="idiomaB" name="idiomaB">   <option value="">Selecciona una Opcion</option>  <?php   if (!empty($idioma)) :   foreach ($idioma as  $a) {    ?>     <option value="<?= $a->id ?>"><?= $a->valor ?></option>    <?php    }    endif; ?>    </select>    <script>    $(document).ready(function() {   $("#idiomaB").select2({    theme: "bootstrap4",    width: "100%"   });    });    <\/script>    </div>   </div>   </div>  <div class="col-6 col-sm-12 col-md-6">  <div class="form-group">   <label for="lecturaB" class=" control-label">% Lectura:<span class="text-danger">*</span></label>   <select class="form-control" id="lecturaB" name="lecturaB">     <option value="">Selecciona una Opcion</option>    <?php    if (!empty($porsentajeIdioma)) :    foreach ($porsentajeIdioma as  $a) {   ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>   <?php   }    endif; ?>    </select>    <script>    $(document).ready(function() {    $("#lecturaB").select2({    theme: "bootstrap4",    width: "100%"    });    });    <\/script>    </div>   </div>  <div class="col-6 col-sm-12 col-md-6">  <div class="form-group">   <label for="escrituraB" class=" control-label">% Escritura:<span class="text-danger">*</span></label>   <select class="form-control" id="escrituraB" name="escrituraB">  <option value="">Selecciona una Opcion</option>   <?php    if (!empty($porsentajeIdioma)) :   foreach ($porsentajeIdioma as  $a) {   ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>    <?php    }    endif; ?>  </select>  <script>   $(document).ready(function() {   $("#escrituraB").select2({    theme: "bootstrap4",    width: "100%"    });    });   <\/script>    </div>  </div> <div class="col-6 col-sm-12 col-md-6">  <div class="form-group">   <label for="conversacionB" class=" control-label">% Conversación:<span class="text-danger">*</span></label>   <select class="form-control" id="conversacionB" name="conversacionB">  <option value="">Selecciona una Opcion</option>  <?php   if (!empty($porsentajeIdioma)) :    foreach ($porsentajeIdioma as  $a) {   ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>   <?php    }     endif; ?>   </select>    <script>    $(document).ready(function() {    $("#conversacionB").select2({    theme: "bootstrap4",    width: "100%"    });    });   <\/script>   </div>   </div> </div>';
         $('#CardIdiomasB').append(clone);
         $('#btnAdddadicionalIdioma').removeClass('add-more-btn-idioma');
         $('#btnAdddadicionalIdioma').addClass('remove-more-btn-idioma');
@@ -836,7 +919,7 @@
 
     $(document).on('click', '.add-more-btn-afil', function() {
 
-      var clone = '<div class="row"> <div class="col-12 col-sm-12 col-md-12">  <div class="form-group">   <label for="nombreB" class=" control-label">Nombre:<span class="text-danger">*</span></label>  <input type="text" class="form-control " id="nombreB" name="nombreB">  </div>  </div>   <div class="col-12 col-sm-12 col-md-6">  <div class="form-group">  <label for="tipoAgrupaB" class=" control-label">Tipo:<span class="text-danger">*</span></label>  <select class="form-control" id="tipoAgrupaB" name="tipoAgrupaB">  <option value="">Selecciona una Opcion</option>    <?php  if (!empty($tipo_agrupacion)) :   foreach ($tipo_agrupacion as  $a) {   ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>   <?php    }   endif; ?>   </select>   <script>   $(document).ready(function() {   $("#tipoAgrupaB").select2({  theme: "bootstrap4",   width: "100%"  });   });  <\/script>  </div>  </div> <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">     <label for="desdeB" class=" control-label">Desde:<span class="text-danger">*</span></label>    <div class="input-group date" id="desdeB" data-target-input="nearest">    <input type="text" required class="form-control datetimepicker-input" data-target="#desdeB" id="datetime-desdeB" name="desdeB" placeholder="" value="" />    <div class="input-group-append" data-target="#desde" data-toggle="datetimepicker">    <div class="input-group-text"><i class="far fa-calendar"></i></div>    </div>    </div>   <script type="text/javascript">   $(function() {   $("#desdeB").datetimepicker({    format: "DD-MM-YYYY",    locale: moment.locale("es")    });   });    <\/script>   </div>   </div> <div class="col-12 col-sm-12 col-md-6">  <div class="form-group">  <label for="hastaB" class=" control-label">Hasta:<span class="text-danger">*</span></label>   <div class="input-group date" id="hastaB" data-target-input="nearest">     <input type="text" required class="form-control datetimepicker-input" data-target="#hastaB" id="datetime-hastaB" name="hastaB" placeholder="" value="" />   <div class="input-group-append" data-target="#hasta" data-toggle="datetimepicker">    <div class="input-group-text"><i class="far fa-calendar"></i></div>   </div>   </div>   <script type="text/javascript">    $(function() {    $("#hastaB").datetimepicker({    format: "DD-MM-YYYY",   locale: moment.locale("es")   });   });   <\/script>  </div>  </div> </div>';
+      var clone = '<div class="row"> <div class="col-12 col-sm-12 col-md-12">  <div class="form-group">   <label for="nombreB" class=" control-label">Nombre:<span class="text-danger">*</span></label>  <input type="text" class="form-control " id="nombreB" name="nombreB">  </div>  </div>   <div class="col-12 col-sm-12 col-md-6">  <div class="form-group">  <label for="tipoAgrupaB" class=" control-label">Tipo:<span class="text-danger">*</span></label>  <select class="form-control" id="tipoAgrupaB" name="tipoAgrupaB">  <option value="">Selecciona una Opcion</option>    <?php  if (!empty($tipo_agrupacion)) :   foreach ($tipo_agrupacion as  $a) {   ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>   <?php    }   endif; ?>   </select>   <script>   $(document).ready(function() {   $("#tipoAgrupaB").select2({  theme: "bootstrap4",   width: "100%"  });   });  <\/script>  </div>  </div> <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">     <label for="desdeB" class=" control-label">Desde:<span class="text-danger">*</span></label>    <div class="input-group date" id="desdeB" data-target-input="nearest">    <input type="text" required class="form-control datetimepicker-input" data-target="#desdeB" id="datetime-desdeB" name="desdeB" placeholder="" value="" />    <div class="input-group-append" data-target="#desdeB" data-toggle="datetimepicker">    <div class="input-group-text"><i class="far fa-calendar"></i></div>    </div>    </div>   <script type="text/javascript">   $(function() {   $("#desdeB").datetimepicker({    format: "DD-MM-YYYY",    locale: moment.locale("es")    });   });    <\/script>   </div>   </div> <div class="col-12 col-sm-12 col-md-6">  <div class="form-group">  <label for="hastaB" class=" control-label">Hasta:<span class="text-danger">*</span></label>   <div class="input-group date" id="hastaB" data-target-input="nearest">     <input type="text" required class="form-control datetimepicker-input" data-target="#hastaB" id="datetime-hastaB" name="hastaB" placeholder="" value="" />   <div class="input-group-append" data-target="#hastaB" data-toggle="datetimepicker">    <div class="input-group-text"><i class="far fa-calendar"></i></div>   </div>   </div>   <script type="text/javascript">    $(function() {    $("#hastaB").datetimepicker({    format: "DD-MM-YYYY",   locale: moment.locale("es")   });   });   <\/script>  </div>  </div> </div>';
         $('#CardDatosAfiliacionB').append(clone);
         $('#btnAdddAFILIACION').removeClass('add-more-btn-afil');
         $('#btnAdddAFILIACION').addClass('remove-more-btn-afil');

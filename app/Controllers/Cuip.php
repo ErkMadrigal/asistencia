@@ -491,7 +491,7 @@ class Cuip extends BaseController {
 					$expDocenteArray[] = array(
 
 						"id" => $idExp ,
-						"idPersoanles" => $id , 
+						"idPersonales" => $id , 
 						"nombre_curso" => strtoupper($this->request->getPost('nombrecurso'.$val)) , 
 						"nombre_institucion" => strtoupper($this->request->getPost('nombreInstitucion'.$val)) , 
 						"fecha_inicio" => $fecha_inicial , 
@@ -880,141 +880,129 @@ class Cuip extends BaseController {
 				if($datos == 0){
 
 
-				$rules = [
-				'dependencia' =>  ['label' => "Dependencia", 'rules' => 'required|max_length[255]'],
-				'corporacion' =>  ['label' => "Corporacióne", 'rules' => 'required|max_length[255]'],
-				'calle' =>  ['label' => "Calle ", 'rules' => 'required|max_length[255]'],
-				'exterior' =>  ['label' => "No. Exterior", 'rules' => 'required|max_length[255]'],
-				
-				'numero' =>  ['label' => "Numero Telefónico", 'rules' => 'required|max_length[10]|integer|min_length[10]'],
-				'codigoSegPub' =>  ['label' => "Código Postal", 'rules' => 'required|max_length[5]|integer'],
-				'coloniacodigoSegPub' =>  ['label' => "Colonia", 'rules' => 'required'],
-				'ingresoEmpPublic' =>  ['label' => "Ingreso", 'rules' => 'required|valid_only_date_chek'],
-				'separacionEmpSeg' =>  ['label' => "Separación", 'rules' => 'required|valid_only_date_chek'],
-				'puesto_funcional' =>  ['label' => "Puesto Funcional", 'rules' => 'required|max_length[255]'],
-				'funciones' =>  ['label' => "Funciones", 'rules' => 'required|max_length[255]'],
-				'especialidad' =>  ['label' => "Especialidad", 'rules' => 'required|max_length[255]'],
-				'rango' =>  ['label' => "Rango o categoría", 'rules' => 'required|max_length[255]'],
-				'numero_placa' =>  ['label' => "Numero de placa", 'rules' => 'required|max_length[255]'],
-				'numero_empleado' =>  ['label' => "Numero de empleado", 'rules' => 'required|max_length[255]'],
-				'sueldo' =>  ['label' => "Sueldo Base (Mensual)", 'rules' => 'required|max_length[255]'],
-				'compensaciones' =>  ['label' => "Compensaciones (Mensual)", 'rules' => 'required|max_length[255]'],
-				'area' =>  ['label' => "Area", 'rules' => 'required|max_length[255]'],
-				'division' =>  ['label' => "División", 'rules' => 'required|max_length[255]'],
-				'jefe_inmediato' =>  ['label' => "CUIP Jefe Inmediato", 'rules' => 'required|max_length[255]'],
-				'nombre_jefe' =>  ['label' => "Nombre del Jefe Inmediato", 'rules' => 'required|max_length[255]'],
-				'estadocodigoSegPub' =>  ['label' => "Entidad Federativa", 'rules' => 'required'],
-				'municipiocodigoSegPub' =>  ['label' => "Municipio", 'rules' => 'required'],
-				'motivo_separacion' =>  ['label' => "Motivo de separación", 'rules' => 'required|max_length[255]'],
-				'tipo_separacion' =>  ['label' => "Tipo de Separación", 'rules' => 'required|max_length[255]'],
-				'tipo_baja' =>  ['label' => "Tipo de Baja", 'rules' => 'required|max_length[255]'],
-				'comentarios' =>  ['label' => "Comentarios", 'rules' => 'required|max_length[255]']];
-		 
-				} else {
-
 					$rules = [
-				'empleo' =>  ['label' => "", 'rules' => 'required']];
-
-				}
-
-
-
-				if($this->validate($rules)){
+					'dependencia' =>  ['label' => "Dependencia", 'rules' => 'required|max_length[255]'],
+					'corporacion' =>  ['label' => "Corporacióne", 'rules' => 'required|max_length[255]'],
+					'calle' =>  ['label' => "Calle ", 'rules' => 'required|max_length[255]'],
+					'exterior' =>  ['label' => "No. Exterior", 'rules' => 'required|max_length[255]'],
 					
-					$getUser = session()->get('IdUser');
-					$LoggedUserId = $this->encrypter->decrypt($getUser);
-					$empresa = session()->get('empresa');
-					$idEmpresa = $this->encrypter->decrypt($empresa);
-					$uuid = Uuid::uuid4();
-        			$id = $uuid->toString();
+					'numero' =>  ['label' => "Numero Telefónico", 'rules' => 'required|max_length[10]|integer|min_length[10]'],
+					'codigoSegPub' =>  ['label' => "Código Postal", 'rules' => 'required|max_length[5]|integer'],
+					'coloniacodigoSegPub' =>  ['label' => "Colonia", 'rules' => 'required'],
+					'ingresoEmpPublic' =>  ['label' => "Ingreso", 'rules' => 'required|valid_only_date_chek'],
+					'separacionEmpSeg' =>  ['label' => "Separación", 'rules' => 'required|valid_only_date_chek'],
+					'puesto_funcional' =>  ['label' => "Puesto Funcional", 'rules' => 'required|max_length[255]'],
+					'funciones' =>  ['label' => "Funciones", 'rules' => 'required|max_length[255]'],
+					'especialidad' =>  ['label' => "Especialidad", 'rules' => 'required|max_length[255]'],
+					'rango' =>  ['label' => "Rango o categoría", 'rules' => 'required|max_length[255]'],
+					'numero_placa' =>  ['label' => "Numero de placa", 'rules' => 'required|max_length[255]'],
+					'numero_empleado' =>  ['label' => "Numero de empleado", 'rules' => 'required|max_length[255]'],
+					'sueldo' =>  ['label' => "Sueldo Base (Mensual)", 'rules' => 'required|max_length[255]'],
+					'compensaciones' =>  ['label' => "Compensaciones (Mensual)", 'rules' => 'required|max_length[255]'],
+					'area' =>  ['label' => "Area", 'rules' => 'required|max_length[255]'],
+					'division' =>  ['label' => "División", 'rules' => 'required|max_length[255]'],
+					'jefe_inmediato' =>  ['label' => "CUIP Jefe Inmediato", 'rules' => 'required|max_length[255]'],
+					'nombre_jefe' =>  ['label' => "Nombre del Jefe Inmediato", 'rules' => 'required|max_length[255]'],
+					'estadocodigoSegPub' =>  ['label' => "Entidad Federativa", 'rules' => 'required'],
+					'municipiocodigoSegPub' =>  ['label' => "Municipio", 'rules' => 'required'],
+					'motivo_separacion' =>  ['label' => "Motivo de separación", 'rules' => 'required|max_length[255]'],
+					'tipo_separacion' =>  ['label' => "Tipo de Separación", 'rules' => 'required|max_length[255]'],
+					'tipo_baja' =>  ['label' => "Tipo de Baja", 'rules' => 'required|max_length[255]'],
+					'comentarios' =>  ['label' => "Comentarios", 'rules' => 'required|max_length[255]']];
+		 
+				
 
-        			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
 
 
-        			$getIngresoEmpPublic = $this->request->getPost('ingresoEmpPublic');
+					if($this->validate($rules)){
+					
+						$getUser = session()->get('IdUser');
+						$LoggedUserId = $this->encrypter->decrypt($getUser);
+						$empresa = session()->get('empresa');
+						$idEmpresa = $this->encrypter->decrypt($empresa);
+						$uuid = Uuid::uuid4();
+	        			$id = $uuid->toString();
 
-        			$ingresoEmpPublic = date( "Y-m-d" ,strtotime($getIngresoEmpPublic));
+	        			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
 
 
-        			$getSeparacion = $this->request->getPost('separacionEmpSeg');
+	        			$getIngresoEmpPublic = $this->request->getPost('ingresoEmpPublic');
 
-        			$separacion = date( "Y-m-d" ,strtotime($getSeparacion));
+	        			$ingresoEmpPublic = date( "Y-m-d" ,strtotime($getIngresoEmpPublic));
 
-        			if($datos == 0){
 
-					$empleosSeguridad = array(
-		    					
-		    					
-						"id" => $id  ,
-						"idPersonal" => $idPersonal  , 
-						"idEmpresa" =>  $idEmpresa , 
-						"dependencia" =>  strtoupper($this->request->getPost('dependencia')) , 
-						"corporacion" =>  strtoupper($this->request->getPost('corporacion')) , 
+	        			$getSeparacion = $this->request->getPost('separacionEmpSeg');
+
+	        			$separacion = date( "Y-m-d" ,strtotime($getSeparacion));
+
+	        			
+
+						$empleosSeguridad = array(
+			    					
+			    					
+							"id" => $id  ,
+							"idPersonal" => $idPersonal  , 
+							"idEmpresa" =>  $idEmpresa , 
+							"dependencia" =>  strtoupper($this->request->getPost('dependencia')) , 
+							"corporacion" =>  strtoupper($this->request->getPost('corporacion')) , 
+							
+							"calle" =>  strtoupper($this->request->getPost('calle')) , 
+							"numero_exterior" => strtoupper($this->request->getPost('exterior'))  , 
+							"numero_interior" => strtoupper($this->request->getPost('interior'))  , 
+							"colonia" =>  strtoupper($this->request->getPost('coloniacodigoSegPub')) , 
+							"idCodigoPostal" => $this->request->getPost('codigoSegPub')  , 
+							"numero_telefono" => $this->request->getPost('numero')  , 
+							"ingreso" =>  $ingresoEmpPublic , 
+							"separacion" =>  $separacion , 
+							"idPuestoFuncional" =>  $this->request->getPost('puesto_funcional') , 
+							"funciones" => strtoupper($this->request->getPost('funciones'))  , 
+							"especialidad" => strtoupper($this->request->getPost('especialidad'))  , 
+							"rango" =>  strtoupper($this->request->getPost('rango')) , 
+							"numero_placa" => strtoupper($this->request->getPost('numero_placa'))  , 
+							"numero_empleado" => strtoupper($this->request->getPost('numero_empleado'))  , 
+							"sueldo_base" => strtoupper($this->request->getPost('sueldo'))  , 
+							"compensacion" =>  strtoupper($this->request->getPost('compensaciones')) , 
+							"area" =>  strtoupper($this->request->getPost('area')) , 
+							"division" =>  strtoupper($this->request->getPost('division')) , 
+							"cuip_jefe" =>  strtoupper($this->request->getPost('jefe_inmediato')) , 
+							"nombre_jefe" =>  strtoupper($this->request->getPost('nombre_jefe')) , 
+							"idEstado" =>  $this->request->getPost('estadocodigoSegPub') , 
+							"municipio" => $this->request->getPost('municipiocodigoSegPub')  , 
+							"idMotivoSeparacion" =>  $this->request->getPost('motivo_separacion') , 
+							"tipo_separacion" => strtoupper($this->request->getPost('tipo_separacion'))  , 
+							"tipo_baja" =>  strtoupper($this->request->getPost('tipo_baja')) , 
+							"comentarios" => strtoupper($this->request->getPost('comentarios')) , 
+							"activo" => 1 , 
+							"createdby" => $LoggedUserId , 
+							"createddate" => date("Y-m-d H:i:s") );
 						
-						"calle" =>  strtoupper($this->request->getPost('calle')) , 
-						"numero_exterior" => strtoupper($this->request->getPost('exterior'))  , 
-						"numero_interior" => strtoupper($this->request->getPost('interior'))  , 
-						"colonia" =>  strtoupper($this->request->getPost('coloniacodigoSegPub')) , 
-						"idCodigoPostal" => $this->request->getPost('codigoSegPub')  , 
-						"numero_telefono" => $this->request->getPost('numero')  , 
-						"ingreso" =>  $ingresoEmpPublic , 
-						"separacion" =>  $separacion , 
-						"idPuestoFuncional" =>  $this->request->getPost('puesto_funcional') , 
-						"funciones" => strtoupper($this->request->getPost('funciones'))  , 
-						"especialidad" => strtoupper($this->request->getPost('especialidad'))  , 
-						"rango" =>  strtoupper($this->request->getPost('rango')) , 
-						"numero_placa" => strtoupper($this->request->getPost('numero_placa'))  , 
-						"numero_empleado" => strtoupper($this->request->getPost('numero_empleado'))  , 
-						"sueldo_base" => strtoupper($this->request->getPost('sueldo'))  , 
-						"compensacion" =>  strtoupper($this->request->getPost('compensaciones')) , 
-						"area" =>  strtoupper($this->request->getPost('area')) , 
-						"division" =>  strtoupper($this->request->getPost('division')) , 
-						"cuip_jefe" =>  strtoupper($this->request->getPost('jefe_inmediato')) , 
-						"nombre_jefe" =>  strtoupper($this->request->getPost('nombre_jefe')) , 
-						"idEstado" =>  $this->request->getPost('estadocodigoSegPub') , 
-						"municipio" => $this->request->getPost('municipiocodigoSegPub')  , 
-						"idMotivoSeparacion" =>  $this->request->getPost('motivo_separacion') , 
-						"tipo_separacion" => strtoupper($this->request->getPost('tipo_separacion'))  , 
-						"tipo_baja" =>  strtoupper($this->request->getPost('tipo_baja')) , 
-						"comentarios" => strtoupper($this->request->getPost('comentarios')) , 
-						"activo" => 1 , 
-						"createdby" => $LoggedUserId , 
-						"createddate" => date("Y-m-d H:i:s") );
-				} else {
 
-					$empleosSeguridad = array(
-		    					
-		    					
-						"id" => $id  ,
-						"idPersonal" => $idPersonal  , 
-						"idEmpresa" =>  $idEmpresa ,
-						"activo" => 1 , 
-						"createdby" => $LoggedUserId , 
-						"createddate" => date("Y-m-d H:i:s") );
-
-				}
-
-					$result = $this->modelCuip->insertEmpleosSeguridad( $empleosSeguridad);
+						$result = $this->modelCuip->insertEmpleosSeguridad( $empleosSeguridad);
 
 					
 					
-                    if ($result) {
+                    	if ($result) {
 
             			
-                    	$succes = ["mensaje" => 'Empleos en Seguridad Publica agregados con exito' ,
+                    		$succes = ["mensaje" => 'Empleos en Seguridad Publica agregados con exito' ,
                             	   "succes" => "succes"];
 
                            	   
                     	
-                    } else {
+                    	} else {
                     	$dontSucces = ["error" => "error",
                     				  "mensaje" => 	'Hubo un error al registrar los Empleos en Seguridad Publica'  ];
 
-                    }
-				} else {	
-					$errors = $this->validator->getErrors();
-				}
+                    	}
+					} else {	
+						$errors = $this->validator->getErrors();
+					}
+				} else {
 
+					$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Ningun dato capturado'  ];	
+				}	
+				
 				
 
 			} else {
@@ -1046,30 +1034,27 @@ class Cuip extends BaseController {
 				$resoluciones = $this->request->getPost('resoluciones');
 				$estimulo = $this->request->getPost('estimulo');
 
-			if($sanciones == 0){
+				if( $sanciones == 0 && $resoluciones == 0 && $estimulo == 0){
+
+					if($sanciones == 0){
 				
-				$rules['tipo'] =  ['label' => "Tipo", 'rules' => 'required|max_length[255]'];
-				$rules['determinacion'] =  ['label' => "Determinación", 'rules' => 'required'];
-				$rules['descripcion'] =  ['label' => "Descripción", 'rules' => 'required|max_length[255]'];
-				$rules['situacion'] =  ['label' => "Situación", 'rules' => 'required|max_length[255]'];
-				$rules['inicio_inhabilitacion'] =  ['label' => "Inicio de la inhabilitación", 'rules' => 'required'];
-				$rules['termino_inhabilitacion'] =  ['label' => "Término de la inhabilitación", 'rules' => 'required'];
-				$rules['organismo'] =  ['label' => "Dependencia u organismo que emite la determinación", 'rules' => 'required|max_length[255]'];
+					$rules['tipo'] =  ['label' => "Tipo", 'rules' => 'required|max_length[255]'];
+					$rules['determinacion'] =  ['label' => "Determinación", 'rules' => 'required'];
+					$rules['descripcion'] =  ['label' => "Descripción", 'rules' => 'required|max_length[255]'];
+					$rules['situacion'] =  ['label' => "Situación", 'rules' => 'required|max_length[255]'];
+					$rules['inicio_inhabilitacion'] =  ['label' => "Inicio de la inhabilitación", 'rules' => 'required'];
+					$rules['termino_inhabilitacion'] =  ['label' => "Término de la inhabilitación", 'rules' => 'required'];
+					$rules['organismo'] =  ['label' => "Dependencia u organismo que emite la determinación", 'rules' => 'required|max_length[255]'];
 
-				$rules['tipoB'] =  ['label' => "Tipo", 'rules' => 'required_with[determinacionB,descripcionB,situacionB,inicio_inhabilitacionB,termino_inhabilitacionB,organismoB]|max_length[255]'];
-				$rules['determinacionB'] =  ['label' => "Determinación", 'rules' => 'required_with[tipoB,descripcionB,situacionB,inicio_inhabilitacionB,termino_inhabilitacionB,organismoB]'];
-				$rules['descripcionB'] =  ['label' => "Descripción", 'rules' => 'required_with[tipoB,determinacionB,situacionB,inicio_inhabilitacionB,termino_inhabilitacionB,organismoB]|max_length[255]'];
-				$rules['situacionB'] =  ['label' => "Situación", 'rules' => 'required_with[tipoB,determinacionB,descripcionB,inicio_inhabilitacionB,termino_inhabilitacionB,organismoB]|max_length[255]'];
-				$rules['inicio_inhabilitacionB'] =  ['label' => "Inicio de la inhabilitación", 'rules' => 'required_with[tipoB,determinacionB,descripcionB,situacionB,termino_inhabilitacionB,organismoB]'];
-				$rules['termino_inhabilitacionB'] =  ['label' => "Término de la inhabilitación", 'rules' => 'required_with[tipoB,determinacionB,descripcionB,situacionB,inicio_inhabilitacionB,organismoB]'];
-				$rules['organismoB'] =  ['label' => "Dependencia u organismo que emite la determinación", 'rules' => 'required_with[tipoB,determinacionB,descripcionB,situacionB,inicio_inhabilitacionB,termino_inhabilitacionB]|max_length[255]'];
+					$rules['tipoB'] =  ['label' => "Tipo", 'rules' => 'required_with[determinacionB,descripcionB,situacionB,inicio_inhabilitacionB,termino_inhabilitacionB,organismoB]|max_length[255]'];
+					$rules['determinacionB'] =  ['label' => "Determinación", 'rules' => 'required_with[tipoB,descripcionB,situacionB,inicio_inhabilitacionB,termino_inhabilitacionB,organismoB]'];
+					$rules['descripcionB'] =  ['label' => "Descripción", 'rules' => 'required_with[tipoB,determinacionB,situacionB,inicio_inhabilitacionB,termino_inhabilitacionB,organismoB]|max_length[255]'];
+					$rules['situacionB'] =  ['label' => "Situación", 'rules' => 'required_with[tipoB,determinacionB,descripcionB,inicio_inhabilitacionB,termino_inhabilitacionB,organismoB]|max_length[255]'];
+					$rules['inicio_inhabilitacionB'] =  ['label' => "Inicio de la inhabilitación", 'rules' => 'required_with[tipoB,determinacionB,descripcionB,situacionB,termino_inhabilitacionB,organismoB]'];
+					$rules['termino_inhabilitacionB'] =  ['label' => "Término de la inhabilitación", 'rules' => 'required_with[tipoB,determinacionB,descripcionB,situacionB,inicio_inhabilitacionB,organismoB]'];
+					$rules['organismoB'] =  ['label' => "Dependencia u organismo que emite la determinación", 'rules' => 'required_with[tipoB,determinacionB,descripcionB,situacionB,inicio_inhabilitacionB,termino_inhabilitacionB]|max_length[255]'];
 
-			}  else {
-
-				$rules = [
-					'sanciones' =>  ['label' => "", 'rules' => 'required']];
-
-			}
+				}
 
 			if($resoluciones == 0){
 
@@ -1111,12 +1096,7 @@ class Cuip extends BaseController {
 				$rules['inicio_procesoB'] =  ['label' => "Inicio del proceso", 'rules' => 'required_with[emisoraB,entidad_federativaSEB,delitosB,motivoB,no_expedienteB,agencia_mpB,averiguacion_previaB,tipo_fueroB,averiguacion_estadoB,inicio_averiguacionB,al_diaB,juzgadoB,no_procesoB,estado_procesalB,al_dia_procesoB]'];
 				$rules['al_dia_procesoB'] =  ['label' => "Al día", 'rules' => 'required_with[emisoraB,entidad_federativaSEB,delitosB,motivoB,no_expedienteB,agencia_mpB,averiguacion_previaB,tipo_fueroB,averiguacion_estadoB,inicio_averiguacionB,al_diaB,juzgadoB,no_procesoB,estado_procesalB,inicio_procesoB]'];
 
-			} else {
-
-				$rules = [
-					'resoluciones' =>  ['label' => "", 'rules' => 'required']];
-
-			}
+			} 
 
 			if($estimulo == 0){
 
@@ -1131,11 +1111,6 @@ class Cuip extends BaseController {
 				$rules['dependenciaB'] =  ['label' => "Dependencia que otorga", 'rules' => 'required_with[tipo_estimuloB,descripcion_estimuloB,otrogado_estimuloB]|max_length[255]'];
 				$rules['otrogado_estimuloB'] =  ['label' => "Otorgado", 'rules' => 'required_with[tipo_estimuloB,descripcion_estimuloB,dependenciaB]'];
 				
-			} else {
-
-				$rules = [
-					'estimulo' =>  ['label' => "", 'rules' => 'required']];
-
 			}	 
 		 
 				
@@ -1150,6 +1125,7 @@ class Cuip extends BaseController {
 
         			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
 
+        			
         			
         			$datosSanciones=[];
         			$datosResoluciones=[];
@@ -1193,24 +1169,13 @@ class Cuip extends BaseController {
 
 						$val ="B";
 
-						$valB =$this->request->getPost('tipo_sancionB');
+						$valB =$this->request->getPost('tipoB');
 
 						if (!isset($valB) || empty($valB)){
 
 							$i = 3;
 						}
 					}
-				} else {
-
-					$idSan = $uuid->toString();
-					$datosSanciones[] = array(
-
-						"id" => $idSan ,
-						"idPersonal" => $idPersonal , 
-						"idEmpresa" => $idEmpresa ,
-						"activo" => 1 , 
-						"createdby" => $LoggedUserId , 
-						"createddate" => date("Y-m-d H:i:s"));
 				}
 
 				if ($resoluciones == 0){	
@@ -1237,30 +1202,30 @@ class Cuip extends BaseController {
 
         				$al_dia_proceso = date( "Y-m-d" ,strtotime($getAl_dia_proceso));
 
-					$datosResoluciones[] = array(
+						$datosResoluciones[] = array(
 
-						"id" => $idRes ,
-						"idPersonal" => $idPersonal , 
-						"idEmpresa" => $idEmpresa ,
-						"institucion_emisora" =>  strtoupper($this->request->getPost('emisora'.$val)) , 
-						"idEstado" =>  $this->request->getPost('entidad_federativaSE'.$val) , 
-						"delitos" =>  strtoupper($this->request->getPost('delitos'.$val)) , 
-						"motivos" =>  strtoupper($this->request->getPost('motivo'.$val)) , 
-						"numero_expediente" =>  strtoupper($this->request->getPost('no_expediente'.$val)) , 
-						"agencia_mp" =>  strtoupper($this->request->getPost('agencia_mp'.$val)) , 
-						"averiguacion_previa" =>  strtoupper($this->request->getPost('averiguacion_previa'.$val)) , 
-						"idTipoFuero" =>  $this->request->getPost('tipo_fuero'.$val) , 
-						"estado_averiguacion" =>  strtoupper($this->request->getPost('averiguacion_estado'.$val)) , 
-						"inicio_averiguacion" =>  $inicio_averiguacion , 
-						"aldia_averiguacion" => $al_dia  , 
-						"juzgado" =>  strtoupper($this->request->getPost('juzgado'.$val)) , 
-						"num_proceso" =>  strtoupper($this->request->getPost('no_proceso'.$val)) , 
-						"estado_procesal" => strtoupper($this->request->getPost('estado_procesal'.$val))  , 
-						"inicio_proceso" => $inicio_proceso  , 
-						"aldia_proceso" =>  $al_dia_proceso ,
-						"activo" => 1 , 
-						"createdby" => $LoggedUserId , 
-						"createddate" => date("Y-m-d H:i:s"));
+							"id" => $idRes ,
+							"idPersonal" => $idPersonal , 
+							"idEmpresa" => $idEmpresa ,
+							"institucion_emisora" =>  strtoupper($this->request->getPost('emisora'.$val)) , 
+							"idEstado" =>  $this->request->getPost('entidad_federativaSE'.$val) , 
+							"delitos" =>  strtoupper($this->request->getPost('delitos'.$val)) , 
+							"motivos" =>  strtoupper($this->request->getPost('motivo'.$val)) , 
+							"numero_expediente" =>  strtoupper($this->request->getPost('no_expediente'.$val)) , 
+							"agencia_mp" =>  strtoupper($this->request->getPost('agencia_mp'.$val)) , 
+							"averiguacion_previa" =>  strtoupper($this->request->getPost('averiguacion_previa'.$val)) , 
+							"idTipoFuero" =>  $this->request->getPost('tipo_fuero'.$val) , 
+							"estado_averiguacion" =>  strtoupper($this->request->getPost('averiguacion_estado'.$val)) , 
+							"inicio_averiguacion" =>  $inicio_averiguacion , 
+							"aldia_averiguacion" => $al_dia  , 
+							"juzgado" =>  strtoupper($this->request->getPost('juzgado'.$val)) , 
+							"num_proceso" =>  strtoupper($this->request->getPost('no_proceso'.$val)) , 
+							"estado_procesal" => strtoupper($this->request->getPost('estado_procesal'.$val))  , 
+							"inicio_proceso" => $inicio_proceso  , 
+							"aldia_proceso" =>  $al_dia_proceso ,
+							"activo" => 1 , 
+							"createdby" => $LoggedUserId , 
+							"createddate" => date("Y-m-d H:i:s"));
 
 						$val ="B";
 
@@ -1271,92 +1236,74 @@ class Cuip extends BaseController {
 							$i = 3;
 						}
 					}
-				} else {
-
-					$idRes = $uuid->toString();
-					$datosResoluciones[] = array(
-
-						"id" => $idRes ,
-						"idPersonal" => $idPersonal , 
-						"idEmpresa" => $idEmpresa ,
-						"activo" => 1 , 
-						"createdby" => $LoggedUserId , 
-						"createddate" => date("Y-m-d H:i:s"));
 				}
 
 
-				if ($estimulo == 0){	
-					$val ="";
-					$clockSequence = 16383;
-					for ($i = 1; $i <= 2; $i++) {
+					if ($estimulo == 0){	
+						$val ="";
+						$clockSequence = 16383;
+						for ($i = 1; $i <= 2; $i++){
   						
-  						$uuid1 = Uuid::uuid1($clockSequence);
-                        $idEst = $uuid1->toString();
+  							$uuid1 = Uuid::uuid1($clockSequence);
+                        	$idEst = $uuid1->toString();
 
-  						$getOtrogado_estimulo = $this->request->getPost('otrogado_estimulo'.$val);
+  							$getOtrogado_estimulo = $this->request->getPost('otrogado_estimulo'.$val);
 
-        			$otrogado_estimulo = date( "Y-m-d" ,strtotime($getOtrogado_estimulo));
+        					$otrogado_estimulo = date( "Y-m-d" ,strtotime($getOtrogado_estimulo));
 
-					$datosEstimulos[] = array(
+							$datosEstimulos[] = array(
 
-						"id" => $idEst ,
-						"idPersonal" => $idPersonal , 
-						"idEmpresa" => $idEmpresa ,
-						"tipo_estimulo" => strtoupper($this->request->getPost('tipo_estimulo'.$val))  , 
-						"descripcion_estimulo" => strtoupper($this->request->getPost('descripcion_estimulo'.$val))  , 
-						"dependencia_otorga" => strtoupper($this->request->getPost('dependencia'.$val))  , 
-						"otorgado" =>  $otrogado_estimulo ,
-						"activo" => 1 , 
-						"createdby" => $LoggedUserId , 
-						"createddate" => date("Y-m-d H:i:s"));
+								"id" => $idEst ,
+								"idPersonal" => $idPersonal , 
+								"idEmpresa" => $idEmpresa ,
+								"tipo_estimulo" => strtoupper($this->request->getPost('tipo_estimulo'.$val))  , 
+								"descripcion_estimulo" => strtoupper($this->request->getPost('descripcion_estimulo'.$val))  , 
+								"dependencia_otorga" => strtoupper($this->request->getPost('dependencia'.$val))  , 
+								"otorgado" =>  $otrogado_estimulo ,
+								"activo" => 1 , 
+								"createdby" => $LoggedUserId , 
+								"createddate" => date("Y-m-d H:i:s"));
 
-						$val ="B";
+								$val ="B";
 
-						$valB =$this->request->getPost('tipo_estimuloB');
+								$valB =$this->request->getPost('tipo_estimuloB');
 
-						if (!isset($valB) || empty($valB)){
+								if (!isset($valB) || empty($valB)){
 
-							$i = 3;
+									$i = 3;
+								}
 						}
-					}
-				} else {
-
-					$idEst = $uuid->toString();
-					$datosEstimulos[] = array(
-
-						"id" => $idEst ,
-						"idPersonal" => $idPersonal , 
-						"idEmpresa" => $idEmpresa, 
-						"activo" => 1 , 
-						"createdby" => $LoggedUserId , 
-						"createddate" => date("Y-m-d H:i:s"));
-					
-				}
-
+				
+					}	
 
 					
-					$result = $this->modelCuip->insertSancionesEstimulos($datosEstimulos,$datosResoluciones,$datosSanciones);
+						$result = $this->modelCuip->insertSancionesEstimulos($datosEstimulos,$datosResoluciones,$datosSanciones,$sanciones,$resoluciones,$estimulo);
 
 					
 					
-                    if ($result) {
+                    	if ($result) {
 
             			
-                    	$succes = ["mensaje" => 'Sanciones / Estimulos agregados con exito' ,
+                    		$succes = ["mensaje" => 'Sanciones / Estimulos agregados con exito' ,
                             	   "succes" => "succes"];
 
                            	   
                     	
-                    } else {
-                    	$dontSucces = ["error" => "error",
+                    	} else {
+                    		$dontSucces = ["error" => "error",
                     				  "mensaje" => 	'Hubo un error al registrar las Sanciones / Estimulos'  ];
 
-                    }
-				} else {	
-					$errors = $this->validator->getErrors();
-				}
+                    	}
+					} else {	
+						$errors = $this->validator->getErrors();
+					}
 
-				
+				} else {
+
+					$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Ningun dato capturado'  ];	
+				}	
+					
 
 			} else {
 
@@ -1380,40 +1327,121 @@ class Cuip extends BaseController {
 
 			if(!empty($getIdPersonal)){
 
-				$rules = [
-				'dependencia' =>  ['label' => "Dependencia responsable", 'rules' => 'required|max_length[255]'],
-				'institucion' =>  ['label' => "Institución Capacitadora", 'rules' => 'required|max_length[255]'],
-				'nombre_curso' =>  ['label' => "Nombre del curso", 'rules' => 'required|max_length[255]'],
-				'tema_curso' =>  ['label' => "Tema del curso", 'rules' => 'required|max_length[255]'],
-				'nivel_curso' =>  ['label' => "Nivel del curso recibido", 'rules' => 'required'],
-				'eficienciaCursos' =>  ['label' => "Eficiencia terminal", 'rules' => 'required'],
-				'inicio' =>  ['label' => "Inicio", 'rules' => 'required|valid_only_date_chek'],
-				'conclusion' =>  ['label' => "Conclusión", 'rules' => 'required|valid_only_date_chek'],
-				'duracion' =>  ['label' => "Duración en horas", 'rules' => 'required|max_length[255]'],
-				'comprobante' =>  ['label' => "Tipo de comprobante", 'rules' => 'required|max_length[255]'],
-				'empresa' =>  ['label' => "Insitutción o Empresa", 'rules' => 'required|max_length[255]'],
-				'curso' =>  ['label' => "Estudio o Curso", 'rules' => 'required|max_length[255]'],
-				'tipo_curso' =>  ['label' => "Tipo de curso", 'rules' => 'required'],
-				'cuso_tomado' =>  ['label' => "¿El curso fue?", 'rules' => 'required'],
-				'eficiencia' =>  ['label' => "Eficiencia terminal", 'rules' => 'required'],
-				'inicioAdicional' =>  ['label' => "Conclusión", 'rules' => 'required|valid_only_date_chek'],
-				'conclusionAdicional' =>  ['label' => "Duración en horas", 'rules' => 'required|valid_only_date_chek'],
-				'duracion_horas' =>  ['label' => "Idioma o Dialecto", 'rules' => 'required|integer'],
-				'idioma' =>  ['label' => "Lectura", 'rules' => 'required'],
-				'escritura' =>  ['label' => "Escritura", 'rules' => 'required'],
-				'lectura' =>  ['label' => "Lectura", 'rules' => 'required'],
-				'conversacion' =>  ['label' => "Conversación", 'rules' => 'required'],
-				'tipo_habilidad' =>  ['label' => "Tipo", 'rules' => 'required'],
-				'especificacion' =>  ['label' => "Especifique", 'rules' => 'required|max_length[255]'],
-				'grado_habilidadCap' =>  ['label' => "Grado de aptitude o dominio", 'rules' => 'required'],
-				'nombre' =>  ['label' => "Nombre", 'rules' => 'required'],
-				'tipoAgrupa' =>  ['label' => "Tipo", 'rules' => 'required'],
-				
-				'desde' =>  ['label' => "Desde", 'rules' => 'required|valid_only_date_chek'],
-				'hasta' =>  ['label' => "Hasta", 'rules' => 'required|valid_only_date_chek']];
-		 
-				
+				$publica = $this->request->getPost('publica');
+				$capacitacion = $this->request->getPost('capacitacion');
+				$valIdioma = $this->request->getPost('valIdioma');
+				$habilidad = $this->request->getPost('habilidad');
+				$afiliacion = $this->request->getPost('afiliacion');
 
+				if($publica == 0 && $capacitacion == 0 && $valIdioma == 0 && $habilidad == 0 && $afiliacion == 0 ){
+
+					if($capacitacion == 0){
+				
+						$rules['dependencia'] =  ['label' => "Dependencia responsable", 'rules' => 'required|max_length[255]'];
+						$rules['institucion'] =  ['label' => "Institución Capacitadora", 'rules' => 'required|max_length[255]'];
+						$rules['nombre_curso'] =  ['label' => "Nombre del curso", 'rules' => 'required|max_length[255]'];
+						$rules['tema_curso'] =  ['label' => "Tema del curso", 'rules' => 'required|max_length[255]'];
+						$rules['nivel_curso'] =  ['label' => "Nivel del curso recibido", 'rules' => 'required'];
+						$rules['eficienciaCursos'] =  ['label' => "Eficiencia terminal", 'rules' => 'required'];
+						$rules['inicio'] =  ['label' => "Inicio", 'rules' => 'required'];
+						$rules['conclusion'] =  ['label' => "Conclusión", 'rules' => 'required'];
+						$rules['duracion'] =  ['label' => "Duración en horas", 'rules' => 'required|max_length[255]'];
+						$rules['comprobante'] =  ['label' => "Tipo de comprobante", 'rules' => 'required|max_length[255]'];
+
+						////
+
+						$rules['dependenciaB'] =  ['label' => "Dependencia responsable", 'rules' => 'required_with[institucionB,nombre_cursoB,tema_cursoB,nivel_cursoB,eficienciaCursosB,inicioB,conclusionB,duracionB,comprobanteB]|max_length[255]'];
+						$rules['institucionB'] =  ['label' => "Institución Capacitadora", 'rules' => 'required_with[dependenciaB,nombre_cursoB,tema_cursoB,nivel_cursoB,eficienciaCursosB,inicioB,conclusionB,duracionB,comprobanteB]|max_length[255]'];
+						$rules['nombre_cursoB'] =  ['label' => "Nombre del curso", 'rules' => 'required_with[dependenciaB,institucionB,tema_cursoB,nivel_cursoB,eficienciaCursosB,inicioB,conclusionB,duracionB,comprobanteB]|max_length[255]'];
+						$rules['tema_cursoB'] =  ['label' => "Tema del curso", 'rules' => 'required_with[dependenciaB,institucionB,nombre_cursoB,nivel_cursoB,eficienciaCursosB,inicioB,conclusionB,duracionB,comprobanteB]|max_length[255]'];
+						$rules['nivel_cursoB'] =  ['label' => "Nivel del curso recibido", 'rules' => 'required_with[dependenciaB,institucionB,nombre_cursoB,tema_cursoB,eficienciaCursosB,inicioB,conclusionB,duracionB,comprobanteB]'];
+						$rules['eficienciaCursosB'] =  ['label' => "Eficiencia terminal", 'rules' => 'required_with[dependenciaB,institucionB,nombre_cursoB,tema_cursoB,nivel_cursoB,inicioB,conclusionB,duracionB,comprobanteB]'];
+						$rules['inicioB'] =  ['label' => "Inicio", 'rules' => 'required_with[dependenciaB,institucionB,nombre_cursoB,tema_cursoB,nivel_cursoB,eficienciaCursosB,conclusionB,duracionB,comprobanteB]'];
+						$rules['conclusionB'] =  ['label' => "Conclusión", 'rules' => 'required_with[dependenciaB,institucionB,nombre_cursoB,tema_cursoB,nivel_cursoB,eficienciaCursosB,inicioB,duracionB,comprobanteB]'];
+						$rules['duracionB'] =  ['label' => "Duración en horas", 'rules' => 'required_with[dependenciaB,institucionB,nombre_cursoB,tema_cursoB,nivel_cursoB,eficienciaCursosB,inicioB,conclusionB,comprobanteB]|max_length[255]'];
+						$rules['comprobanteB'] =  ['label' => "Tipo de comprobante", 'rules' => 'required_with[dependenciaB,institucionB,nombre_cursoB,tema_cursoB,nivel_cursoB,eficienciaCursosB,inicioB,conclusionB,duracionB]|max_length[255]'];
+
+					} 
+
+					if($publica == 0){
+					
+						$rules['empresa'] =  ['label' => "Insitutción o Empresa", 'rules' => 'required|max_length[255]'];
+						$rules['curso'] =  ['label' => "Estudio o Curso", 'rules' => 'required|max_length[255]'];
+						$rules['tipo_curso'] =  ['label' => "Tipo de curso", 'rules' => 'required'];
+						$rules['cuso_tomado'] =  ['label' => "¿El curso fue?", 'rules' => 'required'];
+						$rules['eficiencia'] =  ['label' => "Eficiencia terminal", 'rules' => 'required'];
+						$rules['inicioAdicional'] =  ['label' => "Inicio", 'rules' => 'required'];
+						$rules['conclusionAdicional'] =  ['label' => "Conclusión", 'rules' => 'required'];
+						$rules['duracion_horas'] =  ['label' => "Duración en horas", 'rules' => 'required|integer'];
+
+						////
+
+						$rules['empresaB'] =  ['label' => "Insitutción o Empresa", 'rules' => 'required_with[cursoB,tipo_cursoB,cuso_tomadoB,eficienciaB,inicioAdicionalB,conclusionAdicionalB,duracion_horasB]|max_length[255]'];
+						$rules['cursoB'] =  ['label' => "Estudio o Curso", 'rules' => 'required_with[empresaB,tipo_cursoB,cuso_tomadoB,eficienciaB,inicioAdicionalB,conclusionAdicionalB,duracion_horasB]|max_length[255]'];
+						$rules['tipo_cursoB'] =  ['label' => "Tipo de curso", 'rules' => 'required_with[empresaB,cursoB,cuso_tomadoB,eficienciaB,inicioAdicionalB,conclusionAdicionalB,duracion_horasB]'];
+						$rules['cuso_tomadoB'] =  ['label' => "¿El curso fue?", 'rules' => 'required_with[empresaB,cursoB,tipo_cursoB,eficienciaB,inicioAdicionalB,conclusionAdicionalB,duracion_horasB]'];
+						$rules['eficienciaB'] =  ['label' => "Eficiencia terminal", 'rules' => 'required_with[empresaB,cursoB,tipo_cursoB,cuso_tomadoB,inicioAdicionalB,conclusionAdicionalB,duracion_horasB]'];
+						$rules['inicioAdicionalB'] =  ['label' => "Inicio", 'rules' => 'required_with[empresaB,cursoB,tipo_cursoB,cuso_tomadoB,eficienciaB,conclusionAdicionalB,duracion_horasB]'];
+
+						$rules['duracion_horasB'] = ['label' => "Duración en horas", 'rules' => 'required_with[empresaB,cursoB,tipo_cursoB,cuso_tomadoB,eficienciaB,inicioAdicionalB,conclusionAdicionalB]'];
+
+						$rules['conclusionAdicionalB'] =  ['label' => "Conclusión", 'rules' => 'required_with[empresaB,cursoB,tipo_cursoB,cuso_tomadoB,eficienciaB,inicioAdicionalB,duracion_horasB]'];
+						
+
+					} 
+
+					if($valIdioma == 0){
+					
+						$rules['idioma'] =  ['label' => "Lectura", 'rules' => 'required'];
+						$rules['escritura'] =  ['label' => "Escritura", 'rules' => 'required'];
+						$rules['lectura'] =  ['label' => "Lectura", 'rules' => 'required'];
+						$rules['conversacion'] =  ['label' => "Conversación", 'rules' => 'required'];
+
+						////
+
+						$rules['idiomaB'] =  ['label' => "Lectura", 'rules' => 'required_with[escrituraB,lecturaB,conversacionB]'];
+						$rules['escrituraB'] =  ['label' => "Escritura", 'rules' => 'required_with[idiomaB,lecturaB,conversacionB]'];
+						$rules['lecturaB'] =  ['label' => "Lectura", 'rules' => 'required_with[idiomaB,escrituraB,conversacionB]'];
+						$rules['conversacionB'] =  ['label' => "Conversación", 'rules' => 'required_with[idiomaB,escrituraB,lecturaB]'];
+
+					}
+
+					if($habilidad == 0){
+					
+						$rules['tipo_habilidad'] =  ['label' => "Tipo", 'rules' => 'required'];
+						$rules['especificacion'] =  ['label' => "Especifique", 'rules' => 'required|max_length[255]'];
+						$rules['grado_habilidadCap'] =  ['label' => "Grado de aptitude o dominio", 'rules' => 'required'];
+
+						///
+
+						$rules['tipo_habilidadB'] =  ['label' => "Tipo", 'rules' => 'required_with[especificacionB,grado_habilidadCapB]'];
+						$rules['especificacionB'] =  ['label' => "Especifique", 'rules' => 'required_with[tipo_habilidadB,grado_habilidadCapB]|max_length[255]'];
+						$rules['grado_habilidadCapB'] =  ['label' => "Grado de aptitude o dominio", 'rules' => 'required_with[tipo_habilidadB,especificacionB]'];
+
+					}
+
+					if($afiliacion == 0){
+					
+						$rules['nombre'] =  ['label' => "Nombre", 'rules' => 'required'];
+						$rules['tipoAgrupa'] =  ['label' => "Tipo", 'rules' => 'required'];
+					
+						$rules['desde'] =  ['label' => "Desde", 'rules' => 'required'];
+						$rules['hasta'] =  ['label' => "Hasta", 'rules' => 'required'];
+
+
+						///
+
+
+						$rules['nombreB'] =  ['label' => "Nombre", 'rules' => 'required_with[tipoAgrupaB,desdeB,hastaB]'];
+						$rules['tipoAgrupaB'] =  ['label' => "Tipo", 'rules' => 'required_with[nombreB,desdeB,hastaB]'];
+					
+						$rules['desdeB'] =  ['label' => "Desde", 'rules' => 'required_with[nombreB,tipoAgrupaB,hastaB]'];
+						$rules['hastaB'] =  ['label' => "Hasta", 'rules' => 'required_with[nombreB,tipoAgrupaB,desdeB]'];
+
+					}
+
+
+					
 				if($this->validate($rules)){
 					
 					$getUser = session()->get('IdUser');
@@ -1421,129 +1449,263 @@ class Cuip extends BaseController {
 					$empresa = session()->get('empresa');
 					$idEmpresa = $this->encrypter->decrypt($empresa);
 					$uuid = Uuid::uuid4();
-        			$id = $uuid->toString();
-
         			
-
-        			$getIdPersonal = $this->request->getPost('idPersonal');
-
         			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
 
         			
+        			$datosPublica=[];
+        			$datosCapacitacion=[];
+        			$datosIdioma=[];
+        			$datosHabilidad=[];
+        			$datosAfiliacion=[];
 
-        			$getInicio = $this->request->getPost('inicio');
 
-        			$inicio = date( "Y-m-d" ,strtotime($getInicio));
+        			if ($capacitacion == 0){	
+						$val ="";
+						$clockSequence = 16383;
+						for ($i = 1; $i <= 2; $i++) {
+  							
+  							
+  						
+  							$uuid1 = Uuid::uuid1($clockSequence);
+                        	$idCap = $uuid1->toString();
 
-        			$getConclusion = $this->request->getPost('conclusion');
+  							$getInicioAdicional = $this->request->getPost('inicioAdicional'.$val);
 
-        			$conclusion = date( "Y-m-d" ,strtotime($getConclusion));
+        					$inicioAdicional = date( "Y-m-d" ,strtotime($getInicioAdicional));
 
-        			$getInicioAdicional = $this->request->getPost('inicioAdicional');
+        					$getConclusionAdicional = $this->request->getPost('conclusionAdicional'.$val);
 
-        			$inicioAdicional = date( "Y-m-d" ,strtotime($getInicioAdicional));
+        					$conclusionAdicional = date( "Y-m-d" ,strtotime($getConclusionAdicional));
 
-        			$getConclusionAdicional = $this->request->getPost('conclusionAdicional');
+        					$getCuso_tomado = $this->request->getPost('cuso_tomado'.$val);
 
-        			$conclusionAdicional = date( "Y-m-d" ,strtotime($getConclusionAdicional));
+        					$cuso_tomado = $this->encrypt->Decrytp($getCuso_tomado);
 
-        			$getDesde = $this->request->getPost('desde');
+        					$getEficiencia = $this->request->getPost('eficiencia'.$val);
 
-        			$desde = date( "Y-m-d" ,strtotime($getDesde));
+        					$eficiencia = $this->encrypt->Decrytp($getEficiencia);
 
-        			$getHasta = $this->request->getPost('hasta');
+							$datosCapacitacion[] = array(
 
-        			$hasta = date( "Y-m-d" ,strtotime($getHasta));
+								"id" => $idCap ,
+								"idPersonal" => $idPersonal , 
+								"idEmpresa" => $idEmpresa ,
+								"institucion"  => strtoupper($this->request->getPost('empresa'))  , 
+								"curso"  =>  strtoupper($this->request->getPost('curso'.$val)) , 
+								"tipo_curso"  =>  strtoupper($this->request->getPost('tipo_curso'.$val)) , 
+								"idCursoFue"  => $cuso_tomado  , 
+								"idEficienciaAdicional"  => $eficiencia  , 
+								"inicio_adicional"  =>  $inicioAdicional , 
+								"conclusion_adicional"  =>  $conclusionAdicional , 
+								"duracion_horas_adicional"  => $this->request->getPost('duracion_horas'.$val)  , 
+								"activo" => 1 , 
+								"createdby" => $LoggedUserId , 
+								"createddate" => date("Y-m-d H:i:s"));
 
-        			$getNivel_curso = $this->request->getPost('nivel_curso');
+							$val ="B";
 
-        			$nivel_curso = $this->encrypt->Decrytp($getNivel_curso);
+							$valB =$this->request->getPost('empresaB');
 
-        			$getEficienciaCursos = $this->request->getPost('eficienciaCursos');
+							if (!isset($valB) || empty($valB)){
 
-        			$eficienciaCursos = $this->encrypt->Decrytp($getEficienciaCursos);
+								$i = 3;
+							}
+  							
+						}
+					} 
 
-        			$getCuso_tomado = $this->request->getPost('cuso_tomado');
+					if ($publica == 0){
 
-        			$cuso_tomado = $this->encrypt->Decrytp($getCuso_tomado);
+						$val ="";
+						$clockSequence = 16383;
+						for ($i = 1; $i <= 2; $i++) {
 
-        			$getEficiencia = $this->request->getPost('eficiencia');
+							$uuid1 = Uuid::uuid1($clockSequence);
+                        	$idPubli = $uuid1->toString();
 
-        			$eficiencia = $this->encrypt->Decrytp($getEficiencia);
+  							$getInicio = $this->request->getPost('inicio'.$val);
 
-        			$getIdioma = $this->request->getPost('idioma');
+        					$inicio = date( "Y-m-d" ,strtotime($getInicio));
 
-        			$idioma = $this->encrypt->Decrytp($getIdioma);
+        					$getConclusion = $this->request->getPost('conclusion'.$val);
 
-        			$getLectura = $this->request->getPost('lectura');
+        					$conclusion = date( "Y-m-d" ,strtotime($getConclusion));
 
-        			$lectura = $this->encrypt->Decrytp($getLectura);
+        					$getNivel_curso = $this->request->getPost('nivel_curso'.$val);
 
-        			$getEscritura = $this->request->getPost('escritura');
+        					$nivel_curso = $this->encrypt->Decrytp($getNivel_curso);
 
-        			$escritura = $this->encrypt->Decrytp($getEscritura);
+        					$getEficienciaCursos = $this->request->getPost('eficienciaCursos'.$val);
 
-        			$getConversacion = $this->request->getPost('conversacion');
+        					$eficienciaCursos = $this->encrypt->Decrytp($getEficienciaCursos);
 
-        			$conversacion = $this->encrypt->Decrytp($getConversacion);
+							$datosPublica[] = array(
 
-        			$getTipo_habilidad = $this->request->getPost('tipo_habilidad');
+								"id" => $idPubli ,
+								"idPersonal" => $idPersonal , 
+								"idEmpresa" => $idEmpresa ,
+								"dependencia"  =>  strtoupper($this->request->getPost('dependencia'.$val)) , 
+								"inst_capacitadora"  =>  strtoupper($this->request->getPost('institucion'.$val)) , 
+								"nombre_curso"  =>  strtoupper($this->request->getPost('nombre_curso'.$val)) , 
+								"tema_curso"  =>  strtoupper($this->request->getPost('tema_curso'.$val)) , 
+								"idNivel_curso"  =>  $nivel_curso , 
+								"idEficienciaCurso"  =>  $eficienciaCursos , 
+								"inicio_curso"  =>  $inicio , 
+								"conclusion_curso"  => $conclusion  , 
+								"duracion_horas_curso"  =>  $this->request->getPost('duracion'.$val) , 
+								"tipo_comprobante"  =>  strtoupper($this->request->getPost('comprobante'.$val)) ,
+								"activo" => 1 , 
+								"createdby" => $LoggedUserId , 
+								"createddate" => date("Y-m-d H:i:s"));
 
-        			$tipo_habilidad = $this->encrypt->Decrytp($getTipo_habilidad);
+							$val ="B";
 
-        			$getGrado_habilidadCap = $this->request->getPost('grado_habilidadCap');
+							$valB =$this->request->getPost('dependenciaB');
 
-        			$grado_habilidadCap = $this->encrypt->Decrytp($getGrado_habilidadCap);
+							if (!isset($valB) || empty($valB)){
 
-        			$getTipoAgrupa = $this->request->getPost('tipoAgrupa');
+								$i = 3;
+							}	
+						
+						}
+					}
 
-        			$tipoAgrupa = $this->encrypt->Decrytp($getTipoAgrupa);
+					if ($valIdioma == 0){	
+						$val ="";
+						$clockSequence = 16383;
+						for ($i = 1; $i <= 2; $i++) {
+  						
+  							$uuid1 = Uuid::uuid1($clockSequence);
+                        	$idIdioma = $uuid1->toString();
+
+  							$getIdioma = $this->request->getPost('idioma'.$val);
+
+		        			$idioma = $this->encrypt->Decrytp($getIdioma);
+
+		        			$getLectura = $this->request->getPost('lectura'.$val);
+
+		        			$lectura = $this->encrypt->Decrytp($getLectura);
+
+		        			$getEscritura = $this->request->getPost('escritura'.$val);
+
+		        			$escritura = $this->encrypt->Decrytp($getEscritura);
+
+		        			$getConversacion = $this->request->getPost('conversacion'.$val);
+
+		        			$conversacion = $this->encrypt->Decrytp($getConversacion);
+
+							$datosIdioma[] = array(
+
+								"id" => $idIdioma ,
+								"idPersonal" => $idPersonal , 
+								"idEmpresa" => $idEmpresa ,
+								"idIdioma"  =>  $idioma , 
+								"idIdiomaLectura"  => $lectura  , 
+								"idIdiomaEscritura"  =>  $escritura , 
+								"idIdiomaConversacion"  => $conversacion  ,
+								"activo" => 1 , 
+								"createdby" => $LoggedUserId , 
+								"createddate" => date("Y-m-d H:i:s"));
+
+							$val ="B";
+
+							$valB =$this->request->getPost('idiomaB');
+
+							if (!isset($valB) || empty($valB)){
+
+								$i = 3;
+							}
+						}
+					} 
+
+					if ($habilidad == 0){	
+						$val ="";
+						$clockSequence = 16383;
+						for ($i = 1; $i <= 2; $i++) {
+  						
+  							$uuid1 = Uuid::uuid1($clockSequence);
+                        	$idHab = $uuid1->toString();
+
+  							$getTipo_habilidad = $this->request->getPost('tipo_habilidad'.$val);
+
+        					$tipo_habilidad = $this->encrypt->Decrytp($getTipo_habilidad);
+
+        					$getGrado_habilidadCap = $this->request->getPost('grado_habilidadCap'.$val);
+
+        					$grado_habilidadCap = $this->encrypt->Decrytp($getGrado_habilidadCap);
+
+							$datosHabilidad[] = array(
+
+								"id" => $idHab ,
+								"idPersonal" => $idPersonal , 
+								"idEmpresa" => $idEmpresa ,
+								"idTipoHabilidad"  =>  $tipo_habilidad , 
+								"especifique_habilidad"  =>  strtoupper($this->request->getPost('especificacion'.$val)) , 
+								"idGradoHabilidad"  => $grado_habilidadCap  ,	
+								"activo" => 1 , 
+								"createdby" => $LoggedUserId , 
+								"createddate" => date("Y-m-d H:i:s"));
+
+							$val ="B";
+
+							$valB =$this->request->getPost('tipo_habilidadB');
+
+							if (!isset($valB) || empty($valB)){
+
+								$i = 3;
+							}
+						}
+					} 
+
+					if ($afiliacion == 0){	
+						$val ="";
+						$clockSequence = 16383;
+						for ($i = 1; $i <= 2; $i++) {
+  						
+  							$uuid1 = Uuid::uuid1($clockSequence);
+                        	$idAfil = $uuid1->toString();
+
+  							$getDesde = $this->request->getPost('desde'.$val);
+
+		        			$desde = date( "Y-m-d" ,strtotime($getDesde));
+
+		        			$getHasta = $this->request->getPost('hasta'.$val);
+
+		        			$hasta = date( "Y-m-d" ,strtotime($getHasta));
+
+		        			$getTipoAgrupa = $this->request->getPost('tipoAgrupa'.$val);
+
+		        			$tipoAgrupa = $this->encrypt->Decrytp($getTipoAgrupa);
+
+							$datosAfiliacion[] = array(
+
+								"id" => $idAfil ,
+								"idPersonal" => $idPersonal , 
+								"idEmpresa" => $idEmpresa ,
+								"nombre_agrupacion"  =>  strtoupper($this->request->getPost('nombre'.$val)) , 
+								"idTipoAgrupacion"  =>  $tipoAgrupa , 
+						 
+								"desde"  =>  $desde , 
+								"hasta"  => $hasta ,
+								"activo" => 1 , 
+								"createdby" => $LoggedUserId , 
+								"createddate" => date("Y-m-d H:i:s"));
+
+							$val ="B";
+
+							$valB =$this->request->getPost('nombreB');
+
+							if (!isset($valB) || empty($valB)){
+
+								$i = 3;
+							}
+						}
+					} 
 
         			
 
-
-					$capacitaciones = array(
-		    					
-		    					
-						"id" => $id  ,
-						"idPersonal" => $idPersonal  , 
-						"idEmpresa" =>  $idEmpresa , 
-						"dependencia"  =>  strtoupper($this->request->getPost('dependencia')) , 
-						"inst_capacitadora"  =>  strtoupper($this->request->getPost('institucion')) , 
-						"nombre_curso"  =>  strtoupper($this->request->getPost('nombre_curso')) , 
-						"tema_curso"  =>  strtoupper($this->request->getPost('tema_curso')) , 
-						"idNivel_curso"  =>  $nivel_curso , 
-						"idEficienciaCurso"  =>  $eficienciaCursos , 
-						"inicio_curso"  =>  $inicio , 
-						"conclusion_curso"  => $conclusion  , 
-						"duracion_horas_curso"  =>  $this->request->getPost('duracion') , 
-						"tipo_comprobante"  =>  strtoupper($this->request->getPost('comprobante')) , 
-						"institucion"  => strtoupper($this->request->getPost('empresa'))  , 
-						"curso"  =>  strtoupper($this->request->getPost('curso')) , 
-						"tipo_curso"  =>  strtoupper($this->request->getPost('tipo_curso')) , 
-						"idCursoFue"  => $cuso_tomado  , 
-						"idEficienciaAdicional"  => $eficiencia  , 
-						"inicio_adicional"  =>  $inicioAdicional , 
-						"conclusion_adicional"  =>  $conclusionAdicional , 
-						"duracion_horas_adicional"  => $this->request->getPost('duracion_horas')  , 
-						"idIdioma"  =>  $idioma , 
-						"idIdiomaLectura"  => $lectura  , 
-						"idIdiomaEscritura"  =>  $escritura , 
-						"idIdiomaConversacion"  => $conversacion  , 
-						"idTipoHabilidad"  =>  $tipo_habilidad , 
-						"especifique_habilidad"  =>  strtoupper($this->request->getPost('especificacion')) , 
-						"idGradoHabilidad"  => $grado_habilidadCap  , 
-						"nombre_agrupacion"  =>  strtoupper($this->request->getPost('nombre')) , 
-						"idTipoAgrupacion"  =>  $tipoAgrupa , 
-						 
-						"desde"  =>  $desde , 
-						"hasta"  => $hasta ,
-						"activo" => 1 , 
-						"createdby" => $LoggedUserId , 
-						"createddate" => date("Y-m-d H:i:s") );
-
-
-					$result = $this->modelCuip->insertCapacitaciones( $capacitaciones);
+					$result = $this->modelCuip->insertCapacitaciones( $datosPublica,$datosCapacitacion,$datosIdioma,$datosHabilidad,$datosAfiliacion,$publica,$capacitacion,$valIdioma,$habilidad,$afiliacion);
 
 					
 					
@@ -1564,7 +1726,11 @@ class Cuip extends BaseController {
 					$errors = $this->validator->getErrors();
 				}
 
-				
+			} else {
+
+					$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Ningun dato capturado'  ];	
+				}	
 
 			} else {
 
