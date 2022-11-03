@@ -218,7 +218,7 @@ class CuipModel
 
     public function GetDatosPersonalesById($id){
         $builder = $this->db->table('datos_personales');
-        $builder->select("'' AS institucion,'' AS dependencia,idEntidadNacimiento AS naciE,idEstado AS estado,idCodigoPostal AS postal,FN.valor AS nacionalidad,EC.valor AS civil,MN.valor AS nacion,PN.valor AS pais,datos_personales.apellido_paterno,datos_personales.apellido_materno,primer_nombre,segundo_nombre,fecha_nacimiento,SG.valor AS sexo,rfc,clave_electoral,cartilla_smn,licencia_conducir,idNivelEducativo as desarrollo_academico,vigencia_licencia,curp,pasaporte,fecha_naturalizacion,escuela,especialidad,cedula_profesional,año_inicio,año_termino,registro_sep,folio_certificado,calle,numero_exterior,numero_interior,colonia,entre_calle1,entre_calle2,numero_telefono,municipio,ciudad,nombre_curso,nombre_institucion,fecha_inicio,fecha_termino,certificado_por,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->select("'' AS institucion,'' AS dependencia,idEntidadNacimiento AS naciE,idEstado AS estado,idCodigoPostal AS postal,FN.valor AS nacionalidad,EC.valor AS civil,MN.valor AS nacion,PN.valor AS pais,datos_personales.apellido_paterno,datos_personales.apellido_materno,primer_nombre,segundo_nombre,fecha_nacimiento,SG.valor AS sexo,rfc,clave_electoral,cartilla_smn,licencia_conducir,idNivelEducativo as desarrollo_academico,vigencia_licencia,curp,pasaporte,fecha_naturalizacion,escuela,especialidad,cedula_profesional,año_inicio,año_termino,registro_sep,folio_certificado,calle,numero_exterior,numero_interior,colonia,entre_calle1,entre_calle2,numero_telefono,municipio,ciudad,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
         $builder->join("catalogos_detalle SG"," datos_personales.idGenero= SG.id  ","left");
         $builder->join("catalogos_detalle FN","datos_personales.idFormaNacionalidad = FN.id ","left");
         $builder->join("catalogos_detalle PN"," datos_personales.idPaisNacimiento= PN.id ","left");
@@ -235,11 +235,11 @@ class CuipModel
 
     public function GetSocioEconomicoById($id){
         $builder = $this->db->table('estudio_socioeconomico');
-        $builder->select("actividades_culturales,SG.valor AS sexo,PR.valor AS parentesco,VCF.valor AS vive, TD.valor AS domicilio,inversiones,vehiculo,calidad_vida,vicios,imagen_publica,comportamiento,estudio_socioeconomico.apellido_paterno,estudio_socioeconomico.apellido_materno,primer_nombre,segundo_nombre,fecha_nacimiento,especificacion_inmueble, ingreso_familiar,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->select("actividades_culturales,VCF.valor AS vive, TD.valor AS domicilio,inversiones,vehiculo,calidad_vida,vicios,imagen_publica,comportamiento,estudio_socioeconomico.apellido_paterno,estudio_socioeconomico.apellido_materno,primer_nombre,segundo_nombre,fecha_nacimiento,especificacion_inmueble, ingreso_familiar,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
         $builder->join("catalogos_detalle VCF"," estudio_socioeconomico.vive_con_familia= VCF.id  ","left");
         $builder->join("catalogos_detalle TD"," estudio_socioeconomico.idTipoDomicilio= TD.id  ","left");
-        $builder->join("catalogos_detalle SG"," estudio_socioeconomico.idGenero= SG.id  ","left");
-        $builder->join("catalogos_detalle PR"," estudio_socioeconomico.idParentesco= PR.id  ","left");
+       // $builder->join("catalogos_detalle SG"," estudio_socioeconomico.idGenero= SG.id  ","left");
+        //$builder->join("catalogos_detalle PR"," estudio_socioeconomico.idParentesco= PR.id  ","left");
         $builder->join("sys_usuarios_admin UA","estudio_socioeconomico.createdby = UA.id","left");
         $builder->join("sys_usuarios_admin UU","estudio_socioeconomico.updatedby = UU.id","left");
         $builder->where('estudio_socioeconomico.idPersonal', $id);
@@ -275,18 +275,18 @@ class CuipModel
 
     public function GetCapacitaciones($id){
         $builder = $this->db->table('capacitaciones');
-        $builder->select("dependencia,NC.valor AS nivel,inst_capacitadora,CF.valor AS cursofue,nombre_curso,ID.valor AS idioma,TA.valor AS agrupacion,IE.valor AS escritura,GH.valor AS grado,IL.valor AS lectura,IC.valor AS conversacion,TH.valor AS habilidad ,tema_curso,NC.valor AS nivel,EC.valor AS eficiencia,inicio_curso,conclusion_curso,duracion_horas_curso,tipo_comprobante,institucion,curso,tipo_curso,EA.valor AS adicional,inicio_adicional,conclusion_adicional,duracion_horas_adicional,especifique_habilidad,nombre_agrupacion,especifique_agrupacion,desde,hasta,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
-        $builder->join("catalogos_detalle NC"," capacitaciones.idNivel_curso= NC.id  ","left");
-        $builder->join("catalogos_detalle EC"," capacitaciones.idEficienciaCurso= EC.id  ","left");
+        $builder->select("CF.valor AS cursofue,institucion,curso,tipo_curso,EA.valor AS adicional,inicio_adicional,conclusion_adicional,duracion_horas_adicional,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        //$builder->join("catalogos_detalle NC"," capacitaciones.idNivel_curso= NC.id  ","left");
+        //$builder->join("catalogos_detalle EC"," capacitaciones.idEficienciaCurso= EC.id  ","left");
         $builder->join("catalogos_detalle CF"," capacitaciones.idCursoFue= CF.id  ","left");
         $builder->join("catalogos_detalle EA"," capacitaciones.idEficienciaAdicional= EA.id  ","left");
-        $builder->join("catalogos_detalle ID"," capacitaciones.idIdioma= ID.id  ","left");
-        $builder->join("catalogos_detalle IE"," capacitaciones.idIdiomaEscritura= IE.id  ","left");
-        $builder->join("catalogos_detalle IL"," capacitaciones.idIdiomaLectura= IL.id  ","left");
-        $builder->join("catalogos_detalle IC"," capacitaciones.idIdiomaConversacion= IC.id  ","left");
-        $builder->join("catalogos_detalle TH"," capacitaciones.idTipoHabilidad= TH.id  ","left");
-        $builder->join("catalogos_detalle GH"," capacitaciones.idGradoHabilidad= GH.id  ","left");
-        $builder->join("catalogos_detalle TA"," capacitaciones.idTipoAgrupacion= TA.id  ","left");
+        //$builder->join("catalogos_detalle ID"," capacitaciones.idIdioma= ID.id  ","left");
+        //$builder->join("catalogos_detalle IE"," capacitaciones.idIdiomaEscritura= IE.id  ","left");
+        //$builder->join("catalogos_detalle IL"," capacitaciones.idIdiomaLectura= IL.id  ","left");
+        //$builder->join("catalogos_detalle IC"," capacitaciones.idIdiomaConversacion= IC.id  ","left");
+       // $builder->join("catalogos_detalle TH"," capacitaciones.idTipoHabilidad= TH.id  ","left");
+        //$builder->join("catalogos_detalle GH"," capacitaciones.idGradoHabilidad= GH.id  ","left");
+        //$builder->join("catalogos_detalle TA"," capacitaciones.idTipoAgrupacion= TA.id  ","left");
         
         $builder->join("sys_usuarios_admin UA","capacitaciones.createdby = UA.id","left");
         $builder->join("sys_usuarios_admin UU","capacitaciones.updatedby = UU.id","left");
@@ -296,9 +296,9 @@ class CuipModel
 
     public function GetSanciones($id){
         $builder = $this->db->table('sanciones');
-        $builder->select("tipo_sancion,estado_averiguacion,aldia_averiguacion,juzgado,num_proceso,estado_procesal,inicio_proceso,aldia_proceso,tipo_estimulo,descripcion_estimulo,dependencia_otorga,otorgado,determinacion,descripcion_sancion,situacion,inicio_habilitacion,termino_habilitacion,dependencia,institucion_emisora,ES.valor AS estado,delitos,motivos,numero_expediente,agencia_mp,inicio_averiguacion,averiguacion_previa,TF.valor AS fuero,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
-        $builder->join("catalogos_detalle ES"," sanciones.idEstado= ES.id  ","left");
-        $builder->join("catalogos_detalle TF"," sanciones.idTipoFuero= TF.id  ","left");
+        $builder->select("tipo_sancion,determinacion,descripcion_sancion,situacion,inicio_habilitacion,termino_habilitacion,dependencia,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        //$builder->join("catalogos_detalle ES"," sanciones.idEstado= ES.id  ","left");
+        //$builder->join("catalogos_detalle TF"," sanciones.idTipoFuero= TF.id  ","left");
         $builder->join("sys_usuarios_admin UA","sanciones.createdby = UA.id","left");
         $builder->join("sys_usuarios_admin UU","sanciones.updatedby = UU.id","left");
         $builder->where('sanciones.idPersonal', $id);
