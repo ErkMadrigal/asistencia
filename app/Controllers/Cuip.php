@@ -2762,12 +2762,52 @@ class Cuip extends BaseController {
 			$sheet->setCellValue('C' . $count, $row->apellido_materno);
 
 			$sheet->setCellValue('D' . $count, $row->nombre);
+			
+			$sheet->setCellValue('E' . $count, date( "d/m/Y" ,strtotime($row->fecha_nacimiento)));
 
-			$sheet->setCellValue('E' . $count, $row->curp);
+			$sheet->setCellValue('F' . $count, $row->idEntidadNacimiento);
 
-			$sheet->setCellValue('F' . $count, $row->rfc);
+			$sheet->setCellValue('G' . $count, $row->idMunicipioNacimiento);
 
-			$sheet->setCellValue('G' . $count, date( "d/m/Y" ,strtotime($row->fecha_nacimiento)));
+			$sheet->setCellValue('H' . $count, $row->idGenero);
+
+			$sheet->setCellValue('I' . $count, $row->idEstadoCivil);
+
+			$sheet->setCellValue('J' . $count, $row->idNivelEducativo);
+
+			$sheet->setCellValue('K' . $count, $row->escuela);
+
+			$sheet->setCellValue('L' . $count, $row->especialidad);
+
+			$sheet->setCellValue('M' . $count, $row->rfc);
+
+			$sheet->setCellValue('N' . $count, $row->clave_electoral);
+
+			$sheet->setCellValue('O' . $count, $row->cartilla_smn);
+
+			$sheet->setCellValue('P' . $count, $row->curp);
+
+			$sheet->setCellValue('Q' . $count, $row->calle);
+
+			$sheet->setCellValue('R' . $count, $row->numero_exterior);
+
+			$sheet->setCellValue('S' . $count, $row->numero_interior);
+
+			$sheet->setCellValue('T' . $count, $row->colonia);
+
+			$sheet->setCellValue('U' . $count, $row->idCodigoPostal);
+
+			$sheet->setCellValue('V' . $count, $row->numero_telefono);
+
+			$sheet->setCellValue('W' . $count, $row->idEstado);
+
+			$sheet->setCellValue('X' . $count, $row->municipio);
+
+			$sheet->setCellValue('Y' . $count, $row->municipio);
+
+			$sheet->setCellValue('Z' . $count, $row->municipio);
+
+			$sheet->setCellValue('AA' . $count, $row->municipio);
 
 		
 
@@ -2878,6 +2918,21 @@ class Cuip extends BaseController {
 		readfile($getRuta.$file_name);
 		}
 	}
+
+	function src($fileName,$type = "full"){
+
+		$path = '';
+
+		if ($type != 'full')
+
+			$path .= $type . '/';
+
+		return $path . $fileName;		 
+
+
+
+	}
+
 
 
 	

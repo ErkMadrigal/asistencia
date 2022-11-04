@@ -347,7 +347,7 @@ class CuipModel
 
     public function GetCuipExcel(){
         $builder = $this->db->table("datos_personales");
-        $builder->select("apellido_paterno,apellido_materno, CONCAT(primer_nombre,' ' ,segundo_nombre) AS nombre,curp,rfc,fecha_nacimiento");
+        $builder->select("apellido_paterno,apellido_materno, CONCAT(primer_nombre,' ' ,segundo_nombre) AS nombre,fecha_nacimiento,idEntidadNacimiento,idMunicipioNacimiento,idGenero,idEstadoCivil,idNivelEducativo,escuela,especialidad,rfc,clave_electoral,cartilla_smn,curp,calle,numero_exterior,numero_interior,colonia,idCodigoPostal,numero_telefono,idEstado,municipio");
         $builder->where("activo",true);
         $builder->where("Cuip",'');
         $builder->orderBy("primer_nombre","asc");

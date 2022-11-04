@@ -259,17 +259,36 @@ class MediaFiliacion extends BaseController {
 
 			$foto = $this->modelMediaFiliacion->GetFotoById($id);
 			if ($foto){
-				$path = $this->encrypt->Decrytp($foto->ruta);
+				
 
-				$fileName = $this->encrypt->Decrytp($foto->nombre_almacen);
-
-				$img = $path.'/'.$fileName;
+				$img = $this->encrypt->Encrypt($foto->idDocumento);
 
 				$data['foto'] = $img;
 
+			}
+
+			$fotoIzq = $this->modelMediaFiliacion->GetFotoIzqById($id);
+			if ($fotoIzq){
+				
+
+				$imgfotoIzq = $this->encrypt->Encrypt($foto->idDocumento);
+
+				$data['fotoIzq'] = $imgfotoIzq;
+
+			}
+
+
+			$fotoDer = $this->modelMediaFiliacion->GetFotoDerById($id);
+			if ($fotoDer){
+				
+
+				$imgfotoDer = $this->encrypt->Encrypt($foto->idDocumento);
+
+				$data['fotoDer'] = $imgfotoDer;
+
 			}	
 
-
+			
         	$data['id'] = $this->encrypt->Encrypt($id);
 
         	$data['breadcrumb'] = ["inicio" => 'CUIP' ,

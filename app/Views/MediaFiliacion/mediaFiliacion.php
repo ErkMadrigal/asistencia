@@ -17,18 +17,18 @@
         <div class="row">
             <div class='col-12 col-sm-4'>
                 <div class="form-group">
-                    <img src="<?= base_url() ?>/assets/dist/img/logoPanel.png" alt="user-avatar" class=" img-fluid">
+                    <img src="./getFileIni?h=<?= $fotoIzq ?>" alt="user-avatar" class=" img-fluid">
                 </div>
             </div>
             <div class='col-12 col-sm-4'>
                 <div class="form-group">
                     
-                    <img src="<?= base_url() ?>/assets/dist/img/logoPanel.png" alt="user-avatar" class=" img-fluid">
+                    <img src="./getFileIni?h=<?= $foto ?>" class=" img-fluid">
                 </div>
             </div>        
             <div class='col-12 col-sm-4'>
                 <div class="form-group">
-                    <img src="<?= base_url() ?>/assets/dist/img/logoPanel.png" alt="user-avatar" class=" img-fluid">
+                    <img src="./getFileIni?h=<?= $fotoDer ?>" class=" img-fluid">
                 </div>
             </div>             
         </div>            
