@@ -1048,6 +1048,8 @@
 
                 if (response.succes.succes == 'succes') {
 
+                    $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
+
                     $('#idPersonal').val(response.data.idPersonal);
                     toastr.success(response.succes.mensaje);
 
@@ -1358,7 +1360,7 @@
             }
             
 
-            $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
+            
 
         
         var cp = $('#'+elemento).val()
@@ -1440,6 +1442,9 @@
                     
                     
                 }
+
+
+                $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
 
                 $('#load').removeClass( "spinner-border" );
             },

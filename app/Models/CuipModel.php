@@ -347,8 +347,32 @@ class CuipModel
 
     public function GetCuipExcel(){
         $builder = $this->db->table("datos_personales");
-        $builder->select("apellido_paterno,apellido_materno, CONCAT(primer_nombre,' ' ,segundo_nombre) AS nombre,fecha_nacimiento,idEntidadNacimiento,idMunicipioNacimiento,idGenero,idEstadoCivil,idNivelEducativo,escuela,especialidad,rfc,clave_electoral,cartilla_smn,curp,calle,numero_exterior,numero_interior,colonia,idCodigoPostal,numero_telefono,idEstado,municipio");
-        $builder->where("activo",true);
+        $builder->select("apellido_paterno,apellido_materno, CONCAT(primer_nombre,' ' ,segundo_nombre) AS nombre,fecha_nacimiento,idEntidadNacimiento,idMunicipioNacimiento,genero.idReferencia AS idGenero,civil.idReferencia AS idEstadoCivil,idNivelEducativo,escuela,especialidad,rfc,clave_electoral,cartilla_smn,curp,calle,numero_exterior,numero_interior,colonia,idCodigoPostal,numero_telefono,idEstado,municipio,fecha_ingreso,idEstado_adscripcion,municipio_adscripcion,
+            Complexion.idReferencia AS complexion,
+            TSangre.idReferencia AS tiposangre,
+            SangreRH.idReferencia AS rhSangre,
+            Anteojos.idReferencia AS anteojos,
+            estatura,
+            peso,
+            ColorPiel.idReferencia AS colorPiel,
+            Cara.idReferencia AS cara,
+            CantidadCabello.idReferencia AS cantidadCabello,
+            CabelloColor.idReferencia AS colorCabello,
+            CabelloForma.idReferencia AS formaCabello
+            ");
+        $builder->join("catalogos_detalle AS genero","datos_personales.idGenero = genero.id","left");
+        $builder->join("catalogos_detalle AS civil","datos_personales.idEstadoCivil = civil.id","left");
+        $builder->join("media_filiacion","datos_personales.id = media_filiacion.idPersonal","left");
+        $builder->join("catalogos_detalle AS Complexion","media_filiacion.idComplexion = Complexion.id","left");
+        $builder->join("catalogos_detalle AS TSangre","media_filiacion.idSangreTipo = TSangre.id","left");
+        $builder->join("catalogos_detalle AS SangreRH","media_filiacion.idRH = SangreRH.id","left");
+        $builder->join("catalogos_detalle AS Anteojos","media_filiacion.idUsaAnteojos = Anteojos.id","left");
+        $builder->join("catalogos_detalle AS ColorPiel","media_filiacion.idPiel = ColorPiel.id","left");
+        $builder->join("catalogos_detalle AS Cara","media_filiacion.idCara = Cara.id","left");
+        $builder->join("catalogos_detalle AS CantidadCabello","media_filiacion.idCantidadCabello = CantidadCabello.id","left");
+        $builder->join("catalogos_detalle AS CabelloColor","media_filiacion.idColorCabello = CabelloColor.id","left");
+        $builder->join("catalogos_detalle AS CabelloForma","media_filiacion.idFormaCabello = CabelloForma.id","left");
+        $builder->where("datos_personales.activo",true);
         $builder->where("Cuip",'');
         $builder->orderBy("primer_nombre","asc");
         return $builder->get()->getResult();
