@@ -2102,7 +2102,7 @@ class Cuip extends BaseController {
 
 			$documentos = $this->modelCuip->GetDocumentosById($id);
 
-			
+
 
 			$result = [];
 
@@ -2502,13 +2502,23 @@ class Cuip extends BaseController {
 			$id = $this->encrypt->Decrytp($getId);
 
         	$data['variable'] = $this->modelCuip->GetDatosPersonalesById($id);
-			$data['estudio'] = $this->modelCuip->GetSocioEconomicoById($id);
+         	$data['experiencia'] = $this->modelCuip->GetExperienciaPersonalesById($id);
+			$economico = $this->modelCuip->GetSocioEconomicoById($id);
+			$data['estudio'] = $economico;
+			$data['economico_dependientes'] = $this->modelCuip->GetSocioEconomicoDependientesById($economico->id);
 			$data['seguridad'] = $this->modelCuip->GetEmpleosSeridadById($id);
 			$data['diversos'] = $this->modelCuip->GetEmpleosDiversos($id);
 			$data['capacitacion'] = $this->modelCuip->GetCapacitaciones($id);
-			$data['referencia'] = $this->modelReferencia->GetReferencia($id);
-
+			$data['capacitacion_publica'] = $this->modelCuip->GetCapacitacionesPublicById($id);
+			$data['idiomas'] = $this->modelCuip->GetIdiomasById($id);
+			$data['habilidades'] = $this->modelCuip->GetHabilidadesById($id);
+			$data['agrupaciones'] = $this->modelCuip->GetAgrupacionesById($id);
 			$data['sanciones'] = $this->modelCuip->GetSanciones($id);
+
+			$data['resoluciones'] = $this->modelCuip->GetResolucionesById($id);
+
+			$data['estimulos'] = $this->modelCuip->GetEstimulosById($id);
+			$data['referencia'] = $this->modelCuip->GetReferenciaById($id);
 
 			$data['id'] = $this->encrypt->Encrypt($id); 
 			
@@ -2895,44 +2905,41 @@ class Cuip extends BaseController {
 			$sheet->setCellValue('AZ' . $count, $row->cantidadCabello);
 			$sheet->setCellValue('BA' . $count, $row->colorCabello);
 			$sheet->setCellValue('BB' . $count, $row->formaCabello);
-			// $sheet->setCellValue('BC' . $count, $row->);
-			// $sheet->setCellValue('BD' . $count, $row->);
-			// $sheet->setCellValue('BE' . $count, $row->);
-			// $sheet->setCellValue('BF' . $count, $row->);
-			// $sheet->setCellValue('BG' . $count, $row->);
-			// $sheet->setCellValue('BH' . $count, $row->);
-			// $sheet->setCellValue('BI' . $count, $row->);
-			// $sheet->setCellValue('BJ' . $count, $row->);
-			// $sheet->setCellValue('BK' . $count, $row->);
-			// $sheet->setCellValue('BL' . $count, $row->);
-			// $sheet->setCellValue('BM' . $count, $row->);
-			// $sheet->setCellValue('BN' . $count, $row->);
-			// $sheet->setCellValue('BO' . $count, $row->);
-			// $sheet->setCellValue('BP' . $count, $row->);
-			// $sheet->setCellValue('BQ' . $count, $row->);
-			// $sheet->setCellValue('BR' . $count, $row->);
-			// $sheet->setCellValue('BS' . $count, $row->);
-			// $sheet->setCellValue('BT' . $count, $row->);
-			// $sheet->setCellValue('BU' . $count, $row->);
-			// $sheet->setCellValue('BV' . $count, $row->);
-			// $sheet->setCellValue('BW' . $count, $row->);
-			// $sheet->setCellValue('BX' . $count, $row->);
-			// $sheet->setCellValue('BY' . $count, $row->);
-			// $sheet->setCellValue('BZ' . $count, $row->);
-			// $sheet->setCellValue('CA' . $count, $row->);
-			// $sheet->setCellValue('CB' . $count, $row->);
-			// $sheet->setCellValue('CC' . $count, $row->);
-			// $sheet->setCellValue('CD' . $count, $row->);
-			// $sheet->setCellValue('CE' . $count, $row->);
-			// $sheet->setCellValue('CF' . $count, $row->);
-			// $sheet->setCellValue('CG' . $count, $row->);
-			// $sheet->setCellValue('CH' . $count, $row->);
-			// $sheet->setCellValue('CI' . $count, $row->);
-			// $sheet->setCellValue('CJ' . $count, $row->);
+			 $sheet->setCellValue('BC' . $count, $row->calvicieCabello);
+			 $sheet->setCellValue('BD' . $count, $row->implantacionCabello);
+			 $sheet->setCellValue('BE' . $count, $row->frenteAltura);
+			 $sheet->setCellValue('BF' . $count, $row->frenteInclinacion);
+			 $sheet->setCellValue('BG' . $count, $row->frenteAncho);
+			 $sheet->setCellValue('BH' . $count, $row->direccionCejas);
+			 $sheet->setCellValue('BI' . $count, $row->implantacionCejas);
+			 $sheet->setCellValue('BJ' . $count, $row->formasCejas);
+			 $sheet->setCellValue('BK' . $count, $row->tamCejas);
+			 $sheet->setCellValue('BL' . $count, $row->ojosColor);
+			 $sheet->setCellValue('BM' . $count, $row->ojosForma);
+			 $sheet->setCellValue('BN' . $count, $row->TamOjos);
+			$sheet->setCellValue('BO' . $count, $row->Raiz);
+			$sheet->setCellValue('BP' . $count, $row->Dorso);
+			$sheet->setCellValue('BQ' . $count, $row->AnchoNariz);
+			$sheet->setCellValue('BR' . $count, $row->BaseNariz);
+			$sheet->setCellValue('BS' . $count, $row->AlturaNariz);
+			$sheet->setCellValue('BT' . $count, $row->TamanoBoca);
+			$sheet->setCellValue('BU' . $count, $row->Comisuras);
+			$sheet->setCellValue('BV' . $count, $row->EspesorLabio);
+			$sheet->setCellValue('BW' . $count, $row->AlturaNasolabial);
+			$sheet->setCellValue('BX' . $count, $row->ProminenciaLabio);
+			$sheet->setCellValue('BY' . $count, $row->MentonTipo);
+			$sheet->setCellValue('BZ' . $count, $row->MentonForma);
+			$sheet->setCellValue('CA' . $count, $row->MentonInclinacion);
+			$sheet->setCellValue('CB' . $count, $row->FormaOreja);
+			$sheet->setCellValue('CC' . $count, $row->Original);
+			$sheet->setCellValue('CD' . $count, $row->Superior);
+			$sheet->setCellValue('CE' . $count, $row->Posterior);
+			$sheet->setCellValue('CF' . $count, $row->AdherenciaHelix);
+			$sheet->setCellValue('CG' . $count, $row->ContornoLobulo);
+			$sheet->setCellValue('CH' . $count, $row->AdherenciaLobulo);
+			$sheet->setCellValue('CI' . $count, $row->Particularidad);
+			$sheet->setCellValue('CJ' . $count, $row->DimensionLobulo);
 
-
-
-		
 
 			$count++;
 			$i++;

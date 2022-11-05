@@ -358,8 +358,41 @@ class CuipModel
             Cara.idReferencia AS cara,
             CantidadCabello.idReferencia AS cantidadCabello,
             CabelloColor.idReferencia AS colorCabello,
-            CabelloForma.idReferencia AS formaCabello
-            ");
+            CabelloForma.idReferencia AS formaCabello,
+            CabelloCalvicie.idReferencia AS calvicieCabello,
+            CabelloImplantacion.idReferencia AS implantacionCabello,
+            FrenteAltura.idReferencia AS frenteAltura,
+            FrenteInclinacion.idReferencia AS frenteInclinacion,
+            FrenteAncho.idReferencia AS frenteAncho,
+            CejasDireccion.idReferencia AS direccionCejas,
+            CejasImplantacion.idReferencia AS implantacionCejas,
+            CejasFormas.idReferencia AS formasCejas,
+            CejasTam.idReferencia AS tamCejas,
+            OjosColor.idReferencia AS ojosColor,
+            OjosForma.idReferencia AS ojosForma,
+            OjosTam.idReferencia AS TamOjos,
+            Raiz.idReferencia AS Raiz,
+            Dorso.idReferencia AS Dorso,
+            AnchoNariz.idReferencia AS AnchoNariz,
+            BaseNariz.idReferencia AS BaseNariz,
+            AlturaNariz.idReferencia AS AlturaNariz,
+            TamanoBoca.idReferencia AS TamanoBoca,
+            Comisuras.idReferencia AS Comisuras,
+            EspesorLabio.idReferencia AS EspesorLabio,
+            AlturaNasolabial.idReferencia AS AlturaNasolabial,
+            ProminenciaLabio.idReferencia AS ProminenciaLabio,
+            MentonTipo.idReferencia AS MentonTipo,
+            MentonForma.idReferencia AS MentonForma,
+            MentonInclinacion.idReferencia AS MentonInclinacion,
+            FormaOreja.idReferencia AS FormaOreja,
+            Original.idReferencia AS Original,
+            Superior.idReferencia AS Superior,
+            Posterior.idReferencia AS Posterior,
+            AdherenciaHelix.idReferencia AS AdherenciaHelix,
+            ContornoLobulo.idReferencia AS ContornoLobulo,
+            AdherenciaLobulo.idReferencia AS AdherenciaLobulo,
+            Particularidad.idReferencia AS Particularidad,
+            DimensionLobulo.idReferencia AS DimensionLobulo");
         $builder->join("catalogos_detalle AS genero","datos_personales.idGenero = genero.id","left");
         $builder->join("catalogos_detalle AS civil","datos_personales.idEstadoCivil = civil.id","left");
         $builder->join("media_filiacion","datos_personales.id = media_filiacion.idPersonal","left");
@@ -372,6 +405,41 @@ class CuipModel
         $builder->join("catalogos_detalle AS CantidadCabello","media_filiacion.idCantidadCabello = CantidadCabello.id","left");
         $builder->join("catalogos_detalle AS CabelloColor","media_filiacion.idColorCabello = CabelloColor.id","left");
         $builder->join("catalogos_detalle AS CabelloForma","media_filiacion.idFormaCabello = CabelloForma.id","left");
+        $builder->join("catalogos_detalle AS CabelloCalvicie","media_filiacion.idCalvicie = CabelloCalvicie.id","left");
+        $builder->join("catalogos_detalle AS CabelloImplantacion","media_filiacion.idImplantacionCabello = CabelloImplantacion.id","left");
+        $builder->join("catalogos_detalle AS FrenteAltura","media_filiacion.idAlturaFrente = FrenteAltura.id","left");
+        $builder->join("catalogos_detalle AS FrenteInclinacion","media_filiacion.idInclinacionFrente = FrenteInclinacion.id","left");
+        $builder->join("catalogos_detalle AS FrenteAncho","media_filiacion.idAnchoFrente = FrenteAncho.id","left");
+        $builder->join("catalogos_detalle AS CejasDireccion","media_filiacion.idDireccionCejas = CejasDireccion.id","left");
+        $builder->join("catalogos_detalle AS CejasImplantacion","media_filiacion.idImplantacionCejas = CejasImplantacion.id","left");
+        $builder->join("catalogos_detalle AS CejasFormas","media_filiacion.idFormaCejas = CejasFormas.id","left");
+        $builder->join("catalogos_detalle AS CejasTam","media_filiacion.idTamanoCejas = CejasTam.id","left");
+        $builder->join("catalogos_detalle AS OjosColor","media_filiacion.idColorOjos = OjosColor.id","left");
+        $builder->join("catalogos_detalle AS OjosForma","media_filiacion.idFormaOjos = OjosForma.id","left");
+        $builder->join("catalogos_detalle AS OjosTam","media_filiacion.idTamanoOjos = OjosTam.id","left");
+        $builder->join("catalogos_detalle AS Raiz","media_filiacion.idRaiz = Raiz.id","left");
+        $builder->join("catalogos_detalle AS Dorso","media_filiacion.idDorso = Dorso.id","left");
+        $builder->join("catalogos_detalle AS AnchoNariz","media_filiacion.idAnchoNariz = AnchoNariz.id","left");
+        $builder->join("catalogos_detalle AS BaseNariz","media_filiacion.idBaseNariz = BaseNariz.id","left");
+        $builder->join("catalogos_detalle AS AlturaNariz","media_filiacion.idAlturaNariz = AlturaNariz.id","left");
+        $builder->join("catalogos_detalle AS TamanoBoca","media_filiacion.idTamanoBoca = TamanoBoca.id","left");
+        $builder->join("catalogos_detalle AS Comisuras","media_filiacion.idComisuras = Comisuras.id","left");
+        $builder->join("catalogos_detalle AS EspesorLabio","media_filiacion.idEspesorLabio = EspesorLabio.id","left");
+        $builder->join("catalogos_detalle AS AlturaNasolabial","media_filiacion.idAlturaNasolabial = AlturaNasolabial.id","left");
+        $builder->join("catalogos_detalle AS ProminenciaLabio","media_filiacion.idProminenciaLabio = ProminenciaLabio.id","left");
+        $builder->join("catalogos_detalle AS MentonTipo","media_filiacion.idMentonTipo = MentonTipo.id","left");
+        $builder->join("catalogos_detalle AS MentonForma","media_filiacion.idMentonForma = MentonForma.id","left");
+        $builder->join("catalogos_detalle AS MentonInclinacion","media_filiacion.idMentonInclinacion = MentonInclinacion.id","left");
+        $builder->join("catalogos_detalle AS FormaOreja","media_filiacion.idFormaOreja = FormaOreja.id","left");
+        $builder->join("catalogos_detalle AS Original","media_filiacion.idOriginal = Original.id","left");
+        $builder->join("catalogos_detalle AS Superior","media_filiacion.idSuperior = Superior.id","left");
+        $builder->join("catalogos_detalle AS Posterior","media_filiacion.idPosterior = Posterior.id","left");
+        $builder->join("catalogos_detalle AS AdherenciaHelix","media_filiacion.idAdherenciaHelix = AdherenciaHelix.id","left");
+        $builder->join("catalogos_detalle AS ContornoLobulo","media_filiacion.idContornoLobulo = ContornoLobulo.id","left");
+        $builder->join("catalogos_detalle AS AdherenciaLobulo","media_filiacion.idAdherenciaLobulo = AdherenciaLobulo.id","left");
+        $builder->join("catalogos_detalle AS Particularidad","media_filiacion.idParticularidad = Particularidad.id","left");
+        $builder->join("catalogos_detalle AS DimensionLobulo","media_filiacion.idDimensionLobulo = DimensionLobulo.id","left");
+
         $builder->where("datos_personales.activo",true);
         $builder->where("Cuip",'');
         $builder->orderBy("primer_nombre","asc");
