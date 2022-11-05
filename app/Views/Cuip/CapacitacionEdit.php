@@ -22,42 +22,47 @@
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="dependencia" class=" control-label">Dependencia responsable:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="dependencia" name="dependencia">
+                            <div >    
+                                  <input type="text"  class="form-control "  id="certificado" name="certificado"  value="<?=$capacitacion->dependencia ?>"><input type="hidden" class="form-control " value=" <?= $id ?> " id="id" name="id"><?= csrf_field() ?>
+                            
+                        </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="institucion" class=" control-label">Institución Capacitadora:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="institucion" name="institucion">
+                            <div >    
+                                  <input type="text"  class="form-control "  id="institucion" name="institucion"  value="<?=$capacitacion->inst_capacitadora ?>">
+                            
+                        </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="nombre_curso" class=" control-label">Nombre del curso:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="nombre_curso" name="nombre_curso">
+                            <div >    
+                                  <input type="text"  class="form-control "  id="nombre_curso" name="nombre_curso"  value="<?=$capacitacion->nombre_curso ?>">
+                            
+                        </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="tema_curso" class=" control-label">Tema del curso:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="tema_curso" name="tema_curso">
+                            <div >    
+                                  <input type="text"  class="form-control "  id="tema_curso" name="tema_curso"  value="<?=$capacitacion->tema_curso ?>">
+                            
+                        </div>
                         </div>
                     </div>
                     <div class='col-6 col-sm-6'>
                         <div class="form-group">
                             <label for="nivel_curso" class="control-label">Nivel del curso recibido: <span class="text-danger">*</span></label>
                             <div>
-                                <select class="form-control" id="nivel_curso" name="nivel_curso">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($nivel_curso)) :
-                                        foreach ($nivel_curso as  $a) {
-                                    ?>
-                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                                    <?php
-                                        }
-                                    endif; ?>
-                                </select>
+                            <div >    
+                                  <input type="text"  class="form-control "  id="nivel_curso" name="nivel_curso"  value="<?=$capacitacion-> nivel?>">
+                            
+                        </div>
                                 <script>
                                     $(document).ready(function() {
                                         $("#nivel_curso").select2({
@@ -73,17 +78,10 @@
                         <div class="form-group">
                             <label for="eficienciaCursos" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
                             <div>
-                                <select class="form-control" id="eficienciaCursos" name="eficienciaCursos">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($eficiencia)) :
-                                        foreach ($eficiencia as  $a) {
-                                    ?>
-                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                                    <?php
-                                        }
-                                    endif; ?>
-                                </select>
+                            <div >    
+                                  <input type="text"  class="form-control "  id="eficienciaCursos" name="eficienciaCursos"  value="<?=$capacitacion->eficiencia ?>">
+                            
+                        </div>
                                 <script>
                                     $(document).ready(function() {
                                         $("#eficienciaCursos").select2({
@@ -98,12 +96,10 @@
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="inicio" class=" control-label">Inicio:<span class="text-danger">*</span></label>
-                            <div class="input-group date" id="inicio" data-target-input="nearest">
-                                <input type="text" required class="form-control datetimepicker-input" data-target="#inicio" id="datetime-inicio" name="inicio" placeholder="" value="" />
-                                <div class="input-group-append" data-target="#inicio" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
-                                </div>
-                            </div>
+                            <div >    
+                                  <input type="text"  class="form-control "  id="inicio" name="inicio"  value="<?=$capacitacion->inicio_curso ?>">
+                            
+                        </div>
                             <script type="text/javascript">
                                 $(function() {
                                     $("#inicio").datetimepicker({
@@ -117,12 +113,10 @@
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="conclusion" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
-                            <div class="input-group date" id="conclusion" data-target-input="nearest">
-                                <input type="text" required class="form-control datetimepicker-input" data-target="#conclusion" id="datetime-conclusion" name="conclusion" placeholder="" value="" />
-                                <div class="input-group-append" data-target="#conclusion" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
-                                </div>
-                            </div>
+                            <div >    
+                                  <input type="text"  class="form-control "  id="conclusion" name="conclusion"  value="<?=$capacitacion->conclusion_curso ?>">
+                            
+                        </div>
                             <script type="text/javascript">
                                 $(function() {
                                     $("#conclusion").datetimepicker({
@@ -136,13 +130,20 @@
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="duracion" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="duracion" name="duracion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+                            <div >    
+                                  <input type="text"  class="form-control "  id="duracion" name="duracion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" value="<?=$capacitacion->duracion_horas_curso ?>">
+                            
+                        </div>
+                           
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="comprobante" class=" control-label">Tipo de comprobante:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="comprobante" name="comprobante">
+                            <div >    
+                                  <input type="text"  class="form-control "  id="comprobante" name="comprobante"  value="<?=$capacitacion->tipo_comprobante ?>">
+                            
+                        </div>
                         </div>
                     </div>
 
@@ -180,36 +181,38 @@
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="empresa" class=" control-label">Insitutción o Empresa:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="empresa" name="empresa">
+                            <div >    
+                                  <input type="text"  class="form-control "  id="empresa" name="empresa"  value="<?=$capacitacion->institucion ?>">
+                            
+                        </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="curso" class=" control-label">Estudio o Curso:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="curso" name="curso">
+                            <div >    
+                                  <input type="text"  class="form-control "  id="curso" name="curso"  value="<?=$capacitacion->curso ?>">
+                            
+                        </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="tipo_curso" class=" control-label">Tipo de curso:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="tipo_curso" name="tipo_curso">
+                            <div >    
+                                  <input type="text"  class="form-control "  id="tipo_curso" name="tipo_curso"  value="<?=$capacitacion->tipo_curso ?>">
+                            
+                        </div>
                         </div>
                     </div>
                     <div class='col-6 col-sm-6'>
                         <div class="form-group">
                             <label for="cuso_tomado" class="control-label">¿El curso fue?: <span class="text-danger">*</span></label>
                             <div>
-                                <select class="form-control" id="cuso_tomado" name="cuso_tomado">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($cuso_tomado)) :
-                                        foreach ($cuso_tomado as  $a) {
-                                    ?>
-                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                                    <?php
-                                        }
-                                    endif; ?>
-                                </select>
+                            <div >    
+                                  <input type="text"  class="form-control "  id="cuso_tomado" name="cuso_tomado"  value="<?=$capacitacion->cursofue ?>">
+                            
+                        </div>
                                 <script>
                                     $(document).ready(function() {
                                         $("#cuso_tomado").select2({
@@ -225,17 +228,10 @@
                         <div class="form-group">
                             <label for="eficiencia" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
                             <div>
-                                <select class="form-control" id="eficiencia" name="eficiencia">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($eficiencia)) :
-                                        foreach ($eficiencia as  $a) {
-                                    ?>
-                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                                    <?php
-                                        }
-                                    endif; ?>
-                                </select>
+                            <div >    
+                                  <input type="text"  class="form-control "  id="eficiencia" name="eficiencia"  value="<?=$capacitacion->adicional ?>">
+                            
+                        </div>
                                 <script>
                                     $(document).ready(function() {
                                         $("#eficiencia").select2({
@@ -250,12 +246,10 @@
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="inicioAdicional" class=" control-label">Inicio:<span class="text-danger">*</span></label>
-                            <div class="input-group date" id="inicioAdicional" data-target-input="nearest">
-                                <input type="text" required class="form-control datetimepicker-input" data-target="#inicioAdicional" id="datetime-inicioAdicional" name="inicioAdicional" placeholder="" value="" />
-                                <div class="input-group-append" data-target="#inicioAdicional" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
-                                </div>
-                            </div>
+                            <div >    
+                                  <input type="text"  class="form-control "  id="inicioAdicional" name="inicioAdicional"  value="<?=$capacitacion->inicio_adicional ?>">
+                            
+                        </div>
                             <script type="text/javascript">
                                 $(function() {
                                     $("#inicioAdicional").datetimepicker({
@@ -269,12 +263,10 @@
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="conclusionAdicional" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
-                            <div class="input-group date" id="conclusionAdicional" data-target-input="nearest">
-                                <input type="text" required class="form-control datetimepicker-input" data-target="#conclusionAdicional" id="datetime-conclusionAdicional" name="conclusionAdicional" placeholder="" value="" />
-                                <div class="input-group-append" data-target="#conclusionAdicional" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
-                                </div>
-                            </div>
+                            <div >    
+                                  <input type="text"  class="form-control "  id="conclusionAdicional" name="conclusionAdicional"  value="<?=$capacitacion->conclusion_adicional ?>">
+                            
+                        </div>
                             <script type="text/javascript">
                                 $(function() {
                                     $("#conclusionAdicional").datetimepicker({
@@ -288,7 +280,11 @@
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="duracion_horas" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="duracion_horas" name="duracion_horas" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+                            <div >    
+                                  <input type="text"  class="form-control "  id="duracion_horas" name="duracion_horas" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" value="<?=$capacitacion->duracion_horas_adicional ?>">
+                            
+                        </div>
+                          
                         </div>
                     </div>
                 </div>
@@ -323,17 +319,10 @@
                 <div class="form-group">
                     <label for="idioma" class="control-label">Idioma o Dialecto: <span class="text-danger">*</span></label>
                     <div>
-                        <select class="form-control" id="idioma" name="idioma">
-                            <option value="">Selecciona una Opcion</option>
-                            <?php
-                            if (!empty($idioma)) :
-                                foreach ($idioma as  $a) {
-                            ?>
-                                    <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                            <?php
-                                }
-                            endif; ?>
-                        </select>
+                    <div >    
+                                  <input type="text"  class="form-control "  id="idioma" name="idioma"  value="<?=$capacitacion->idioma ?>">
+                            
+                        </div>
                         <script>
                             $(document).ready(function() {
                                 $("#idioma").select2({
@@ -348,17 +337,10 @@
             <div class='col-6 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="lectura" class=" control-label">% Lectura:<span class="text-danger">*</span></label>
-                    <select class="form-control" id="lectura" name="lectura">
-                        <option value="">Selecciona una Opcion</option>
-                        <?php
-                        if (!empty($porsentajeIdioma)) :
-                            foreach ($porsentajeIdioma as  $a) {
-                        ?>
-                                <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                        <?php
-                            }
-                        endif; ?>
-                    </select>
+                    <div >    
+                                  <input type="text"  class="form-control "  id="lectura" name="lectura"  value="<?=$capacitacion->lectura ?>">
+                            
+                        </div>
                     <script>
                         $(document).ready(function() {
                             $("#lectura").select2({
@@ -372,17 +354,10 @@
             <div class='col-6 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="escritura" class=" control-label">% Escritura:<span class="text-danger">*</span></label>
-                    <select class="form-control" id="escritura" name="escritura">
-                        <option value="">Selecciona una Opcion</option>
-                        <?php
-                        if (!empty($porsentajeIdioma)) :
-                            foreach ($porsentajeIdioma as  $a) {
-                        ?>
-                                <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                        <?php
-                            }
-                        endif; ?>
-                    </select>
+                    <div >    
+                                  <input type="text"  class="form-control "  id="escritura" name="escritura"  value="<?=$capacitacion->escritura ?>">
+                            
+                        </div>
                     <script>
                         $(document).ready(function() {
                             $("#escritura").select2({
@@ -396,18 +371,10 @@
             <div class='col-6 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="conversacion" class=" control-label">% Conversación:<span class="text-danger">*</span></label>
-                    <select class="form-control" id="conversacion" name="conversacion">
-                        <option value="">Selecciona una Opcion</option>
-                        <?php
-                        if (!empty($porsentajeIdioma)) :
-                            foreach ($porsentajeIdioma as  $a) {
-                        ?>
-                                <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                        <?php
-                            }
-                        endif; ?>
-                    </select>
-                    <script>
+                    <div >    
+                                  <input type="text"  class="form-control "  id="conversacion" name="conversacion"  value="<?=$capacitacion->conversacion ?>">
+                            
+                        </div>                    <script>
                         $(document).ready(function() {
                             $("#conversacion").select2({
                                 theme: "bootstrap4",
@@ -451,17 +418,10 @@
                         <div class="form-group">
                             <label for="tipo_habilidad" class="control-label">Tipo: <span class="text-danger">*</span></label>
                             <div>
-                                <select class="form-control" id="tipo_habilidad" name="tipo_habilidad">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($tipo_habilidad)) :
-                                        foreach ($tipo_habilidad as  $a) {
-                                    ?>
-                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                                    <?php
-                                        }
-                                    endif; ?>
-                                </select>
+                            <div >    
+                                  <input type="text"  class="form-control "  id="tipo_habilidad" name="tipo_habilidad"  value="<?=$capacitacion->habilidad ?>">
+                            
+                        </div>
                                 <script>
                                     $(document).ready(function() {
                                         $("#tipo_habilidad").select2({
@@ -476,24 +436,20 @@
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="especificacion" class=" control-label">Especifique:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="especificacion" name="especificacion">
+                            <div >    
+                                  <input type="text"  class="form-control "  id="especificacion" name="especificacion"  value="<?=$capacitacion->especifique_habilidad ?>">
+                            
+                        </div>
                         </div>
                     </div>
                     <div class='col-6 col-sm-6'>
                         <div class="form-group">
                             <label for="grado_habilidadCap" class="control-label">Grado de aptitude o dominio: <span class="text-danger">*</span></label>
                             <div>
-                                <select class="form-control" id="grado_habilidadCap" name="grado_habilidadCap">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($grado_habilidad)) :
-                                        foreach ($grado_habilidad as  $a) {
-                                    ?>
-                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                                    <?php
-                                        }
-                                    endif; ?>
-                                </select>
+                            <div >    
+                                  <input type="text"  class="form-control "  id="grado_habilidadCap" name="grado_habilidadCap"  value="<?=$capacitacion->grado ?>">
+                            
+                        </div>
                                 <script>
                                     $(document).ready(function() {
                                         $("#grado_habilidadCap").select2({
@@ -540,23 +496,19 @@
                     <div class='col-12 col-sm-12 col-md-12'>
                         <div class="form-group">
                             <label for="nombre" class=" control-label">Nombre:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="nombre" name="nombre">
+                            <div >    
+                                  <input type="text"  class="form-control "  id="nombre" name="nombre"  value="<?=$capacitacion->nombre_agrupacion ?>">
+                            
+                        </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="tipoAgrupa" class=" control-label">Tipo:<span class="text-danger">*</span></label>
-                            <select class="form-control" id="tipoAgrupa" name="tipoAgrupa">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if (!empty($tipo_agrupacion)) :
-                                    foreach ($tipo_agrupacion as  $a) {
-                                ?>
-                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                                <?php
-                                    }
-                                endif; ?>
-                            </select>
+                            <div >    
+                                  <input type="text"  class="form-control "  id="tipoAgrupa" name="tipoAgrupa"  value="<?=$capacitacion->agrupacion ?>">
+                            
+                        </div>
                             <script>
                                 $(document).ready(function() {
                                     $("#tipoAgrupa").select2({
@@ -570,12 +522,10 @@
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="desde" class=" control-label">Desde:<span class="text-danger">*</span></label>
-                            <div class="input-group date" id="desde" data-target-input="nearest">
-                                <input type="text" required class="form-control datetimepicker-input" data-target="#desde" id="datetime-desde" name="desde" placeholder="" value="" />
-                                <div class="input-group-append" data-target="#desde" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
-                                </div>
-                            </div>
+                            <div >    
+                                  <input type="text"  class="form-control "  id="desde" name="desde"  value="<?=$capacitacion->desde ?>">
+                            
+                        </div>
                             <script type="text/javascript">
                                 $(function() {
                                     $("#desde").datetimepicker({
@@ -589,12 +539,10 @@
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="hasta" class=" control-label">Hasta:<span class="text-danger">*</span></label>
-                            <div class="input-group date" id="hasta" data-target-input="nearest">
-                                <input type="text" required class="form-control datetimepicker-input" data-target="#hasta" id="datetime-hasta" name="hasta" placeholder="" value="" />
-                                <div class="input-group-append" data-target="#hasta" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
-                                </div>
-                            </div>
+                            <div >    
+                                  <input type="text"  class="form-control "  id="hasta" name="hasta"  value="<?=$capacitacion->hasta ?>">
+                            
+                        </div>
                             <script type="text/javascript">
                                 $(function() {
                                     $("#hasta").datetimepicker({

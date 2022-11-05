@@ -19,17 +19,10 @@
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="familia" class="control-label">¿Vive con su Familia?: <span class="text-danger">*</span></label>
-                            <select class="form-control" id="familia" name="familia">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if (!empty($SiNo)) :
-                                    foreach ($SiNo as  $a) {
-                                ?>
-                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                                <?php
-                                    }
-                                endif; ?>
-                            </select>
+                            <div >    
+                                  <input type="text"  class="form-control "  id="familia" name="familia"  value="<?=$estudio->vive ?>"><input type="hidden" class="form-control " value=" <?= $id ?> " id="id" name="id"><?= csrf_field() ?>
+                            
+                        </div>
                             <script>
                                 $(document).ready(function() {
                                     $("#familia").select2({
@@ -44,24 +37,20 @@
                         <div class="form-group">
                             <label for="ingreso" class=" control-label">Ingreso familiar adicional
                                 (Mensual):<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="ingreso" name="ingreso">
+                                <div >    
+                                  <input type="text"  class="form-control "  id="ingreso" name="ingreso"  value="<?=$estudio->ingreso_familiar ?>">
+                            
+                        </div>
                         </div>
                     </div>
                     <div class='col-6 col-sm-6'>
                         <div class="form-group">
                             <label for="domicilio_tipo" class="control-label">Su domicilio es: <span class="text-danger">*</span></label>
                             <div>
-                                <select class="form-control" id="domicilio_tipo" name="domicilio_tipo">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($domicilio_tipo)) :
-                                        foreach ($domicilio_tipo as  $a) {
-                                    ?>
-                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                                    <?php
-                                        }
-                                    endif; ?>
-                                </select>
+                            <div >    
+                                  <input type="text"  class="form-control "  id="domicilio_tipo" name="domicilio_tipo"  value="<?=$estudio->domicilio ?>">
+                            
+                        </div>
                                 <script>
                                     $(document).ready(function() {
                                         $("#domicilio_tipo").select2({
@@ -77,51 +66,74 @@
                         <div class="form-group">
                             <label for="actividad" class=" control-label">Actividades culturales o deportivas
                                 que practique:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="actividad" name="actividad">
+                                <div >    
+                                  <input type="text"  class="form-control "  id="actividad" name="actividad"  value="<?=$estudio->actividades_culturales ?>">
+                            
+                        </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="especificacion" class=" control-label">Especifiación de inmueble y
                                 costo:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="especificacion" name="especificacion">
+                                <div >    
+                                  <input type="text"  class="form-control "  id="especificacion" name="especificacion"  value="<?=$estudio->especificacion_inmueble ?>">
+                            
+                        </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="inversion" class=" control-label">Inversiones y monto
                                 aproximado:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="inversion" name="inversion">
-                        </div>
+                            <input type="text" class="form-control " id="inversion" name="inversion"><div >    
+                                  <input type="text"  class="form-control "  id="inversion" name="inversion"  value="<?=$estudio->inversiones ?>">
+                            
+                        </div>/div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="vehiculo" class=" control-label">Vehiculo y costo Aproximado:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="vehiculo" name="vehiculo">
+                            <div >    
+                                  <input type="text"  class="form-control "  id="vehiculo" name="vehiculo"  value="<?=$estudio->vehiculo ?>">
+                            
+                        </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="calidad" class=" control-label">Calidad de Vida:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="calidad" name="calidad">
+                            <div >    
+                                  <input type="text"  class="form-control "  id="calidad" name="calidad"  value="<?=$estudio->calidad_vida ?>">
+                            
+                        </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="vicio" class=" control-label">Vicios:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="vicio" name="vicio">
+                            <div >    
+                                  <input type="text"  class="form-control "  id="vicio" name="vicio"  value="<?=$estudio->vicios ?>">
+                            
+                        </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="imagen" class=" control-label">Imagen Publica:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="imagen" name="imagen">
+                            <div >    
+                                  <input type="text"  class="form-control "  id="imagen" name="imagen"  value="<?=$estudio->imagen_publica ?>">
+                            
+                        </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="comportamiento" class=" control-label">Comportamiento Social:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="comportamiento" name="comportamiento">
+                            <div >    
+                                  <input type="text"  class="form-control "  id="comportamiento" name="comportamiento"  value="<?=$estudio->comportamiento ?>">
+                            
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -156,37 +168,47 @@
                         <div class="form-group">
                             <label for="apellidoPaterno" class=" control-label">Apellido
                                 Paterno:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="apellidoPaterno" name="apellidoPaterno">
+                                <div >    
+                                  <input type="text"  class="form-control "  id="apellidoPaterno" name="apellidoPaterno"  value="<?=$estudio->apellido_paterno ?>">
+                            
+                        </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="apellidoMaterno" class=" control-label">Apellido
                                 Materno:<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno">
+                                <div >    
+                                  <input type="text"  class="form-control "  id="apellidoMaterno" name="apellidoMaterno"  value="<?=$estudio->apellido_materno ?>">
+                            
+                        </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="primerNombre" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control " id="primerNombre" name="primerNombre">
+                            <div >    
+                                  <input type="text"  class="form-control "  id="primerNombre" name="primerNombre"  value="<?=$estudio->primer_nombre ?>">
+                            
+                        </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="segundoNombre" class=" control-label">Segundo Nombre:</label>
-                            <input type="text" class="form-control " id="segundoNombre" name="segundoNombre">
+                            <div >    
+                                  <input type="text"  class="form-control "  id="segundoNombre" name="segundoNombre"  value="<?=$estudio->segundo_nombre ?>">
+                            
+                        </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-6'>
                         <div class='form-group'>
                             <label for="fecha_nacimiento_dep">Fecha de Nacimiento: <span class="text-danger">*</span></label>
-                            <div class="input-group date" id="fecha_nacimiento_dep" data-target-input="nearest">
-                                <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_nacimiento_dep" id="datetime-fecha_nacimiento_dep" name="fecha_nacimiento_dep" placeholder="" value="" />
-                                <div class="input-group-append" data-target="#fecha_nacimiento_dep" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
-                                </div>
-                            </div>
+                            <div >    
+                                  <input type="text"  class="form-control "  id="fecha_nacimiento_dep" name="fecha_nacimiento_dep"  value="<?=$estudio->fecha_nacimiento ?>">
+                            
+                        </div>
                             <script type="text/javascript">
                                 $(function() {
                                     $("#fecha_nacimiento_dep").datetimepicker({
@@ -200,17 +222,10 @@
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="sexo_dep" class=" control-label">Sexo:<span class="text-danger">*</span></label>
-                            <select class="form-control" id="sexo_dep" name="sexo_dep">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if (!empty($genero)) :
-                                    foreach ($genero as  $a) {
-                                ?>
-                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                                <?php
-                                    }
-                                endif; ?>
-                            </select>
+                            <div >    
+                                  <input type="text"  class="form-control "  id="sexo_dep" name="sexo_dep"  value="<?=$estudio->sexo ?>">
+                            
+                        </div>
                             <script>
                                 $(document).ready(function() {
                                     $("#sexo_dep").select2({
@@ -225,17 +240,10 @@
                         <div class="form-group">
                             <label for="parentesco_familiar" class="control-label">Parentesco: <span class="text-danger">*</span></label>
                             <div>
-                                <select class="form-control" id="parentesco_familiar" name="parentesco_familiar">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($parentesco_todos)) :
-                                        foreach ($parentesco_todos as  $a) {
-                                    ?>
-                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                                    <?php
-                                        }
-                                    endif; ?>
-                                </select>
+                            <div >    
+                                  <input type="text"  class="form-control "  id="parentesco_familiar" name="parentesco_familiar"  value="<?=$estudio->parentesco ?>">
+                            
+                        </div>
                                 <script>
                                     $(document).ready(function() {
                                         $("#parentesco_familiar").select2({
