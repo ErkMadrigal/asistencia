@@ -43,7 +43,11 @@ class Cliente extends BaseController {
 					'id' => $id ,
 					'razon_social' => $v->razon_social,
 					'nombre_corto' => $v->nombre_corto,
-					'email' => $v->email,
+					'fecha_inicio' => $v->fecha_inicio,
+					'fecha_inicio' => $v->fecha_inicio,
+					'fecha_fin' => $v->fecha_fin,
+					'nombre_ubicacion' => $v->nombre_ubicacion,
+					
 					'activo' => $v->activo
 
 				) ;
@@ -53,11 +57,11 @@ class Cliente extends BaseController {
                 'data' => $result]; 
 
         	$data['cliente'] = $dataCrud['data'];
-
 			
 			return view('Clientes/Clientescatalogo', $data);
 		}	
     }
+
 
     public function DetalleReferencia(){
 		if ($this->request->getMethod() == "get" && $this->request->getvar(['id'],FILTER_SANITIZE_STRING)){
