@@ -235,7 +235,7 @@ class CuipModel
 
     public function GetSocioEconomicoById($id){
         $builder = $this->db->table('estudio_socioeconomico');
-        $builder->select("actividades_culturales,VCF.valor AS vive, TD.valor AS domicilio,inversiones,vehiculo,calidad_vida,vicios,imagen_publica,comportamiento,estudio_socioeconomico.apellido_paterno,estudio_socioeconomico.apellido_materno,primer_nombre,segundo_nombre,fecha_nacimiento,especificacion_inmueble, ingreso_familiar,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->select("estudio_socioeconomico.id,actividades_culturales,VCF.valor AS vive, TD.valor AS domicilio,inversiones,vehiculo,calidad_vida,vicios,imagen_publica,comportamiento,estudio_socioeconomico.apellido_paterno,estudio_socioeconomico.apellido_materno,primer_nombre,segundo_nombre,fecha_nacimiento,especificacion_inmueble, ingreso_familiar,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
         $builder->join("catalogos_detalle VCF"," estudio_socioeconomico.vive_con_familia= VCF.id  ","left");
         $builder->join("catalogos_detalle TD"," estudio_socioeconomico.idTipoDomicilio= TD.id  ","left");
        // $builder->join("catalogos_detalle SG"," estudio_socioeconomico.idGenero= SG.id  ","left");
@@ -409,6 +409,70 @@ class CuipModel
         $builder->orderBy("valor","asc");
         return $builder->get()->getResult();
         
+    }
+
+    public function GetExperienciaPersonalesById($id){
+        $builder = $this->db->table('datos_personales_experiencia');
+        $builder->select("nombre_curso,nombre_institucion,fecha_inicio,fecha_termino,certificado_por");
+        $builder->where('idPersonales', $id);
+        return $builder->get()->getResult();
+    }
+
+    public function GetReferenciaById($id){
+        $builder = $this->db->table('referencias');
+        $builder->select("apellido_paterno_fam, apellido_materno_fam, primer_nombre_fam, segundo_nombre_fam, idGenero_fam, ocupacion_fam, idParentesco_fam, calle_fam, numero_exterior_fam, numero_interior_fam, colonia_fam, idCodigoPostal_fam, numero_telefono_fam, idPaisNacimiento_fam, idEstado_fam, municipio_fam, ciudad_fam, apellido_paterno_pariente, apellido_materno_pariente, primer_nombre_pariente, segundo_nombre_pariente, idGenero_pariente, ocupacion_pariente, idParentesco_pariente, calle_pariente, numero_exterior_pariente, numero_interior_pariente, colonia_pariente, idCodigoPostal_pariente, numero_telefono_pariente, idPaisNacimiento_pariente, idEstado_pariente, municipio_pariente, ciudad_pariente, apellido_paterno_personal, apellido_materno_personal, primer_nombre_personal, segundo_nombre_personal, idGenero_personal, ocupacion_personal, idParentesco_personal, calle_personal, numero_exterior_personal, numero_interior_personal, colonia_personal, idCodigoPostal_personal, numero_telefono_personal, idPaisNacimiento_personal, idEstado_personal, municipio_personal, ciudad_personal, apellido_paterno_laboral, apellido_materno_laboral, primer_nombre_laboral, segundo_nombre_laboral, idGenero_laboral, ocupacion_laboral, idParentesco_laboral, calle_laboral, numero_exterior_laboral, numero_interior_laboral, colonia_laboral, idCodigoPostal_laboral, numero_telefono_laboral, idPaisNacimiento_laboral, idEstado_laboral, municipio_laboral, ciudad_laboral");
+        $builder->where('idPersonal', $id);
+        return $builder->get()->getRow();
+    }
+
+
+    public function GetSocioEconomicoDependientesById($id){
+        $builder = $this->db->table('estudio_socioeconomico_dependientes');
+        $builder->select("apellido_paterno, apellido_materno, primer_nombre, segundo_nombre, fecha_nacimiento, idGenero, idParentesco");
+        $builder->where('idSocioeconomico', $id);
+        return $builder->get()->getResult();
+    }
+
+    public function GetResolucionesById($id){
+        $builder = $this->db->table('resoluciones_ministeriales');
+        $builder->select("institucion_emisora, idEstado, delitos, motivos, numero_expediente, agencia_mp, averiguacion_previa, idTipoFuero, estado_averiguacion, inicio_averiguacion, aldia_averiguacion, juzgado, num_proceso, estado_procesal, inicio_proceso, aldia_proceso");
+        $builder->where('idPersonal', $id);
+        return $builder->get()->getResult();
+    }
+
+    public function GetEstimulosById($id){
+        $builder = $this->db->table('estimulos_recibidos');
+        $builder->select("tipo_estimulo, descripcion_estimulo, dependencia_otorga, otorgado");
+        $builder->where('idPersonal', $id);
+        return $builder->get()->getResult();
+    }
+
+    public function GetCapacitacionesPublicById($id){
+        $builder = $this->db->table('capacitacion_publica');
+        $builder->select("dependencia, inst_capacitadora, nombre_curso, tema_curso, idNivel_curso, idEficienciaCurso, inicio_curso, conclusion_curso, duracion_horas_curso, tipo_comprobante");
+        $builder->where('idPersonal', $id);
+        return $builder->get()->getResult();
+    }
+
+    public function GetIdiomasById($id){
+        $builder = $this->db->table('idiomas_dialectos');
+        $builder->select("idIdioma, idIdiomaLectura, idIdiomaEscritura, idIdiomaConversacion");
+        $builder->where('idPersonal', $id);
+        return $builder->get()->getResult();
+    }
+
+    public function GetHabilidadesById($id){
+        $builder = $this->db->table('habilidades_haptitudes');
+        $builder->select("idTipoHabilidad, especifique_habilidad, idGradoHabilidad");
+        $builder->where('idPersonal', $id);
+        return $builder->get()->getResult();
+    }
+
+    public function GetAgrupacionesById($id){
+        $builder = $this->db->table('afiliacion_agrupaciones');
+        $builder->select("nombre_agrupacion, idTipoAgrupacion, desde, hasta");
+        $builder->where('idPersonal', $id);
+        return $builder->get()->getResult();
     }
     
 }

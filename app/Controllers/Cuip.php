@@ -2082,15 +2082,27 @@ class Cuip extends BaseController {
 			$id = $this->encrypt->Decrytp($getId);
 
          	$data['variable'] = $this->modelCuip->GetDatosPersonalesById($id);
-			$data['estudio'] = $this->modelCuip->GetSocioEconomicoById($id);
+         	$data['experiencia'] = $this->modelCuip->GetExperienciaPersonalesById($id);
+			$economico = $this->modelCuip->GetSocioEconomicoById($id);
+			$data['estudio'] = $economico;
+			$data['economico_dependientes'] = $this->modelCuip->GetSocioEconomicoDependientesById($economico->id);
 			$data['seguridad'] = $this->modelCuip->GetEmpleosSeridadById($id);
 			$data['diversos'] = $this->modelCuip->GetEmpleosDiversos($id);
 			$data['capacitacion'] = $this->modelCuip->GetCapacitaciones($id);
+			$data['capacitacion_publica'] = $this->modelCuip->GetCapacitacionesPublicById($id);
+			$data['idiomas'] = $this->modelCuip->GetIdiomasById($id);
+			$data['habilidades'] = $this->modelCuip->GetHabilidadesById($id);
+			$data['agrupaciones'] = $this->modelCuip->GetAgrupacionesById($id);
 			$data['sanciones'] = $this->modelCuip->GetSanciones($id);
-			$data['referencia'] = $this->modelReferencia->GetReferencia($id);
+
+			$data['resoluciones'] = $this->modelCuip->GetResolucionesById($id);
+
+			$data['estimulos'] = $this->modelCuip->GetEstimulosById($id);
+			$data['referencia'] = $this->modelCuip->GetReferenciaById($id);
 
 			$documentos = $this->modelCuip->GetDocumentosById($id);
 
+			
 
 			$result = [];
 

@@ -17,18 +17,27 @@
         <div class="row">
             <div class='col-12 col-sm-4'>
                 <div class="form-group">
+                    <?php
+                        if( !empty($fotoIzq) ): ?>
                     <img src="./getFileIni?h=<?= $fotoIzq ?>" alt="user-avatar" class=" img-fluid">
+                    <?php endif ?>
                 </div>
             </div>
             <div class='col-12 col-sm-4'>
                 <div class="form-group">
-                    
+                    <?php
+                        if( !empty($foto) ): ?>
                     <img src="./getFileIni?h=<?= $foto ?>" class=" img-fluid">
+                    <?php endif ?>
                 </div>
             </div>        
             <div class='col-12 col-sm-4'>
                 <div class="form-group">
+                    <?php
+                        if( !empty($fotoDer) ): ?>
                     <img src="./getFileIni?h=<?= $fotoDer ?>" class=" img-fluid">
+
+                    <?php endif ?>    
                 </div>
             </div>             
         </div>            
