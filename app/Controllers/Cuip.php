@@ -2085,7 +2085,9 @@ class Cuip extends BaseController {
          	$data['experiencia'] = $this->modelCuip->GetExperienciaPersonalesById($id);
 			$economico = $this->modelCuip->GetSocioEconomicoById($id);
 			$data['estudio'] = $economico;
-			$data['economico_dependientes'] = $this->modelCuip->GetSocioEconomicoDependientesById($economico->id);
+			if (!empty($economico)){
+				$data['economico_dependientes'] = $this->modelCuip->GetSocioEconomicoDependientesById($economico->id);
+			}
 			$data['seguridad'] = $this->modelCuip->GetEmpleosSeridadById($id);
 			$data['diversos'] = $this->modelCuip->GetEmpleosDiversos($id);
 			$data['capacitacion'] = $this->modelCuip->GetCapacitaciones($id);
@@ -2506,7 +2508,10 @@ class Cuip extends BaseController {
          	$data['experiencia'] = $this->modelCuip->GetExperienciaPersonalesById($id);
 			$economico = $this->modelCuip->GetSocioEconomicoById($id);
 			$data['estudio'] = $economico;
-			$data['economico_dependientes'] = $this->modelCuip->GetSocioEconomicoDependientesById($economico->id);
+
+			if (!empty($economico)){
+				$data['economico_dependientes'] = $this->modelCuip->GetSocioEconomicoDependientesById($economico->id);
+			}
 			$data['seguridad'] = $this->modelCuip->GetEmpleosSeridadById($id);
 			$data['diversos'] = $this->modelCuip->GetEmpleosDiversos($id);
 			$data['capacitacion'] = $this->modelCuip->GetCapacitaciones($id);
@@ -2522,6 +2527,7 @@ class Cuip extends BaseController {
 			$data['referencia'] = $this->modelCuip->GetReferenciaById($id);
 
 			$data['mediaFiliacion'] = $this->modelCuip->GetMedFiliacionById($id);
+			$documentos = $this->modelCuip->GetDocumentosById($id);
 
 			$data['id'] = $this->encrypt->Encrypt($id); 
 			
