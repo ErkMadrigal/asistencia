@@ -14,6 +14,7 @@
             </button>
         </div>
     </div>
+    
     <!-- /.card-header -->
     <div class="card-body">
         <form class="form-horizontal" id="Capacitaciones">

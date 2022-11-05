@@ -386,7 +386,7 @@
                 <div class="form-group">
                     <label for="dependencia" class=" control-label">Dependencia que otorga:<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="dependencia" name="dependencia"  value="<?=$sanciones->dependencia_otorga  ?>">
+                           <input type="text"  class="form-control "  id="dependencia" name="dependencia"  value="<?=$sanciones->dependencia_otorga  ?>">
                             
                         </div>
                 </div>
