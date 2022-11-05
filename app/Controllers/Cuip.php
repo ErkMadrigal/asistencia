@@ -2688,6 +2688,7 @@ class Cuip extends BaseController {
 
         			$parentesco_cercano = $this->encrypt->Decrytp($getParentesco_cercano);
 
+
         			$getPaisParCer = $this->request->getPost('paisParCer');
 
         			$paisParCer = $this->encrypt->Decrytp($getPaisParCer);
@@ -2708,6 +2709,38 @@ class Cuip extends BaseController {
 
         			$ocupacionRefLab = $this->encrypt->Decrytp($getOcupacionRefLab);
 
+        			$getEstadocodigoRefCer = $this->request->getPost('estadocodigoRefCer');
+
+        			$estadocodigoRefCer = $this->encrypt->Decrytp($getEstadocodigoRefCer);
+
+        			$getMunicipiocodigoRefCer = $this->request->getPost('municipiocodigoRefCer');
+
+        			$municipiocodigoRefCer = $this->encrypt->Decrytp($getMunicipiocodigoRefCer);
+
+        			$getEstadocodigoParCer = $this->request->getPost('estadocodigoParCer');
+
+        			$estadocodigoParCer = $this->encrypt->Decrytp($getEstadocodigoParCer);
+
+        			$getMunicipiocodigoParCer = $this->request->getPost('municipiocodigoParCer');
+
+        			$municipiocodigoParCer = $this->encrypt->Decrytp($getMunicipiocodigoParCer);
+
+        			$getEstadocodigoPersonal = $this->request->getPost('estadocodigoPersonal');
+
+        			$estadocodigoPersonal = $this->encrypt->Decrytp($getEstadocodigoPersonal);
+
+        			$getMunicipiocodigoPersonal = $this->request->getPost('municipiocodigoPersonal');
+
+        			$municipiocodigoPersonal = $this->encrypt->Decrytp($getMunicipiocodigoPersonal);
+
+        			$getEstadocodigoLaboral = $this->request->getPost('estadocodigoLaboral');
+
+        			$estadocodigoLaboral = $this->encrypt->Decrytp($getEstadocodigoLaboral);
+
+        			$getMunicipiocodigoLaboral = $this->request->getPost('municipiocodigoLaboral');
+
+        			$municipiocodigoLaboral = $this->encrypt->Decrytp($getMunicipiocodigoLaboral);
+
         			
 
 
@@ -2721,7 +2754,7 @@ class Cuip extends BaseController {
 						"apellido_materno_fam" => strtoupper($this->request->getPost('apellidoMaterno')) , 
 						"primer_nombre_fam" => strtoupper($this->request->getPost('primerNombre')) , 
 						"segundo_nombre_fam" => strtoupper($this->request->getPost('segundoNombre')) , 
-						"idGenero_fam" => $getSexo_fam_cer , 
+						"idGenero_fam" => $sexo_fam_cer , 
 						"ocupacion_fam" => $ocupacion , 
 						"idParentesco_fam" => $parentesco_fam_cercano , 
 						"calle_fam" => strtoupper($this->request->getPost('calle')) , 
@@ -2731,8 +2764,8 @@ class Cuip extends BaseController {
 						"idCodigoPostal_fam" => $this->request->getPost('codigoRefCer') , 
 						"numero_telefono_fam" => $this->request->getPost('numero') , 
 						"idPaisNacimiento_fam" => $pais , 
-						"idEstado_fam" => $this->request->getPost('estadocodigoRefCer') , 
-						"municipio_fam" => $this->request->getPost('municipiocodigoRefCer') , 
+						"idEstado_fam" => $estadocodigoRefCer , 
+						"municipio_fam" => $municipiocodigoRefCer , 
 						"ciudad_fam" => strtoupper($this->request->getPost('ciudadcodigoRefCer')) , 
 						"apellido_paterno_pariente" => strtoupper($this->request->getPost('apellidoPaternoParCer')) , 
 						"apellido_materno_pariente" => strtoupper($this->request->getPost('apellidoMaternoParCer')) , 
@@ -2748,8 +2781,8 @@ class Cuip extends BaseController {
 						"idCodigoPostal_pariente" => $this->request->getPost('codigoParCer') , 
 						"numero_telefono_pariente" => $this->request->getPost('numeroParCer') , 
 						"idPaisNacimiento_pariente" => $paisParCer , 
-						"idEstado_pariente" => $this->request->getPost('estadocodigoParCer') , 
-						"municipio_pariente" => $this->request->getPost('municipiocodigoParCer') , 
+						"idEstado_pariente" => $estadocodigoParCer , 
+						"municipio_pariente" => $municipiocodigoParCer , 
 						"ciudad_pariente" => strtoupper($this->request->getPost('ciudadcodigoParCer')) , 
 
 						"apellido_paterno_personal" => strtoupper($this->request->getPost('apellidoPaternoRefPer')) , 
@@ -2766,8 +2799,8 @@ class Cuip extends BaseController {
 						"idCodigoPostal_personal" => $this->request->getPost('codigoPersonal') , 
 						"numero_telefono_personal" => $this->request->getPost('numeroRefPer') , 
 						"idPaisNacimiento_personal" => $paisRefPer, 
-						"idEstado_personal" => $this->request->getPost('estadocodigoPersonal') , 
-						"municipio_personal" => $this->request->getPost('municipiocodigoPersonal') , 
+						"idEstado_personal" => $estadocodigoPersonal , 
+						"municipio_personal" => $municipiocodigoPersonal , 
 						"ciudad_personal" => strtoupper($this->request->getPost('ciudadcodigoPersonal')) ,
 
 						"apellido_paterno_laboral" => strtoupper($this->request->getPost('apellidoPaternoRefLab')) , 
@@ -2784,8 +2817,8 @@ class Cuip extends BaseController {
 						"idCodigoPostal_laboral" => $this->request->getPost('codigoLaboral') , 
 						"numero_telefono_laboral" => $this->request->getPost('numeroRefLab') , 
 						"idPaisNacimiento_laboral" => $paisRefLab , 
-						"idEstado_laboral" => $this->request->getPost('estadocodigoLaboral') , 
-						"municipio_laboral" => $this->request->getPost('municipiocodigoLaboral') , 
+						"idEstado_laboral" => $estadocodigoLaboral , 
+						"municipio_laboral" => $municipiocodigoLaboral , 
 						"ciudad_laboral" => strtoupper($this->request->getPost('ciudadcodigoLaboral')) ,
 						"activo" => 1 , 
 						"createdby" => $LoggedUserId , 
@@ -2901,6 +2934,25 @@ class Cuip extends BaseController {
 			$sheet->setCellValue('Z' . $count, $row->idEstado_adscripcion);
 
 			$sheet->setCellValue('AA' . $count, $row->municipio_adscripcion);
+
+			//Referencia
+			$sheet->setCellValue('AB' . $count, $row->apellido_paterno_fam);
+			$sheet->setCellValue('AC' . $count, $row->apellido_materno_fam);
+			$sheet->setCellValue('AD' . $count, $row->nombreFam);
+			$sheet->setCellValue('AE' . $count, $row->idGenero_fam);
+			$sheet->setCellValue('AF' . $count, $row->ocupacion_fam);
+			$sheet->setCellValue('AG' . $count, 1);
+			$sheet->setCellValue('AH' . $count, $row->idParentesco_fam);
+			$sheet->setCellValue('AI' . $count, $row->calle_fam);
+			$sheet->setCellValue('AJ' . $count, $row->numero_exterior_fam);
+			$sheet->setCellValue('AK' . $count, $row->numero_interior_fam);
+			$sheet->setCellValue('AL' . $count, $row->colonia_fam);
+			$sheet->setCellValue('AM' . $count, $row->idCodigoPostal_fam);
+			$sheet->setCellValue('AN' . $count, $row->numero_telefono_fam);
+			$sheet->setCellValue('AO' . $count, $row->idEstado_fam);
+			$sheet->setCellValue('AP' . $count, $row->municipio_fam);
+			$sheet->setCellValue('AQ' . $count, $row->ciudad_fam);
+			
 
 			//MEDIA FILIACION
 			$sheet->setCellValue('AR' . $count, $row->tiposangre);

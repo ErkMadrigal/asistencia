@@ -347,7 +347,7 @@ class CuipModel
 
     public function GetCuipExcel(){
         $builder = $this->db->table("datos_personales");
-        $builder->select("apellido_paterno,apellido_materno, CONCAT(primer_nombre,' ' ,segundo_nombre) AS nombre,fecha_nacimiento,idEntidadNacimiento,idMunicipioNacimiento,genero.idReferencia AS idGenero,civil.idReferencia AS idEstadoCivil,idNivelEducativo,escuela,especialidad,rfc,clave_electoral,cartilla_smn,curp,calle,numero_exterior,numero_interior,colonia,idCodigoPostal,numero_telefono,idEstado,municipio,fecha_ingreso,idEstado_adscripcion,municipio_adscripcion,
+        $builder->select("apellido_paterno,apellido_materno, CONCAT(primer_nombre,' ' ,segundo_nombre) AS nombre,fecha_nacimiento,idEntidadNacimiento,idMunicipioNacimiento,genero.idReferencia AS idGenero,civil.idReferencia AS idEstadoCivil,nivelEducativo.idreferencia AS idNivelEducativo,escuela,especialidad,rfc,clave_electoral,cartilla_smn,curp,calle,numero_exterior,numero_interior,colonia,idCodigoPostal,numero_telefono,idEstado,municipio,fecha_ingreso,idEstado_adscripcion,municipio_adscripcion,
             Complexion.idReferencia AS complexion,
             TSangre.idReferencia AS tiposangre,
             SangreRH.idReferencia AS rhSangre,
@@ -392,10 +392,26 @@ class CuipModel
             ContornoLobulo.idReferencia AS ContornoLobulo,
             AdherenciaLobulo.idReferencia AS AdherenciaLobulo,
             Particularidad.idReferencia AS Particularidad,
-            DimensionLobulo.idReferencia AS DimensionLobulo");
+            DimensionLobulo.idReferencia AS DimensionLobulo,
+            apellido_paterno_fam,
+            apellido_materno_fam, 
+            CONCAT(primer_nombre_fam,' ' ,segundo_nombre_fam) AS nombreFam,
+            generoFam.idReferencia AS idGenero_fam,
+            ocupacionFam.idReferencia AS ocupacion_fam,
+            parentescoFam.idReferencia AS idParentesco_fam,
+            calle_fam,
+            numero_exterior_fam,
+            numero_interior_fam,
+            colonia_fam,
+            idCodigoPostal_fam,
+            numero_telefono_fam,
+            idEstado_fam,
+            municipio_fam,
+            ciudad_fam
+            ");
         $builder->join("catalogos_detalle AS genero","datos_personales.idGenero = genero.id","left");
         $builder->join("catalogos_detalle AS civil","datos_personales.idEstadoCivil = civil.id","left");
-        $builder->join("media_filiacion","datos_personales.id = media_filiacion.idPersonal","left");
+        $builder->join("media_filiacion","datos_personales.id = media_filiacion.idPersonal","inner");
         $builder->join("catalogos_detalle AS Complexion","media_filiacion.idComplexion = Complexion.id","left");
         $builder->join("catalogos_detalle AS TSangre","media_filiacion.idSangreTipo = TSangre.id","left");
         $builder->join("catalogos_detalle AS SangreRH","media_filiacion.idRH = SangreRH.id","left");
@@ -439,9 +455,15 @@ class CuipModel
         $builder->join("catalogos_detalle AS AdherenciaLobulo","media_filiacion.idAdherenciaLobulo = AdherenciaLobulo.id","left");
         $builder->join("catalogos_detalle AS Particularidad","media_filiacion.idParticularidad = Particularidad.id","left");
         $builder->join("catalogos_detalle AS DimensionLobulo","media_filiacion.idDimensionLobulo = DimensionLobulo.id","left");
+        $builder->join("referencias","datos_personales.id = referencias.idPersonal","left");
+        $builder->join("catalogos_detalle AS generoFam","referencias.idGenero_fam = generoFam.id","left");
+        $builder->join("catalogos_detalle AS ocupacionFam","referencias.ocupacion_fam = ocupacionFam.id","left");
+        $builder->join("catalogo_referencias AS parentescoFam","referencias.idParentesco_fam = parentescoFam.id","left");
 
+        $builder->join("catalogos_detalle AS nivelEducativo","datos_personales.idNivelEducativo = nivelEducativo.id","left");
         $builder->where("datos_personales.activo",true);
         $builder->where("Cuip",'');
+        
         $builder->orderBy("primer_nombre","asc");
         return $builder->get()->getResult();
         
