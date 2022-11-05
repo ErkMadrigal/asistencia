@@ -22,11 +22,12 @@ class ClienteModel
 
     public function GetClientes(){
         $builder = $this->db->table('cliente');
-        $builder->select('cliente.id, razon_social, nombre_corto,email,activo');
-        
+        $builder->select('cliente.id, razon_social, nombre_corto,fecha_inicio,fecha_fin,ubicacion.nombre_ubicacion,ubicacion.calle_num,ubicacion.ciudad,ubicacion.estado,ubicacion.activo,cliente.activo');
+        $builder->join("ubicacion","ubicacion.idCliente = ubicacion.id","left");
         return $builder->get()->getResult();
         
     }
+
 
     public function GetClienteById($id){
         $builder = $this->db->table('cliente');
