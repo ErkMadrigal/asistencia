@@ -2099,6 +2099,7 @@ class Cuip extends BaseController {
 
 			$data['estimulos'] = $this->modelCuip->GetEstimulosById($id);
 			$data['referencia'] = $this->modelCuip->GetReferenciaById($id);
+			$data['mediaFiliacion'] = $this->modelCuip->GetMedFiliacionById($id);
 
 			$documentos = $this->modelCuip->GetDocumentosById($id);
 
@@ -2519,6 +2520,8 @@ class Cuip extends BaseController {
 
 			$data['estimulos'] = $this->modelCuip->GetEstimulosById($id);
 			$data['referencia'] = $this->modelCuip->GetReferenciaById($id);
+
+			$data['mediaFiliacion'] = $this->modelCuip->GetMedFiliacionById($id);
 
 			$data['id'] = $this->encrypt->Encrypt($id); 
 			

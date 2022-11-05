@@ -542,5 +542,12 @@ class CuipModel
         $builder->where('idPersonal', $id);
         return $builder->get()->getResult();
     }
+
+    public function GetMedFiliacionById($id){
+        $builder = $this->db->table('media_filiacion');
+        $builder->select("idComplexion, idPiel, idCara, idCantidadCabello, idColorCabello, idFormaCabello, idCalvicie, idImplantacionCabello, idAlturaFrente, idInclinacionFrente, idAnchoFrente, idDireccionCejas, idImplantacionCejas, idFormaCejas, idTamanoCejas, idColorOjos, idFormaOjos, idTamanoOjos, idRaiz, idDorso, idAnchoNariz, idBaseNariz, idAlturaNariz, idTamanoBoca, idComisuras, idEspesorLabio, idAlturaNasolabial, idProminenciaLabio, idMentonTipo, idMentonForma, idMentonInclinacion, idFormaOreja, idOriginal, idSuperior, idPosterior, idAdherenciaHelix, idContornoLobulo, idAdherenciaLobulo, idParticularidad, idDimensionLobulo, idSangreTipo, idRH, idUsaAnteojos, estatura, peso, idCicatrices, descrip_cicatrices, idTatuajes, descrip_tatuajes, idLunares, descrip_lunares, idDefectos, descrip_defectos, idProtesis, descrip_protesis, idDiscapacidad, descrip_discapacidad");
+        $builder->where('idPersonal', $id);
+        return $builder->get()->getRow();
+    }
     
 }
