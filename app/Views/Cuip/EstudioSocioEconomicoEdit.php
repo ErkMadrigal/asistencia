@@ -23,6 +23,7 @@
                         <div>
 
                             <select id="familia" name="familia" class="form-control">
+                                    <!--  <option selected value="<?= $estudio->vive ?>"><?= $estudio->vive ?></option>-->
                                 <?php foreach ($estudio as $vive => $valor) : ?>
                                     <option value="<?= $estudio->vive ?>"><?= $estudio->vive ?></option>
                                 <?php endforeach; ?>
