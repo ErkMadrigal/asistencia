@@ -348,7 +348,7 @@ class CuipModel
 
     public function GetCuipExcel(){
         $builder = $this->db->table("datos_personales");
-        $builder->select("apellido_paterno,apellido_materno, CONCAT(primer_nombre,' ' ,segundo_nombre) AS nombre,fecha_nacimiento,idEntidadNacimiento,munNacimiento.claveMunicipio AS idMunicipioNacimiento,genero.idReferencia AS idGenero,civil.idReferencia AS idEstadoCivil,nivelEducativo.idreferencia AS idNivelEducativo,escuela,especialidad,rfc,clave_electoral,cartilla_smn,curp,calle,numero_exterior,numero_interior,colonia,idCodigoPostal,numero_telefono,idEstado,municipio,fecha_ingreso,idEstado_adscripcion,
+        $builder->select("apellido_paterno,apellido_materno, CONCAT(primer_nombre,' ' ,segundo_nombre) AS nombre,fecha_nacimiento,idEntidadNacimiento,munNacimiento.claveMunicipio AS idMunicipioNacimiento,genero.idReferencia AS idGenero,civil.idReferencia AS idEstadoCivil,nivelEducativo.idreferencia AS idNivelEducativo,escuela,especialidad,rfc,clave_electoral,cartilla_smn,curp,calle,numero_exterior,numero_interior,colonia,idCodigoPostal,numero_telefono,idEstado,munDireccion.claveMunicipio AS municipio,fecha_ingreso,idEstado_adscripcion,
             munAdscripcion.claveMunicipio AS municipio_adscripcion,
             Complexion.idReferencia AS complexion,
             TSangre.idReferencia AS tiposangre,
@@ -466,6 +466,7 @@ class CuipModel
         $builder->join("estados_detalles AS munReferencia","referencias.municipio_fam = munReferencia.id","left");
         $builder->join("estados_detalles AS munAdscripcion","datos_personales.municipio_adscripcion = munAdscripcion.id","left");
         $builder->join("estados_detalles AS munNacimiento","datos_personales.idMunicipioNacimiento = munNacimiento.id","left");
+        $builder->join("estados_detalles AS munDireccion","datos_personales.municipio = munDireccion.id","left");
         $builder->where("datos_personales.activo",true);
         $builder->where("Cuip",'');
         
