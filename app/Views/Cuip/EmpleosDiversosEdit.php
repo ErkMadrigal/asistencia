@@ -494,6 +494,7 @@
         </div>
     </div>
 </div>
+
 <script>
     $("#codigoEmpDiv").on('keyup', function() {
         getSepomex(this.id)

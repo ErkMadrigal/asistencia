@@ -619,6 +619,7 @@
     </div>
 </div>
 
+
 <script>
     $('#saveCapacitaciones').click(function(event) {
         event.preventDefault();

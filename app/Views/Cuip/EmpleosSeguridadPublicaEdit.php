@@ -347,6 +347,7 @@
         getSepomex(this.id)
     });
     
+    
     $('#saveEmpSegPublica').click(function (event) {
         event.preventDefault();
         $('#load').addClass( "spinner-border" );

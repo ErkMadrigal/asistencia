@@ -444,6 +444,7 @@
         if($('#btnNingunsanciones').is(':checked')) {
             valSanciones = 1;
             
+        
         } else {
             valSanciones = 0;
 
