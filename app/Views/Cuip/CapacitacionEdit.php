@@ -61,9 +61,9 @@
                             <label for="nivel_curso" class="control-label">Nivel del curso recibido: <span class="text-danger">*</span></label>
                             <div>
                             <select id="nivel_curso" name="nivel_curso" class="form-control" >
-                                <option selected value="<?=$capacitacion->nivel?>"><?=$capacitacion->nivel?></option>
+                               <!-- <option selected value="<?=$capacitacion->nivel?>"><?=$capacitacion->nivel?></option>-->
                                 <?php foreach($capacitacion as $nivel => $valor):?>
-                                    <option value="<?=$valor->nivel?>"><?=$valor->nivel?></option>
+                                    <option value="<?=$capacitacion->nivel?>"><?=$capacitacion->nivel?></option>
                                 <?php endforeach;?>
                             </select>
                                 <script>
@@ -82,9 +82,9 @@
                             <label for="eficienciaCursos" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
                             <div>
                             <select id="eficienciaCursos" name="eficienciaCursos" class="form-control" >
-                                <option selected value="<?=$capacitacion->eficiencia?>"><?=$capacitacion->eficiencia?></option>
+                               <!-- <option selected value="<?=$capacitacion->eficiencia?>"><?=$capacitacion->eficiencia?></option>-->
                                 <?php foreach($capacitacion as $eficiencia => $valor):?>
-                                    <option value="<?=$valor->eficiencia?>"><?=$valor->eficiencia?></option>
+                                    <option value="<?=$capacitacion->eficiencia?>"><?=$capacitacion->eficiencia?></option>
                                 <?php endforeach;?>
                             </select>
                                 <script>
@@ -215,9 +215,9 @@
                             <label for="cuso_tomado" class="control-label">¿El curso fue?: <span class="text-danger">*</span></label>
                             <div>
                             <select id="cuso_tomado" name="cuso_tomado" class="form-control" >
-                                <option selected value="<?=$capacitacion->cursofue?>"><?=$capacitacion->cursofue?></option>
+                               <!-- <option selected value="<?=$capacitacion->cursofue?>"><?=$capacitacion->cursofue?></option>-->
                                 <?php foreach($capacitacion as $cursofue => $valor):?>
-                                    <option value="<?=$valor->cursofue?>"><?=$valor->cursofue?></option>
+                                    <option value="<?=$capacitacion->cursofue?>"><?=$capacitacion->cursofue?></option>
                                 <?php endforeach;?>
                             </select>
                                 <script>
@@ -236,9 +236,9 @@
                             <label for="eficiencia" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
                             <div>
                             <select id="eficiencia" name="eficiencia" class="form-control" >
-                                <option selected value="<?=$capacitacion->adicional?>"><?=$capacitacion->adicional?></option>
+                                <!--<option selected value="<?=$capacitacion->adicional?>"><?=$capacitacion->adicional?></option>-->
                                 <?php foreach($capacitacion as $adicional => $valor):?>
-                                    <option value="<?=$valor->adicional?>"><?=$valor->adicional?></option>
+                                    <option value="<?=$capacitacion->adicional?>"><?=$capacitacion->adicional?></option>
                                 <?php endforeach;?>
                             </select>
                                 <script>
@@ -257,9 +257,9 @@
                             <label for="inicioAdicional" class=" control-label">Inicio:<span class="text-danger">*</span></label>
                             <div >    
                             <select id="inicioAdicional" name="inicioAdicional" class="form-control" >
-                                <option selected value="<?=$capacitacion->inicio_adicional?>"><?=$capacitacion->inicio_adicional?></option>
+                               <!-- <option selected value="<?=$capacitacion->inicio_adicional?>"><?=$capacitacion->inicio_adicional?></option>-->
                                 <?php foreach($capacitacion as $inicio_adicional => $valor):?>
-                                    <option value="<?=$valor->inicio_adicional?>"><?=$valor->inicio_adicional?></option>
+                                    <option value="<?=$capacitacion->inicio_adicional?>"><?=$capacitacion->inicio_adicional?></option>
                                 <?php endforeach;?>
                             </select>
                             <script type="text/javascript">
@@ -278,9 +278,9 @@
                             <label for="conclusionAdicional" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
                             <div >    
                             <select id="conclusionAdicional" name="conclusionAdicional" class="form-control" >
-                                <option selected value="<?=$capacitacion->conclusion_adicional?>"><?=$capacitacion->conclusion_adicional?></option>
+                               <!-- <option selected value="<?=$capacitacion->conclusion_adicional?>"><?=$capacitacion->conclusion_adicional?></option>-->
                                 <?php foreach($capacitacion as $conclusion_adicional => $valor):?>
-                                    <option value="<?=$valor->conclusion_adicional?>"><?=$valor->conclusion_adicional?></option>
+                                    <option value="<?=$capacitacion->conclusion_adicional?>"><?=$capacitacion->conclusion_adicional?></option>
                                 <?php endforeach;?>
                             </select>
                             <script type="text/javascript">
@@ -339,9 +339,9 @@
                     <label for="idioma" class="control-label">Idioma o Dialecto: <span class="text-danger">*</span></label>
                     <div>
                     <select id="idioma" name="idioma" class="form-control" >
-                                <option selected value="<?=$capacitacion->idioma?>"><?=$capacitacion->idioma?></option>
+                                <!--<option selected value="<?=$capacitacion->idioma?>"><?=$capacitacion->idioma?></option>-->
                                 <?php foreach($capacitacion as $idioma => $valor):?>
-                                    <option value="<?=$valor->idioma?>"><?=$valor->idioma?></option>
+                                    <option value="<?=$capacitacion->idioma?>"><?=$capacitacion->idioma?></option>
                                 <?php endforeach;?>
                             </select>
                         <script>
@@ -360,9 +360,9 @@
                     <label for="lectura" class=" control-label">% Lectura:<span class="text-danger">*</span></label>
                     <div >    
                     <select id="lectura" name="lectura" class="form-control" >
-                                <option selected value="<?=$capacitacion->lectura?>"><?=$capacitacion->lectura?></option>
+                               <!-- <option selected value="<?=$capacitacion->lectura?>"><?=$capacitacion->lectura?></option>-->
                                 <?php foreach($capacitacion as $lectura => $valor):?>
-                                    <option value="<?=$valor->lectura?>"><?=$valor->lectura?></option>
+                                    <option value="<?=$capacitacion->lectura?>"><?=$capacitacion->lectura?></option>
                                 <?php endforeach;?>
                             </select>
                     <script>
@@ -381,9 +381,9 @@
                     <label for="escritura" class=" control-label">% Escritura:<span class="text-danger">*</span></label>
                     <div >    
                     <select id="escritura" name="escritura" class="form-control" >
-                                <option selected value="<?=$capacitacion->escritura?>"><?=$capacitacion->escritura?></option>
+                              <!--  <option selected value="<?=$capacitacion->escritura?>"><?=$capacitacion->escritura?></option>-->
                                 <?php foreach($capacitacion as $escritura => $valor):?>
-                                    <option value="<?=$valor->escritura?>"><?=$valor->escritura?></option>
+                                    <option value="<?=$capacitacion->escritura?>"><?=$capacitacion->escritura?></option>
                                 <?php endforeach;?>
                             </select>
                     <script>
@@ -402,9 +402,9 @@
                     <label for="conversacion" class=" control-label">% Conversación:<span class="text-danger">*</span></label>
                     <div >    
                     <select id="conversacion" name="conversacion" class="form-control" >
-                                <option selected value="<?=$capacitacion->conversacion?>"><?=$capacitacion->conversacion?></option>
+                                <!--<option selected value="<?=$capacitacion->conversacion?>"><?=$capacitacion->conversacion?></option>-->
                                 <?php foreach($capacitacion as $conversacion => $valor):?>
-                                    <option value="<?=$valor->conversacion?>"><?=$valor->conversacion?></option>
+                                    <option value="<?=$capacitacion->conversacion?>"><?=$capacitacion->conversacion?></option>
                                 <?php endforeach;?>
                             </select>                  <script>
                         $(document).ready(function() {
@@ -452,9 +452,9 @@
                             <label for="tipo_habilidad" class="control-label">Tipo: <span class="text-danger">*</span></label>
                             <div>
                             <select id="tipo_habilidad" name="tipo_habilidad" class="form-control" >
-                                <option selected value="<?=$capacitacion->habilidad?>"><?=$capacitacion->habilidad?></option>
+                               <!-- <option selected value="<?=$capacitacion->habilidad?>"><?=$capacitacion->habilidad?></option>-->
                                 <?php foreach($capacitacion as $habilidad => $valor):?>
-                                    <option value="<?=$valor->habilidad?>"><?=$valor->habilidad?></option>
+                                    <option value="<?=$capacitacion->habilidad?>"><?=$capacitacion->habilidad?></option>
                                 <?php endforeach;?>
                             </select>
                                 <script>
@@ -482,9 +482,9 @@
                             <label for="grado_habilidadCap" class="control-label">Grado de aptitude o dominio: <span class="text-danger">*</span></label>
                             <div>
                             <select id="grado_habilidadCap" name="grado_habilidadCap" class="form-control" >
-                                <option selected value="<?=$capacitacion->especifique_habilidad?>"><?=$capacitacion->especifique_habilidad?></option>
+                               <!-- <option selected value="<?=$capacitacion->especifique_habilidad?>"><?=$capacitacion->especifique_habilidad?></option>-->
                                 <?php foreach($capacitacion as $especifique_habilidad => $valor):?>
-                                    <option value="<?=$valor->especifique_habilidad?>"><?=$valor->especifique_habilidad?></option>
+                                    <option value="<?=$capacitacion->especifique_habilidad?>"><?=$capacitacion->especifique_habilidad?></option>
                                 <?php endforeach;?>
                             </select>
                                 <script>
@@ -544,9 +544,9 @@
                             <label for="tipoAgrupa" class=" control-label">Tipo:<span class="text-danger">*</span></label>
                             <div >    
                             <select id="tipoAgrupa" name="tipoAgrupa" class="form-control" >
-                                <option selected value="<?=$capacitacion->agrupacion?>"><?=$capacitacion->agrupacion?></option>
+                               <!-- <option selected value="<?=$capacitacion->agrupacion?>"><?=$capacitacion->agrupacion?></option>-->
                                 <?php foreach($capacitacion as $agrupacion => $valor):?>
-                                    <option value="<?=$valor->agrupacion?>"><?=$valor->agrupacion?></option>
+                                    <option value="<?=$capacitacion->agrupacion?>"><?=$capacitacion->agrupacion?></option>
                                 <?php endforeach;?>
                             </select>
                             <script>
@@ -564,9 +564,9 @@
                             <label for="desde" class=" control-label">Desde:<span class="text-danger">*</span></label>
                             <div >    
                             <select id="desde" name="desde" class="form-control" >
-                                <option selected value="<?=$capacitacion->desde?>"><?=$capacitacion->desde?></option>
+                                <!--<option selected value="<?=$capacitacion->desde?>"><?=$capacitacion->desde?></option>-->
                                 <?php foreach($capacitacion as $desde => $valor):?>
-                                    <option value="<?=$valor->desde?>"><?=$valor->desde?></option>
+                                    <option value="<?=$capacitacion->desde?>"><?=$capacitacion->desde?></option>
                                 <?php endforeach;?>
                             </select>
                             <script type="text/javascript">
@@ -585,9 +585,9 @@
                             <label for="hasta" class=" control-label">Hasta:<span class="text-danger">*</span></label>
                             <div >    
                             <select id="hasta" name="hasta" class="form-control" >
-                                <option selected value="<?=$capacitacion->hasta?>"><?=$capacitacion->hasta?></option>
+                               <!-- <option selected value="<?=$capacitacion->hasta?>"><?=$capacitacion->hasta?></option>-->
                                 <?php foreach($capacitacion as $hasta => $valor):?>
-                                    <option value="<?=$valor->hasta?>"><?=$valor->hasta?></option>
+                                    <option value="<?=$capacitacion->hasta?>"><?=$capacitacion->hasta?></option>
                                 <?php endforeach;?>
                             </select>
                             <script type="text/javascript">

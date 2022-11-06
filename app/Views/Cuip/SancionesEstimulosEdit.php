@@ -149,9 +149,9 @@
                             <label for="entidad_federativaSE" class=" control-label">Entidad federativa:<span class="text-danger">*</span></label>
                             <div >    
                             <select id="entidad_federativaSE" name="entidad_federativaSE" class="form-control" >
-                                <option selected value="<?=$sanciones->estado?>"><?=$sanciones->estado?></option>
+                              <!--  <option selected value="<?=$sanciones->estado?>"><?=$sanciones->estado?></option>-->
                                 <?php foreach($sanciones as $estado => $valor):?>
-                                    <option value="<?=$sanciones->estado?>"><?=$valor->estado?></option>
+                                    <option value="<?=$sanciones->estado?>"><?=$sanciones->estado?></option>
                                 <?php endforeach;?>
                             </select>
                             <script>
@@ -217,9 +217,9 @@
                             <label for="tipo_fuero" class="control-label">Tipo de Fuero: <span class="text-danger">*</span></label>
                             <div>
                             <select id="tipo_fuero" name="tipo_fuero" class="form-control" >
-                                <option selected value="<?=$sanciones->fuero?>"><?=$sanciones->fuero?></option>
+                               <!-- <option selected value="<?=$sanciones->fuero?>"><?=$sanciones->fuero?></option>-->
                                 <?php foreach($sanciones as $fuero => $valor):?>
-                                    <option value="<?=$sanciones->fuero?>"><?=$valor->fuero?></option>
+                                    <option value="<?=$sanciones->fuero?>"><?=$sanciones->fuero?></option>
                                 <?php endforeach;?>
                             </select>
                                 <script>

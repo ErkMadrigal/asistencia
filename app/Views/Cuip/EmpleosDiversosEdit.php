@@ -70,9 +70,9 @@
                         <label for="coloniacodigoEmpDiv" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                         <div >    
                         <select id="ciudadcodigo" name="ciudadcodigo" class="form-control" >
-                                <option selected value="<?=$diversos->colonia?>"><?=$diversos->colonia?></option>
+                                <!--<option selected value="<?=$diversos->colonia?>"><?=$diversos->colonia?></option>-->
                                 <?php foreach($diversos as $colonia => $valor):?>
-                                    <option value="<?=$valor->colonia?>"><?=$valor->colonia?></option>
+                                    <option value="<?=$diversos->colonia?>"><?=$diversos->colonia?></option>
                                 <?php endforeach;?>
                             </select>
                             
@@ -92,9 +92,9 @@
                         <label for="estadocodigoEmpDiv" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
                         <div>
                         <select id="ciudadcodigo" name="ciudadcodigo" class="form-control" >
-                                <option selected value="<?=$diversos->estado?>"><?=$diversos->estado?></option>
+                              <!--  <option selected value="<?=$diversos->estado?>"><?=$diversos->estado?></option>-->
                                 <?php foreach($diversos as $estado => $valor):?>
-                                    <option value="<?=$valor->estado?>"><?=$valor->estado?></option>
+                                    <option value="<?=$diversos->estado?>"><?=$diversos->estado?></option>
                                 <?php endforeach;?>
                             </select>
                             <script>
@@ -113,9 +113,9 @@
                         <label for="municipiocodigoEmpDiv" class="control-label">Municipio: <span class="text-danger">*</span></label>
                         <div>
                         <select id="municipiocodigoEmpDiv" name="municipiocodigoEmpDiv" class="form-control" >
-                                <option selected value="<?=$diversos->municipio?>"><?=$diversos->municipio?></option>
+                               <!-- <option selected value="<?=$diversos->municipio?>"><?=$diversos->municipio?></option>-->
                                 <?php foreach($diversos as $municipio => $valor):?>
-                                    <option value="<?=$valor->municipio?>"><?=$valor->municipio?></option>
+                                    <option value="<?=$diversos->municipio?>"><?=$diversos->municipio?></option>
                                 <?php endforeach;?>
                             </select>
                             <script>
@@ -273,9 +273,9 @@
                     <label for="reglamentacion" class=" control-label">¿Conoce la reglamentación de los reconocimientos?<span class="text-danger">*</span></label>
                     <div >    
                     <select id="reglamentacion" name="reglamentacion" class="form-control" >
-                                <option selected value="<?=$diversos->reglamento?>"><?=$diversos->reglamento?></option>
+                              <!--  <option selected value="<?=$diversos->reglamento?>"><?=$diversos->reglamento?></option>-->
                                 <?php foreach($diversos as $reglamento => $valor):?>
-                                    <option value="<?=$valor->reglamento?>"><?=$valor->reglamento?></option>
+                                    <option value="<?=$diversos->reglamento?>"><?=$diversos->reglamento?></option>
                                 <?php endforeach;?>
                             </select>
                     <script>
@@ -303,9 +303,9 @@
                     <label for="reglamentacion_ascenso" class=" control-label">¿Conoce la reglamentación de los ascensos?<span class="text-danger">*</span></label>
                     <div >    
                     <select id="reglamentacion_ascenso" name="reglamentacion_ascenso" class="form-control" >
-                                <option selected value="<?=$diversos->reglamento?>"><?=$diversos->reglamento?></option>
+                              <!--  <option selected value="<?=$diversos->reglamento?>"><?=$diversos->reglamento?></option>-->
                                 <?php foreach($diversos as $reglamento => $valor):?>
-                                    <option value="<?=$valor->reglamento?>"><?=$valor->reglamento?></option>
+                                    <option value="<?=$diversos->reglamento?>"><?=$diversos->reglamento?></option>
                                 <?php endforeach;?>
                             </select>
                     <script>
@@ -363,9 +363,9 @@
                     <label for="desciplina" class=" control-label">Tipo de Disciplina:<span class="text-danger">*</span></label>
                     <div >    
                     <select id="desciplina" name="desciplina" class="form-control" >
-                                <option selected value="<?=$diversos->disciplina?>"><?=$diversos->disciplina?></option>
+                             <!--   <option selected value="<?=$diversos->disciplina?>"><?=$diversos->disciplina?></option>-->
                                 <?php foreach($diversos as $disciplina => $valor):?>
-                                    <option value="<?=$valor->disciplina?>"><?=$valor->disciplina?></option>
+                                    <option value="<?=$diversos->disciplina?>"><?=$diversos->disciplina?></option>
                                 <?php endforeach;?>
                             </select>
                     <script>
@@ -455,9 +455,9 @@
                     <label for="duracion" class=" control-label">Duración:</label>
                     <div >    
                     <select id="duracion" name="duracion" class="form-control" >
-                                <option selected value="<?=$diversos->duracion?>"><?=$diversos->duracion?></option>
+                             <!--   <option selected value="<?=$diversos->duracion?>"><?=$diversos->duracion?></option>-->
                                 <?php foreach($diversos as $duracion => $valor):?>
-                                    <option value="<?=$valor->duracion?>"><?=$valor->duracion?></option>
+                                    <option value="<?=$diversos->duracion?>"><?=$diversos->duracion?></option>
                                 <?php endforeach;?>
                             </select>
                     <script>
