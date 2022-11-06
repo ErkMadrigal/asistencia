@@ -50,7 +50,8 @@ class Cuip extends BaseController {
 					'primer_nombre' => $v->primer_nombre,
 					'segundo_nombre' => $v->segundo_nombre,
                     'apellido_paterno' => $v->apellido_paterno,
-                    'apellido_materno' => $v->apellido_materno
+                    'apellido_materno' => $v->apellido_materno,
+                    'media_filiacion' => $v->idPersonal
 				) ;
 			}
 		
@@ -278,8 +279,7 @@ class Cuip extends BaseController {
 				'vigenciaLic' =>  ['label' => "Vigencia de Licencia", 'rules' => 'required_with[licencia]'],
 				'CURP' =>  ['label' => "CURP", 'rules' => 'required|max_length[18]|min_length[18]'],
 				
-				'modo_nacionalidad' =>  ['label' => "Modo de Nacionalidad", 'rules' => 'required_with[fecha_naturalizacion]'],
-				'fecha_naturalizacion' =>  ['label' => "Fecha de Naturalización", 'rules' => 'required_with[modo_nacionalidad]'],
+				'modo_nacionalidad' =>  ['label' => "Modo de Nacionalidad", 'rules' => 'required'],
 				'pais_nacimiento' =>  ['label' => "Pais de Nacimiento", 'rules' => 'required'],
 				'entidad_nacimiento' =>  ['label' => "Entidad de Nacimiento", 'rules' => 'required|max_length[255]'],
 				'municipio_nacimiento' =>  ['label' => "Municipio de Nacimiento", 'rules' => 'required|max_length[255]'],
@@ -357,6 +357,17 @@ class Cuip extends BaseController {
 
 
 				}
+
+				$getModo_nacionalidad = $this->request->getPost('modo_nacionalidad');
+
+				if(!empty($getModo_nacionalidad)){
+        			$modo_nacionalidad = $this->encrypt->Decrytp($getModo_nacionalidad);
+
+        			if ( $modo_nacionalidad != 1){
+        			$rules['fecha_naturalizacion'] =  ['label' => "Fecha de Naturalización", 'rules' => 'required|valid_only_date_chek'];
+        			}
+
+        		}
 		 
 				$errors = [];
 				$succes = [];
@@ -376,9 +387,7 @@ class Cuip extends BaseController {
 
         			$getGenero = $this->encrypt->Decrytp($getGenero);
 
-        			$getModo_nacionalidad = $this->request->getPost('modo_nacionalidad');
-
-        			$modo_nacionalidad = $this->encrypt->Decrytp($getModo_nacionalidad);
+        			
 					
 					$getPais_nacimiento = $this->request->getPost('pais_nacimiento');
 
@@ -2864,7 +2873,7 @@ class Cuip extends BaseController {
 	{
 		$data = $this->modelCuip->GetCuipExcel();
 
-		if($data){
+		if($data > 0){
 
 		$file_name = '45_CAMPOS_14_ELEMENTOS(1944).xlsx';
 
@@ -3018,6 +3027,17 @@ class Cuip extends BaseController {
 		
 			
 		readfile($getRuta.$file_name);
+		} else {
+
+			$errors = [];
+			$succes = [];
+			$dontSucces = [];
+			
+
+			$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'No se encontro ningun registro'  ];
+
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces ]);
 		}
 
 	}
