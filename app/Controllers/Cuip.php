@@ -3140,7 +3140,6 @@ class Cuip extends BaseController {
 		
 		$this->response->setHeader('Content-Type', 'application/vnd.ms-excel');
 
-		
 			
 		readfile($getRuta.$file_name);
 		}
