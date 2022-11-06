@@ -265,6 +265,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
                         <label for="municipiocodigoSegPub" class="control-label">Municipio: <span class="text-danger">*</span></label>

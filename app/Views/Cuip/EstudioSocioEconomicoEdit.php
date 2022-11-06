@@ -234,6 +234,7 @@
                                 <?php foreach($estudio as $sexo => $valor):?>
                                     <option value="<?=$estudio->sexo?>"><?=$valor->sexo?></option>
                                 <?php endforeach;?>
+                                
                             </select>
                             <script>
                                 $(document).ready(function() {

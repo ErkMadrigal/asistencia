@@ -75,6 +75,7 @@
                                     <option value="<?=$valor->colonia?>"><?=$valor->colonia?></option>
                                 <?php endforeach;?>
                             </select>
+                            
                         <script>
                             $(document).ready(function() {
                                 $("#coloniacodigoEmpDiv").select2({

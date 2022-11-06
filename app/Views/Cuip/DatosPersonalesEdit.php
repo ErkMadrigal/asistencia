@@ -594,6 +594,7 @@
                     </div>
                 </div>
             </div>
+
             <div class='col-6 col-sm-6'>
                 <div class="form-group">
                     <label for="ciudadcodigo" class="control-label">Ciudad: <span class="text-danger">*</span></label>
