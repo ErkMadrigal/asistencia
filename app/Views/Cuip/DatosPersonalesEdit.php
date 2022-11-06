@@ -18,7 +18,7 @@
                     <div class="form-group">
                         <label for="primerNombre" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="primerNombre" name="primerNombre" value="<?= $variable->primer_nombre ?>"><input type="hidden" class="form-control " value=" <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                            <input type="text" class="form-control " id="primerNombre" name="primerNombre" value="<?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>">
 
                         </div>
                     </div>
