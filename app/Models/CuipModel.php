@@ -22,7 +22,8 @@ class CuipModel
 
     public function GetCuip($idEmpresa){
         $builder = $this->db->table('datos_personales');
-        $builder->select('id,primer_nombre,segundo_nombre,apellido_paterno,apellido_materno');
+        $builder->select('datos_personales.id,primer_nombre,segundo_nombre,apellido_paterno,apellido_materno,media_filiacion.idPersonal');
+        $builder->join("media_filiacion"," datos_personales.id= media_filiacion.idPersonal","left");
         $builder->orderBy("primer_nombre","asc");
         $builder->orderBy("apellido_paterno","asc");
         return $builder->get()->getResult();
@@ -347,7 +348,8 @@ class CuipModel
 
     public function GetCuipExcel(){
         $builder = $this->db->table("datos_personales");
-        $builder->select("apellido_paterno,apellido_materno, CONCAT(primer_nombre,' ' ,segundo_nombre) AS nombre,fecha_nacimiento,idEntidadNacimiento,idMunicipioNacimiento,genero.idReferencia AS idGenero,civil.idReferencia AS idEstadoCivil,nivelEducativo.idreferencia AS idNivelEducativo,escuela,especialidad,rfc,clave_electoral,cartilla_smn,curp,calle,numero_exterior,numero_interior,colonia,idCodigoPostal,numero_telefono,idEstado,municipio,fecha_ingreso,idEstado_adscripcion,municipio_adscripcion,
+        $builder->select("apellido_paterno,apellido_materno, CONCAT(primer_nombre,' ' ,segundo_nombre) AS nombre,fecha_nacimiento,idEntidadNacimiento,munNacimiento.claveMunicipio AS idMunicipioNacimiento,genero.idReferencia AS idGenero,civil.idReferencia AS idEstadoCivil,nivelEducativo.idreferencia AS idNivelEducativo,escuela,especialidad,rfc,clave_electoral,cartilla_smn,curp,calle,numero_exterior,numero_interior,colonia,idCodigoPostal,numero_telefono,idEstado,municipio,fecha_ingreso,idEstado_adscripcion,
+            munAdscripcion.claveMunicipio AS municipio_adscripcion,
             Complexion.idReferencia AS complexion,
             TSangre.idReferencia AS tiposangre,
             SangreRH.idReferencia AS rhSangre,
@@ -406,7 +408,7 @@ class CuipModel
             idCodigoPostal_fam,
             numero_telefono_fam,
             idEstado_fam,
-            municipio_fam,
+            munReferencia.claveMunicipio AS municipio_fam,
             ciudad_fam
             ");
         $builder->join("catalogos_detalle AS genero","datos_personales.idGenero = genero.id","left");
@@ -461,6 +463,9 @@ class CuipModel
         $builder->join("catalogo_referencias AS parentescoFam","referencias.idParentesco_fam = parentescoFam.id","left");
 
         $builder->join("catalogos_detalle AS nivelEducativo","datos_personales.idNivelEducativo = nivelEducativo.id","left");
+        $builder->join("estados_detalles AS munReferencia","referencias.municipio_fam = munReferencia.id","left");
+        $builder->join("estados_detalles AS munAdscripcion","datos_personales.municipio_adscripcion = munAdscripcion.id","left");
+        $builder->join("estados_detalles AS munNacimiento","datos_personales.idMunicipioNacimiento = munNacimiento.id","left");
         $builder->where("datos_personales.activo",true);
         $builder->where("Cuip",'');
         

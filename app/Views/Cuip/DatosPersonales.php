@@ -3,7 +3,7 @@
         <h3 class="card-title">DATOS PERSONALES</h3>
 
         <div class="card-tools">
-            <input type="hidden" class="form-control " id="idPersonal" name="idPersonal" value="92081438-25aa-4488-afce-7101712afc9f" >
+            <input type="hidden" class="form-control " id="idPersonal" name="idPersonal"  >
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
             </button>
@@ -163,7 +163,7 @@
                 </div>
                 <div class='col-12 col-sm-6'>
                     <div class='form-group'>
-                        <label for="fecha_naturalizacion">Fecha de Naturalización: <span class="text-danger">*</span></label>
+                        <label for="fecha_naturalizacion">Fecha de Naturalización: </label>
                         <div class="input-group date" id="fecha_naturalizacion" data-target-input="nearest">
                             <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_naturalizacion" id="datetime-fecha_naturalizacion" name="fecha_naturalizacion" placeholder="" value="" />
                             <div class="input-group-append" data-target="#fecha_naturalizacion" data-toggle="datetimepicker">
@@ -190,7 +190,7 @@
                                 if( !empty($pais_nacimiento) ):
                                     foreach($pais_nacimiento as  $a){
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= ($a->valor == 'México' ? 'selected' : '' ) ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -591,100 +591,6 @@
         </form>
     </div>
 </div>
-
-
-<div class="card card-primary">
-    <div class="card-header ">
-        
-        <h3 class="card-title">DATOS GENERALES: EXPERIENCIA DOCENTE</h3>
-                         
-
-        <div class="card-tools">
-
-            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" class="form-check-input mt-2" id="btnNingunodged">
-                 
-            <a href="#" class="btn btn-tool form-check-label add-more-btn-dged" id="btnAdddged" >Agregar +</a>
-            
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" >
-                <i class="fas fa-minus"></i>
-            </button>
-        </div>           
-    </div>
-    
-    <!-- /.card-header -->
-    <div class="card-body">
-        <form class="form-horizontal" id="FormDatosGeneralesDocente">
-        <div id="CardDatosGeneralesDocente">
-            <div class="row form-block-dged">
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="nombrecurso" class=" control-label">Nombre del Curso
-                            :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nombrecurso" name="nombrecurso">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="nombreInstitucion" class=" control-label">Nombre de
-                            la Institución:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-6'>
-                    <div class='form-group'>
-                        <label for="fecha_inicial">Fecha de Inicio: <span class="text-danger">*</span></label>
-                        <div class="input-group date" id="fecha_inicial" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_inicial" id="datetime-fecha_inicial" name="fecha_inicial" placeholder="" value="" />
-                            <div class="input-group-append" data-target="#fecha_inicial" data-toggle="datetimepicker">
-                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
-                            </div>
-                        </div>
-                        <script type="text/javascript">
-                            $(function() {
-                                $("#fecha_inicial").datetimepicker({
-                                    format: 'DD-MM-YYYY',
-                                    locale: moment.locale('es')
-                                });
-                            });
-                        </script>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-6'>
-                    <div class='form-group'>
-                        <label for="fecha_final">Fecha de Término: <span class="text-danger">*</span></label>
-                        <div class="input-group date" id="fecha_final" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_final" id="datetime-fecha_final" name="fecha_final" placeholder="" value="" />
-                            <div class="input-group-append" data-target="#fecha_final" data-toggle="datetimepicker">
-                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
-                            </div>
-                        </div>
-                        <script type="text/javascript">
-                            $(function() {
-                                $("#fecha_final").datetimepicker({
-                                    format: "DD-MM-YYYY",
-                                    locale: moment.locale('es')
-
-                                });
-                            });
-                        </script>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-12'>
-                    <div class="form-group">
-                        <label for="certificado_por" class=" control-label">Certificado
-                            por:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="certificado_por" name="certificado_por">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr  class="mt-3 mb-3"/>
-        <div id="CardDatosGeneralesDocenteB">
-        </div>    
-        </form>
-    </div>
-</div>
 <div class="card card-primary">
     <div class="card-header">
         <h3 class="card-title">ADSCRIPCION</h3>
@@ -985,6 +891,98 @@
                     </div>
                 </div>
             </div>
+        </form>
+    </div>
+</div>
+<div class="card card-primary">
+    <div class="card-header ">
+        
+        <h3 class="card-title">DATOS GENERALES: EXPERIENCIA DOCENTE</h3>
+                         
+
+        <div class="card-tools">
+
+            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" class="form-check-input mt-2" id="btnNingunodged">
+                 
+            <a href="#" class="btn btn-tool form-check-label add-more-btn-dged" id="btnAdddged" >Agregar +</a>
+            
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" >
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>           
+    </div>
+    
+    <!-- /.card-header -->
+    <div class="card-body">
+        <form class="form-horizontal" id="FormDatosGeneralesDocente">
+        <div id="CardDatosGeneralesDocente">
+            <div class="row form-block-dged">
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="nombrecurso" class=" control-label">Nombre del Curso
+                            :<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="nombrecurso" name="nombrecurso">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="nombreInstitucion" class=" control-label">Nombre de
+                            la Institución:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-6'>
+                    <div class='form-group'>
+                        <label for="fecha_inicial">Fecha de Inicio: <span class="text-danger">*</span></label>
+                        <div class="input-group date" id="fecha_inicial" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_inicial" id="datetime-fecha_inicial" name="fecha_inicial" placeholder="" value="" />
+                            <div class="input-group-append" data-target="#fecha_inicial" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#fecha_inicial").datetimepicker({
+                                    format: 'DD-MM-YYYY',
+                                    locale: moment.locale('es')
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-6'>
+                    <div class='form-group'>
+                        <label for="fecha_final">Fecha de Término: <span class="text-danger">*</span></label>
+                        <div class="input-group date" id="fecha_final" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_final" id="datetime-fecha_final" name="fecha_final" placeholder="" value="" />
+                            <div class="input-group-append" data-target="#fecha_final" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#fecha_final").datetimepicker({
+                                    format: "DD-MM-YYYY",
+                                    locale: moment.locale('es')
+
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-12'>
+                    <div class="form-group">
+                        <label for="certificado_por" class=" control-label">Certificado
+                            por:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="certificado_por" name="certificado_por">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr  class="mt-3 mb-3"/>
+        <div id="CardDatosGeneralesDocenteB">
+        </div>    
         </form>
     </div>
 </div>

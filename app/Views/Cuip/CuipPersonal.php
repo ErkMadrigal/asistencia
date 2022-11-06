@@ -90,8 +90,18 @@ function estatusRenderer(data, type, full, meta) {
                         }
                     },{  data: "MediaFiliación",
                         render: function (data, type, full, meta) {
+
+                            if(full.media_filiacion != null ){
+
+                                return "<i class=\'fa fa-check-circle\'></i>";
+
+                            }else{
+
+                                return "<a href='" + base_url + "/mediafiliacion?id=" + full.id + "' class='nav-link'><i class='fa fa-list'></i>";
+
+                            }
                     
-                        return "<a href='" + base_url + "/mediafiliacion?id=" + full.id + "' class='nav-link'><i class='fa fa-list'></i>";
+                        
                     
                         }
                     }
