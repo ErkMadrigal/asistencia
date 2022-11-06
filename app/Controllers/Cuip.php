@@ -3153,14 +3153,10 @@ class Cuip extends BaseController {
 
 			$path .= $type . '/';
 
-		return $path . $fileName;		 
-
-
+		return $path . $fileName;	
 
 	}
 
 
-
-	
 
 }
