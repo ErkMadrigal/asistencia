@@ -161,6 +161,13 @@ $routes->post('GuardarTurno', 'Turno::AgregarTurnos',['filter' => 'auth']);
 $routes->post('getUbicaciones', 'Turno::Ubicaciones',['filter' => 'auth']);
 $routes->post('getTurnos', 'Puesto::Turnos',['filter' => 'auth']);
 
+
+
+
+$routes->get('ubicacioncatalogo', 'Ubicacion::GetUbica',['filter' => 'auth']);
+$routes->get('turnocatalogo', 'Turno::GetTurno',['filter' => 'auth']);
+$routes->get('puestocatalogo', 'Puesto::GetPuestos',['filter' => 'auth']);
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

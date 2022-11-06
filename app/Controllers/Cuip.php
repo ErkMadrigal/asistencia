@@ -50,7 +50,8 @@ class Cuip extends BaseController {
 					'primer_nombre' => $v->primer_nombre,
 					'segundo_nombre' => $v->segundo_nombre,
                     'apellido_paterno' => $v->apellido_paterno,
-                    'apellido_materno' => $v->apellido_materno
+                    'apellido_materno' => $v->apellido_materno,
+                    'media_filiacion' => $v->idPersonal
 				) ;
 			}
 		
@@ -278,8 +279,7 @@ class Cuip extends BaseController {
 				'vigenciaLic' =>  ['label' => "Vigencia de Licencia", 'rules' => 'required_with[licencia]'],
 				'CURP' =>  ['label' => "CURP", 'rules' => 'required|max_length[18]|min_length[18]'],
 				
-				'modo_nacionalidad' =>  ['label' => "Modo de Nacionalidad", 'rules' => 'required_with[fecha_naturalizacion]'],
-				'fecha_naturalizacion' =>  ['label' => "Fecha de Naturalización", 'rules' => 'required_with[modo_nacionalidad]'],
+				'modo_nacionalidad' =>  ['label' => "Modo de Nacionalidad", 'rules' => 'required'],
 				'pais_nacimiento' =>  ['label' => "Pais de Nacimiento", 'rules' => 'required'],
 				'entidad_nacimiento' =>  ['label' => "Entidad de Nacimiento", 'rules' => 'required|max_length[255]'],
 				'municipio_nacimiento' =>  ['label' => "Municipio de Nacimiento", 'rules' => 'required|max_length[255]'],
@@ -357,6 +357,17 @@ class Cuip extends BaseController {
 
 
 				}
+
+				$getModo_nacionalidad = $this->request->getPost('modo_nacionalidad');
+
+				if(!empty($getModo_nacionalidad)){
+        			$modo_nacionalidad = $this->encrypt->Decrytp($getModo_nacionalidad);
+
+        			if ( $modo_nacionalidad != 1){
+        			$rules['fecha_naturalizacion'] =  ['label' => "Fecha de Naturalización", 'rules' => 'required|valid_only_date_chek'];
+        			}
+
+        		}
 		 
 				$errors = [];
 				$succes = [];
@@ -376,9 +387,7 @@ class Cuip extends BaseController {
 
         			$getGenero = $this->encrypt->Decrytp($getGenero);
 
-        			$getModo_nacionalidad = $this->request->getPost('modo_nacionalidad');
-
-        			$modo_nacionalidad = $this->encrypt->Decrytp($getModo_nacionalidad);
+        			
 					
 					$getPais_nacimiento = $this->request->getPost('pais_nacimiento');
 
@@ -407,19 +416,67 @@ class Cuip extends BaseController {
 
         			$fecha_nacimiento = date( "Y-m-d" ,strtotime($getFechaNacimiento));
 
-        			$getFecha_naturalizacion = $this->request->getPost('fecha_naturalizacion');
 
-        			$fecha_naturalizacion = date( "Y-m-d" ,strtotime($getFecha_naturalizacion));
+        			if ( $modo_nacionalidad != 1){
+
+        				$getFecha_naturalizacion = $this->request->getPost('fecha_naturalizacion');
+
+        				$fecha_naturalizacion = date( "Y-m-d" ,strtotime($getFecha_naturalizacion));
+        			} else {
+
+        				$fecha_naturalizacion = '';
+
+        			} 
 
         			$getVigenciaLic = $this->request->getPost('vigenciaLic');
 
         			$vigenciaLic = date( "Y-m-d" ,strtotime($getVigenciaLic));
 
+        			$getFechaingreso_adscripcion = $this->request->getPost('fechaingreso_adscripcion');
+
+        			$fechaingreso_adscripcion = date( "Y-m-d" ,strtotime($getFechaingreso_adscripcion));
 
         			
 
+        			$getPuesto = $this->request->getPost('puesto_adscripcion');
+
+        			$puesto = $this->encrypt->Decrytp($getPuesto);
+
+        			$getRango = $this->request->getPost('rango_adscripcion');
+
+        			$rango = $this->encrypt->Decrytp($getRango);
+
+        			$getNivel_mando = $this->request->getPost('nivel_adscripcion');
+        			
+        			$nivel_mando = $this->encrypt->Decrytp($getNivel_mando);
 
 
+        			$getEntidad_nacimiento = $this->request->getPost('entidad_nacimiento');
+        			
+        			$entidad_nacimiento = $this->encrypt->Decrytp($getEntidad_nacimiento);
+
+
+        			$getMunicipio_nacimiento = $this->request->getPost('municipio_nacimiento');
+        			
+        			$municipio_nacimiento = $this->encrypt->Decrytp($getMunicipio_nacimiento);
+
+        			$getEstadocodigo = $this->request->getPost('estadocodigo');
+        			
+        			$estadocodigo = $this->encrypt->Decrytp($getEstadocodigo);
+
+        			$getMunicipiocodigo = $this->request->getPost('municipiocodigo');
+        			
+        			$municipiocodigo = $this->encrypt->Decrytp($getMunicipiocodigo);
+
+        			$getEntidad_adscripcion = $this->request->getPost('entidad_adscripcion');
+        			
+        			$entidad_adscripcion = $this->encrypt->Decrytp($getEntidad_adscripcion);
+
+        			$getMunicipio_adscripcion = $this->request->getPost('municipio_adscripcion');
+        			
+        			$municipio_adscripcion = $this->encrypt->Decrytp($getMunicipio_adscripcion);
+
+        			
 
 					$datosPersonales = array(
 		    					
@@ -442,8 +499,8 @@ class Cuip extends BaseController {
 						"idFormaNacionalidad" =>  $modo_nacionalidad , 
 						"fecha_naturalizacion" => $fecha_naturalizacion , 
 						"idPaisNacimiento" => $pais_nacimiento , 
-						"idEntidadNacimiento" => $this->request->getPost('entidad_nacimiento') , 
-						"idMunicipioNacimiento" => $this->request->getPost('municipio_nacimiento') , 
+						"idEntidadNacimiento" => $entidad_nacimiento , 
+						"idMunicipioNacimiento" => $municipio_nacimiento , 
 						"idCiudadNacimiento" => $this->request->getPost('cuidad_nacimiento') , 
 						"idNacionalidad" => $nacionalidad , 
 						"idEstadoCivil" => $estado_civil , 
@@ -463,9 +520,29 @@ class Cuip extends BaseController {
 						"entre_calle2" => strtoupper($this->request->getPost('ylacalle')) , 
 						"idCodigoPostal" => $this->request->getPost('codigo') , 
 						"numero_telefono" => $this->request->getPost('numeroTelefono') , 
-						"idEstado" => $this->request->getPost('estadocodigo') , 
-						"municipio" => $this->request->getPost('municipiocodigo') , 
-						"ciudad" => strtoupper($this->request->getPost('ciudadcodigo')) , 
+						"idEstado" => $estadocodigo , 
+						"municipio" => $municipiocodigo , 
+						"ciudad" => strtoupper($this->request->getPost('ciudadcodigo')) ,
+					  "dependencia" => $this->request->getPost('dependencia_adscripcion'), 
+					  "institucion" => $this->request->getPost('institucion_adscripcion'),
+					  "fecha_ingreso" => $fechaingreso_adscripcion,
+					  "puesto" => $puesto,
+					  "rango" => $rango,
+					  "nivel_mando" => $nivel_mando,
+					  "nombre_jefe" => $this->request->getPost('nombrejefe_adscripcion'),
+					  "idEstado_adscripcion" => $entidad_adscripcion,
+					  "municipio_adscripcion" => $municipio_adscripcion,
+					  "calle_adscripcion" => $this->request->getPost('calle_adscripcion'),
+					  "numero_exterior_adscripcion" => $this->request->getPost('exterior_adscripcion'),
+					  "numero_interior_adscripcion" => $this->request->getPost('interior_adscripcion'),
+					  "entre_calle1_adscripcion" => $this->request->getPost('entrecalle_adscripcion'),
+					  "entre_calle2_adscripcion" => $this->request->getPost('ylacalle_adscripcion'),
+					  "numero_telefono_adscripcion" => $this->request->getPost('telefono_adscripcion'),
+					  "idCodigoPostal_adscripcion" => $this->request->getPost('codigoAds'),
+					  "colonia_adscripcion" => $this->request->getPost('coloniacodigoAds'),
+					  "idEstado_dom_adscripcion" => $this->request->getPost('federativa_adscripcion'),
+					  "municipio_delegacion" => $this->request->getPost('delegacion_adscripcion'),
+					  "ciudad_poblacion" => $this->request->getPost('ciudadcodigoAds'), 
 						"activo" => 1 , 
 						"createdby" => $LoggedUserId , 
 						"createddate" => date("Y-m-d H:i:s") );
@@ -2021,15 +2098,30 @@ class Cuip extends BaseController {
 			$getId = str_replace(" ", "+", $_GET['id']);
 			$id = $this->encrypt->Decrytp($getId);
 
-         	// $data['variable'] = $this->modelCuip->GetDatosPersonalesById($id);
-			// $data['estudio'] = $this->modelCuip->GetSocioEconomicoById($id);
-			// $data['seguridad'] = $this->modelCuip->GetEmpleosSeridadById($id);
-			// $data['diversos'] = $this->modelCuip->GetEmpleosDiversos($id);
-			// $data['capacitacion'] = $this->modelCuip->GetCapacitaciones($id);
-			// $data['sanciones'] = $this->modelCuip->GetSanciones($id);
-			// $data['referencia'] = $this->modelReferencia->GetReferencia($id);
+         	$data['variable'] = $this->modelCuip->GetDatosPersonalesById($id);
+         	$data['experiencia'] = $this->modelCuip->GetExperienciaPersonalesById($id);
+			$economico = $this->modelCuip->GetSocioEconomicoById($id);
+			$data['estudio'] = $economico;
+			if (!empty($economico)){
+				$data['economico_dependientes'] = $this->modelCuip->GetSocioEconomicoDependientesById($economico->id);
+			}
+			$data['seguridad'] = $this->modelCuip->GetEmpleosSeridadById($id);
+			$data['diversos'] = $this->modelCuip->GetEmpleosDiversos($id);
+			$data['capacitacion'] = $this->modelCuip->GetCapacitaciones($id);
+			$data['capacitacion_publica'] = $this->modelCuip->GetCapacitacionesPublicById($id);
+			$data['idiomas'] = $this->modelCuip->GetIdiomasById($id);
+			$data['habilidades'] = $this->modelCuip->GetHabilidadesById($id);
+			$data['agrupaciones'] = $this->modelCuip->GetAgrupacionesById($id);
+			$data['sanciones'] = $this->modelCuip->GetSanciones($id);
+
+			$data['resoluciones'] = $this->modelCuip->GetResolucionesById($id);
+
+			$data['estimulos'] = $this->modelCuip->GetEstimulosById($id);
+			$data['referencia'] = $this->modelCuip->GetReferenciaById($id);
+			$data['mediaFiliacion'] = $this->modelCuip->GetMedFiliacionById($id);
 
 			$documentos = $this->modelCuip->GetDocumentosById($id);
+
 
 
 			$result = [];
@@ -2430,13 +2522,29 @@ class Cuip extends BaseController {
 			$id = $this->encrypt->Decrytp($getId);
 
         	$data['variable'] = $this->modelCuip->GetDatosPersonalesById($id);
-			$data['estudio'] = $this->modelCuip->GetSocioEconomicoById($id);
+         	$data['experiencia'] = $this->modelCuip->GetExperienciaPersonalesById($id);
+			$economico = $this->modelCuip->GetSocioEconomicoById($id);
+			$data['estudio'] = $economico;
+
+			if (!empty($economico)){
+				$data['economico_dependientes'] = $this->modelCuip->GetSocioEconomicoDependientesById($economico->id);
+			}
 			$data['seguridad'] = $this->modelCuip->GetEmpleosSeridadById($id);
 			$data['diversos'] = $this->modelCuip->GetEmpleosDiversos($id);
 			$data['capacitacion'] = $this->modelCuip->GetCapacitaciones($id);
-			$data['referencia'] = $this->modelReferencia->GetReferencia($id);
-
+			$data['capacitacion_publica'] = $this->modelCuip->GetCapacitacionesPublicById($id);
+			$data['idiomas'] = $this->modelCuip->GetIdiomasById($id);
+			$data['habilidades'] = $this->modelCuip->GetHabilidadesById($id);
+			$data['agrupaciones'] = $this->modelCuip->GetAgrupacionesById($id);
 			$data['sanciones'] = $this->modelCuip->GetSanciones($id);
+
+			$data['resoluciones'] = $this->modelCuip->GetResolucionesById($id);
+
+			$data['estimulos'] = $this->modelCuip->GetEstimulosById($id);
+			$data['referencia'] = $this->modelCuip->GetReferenciaById($id);
+
+			$data['mediaFiliacion'] = $this->modelCuip->GetMedFiliacionById($id);
+			$documentos = $this->modelCuip->GetDocumentosById($id);
 
 			$data['id'] = $this->encrypt->Encrypt($id); 
 			
@@ -2597,6 +2705,7 @@ class Cuip extends BaseController {
 
         			$parentesco_cercano = $this->encrypt->Decrytp($getParentesco_cercano);
 
+
         			$getPaisParCer = $this->request->getPost('paisParCer');
 
         			$paisParCer = $this->encrypt->Decrytp($getPaisParCer);
@@ -2617,6 +2726,38 @@ class Cuip extends BaseController {
 
         			$ocupacionRefLab = $this->encrypt->Decrytp($getOcupacionRefLab);
 
+        			$getEstadocodigoRefCer = $this->request->getPost('estadocodigoRefCer');
+
+        			$estadocodigoRefCer = $this->encrypt->Decrytp($getEstadocodigoRefCer);
+
+        			$getMunicipiocodigoRefCer = $this->request->getPost('municipiocodigoRefCer');
+
+        			$municipiocodigoRefCer = $this->encrypt->Decrytp($getMunicipiocodigoRefCer);
+
+        			$getEstadocodigoParCer = $this->request->getPost('estadocodigoParCer');
+
+        			$estadocodigoParCer = $this->encrypt->Decrytp($getEstadocodigoParCer);
+
+        			$getMunicipiocodigoParCer = $this->request->getPost('municipiocodigoParCer');
+
+        			$municipiocodigoParCer = $this->encrypt->Decrytp($getMunicipiocodigoParCer);
+
+        			$getEstadocodigoPersonal = $this->request->getPost('estadocodigoPersonal');
+
+        			$estadocodigoPersonal = $this->encrypt->Decrytp($getEstadocodigoPersonal);
+
+        			$getMunicipiocodigoPersonal = $this->request->getPost('municipiocodigoPersonal');
+
+        			$municipiocodigoPersonal = $this->encrypt->Decrytp($getMunicipiocodigoPersonal);
+
+        			$getEstadocodigoLaboral = $this->request->getPost('estadocodigoLaboral');
+
+        			$estadocodigoLaboral = $this->encrypt->Decrytp($getEstadocodigoLaboral);
+
+        			$getMunicipiocodigoLaboral = $this->request->getPost('municipiocodigoLaboral');
+
+        			$municipiocodigoLaboral = $this->encrypt->Decrytp($getMunicipiocodigoLaboral);
+
         			
 
 
@@ -2630,7 +2771,7 @@ class Cuip extends BaseController {
 						"apellido_materno_fam" => strtoupper($this->request->getPost('apellidoMaterno')) , 
 						"primer_nombre_fam" => strtoupper($this->request->getPost('primerNombre')) , 
 						"segundo_nombre_fam" => strtoupper($this->request->getPost('segundoNombre')) , 
-						"idGenero_fam" => $getSexo_fam_cer , 
+						"idGenero_fam" => $sexo_fam_cer , 
 						"ocupacion_fam" => $ocupacion , 
 						"idParentesco_fam" => $parentesco_fam_cercano , 
 						"calle_fam" => strtoupper($this->request->getPost('calle')) , 
@@ -2640,8 +2781,8 @@ class Cuip extends BaseController {
 						"idCodigoPostal_fam" => $this->request->getPost('codigoRefCer') , 
 						"numero_telefono_fam" => $this->request->getPost('numero') , 
 						"idPaisNacimiento_fam" => $pais , 
-						"idEstado_fam" => $this->request->getPost('estadocodigoRefCer') , 
-						"municipio_fam" => $this->request->getPost('municipiocodigoRefCer') , 
+						"idEstado_fam" => $estadocodigoRefCer , 
+						"municipio_fam" => $municipiocodigoRefCer , 
 						"ciudad_fam" => strtoupper($this->request->getPost('ciudadcodigoRefCer')) , 
 						"apellido_paterno_pariente" => strtoupper($this->request->getPost('apellidoPaternoParCer')) , 
 						"apellido_materno_pariente" => strtoupper($this->request->getPost('apellidoMaternoParCer')) , 
@@ -2657,8 +2798,8 @@ class Cuip extends BaseController {
 						"idCodigoPostal_pariente" => $this->request->getPost('codigoParCer') , 
 						"numero_telefono_pariente" => $this->request->getPost('numeroParCer') , 
 						"idPaisNacimiento_pariente" => $paisParCer , 
-						"idEstado_pariente" => $this->request->getPost('estadocodigoParCer') , 
-						"municipio_pariente" => $this->request->getPost('municipiocodigoParCer') , 
+						"idEstado_pariente" => $estadocodigoParCer , 
+						"municipio_pariente" => $municipiocodigoParCer , 
 						"ciudad_pariente" => strtoupper($this->request->getPost('ciudadcodigoParCer')) , 
 
 						"apellido_paterno_personal" => strtoupper($this->request->getPost('apellidoPaternoRefPer')) , 
@@ -2675,8 +2816,8 @@ class Cuip extends BaseController {
 						"idCodigoPostal_personal" => $this->request->getPost('codigoPersonal') , 
 						"numero_telefono_personal" => $this->request->getPost('numeroRefPer') , 
 						"idPaisNacimiento_personal" => $paisRefPer, 
-						"idEstado_personal" => $this->request->getPost('estadocodigoPersonal') , 
-						"municipio_personal" => $this->request->getPost('municipiocodigoPersonal') , 
+						"idEstado_personal" => $estadocodigoPersonal , 
+						"municipio_personal" => $municipiocodigoPersonal , 
 						"ciudad_personal" => strtoupper($this->request->getPost('ciudadcodigoPersonal')) ,
 
 						"apellido_paterno_laboral" => strtoupper($this->request->getPost('apellidoPaternoRefLab')) , 
@@ -2693,8 +2834,8 @@ class Cuip extends BaseController {
 						"idCodigoPostal_laboral" => $this->request->getPost('codigoLaboral') , 
 						"numero_telefono_laboral" => $this->request->getPost('numeroRefLab') , 
 						"idPaisNacimiento_laboral" => $paisRefLab , 
-						"idEstado_laboral" => $this->request->getPost('estadocodigoLaboral') , 
-						"municipio_laboral" => $this->request->getPost('municipiocodigoLaboral') , 
+						"idEstado_laboral" => $estadocodigoLaboral , 
+						"municipio_laboral" => $municipiocodigoLaboral , 
 						"ciudad_laboral" => strtoupper($this->request->getPost('ciudadcodigoLaboral')) ,
 						"activo" => 1 , 
 						"createdby" => $LoggedUserId , 
@@ -2739,53 +2880,179 @@ class Cuip extends BaseController {
 	function export()
 	{
 		$data = $this->modelCuip->GetCuipExcel();
-
-		if($data){
-
-		$file_name = '45_CAMPOS_14_ELEMENTOS(1944).xlsx';
-
 		$getRuta = WRITEPATH . 'uploads/files/';
+		$file_name = '45_CAMPOS_14_ELEMENTOS(1944).xlsx';
+		$newFile_name = '45_CAMPOS_14_ELEMENTOS_(1944).xlsx';
 
-		$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($getRuta.$file_name);;
+		if($data > 0){
+
+			if (copy($getRuta.$file_name, $getRuta.$newFile_name)) {
+
+		
+
+		
+
+		$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($getRuta.$newFile_name);;
 
 		$sheet = $spreadsheet->getActiveSheet();
 
 		
 
 		$count = 2;
-
+		$i = 1;
 		foreach($data as $row)
 		{
 			
+			$sheet->setCellValue('A' . $count,$i);
+
 			$sheet->setCellValue('B' . $count, $row->apellido_paterno);
 
 			$sheet->setCellValue('C' . $count, $row->apellido_materno);
 
 			$sheet->setCellValue('D' . $count, $row->nombre);
+			
+			$sheet->setCellValue('E' . $count, date( "d/m/Y" ,strtotime($row->fecha_nacimiento)));
 
-			$sheet->setCellValue('E' . $count, $row->curp);
+			$sheet->setCellValue('F' . $count, $row->idEntidadNacimiento);
 
-			$sheet->setCellValue('F' . $count, $row->rfc);
+			$sheet->setCellValue('G' . $count, $row->idMunicipioNacimiento);
 
-			$sheet->setCellValue('G' . $count, date( "d/m/Y" ,strtotime($row->fecha_nacimiento)));
+			$sheet->setCellValue('H' . $count, $row->idGenero);
 
-		
+			$sheet->setCellValue('I' . $count, $row->idEstadoCivil);
+
+			$sheet->setCellValue('J' . $count, $row->idNivelEducativo);
+
+			$sheet->setCellValue('K' . $count, $row->escuela);
+
+			$sheet->setCellValue('L' . $count, $row->especialidad);
+
+			$sheet->setCellValue('M' . $count, $row->rfc);
+
+			$sheet->setCellValue('N' . $count, $row->clave_electoral);
+
+			$sheet->setCellValue('O' . $count, $row->cartilla_smn);
+
+			$sheet->setCellValue('P' . $count, $row->curp);
+
+			$sheet->setCellValue('Q' . $count, $row->calle);
+
+			$sheet->setCellValue('R' . $count, $row->numero_exterior);
+
+			$sheet->setCellValue('S' . $count, $row->numero_interior);
+
+			$sheet->setCellValue('T' . $count, $row->colonia);
+
+			$sheet->setCellValue('U' . $count, $row->idCodigoPostal);
+
+			$sheet->setCellValue('V' . $count, $row->numero_telefono);
+
+			$sheet->setCellValue('W' . $count, $row->idEstado);
+
+			$sheet->setCellValue('X' . $count, $row->municipio);
+
+			$sheet->setCellValue('Y' . $count, date( "d/m/Y" ,strtotime($row->fecha_ingreso)));
+
+			$sheet->setCellValue('Z' . $count, $row->idEstado_adscripcion);
+
+			$sheet->setCellValue('AA' . $count, $row->municipio_adscripcion);
+
+			//Referencia
+			$sheet->setCellValue('AB' . $count, $row->apellido_paterno_fam);
+			$sheet->setCellValue('AC' . $count, $row->apellido_materno_fam);
+			$sheet->setCellValue('AD' . $count, $row->nombreFam);
+			$sheet->setCellValue('AE' . $count, $row->idGenero_fam);
+			$sheet->setCellValue('AF' . $count, $row->ocupacion_fam);
+			$sheet->setCellValue('AG' . $count, 1);
+			$sheet->setCellValue('AH' . $count, $row->idParentesco_fam);
+			$sheet->setCellValue('AI' . $count, $row->calle_fam);
+			$sheet->setCellValue('AJ' . $count, $row->numero_exterior_fam);
+			$sheet->setCellValue('AK' . $count, $row->numero_interior_fam);
+			$sheet->setCellValue('AL' . $count, $row->colonia_fam);
+			$sheet->setCellValue('AM' . $count, $row->idCodigoPostal_fam);
+			$sheet->setCellValue('AN' . $count, $row->numero_telefono_fam);
+			$sheet->setCellValue('AO' . $count, $row->idEstado_fam);
+			$sheet->setCellValue('AP' . $count, $row->municipio_fam);
+			$sheet->setCellValue('AQ' . $count, $row->ciudad_fam);
+			
+
+			//MEDIA FILIACION
+			$sheet->setCellValue('AR' . $count, $row->tiposangre);
+			$sheet->setCellValue('AS' . $count, $row->rhSangre);
+			$sheet->setCellValue('AT' . $count, $row->anteojos);
+			$sheet->setCellValue('AU' . $count, $row->estatura);
+			$sheet->setCellValue('AV' . $count, $row->peso);
+			$sheet->setCellValue('AW' . $count, $row->complexion);
+			$sheet->setCellValue('AX' . $count, $row->colorPiel);
+			$sheet->setCellValue('AY' . $count, $row->cara);
+			$sheet->setCellValue('AZ' . $count, $row->cantidadCabello);
+			$sheet->setCellValue('BA' . $count, $row->colorCabello);
+			$sheet->setCellValue('BB' . $count, $row->formaCabello);
+			 $sheet->setCellValue('BC' . $count, $row->calvicieCabello);
+			 $sheet->setCellValue('BD' . $count, $row->implantacionCabello);
+			 $sheet->setCellValue('BE' . $count, $row->frenteAltura);
+			 $sheet->setCellValue('BF' . $count, $row->frenteInclinacion);
+			 $sheet->setCellValue('BG' . $count, $row->frenteAncho);
+			 $sheet->setCellValue('BH' . $count, $row->direccionCejas);
+			 $sheet->setCellValue('BI' . $count, $row->implantacionCejas);
+			 $sheet->setCellValue('BJ' . $count, $row->formasCejas);
+			 $sheet->setCellValue('BK' . $count, $row->tamCejas);
+			 $sheet->setCellValue('BL' . $count, $row->ojosColor);
+			 $sheet->setCellValue('BM' . $count, $row->ojosForma);
+			 $sheet->setCellValue('BN' . $count, $row->TamOjos);
+			$sheet->setCellValue('BO' . $count, $row->Raiz);
+			$sheet->setCellValue('BP' . $count, $row->Dorso);
+			$sheet->setCellValue('BQ' . $count, $row->AnchoNariz);
+			$sheet->setCellValue('BR' . $count, $row->BaseNariz);
+			$sheet->setCellValue('BS' . $count, $row->AlturaNariz);
+			$sheet->setCellValue('BT' . $count, $row->TamanoBoca);
+			$sheet->setCellValue('BU' . $count, $row->Comisuras);
+			$sheet->setCellValue('BV' . $count, $row->EspesorLabio);
+			$sheet->setCellValue('BW' . $count, $row->AlturaNasolabial);
+			$sheet->setCellValue('BX' . $count, $row->ProminenciaLabio);
+			$sheet->setCellValue('BY' . $count, $row->MentonTipo);
+			$sheet->setCellValue('BZ' . $count, $row->MentonForma);
+			$sheet->setCellValue('CA' . $count, $row->MentonInclinacion);
+			$sheet->setCellValue('CB' . $count, $row->FormaOreja);
+			$sheet->setCellValue('CC' . $count, $row->Original);
+			$sheet->setCellValue('CD' . $count, $row->Superior);
+			$sheet->setCellValue('CE' . $count, $row->Posterior);
+			$sheet->setCellValue('CF' . $count, $row->AdherenciaHelix);
+			$sheet->setCellValue('CG' . $count, $row->ContornoLobulo);
+			$sheet->setCellValue('CH' . $count, $row->AdherenciaLobulo);
+			$sheet->setCellValue('CI' . $count, $row->Particularidad);
+			$sheet->setCellValue('CJ' . $count, $row->DimensionLobulo);
+
 
 			$count++;
+			$i++;
 		}
 
 		$writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
 
 		
-
-		$writer->save($getRuta.$file_name);
+		
+		$writer->save($getRuta.$newFile_name);
 
 		
 		$this->response->setHeader('Content-Type', 'application/vnd.ms-excel');
 
 		
 			
-		readfile($getRuta.$file_name);
+		readfile($getRuta.$newFile_name);
+
+	}
+		} else {
+
+			$errors = [];
+			$succes = [];
+			$dontSucces = [];
+			
+
+			$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'No se encontro ningun registro'  ];
+
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces ]);
 		}
 
 	}
@@ -2873,13 +3140,23 @@ class Cuip extends BaseController {
 		
 		$this->response->setHeader('Content-Type', 'application/vnd.ms-excel');
 
-		
 			
 		readfile($getRuta.$file_name);
 		}
 	}
 
+	function src($fileName,$type = "full"){
 
-	
+		$path = '';
+
+		if ($type != 'full')
+
+			$path .= $type . '/';
+
+		return $path . $fileName;	
+
+	}
+
+
 
 }

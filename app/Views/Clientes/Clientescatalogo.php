@@ -13,7 +13,7 @@
 </div>
 <div class="card card-primary">
     <div class="card-header" id="tabMain">
-        <h3 class="card-title">Cliente</h3>
+        <h3 class="card-title">CLIENTE / SERVICIO</h3>
     
     <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -28,16 +28,17 @@
             <tr>
                 <th>Razón Social</th>
                 <th>Nombre Corto</th>
-                <th>Email</th>
                 <th>Activo</th>
-                <th>Editar</th>
-                <th>Detalle</th>
+                <th>Ubicación</th>
+                <th>Turno</th>
+                <th>Puesto</th>
        		</tr>
             </thead>
         </table>
     </div>
     
 </div>
+
 
 <script>
 function estatusRenderer(data, type, full, meta) {
@@ -63,7 +64,65 @@ function estatusRenderer(data, type, full, meta) {
                       },
                       { data: "nombre_corto"
                       },
-                      { data: "email"
+                     { data: "activo",
+                        render: estatusRenderer
+                      }, 
+                      {  data: "ubicacion",
+                    render: function (data, type, full, meta) {
+                    
+                        return "<a href='" + base_url + "/ubicacioncatalogo?id=" + full.id + "' class='nav-link'><i class='fa fa-location-arrow' nav-icon></i>";
+                    
+                    }
+                },
+                {  data: "turno",
+                    render: function (data, type, full, meta) {
+                    
+                        return "<a href='" + base_url + "/turnocatalogo?id=" + full.id + "' class='nav-link'><i class='fa fa-clock-o nav-icon'></i>";
+                    
+                    }
+                },
+                {  data: "puesto",
+                    render: function (data, type, full, meta) {
+                    
+                        return "<a href='" + base_url + "/puestocatalogo?id=" + full.id + "' class='nav-link'><i class='fa fa-list-alt nav-icon'></i>";
+                    
+                    }
+                },
+                    
+                     /* {  data: "edit",
+                    render: function (data, type, full, meta) {
+                    
+                        return "<a href='" + base_url + "/editCliente?id=" + full.id + "' class='nav-link'><i class='fa fa-pencil-square-o nav-icon'></i>";
+                    
+                    }
+                }, {
+                    data: "detail",
+                    render: function (data, type, full, meta) {
+                    
+                        return "<a href='" + base_url + "/detailCliente?id=" + full.id + "' class='nav-link'><i class='fa fa-list-alt nav-icon'></i>";
+                    
+                    }
+                }*/
+            ]
+        });
+
+
+     /*   var table = $('#dataGridUbica').DataTable({
+            data: <?= json_encode($cliente) ?> ,
+            deferRender: true,
+            pageLength: 10,
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
+            },
+            columns: [{ data: "nombre_ubicacion"
+                      },
+                      { data: "calle_num"
+                      },
+                      { data: "ciudad"
+                      },
+                      { data: "estado"
+                      },
+                      { data: "fecha_fin"
                       },
                       { data: "activo",
                         render: estatusRenderer
@@ -83,7 +142,7 @@ function estatusRenderer(data, type, full, meta) {
                     }
                 }
             ]
-        });
+        });*/
 
 </script>
 <?= $this->endSection() ?>

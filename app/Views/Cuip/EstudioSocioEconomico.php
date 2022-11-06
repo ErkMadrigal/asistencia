@@ -139,7 +139,7 @@
             <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
             <input type="checkbox" class="form-check-input mt-2" id="btnNingunConyuge">
 
-            <a href="#" class="btn btn-tool form-check-label add-more-btn-dged" id="btnAdddConyuge">Agregar +</a>
+            <a href="#" class="btn btn-tool form-check-label add-more-btn-econ" id="btnAdddConyuge">Agregar +</a>
 
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
@@ -358,19 +358,21 @@
 
     /*CONYUGE */
 
-    $(document).on('click', '.add-more-btn-dged', function() {
+    $(document).on('click', '.add-more-btn-econ', function() {
 
         var clone = '<div class="row" class="form-block">    <div class="col-12 col-sm-12 col-md-6">        <div class="form-group">            <label for="apellidoPaternoB" class=" control-label">Apellido                Paterno:<span class="text-danger">*</span></label>            <input type="text" class="form-control " id="apellidoPaternoB" name="apellidoPaternoB">        </div>    </div>    <div class="col-12 col-sm-12 col-md-6">        <div class="form-group">            <label for="apellidoMaternoB" class=" control-label">Apellido                Materno:<span class="text-danger">*</span></label>            <input type="text" class="form-control " id="apellidoMaternoB" name="apellidoMaternoB">        </div>    </div>    <div class="col-12 col-sm-12 col-md-6">        <div class="form-group">            <label for="primerNombreB" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>            <input type="text" class="form-control " id="primerNombreB" name="primerNombreB">        </div>    </div>    <div class="col-12 col-sm-12 col-md-6">        <div class="form-group">            <label for="segundoNombreB" class=" control-label">Segundo Nombre:</label>            <input type="text" class="form-control " id="segundoNombreB" name="segundoNombreB">        </div>    </div>    <div class="col-12 col-sm-6">        <div class="form-group">            <label for="fecha_nacimiento_depB">Fecha de Nacimiento: <span class="text-danger">*</span></label>            <div class="input-group date" id="fecha_nacimiento_depB" data-target-input="nearest">                <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_nacimiento_depB" id="datetime-fecha_nacimiento_depB" name="fecha_nacimiento_depB" placeholder="" value="" />                <div class="input-group-append" data-target="#fecha_nacimiento_depB" data-toggle="datetimepicker">                    <div class="input-group-text"><i class="far fa-calendar"></i></div>                </div>            </div>            <script type="text/javascript">                $(function() {                    $("#fecha_nacimiento_depB").datetimepicker({                        format: "DD-MM-YYYY",                        locale: moment.locale("es")                    });                });            <\/script>        </div>    </div>    <div class="col-12 col-sm-12 col-md-6">        <div class="form-group">            <label for="sexo_depB" class=" control-label">Sexo:<span class="text-danger">*</span></label>            <select class="form-control" id="sexo_depB" name="sexo_depB">                <option value="">Selecciona una Opcion</option>                <?php                if (!empty($genero)) :                    foreach ($genero as  $a) {                ?>                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>                <?php                    }                endif; ?>            </select>            <script>                $(document).ready(function() {                    $("#sexo_depB").select2({                        theme: "bootstrap4",                        width: "100%"                    });                });            <\/script>        </div>    </div>    <div class="col-6 col-sm-6">        <div class="form-group">            <label for="parentesco_familiarB" class="control-label">Parentesco: <span class="text-danger">*</span></label>            <div>                <select class="form-control" id="parentesco_familiarB" name="parentesco_familiarB">                    <option value="">Selecciona una Opcion</option>                    <?php                    if (!empty($parentesco_todos)) :                        foreach ($parentesco_todos as  $a) {                    ?>                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>                    <?php                        }                    endif; ?>                </select>                <script>                    $(document).ready(function() {                        $("#parentesco_familiarB").select2({                            theme: "bootstrap4",                            width: "100%"                        });                    });                <\/script>            </div>        </div>    </div></div>';
         $('#CardConyugeB').append(clone);
-        $('#btnAdddConyuge').removeClass('add-more-btn');
-        $('#btnAdddConyuge').addClass('remove-more-btn');
+        setTimeout(function () { $("#apellidoPaternoB").focus() }, 300);
+        $('#btnAdddConyuge').removeClass('add-more-btn-econ');
+        $('#btnAdddConyuge').addClass('remove-more-btn-econ');
         $('#btnAdddConyuge').text('Remover -');
     });
 
-    $(document).on('click', '.remove-more-btn', function() {
+    $(document).on('click', '.remove-more-btn-econ', function() {
         $('#CardConyugeB').empty();
-        $('#btnAdddConyuge').removeClass('remove-more-btn');
-        $('#btnAdddConyuge').addClass('add-more-btn');
+        setTimeout(function () { $("#apellidoPaterno").focus() }, 300);
+        $('#btnAdddConyuge').removeClass('remove-more-btn-econ');
+        $('#btnAdddConyuge').addClass('add-more-btn-econ');
         $('#btnAdddConyuge').text('Agregar +');
     });
 
