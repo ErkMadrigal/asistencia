@@ -208,7 +208,7 @@
                             <label for="averiguacion_previa" class="control-label">Averiguación previa: <span class="text-danger">*</span></label>
                             <div >    
                                   <input type="text"  class="form-control "  id="averiguacion_previa" name="averiguacion_previa"  value="<?=$sanciones->averiguacion_estado  ?>"><input type="hidden" class="form-control " value="  <?= isset($sanciones->averiguacion_estado) ? $sanciones->averiguacion_estado : ''  ?> " id="id" name="id"><?= csrf_field() ?>
-                            
+                    
                         </div>
                         </div>
                     </div>
