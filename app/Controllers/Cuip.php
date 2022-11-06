@@ -416,9 +416,17 @@ class Cuip extends BaseController {
 
         			$fecha_nacimiento = date( "Y-m-d" ,strtotime($getFechaNacimiento));
 
-        			$getFecha_naturalizacion = $this->request->getPost('fecha_naturalizacion');
 
-        			$fecha_naturalizacion = date( "Y-m-d" ,strtotime($getFecha_naturalizacion));
+        			if ( $modo_nacionalidad != 1){
+
+        				$getFecha_naturalizacion = $this->request->getPost('fecha_naturalizacion');
+
+        				$fecha_naturalizacion = date( "Y-m-d" ,strtotime($getFecha_naturalizacion));
+        			} else {
+
+        				$fecha_naturalizacion = '';
+
+        			} 
 
         			$getVigenciaLic = $this->request->getPost('vigenciaLic');
 
@@ -2872,14 +2880,19 @@ class Cuip extends BaseController {
 	function export()
 	{
 		$data = $this->modelCuip->GetCuipExcel();
+		$getRuta = WRITEPATH . 'uploads/files/';
+		$file_name = '45_CAMPOS_14_ELEMENTOS(1944).xlsx';
+		$newFile_name = '45_CAMPOS_14_ELEMENTOS_(1944).xlsx';
 
 		if($data > 0){
 
-		$file_name = '45_CAMPOS_14_ELEMENTOS(1944).xlsx';
+			if (copy($getRuta.$file_name, $getRuta.$newFile_name)) {
 
-		$getRuta = WRITEPATH . 'uploads/files/';
+		
 
-		$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($getRuta.$file_name);;
+		
+
+		$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($getRuta.$newFile_name);;
 
 		$sheet = $spreadsheet->getActiveSheet();
 
@@ -3018,15 +3031,17 @@ class Cuip extends BaseController {
 		$writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
 
 		
-
-		$writer->save($getRuta.$file_name);
+		
+		$writer->save($getRuta.$newFile_name);
 
 		
 		$this->response->setHeader('Content-Type', 'application/vnd.ms-excel');
 
 		
 			
-		readfile($getRuta.$file_name);
+		readfile($getRuta.$newFile_name);
+
+	}
 		} else {
 
 			$errors = [];
