@@ -271,7 +271,7 @@ class MediaFiliacion extends BaseController {
 			if ($fotoIzq){
 				
 
-				$imgfotoIzq = $this->encrypt->Encrypt($foto->idDocumento);
+				$imgfotoIzq = $this->encrypt->Encrypt($fotoIzq->idDocumento);
 
 				$data['fotoIzq'] = $imgfotoIzq;
 
@@ -282,7 +282,7 @@ class MediaFiliacion extends BaseController {
 			if ($fotoDer){
 				
 
-				$imgfotoDer = $this->encrypt->Encrypt($foto->idDocumento);
+				$imgfotoDer = $this->encrypt->Encrypt($fotoDer->idDocumento);
 
 				$data['fotoDer'] = $imgfotoDer;
 
