@@ -416,7 +416,6 @@
                         <label for="sep" class=" control-label">Registro SEP:<span class="text-danger">*</span></label>
                         <div>
                         <select id="sep" name="sep" class="form-control" >
-                                <!--<option selected value="<?=$variable->registro_sep?>"><?=$variable->registro_sep?></option>-->
                                 <?php foreach($variable as $registro_sep => $valor):?>
                                     <option value="<?=$variable->registro_sep?>"><?=$variable->registro_sep?></option>
                                 <?php endforeach;?>
@@ -537,7 +536,6 @@
                 <div class="form-group">
                     <label for="coloniacodigo" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                     <select id="coloniacodigo" name="coloniacodigo" class="form-control" >
-                                <!--<option selected value="<?=$variable->colonia?>"><?=$variable->colonia?></option>-->
                                 <?php foreach($variable as $colonia => $valor):?>
                                     <option value="<?=$variable->colonia?>"><?=$variable->colonia?></option>
                                 <?php endforeach;?>
@@ -557,7 +555,6 @@
                     <label for="estadocodigo" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
                     <div>
                     <select id="estadocodigo" name="estadocodigo" class="form-control" >
-                               <!-- <option selected value="<?=$variable->naciE?>"><?=$variable->naciE?></option>-->
                                 <?php foreach($variable as $naciE => $valor):?>
                                     <option value="<?=$variable->naciE?>"><?=$variable->naciE?></option>
                                 <?php endforeach;?>
@@ -578,7 +575,6 @@
                     <label for="municipiocodigo" class="control-label">Municipio: <span class="text-danger">*</span></label>
                     <div>
                     <select id="municipiocodigo" name="municipiocodigo" class="form-control" >
-                               <!-- <option selected value="<?=$variable->municipio?>"><?=$variable->municipio?></option>-->
                                 <?php foreach($variable as $municipio => $valor):?>
                                     <option value="<?=$variable->municipio?>"><?=$variable->municipio?></option>
                                 <?php endforeach;?>

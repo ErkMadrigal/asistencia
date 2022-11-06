@@ -70,7 +70,6 @@
                         <label for="coloniacodigoEmpDiv" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                         <div >    
                         <select id="ciudadcodigo" name="ciudadcodigo" class="form-control" >
-                                <!--<option selected value="<?=$diversos->colonia?>"><?=$diversos->colonia?></option>-->
                                 <?php foreach($diversos as $colonia => $valor):?>
                                     <option value="<?=$diversos->colonia?>"><?=$diversos->colonia?></option>
                                 <?php endforeach;?>
@@ -92,7 +91,6 @@
                         <label for="estadocodigoEmpDiv" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
                         <div>
                         <select id="ciudadcodigo" name="ciudadcodigo" class="form-control" >
-                              <!--  <option selected value="<?=$diversos->estado?>"><?=$diversos->estado?></option>-->
                                 <?php foreach($diversos as $estado => $valor):?>
                                     <option value="<?=$diversos->estado?>"><?=$diversos->estado?></option>
                                 <?php endforeach;?>
@@ -273,7 +271,6 @@
                     <label for="reglamentacion" class=" control-label">¿Conoce la reglamentación de los reconocimientos?<span class="text-danger">*</span></label>
                     <div >    
                     <select id="reglamentacion" name="reglamentacion" class="form-control" >
-                              <!--  <option selected value="<?=$diversos->reglamento?>"><?=$diversos->reglamento?></option>-->
                                 <?php foreach($diversos as $reglamento => $valor):?>
                                     <option value="<?=$diversos->reglamento?>"><?=$diversos->reglamento?></option>
                                 <?php endforeach;?>

@@ -339,7 +339,6 @@
                     <label for="idioma" class="control-label">Idioma o Dialecto: <span class="text-danger">*</span></label>
                     <div>
                     <select id="idioma" name="idioma" class="form-control" >
-                                <!--<option selected value="<?=$capacitacion->idioma?>"><?=$capacitacion->idioma?></option>-->
                                 <?php foreach($capacitacion as $idioma => $valor):?>
                                     <option value="<?=$capacitacion->idioma?>"><?=$capacitacion->idioma?></option>
                                 <?php endforeach;?>
@@ -360,7 +359,6 @@
                     <label for="lectura" class=" control-label">% Lectura:<span class="text-danger">*</span></label>
                     <div >    
                     <select id="lectura" name="lectura" class="form-control" >
-                               <!-- <option selected value="<?=$capacitacion->lectura?>"><?=$capacitacion->lectura?></option>-->
                                 <?php foreach($capacitacion as $lectura => $valor):?>
                                     <option value="<?=$capacitacion->lectura?>"><?=$capacitacion->lectura?></option>
                                 <?php endforeach;?>
@@ -381,7 +379,6 @@
                     <label for="escritura" class=" control-label">% Escritura:<span class="text-danger">*</span></label>
                     <div >    
                     <select id="escritura" name="escritura" class="form-control" >
-                              <!--  <option selected value="<?=$capacitacion->escritura?>"><?=$capacitacion->escritura?></option>-->
                                 <?php foreach($capacitacion as $escritura => $valor):?>
                                     <option value="<?=$capacitacion->escritura?>"><?=$capacitacion->escritura?></option>
                                 <?php endforeach;?>

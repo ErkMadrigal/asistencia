@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    
+
     <!-- /.card-header -->
     <div class="card-body  ">
         <form class="form-horizontal" id="SocioEconomico">
@@ -23,7 +23,6 @@
                         <div>
 
                             <select id="familia" name="familia" class="form-control">
-                                <!--  <option selected value="<?= $estudio->vive ?>"><?= $estudio->vive ?></option>-->
                                 <?php foreach ($estudio as $vive => $valor) : ?>
                                     <option value="<?= $estudio->vive ?>"><?= $estudio->vive ?></option>
                                 <?php endforeach; ?>
@@ -56,7 +55,6 @@
                         <label for="domicilio_tipo" class="control-label">Su domicilio es: <span class="text-danger">*</span></label>
                         <div>
                             <select id="domicilio_tipo" name="domicilio_tipo" class="form-control">
-                                <!--<option selected value="<?= $estudio->domicilio ?>"><?= $estudio->domicilio ?></option>-->
                                 <?php foreach ($estudio as $domicilio => $valor) : ?>
                                     <option value="<?= $estudio->domicilio ?>"><?= $estudio->domicilio ?></option>
                                 <?php endforeach; ?>
@@ -234,9 +232,8 @@
                         <div class="form-group">
                             <label for="sexo_dep" class=" control-label">Sexo:<span class="text-danger">*</span></label>
                             <select id="sexo_dep" name="sexo_dep" class="form-control">
-                                <option selected value="<?= $estudio->sexo ?>"><?= $estudio->sexo ?></option>
                                 <?php foreach ($estudio as $sexo => $valor) : ?>
-                                    <option value="<?= $estudio->sexo ?>"><?= $valor->sexo ?></option>
+                                    <option value="<?= $estudio->sexo ?>"><?= $estudio->sexo ?></option>
                                 <?php endforeach; ?>
 
                             </select>
@@ -256,9 +253,9 @@
                         <label for="municipiocodigoSegPub" class="control-label">Parentesco: <span class="text-danger">*</span></label>
                         <div>
                             <select id="municipiocodigoSegPub" name="municipiocodigoSegPub" class="form-control">
-                                <option selected value="<?= $estudio->parentesco ?>"><?= $estudio->parentesco ?></option>
+                              <!--  <option selected value="<?= $estudio->parentesco ?>"><?= $estudio->parentesco ?></option>-->
                                 <?php foreach ($estudio as $parentesco => $valor) : ?>
-                                    <option value="<?= $estudio->parentesco ?>"><?= $valor->parentesco ?></option>
+                                    <option value="<?= $estudio->parentesco ?>"><?= $estudio->parentesco ?></option>
                                 <?php endforeach; ?>
                             </select>
                             <script>

@@ -86,7 +86,6 @@
                         <label for="coloniacodigoSegPub" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                         <div >    
                         <select id="coloniacodigoSegPub" name="coloniacodigoSegPub" class="form-control" >
-                             <!--   <option selected value="<?=$seguridad->colonia?>"><?=$seguridad->colonia?></option>-->
                                 <?php foreach($seguridad as $colonia => $valor):?>
                                     <option value="<?=$seguridad->colonia?>"><?=$seguridad->colonia?></option>
                                 <?php endforeach;?>
@@ -249,7 +248,6 @@
                         <label for="estadocodigoSegPub" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
                         <div>
                         <select id="estadocodigoSegPub" name="estadocodigoSegPub" class="form-control" >
-                             <!--   <option selected value="<?=$seguridad->estado?>"><?=$seguridad->estado?></option>-->
                                 <?php foreach($seguridad as $estado => $valor):?>
                                     <option value="<?=$seguridad->estado?>"><?=$seguridad->estado?></option>
                                 <?php endforeach;?>
@@ -347,7 +345,7 @@
         getSepomex(this.id)
     });
     
-    
+
     $('#saveEmpSegPublica').click(function (event) {
         event.preventDefault();
         $('#load').addClass( "spinner-border" );
