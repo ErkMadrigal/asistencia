@@ -2021,13 +2021,13 @@ class Cuip extends BaseController {
 			$getId = str_replace(" ", "+", $_GET['id']);
 			$id = $this->encrypt->Decrytp($getId);
 
-         	$data['variable'] = $this->modelCuip->GetDatosPersonalesById($id);
-			$data['estudio'] = $this->modelCuip->GetSocioEconomicoById($id);
-			$data['seguridad'] = $this->modelCuip->GetEmpleosSeridadById($id);
-			$data['diversos'] = $this->modelCuip->GetEmpleosDiversos($id);
-			$data['capacitacion'] = $this->modelCuip->GetCapacitaciones($id);
-			$data['sanciones'] = $this->modelCuip->GetSanciones($id);
-			$data['referencia'] = $this->modelReferencia->GetReferencia($id);
+         	// $data['variable'] = $this->modelCuip->GetDatosPersonalesById($id);
+			// $data['estudio'] = $this->modelCuip->GetSocioEconomicoById($id);
+			// $data['seguridad'] = $this->modelCuip->GetEmpleosSeridadById($id);
+			// $data['diversos'] = $this->modelCuip->GetEmpleosDiversos($id);
+			// $data['capacitacion'] = $this->modelCuip->GetCapacitaciones($id);
+			// $data['sanciones'] = $this->modelCuip->GetSanciones($id);
+			// $data['referencia'] = $this->modelReferencia->GetReferencia($id);
 
 			$documentos = $this->modelCuip->GetDocumentosById($id);
 
