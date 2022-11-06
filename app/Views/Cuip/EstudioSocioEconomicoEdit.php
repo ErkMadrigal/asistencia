@@ -20,9 +20,12 @@
                         <div class="form-group">
                             <label for="familia" class="control-label">¿Vive con su Familia?: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="familia" name="familia"  value="<?=$estudio->vive ?>"><input type="hidden" class="form-control " value=" <?= $id ?> " id="id" name="id"><?= csrf_field() ?>
-                            
-                        </div>
+                            <select id="familia" name="familia" class="form-control" >
+                                <option selected value="<?=$estudio->vive?>"><?=$estudio->vive?></option>
+                                <?php foreach($estudio as $vive => $valor):?>
+                                    <option value="<?=$estudio->vive?>"><?=$valor->vive?></option>
+                                <?php endforeach;?>
+                            </select>
                             <script>
                                 $(document).ready(function() {
                                     $("#familia").select2({
@@ -32,13 +35,15 @@
                                 });
                             </script>
                         </div>
+                        </div>
+
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="ingreso" class=" control-label">Ingreso familiar adicional
                                 (Mensual):<span class="text-danger">*</span></label>
                                 <div >    
-                                  <input type="text"  class="form-control "  id="ingreso" name="ingreso"  value="<?=$estudio->ingreso_familiar ?>">
+                                  <input type="text"  class="form-control "  id="ingreso" name="ingreso"  value="<?=$estudio->ingreso_familiar ?>"><input type="hidden" class="form-control " value="  <?= isset($estudio->ingreso_familiar) ? $estudio->ingreso_familiar : ''  ?> " id="id" name="id"><?= csrf_field() ?>
                             
                         </div>
                         </div>
@@ -47,10 +52,12 @@
                         <div class="form-group">
                             <label for="domicilio_tipo" class="control-label">Su domicilio es: <span class="text-danger">*</span></label>
                             <div>
-                            <div >    
-                                  <input type="text"  class="form-control "  id="domicilio_tipo" name="domicilio_tipo"  value="<?=$estudio->domicilio ?>">
-                            
-                        </div>
+                            <select id="domicilio_tipo" name="domicilio_tipo" class="form-control" >
+                                <option selected value="<?=$estudio->domicilio?>"><?=$estudio->domicilio?></option>
+                                <?php foreach($estudio as $domicilio => $valor):?>
+                                    <option value="<?=$estudio->domicilio?>"><?=$valor->domicilio?></option>
+                                <?php endforeach;?>
+                            </select>
                                 <script>
                                     $(document).ready(function() {
                                         $("#domicilio_tipo").select2({
@@ -67,7 +74,7 @@
                             <label for="actividad" class=" control-label">Actividades culturales o deportivas
                                 que practique:<span class="text-danger">*</span></label>
                                 <div >    
-                                  <input type="text"  class="form-control "  id="actividad" name="actividad"  value="<?=$estudio->actividades_culturales ?>">
+                                  <input type="text"  class="form-control "  id="actividad" name="actividad"  value="<?=$estudio->actividades_culturales ?>"><input type="hidden" class="form-control " value="  <?= isset($estudio->actividades_culturales) ? $estudio->actividades_culturales : ''  ?> " id="id" name="id"><?= csrf_field() ?>
                             
                         </div>
                         </div>
@@ -77,7 +84,7 @@
                             <label for="especificacion" class=" control-label">Especifiación de inmueble y
                                 costo:<span class="text-danger">*</span></label>
                                 <div >    
-                                  <input type="text"  class="form-control "  id="especificacion" name="especificacion"  value="<?=$estudio->especificacion_inmueble ?>">
+                                  <input type="text"  class="form-control "  id="especificacion" name="especificacion"  value="<?=$estudio->especificacion_inmueble ?>"><input type="hidden" class="form-control " value="  <?= isset($estudio->especificacion_inmueble) ? $estudio->especificacion_inmueble : ''  ?> " id="id" name="id"><?= csrf_field() ?>
                             
                         </div>
                         </div>
@@ -87,7 +94,7 @@
                             <label for="inversion" class=" control-label">Inversiones y monto
                                 aproximado:<span class="text-danger">*</span></label>
                             <input type="text" class="form-control " id="inversion" name="inversion"><div >    
-                                  <input type="text"  class="form-control "  id="inversion" name="inversion"  value="<?=$estudio->inversiones ?>">
+                                  <input type="text"  class="form-control "  id="inversion" name="inversion"  value="<?=$estudio->inversiones ?>"><input type="hidden" class="form-control " value="  <?= isset($estudio->inversiones) ? $estudio->inversiones : ''  ?> " id="id" name="id"><?= csrf_field() ?>
                             
                         </div>/div>
                     </div>
@@ -95,7 +102,7 @@
                         <div class="form-group">
                             <label for="vehiculo" class=" control-label">Vehiculo y costo Aproximado:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="vehiculo" name="vehiculo"  value="<?=$estudio->vehiculo ?>">
+                                  <input type="text"  class="form-control "  id="vehiculo" name="vehiculo"  value="<?=$estudio->vehiculo ?>"><input type="hidden" class="form-control " value="  <?= isset($estudio->vehiculo) ? $estudio->vehiculo : ''  ?> " id="id" name="id"><?= csrf_field() ?>
                             
                         </div>
                         </div>
@@ -104,7 +111,7 @@
                         <div class="form-group">
                             <label for="calidad" class=" control-label">Calidad de Vida:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="calidad" name="calidad"  value="<?=$estudio->calidad_vida ?>">
+                                  <input type="text"  class="form-control "  id="calidad" name="calidad"  value="<?=$estudio->calidad_vida ?>"><input type="hidden" class="form-control " value="  <?= isset($estudio->calidad_vida) ? $estudio->calidad_vida : ''  ?> " id="id" name="id"><?= csrf_field() ?>
                             
                         </div>
                         </div>
@@ -113,7 +120,7 @@
                         <div class="form-group">
                             <label for="vicio" class=" control-label">Vicios:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="vicio" name="vicio"  value="<?=$estudio->vicios ?>">
+                                  <input type="text"  class="form-control "  id="vicio" name="vicio"  value="<?=$estudio->vicios ?>"><input type="hidden" class="form-control " value="  <?= isset($estudio->vicios) ? $estudio->vicios : ''  ?> " id="id" name="id"><?= csrf_field() ?>
                             
                         </div>
                         </div>
@@ -122,7 +129,7 @@
                         <div class="form-group">
                             <label for="imagen" class=" control-label">Imagen Publica:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="imagen" name="imagen"  value="<?=$estudio->imagen_publica ?>">
+                                  <input type="text"  class="form-control "  id="imagen" name="imagen"  value="<?=$estudio->imagen_publica ?>"><input type="hidden" class="form-control " value="  <?= isset($estudio->imagen_publica) ? $estudio->imagen_publica : ''  ?> " id="id" name="id"><?= csrf_field() ?>
                             
                         </div>
                         </div>
@@ -131,7 +138,7 @@
                         <div class="form-group">
                             <label for="comportamiento" class=" control-label">Comportamiento Social:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="comportamiento" name="comportamiento"  value="<?=$estudio->comportamiento ?>">
+                                  <input type="text"  class="form-control "  id="comportamiento" name="comportamiento"  value="<?=$estudio->comportamiento ?>"><input type="hidden" class="form-control " value="  <?= isset($estudio->comportamiento) ? $estudio->comportamiento : ''  ?> " id="id" name="id"><?= csrf_field() ?>
                             
                         </div>
                         </div>
@@ -169,7 +176,7 @@
                             <label for="apellidoPaterno" class=" control-label">Apellido
                                 Paterno:<span class="text-danger">*</span></label>
                                 <div >    
-                                  <input type="text"  class="form-control "  id="apellidoPaterno" name="apellidoPaterno"  value="<?=$estudio->apellido_paterno ?>">
+                                  <input type="text"  class="form-control "  id="apellidoPaterno" name="apellidoPaterno"  value="<?=$estudio->apellido_paterno ?>"><input type="hidden" class="form-control " value="  <?= isset($estudio->apellido_paterno) ? $estudio->apellido_paterno : ''  ?> " id="id" name="id"><?= csrf_field() ?>
                             
                         </div>
                         </div>
@@ -179,7 +186,7 @@
                             <label for="apellidoMaterno" class=" control-label">Apellido
                                 Materno:<span class="text-danger">*</span></label>
                                 <div >    
-                                  <input type="text"  class="form-control "  id="apellidoMaterno" name="apellidoMaterno"  value="<?=$estudio->apellido_materno ?>">
+                                  <input type="text"  class="form-control "  id="apellidoMaterno" name="apellidoMaterno"  value="<?=$estudio->apellido_materno ?>"><input type="hidden" class="form-control " value="  <?= isset($estudio->apellido_materno) ? $estudio->apellido_materno : ''  ?> " id="id" name="id"><?= csrf_field() ?>
                             
                         </div>
                         </div>
@@ -188,7 +195,7 @@
                         <div class="form-group">
                             <label for="primerNombre" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="primerNombre" name="primerNombre"  value="<?=$estudio->primer_nombre ?>">
+                                  <input type="text"  class="form-control "  id="primerNombre" name="primerNombre"  value="<?=$estudio->primer_nombre ?>"><input type="hidden" class="form-control " value="  <?= isset($estudio->primer_nombre) ? $estudio->primer_nombre : ''  ?> " id="id" name="id"><?= csrf_field() ?>
                             
                         </div>
                         </div>
@@ -197,7 +204,7 @@
                         <div class="form-group">
                             <label for="segundoNombre" class=" control-label">Segundo Nombre:</label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="segundoNombre" name="segundoNombre"  value="<?=$estudio->segundo_nombre ?>">
+                                  <input type="text"  class="form-control "  id="segundoNombre" name="segundoNombre"  value="<?=$estudio->segundo_nombre ?>"><input type="hidden" class="form-control " value="  <?= isset($estudio->segundo_nombre) ? $estudio->segundo_nombre : ''  ?> " id="id" name="id"><?= csrf_field() ?>
                             
                         </div>
                         </div>
@@ -222,10 +229,12 @@
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="sexo_dep" class=" control-label">Sexo:<span class="text-danger">*</span></label>
-                            <div >    
-                                  <input type="text"  class="form-control "  id="sexo_dep" name="sexo_dep"  value="<?=$estudio->sexo ?>">
-                            
-                        </div>
+                            <select id="sexo_dep" name="sexo_dep" class="form-control" >
+                                <option selected value="<?=$estudio->sexo?>"><?=$estudio->sexo?></option>
+                                <?php foreach($estudio as $sexo => $valor):?>
+                                    <option value="<?=$estudio->sexo?>"><?=$valor->sexo?></option>
+                                <?php endforeach;?>
+                            </select>
                             <script>
                                 $(document).ready(function() {
                                     $("#sexo_dep").select2({
@@ -236,14 +245,17 @@
                             </script>
                         </div>
                     </div>
+                    </div>
                     <div class='col-6 col-sm-6'>
                         <div class="form-group">
-                            <label for="parentesco_familiar" class="control-label">Parentesco: <span class="text-danger">*</span></label>
+                            <label for="municipiocodigoSegPub" class="control-label">Parentesco: <span class="text-danger">*</span></label>
                             <div>
-                            <div >    
-                                  <input type="text"  class="form-control "  id="parentesco_familiar" name="parentesco_familiar"  value="<?=$estudio->parentesco ?>">
-                            
-                        </div>
+                            <select id="municipiocodigoSegPub" name="municipiocodigoSegPub" class="form-control" >
+                                <option selected value="<?=$estudio->parentesco?>"><?=$estudio->parentesco?></option>
+                                <?php foreach($estudio as $parentesco => $valor):?>
+                                    <option value="<?=$estudio->parentesco?>"><?=$valor->parentesco?></option>
+                                <?php endforeach;?>
+                            </select>
                                 <script>
                                     $(document).ready(function() {
                                         $("#parentesco_familiar").select2({

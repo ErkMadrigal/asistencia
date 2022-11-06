@@ -9,7 +9,7 @@
             </button>
         </div>
     </div>
-    
+
     <!-- /.card-header -->
     <div class="card-body">
         <form class="form-horizontal" id="DatosPersonales">
@@ -18,7 +18,7 @@
                     <div class="form-group">
                         <label for="primerNombre" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="primerNombre" name="primerNombre" value="<?= $variable->primer_nombre ?>"><input type="hidden" class="form-control " value=" <?= $id ?> " id="id" name="id"><?= csrf_field() ?>
+                            <input type="text" class="form-control " id="primerNombre" name="primerNombre" value="<?= $variable->primer_nombre ?>"><input type="hidden" class="form-control " value=" <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?> " id="id" name="id"><?= csrf_field() ?>
 
                         </div>
                     </div>
@@ -27,7 +27,8 @@
                     <div class="form-group">
                         <label for="segundoNombre" class=" control-label">Segundo Nombre:</label>
                         <div>
-                            <input type="text" class="form-control " id="segundoNombre" name="segundoNombre" value="   <?= $variable->segundo_nombre ?>">
+                            <input type="text" class="form-control " id="segundoNombre" name="segundoNombre" value="   <?= $variable->segundo_nombre ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->segundo_nombre) ? $variable->segundo_nombre : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+
 
                         </div>
                     </div>
@@ -36,7 +37,7 @@
                     <div class="form-group">
                         <label for="apellidoPaterno" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="apellidoPaterno" name="apellidoPaterno" value="<?= $variable->apellido_paterno ?>">
+                            <input type="text" class="form-control " id="apellidoPaterno" name="apellidoPaterno" value="<?= $variable->apellido_paterno ?>"><input type="hidden" class="form-control " value="   <?= isset($variable->apellido_paterno) ? $variable->apellido_paterno : ''  ?>" id="id" name="id"><?= csrf_field() ?>
 
                         </div>
                     </div>
@@ -45,7 +46,7 @@
                     <div class="form-group">
                         <label for="apellidoMaterno" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno" value="<?= $variable->apellido_materno ?>">
+                            <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno" value="<?= $variable->apellido_materno ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->apellido_materno) ? $variable->apellido_materno : ''  ?> " id="id" name="id"><?= csrf_field() ?>
 
                         </div>
                     </div>
@@ -70,10 +71,12 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="sexo" class=" control-label">Sexo:<span class="text-danger">*</span></label>
-                        <div>
-                            <input type="text" class="form-control " id="sexo" name="sexo" value="<?= $variable->sexo ?>">
-
-                        </div>
+                        <select id="sexo" name="sexo" class="form-control" >
+                                <option selected value="<?=$variable->sexo?>"><?=$variable->sexo?></option>
+                                <?php foreach($variable as $sexo => $valor):?>
+                                    <option value="<?=$valor->sexo?>"><?=$valor->sexo?></option>
+                                <?php endforeach;?>
+                            </select>
                         <script>
                             $(document).ready(function() {
                                 $("#sexo").select2({
@@ -89,7 +92,7 @@
                         <label for="rfc" class=" control-label">R.F.C.:<span class="text-danger">*</span></label>
                         <div>
 
-                            <input type="text" class="form-control " id="rfc" name="rfc" value="<?= $variable->rfc ?>">
+                            <input type="text" class="form-control " id="rfc" name="rfc" value="<?= $variable->rfc ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->rfc) ? $variable->rfc : ''  ?> " id="id" name="id"><?= csrf_field() ?>
 
 
                         </div>
@@ -99,7 +102,7 @@
                     <div class="form-group">
                         <label for="claveE" class=" control-label">Clave Electoral:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="claveE" name="claveE" value="<?= $variable->clave_electoral ?>">
+                            <input type="text" class="form-control " id="claveE" name="claveE" value="<?= $variable->clave_electoral ?>"><input type="hidden" class="form-control " value=" <?= isset($variable->clave_electoral) ? $variable->clave_electoral : ''  ?>" id="id" name="id"><?= csrf_field() ?>
 
                         </div>
                     </div>
@@ -109,7 +112,7 @@
                         <label for="cartilla" class=" control-label">Cartilla SMN:<span class="text-danger">*</span></label>
                         <div>
 
-                            <input type="text" class="form-control " id="cartilla" name="cartilla" value=" <?= $variable->cartilla_smn ?>">
+                            <input type="text" class="form-control " id="cartilla" name="cartilla" value=" <?= $variable->cartilla_smn ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->cartilla_smn) ? $variable->cartilla_smn : ''  ?> " id="id" name="id"><?= csrf_field() ?>
 
 
                         </div>
@@ -119,7 +122,7 @@
                     <div class="form-group">
                         <label for="licencia" class=" control-label">Licencia de Conducir:</label>
                         <div>
-                            <input type="text" class="form-control " id="licencia" name="licencia" value="<?= $variable->licencia_conducir ?>">
+                            <input type="text" class="form-control " id="licencia" name="licencia" value="<?= $variable->licencia_conducir ?>"><input type="hidden" class="form-control " value=" <?= isset($variable->licencia_conducir) ? $variable->licencia_conducir : ''  ?> " id="id" name="id"><?= csrf_field() ?>
 
                         </div>
                     </div>
@@ -128,7 +131,7 @@
                     <div class="form-group">
                         <label for="vigenciaLic" class=" control-label">Vigencia de Licencia:</label>
                         <div>
-                            <input type="text" class="form-control " id="vigenciaLic" name="vigenciaLic" value="<?= $variable->licencia_conducir ?>">
+                            <input type="text" class="form-control " id="vigenciaLic" name="vigenciaLic" value="<?= $variable->vigencia_licencia ?>">
 
                         </div>
                         <script type="text/javascript">
@@ -145,7 +148,7 @@
                     <div class="form-group">
                         <label for="CURP" class=" control-label">CURP:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="CURP" name="CURP" value="<?= $variable->curp ?>">
+                            <input type="text" class="form-control " id="CURP" name="CURP" value="<?= $variable->curp ?>"><input type="hidden" class="form-control " value="   <?= isset($variable->curp) ? $variable->curp : ''  ?> " id="id" name="id"><?= csrf_field() ?>
 
                         </div>
                     </div>
@@ -154,8 +157,7 @@
                     <div class="form-group">
                         <label for="pasaporte" class=" control-label">Pasaporte:</label>
                         <div>
-                            <input type="text" class="form-control " id="pasaporte" name="pasaporte" value="<?= $variable->pasaporte ?>">
-
+                            <input type="text" class="form-control " id="pasaporte" name="pasaporte" value="<?= $variable->pasaporte ?>"><input type="hidden" class="form-control " value="   <?= isset($variable->pasaporte) ? $variable->pasaporte : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -163,10 +165,12 @@
                     <div class="form-group">
                         <label for="modo_nacionalidad" class="control-label">Modo de Nacionalidad: <span class="text-danger">*</span></label>
                         <div>
-                            <div>
-                                <input type="text" class="form-control " id="modo_nacionalidad" name="modo_nacionalidad" value="<?= $variable->nacionalidad ?>">
-
-                            </div>
+                        <select id="modo_nacionalidad" name="modo_nacionalidad" class="form-control" >
+                                <option selected value="<?=$variable->nacionalidad?>"><?=$variable->nacionalidad?></option>
+                                <?php foreach($variable as $nacionalidad => $valor):?>
+                                    <option value="<?=$valor->nacionalidad?>"><?=$valor->nacionalidad?></option>
+                                <?php endforeach;?>
+                            </select>
                             <script>
                                 $(document).ready(function() {
                                     $("#modo_nacionalidad").select2({
@@ -182,9 +186,12 @@
                     <div class='form-group'>
                         <label for="fecha_naturalizacion">Fecha de Naturalización: <span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="fecha_naturalizacion" name="fecha_naturalizacion" value="<?= $variable->fecha_nacimiento ?>">
-
-                        </div>
+                        <select id="fecha_naturalizacion" name="fecha_naturalizacion" class="form-control" >
+                                <option selected value="<?=$variable->fecha_naturalizacion?>"><?=$variable->fecha_naturalizacion?></option>
+                                <?php foreach($variable as $fecha_naturalizacion => $valor):?>
+                                    <option value="<?=$valor->fecha_naturalizacion?>"><?=$valor->fecha_naturalizacion?></option>
+                                <?php endforeach;?>
+                            </select>
                         <script type="text/javascript">
                             $(function() {
                                 $("#fecha_naturalizacion").datetimepicker({
@@ -195,14 +202,17 @@
                         </script>
                     </div>
                 </div>
+                </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
                         <label for="pais_nacimiento" class="control-label">Pais de Nacimiento: <span class="text-danger">*</span></label>
                         <div>
-                            <div>
-                                <input type="text" class="form-control " id="pais_nacimiento" name="pais_nacimiento" value="<?= $variable->pais ?>">
-
-                            </div>
+                        <select id="pais_nacimiento" name="pais_nacimiento" class="form-control" >
+                                <option selected value="<?=$variable->pais?>"><?=$variable->pais?></option>
+                                <?php foreach($variable as $pais => $valor):?>
+                                    <option value="<?=$valor->pais?>"><?=$valor->pais?></option>
+                                <?php endforeach;?>
+                            </select>
                             <script>
                                 $(document).ready(function() {
                                     $("#pais_nacimiento").select2({
@@ -218,10 +228,12 @@
                     <div class="form-group">
                         <label for="entidad_nacimiento" class="control-label">Entidad de Nacimiento: <span class="text-danger">*</span></label>
                         <div>
-                            <div>
-                                <input type="text" class="form-control " id="entidad_nacimiento" name="entidad_nacimiento" value="<?= $variable->estado ?>">
-
-                            </div>
+                        <select id="entidad_nacimiento" name="entidad_nacimiento" class="form-control" >
+                                <option selected value="<?=$variable->naciE?>"><?=$variable->naciE?></option>
+                                <?php foreach($variable as $naciE => $valor):?>
+                                    <option value="<?=$valor->naciE?>"><?=$valor->naciE?></option>
+                                <?php endforeach;?>
+                            </select>
                             <script>
                                 $(document).ready(function() {
                                     $("#entidad_nacimiento").select2({
@@ -237,10 +249,12 @@
                     <div class="form-group">
                         <label for="nacionalidad" class="control-label">Nacionalidad: <span class="text-danger">*</span></label>
                         <div>
-                            <div>
-                                <input type="text" class="form-control " id="nacionalidad" name="nacionalidad" value="<?= $variable->naciE ?>">
-
-                            </div>
+                        <select id="nacionalidad" name="nacionalidad" class="form-control" >
+                                <option selected value="<?=$variable->nacion?>"><?=$variable->nacion?></option>
+                                <?php foreach($variable as $nacion => $valor):?>
+                                    <option value="<?=$valor->nacion?>"><?=$valor->nacion?></option>
+                                <?php endforeach;?>
+                            </select>
                             <script>
                                 $(document).ready(function() {
                                     $("#nacionalidad").select2({
@@ -256,10 +270,12 @@
                     <div class="form-group">
                         <label for="municipio_nacimiento" class="control-label">Municipio de Nacimiento: <span class="text-danger">*</span></label>
                         <div>
-                            <div>
-                                <input type="text" class="form-control " id="municipio_nacimiento" name="municipio_nacimiento" value="<?= $variable->municipio ?>">
-
-                            </div>
+                        <select id="municipio_nacimiento" name="municipio_nacimiento" class="form-control" >
+                                <option selected value="<?=$variable->municipio?>"><?=$variable->municipio?></option>
+                                <?php foreach($variable as $municipio => $valor):?>
+                                    <option value="<?=$valor->municipio?>"><?=$valor->municipio?></option>
+                                <?php endforeach;?>
+                            </select>
                             <script>
                                 $(document).ready(function() {
                                     $("#municipio_nacimiento").select2({
@@ -275,10 +291,12 @@
                     <div class="form-group">
                         <label for="cuidad_nacimiento" class="control-label">Cuidad de Nacimiento: <span class="text-danger">*</span></label>
                         <div>
-                            <div>
-                                <input type="text" class="form-control " id="cuidad_nacimiento" name="cuidad_nacimiento" value="<?= $variable->ciudad ?>">
-
-                            </div>
+                        <select id="cuidad_nacimiento" name="cuidad_nacimiento" class="form-control" >
+                                <option selected value="<?=$variable->ciudad?>"><?=$variable->ciudad?></option>
+                                <?php foreach($variable as $ciudad => $valor):?>
+                                    <option value="<?=$valor->ciudad?>"><?=$valor->ciudad?></option>
+                                <?php endforeach;?>
+                            </select>
                             <script>
                                 $(document).ready(function() {
                                     $("#cuidad_nacimiento").select2({
@@ -294,10 +312,12 @@
                     <div class="form-group">
                         <label for="estado_civil" class="control-label">Estado Civil: <span class="text-danger">*</span></label>
                         <div>
-                            <div>
-                                <input type="text" class="form-control " id="estado_civil" name="estado_civil" value="<?= $variable->civil ?>">
-
-                            </div>
+                        <select id="estado_civil" name="estado_civil" class="form-control" >
+                                <option selected value="<?=$variable->civil?>"><?=$variable->civil?></option>
+                                <?php foreach($variable as $civil => $valor):?>
+                                    <option value="<?=$valor->civil?>"><?=$valor->civil?></option>
+                                <?php endforeach;?>
+                            </select>
                             <script>
                                 $(document).ready(function() {
                                     $("#estado_civil").select2({
@@ -313,10 +333,12 @@
                     <div class="form-group">
                         <label for="desarrollo_academico" class="control-label">Desarrollo Académico: <span class="text-danger">*</span></label>
                         <div>
-                            <div>
-                                <input type="text" class="form-control " id="desarrollo_academico" name="desarrollo_academico" value="<?= $variable->desarrollo_academico ?>">
-
-                            </div>
+                        <select id="desarrollo_academico" name="desarrollo_academico" class="form-control" >
+                                <option selected value="<?=$variable->desarrollo_academico?>"><?=$variable->desarrollo_academico?></option>
+                                <?php foreach($variable as $desarrollo_academico => $valor):?>
+                                    <option value="<?=$valor->desarrollo_academico?>"><?=$valor->desarrollo_academico?></option>
+                                <?php endforeach;?>
+                            </select>
                             <script>
                                 $(document).ready(function() {
                                     $("#desarrollo_academico").select2({
@@ -332,7 +354,7 @@
                     <div class="form-group">
                         <label for="escuela" class=" control-label">Escuela :<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="escuela" name="escuela" value="<?= $variable->escuela ?>">
+                            <input type="text" class="form-control " id="escuela" name="escuela" value="<?= $variable->escuela ?>"><input type="hidden" class="form-control " value=" <?= isset($variable->escuela) ? $variable->escuela : ''  ?> " id="id" name="id"><?= csrf_field() ?>
 
                         </div>
                     </div>
@@ -341,7 +363,7 @@
                     <div class="form-group">
                         <label for="especialidad" class=" control-label">Especialidad o Estudio :<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="especialidad" name="especialidad" value="<?= $variable->especialidad ?>">
+                            <input type="text" class="form-control " id="especialidad" name="especialidad" value="<?= $variable->especialidad ?>"><input type="hidden" class="form-control " value="   <?= isset($variable->especialidad) ? $variable->especialidad : ''  ?> " id="id" name="id"><?= csrf_field() ?>
 
                         </div>
                     </div>
@@ -350,7 +372,7 @@
                     <div class="form-group">
                         <label for="cedula" class=" control-label">No. Cédula Profesional:</label>
                         <div>
-                            <input type="text" class="form-control " id="cedula" name="cedula" value="<?= $variable->cedula_profesional ?>">
+                            <input type="text" class="form-control " id="cedula" name="cedula" value="<?= $variable->cedula_profesional ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->cedula_profesional) ? $variable->cedula_profesional : ''  ?> " id="id" name="id"><?= csrf_field() ?>
 
                         </div>
                     </div>
@@ -393,9 +415,12 @@
                     <div class="form-group">
                         <label for="sep" class=" control-label">Registro SEP:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="sep" name="sep" value="<?= $variable->registro_sep ?>">
-
-                        </div>
+                        <select id="sep" name="sep" class="form-control" >
+                                <option selected value="<?=$variable->registro_sep?>"><?=$variable->registro_sep?></option>
+                                <?php foreach($variable as $registro_sep => $valor):?>
+                                    <option value="<?=$valor->registro_sep?>"><?=$valor->registro_sep?></option>
+                                <?php endforeach;?>
+                            </select>
                         <script>
                             $(document).ready(function() {
                                 $("#registroSep").select2({
@@ -410,7 +435,7 @@
                     <div class="form-group">
                         <label for="certificado" class=" control-label">Num. de Folio Certificado :<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="certificado" name="certificado" value="<?= $variable->folio_certificado ?>">
+                            <input type="text" class="form-control " id="certificado" name="certificado" value="<?= $variable->folio_certificado ?>"><input type="hidden" class="form-control " value=" <?= isset($variable->folio_certificado) ? $variable->folio_certificado : ''  ?> " id="id" name="id"><?= csrf_field() ?>
 
                         </div>
                     </div>
@@ -419,7 +444,7 @@
                     <div class="form-group">
                         <label for="promedio" class=" control-label">Promedio :<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="promedio" name="promedio" value="<?= $variable->institucion ?>">
+                            <input type="text" class="form-control " id="promedio" name="promedio" value="<?= $variable->institucion ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->folio_certificado) ? $variable->folio_certificado : ''  ?> " id="id" name="id"><?= csrf_field() ?>
 
                         </div>
                     </div>
@@ -447,7 +472,7 @@
                 <div class="form-group">
                     <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="calle" name="calle" value="<?= $variable->calle ?>">
+                        <input type="text" class="form-control " id="calle" name="calle" value="<?= $variable->calle ?>"><input type="hidden" class="form-control " value=" <?= isset($variable->calle) ? $variable->calle : ''  ?> " id="id" name="id"><?= csrf_field() ?>
 
                     </div>
                 </div>
@@ -456,7 +481,7 @@
                 <div class="form-group">
                     <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="exterior" name="exterior" value="<?= $variable->numero_exterior ?>">
+                        <input type="text" class="form-control " id="exterior" name="exterior" value="<?= $variable->numero_exterior ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->numero_exterior) ? $variable->numero_exterior : ''  ?> " id="id" name="id"><?= csrf_field() ?>
 
                     </div>
                 </div>
@@ -465,7 +490,7 @@
                 <div class="form-group">
                     <label for="interior" class=" control-label">No. Interior:</label>
                     <div>
-                        <input type="text" class="form-control " id="interior" name="interior" value="<?= $variable->numero_interior ?>">
+                        <input type="text" class="form-control " id="interior" name="interior" value="<?= $variable->numero_interior ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->numero_interior) ? $variable->numero_interior : ''  ?> " id="id" name="id"><?= csrf_field() ?>
 
                     </div>
                 </div>
@@ -475,7 +500,7 @@
                     <label for="numeroTelefono" class=" control-label">Numero
                         Telefónico:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="numeroTelefono" name="numeroTelefono" maxlength="10" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" value="<?= $variable->numero_telefono ?>">
+                        <input type="text" class="form-control " id="numeroTelefono" name="numeroTelefono" maxlength="10" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" value="<?= $variable->numero_telefono ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->numero_telefono) ? $variable->numero_telefono : ''  ?> " id="id" name="id"><?= csrf_field() ?>
 
                     </div>
                 </div>
@@ -485,7 +510,7 @@
                     <label for="entrecalle" class=" control-label">Entre la calle
                         de:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="entrecalle" name="entrecalle" value="<?= $variable->entre_calle1 ?>">
+                        <input type="text" class="form-control " id="entrecalle" name="entrecalle" value="<?= $variable->entre_calle1 ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->entre_calle1) ? $variable->entre_calle1 : ''  ?> " id="id" name="id"><?= csrf_field() ?>
 
                     </div>
                 </div>
@@ -494,7 +519,7 @@
                 <div class="form-group">
                     <label for="ylacalle" class=" control-label">Y la calle :<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="ylacalle" name="ylacalle" value="<?= $variable->entre_calle2 ?>">
+                        <input type="text" class="form-control " id="ylacalle" name="ylacalle" value="<?= $variable->entre_calle2 ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->entre_calle2) ? $variable->entre_calle2 : ''  ?> " id="id" name="id"><?= csrf_field() ?>
 
                     </div>
                 </div>
@@ -503,7 +528,7 @@
                 <div class="form-group">
                     <label for="codigo" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="codigo" name="codigo" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value="<?= $variable->postal ?>">
+                        <input type="text" class="form-control " id="codigo" name="codigo" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value="<?= $variable->postal ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->postal) ? $variable->postal : ''  ?> " id="id" name="id"><?= csrf_field() ?>
 
                     </div>
                 </div>
@@ -511,10 +536,12 @@
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="coloniacodigo" class=" control-label">Colonia:<span class="text-danger">*</span></label>
-                    <div>
-                        <input type="text" class="form-control " id="coloniacodigo" name="coloniacodigo" value="<?= $variable->colonia ?>">
-
-                    </div>
+                    <select id="coloniacodigo" name="coloniacodigo" class="form-control" >
+                                <option selected value="<?=$variable->colonia?>"><?=$variable->colonia?></option>
+                                <?php foreach($variable as $colonia => $valor):?>
+                                    <option value="<?=$valor->colonia?>"><?=$valor->colonia?></option>
+                                <?php endforeach;?>
+                            </select>
                     <script>
                         $(document).ready(function() {
                             $("#coloniacodigo").select2({
@@ -529,10 +556,12 @@
                 <div class="form-group">
                     <label for="estadocodigo" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
                     <div>
-                        <div>
-                            <input type="text" class="form-control " id="coloniacodigo" name="coloniacodigo" value="<?= $variable->naciE ?>">
-
-                        </div>
+                    <select id="estadocodigo" name="estadocodigo" class="form-control" >
+                                <option selected value="<?=$variable->naciE?>"><?=$variable->naciE?></option>
+                                <?php foreach($variable as $naciE => $valor):?>
+                                    <option value="<?=$valor->naciE?>"><?=$valor->naciE?></option>
+                                <?php endforeach;?>
+                            </select>
                         <script>
                             $(document).ready(function() {
                                 $("#estadocodigo").select2({
@@ -548,10 +577,12 @@
                 <div class="form-group">
                     <label for="municipiocodigo" class="control-label">Municipio: <span class="text-danger">*</span></label>
                     <div>
-                        <div>
-                            <input type="text" class="form-control " id="municipiocodigo" name="municipiocodigo" value="<?= $variable->municipio ?>">
-
-                        </div>
+                    <select id="municipiocodigo" name="municipiocodigo" class="form-control" >
+                                <option selected value="<?=$variable->municipio?>"><?=$variable->municipio?></option>
+                                <?php foreach($variable as $municipio => $valor):?>
+                                    <option value="<?=$valor->municipio?>"><?=$valor->municipio?></option>
+                                <?php endforeach;?>
+                            </select>
                         <script>
                             $(document).ready(function() {
                                 $("#municipiocodigo").select2({
@@ -567,10 +598,12 @@
                 <div class="form-group">
                     <label for="ciudadcodigo" class="control-label">Ciudad: <span class="text-danger">*</span></label>
                     <div>
-                        <div>
-                            <input type="text" class="form-control " id="ciudadcodigo" name="ciudadcodigo" value="<?= $variable->ciudad ?>">
-
-                        </div>
+                    <select id="ciudadcodigo" name="ciudadcodigo" class="form-control" >
+                                <option selected value="<?=$variable->ciudad?>"><?=$variable->ciudad?></option>
+                                <?php foreach($variable as $ciudad => $valor):?>
+                                    <option value="<?=$valor->ciudad?>"><?=$valor->ciudad?></option>
+                                <?php endforeach;?>
+                            </select>
                         <script>
                             $(document).ready(function() {
                                 $("#ciudadcodigo").select2({
@@ -617,7 +650,7 @@
                             <label for="nombrecurso" class=" control-label">Nombre del Curso
                                 :<span class="text-danger">*</span></label>
                             <div>
-                                <input type="text" class="form-control " id="nombre_curso" name="nombre_curso" value="<?= $variable->nombre_curso ?>">
+                                <input type="text" class="form-control " id="nombre_curso" name="nombre_curso" value="<?= $variable->nombre_curso ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?> " id="id" name="id"><?= csrf_field() ?>
 
                             </div>
                         </div>
@@ -627,7 +660,7 @@
                             <label for="nombreInstitucion" class=" control-label">Nombre de
                                 la Institución:<span class="text-danger">*</span></label>
                             <div>
-                                <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion" value="<?= $variable->nombre_institucion ?>">
+                                <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion" value="<?= $variable->nombre_institucion ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->nombre_institucion) ? $variable->nombre_institucion : ''  ?> " id="id" name="id"><?= csrf_field() ?>
 
                             </div>
                         </div>
@@ -672,7 +705,7 @@
                             <label for="certificado_por" class=" control-label">Certificado
                                 por:<span class="text-danger">*</span></label>
                             <div>
-                                <input type="text" class="form-control " id="certificado" name="certificado" value="<?= $variable->certificado_por ?>">
+                                <input type="text" class="form-control " id="certificado" name="certificado" value="<?= $variable->certificado_por ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->certificado_por) ? $variable->certificado_por : ''  ?> " id="id" name="id"><?= csrf_field() ?>
 
                             </div>
                         </div>
