@@ -76,7 +76,7 @@
                             if (!empty($genero)) :
                                 foreach ($genero as  $a) {
                             ?>
-                                    <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= ($variable->sexo == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>

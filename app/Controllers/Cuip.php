@@ -2128,9 +2128,9 @@ class Cuip extends BaseController {
 
     		foreach ( $documentos as $value){
 				
-				$id = $this->encrypt->Encrypt($value->idDocumento);
+				$idDoc = $this->encrypt->Encrypt($value->idDocumento);
 				$result[] = (object) array (
-					'id' => $id ,
+					'id' => $idDoc ,
 					'documento' => $value->documento,
 					'tipo' => $value->tipo
 
