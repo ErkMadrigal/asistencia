@@ -384,7 +384,7 @@
                 <div class="form-group">
                     <label for="tipo_estimulo" class=" control-label">Tipo:<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="tipo_estimulo" name="tipo_estimulo"  value="<?= isset($sanciones->tipo_estimulo) ? $sanciones->tipo_estimulo : ''  ?><?=$sanciones->tipo_estimulo  ?>">
+                                  <input type="text"  class="form-control "  id="tipo_estimulo" name="tipo_estimulo"  value="<?= isset($sanciones->tipo_estimulo) ? $sanciones->tipo_estimulo : ''  ?>">
                             
                         </div>
                 </div>

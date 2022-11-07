@@ -250,12 +250,17 @@
                         <div class="form-group">
                             <label for="eficiencia" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
                             <div>
-                            <select id="eficiencia" name="eficiencia" class="form-control" >
-                                <!--<option selected value="<?=$capacitacion->adicional?>"><?=$capacitacion->adicional?></option>-->
-                                <?php foreach($capacitacion as $adicional => $valor):?>
-                                    <option value="<?=$capacitacion->adicional?>"><?=$capacitacion->adicional?></option>
-                                <?php endforeach;?>
-                            </select>
+                            <select class="form-control" id="eficiencia" name="eficiencia">
+                                    <option value="">Selecciona una Opcion</option>
+                                    <?php
+                                    if (!empty($eficiencia)) :
+                                        foreach ($eficiencia as  $a) {
+                                    ?>
+                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <?php
+                                        }
+                                    endif; ?>
+                                </select>
                                 <script>
                                     $(document).ready(function() {
                                         $("#eficiencia").select2({
@@ -297,12 +302,9 @@
                         <div class="form-group">
                             <label for="conclusionAdicional" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
                             <div >    
-                            <select id="conclusionAdicional" name="conclusionAdicional" class="form-control" >
-                               <!-- <option selected value="<?=$capacitacion->conclusion_adicional?>"><?=$capacitacion->conclusion_adicional?></option>-->
-                                <?php foreach($capacitacion as $conclusion_adicional => $valor):?>
-                                    <option value="<?=$capacitacion->conclusion_adicional?>"><?=$capacitacion->conclusion_adicional?></option>
-                                <?php endforeach;?>
-                            </select>
+                            <div>
+                            <input type="text"  class="form-control "  id="tipo_curso" name="tipo_curso"  value="<?= isset($capacitacion->conclusion_adicional) ? $capacitacion->conclusion_adicional : ''  ?>">
+                            </div>
                             <script type="text/javascript">
                                 $(function() {
                                     $("#conclusionAdicional").datetimepicker({
@@ -619,12 +621,10 @@
                         <div class="form-group">
                             <label for="desde" class=" control-label">Desde:<span class="text-danger">*</span></label>
                             <div >    
-                            <select id="desde" name="desde" class="form-control" >
-                                <!--<option selected value="<?=$capacitacion->desde?>"><?=$capacitacion->desde?></option>-->
-                                <?php foreach($capacitacion as $desde => $valor):?>
-                                    <option value="<?=$capacitacion->desde?>"><?=$capacitacion->desde?></option>
-                                <?php endforeach;?>
-                            </select>
+                            <div >    
+                                  <input type="text"  class="form-control "  id="desde" name="desde"  value="<?= isset($capacitacion->desde) ? $capacitacion->desde : ''  ?>">
+                            
+                        </div>
                             <script type="text/javascript">
                                 $(function() {
                                     $("#desde").datetimepicker({
@@ -640,12 +640,10 @@
                         <div class="form-group">
                             <label for="hasta" class=" control-label">Hasta:<span class="text-danger">*</span></label>
                             <div >    
-                            <select id="hasta" name="hasta" class="form-control" >
-                               <!-- <option selected value="<?=$capacitacion->hasta?>"><?=$capacitacion->hasta?></option>-->
-                                <?php foreach($capacitacion as $hasta => $valor):?>
-                                    <option value="<?=$capacitacion->hasta?>"><?=$capacitacion->hasta?></option>
-                                <?php endforeach;?>
-                            </select>
+                            <div >    
+                                  <input type="text"  class="form-control "  id="desde" name="desde"  value="<?= isset($capacitacion->hasta) ? $capacitacion->hasta : ''  ?>">
+                            
+                        </div>
                             <script type="text/javascript">
                                 $(function() {
                                     $("#hasta").datetimepicker({

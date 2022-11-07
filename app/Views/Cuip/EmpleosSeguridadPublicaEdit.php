@@ -209,7 +209,7 @@
                     <div class="form-group">
                         <label for="area" class=" control-label">Area:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="area" name="area"  value="<?= isset($seguridad->area) ? $seguridad->area : ''  ?><?=$seguridad->area ?>">
+                                  <input type="text"  class="form-control "  id="area" name="area"  value="<?= isset($seguridad->area) ? $seguridad->area : ''  ?>">
                             
                         </div>
                     </div>
