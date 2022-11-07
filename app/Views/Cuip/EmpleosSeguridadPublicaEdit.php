@@ -154,8 +154,9 @@
                 <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="especialidad" class=" control-label">Especialidad:<span class="text-danger">*</span></label>
-                        <div >    o
-                                  <input type="text"  class="frm-control "  id="especialidad" name="especialidad"  value="<?= isset($seguridad->especialidad) ? $seguridad->especialidad : ''  ?>">
+                        
+                        <div >    
+                                  <input type="text"  class="form-control "  id="funciones" name="funciones"  value="<?= isset($seguridad->especialidad) ? $seguridad->especialidad : ''  ?>">
                             
                         </div>
                     </div>
