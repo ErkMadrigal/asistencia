@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label for="tipo" class="control-label">Tipo: <span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="tipo" name="tipo"  value="<?=$sanciones->tipo_sancion  ?>"><input type="hidden" class="form-control " value="  <?= isset($sanciones->tipo_sancion) ? $sanciones->tipo_sancion : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="tipo" name="tipo"  value="<?= isset($sanciones->tipo_sancion) ? $sanciones->tipo_sancion : ''  ?>">
                             
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <label for="determinacion" class=" control-label">Determinación:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="determinacion" name="determinacion"  value="<?=$sanciones->determinacion  ?>">
+                                  <input type="text"  class="form-control "  id="determinacion" name="determinacion"  value="<?= isset($sanciones->determinacion) ? $sanciones->determinacion : ''  ?>">
                             
                         </div>
                         <script type="text/javascript">
@@ -49,7 +49,7 @@
                     <div class="form-group">
                         <label for="descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="descripcion" name="descripcion"  value="<?=$sanciones->descripcion_sancion  ?>"><input type="hidden" class="form-control " value="  <?= isset($sanciones->descripcion_sancion) ? $sanciones->descripcion_sancion : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="descripcion" name="descripcion"  value="<?= isset($sanciones->descripcion_sancion) ? $sanciones->descripcion_sancion : ''  ?>">
                             
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                     <div class="form-group">
                     <label for="situacion" class=" control-label">Situación:<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="situacion" name="situacion"  value="<?=$sanciones->situacion  ?>"><input type="hidden" class="form-control " value="  <?= isset($sanciones->situacion) ? $sanciones->situacion : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="situacion" name="situacion"  value="<?= isset($sanciones->situacion) ? $sanciones->situacion : ''  ?>">
                             
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                     <div class="form-group">
                         <label for="inicio_inhabilitacion" class=" control-label">Inicio de la inhabilitación:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="inicio_inhabilitacion" name="inicio_inhabilitacion"  value="<?=$sanciones->inicio_habilitacion  ?>">
+                                  <input type="text"  class="form-control "  id="inicio_inhabilitacion" name="inicio_inhabilitacion"  value="<?= isset($sanciones->inicio_habilitacion) ? $sanciones->inicio_habilitacion : ''  ?>">
                             
                         </div>
                         <script type="text/javascript">
@@ -84,7 +84,7 @@
                     <div class="form-group">
                         <label for="termino_inhabilitacion" class=" control-label">Término de la inhabilitación:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="termino_inhabilitacion" name="termino_inhabilitacion"  value="<?=$sanciones->termino_habilitacion  ?>">
+                                  <input type="text"  class="form-control "  id="termino_inhabilitacion" name="termino_inhabilitacion"  value="<?= isset($sanciones->termino_habilitacion) ? $sanciones->termino_habilitacion : ''  ?>">
                             
                         </div>
                         <script type="text/javascript">
@@ -101,7 +101,7 @@
                     <div class="form-group">
                         <label for="organismo" class=" control-label">Dependencia u organismo que emite la determinación :<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="organismo" name="organismo"  value="<?=$sanciones->dependencia  ?>"><input type="hidden" class="form-control " value="  <?= isset($sanciones->dependencia) ? $sanciones->dependencia : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="organismo" name="organismo"  value="<?= isset($sanciones->dependencia) ? $sanciones->dependencia : ''  ?>">
                             
                         </div>
                     </div>
@@ -139,7 +139,7 @@
                         <div class="form-group">
                             <label for="emisora" class=" control-label">Institución emisora:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="emisora" name="emisora"  value="<?=$sanciones->institucion_emisora  ?>"><input type="hidden" class="form-control " value="  <?= isset($sanciones->institucion_emisora) ? $sanciones->institucion_emisora : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="emisora" name="emisora"  value="<?= isset($sanciones->institucion_emisora) ? $sanciones->institucion_emisora : ''  ?>">
                             
                         </div>
                         </div>
@@ -168,7 +168,7 @@
                         <div class="form-group">
                             <label for="delitos" class="control-label">Delitos: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="delitos" name="delitos"  value="<?=$sanciones->delitos  ?>"><input type="hidden" class="form-control " value="  <?= isset($sanciones->delitos) ? $sanciones->delitos : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="delitos" name="delitos"  value="<?= isset($sanciones->delitos) ? $sanciones->delitos : ''  ?> ">
                             
                         </div>
                         </div>
@@ -178,7 +178,7 @@
                             <label for="motivo" class=" control-label">Motivo:
                                 <span class="text-danger">*</span></label>
                                 <div >    
-                                  <input type="text"  class="form-control "  id="motivo" name="motivo"  value="<?=$sanciones->motivos  ?>"><input type="hidden" class="form-control " value="  <?= isset($sanciones->motivos) ? $sanciones->motivos : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="motivo" name="motivo"  value=" <?= isset($sanciones->motivos) ? $sanciones->motivos : ''  ?>">
                             
                         </div>
                         </div>
@@ -187,7 +187,7 @@
                         <div class="form-group">
                             <label for="no_expediente" class="control-label">No. Expediente: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="no_expediente" name="no_expediente"  value="<?=$sanciones->dependencia  ?>"><input type="hidden" class="form-control " value="  <?= isset($sanciones->dependencia) ? $sanciones->dependencia : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="no_expediente" name="no_expediente"  value="<?= isset($sanciones->dependencia) ? $sanciones->dependencia : ''  ?>">
                             
                         </div>
                         </div>
@@ -197,7 +197,7 @@
                             <label for="agencia_mp" class=" control-label">Agencia del MP:
                                 <span class="text-danger">*</span></label>
                                 <div >    
-                                  <input type="text"  class="form-control "  id="agencia_mp" name="agencia_mp"  value="<?=$sanciones->agencia_mp  ?>"><input type="hidden" class="form-control " value="  <?= isset($sanciones->agencia_mp) ? $sanciones->agencia_mp : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="agencia_mp" name="agencia_mp"  value=" <?= isset($sanciones->agencia_mp) ? $sanciones->agencia_mp : ''  ?>">
                             
                         </div>
                         </div>
@@ -206,7 +206,7 @@
                         <div class="form-group">
                             <label for="averiguacion_previa" class="control-label">Averiguación previa: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="averiguacion_previa" name="averiguacion_previa"  value="<?=$sanciones->averiguacion_estado  ?>"><input type="hidden" class="form-control " value="  <?= isset($sanciones->averiguacion_estado) ? $sanciones->averiguacion_estado : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="averiguacion_previa" name="averiguacion_previa"  value="<?= isset($sanciones->averiguacion_estado) ? $sanciones->averiguacion_estado : ''  ?> ">
                     
                         </div>
                         </div>
@@ -235,7 +235,7 @@
                         <div class="form-group">
                             <label for="averiguacion_estado" class="control-label">Estado de la averiguación previa: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="averiguacion_estado" name="averiguacion_estado"  value="<?=$sanciones->estado_averiguacion  ?>"><input type="hidden" class="form-control " value="  <?= isset($sanciones->estado_averiguacion) ? $sanciones->estado_averiguacion : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="averiguacion_estado" name="averiguacion_estado"  value="<?= isset($sanciones->estado_averiguacion) ? $sanciones->estado_averiguacion : ''  ?> ">
                             
                         </div>
                         </div>
@@ -244,7 +244,7 @@
                         <div class='form-group'>
                             <label for="inicio_averiguacion">Inicio de la averiguación: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="inicio_averiguacion" name="inicio_averiguacion"  value="<?=$sanciones->inicio_averiguacion  ?>">
+                                  <input type="text"  class="form-control "  id="inicio_averiguacion" name="inicio_averiguacion"  value="<?= isset($sanciones->inicio_averiguacion) ? $sanciones->inicio_averiguacion : ''  ?> ">
                             
                         </div>
                             <script type="text/javascript">
@@ -261,7 +261,7 @@
                         <div class='form-group'>
                             <label for="al_dia">Al día: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="al_dia" name="al_dia"  value="<?=$sanciones->aldia_averiguacion  ?>">
+                                  <input type="text"  class="form-control "  id="al_dia" name="al_dia"  value="<?= isset($sanciones->aldia_averiguacion) ? $sanciones->aldia_averiguacion : ''  ?>">
                             
                         </div>
                             <script type="text/javascript">
@@ -278,7 +278,7 @@
                         <div class="form-group">
                             <label for="juzgado" class=" control-label">Juzgado:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="juzgado" name="juzgado"  value="<?=$sanciones->juzgado  ?>"><input type="hidden" class="form-control " value="  <?= isset($sanciones->tipo_sancion) ? $sanciones->juzgado : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="juzgado" name="juzgado"  value="<?= isset($sanciones->juzgado) ? $sanciones->juzgado : ''  ?>">
                             
                         </div>
 
@@ -288,7 +288,7 @@
                         <div class="form-group">
                             <label for="no_proceso" class=" control-label">No. Proceso:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="no_proceso" name="no_proceso"  value="<?=$sanciones->num_proceso  ?>"><input type="hidden" class="form-control " value="  <?= isset($sanciones->num_proceso) ? $sanciones->num_proceso : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="no_proceso" name="no_proceso"  value="<?= isset($sanciones->num_proceso) ? $sanciones->num_proceso : ''  ?> ">
                             
                         </div>
 
@@ -298,7 +298,7 @@
                         <div class="form-group">
                             <label for="estado_procesal" class=" control-label">Estado Procesal:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="estado_procesal" name="estado_procesal"  value="<?=$sanciones->estado_procesal  ?>"><input type="hidden" class="form-control " value="  <?= isset($sanciones->estado_procesal) ? $sanciones->estado_procesal : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="estado_procesal" name="estado_procesal"  value="<?= isset($sanciones->estado_procesal) ? $sanciones->estado_procesal : ''  ?> ">
                             
                         </div>
 
@@ -308,7 +308,7 @@
                         <div class='form-group'>
                             <label for="inicio_proceso">Inicio del proceso: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="inicio_proceso" name="inicio_proceso"  value="<?=$sanciones->inicio_proceso  ?>">
+                                  <input type="text"  class="form-control "  id="inicio_proceso" name="inicio_proceso"  value="<?= isset($sanciones->inicio_proceso) ? $sanciones->inicio_proceso : ''  ?>">
                             
                         </div>
                             <script type="text/javascript">
@@ -325,7 +325,7 @@
                         <div class='form-group'>
                             <label for="al_dia_proceso">Al día: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="al_dia_proceso" name="al_dia_proceso"  value="<?=$sanciones->aldia_proceso  ?>">
+                                  <input type="text"  class="form-control "  id="al_dia_proceso" name="al_dia_proceso"  value="<?= isset($sanciones->aldia_proceso) ? $sanciones->aldia_proceso : ''  ?>">
                             
                         </div>
                             <script type="text/javascript">
@@ -372,7 +372,7 @@
                 <div class="form-group">
                     <label for="tipo_estimulo" class=" control-label">Tipo:<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="tipo_estimulo" name="tipo_estimulo"  value="<?=$sanciones->tipo_estimulo  ?>"><input type="hidden" class="form-control " value="  <?= isset($sanciones->tipo_estimulo) ? $sanciones->tipo_estimulo : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="tipo_estimulo" name="tipo_estimulo"  value="<?= isset($sanciones->tipo_estimulo) ? $sanciones->tipo_estimulo : ''  ?><?=$sanciones->tipo_estimulo  ?>">
                             
                         </div>
                 </div>
@@ -381,7 +381,7 @@
                 <div class="form-group">
                     <label for="descripcion_estimulo" class=" control-label">Descripción:<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="descripcion_estimulo" name="descripcion_estimulo"  value="<?=$sanciones->descripcion_estimulo  ?>"><input type="hidden" class="form-control " value="  <?= isset($sanciones->descripcion_estimulo) ? $sanciones->descripcion_estimulo : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="descripcion_estimulo" name="descripcion_estimulo"  value="<?= isset($sanciones->descripcion_estimulo) ? $sanciones->descripcion_estimulo : ''  ?>">
                             
                         </div>
                 </div>
@@ -390,7 +390,7 @@
                 <div class="form-group">
                     <label for="dependencia" class=" control-label">Dependencia que otorga:<span class="text-danger">*</span></label>
                     <div >    
-                           <input type="text"  class="form-control "  id="dependencia" name="dependencia"  value="<?=$sanciones->dependencia_otorga  ?>"><input type="hidden" class="form-control " value="  <?= isset($sanciones->dependencia_otorga) ? $sanciones->dependencia_otorga : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                           <input type="text"  class="form-control "  id="dependencia" name="dependencia"  value="<?= isset($sanciones->dependencia_otorga) ? $sanciones->dependencia_otorga : ''  ?>">
                             
                         </div>
                 </div>
@@ -399,7 +399,7 @@
                 <div class='form-group'>
                     <label for="otrogado_estimulo">Otorgado: <span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="otrogado_estimulo" name="otrogado_estimulo"  value="<?=$sanciones->otorgado  ?>"><input type="hidden" class="form-control " value="  <?= isset($sanciones->otorgado) ? $sanciones->otorgado : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="otrogado_estimulo" name="otrogado_estimulo"  value=" <?= isset($sanciones->otorgado) ? $sanciones->otorgado : ''  ?>">
                             
                         </div>
                     <script type="text/javascript">

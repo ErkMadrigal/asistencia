@@ -24,7 +24,7 @@
                         <div class="form-group">
                             <label for="dependencia" class=" control-label">Dependencia responsable:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="certificado" name="certificado"  value="<?=$capacitacion->dependencia ?>"><input type="hidden" class="form-control " value="  <?= isset($capacitacion->dependencia) ? $capacitacion->dependencia : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="certificado" name="certificado"  value="<?= isset($capacitacion->dependencia) ? $capacitacion->dependencia : ''  ?>">
                             
                         </div>
                         </div>
@@ -33,7 +33,7 @@
                         <div class="form-group">
                             <label for="institucion" class=" control-label">Institución Capacitadora:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="institucion" name="institucion"  value="<?=$capacitacion->inst_capacitadora ?>"><input type="hidden" class="form-control " value="  <?= isset($capacitacion->inst_capacitadora) ? $capacitacion->inst_capacitadora : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="institucion" name="institucion"  value=" <?= isset($capacitacion->inst_capacitadora) ? $capacitacion->inst_capacitadora : ''  ?>">
 
                         </div>
                         </div>
@@ -42,7 +42,7 @@
                         <div class="form-group">
                             <label for="nombre_curso" class=" control-label">Nombre del curso:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="nombre_curso" name="nombre_curso"  value="<?=$capacitacion->nombre_curso ?>"><input type="hidden" class="form-control " value="  <?= isset($capacitacion->nombre_curso) ? $capacitacion->nombre_curso : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="nombre_curso" name="nombre_curso"  value="<?= isset($capacitacion->nombre_curso) ? $capacitacion->nombre_curso : ''  ?>">
                             
                         </div>
                         </div>
@@ -51,7 +51,7 @@
                         <div class="form-group">
                             <label for="tema_curso" class=" control-label">Tema del curso:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="tema_curso" name="tema_curso"  value="<?=$capacitacion->tema_curso ?>"><input type="hidden" class="form-control " value="  <?= isset($capacitacion->tema_curso) ? $capacitacion->tema_curso : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="tema_curso" name="tema_curso"  value=" <?= isset($capacitacion->tema_curso) ? $capacitacion->tema_curso : ''  ?>">
                             
                         </div>
                         </div>
@@ -102,7 +102,7 @@
                         <div class="form-group">
                             <label for="inicio" class=" control-label">Inicio:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="inicio" name="inicio"  value="<?=$capacitacion->inicio_curso ?>">
+                                  <input type="text"  class="form-control "  id="inicio" name="inicio"  value=" <?= isset($capacitacion->inicio_curso) ? $capacitacion->inicio_curso : ''  ?>">
                             
                         </div>
                             <script type="text/javascript">
@@ -119,7 +119,7 @@
                         <div class="form-group">
                             <label for="conclusion" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="conclusion" name="conclusion"  value="<?=$capacitacion->conclusion_curso ?>">
+                                  <input type="text"  class="form-control "  id="conclusion" name="conclusion"  value="<?= isset($capacitacion->conclusion_curso) ? $capacitacion->conclusion_curso : ''  ?>">
                             
                         </div>
                             <script type="text/javascript">
@@ -136,7 +136,7 @@
                         <div class="form-group">
                             <label for="duracion" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="duracion" name="duracion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" value="<?=$capacitacion->duracion_horas_curso ?>"><input type="hidden" class="form-control " value="  <?= isset($capacitacion->duracion_horas_curso) ? $capacitacion->duracion_horas_curso : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="duracion" name="duracion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" value="<?= isset($capacitacion->duracion_horas_curso) ? $capacitacion->duracion_horas_curso : ''  ?>">
                             
                         </div>
                            
@@ -146,7 +146,7 @@
                         <div class="form-group">
                             <label for="comprobante" class=" control-label">Tipo de comprobante:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="comprobante" name="comprobante"  value="<?=$capacitacion->tipo_comprobante ?>"><input type="hidden" class="form-control " value="  <?= isset($capacitacion->tipo_comprobante) ? $capacitacion->tipo_comprobante : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="comprobante" name="comprobante"  value="<?= isset($capacitacion->tipo_comprobante) ? $capacitacion->tipo_comprobante : ''  ?>">
                             
                         </div>
                         </div>
@@ -187,7 +187,7 @@
                         <div class="form-group">
                             <label for="empresa" class=" control-label">Insitutción o Empresa:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="empresa" name="empresa"  value="<?=$capacitacion->institucion ?>"><input type="hidden" class="form-control " value="  <?= isset($capacitacion->institucion) ? $capacitacion->institucion : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="empresa" name="empresa"  value="<?= isset($capacitacion->institucion) ? $capacitacion->institucion : ''  ?>">
                             
                         </div>
                         </div>
@@ -196,7 +196,7 @@
                         <div class="form-group">
                             <label for="curso" class=" control-label">Estudio o Curso:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="curso" name="curso"  value="<?=$capacitacion->curso ?>"><input type="hidden" class="form-control " value="  <?= isset($capacitacion->curso) ? $capacitacion->curso : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="curso" name="curso"  value="<?= isset($capacitacion->curso) ? $capacitacion->curso : ''  ?>">
                             
                         </div>
                         </div>
@@ -205,7 +205,7 @@
                         <div class="form-group">
                             <label for="tipo_curso" class=" control-label">Tipo de curso:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="tipo_curso" name="tipo_curso"  value="<?=$capacitacion->tipo_curso ?>"><input type="hidden" class="form-control " value="  <?= isset($capacitacion->tipo_curso) ? $capacitacion->tipo_curso : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="tipo_curso" name="tipo_curso"  value="<?= isset($capacitacion->tipo_curso) ? $capacitacion->tipo_curso : ''  ?>">
                             
                         </div>
                         </div>
@@ -299,7 +299,7 @@
                             <label for="duracion_horas" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
                             <div >    
                             <div >    
-                                  <input type="text"  class="form-control "  id="duracion_horas" name="duracion_horas"  value="<?=$capacitacion->duracion_horas_adicional ?>"><input type="hidden" class="form-control " value="  <?= isset($capacitacion->duracion_horas_adicional) ? $capacitacion->duracion_horas_adicional : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="duracion_horas" name="duracion_horas"  value="<?= isset($capacitacion->duracion_horas_adicional) ? $capacitacion->duracion_horas_adicional : ''  ?>">
                             
                         </div>
                           
@@ -469,7 +469,7 @@
                         <div class="form-group">
                             <label for="especificacion" class=" control-label">Especifique:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="especificacion" name="especificacion"  value="<?=$capacitacion->especifique_habilidad ?>"><input type="hidden" class="form-control " value="  <?= isset($capacitacion->especifique_habilidad) ? $capacitacion->especifique_habilidad : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="especificacion" name="especificacion"  value="<?= isset($capacitacion->especifique_habilidad) ? $capacitacion->especifique_habilidad : ''  ?>">
                             
                         </div>
                         </div>
@@ -531,7 +531,7 @@
                         <div class="form-group">
                             <label for="nombre" class=" control-label">Nombre:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="nombre" name="nombre"  value="<?=$capacitacion->nombre_agrupacion ?>"><input type="hidden" class="form-control " value="  <?= isset($capacitacion->nombre_agrupacion) ? $capacitacion->nombre_agrupacion : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="nombre" name="nombre"  value="<?= isset($capacitacion->nombre_agrupacion) ? $capacitacion->nombre_agrupacion : ''  ?>">
                             
                         </div>
                         </div>

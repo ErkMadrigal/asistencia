@@ -27,8 +27,7 @@
                     <div class="form-group">
                         <label for="segundoNombre" class=" control-label">Segundo Nombre:</label>
                         <div>
-                            <input type="text" class="form-control " id="segundoNombre" name="segundoNombre" value="   <?= $variable->segundo_nombre ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->segundo_nombre) ? $variable->segundo_nombre : ''  ?> " id="id" name="id"><?= csrf_field() ?>
-
+                            <input type="text" class="form-control " id="segundoNombre" name="segundoNombre" value=" <?= isset($variable->segundo_nombre) ? $variable->segundo_nombre : ''  ?>">
 
                         </div>
                     </div>
@@ -37,7 +36,7 @@
                     <div class="form-group">
                         <label for="apellidoPaterno" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="apellidoPaterno" name="apellidoPaterno" value="<?= $variable->apellido_paterno ?>"><input type="hidden" class="form-control " value="   <?= isset($variable->apellido_paterno) ? $variable->apellido_paterno : ''  ?>" id="id" name="id"><?= csrf_field() ?>
+                            <input type="text" class="form-control " id="apellidoPaterno" name="apellidoPaterno" value="<?= isset($variable->apellido_paterno) ? $variable->apellido_paterno : ''  ?>">
 
                         </div>
                     </div>
@@ -46,7 +45,7 @@
                     <div class="form-group">
                         <label for="apellidoMaterno" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno" value="<?= $variable->apellido_materno ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->apellido_materno) ? $variable->apellido_materno : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                            <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno" value="<?= isset($variable->apellido_materno) ? $variable->apellido_materno : ''  ?>">
 
                         </div>
                     </div>
@@ -55,7 +54,7 @@
                     <div class='form-group'>
                         <label for="fecha_nacimiento">Fecha de Nacimiento: <span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="fecha_nacimiento" name="fecha_nacimiento" value="<?= $variable->fecha_nacimiento ?>">
+                            <input type="text" class="form-control " id="fecha_nacimiento" name="fecha_nacimiento" value="<?= isset($variable->fecha_nacimiento) ? $variable->fecha_nacimiento : ''  ?>">
 
                         </div>
                         <script type="text/javascript">
@@ -92,7 +91,7 @@
                         <label for="rfc" class=" control-label">R.F.C.:<span class="text-danger">*</span></label>
                         <div>
 
-                            <input type="text" class="form-control " id="rfc" name="rfc" value="<?= $variable->rfc ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->rfc) ? $variable->rfc : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                            <input type="text" class="form-control " id="rfc" name="rfc" value="<?= isset($variable->rfc) ? $variable->rfc : ''  ?>">
 
 
                         </div>
@@ -102,7 +101,7 @@
                     <div class="form-group">
                         <label for="claveE" class=" control-label">Clave Electoral:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="claveE" name="claveE" value="<?= $variable->clave_electoral ?>"><input type="hidden" class="form-control " value=" <?= isset($variable->clave_electoral) ? $variable->clave_electoral : ''  ?>" id="id" name="id"><?= csrf_field() ?>
+                            <input type="text" class="form-control " id="claveE" name="claveE" value="<?= isset($variable->clave_electoral) ? $variable->clave_electoral : ''  ?>">
 
                         </div>
                     </div>
@@ -112,7 +111,7 @@
                         <label for="cartilla" class=" control-label">Cartilla SMN:<span class="text-danger">*</span></label>
                         <div>
 
-                            <input type="text" class="form-control " id="cartilla" name="cartilla" value=" <?= $variable->cartilla_smn ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->cartilla_smn) ? $variable->cartilla_smn : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                            <input type="text" class="form-control " id="cartilla" name="cartilla" value=" <?= isset($variable->cartilla_smn) ? $variable->cartilla_smn : ''  ?>">
 
 
                         </div>
@@ -122,7 +121,7 @@
                     <div class="form-group">
                         <label for="licencia" class=" control-label">Licencia de Conducir:</label>
                         <div>
-                            <input type="text" class="form-control " id="licencia" name="licencia" value="<?= $variable->licencia_conducir ?>"><input type="hidden" class="form-control " value=" <?= isset($variable->licencia_conducir) ? $variable->licencia_conducir : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                            <input type="text" class="form-control " id="licencia" name="licencia" value="<?= isset($variable->licencia_conducir) ? $variable->licencia_conducir : ''  ?>">
 
                         </div>
                     </div>
@@ -131,7 +130,7 @@
                     <div class="form-group">
                         <label for="vigenciaLic" class=" control-label">Vigencia de Licencia:</label>
                         <div>
-                            <input type="text" class="form-control " id="vigenciaLic" name="vigenciaLic" value="<?= $variable->vigencia_licencia ?>">
+                            <input type="text" class="form-control " id="vigenciaLic" name="vigenciaLic" value="<?= isset($variable->vigencia_licencia) ? $variable->vigencia_licencia : ''  ?>">
 
                         </div>
                         <script type="text/javascript">
@@ -148,7 +147,7 @@
                     <div class="form-group">
                         <label for="CURP" class=" control-label">CURP:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="CURP" name="CURP" value="<?= $variable->curp ?>"><input type="hidden" class="form-control " value="   <?= isset($variable->curp) ? $variable->curp : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                            <input type="text" class="form-control " id="CURP" name="CURP" value="<?= isset($variable->curp) ? $variable->curp : ''  ?>">
 
                         </div>
                     </div>
@@ -157,7 +156,7 @@
                     <div class="form-group">
                         <label for="pasaporte" class=" control-label">Pasaporte:</label>
                         <div>
-                            <input type="text" class="form-control " id="pasaporte" name="pasaporte" value="<?= $variable->pasaporte ?>"><input type="hidden" class="form-control " value="   <?= isset($variable->pasaporte) ? $variable->pasaporte : ''  ?>
+                            <input type="text" class="form-control " id="pasaporte" name="pasaporte" value="<?= isset($variable->pasaporte) ? $variable->pasaporte : ''  ?>">
                         </div>
                     </div>
                 </div>
@@ -354,7 +353,7 @@
                     <div class="form-group">
                         <label for="escuela" class=" control-label">Escuela :<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="escuela" name="escuela" value="<?= $variable->escuela ?>"><input type="hidden" class="form-control " value=" <?= isset($variable->escuela) ? $variable->escuela : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                            <input type="text" class="form-control " id="escuela" name="escuela" value="<?= isset($variable->escuela) ? $variable->escuela : ''  ?>">
 
                         </div>
                     </div>
@@ -363,7 +362,7 @@
                     <div class="form-group">
                         <label for="especialidad" class=" control-label">Especialidad o Estudio :<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="especialidad" name="especialidad" value="<?= $variable->especialidad ?>"><input type="hidden" class="form-control " value="   <?= isset($variable->especialidad) ? $variable->especialidad : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                            <input type="text" class="form-control " id="especialidad" name="especialidad" value=" <?= isset($variable->especialidad) ? $variable->especialidad : ''  ?>">
 
                         </div>
                     </div>
@@ -372,7 +371,7 @@
                     <div class="form-group">
                         <label for="cedula" class=" control-label">No. Cédula Profesional:</label>
                         <div>
-                            <input type="text" class="form-control " id="cedula" name="cedula" value="<?= $variable->cedula_profesional ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->cedula_profesional) ? $variable->cedula_profesional : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                            <input type="text" class="form-control " id="cedula" name="cedula" value=" <?= isset($variable->cedula_profesional) ? $variable->cedula_profesional : ''  ?>">
 
                         </div>
                     </div>
@@ -381,7 +380,7 @@
                     <div class='form-group'>
                         <label for="anno_inicio">Año de Inicio: <span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="anno_inicio" name="anno_inicio" value="<?= $variable->año_inicio ?>">
+                            <input type="text" class="form-control " id="anno_inicio" name="anno_inicio" value=" <?= isset($variable->año_inicio) ? $variable->año_inicio : ''  ?>">
 
                         </div>
                         <script type="text/javascript">
@@ -398,7 +397,7 @@
                     <div class='form-group'>
                         <label for="anno_termino">Año de Termino: <span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="anno_termino" name="anno_termino" value="<?= $variable->año_termino ?>">
+                            <input type="text" class="form-control " id="anno_termino" name="anno_termino" value=" <?= isset($variable->año_termino) ? $variable->año_termino : ''  ?>">
 
                         </div>
                         <script type="text/javascript">
@@ -434,7 +433,7 @@
                     <div class="form-group">
                         <label for="certificado" class=" control-label">Num. de Folio Certificado :<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="certificado" name="certificado" value="<?= $variable->folio_certificado ?>"><input type="hidden" class="form-control " value=" <?= isset($variable->folio_certificado) ? $variable->folio_certificado : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                            <input type="text" class="form-control " id="certificado" name="certificado" value=" <?= isset($variable->folio_certificado) ? $variable->folio_certificado : ''  ?>">
 
                         </div>
                     </div>
@@ -443,7 +442,7 @@
                     <div class="form-group">
                         <label for="promedio" class=" control-label">Promedio :<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="promedio" name="promedio" value="<?= $variable->institucion ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->folio_certificado) ? $variable->folio_certificado : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                            <input type="text" class="form-control " id="promedio" name="promedio" value="<?= isset($variable->folio_certificado) ? $variable->folio_certificado : ''  ?>">
 
                         </div>
                     </div>
@@ -471,7 +470,7 @@
                 <div class="form-group">
                     <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="calle" name="calle" value="<?= $variable->calle ?>"><input type="hidden" class="form-control " value=" <?= isset($variable->calle) ? $variable->calle : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                        <input type="text" class="form-control " id="calle" name="calle" value="<?= isset($variable->calle) ? $variable->calle : ''  ?>">
 
                     </div>
                 </div>
@@ -480,7 +479,7 @@
                 <div class="form-group">
                     <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="exterior" name="exterior" value="<?= $variable->numero_exterior ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->numero_exterior) ? $variable->numero_exterior : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                        <input type="text" class="form-control " id="exterior" name="exterior" value=" <?= isset($variable->numero_exterior) ? $variable->numero_exterior : ''  ?>">
 
                     </div>
                 </div>
@@ -489,7 +488,7 @@
                 <div class="form-group">
                     <label for="interior" class=" control-label">No. Interior:</label>
                     <div>
-                        <input type="text" class="form-control " id="interior" name="interior" value="<?= $variable->numero_interior ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->numero_interior) ? $variable->numero_interior : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                        <input type="text" class="form-control " id="interior" name="interior" value="<?= isset($variable->numero_interior) ? $variable->numero_interior : ''  ?>">
 
                     </div>
                 </div>
@@ -499,7 +498,7 @@
                     <label for="numeroTelefono" class=" control-label">Numero
                         Telefónico:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="numeroTelefono" name="numeroTelefono" maxlength="10" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" value="<?= $variable->numero_telefono ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->numero_telefono) ? $variable->numero_telefono : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                        <input type="text" class="form-control " id="numeroTelefono" name="numeroTelefono" maxlength="10" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" value="<?= isset($variable->numero_telefono) ? $variable->numero_telefono : ''  ?>">
 
                     </div>
                 </div>
@@ -509,7 +508,7 @@
                     <label for="entrecalle" class=" control-label">Entre la calle
                         de:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="entrecalle" name="entrecalle" value="<?= $variable->entre_calle1 ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->entre_calle1) ? $variable->entre_calle1 : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                        <input type="text" class="form-control " id="entrecalle" name="entrecalle" value=" <?= isset($variable->entre_calle1) ? $variable->entre_calle1 : ''  ?>">
 
                     </div>
                 </div>
@@ -518,7 +517,7 @@
                 <div class="form-group">
                     <label for="ylacalle" class=" control-label">Y la calle :<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="ylacalle" name="ylacalle" value="<?= $variable->entre_calle2 ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->entre_calle2) ? $variable->entre_calle2 : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                        <input type="text" class="form-control " id="ylacalle" name="ylacalle" value=" <?= isset($variable->entre_calle2) ? $variable->entre_calle2 : ''  ?> ">
 
                     </div>
                 </div>
@@ -527,7 +526,7 @@
                 <div class="form-group">
                     <label for="codigo" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="codigo" name="codigo" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value="<?= $variable->postal ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->postal) ? $variable->postal : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                        <input type="text" class="form-control " id="codigo" name="codigo" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value=" <?= isset($variable->postal) ? $variable->postal : ''  ?>">
 
                     </div>
                 </div>
@@ -646,7 +645,7 @@
                             <label for="nombrecurso" class=" control-label">Nombre del Curso
                                 :<span class="text-danger">*</span></label>
                             <div>
-                                <input type="text" class="form-control " id="nombre_curso" name="nombre_curso" value="<?= $variable->institucion ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->institucion) ? $variable->institucion : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                <input type="text" class="form-control " id="nombre_curso" name="nombre_curso" value=" <?= isset($variable->institucion) ? $variable->institucion : ''  ?>">
 
                             </div>
                         </div>
@@ -656,7 +655,7 @@
                             <label for="nombreInstitucion" class=" control-label">Nombre de
                                 la Institución:<span class="text-danger">*</span></label>
                             <div>
-                                <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion" value="<?= $variable->institucion ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->institucion) ? $variable->institucion : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion" value=" <?= isset($variable->institucion) ? $variable->institucion : ''  ?>">
 
                             </div>
                         </div>
@@ -688,7 +687,7 @@
                         <div class='form-group'>
                             <label for="fecha_final">Fecha de Término: <span class="text-danger">*</span></label>
                             <div>
-                                <input type="text" class="form-control " id="fecha_final" name="fecha_final" value="<?= $variable->institucion  ?>">
+                                <input type="text" class="form-control " id="fecha_final" name="fecha_final" value=" <?= isset($variable->fecha_final) ? $variable->fecha_final : ''  ?>">
 
                             </div>
                             <script type="text/javascript">
@@ -707,7 +706,7 @@
                             <label for="certificado_por" class=" control-label">Certificado
                                 por:<span class="text-danger">*</span></label>
                             <div>
-                                <input type="text" class="form-control " id="certificado" name="certificado" value="<?= $variable->institucion ?>"><input type="hidden" class="form-control " value="  <?= isset($variable->institucion) ? $variable->institucion : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                <input type="text" class="form-control " id="certificado" name="certificado" value=" <?= isset($variable->institucion) ? $variable->institucion : ''  ?>">
 
                             </div>
                         </div>

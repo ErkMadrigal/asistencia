@@ -21,7 +21,7 @@
                     <div class="form-group">
                         <label for="empresa" class=" control-label">Empresa:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="empresa" name="empresa"  value="<?=$diversos->empresa ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->empresa) ? $diversos->empresa : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="empresa" name="empresa"  value="<?= isset($diversos->empresa) ? $diversos->empresa : ''  ?>">
                             
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="calle" name="calle"  value="<?=$diversos->calle ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->calle) ? $diversos->calle : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="calle" name="calle"  value="<?= isset($diversos->calle) ? $diversos->calle : ''  ?>">
                             
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="exterior" name="exterior"  value="<?=$diversos->numero_exterior ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->numero_exterior) ? $diversos->numero_exterior : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="exterior" name="exterior"  value="<?= isset($diversos->numero_exterior) ? $diversos->numero_exterior : ''  ?>">
                             
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                     <div class="form-group">
                         <label for="interior" class=" control-label">No. Interior:</label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="interior" name="interior"  value="<?=$diversos->numero_interior ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->numero_interior) ? $diversos->numero_interior : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="interior" name="interior"  value="<?= isset($diversos->numero_interior) ? $diversos->numero_interior : ''  ?>">
                             
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                     <div class="form-group">
                         <label for="codigoEmpDiv" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="codigoEmpDiv" name="codigoEmpDiv" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value="<?=$diversos->idCodigoPostal ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->idCodigoPostal) ? $diversos->idCodigoPostal : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="codigoEmpDiv" name="codigoEmpDiv" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value="<?= isset($diversos->idCodigoPostal) ? $diversos->idCodigoPostal : ''  ?>">
                             
                         </div>
                         
@@ -131,7 +131,7 @@
                     <div class="form-group">
                         <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="numero" name="numero"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"  value="<?=$diversos->numero_telefono ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->numero_telefono) ? $diversos->numero_telefono : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="numero" name="numero"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"  value="<?= isset($diversos->numero_telefono) ? $diversos->numero_telefono : ''  ?>">
                             
                         </div>
                     </div>
@@ -140,7 +140,7 @@
                     <div class="form-group">
                         <label for="ingresoEmpDiv" class=" control-label">Ingreso:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="ingresoEmpDiv" name="ingresoEmpDiv"  value="<?=$diversos->ingreso ?>">
+                                  <input type="text"  class="form-control "  id="ingresoEmpDiv" name="ingresoEmpDiv"  value="<?= isset($diversos->ingreso) ? $diversos->ingreso : ''  ?>">
                             
                         </div>
                         <script type="text/javascript">
@@ -158,7 +158,7 @@
                     <div class="form-group">
                         <label for="funciones" class=" control-label">Funciones:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="funciones" name="funciones"  value="<?=$diversos->dependencia ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->dependencia) ? $diversos->dependencia : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="funciones" name="funciones"  value="<?= isset($diversos->dependencia) ? $diversos->dependencia : ''  ?>">
                             
                         </div>
                     </div>
@@ -167,7 +167,7 @@
                     <div class="form-group">
                         <label for="sueldo" class=" control-label">Ingreso Neto (Mensual):<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="sueldo" name="sueldo"  value="<?=$diversos->sueldo_base ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->sueldo_base) ? $diversos->sueldo_base : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="sueldo" name="sueldo"  value="<?= isset($diversos->sueldo_base) ? $diversos->sueldo_base : ''  ?>">
                             
                         </div>
                     </div>
@@ -177,7 +177,7 @@
                     <div class="form-group">
                         <label for="area" class=" control-label">Area:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="area" name="area"  value="<?=$diversos->area ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->area) ? $diversos->area : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="area" name="area"  value="<?= isset($diversos->area) ? $diversos->area : ''  ?>">
                             
                         </div>
                     </div>
@@ -187,7 +187,7 @@
                     <div class="form-group">
                         <label for="motivo_separacion" class=" control-label">Motivo de separación:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="motivo_separacion" name="motivo_separacion"  value="<?=$diversos->separacion ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->separacion) ? $diversos->separacion : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="motivo_separacion" name="motivo_separacion"  value=" <?= isset($diversos->separacion) ? $diversos->separacion : ''  ?><?=$diversos->separacion ?>">
                             
                         </div>
                     </div>
@@ -196,7 +196,7 @@
                     <div class="form-group">
                         <label for="tipo_separacion" class=" control-label">Tipo de Separación:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="tipo_separacion" name="tipo_separacion"  value="<?=$diversos->tipo_separacion ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->tipo_separacion) ? $diversos->tipo_separacion : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="tipo_separacion" name="tipo_separacion"  value=" <?= isset($diversos->tipo_separacion) ? $diversos->tipo_separacion : ''  ?>">
                             
                         </div>
                     </div>
@@ -206,7 +206,7 @@
                     <div class="form-group">
                         <label for="comentarios" class=" control-label">Comentarios:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="comentarios" name="comentarios"  value="<?=$diversos->comentarios ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->comentarios) ? $diversos->comentarios : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="comentarios" name="comentarios"  value=" <?= isset($diversos->comentarios) ? $diversos->comentarios : ''  ?>">
                             
                         </div>
                     </div>
@@ -234,7 +234,7 @@
                 <div class="form-group">
                     <label for="empleo" class=" control-label">¿Por qué Eligio este empleo?<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="empleo" name="empleo"  value="<?=$diversos->eligio_empleo ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->eligio_empleo) ? $diversos->eligio_empleo : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="empleo" name="empleo"  value="<?= isset($diversos->eligio_empleo) ? $diversos->eligio_empleo : ''  ?>">
                             
                         </div>
                 </div>
@@ -243,7 +243,7 @@
                 <div class="form-group">
                     <label for="puesto" class=" control-label">¿Qué puesto le gustaria tener?<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="puesto" name="puesto"  value="<?=$diversos->puesto_gustaria ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->puesto_gustaria) ? $diversos->puesto_gustaria : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="puesto" name="puesto"  value="<?= isset($diversos->puesto_gustaria) ? $diversos->puesto_gustaria : ''  ?>">
                             
                         </div>
                 </div>
@@ -252,7 +252,7 @@
                 <div class="form-group">
                     <label for="area_gustaria" class=" control-label">¿En que area le gustaría estar?<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="area_gustaria" name="area_gustaria"  value="<?=$diversos->area_gustaria ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->area_gustaria) ? $diversos->area_gustaria : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="area_gustaria" name="area_gustaria"  value=" <?= isset($diversos->area_gustaria) ? $diversos->area_gustaria : ''  ?> ">
                             
                         </div>
                 </div>
@@ -261,7 +261,7 @@
                 <div class="form-group">
                     <label for="ascender" class=" control-label">¿En que tiempo desea ascender?<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="ascender" name="ascender"  value="<?=$diversos->tiempo_ascenso ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->tiempo_ascenso) ? $diversos->tiempo_ascenso : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="ascender" name="ascender"  value="<?= isset($diversos->tiempo_ascenso) ? $diversos->tiempo_ascenso : ''  ?>">
                             
                         </div>
                 </div>
@@ -290,7 +290,7 @@
                 <div class="form-group">
                     <label for="reconomiento" class=" control-label">¿Razones por las que no ha recibido un reconocimiento?<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="reconomiento" name="reconomiento"  value="<?=$diversos->razon_ascenso ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->razon_ascenso) ? $diversos->razon_ascenso : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="reconomiento" name="reconomiento"  value="<?= isset($diversos->razon_ascenso) ? $diversos->razon_ascenso : ''  ?>">
                             
                         </div>
                 </div>
@@ -321,7 +321,7 @@
                     
                     <label for="razones_ascenso" class=" control-label">¿Razones por las que no ha recibido un ascenso?<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="razones_ascenso" name="razones_ascenso"  value="<?=$diversos->razon_ascenso ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->razon_ascenso) ? $diversos->razon_ascenso : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="razones_ascenso" name="razones_ascenso"  value="<?= isset($diversos->razon_ascenso) ? $diversos->razon_ascenso : ''  ?>">
                             
                         </div>
                 </div>
@@ -331,7 +331,7 @@
                 <label for="capacitacion" class=" control-label">¿Qué capacitación le gustaría recibir?<span class="text-danger">*</span></label>
 
                 <div >    
-                                  <input type="text"  class="form-control "  id="capacitacion" name="capacitacion"  value="<?=$diversos->capacitacion ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->capacitacion) ? $diversos->capacitacion : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="capacitacion" name="capacitacion"  value="<?= isset($diversos->capacitacion) ? $diversos->capacitacion : ''  ?>">
                             
                         </div>
                 </div>
@@ -380,7 +380,7 @@
                 <div class="form-group">
                     <label for="subtipo_disciplina" class=" control-label">Subtipo de disciplina<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="subtipo_disciplina" name="subtipo_disciplina"  value="<?=$diversos->subtipo_disciplina ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->subtipo_disciplina) ? $diversos->subtipo_disciplina : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="subtipo_disciplina" name="subtipo_disciplina"  value="<?= isset($diversos->subtipo_disciplina) ? $diversos->subtipo_disciplina : ''  ?>">
                             
                         </div>
                 </div>
@@ -389,7 +389,7 @@
                 <div class="form-group">
                     <label for="motivo" class=" control-label">Motivo<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="motivo" name="motivo"  value="<?=$diversos->tipo ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->tipo) ? $diversos->tipo : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="motivo" name="motivo"  value="<?= isset($diversos->tipo) ? $diversos->tipo : ''  ?>">
                             
                         </div>
                 </div>
@@ -398,7 +398,7 @@
                 <div class="form-group">
                     <label for="tipo" class=" control-label">Tipo<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="tipo" name="tipo"  value="<?=$diversos->tipo ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->tipo) ? $diversos->tipo : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="tipo" name="tipo"  value="<?= isset($diversos->tipo) ? $diversos->tipo : ''  ?>">
                             
                         </div>
                 </div>
@@ -407,7 +407,7 @@
                 <div class='form-group'>
                     <label for="fecha_inicialDis">Fecha de Inicio: <span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="fecha_inicialDis" name="fecha_inicialDis"  value="<?=$diversos->fecha_inicio ?>">
+                                  <input type="text"  class="form-control "  id="fecha_inicialDis" name="fecha_inicialDis"  value="<?= isset($diversos->fecha_inicio) ? $diversos->fecha_inicio : ''  ?>">
                             
                         </div>
                     <script type="text/javascript">
@@ -424,7 +424,7 @@
                 <div class='form-group'>
                     <label for="fecha_finalDis">Fecha de Término: <span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="fecha_finalDis" name="fecha_finalDis"  value="<?=$diversos->fecha_termino ?>">
+                                  <input type="text"  class="form-control "  id="fecha_finalDis" name="fecha_finalDis"  value="<?= isset($diversos->fecha_termino) ? $diversos->fecha_termino : ''  ?>">
                             
                         </div>
                     <script type="text/javascript">
@@ -442,7 +442,7 @@
                 <div class="form-group">
                     <label for="licencias_medicas" class=" control-label">En caso de licencias médicas:</label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="licencias_medicas" name="licencias_medicas"  value="<?=$diversos->dependencia ?>">
+                                  <input type="text"  class="form-control "  id="licencias_medicas" name="licencias_medicas"  value="<?= isset($diversos->dependencia) ? $diversos->dependencia : ''  ?>">
                             
                         </div>
                 </div>
@@ -472,7 +472,7 @@
                 <div class="form-group">
                     <label for="cantidad" class=" control-label">Cantidad:</label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="cantidad" name="cantidad"  value="<?=$diversos->cantidad ?>"><input type="hidden" class="form-control " value="  <?= isset($diversos->cantidad) ? $diversos->cantidad : ''  ?> " id="id" name="id"><?= csrf_field() ?>
+                                  <input type="text"  class="form-control "  id="cantidad" name="cantidad"  value="<?= isset($diversos->cantidad) ? $diversos->cantidad : ''  ?>">
                             
                         </div>
                 </div>
