@@ -878,7 +878,8 @@
                             if (!empty($rango)) :
                                 foreach ($rango as  $a) {
                             ?>
-                                    <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                   <option <?= ($variable->cuidad == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                             <?php
                                 }
                             endif; ?>
@@ -902,7 +903,7 @@
                             if (!empty($mando)) :
                                 foreach ($mando as  $a) {
                             ?>
-                                    <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                      <option <?= ($variable->cuidad == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -933,7 +934,8 @@
                             if (!empty($entidad_federativa)) :
                                 foreach ($entidad_federativa as  $a) {
                             ?>
-                                    <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                      <option <?= ($variable->naciE == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                             <?php
                                 }
                             endif; ?>

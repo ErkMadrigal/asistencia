@@ -22,17 +22,18 @@
                         <label for="familia" class="control-label">¿Vive con su Familia?: <span class="text-danger">*</span></label>
                         <div>
 
-                            <select class="form-control" id="familia" name="familia">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if (!empty($SiNo)) :
-                                    foreach ($SiNo as  $a) {
-                                ?>
-                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                                <?php
-                                    }
-                                endif; ?>
-                            </select>
+                        <select class="form-control" id="familia" name="familia">
+                        <option value="">Selecciona una Opcion</option>
+                        <?php
+                        if (!empty($familia)) :
+                            foreach ($familia as  $a) {
+                        ?>
+               <option <?= ($estudio->vive == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                        <?php
+                            }
+                        endif; ?>
+                    </select>
 
                             <script>
                                 $(document).ready(function() {
@@ -59,17 +60,19 @@
                     <div class="form-group">
                         <label for="domicilio_tipo" class="control-label">Su domicilio es: <span class="text-danger">*</span></label>
                         <div>
-                            <select class="form-control" id="domicilio_tipo" name="domicilio_tipo">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if (!empty($domicilio_tipo)) :
-                                    foreach ($domicilio_tipo as  $a) {
-                                ?>
-                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
-                                <?php
-                                    }
-                                endif; ?>
-                            </select>
+                  
+                        <select class="form-control" id="domicilio_tipo" name="domicilio_tipo">
+                        <option value="">Selecciona una Opcion</option>
+                        <?php
+                        if (!empty($domicilio_tipo)) :
+                            foreach ($domicilio_tipo as  $a) {
+                        ?>
+               <option <?= ($estudio->domicilio == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                        <?php
+                            }
+                        endif; ?>
+                    </select>
                             <script>
                                 $(document).ready(function() {
                                     $("#domicilio_tipo").select2({
@@ -249,7 +252,7 @@
                                 if (!empty($genero)) :
                                     foreach ($genero as  $a) {
                                 ?>
-                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= ($estudio->sexo == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                                 <?php
                                     }
                                 endif; ?>
@@ -275,7 +278,7 @@
                                 if (!empty($parentesco_todos)) :
                                     foreach ($parentesco_todos as  $a) {
                                 ?>
-                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= ($estudio->parentesco == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                                 <?php
                                     }
                                 endif; ?>

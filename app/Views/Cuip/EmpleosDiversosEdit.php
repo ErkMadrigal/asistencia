@@ -70,9 +70,17 @@
                         <label for="coloniacodigoEmpDiv" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                         <div >    
                         <select class="form-control" id="coloniacodigoEmpDiv" name="coloniacodigoEmpDiv">
-                            <option value="">Selecciona una Opcion</option>
+                                    <option value="">Selecciona una Opcion</option>
+                                    <?php
+                                    if (!empty($coloniacodigoEmpDiv)) :
+                                        foreach ($coloniacodigoEmpDiv as  $a) {
+                                    ?>
+                            <option <?= ($diversos->colonia == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
-                        </select>
+                                    <?php
+                                        }
+                                    endif; ?>
+                                </select>
                             
                         <script>
                             $(document).ready(function() {
@@ -90,9 +98,17 @@
                         <label for="estadocodigoEmpDiv" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
                         <div>
                         <select class="form-control" id="estadocodigoEmpDiv" name="estadocodigoEmpDiv">
-                                <option value="">Selecciona una Opcion</option>
+                                    <option value="">Selecciona una Opcion</option>
+                                    <?php
+                                    if (!empty($estadocodigoEmpDiv)) :
+                                        foreach ($estadocodigoEmpDiv as  $a) {
+                                    ?>
+                            <option <?= ($diversos->estado == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
-                            </select>
+                                    <?php
+                                        }
+                                    endif; ?>
+                                </select>
                             <script>
                                 $(document).ready(function() {
                                     $("#estadocodigoEmpDiv").select2({
@@ -109,8 +125,17 @@
                         <label for="municipiocodigoEmpDiv" class="control-label">Municipio: <span class="text-danger">*</span></label>
                         <div>
                         <select class="form-control" id="municipiocodigoEmpDiv" name="municipiocodigoEmpDiv">
-                                <option value="">Selecciona una Opcion</option>
-                            </select>
+                                    <option value="">Selecciona una Opcion</option>
+                                    <?php
+                                    if (!empty($municipiocodigoEmpDiv)) :
+                                        foreach ($municipiocodigoEmpDiv as  $a) {
+                                    ?>
+                            <option <?= ($diversos->municipio == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                                    <?php
+                                        }
+                                    endif; ?>
+                                </select>
                             <script>
                                 $(document).ready(function() {
                                     $("#municipiocodigoEmpDiv").select2({
@@ -271,7 +296,7 @@
                         if (!empty($SiNo)) :
                             foreach ($SiNo as  $a) {
                         ?>
-                                <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= ($diversos->reglamentacion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                         <?php
                             }
                         endif; ?>
@@ -306,7 +331,7 @@
                         if (!empty($SiNo)) :
                             foreach ($SiNo as  $a) {
                         ?>
-                                <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= ($diversos->reglamentacion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                         <?php
                             }
                         endif; ?>
@@ -371,7 +396,7 @@
                         if (!empty($tipoDisciplina)) :
                             foreach ($tipoDisciplina as  $a) {
                         ?>
-                                <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= ($diversos->disciplina == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                         <?php
                             }
                         endif; ?>
@@ -468,7 +493,8 @@
                         if (!empty($duracion)) :
                             foreach ($duracion as  $a) {
                         ?>
-                                <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+               <option <?= ($diversos->duracion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                         <?php
                             }
                         endif; ?>

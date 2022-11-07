@@ -86,8 +86,17 @@
                         <label for="coloniacodigoSegPub" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                         <div >    
                         <select class="form-control" id="coloniacodigoSegPub" name="coloniacodigoSegPub">
-                                <option value="">Selecciona una Opcion</option>
-                            </select>
+                        <option value="">Selecciona una Opcion</option>
+                        <?php
+                        if (!empty($duracion)) :
+                            foreach ($duracion as  $a) {
+                        ?>
+               <option <?= ($seguridad->Colonia == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                        <?php
+                            }
+                        endif; ?>
+                    </select>
                             <script>
                                 $(document).ready(function() {
                                     $("#coloniacodigoSegPub").select2({
@@ -247,9 +256,17 @@
                         <label for="estadocodigoSegPub" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
                         <div>
                         <select class="form-control" id="estadocodigoSegPub" name="estadocodigoSegPub">
-                                <option value="">Selecciona una Opcion</option>
-                                
-                            </select>
+                        <option value="">Selecciona una Opcion</option>
+                        <?php
+                        if (!empty($estadocodigoSegPub)) :
+                            foreach ($estadocodigoSegPub as  $a) {
+                        ?>
+               <option <?= ($seguridad->estado == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                        <?php
+                            }
+                        endif; ?>
+                    </select>
                             <script>
                                 $(document).ready(function() {
                                     $("#estadocodigoSegPub").select2({
@@ -267,9 +284,17 @@
                         <label for="municipiocodigoSegPub" class="control-label">Municipio: <span class="text-danger">*</span></label>
                         <div>
                         <select class="form-control" id="municipiocodigoSegPub" name="municipiocodigoSegPub">
-                                <option value="">Selecciona una Opcion</option>
-                                
-                            </select>
+                        <option value="">Selecciona una Opcion</option>
+                        <?php
+                        if (!empty($municipiocodigoSegPub)) :
+                            foreach ($municipiocodigoSegPub as  $a) {
+                        ?>
+               <option <?= ($seguridad->municipio == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                        <?php
+                            }
+                        endif; ?>
+                    </select>
                             <script>
                                 $(document).ready(function() {
                                     $("#municipiocodigoSegPub").select2({

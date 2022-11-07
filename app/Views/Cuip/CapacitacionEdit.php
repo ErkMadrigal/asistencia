@@ -66,7 +66,8 @@
                                     if (!empty($nivel_curso)) :
                                         foreach ($nivel_curso as  $a) {
                                     ?>
-                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+           <option <?= ($capacitacion->curso == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                                     <?php
                                         }
                                     endif; ?>
@@ -92,7 +93,8 @@
                                     if (!empty($eficiencia)) :
                                         foreach ($eficiencia as  $a) {
                                     ?>
-                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+     <option <?= ($capacitacion->eficiencia == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                                     <?php
                                         }
                                     endif; ?>
@@ -230,7 +232,8 @@
                                     if (!empty($cuso_tomado)) :
                                         foreach ($cuso_tomado as  $a) {
                                     ?>
-                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                          <option <?= ($capacitacion->cursofue == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                                     <?php
                                         }
                                     endif; ?>
@@ -256,7 +259,8 @@
                                     if (!empty($eficiencia)) :
                                         foreach ($eficiencia as  $a) {
                                     ?>
-                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                      <option <?= ($capacitacion->eficiencia == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                                     <?php
                                         }
                                     endif; ?>
@@ -282,7 +286,9 @@
                                     if (!empty($eficiencia)) :
                                         foreach ($eficiencia as  $a) {
                                     ?>
-                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                         <option <?= ($capacitacion->inicio_adicional == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                                          
                                     <?php
                                         }
                                     endif; ?>
@@ -367,7 +373,8 @@
                                     if (!empty($idioma)) :
                                         foreach ($idioma as  $a) {
                                     ?>
-                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                <option <?= ($capacitacion->idioma == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                                     <?php
                                         }
                                     endif; ?>
@@ -392,8 +399,9 @@
                                     <?php
                                     if (!empty($porsentajeIdioma)) :
                                         foreach ($porsentajeIdioma as  $a) {
-                                    ?>
-                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    ?>          
+                                          <option <?= ($capacitacion->lectura == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                                     <?php
                                         }
                                     endif; ?>
@@ -419,7 +427,8 @@
                                     if (!empty($porsentajeIdioma)) :
                                         foreach ($porsentajeIdioma as  $a) {
                                     ?>
-                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                   <option <?= ($capacitacion->escritura == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                                     <?php
                                         }
                                     endif; ?>
@@ -445,7 +454,8 @@
                                     if (!empty($porsentajeIdioma)) :
                                         foreach ($porsentajeIdioma as  $a) {
                                     ?>
-                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                       <option <?= ($capacitacion->conversacion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                                     <?php
                                         }
                                     endif; ?>
@@ -502,7 +512,8 @@
                                     if (!empty($tipo_habilidad)) :
                                         foreach ($tipo_habilidad as  $a) {
                                     ?>
-                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                     <option <?= ($capacitacion->tipo_habilidad == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                                     <?php
                                         }
                                     endif; ?>
@@ -537,7 +548,8 @@
                                     if (!empty($grado_habilidad)) :
                                         foreach ($grado_habilidad as  $a) {
                                     ?>
-                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                             <option <?= ($capacitacion->grado_habilidad == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                                     <?php
                                         }
                                     endif; ?>
@@ -605,7 +617,8 @@
                                     if (!empty($tipo_agrupacion)) :
                                         foreach ($tipo_agrupacion as  $a) {
                                     ?>
-                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                            <option <?= ($capacitacion->tipo_agrupacion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                                     <?php
                                         }
                                     endif; ?>
