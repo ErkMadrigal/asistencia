@@ -60,12 +60,17 @@
                         <div class="form-group">
                             <label for="nivel_curso" class="control-label">Nivel del curso recibido: <span class="text-danger">*</span></label>
                             <div>
-                            <select id="nivel_curso" name="nivel_curso" class="form-control" >
-                               <!-- <option selected value="<?=$capacitacion->nivel?>"><?=$capacitacion->nivel?></option>-->
-                                <?php foreach($capacitacion as $nivel => $valor):?>
-                                    <option value="<?=$capacitacion->nivel?>"><?=$capacitacion->nivel?></option>
-                                <?php endforeach;?>
-                            </select>
+                            <select class="form-control" id="nivel_curso" name="nivel_curso">
+                                    <option value="">Selecciona una Opcion</option>
+                                    <?php
+                                    if (!empty($nivel_curso)) :
+                                        foreach ($nivel_curso as  $a) {
+                                    ?>
+                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <?php
+                                        }
+                                    endif; ?>
+                                </select>
                                 <script>
                                     $(document).ready(function() {
                                         $("#nivel_curso").select2({
@@ -81,12 +86,17 @@
                         <div class="form-group">
                             <label for="eficienciaCursos" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
                             <div>
-                            <select id="eficienciaCursos" name="eficienciaCursos" class="form-control" >
-                               <!-- <option selected value="<?=$capacitacion->eficiencia?>"><?=$capacitacion->eficiencia?></option>-->
-                                <?php foreach($capacitacion as $eficiencia => $valor):?>
-                                    <option value="<?=$capacitacion->eficiencia?>"><?=$capacitacion->eficiencia?></option>
-                                <?php endforeach;?>
-                            </select>
+                            <select class="form-control" id="eficienciaCursos" name="eficienciaCursos">
+                                    <option value="">Selecciona una Opcion</option>
+                                    <?php
+                                    if (!empty($eficiencia)) :
+                                        foreach ($eficiencia as  $a) {
+                                    ?>
+                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <?php
+                                        }
+                                    endif; ?>
+                                </select>
                                 <script>
                                     $(document).ready(function() {
                                         $("#eficienciaCursos").select2({
@@ -214,12 +224,17 @@
                         <div class="form-group">
                             <label for="cuso_tomado" class="control-label">¿El curso fue?: <span class="text-danger">*</span></label>
                             <div>
-                            <select id="cuso_tomado" name="cuso_tomado" class="form-control" >
-                               <!-- <option selected value="<?=$capacitacion->cursofue?>"><?=$capacitacion->cursofue?></option>-->
-                                <?php foreach($capacitacion as $cursofue => $valor):?>
-                                    <option value="<?=$capacitacion->cursofue?>"><?=$capacitacion->cursofue?></option>
-                                <?php endforeach;?>
-                            </select>
+                            <select class="form-control" id="cuso_tomado" name="cuso_tomado">
+                                    <option value="">Selecciona una Opcion</option>
+                                    <?php
+                                    if (!empty($cuso_tomado)) :
+                                        foreach ($cuso_tomado as  $a) {
+                                    ?>
+                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <?php
+                                        }
+                                    endif; ?>
+                                </select>
                                 <script>
                                     $(document).ready(function() {
                                         $("#cuso_tomado").select2({
@@ -256,12 +271,17 @@
                         <div class="form-group">
                             <label for="inicioAdicional" class=" control-label">Inicio:<span class="text-danger">*</span></label>
                             <div >    
-                            <select id="inicioAdicional" name="inicioAdicional" class="form-control" >
-                               <!-- <option selected value="<?=$capacitacion->inicio_adicional?>"><?=$capacitacion->inicio_adicional?></option>-->
-                                <?php foreach($capacitacion as $inicio_adicional => $valor):?>
-                                    <option value="<?=$capacitacion->inicio_adicional?>"><?=$capacitacion->inicio_adicional?></option>
-                                <?php endforeach;?>
-                            </select>
+                            <select class="form-control" id="eficiencia" name="eficiencia">
+                                    <option value="">Selecciona una Opcion</option>
+                                    <?php
+                                    if (!empty($eficiencia)) :
+                                        foreach ($eficiencia as  $a) {
+                                    ?>
+                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <?php
+                                        }
+                                    endif; ?>
+                                </select>
                             <script type="text/javascript">
                                 $(function() {
                                     $("#inicioAdicional").datetimepicker({
@@ -338,11 +358,17 @@
                 <div class="form-group">
                     <label for="idioma" class="control-label">Idioma o Dialecto: <span class="text-danger">*</span></label>
                     <div>
-                    <select id="idioma" name="idioma" class="form-control" >
-                                <?php foreach($capacitacion as $idioma => $valor):?>
-                                    <option value="<?=$capacitacion->idioma?>"><?=$capacitacion->idioma?></option>
-                                <?php endforeach;?>
-                            </select>
+                    <select class="form-control" id="idioma" name="idioma">
+                            <option value="">Selecciona una Opcion</option>
+                            <?php
+                            if (!empty($idioma)) :
+                                foreach ($idioma as  $a) {
+                            ?>
+                                    <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                            <?php
+                                }
+                            endif; ?>
+                        </select>
                         <script>
                             $(document).ready(function() {
                                 $("#idioma").select2({
@@ -358,11 +384,17 @@
                 <div class="form-group">
                     <label for="lectura" class=" control-label">% Lectura:<span class="text-danger">*</span></label>
                     <div >    
-                    <select id="lectura" name="lectura" class="form-control" >
-                                <?php foreach($capacitacion as $lectura => $valor):?>
-                                    <option value="<?=$capacitacion->lectura?>"><?=$capacitacion->lectura?></option>
-                                <?php endforeach;?>
-                            </select>
+                    <select class="form-control" id="lectura" name="lectura">
+                        <option value="">Selecciona una Opcion</option>
+                        <?php
+                        if (!empty($porsentajeIdioma)) :
+                            foreach ($porsentajeIdioma as  $a) {
+                        ?>
+                                <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                        <?php
+                            }
+                        endif; ?>
+                    </select>
                     <script>
                         $(document).ready(function() {
                             $("#lectura").select2({
@@ -378,11 +410,17 @@
                 <div class="form-group">
                     <label for="escritura" class=" control-label">% Escritura:<span class="text-danger">*</span></label>
                     <div >    
-                    <select id="escritura" name="escritura" class="form-control" >
-                                <?php foreach($capacitacion as $escritura => $valor):?>
-                                    <option value="<?=$capacitacion->escritura?>"><?=$capacitacion->escritura?></option>
-                                <?php endforeach;?>
-                            </select>
+                    <select class="form-control" id="escritura" name="escritura">
+                        <option value="">Selecciona una Opcion</option>
+                        <?php
+                        if (!empty($porsentajeIdioma)) :
+                            foreach ($porsentajeIdioma as  $a) {
+                        ?>
+                                <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                        <?php
+                            }
+                        endif; ?>
+                    </select>
                     <script>
                         $(document).ready(function() {
                             $("#escritura").select2({
@@ -398,12 +436,18 @@
                 <div class="form-group">
                     <label for="conversacion" class=" control-label">% Conversación:<span class="text-danger">*</span></label>
                     <div >    
-                    <select id="conversacion" name="conversacion" class="form-control" >
-                                <!--<option selected value="<?=$capacitacion->conversacion?>"><?=$capacitacion->conversacion?></option>-->
-                                <?php foreach($capacitacion as $conversacion => $valor):?>
-                                    <option value="<?=$capacitacion->conversacion?>"><?=$capacitacion->conversacion?></option>
-                                <?php endforeach;?>
-                            </select>                  <script>
+                    <select class="form-control" id="conversacion" name="conversacion">
+                        <option value="">Selecciona una Opcion</option>
+                        <?php
+                        if (!empty($porsentajeIdioma)) :
+                            foreach ($porsentajeIdioma as  $a) {
+                        ?>
+                                <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                        <?php
+                            }
+                        endif; ?>
+                    </select>
+                                  <script>
                         $(document).ready(function() {
                             $("#conversacion").select2({
                                 theme: "bootstrap4",
@@ -448,12 +492,17 @@
                         <div class="form-group">
                             <label for="tipo_habilidad" class="control-label">Tipo: <span class="text-danger">*</span></label>
                             <div>
-                            <select id="tipo_habilidad" name="tipo_habilidad" class="form-control" >
-                               <!-- <option selected value="<?=$capacitacion->habilidad?>"><?=$capacitacion->habilidad?></option>-->
-                                <?php foreach($capacitacion as $habilidad => $valor):?>
-                                    <option value="<?=$capacitacion->habilidad?>"><?=$capacitacion->habilidad?></option>
-                                <?php endforeach;?>
-                            </select>
+                            <select class="form-control" id="tipo_habilidad" name="tipo_habilidad">
+                                    <option value="">Selecciona una Opcion</option>
+                                    <?php
+                                    if (!empty($tipo_habilidad)) :
+                                        foreach ($tipo_habilidad as  $a) {
+                                    ?>
+                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <?php
+                                        }
+                                    endif; ?>
+                                </select>
                                 <script>
                                     $(document).ready(function() {
                                         $("#tipo_habilidad").select2({
@@ -478,12 +527,17 @@
                         <div class="form-group">
                             <label for="grado_habilidadCap" class="control-label">Grado de aptitude o dominio: <span class="text-danger">*</span></label>
                             <div>
-                            <select id="grado_habilidadCap" name="grado_habilidadCap" class="form-control" >
-                               <!-- <option selected value="<?=$capacitacion->especifique_habilidad?>"><?=$capacitacion->especifique_habilidad?></option>-->
-                                <?php foreach($capacitacion as $especifique_habilidad => $valor):?>
-                                    <option value="<?=$capacitacion->especifique_habilidad?>"><?=$capacitacion->especifique_habilidad?></option>
-                                <?php endforeach;?>
-                            </select>
+                            <select class="form-control" id="grado_habilidadCap" name="grado_habilidadCap">
+                                    <option value="">Selecciona una Opcion</option>
+                                    <?php
+                                    if (!empty($grado_habilidad)) :
+                                        foreach ($grado_habilidad as  $a) {
+                                    ?>
+                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <?php
+                                        }
+                                    endif; ?>
+                                </select>
                                 <script>
                                     $(document).ready(function() {
                                         $("#grado_habilidadCap").select2({
@@ -540,11 +594,16 @@
                         <div class="form-group">
                             <label for="tipoAgrupa" class=" control-label">Tipo:<span class="text-danger">*</span></label>
                             <div >    
-                            <select id="tipoAgrupa" name="tipoAgrupa" class="form-control" >
-                               <!-- <option selected value="<?=$capacitacion->agrupacion?>"><?=$capacitacion->agrupacion?></option>-->
-                                <?php foreach($capacitacion as $agrupacion => $valor):?>
-                                    <option value="<?=$capacitacion->agrupacion?>"><?=$capacitacion->agrupacion?></option>
-                                <?php endforeach;?>
+                            <select class="form-control" id="tipoAgrupa" name="tipoAgrupa">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if (!empty($tipo_agrupacion)) :
+                                    foreach ($tipo_agrupacion as  $a) {
+                                ?>
+                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
+                                    }
+                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {

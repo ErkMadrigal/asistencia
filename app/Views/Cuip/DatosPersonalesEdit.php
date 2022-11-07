@@ -70,11 +70,16 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="sexo" class=" control-label">Sexo:<span class="text-danger">*</span></label>
-                        <select id="sexo" name="sexo" class="form-control" >
-                                <!--<option selected value="<?=$variable->sexo?>"><?=$variable->sexo?></option>-->
-                                <?php foreach($variable as $sexo => $valor):?>
-                                    <option value="<?=$variable->sexo?>"><?=$variable->sexo?></option>
-                                <?php endforeach;?>
+                        <select class="form-control" id="sexo" name="sexo">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($genero) ):
+                                    foreach($genero as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                         <script>
                             $(document).ready(function() {
@@ -164,11 +169,16 @@
                     <div class="form-group">
                         <label for="modo_nacionalidad" class="control-label">Modo de Nacionalidad: <span class="text-danger">*</span></label>
                         <div>
-                        <select id="modo_nacionalidad" name="modo_nacionalidad" class="form-control" >
-                              <!--  <option selected value="<?=$variable->nacionalidad?>"><?=$variable->nacionalidad?></option>-->
-                                <?php foreach($variable as $nacionalidad => $valor):?>
-                                    <option value="<?=$variable->nacionalidad?>"><?=$variable->nacionalidad?></option>
-                                <?php endforeach;?>
+                        <select class="form-control" id="modo_nacionalidad" name="modo_nacionalidad">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($modo_nacionalidad) ):
+                                    foreach($modo_nacionalidad as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -206,11 +216,16 @@
                     <div class="form-group">
                         <label for="pais_nacimiento" class="control-label">Pais de Nacimiento: <span class="text-danger">*</span></label>
                         <div>
-                        <select id="pais_nacimiento" name="pais_nacimiento" class="form-control" >
-                                <!--<option selected value="<?=$variable->pais?>"><?=$variable->pais?></option>-->
-                                <?php foreach($variable as $pais => $valor):?>
-                                    <option value="<?=$variable->pais?>"><?=$variable->pais?></option>
-                                <?php endforeach;?>
+                        <select class="form-control" id="pais_nacimiento" name="pais_nacimiento">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($pais_nacimiento) ):
+                                    foreach($pais_nacimiento as  $a){
+                                        ?>
+                                            <option <?= ($a->valor == 'México' ? 'selected' : '' ) ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -227,11 +242,16 @@
                     <div class="form-group">
                         <label for="entidad_nacimiento" class="control-label">Entidad de Nacimiento: <span class="text-danger">*</span></label>
                         <div>
-                        <select id="entidad_nacimiento" name="entidad_nacimiento" class="form-control" >
-                                <!--<option selected value="<?=$variable->naciE?>"><?=$variable->naciE?></option>-->
-                                <?php foreach($variable as $naciE => $valor):?>
-                                    <option value="<?=$variable->naciE?>"><?=$variable->naciE?></option>
-                                <?php endforeach;?>
+                        <select class="form-control" id="entidad_nacimiento" name="entidad_nacimiento">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($entidad_federativa) ):
+                                    foreach($entidad_federativa as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -248,11 +268,16 @@
                     <div class="form-group">
                         <label for="nacionalidad" class="control-label">Nacionalidad: <span class="text-danger">*</span></label>
                         <div>
-                        <select id="nacionalidad" name="nacionalidad" class="form-control" >
-                                <!--<option selected value="<?=$variable->nacion?>"><?=$variable->nacion?></option>-->
-                                <?php foreach($variable as $nacion => $valor):?>
-                                    <option value="<?=$variable->nacion?>"><?=$variable->nacion?></option>
-                                <?php endforeach;?>
+                        <select class="form-control" id="nacionalidad" name="nacionalidad">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($nacionalidad) ):
+                                    foreach($nacionalidad as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -269,11 +294,16 @@
                     <div class="form-group">
                         <label for="municipio_nacimiento" class="control-label">Municipio de Nacimiento: <span class="text-danger">*</span></label>
                         <div>
-                        <select id="municipio_nacimiento" name="municipio_nacimiento" class="form-control" >
-                                <!--<option selected value="<?=$variable->municipio?>"><?=$variable->municipio?></option>-->
-                                <?php foreach($variable as $municipio => $valor):?>
-                                    <option value="<?=$variable->municipio?>"><?=$variable->municipio?></option>
-                                <?php endforeach;?>
+                        <select class="form-control" id="nacionalidad" name="nacionalidad">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($nacionalidad) ):
+                                    foreach($nacionalidad as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -290,11 +320,16 @@
                     <div class="form-group">
                         <label for="cuidad_nacimiento" class="control-label">Cuidad de Nacimiento: <span class="text-danger">*</span></label>
                         <div>
-                        <select id="cuidad_nacimiento" name="cuidad_nacimiento" class="form-control" >
-                               <!-- <option selected value="<?=$variable->ciudad?>"><?=$variable->ciudad?></option>-->
-                                <?php foreach($variable as $ciudad => $valor):?>
-                                    <option value="<?=$variable->ciudad?>"><?=$variable->ciudad?></option>
-                                <?php endforeach;?>
+                        <select class="form-control" id="cuidad_nacimiento" name="cuidad_nacimiento">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($cuidad_nacimiento) ):
+                                    foreach($cuidad_nacimiento as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -311,11 +346,16 @@
                     <div class="form-group">
                         <label for="estado_civil" class="control-label">Estado Civil: <span class="text-danger">*</span></label>
                         <div>
-                        <select id="estado_civil" name="estado_civil" class="form-control" >
-                                <!--<option selected value="<?=$variable->civil?>"><?=$variable->civil?></option>-->
-                                <?php foreach($variable as $civil => $valor):?>
-                                    <option value="<?=$variable->civil?>"><?=$variable->civil?></option>
-                                <?php endforeach;?>
+                        <select class="form-control" id="estado_civil" name="estado_civil">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($estado_civil) ):
+                                    foreach($estado_civil as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -332,11 +372,16 @@
                     <div class="form-group">
                         <label for="desarrollo_academico" class="control-label">Desarrollo Académico: <span class="text-danger">*</span></label>
                         <div>
-                        <select id="desarrollo_academico" name="desarrollo_academico" class="form-control" >
-                                <!--<option selected value="<?=$variable->desarrollo_academico?>"><?=$variable->desarrollo_academico?></option>-->
-                                <?php foreach($variable as $desarrollo_academico => $valor):?>
-                                    <option value="<?=$variable->desarrollo_academico?>"><?=$variable->desarrollo_academico?></option>
-                                <?php endforeach;?>
+                        <select class="form-control" id="desarrollo_academico" name="desarrollo_academico">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($desarrollo_academico) ):
+                                    foreach($desarrollo_academico as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -414,10 +459,16 @@
                     <div class="form-group">
                         <label for="sep" class=" control-label">Registro SEP:<span class="text-danger">*</span></label>
                         <div>
-                        <select id="sep" name="sep" class="form-control" >
-                                <?php foreach($variable as $registro_sep => $valor):?>
-                                    <option value="<?=$variable->registro_sep?>"><?=$variable->registro_sep?></option>
-                                <?php endforeach;?>
+                        <select class="form-control" id="registroSep" name="registroSep">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($SiNo) ):
+                                    foreach($SiNo as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                         <script>
                             $(document).ready(function() {
@@ -534,10 +585,16 @@
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="coloniacodigo" class=" control-label">Colonia:<span class="text-danger">*</span></label>
-                    <select id="coloniacodigo" name="coloniacodigo" class="form-control" >
-                                <?php foreach($variable as $colonia => $valor):?>
-                                    <option value="<?=$variable->colonia?>"><?=$variable->colonia?></option>
-                                <?php endforeach;?>
+                    <select class="form-control" id="estadocodigo" name="estadocodigo">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($entidad_federativa) ):
+                                    foreach($entidad_federativa as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                     <script>
                         $(document).ready(function() {
@@ -553,10 +610,16 @@
                 <div class="form-group">
                     <label for="estadocodigo" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
                     <div>
-                    <select id="estadocodigo" name="estadocodigo" class="form-control" >
-                                <?php foreach($variable as $naciE => $valor):?>
-                                    <option value="<?=$variable->naciE?>"><?=$variable->naciE?></option>
-                                <?php endforeach;?>
+                    <select class="form-control" id="estadocodigo" name="estadocodigo">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($entidad_federativa) ):
+                                    foreach($entidad_federativa as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                         <script>
                             $(document).ready(function() {
@@ -573,10 +636,16 @@
                 <div class="form-group">
                     <label for="municipiocodigo" class="control-label">Municipio: <span class="text-danger">*</span></label>
                     <div>
-                    <select id="municipiocodigo" name="municipiocodigo" class="form-control" >
-                                <?php foreach($variable as $municipio => $valor):?>
-                                    <option value="<?=$variable->municipio?>"><?=$variable->municipio?></option>
-                                <?php endforeach;?>
+                    <select class="form-control" id="estadocodigo" name="estadocodigo">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($entidad_federativa) ):
+                                    foreach($entidad_federativa as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
                             </select>
                         <script>
                             $(document).ready(function() {
@@ -593,11 +662,8 @@
                 <div class="form-group">
                     <label for="ciudadcodigo" class="control-label">Ciudad: <span class="text-danger">*</span></label>
                     <div>
-                    <select id="ciudadcodigo" name="ciudadcodigo" class="form-control" >
-                               <!-- <option selected value="<?=$variable->ciudad?>"><?=$variable->ciudad?></option>-->
-                                <?php foreach($variable as $ciudad => $valor):?>
-                                    <option value="<?=$variable->ciudad?>"><?=$variable->ciudad?></option>
-                                <?php endforeach;?>
+                    <select class="form-control" id="ciudadcodigo" name="ciudadcodigo">
+                                <option value="">Selecciona una Opcion</option>
                             </select>
                         <script>
                             $(document).ready(function() {

@@ -85,10 +85,8 @@
                     <div class="form-group">
                         <label for="coloniacodigoSegPub" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                         <div >    
-                        <select id="coloniacodigoSegPub" name="coloniacodigoSegPub" class="form-control" >
-                                <?php foreach($seguridad as $colonia => $valor):?>
-                                    <option value="<?=$seguridad->colonia?>"><?=$seguridad->colonia?></option>
-                                <?php endforeach;?>
+                        <select class="form-control" id="coloniacodigoSegPub" name="coloniacodigoSegPub">
+                                <option value="">Selecciona una Opcion</option>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -247,10 +245,9 @@
                     <div class="form-group">
                         <label for="estadocodigoSegPub" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
                         <div>
-                        <select id="estadocodigoSegPub" name="estadocodigoSegPub" class="form-control" >
-                                <?php foreach($seguridad as $estado => $valor):?>
-                                    <option value="<?=$seguridad->estado?>"><?=$seguridad->estado?></option>
-                                <?php endforeach;?>
+                        <select class="form-control" id="estadocodigoSegPub" name="estadocodigoSegPub">
+                                <option value="">Selecciona una Opcion</option>
+                                
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -268,11 +265,9 @@
                     <div class="form-group">
                         <label for="municipiocodigoSegPub" class="control-label">Municipio: <span class="text-danger">*</span></label>
                         <div>
-                        <select id="municipiocodigoSegPub" name="municipiocodigoSegPub" class="form-control" >
-                                <!--<option selected value="<?=$seguridad->municipio?>"><?=$seguridad->municipio?></option>-->
-                                <?php foreach($seguridad as $municipio => $valor):?>
-                                    <option value="<?=$seguridad->municipio?>"><?=$seguridad->municipio?></option>
-                                <?php endforeach;?>
+                        <select class="form-control" id="municipiocodigoSegPub" name="municipiocodigoSegPub">
+                                <option value="">Selecciona una Opcion</option>
+                                
                             </select>
                             <script>
                                 $(document).ready(function() {

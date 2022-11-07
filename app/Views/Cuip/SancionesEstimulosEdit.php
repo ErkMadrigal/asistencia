@@ -148,10 +148,16 @@
                         <div class="form-group">
                             <label for="entidad_federativaSE" class=" control-label">Entidad federativa:<span class="text-danger">*</span></label>
                             <div >    
-                            <select id="entidad_federativaSE" name="entidad_federativaSE" class="form-control" >
-                                <?php foreach($sanciones as $estado => $valor):?>
-                                    <option value="<?=$sanciones->estado?>"><?=$sanciones->estado?></option>
-                                <?php endforeach;?>
+                            <select class="form-control" id="entidad_federativaSE" name="entidad_federativaSE">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if (!empty($entidad_federativa)) :
+                                    foreach ($entidad_federativa as  $a) {
+                                ?>
+                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
+                                    }
+                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -215,11 +221,17 @@
                         <div class="form-group">
                             <label for="tipo_fuero" class="control-label">Tipo de Fuero: <span class="text-danger">*</span></label>
                             <div>
-                            <select id="tipo_fuero" name="tipo_fuero" class="form-control" >
-                                <?php foreach($sanciones as $fuero => $valor):?>
-                                    <option value="<?=$sanciones->fuero?>"><?=$sanciones->fuero?></option>
-                                <?php endforeach;?>
-                            </select>
+                            <select class="form-control" id="tipo_fuero" name="tipo_fuero">
+                                    <option value="">Selecciona una Opcion</option>
+                                    <?php
+                                    if (!empty($tipo_fuero)) :
+                                        foreach ($tipo_fuero as  $a) {
+                                    ?>
+                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <?php
+                                        }
+                                    endif; ?>
+                                </select>
                                 <script>
                                     $(document).ready(function() {
                                         $("#tipo_fuero").select2({

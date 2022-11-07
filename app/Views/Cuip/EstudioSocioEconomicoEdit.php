@@ -22,11 +22,16 @@
                         <label for="familia" class="control-label">¿Vive con su Familia?: <span class="text-danger">*</span></label>
                         <div>
 
-                            <select id="familia" name="familia" class="form-control">
-                                    <!--  <option selected value="<?= $estudio->vive ?>"><?= $estudio->vive ?></option>-->
-                                <?php foreach ($estudio as $vive => $valor) : ?>
-                                    <option value="<?= $estudio->vive ?>"><?= $estudio->vive ?></option>
-                                <?php endforeach; ?>
+                        <select class="form-control" id="familia" name="familia">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if (!empty($SiNo)) :
+                                    foreach ($SiNo as  $a) {
+                                ?>
+                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
+                                    }
+                                endif; ?>
                             </select>
 
                             <script>
@@ -55,11 +60,17 @@
                     <div class="form-group">
                         <label for="domicilio_tipo" class="control-label">Su domicilio es: <span class="text-danger">*</span></label>
                         <div>
-                            <select id="domicilio_tipo" name="domicilio_tipo" class="form-control">
-                                <?php foreach ($estudio as $domicilio => $valor) : ?>
-                                    <option value="<?= $estudio->domicilio ?>"><?= $estudio->domicilio ?></option>
-                                <?php endforeach; ?>
-                            </select>
+                        <select class="form-control" id="domicilio_tipo" name="domicilio_tipo">
+                                    <option value="">Selecciona una Opcion</option>
+                                    <?php
+                                    if (!empty($domicilio_tipo)) :
+                                        foreach ($domicilio_tipo as  $a) {
+                                    ?>
+                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <?php
+                                        }
+                                    endif; ?>
+                                </select>
                             <script>
                                 $(document).ready(function() {
                                     $("#domicilio_tipo").select2({
@@ -232,11 +243,16 @@
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="sexo_dep" class=" control-label">Sexo:<span class="text-danger">*</span></label>
-                            <select id="sexo_dep" name="sexo_dep" class="form-control">
-                                <?php foreach ($estudio as $sexo => $valor) : ?>
-                                    <option value="<?= $estudio->sexo ?>"><?= $estudio->sexo ?></option>
-                                <?php endforeach; ?>
-
+                            <select class="form-control" id="sexo_dep" name="sexo_dep">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if (!empty($genero)) :
+                                    foreach ($genero as  $a) {
+                                ?>
+                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
+                                    }
+                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -253,12 +269,17 @@
                     <div class="form-group">
                         <label for="municipiocodigoSegPub" class="control-label">Parentesco: <span class="text-danger">*</span></label>
                         <div>
-                            <select id="municipiocodigoSegPub" name="municipiocodigoSegPub" class="form-control">
-                              <!--  <option selected value="<?= $estudio->parentesco ?>"><?= $estudio->parentesco ?></option>-->
-                                <?php foreach ($estudio as $parentesco => $valor) : ?>
-                                    <option value="<?= $estudio->parentesco ?>"><?= $estudio->parentesco ?></option>
-                                <?php endforeach; ?>
-                            </select>
+                        <select class="form-control" id="parentesco_familiar" name="parentesco_familiar">
+                                    <option value="">Selecciona una Opcion</option>
+                                    <?php
+                                    if (!empty($parentesco_todos)) :
+                                        foreach ($parentesco_todos as  $a) {
+                                    ?>
+                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <?php
+                                        }
+                                    endif; ?>
+                                </select>
                             <script>
                                 $(document).ready(function() {
                                     $("#parentesco_familiar").select2({

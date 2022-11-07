@@ -69,11 +69,10 @@
                     <div class="form-group">
                         <label for="coloniacodigoEmpDiv" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                         <div >    
-                        <select id="ciudadcodigo" name="ciudadcodigo" class="form-control" >
-                                <?php foreach($diversos as $colonia => $valor):?>
-                                    <option value="<?=$diversos->colonia?>"><?=$diversos->colonia?></option>
-                                <?php endforeach;?>
-                            </select>
+                        <select class="form-control" id="coloniacodigoEmpDiv" name="coloniacodigoEmpDiv">
+                            <option value="">Selecciona una Opcion</option>
+
+                        </select>
                             
                         <script>
                             $(document).ready(function() {
@@ -90,10 +89,9 @@
                     <div class="form-group">
                         <label for="estadocodigoEmpDiv" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
                         <div>
-                        <select id="ciudadcodigo" name="ciudadcodigo" class="form-control" >
-                                <?php foreach($diversos as $estado => $valor):?>
-                                    <option value="<?=$diversos->estado?>"><?=$diversos->estado?></option>
-                                <?php endforeach;?>
+                        <select class="form-control" id="estadocodigoEmpDiv" name="estadocodigoEmpDiv">
+                                <option value="">Selecciona una Opcion</option>
+
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -110,11 +108,8 @@
                     <div class="form-group">
                         <label for="municipiocodigoEmpDiv" class="control-label">Municipio: <span class="text-danger">*</span></label>
                         <div>
-                        <select id="municipiocodigoEmpDiv" name="municipiocodigoEmpDiv" class="form-control" >
-                               <!-- <option selected value="<?=$diversos->municipio?>"><?=$diversos->municipio?></option>-->
-                                <?php foreach($diversos as $municipio => $valor):?>
-                                    <option value="<?=$diversos->municipio?>"><?=$diversos->municipio?></option>
-                                <?php endforeach;?>
+                        <select class="form-control" id="municipiocodigoEmpDiv" name="municipiocodigoEmpDiv">
+                                <option value="">Selecciona una Opcion</option>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -270,11 +265,17 @@
                 <div class="form-group">
                     <label for="reglamentacion" class=" control-label">¿Conoce la reglamentación de los reconocimientos?<span class="text-danger">*</span></label>
                     <div >    
-                    <select id="reglamentacion" name="reglamentacion" class="form-control" >
-                                <?php foreach($diversos as $reglamento => $valor):?>
-                                    <option value="<?=$diversos->reglamento?>"><?=$diversos->reglamento?></option>
-                                <?php endforeach;?>
-                            </select>
+                    <select class="form-control" id="reglamentacion" name="reglamentacion">
+                        <option value="">Selecciona una Opcion</option>
+                        <?php
+                        if (!empty($SiNo)) :
+                            foreach ($SiNo as  $a) {
+                        ?>
+                                <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                        <?php
+                            }
+                        endif; ?>
+                    </select>
                     <script>
                         $(document).ready(function() {
                             $("#reglamentacion").select2({
@@ -299,12 +300,17 @@
                 <div class="form-group">
                     <label for="reglamentacion_ascenso" class=" control-label">¿Conoce la reglamentación de los ascensos?<span class="text-danger">*</span></label>
                     <div >    
-                    <select id="reglamentacion_ascenso" name="reglamentacion_ascenso" class="form-control" >
-                              <!--  <option selected value="<?=$diversos->reglamento?>"><?=$diversos->reglamento?></option>-->
-                                <?php foreach($diversos as $reglamento => $valor):?>
-                                    <option value="<?=$diversos->reglamento?>"><?=$diversos->reglamento?></option>
-                                <?php endforeach;?>
-                            </select>
+                    <select class="form-control" id="reglamentacion_ascenso" name="reglamentacion_ascenso">
+                        <option value="">Selecciona una Opcion</option>
+                        <?php
+                        if (!empty($SiNo)) :
+                            foreach ($SiNo as  $a) {
+                        ?>
+                                <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                        <?php
+                            }
+                        endif; ?>
+                    </select>
                     <script>
                         $(document).ready(function() {
                             $("#reglamentacion_ascenso").select2({
@@ -359,12 +365,17 @@
                 <div class="form-group">
                     <label for="desciplina" class=" control-label">Tipo de Disciplina:<span class="text-danger">*</span></label>
                     <div >    
-                    <select id="desciplina" name="desciplina" class="form-control" >
-                             <!--   <option selected value="<?=$diversos->disciplina?>"><?=$diversos->disciplina?></option>-->
-                                <?php foreach($diversos as $disciplina => $valor):?>
-                                    <option value="<?=$diversos->disciplina?>"><?=$diversos->disciplina?></option>
-                                <?php endforeach;?>
-                            </select>
+                    <select class="form-control" id="desciplina" name="desciplina">
+                        <option value="">Selecciona una Opcion</option>
+                        <?php
+                        if (!empty($tipoDisciplina)) :
+                            foreach ($tipoDisciplina as  $a) {
+                        ?>
+                                <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                        <?php
+                            }
+                        endif; ?>
+                    </select>
                     <script>
                         $(document).ready(function() {
                             $("#desciplina").select2({
@@ -451,12 +462,17 @@
                 <div class="form-group">
                     <label for="duracion" class=" control-label">Duración:</label>
                     <div >    
-                    <select id="duracion" name="duracion" class="form-control" >
-                             <!--   <option selected value="<?=$diversos->duracion?>"><?=$diversos->duracion?></option>-->
-                                <?php foreach($diversos as $duracion => $valor):?>
-                                    <option value="<?=$diversos->duracion?>"><?=$diversos->duracion?></option>
-                                <?php endforeach;?>
-                            </select>
+                    <select class="form-control" id="duracion" name="duracion">
+                        <option value="">Selecciona una Opcion</option>
+                        <?php
+                        if (!empty($duracion)) :
+                            foreach ($duracion as  $a) {
+                        ?>
+                                <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                        <?php
+                            }
+                        endif; ?>
+                    </select>
                     <script>
                         $(document).ready(function() {
                             $("#duracion").select2({
