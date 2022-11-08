@@ -252,7 +252,6 @@
                                 if (!empty($genero)) :
                                     foreach ($genero as  $a) {
                                 ?>
-                                    <option <?= ($estudio->sexo == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                                 <?php
                                     }
                                 endif; ?>

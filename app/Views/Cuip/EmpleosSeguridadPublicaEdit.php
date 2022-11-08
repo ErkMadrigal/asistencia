@@ -91,7 +91,7 @@
                         if (!empty($duracion)) :
                             foreach ($duracion as  $a) {
                         ?>
-               <option <?= ($seguridad->Colonia == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+               <option <?= ($seguridad->colonia == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                         <?php
                             }

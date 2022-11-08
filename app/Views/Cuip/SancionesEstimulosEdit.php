@@ -154,7 +154,6 @@
                                 if (!empty($entidad_federativa)) :
                                     foreach ($entidad_federativa as  $a) {
                                 ?>
-                         <option <?= ($sanciones->entidad == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                 <?php
                                     }
@@ -228,7 +227,6 @@
                                     if (!empty($tipo_fuero)) :
                                         foreach ($tipo_fuero as  $a) {
                                     ?>
-             <option <?= ($sanciones->tipo_fuero == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                     <?php
                                         }

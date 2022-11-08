@@ -903,7 +903,6 @@ class Cuip extends BaseController {
 
 
 
-
 					$result = $this->modelCuip->insertSocioEconomico( $socioEconomico,$datosDependientesArray,$datos);
 
 					
@@ -2525,10 +2524,13 @@ class Cuip extends BaseController {
          	$data['experiencia'] = $this->modelCuip->GetExperienciaPersonalesById($id);
 			$economico = $this->modelCuip->GetSocioEconomicoById($id);
 			$data['estudio'] = $economico;
+			
 
 			if (!empty($economico)){
 				$data['economico_dependientes'] = $this->modelCuip->GetSocioEconomicoDependientesById($economico->id);
 			}
+			//var_dump($data['economico_dependientes']);
+			
 			$data['seguridad'] = $this->modelCuip->GetEmpleosSeridadById($id);
 			$data['diversos'] = $this->modelCuip->GetEmpleosDiversos($id);
 			$data['capacitacion'] = $this->modelCuip->GetCapacitaciones($id);
@@ -2545,7 +2547,7 @@ class Cuip extends BaseController {
 
 			$data['mediaFiliacion'] = $this->modelCuip->GetMedFiliacionById($id);
 			$documentos = $this->modelCuip->GetDocumentosById($id);
-
+			
 			$data['id'] = $this->encrypt->Encrypt($id); 
 			
 			$data['breadcrumb'] = ["inicio" => 'CUIP' ,
@@ -2553,7 +2555,9 @@ class Cuip extends BaseController {
                     				"titulo" => 'Editar'];
 
 			return view('Cuip/EditCUIP', $data);	
+			
 			}
+			
 	}
 
 

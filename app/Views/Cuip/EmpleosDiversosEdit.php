@@ -296,7 +296,7 @@
                         if (!empty($SiNo)) :
                             foreach ($SiNo as  $a) {
                         ?>
-                                    <option <?= ($diversos->reglamentacion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= ($diversos->reglamento == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                         <?php
                             }
                         endif; ?>
@@ -331,7 +331,7 @@
                         if (!empty($SiNo)) :
                             foreach ($SiNo as  $a) {
                         ?>
-                                    <option <?= ($diversos->reglamentacion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= ($diversos->reglamento == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                         <?php
                             }
                         endif; ?>
