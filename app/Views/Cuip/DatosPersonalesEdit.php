@@ -178,7 +178,7 @@
                               <option <?= ($variable->nacionalidad == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                                 
                             <?php
-                                }
+                                } 
                             endif; ?>
                         </select>
                         <script>
