@@ -1092,13 +1092,18 @@
         <div class="card-body">
             <form class="form-horizontal" id="FormDatosGeneralesDocente">
                 <div id="CardDatosGeneralesDocente">
+        <?php
+        if( !empty($experiencia) ):
+            $label = '';
+            foreach($experiencia as  $e){
+                                        ?>            
                     <div class="row form-block-dged">
                         <div class='col-12 col-sm-12 col-md-6'>
                             <div class="form-group">
-                                <label for="nombrecurso" class=" control-label">Nombre del Curso
+                                <label for="nombrecurso<?=$label ?>" class=" control-label">Nombre del Curso
                                     :<span class="text-danger">*</span></label>
                                 <div>
-                                    <input type="text" class="form-control " id="nombre_curso" name="nombre_curso" value=" <?= isset($experiencia->nombre_curso) ? $experiencia->nombre_curso : ''  ?>">
+                                    <input type="text" class="form-control " id="nombrecurso<?=$label ?>" name="nombrecurso<?=$label ?>" value=" <?= isset($e->nombre_curso) ? $e->nombre_curso : ''  ?>">
 
                                 </div>
                             </div>
@@ -1133,7 +1138,7 @@
                                 </script>
                             </div>
                         </div>
-                    </div>
+                   
                     <div class='col-12 col-sm-6'>
                         <div class='form-group'>
                             <label for="fecha_final">Fecha de Término: <span class="text-danger">*</span></label>
@@ -1163,12 +1168,17 @@
                         </div>
                     </div>
                 </div>
+        <?php
+            $label = 'B';
+            }
+            endif;?>        
         </div>
         <hr class="mt-3 mb-3" />
         <div id="CardDatosGeneralesDocenteB">
         </div>
         </form>
     </div>
+</div>    
 <div class="card-footer bg-transparent clearfix">
     <div class="row">
         <div class="col-12 col-sm-6 col-md-9">
