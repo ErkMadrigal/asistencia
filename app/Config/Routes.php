@@ -125,6 +125,22 @@ $routes->get('editReferencia', 'Referencia::EditarReferencia',['filter' => 'auth
 $routes->post('EditInfoReferenci', 'Referencia::SaveReferencia',['filter' => 'auth']);
 $routes->get('AddReferencia', 'Referencia::AgreRefe',['filter' => 'auth']);
 $routes->post('GuardarRefe', 'Referencia::AgregarReferencia',['filter' => 'auth']);
+
+$routes->get('asignaciones', 'Asignaciones::index',['filter' => 'auth']);
+$routes->post('buscarData', 'Asignaciones::buscarData',['filter' => 'auth']);
+
+$routes->get('addAsignacion', 'Asignaciones::add',['filter' => 'auth']);
+$routes->post('addDataAsignacion', 'Asignaciones::setData',['filter' => 'auth']);
+$routes->post('getCompromisoPago', 'Asignaciones::getCompromisoPago',['filter' => 'auth']);
+$routes->post('setCompromisoPago', 'Asignaciones::setCompromisoPago',['filter' => 'auth']);
+$routes->get('getAllData', 'Asignaciones::getAllData',['filter' => 'auth']);
+$routes->get('detailAsignacion', 'Asignaciones::detailAsignacion',['filter' => 'auth']);
+$routes->get('editAsignacion', 'Asignaciones::editAsignacion',['filter' => 'auth']);
+$routes->post('updateDataAsignacion', 'Asignaciones::pullData',['filter' => 'auth']);
+$routes->post('deleteData', 'Asignaciones::deleteData',['filter' => 'auth']);
+
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
