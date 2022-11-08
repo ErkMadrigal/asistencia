@@ -105,7 +105,7 @@
         <div class="row">
             
             <div class="col-12 col-sm-6 col-md-3 ">    
-                <button id="btnGuardar" class="btn btn-block btn-flat btn-primary " type="button"><i id="loadBtn" class="fa fa-circle-o-notch fa-spin" style="display:none;"></i>&nbsp&nbspGuardar</button>
+                <button id="btnGuardar" class="btn btn-block btn-flat btn-primary " type="button"><i id="loadBtn" class="fa fa-circle-o-notch fa-spin" style="display:none;"></i><i class="fa fa-window-restore" aria-hidden="true"></i>&nbsp&nbspGuardar</button>
             </div>
         </div>    
     </div>
@@ -171,45 +171,84 @@
             
     };
 
-        let estado = document.querySelector("#estado")
+    let estado = document.querySelector("#estado")
 
-    let selectMunicipio = document.querySelector("#municipio")
-    let selectCiudad = document.querySelector("#ciudad")
+let selectMunicipio = document.querySelector("#municipio")
+let selectCiudad = document.querySelector("#ciudad")
 
-    estado.onchange = (e) => {
-        selectCiudad.innerHTML = ''
-        selectMunicipio.innerHTML = ''
+estado.onchange = (e) => {
+    selectCiudad.innerHTML = ''
+    // selectMunicipio.innerHTML = ''
 
-        e.preventDefault()
-        let formData = new FormData($("form#frmSepomex")[0]);
-        $.ajax({
-            url: base_url + '/getDataSepomex',
-            type: 'POST',
-            dataType: 'json',
-            data: formData,
-            cache: false,
-            async: true,
-            contentType: false,
-            processData: false,
-            success: function (response) {
-                if(response.succes.succes === "succes"){
-                    selectMunicipio.innerHTML = '<option selected>Selecciona una Opción</option>'
-                    selectCiudad.innerHTML = '<option selected>Selecciona una Opción</option>'
-                    response.dataMunicipio.forEach( municipio => {
-                        selectMunicipio.innerHTML += `<option value="${municipio.municipio}">${municipio.municipio}</option>`
-                        
-                    })
-                    response.dataCiudad.forEach( ciudad => {
+    e.preventDefault()
+    let formData = new FormData($("form#frmSepomex")[0]);
+    formData.append("tipo", 'ciudad');
+    $.ajax({
+        url: base_url + '/getDataSepomex',
+        type: 'POST',
+        dataType: 'json',
+        data: formData,
+        cache: false,
+        async: true,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            
+            if(response.succes.succes === "succes"){
+                selectCiudad.innerHTML = '<option value="" selected>Selecciona una Opción</option>'
+                response.data.forEach( ciudad => {
+                    if(ciudad.ciudad == "undefined"){
+                        selectCiudad.innerHTML += `<option value="undefined">No Asignados</option>`
+                    }else{
                         selectCiudad.innerHTML += `<option value="${ciudad.ciudad}">${ciudad.ciudad}</option>`
-                    })
-                }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                toastr.error('<?=lang('Layout.toastrError') ?>');
-                $('#loadBtn').hide();           
+                    }
+                })
             }
-        });
-    };
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            toastr.error('<?=lang('Layout.toastrError') ?>');
+            $('#loadBtn').hide();           
+        }
+    });
+};
+
+selectCiudad.onchange = (e) => {
+    selectMunicipio.innerHTML = ''
+
+    e.preventDefault()
+    let formData = new FormData($("form#frmSepomex")[0]);
+    formData.append("tipo", 'municipio');
+    formData.append("ciudad", selectCiudad.value);
+
+    $.ajax({
+        url: base_url + '/getDataSepomex',
+        type: 'POST',
+        dataType: 'json',
+        data: formData,
+        cache: false,
+        async: true,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            
+            if(response.succes.succes === "succes"){
+                selectMunicipio.innerHTML = '<option value="" selected>Selecciona una Opción</option>'
+                response.data.forEach( municipio => {
+                    if(municipio.municipio == "undefined"){
+                        selectMunicipio.innerHTML += `<option value="undefined">No Asignados</option>`
+                    }else{
+                        selectMunicipio.innerHTML += `<option value="${municipio.municipio}">${municipio.municipio}</option>`
+                    }
+                    
+                })
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            toastr.error('<?=lang('Layout.toastrError') ?>');
+            $('#loadBtn').hide();           
+        }
+    });
+};
 
 </script>
 <?= $this->endSection() ?>

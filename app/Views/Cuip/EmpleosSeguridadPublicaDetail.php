@@ -1,16 +1,21 @@
 <div class="card card-primary" id="cardEmplSeguridad">
     <div class="card-header">
         <h3 class="card-title">EMPLEOS EN SEGURIDAD PUBLICA</h3>
-
         <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                <i class="fas fa-minus"></i>
-            </button>
-        </div>
+
+<a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
+        <input type="checkbox" class="form-check-input mt-2" id="btnNinguno">
+
+<button type="button" class="btn btn-tool" data-card-widget="collapse" >
+    <i class="fas fa-minus"></i>
+</button>
+</div> 
+       
     </div>
     <!-- /.card-header -->
     <div class="card-body">
         <form class="form-horizontal" id="EmpleoSeguridadPublica">
+        <div id="CardEMPLEOS">
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
@@ -28,7 +33,7 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
@@ -75,50 +80,22 @@
                         <div>
                             <?= isset($seguridad->colonia) ? $seguridad->colonia : ''  ?>
                         </div>
-                        <script>
-                            $(document).ready(function() {
-                                $("#coloniacodigoSegPub").select2({
-                                    theme: "bootstrap4",
-                                    width: "100%"
-                                });
-                            });
-                        </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="ingresoEmpPublic" class=" control-label">Ingreso:<span class="text-danger">*</span></label>
-                        <div class="input-group date" id="ingresoEmpPublic" data-target-input="nearest">
                         <div>
                             <?= isset($seguridad->ingreso) ? $seguridad->ingreso : ''  ?>
                         </div>
-                        </div>
-                        <script type="text/javascript">
-                            $(function() {
-                                $("#ingresoEmpPublic").datetimepicker({
-                                    format: 'DD-MM-YYYY',
-                                    locale: moment.locale('es')
-                                });
-                            });
-                        </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="separacionEmpSeg" class=" control-label">Separación:<span class="text-danger">*</span></label>
-                        <div class="input-group date" id="separacionEmpSeg" data-target-input="nearest">
                         <div>
                             <?= isset($seguridad->separacion) ? $seguridad->separacion : ''  ?>
                         </div>
-                        </div>
-                        <script type="text/javascript">
-                            $(function() {
-                                $("#separacionEmpSeg").datetimepicker({
-                                    format: 'DD-MM-YYYY',
-                                    locale: moment.locale('es')
-                                });
-                            });
-                        </script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-12'>
@@ -206,8 +183,8 @@
                         <label for="jefe_inmediato" class=" control-label">CUIP Jefe Inmediato:<span class="text-danger">*</span></label>
                         <div>
                             <?= isset($seguridad->cuip_jefe) ? $seguridad->cuip_jefe : ''  ?>
-                        </div>              
-                          </div>
+                        </div>
+                    </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
@@ -215,23 +192,13 @@
                         <div>
                             <?= isset($seguridad->nombre_jefe) ? $seguridad->nombre_jefe : ''  ?>
                         </div>
-                                        </div>
+                    </div>
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
                         <label for="estadocodigoSegPub" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
                         <div>
-                        <div>
                             <?= isset($seguridad->estado) ? $seguridad->estado : ''  ?>
-                        </div>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#estadocodigoSegPub").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
                         </div>
                     </div>
                 </div>
@@ -239,17 +206,7 @@
                     <div class="form-group">
                         <label for="municipiocodigoSegPub" class="control-label">Municipio: <span class="text-danger">*</span></label>
                         <div>
-                        <div>
                             <?= isset($seguridad->municipio) ? $seguridad->municipio : ''  ?>
-                        </div>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#municipiocodigoSegPub").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
                         </div>
                     </div>
                 </div>
@@ -265,7 +222,7 @@
                     <div class="form-group">
                         <label for="tipo_separacion" class=" control-label">Tipo de Separación:<span class="text-danger">*</span></label>
                         <div>
-                        <?= isset($seguridad->tipo_separacion) ? $seguridad->tipo_separacion : ''  ?>
+                            <?= isset($seguridad->tipo_separacion) ? $seguridad->tipo_separacion : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -275,7 +232,7 @@
                         <div>
                             <?= isset($seguridad->tipo_baja) ? $seguridad->tipo_baja : ''  ?>
                         </div>
-                                        </div>
+                    </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-12'>
                     <div class="form-group">
@@ -283,9 +240,17 @@
                         <div>
                             <?= isset($seguridad->comentarios) ? $seguridad->comentarios : ''  ?>
                         </div>
-                                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+            <hr  class="mt-3 mb-3"/>
+        <div id="CardEMPLEOS">
+        </div>
         </form>
     </div>
 </div>
+
+<script>
+ 
+</script>
