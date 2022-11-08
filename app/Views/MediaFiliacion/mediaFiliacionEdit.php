@@ -19,13 +19,14 @@
                             <select class="form-control" id="complexion" name="complexion">
                                 <option value="">Seleccionar Complexión</option>
                                 <?php
-                                if( !empty($complexion) ):
-                                    foreach($complexion as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
+                                if (!empty($complexion)) :
+                                    foreach ($complexion as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idComplexion == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                                <?php
                                     }
-                                endif;?>
+                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -45,13 +46,12 @@
                             <select class="form-control" id="piel" name="piel">
                                 <option value="">Selecciona un tipo de Piel</option>
                                 <?php
-                                if( !empty($piel) ):
-                                    foreach($piel as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($piel)) :
+                                    foreach ($piel as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idPiel == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                            }
+                                                                                                                                                        endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -71,15 +71,14 @@
                             <select class="form-control" id="cara" name="cara">
                                 <option value="">Selecciona un tipo de Cara</option>
                                 <?php
-                                if( !empty($cara) ):
-                                    foreach($cara as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($cara)) :
+                                    foreach ($cara as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idCara == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                            }
+                                                                                                                                                        endif; ?>
                             </select>
-                           
+
                             <script>
                                 $(document).ready(function() {
                                     $("#cara").select2({
@@ -91,7 +90,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
                         <label for="anteojos" class="control-label">Uso de Anteojos: <span class="text-danger">*</span></label>
@@ -99,13 +98,12 @@
                             <select class="form-control" id="anteojos" name="anteojos">
                                 <option value="">Selecciona si Usa Anteojos</option>
                                 <?php
-                                if( !empty($SiNo) ):
-                                    foreach($SiNo as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($SiNo)) :
+                                    foreach ($SiNo as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idUsaAnteojos == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                    }
+                                                                                                                                                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -122,7 +120,8 @@
                     <div class="form-group">
                         <label for="estatura" class="control-label">Estatura: <span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="estatura" name="estatura">
+                            <input type="text" class="form-control " id="estatura" name="estatura" value=" <?= isset($mediaFiliacion->estatura) ? $mediaFiliacion->estatura : ''  ?>">
+
                         </div>
                     </div>
                 </div>
@@ -130,7 +129,8 @@
                     <div class="form-group">
                         <label for="peso" class="control-label">Peso: <span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="peso" name="peso">
+                            <input type="text" class="form-control " id="peso" name="peso" value=" <?= isset($mediaFiliacion->peso) ? $mediaFiliacion->peso : ''  ?>">
+
                         </div>
                     </div>
                 </div>
@@ -160,14 +160,13 @@
                             <select class="form-control" id="cabello_cantidad" name="cabello_cantidad">
                                 <option value="">Selecciona una cantidad de Cabello</option>
                                 <?php
-                                if( !empty($cabello_cantidad) ):
-                                    foreach($cabello_cantidad as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
-                                
+                                if (!empty($cabello_cantidad)) :
+                                    foreach ($cabello_cantidad as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idCantidadCabello == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                        }
+                                                                                                                                                                    endif; ?>
+
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -187,13 +186,12 @@
                             <select class="form-control" id="color_cabello" name="color_cabello">
                                 <option value="">Selecciona un color de Cabello</option>
                                 <?php
-                                if( !empty($color_cabello) ):
-                                    foreach($color_cabello as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($color_cabello)) :
+                                    foreach ($color_cabello as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idColorCabello == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                    }
+                                                                                                                                                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -213,13 +211,12 @@
                             <select class="form-control" id="forma_cabello" name="forma_cabello">
                                 <option value="">Seleccionar forma de Cabello</option>
                                 <?php
-                                if( !empty($forma_cabello) ):
-                                    foreach($forma_cabello as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($forma_cabello)) :
+                                    foreach ($forma_cabello as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idFormaCabello == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                    }
+                                                                                                                                                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -239,13 +236,12 @@
                             <select class="form-control" id="calvicie_cabello" name="calvicie_cabello">
                                 <option value="">Seleccionar un tipo de Calvicie</option>
                                 <?php
-                                if( !empty($calvicie_cabello) ):
-                                    foreach($calvicie_cabello as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($calvicie_cabello)) :
+                                    foreach ($calvicie_cabello as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idCalvicie == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                }
+                                                                                                                                                            endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -265,13 +261,12 @@
                             <select class="form-control" id="implatacion_cabello" name="implatacion_cabello">
                                 <option value="">Seleccionar un tipo de Implantación</option>
                                 <?php
-                                if( !empty($implatacion_cabello) ):
-                                    foreach($implatacion_cabello as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($implatacion_cabello)) :
+                                    foreach ($implatacion_cabello as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idImplantacionCabello == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                            }
+                                                                                                                                                                        endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -310,13 +305,12 @@
                             <select class="form-control" id="altura" name="altura">
                                 <option value="">Selecciona una Altura</option>
                                 <?php
-                                if( !empty($altura) ):
-                                    foreach($altura as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($altura)) :
+                                    foreach ($altura as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idAlturaFrente == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                    }
+                                                                                                                                                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -336,13 +330,12 @@
                             <select class="form-control" id="inclinacion" name="inclinacion">
                                 <option value="">Selecciona una Inclinación</option>
                                 <?php
-                                if( !empty($inclinacion) ):
-                                    foreach($inclinacion as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($inclinacion)) :
+                                    foreach ($inclinacion as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idInclinacionFrente == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                            }
+                                                                                                                                                                        endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -362,13 +355,12 @@
                             <select class="form-control" id="ancho" name="ancho">
                                 <option value="">Selecciona una Anchura</option>
                                 <?php
-                                if( !empty($ancho) ):
-                                    foreach($ancho as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($ancho)) :
+                                    foreach ($ancho as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idAnchoFrente == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                    }
+                                                                                                                                                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -406,13 +398,12 @@
                             <select class="form-control" id="direccion_cejas" name="direccion_cejas">
                                 <option value="">Selecciona una Dirección</option>
                                 <?php
-                                if( !empty($direccion_cejas) ):
-                                    foreach($direccion_cejas as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($direccion_cejas)) :
+                                    foreach ($direccion_cejas as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idDireccionCejas == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                        }
+                                                                                                                                                                    endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -432,13 +423,12 @@
                             <select class="form-control" id="implantacion_cejas" name="implantacion_cejas">
                                 <option value="">Selecciona una Implantación</option>
                                 <?php
-                                if( !empty($implantacion_cejas) ):
-                                    foreach($implantacion_cejas as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($implantacion_cejas)) :
+                                    foreach ($implantacion_cejas as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idImplantacionCejas == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                            }
+                                                                                                                                                                        endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -458,13 +448,12 @@
                             <select class="form-control" id="forma" name="forma">
                                 <option value="">Selecciona una Forma</option>
                                 <?php
-                                if( !empty($forma) ):
-                                    foreach($forma as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($forma)) :
+                                    foreach ($forma as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idFormaCejas == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                    }
+                                                                                                                                                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -484,13 +473,12 @@
                             <select class="form-control" id="tamanno" name="tamanno">
                                 <option value="">Selecciona un Tamaño</option>
                                 <?php
-                                if( !empty($tamanno) ):
-                                    foreach($tamanno as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($tamanno)) :
+                                    foreach ($tamanno as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idTamanoCejas == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                    }
+                                                                                                                                                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -528,13 +516,12 @@
                             <select class="form-control" id="color" name="color">
                                 <option value="">Selecciona un Color</option>
                                 <?php
-                                if( !empty($color) ):
-                                    foreach($color as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($color)) :
+                                    foreach ($color as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idColorOjos == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                    }
+                                                                                                                                                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -554,13 +541,12 @@
                             <select class="form-control" id="forma_ojos" name="forma_ojos">
                                 <option value="">Selecciona una Forma</option>
                                 <?php
-                                if( !empty($forma_ojos) ):
-                                    foreach($forma_ojos as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($forma_ojos)) :
+                                    foreach ($forma_ojos as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idFormaOjos == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                    }
+                                                                                                                                                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -580,13 +566,12 @@
                             <select class="form-control" id="tamanno_ojos" name="tamanno_ojos">
                                 <option value="">Selecciona un Tamaño</option>
                                 <?php
-                                if( !empty($tamanno_ojos) ):
-                                    foreach($tamanno_ojos as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($tamanno_ojos)) :
+                                    foreach ($tamanno_ojos as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idTamanoOjos == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                    }
+                                                                                                                                                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -624,13 +609,12 @@
                             <select class="form-control" id="raiz" name="raiz">
                                 <option value="">Selecciona una Raiz</option>
                                 <?php
-                                if( !empty($raiz) ):
-                                    foreach($raiz as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($raiz)) :
+                                    foreach ($raiz as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idRaiz == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                            }
+                                                                                                                                                        endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -650,13 +634,12 @@
                             <select class="form-control" id="dorso" name="dorso">
                                 <option value="">Selecciona un Dorso</option>
                                 <?php
-                                if( !empty($dorso) ):
-                                    foreach($dorso as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($dorso)) :
+                                    foreach ($dorso as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idDorso == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                }
+                                                                                                                                                            endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -676,13 +659,12 @@
                             <select class="form-control" id="ancho_nariz" name="ancho_nariz">
                                 <option value="">Selecciona una Anchura</option>
                                 <?php
-                                if( !empty($ancho_nariz) ):
-                                    foreach($ancho_nariz as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($ancho_nariz)) :
+                                    foreach ($ancho_nariz as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idAnchoNariz == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                    }
+                                                                                                                                                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -702,13 +684,12 @@
                             <select class="form-control" id="base_nariz" name="base_nariz">
                                 <option value="">Selecciona una Base</option>
                                 <?php
-                                if( !empty($base_nariz) ):
-                                    foreach($base_nariz as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($base_nariz)) :
+                                    foreach ($base_nariz as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idBaseNariz == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                    }
+                                                                                                                                                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -728,13 +709,12 @@
                             <select class="form-control" id="altura_nariz" name="altura_nariz">
                                 <option value="">Selecciona una Altura</option>
                                 <?php
-                                if( !empty($altura_nariz) ):
-                                    foreach($altura_nariz as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($altura_nariz)) :
+                                    foreach ($altura_nariz as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idAlturaNariz == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                    }
+                                                                                                                                                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -771,13 +751,12 @@
                             <select class="form-control" id="tamanno_boca" name="tamanno_boca">
                                 <option value="">Selecciona un Tamaño</option>
                                 <?php
-                                if( !empty($tamanno_boca) ):
-                                    foreach($tamanno_boca as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($tamanno_boca)) :
+                                    foreach ($tamanno_boca as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idTamanoBoca == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                    }
+                                                                                                                                                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -797,13 +776,12 @@
                             <select class="form-control" id="comisura_boca" name="comisura_boca">
                                 <option value="">Selecciona una Comisura</option>
                                 <?php
-                                if( !empty($comisura_boca) ):
-                                    foreach($comisura_boca as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($comisura_boca)) :
+                                    foreach ($comisura_boca as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idComisuras == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                    }
+                                                                                                                                                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -840,13 +818,12 @@
                             <select class="form-control" id="espesor_labios" name="espesor_labios">
                                 <option value="">Selecciona un Espesor</option>
                                 <?php
-                                if( !empty($espesor_labios) ):
-                                    foreach($espesor_labios as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($espesor_labios)) :
+                                    foreach ($espesor_labios as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idEspesorLabio == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                    }
+                                                                                                                                                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -866,13 +843,12 @@
                             <select class="form-control" id="altura_labial" name="altura_labial">
                                 <option value="">Selecciona una Altura Naso-Labial</option>
                                 <?php
-                                if( !empty($altura_labial) ):
-                                    foreach($altura_labial as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($altura_labial)) :
+                                    foreach ($altura_labial as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idAlturaNasolabial == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                        }
+                                                                                                                                                                    endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -892,13 +868,12 @@
                             <select class="form-control" id="prominencia" name="prominencia">
                                 <option value="">Selecciona una Prominencia</option>
                                 <?php
-                                if( !empty($prominencia) ):
-                                    foreach($prominencia as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($prominencia)) :
+                                    foreach ($prominencia as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idProminenciaLabio == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                        }
+                                                                                                                                                                    endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -935,13 +910,12 @@
                             <select class="form-control" id="tipo_menton" name="tipo_menton">
                                 <option value="">Selecciona un Tipo</option>
                                 <?php
-                                if( !empty($tipo_menton) ):
-                                    foreach($tipo_menton as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($tipo_menton)) :
+                                    foreach ($tipo_menton as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idMentonTipo == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                    }
+                                                                                                                                                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -961,13 +935,12 @@
                             <select class="form-control" id="forma_menton" name="forma_menton">
                                 <option value="">Selecciona una Forma</option>
                                 <?php
-                                if( !empty($forma_menton) ):
-                                    foreach($forma_menton as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($forma_menton)) :
+                                    foreach ($forma_menton as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idMentonForma == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                    }
+                                                                                                                                                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -987,13 +960,12 @@
                             <select class="form-control" id="inclinacion_menton" name="inclinacion_menton">
                                 <option value="">Selecciona una Inclinación</option>
                                 <?php
-                                if( !empty($inclinacion_menton) ):
-                                    foreach($inclinacion_menton as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($inclinacion_menton)) :
+                                    foreach ($inclinacion_menton as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idMentonInclinacion == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                            }
+                                                                                                                                                                        endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -1030,13 +1002,12 @@
                             <select class="form-control" id="forma_ODerecha" name="forma_ODerecha">
                                 <option value="">Selecciona una Forma</option>
                                 <?php
-                                if( !empty($forma_ODerecha) ):
-                                    foreach($forma_ODerecha as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($forma_ODerecha)) :
+                                    foreach ($forma_ODerecha as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idFormaOreja == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                    }
+                                                                                                                                                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -1071,13 +1042,12 @@
                                     <select class="form-control" id="original" name="original">
                                         <option value="">Selecciona una Opcion</option>
                                         <?php
-                                if( !empty($original) ):
-                                    foreach($original as  $a){
+                                        if (!empty($original)) :
+                                            foreach ($original as  $a) {
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                                <option <?= ($mediaFiliacion->idOriginal == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                        }
+                                                                                                                                                                    endif; ?>
                                     </select>
                                     <script>
                                         $(document).ready(function() {
@@ -1097,13 +1067,12 @@
                                     <select class="form-control" id="superior" name="superior">
                                         <option value="">Selecciona una Opcion</option>
                                         <?php
-                                if( !empty($superior) ):
-                                    foreach($superior as  $a){
+                                        if (!empty($superior)) :
+                                            foreach ($superior as  $a) {
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                                <option <?= ($mediaFiliacion->idSuperior == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                        }
+                                                                                                                                                                    endif; ?>
                                     </select>
                                     <script>
                                         $(document).ready(function() {
@@ -1123,13 +1092,12 @@
                                     <select class="form-control" id="posterior" name="posterior">
                                         <option value="">Selecciona una Opcion</option>
                                         <?php
-                                if( !empty($posterior) ):
-                                    foreach($posterior as  $a){
+                                        if (!empty($posterior)) :
+                                            foreach ($posterior as  $a) {
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                                <option <?= ($mediaFiliacion->idPosterior == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                            }
+                                                                                                                                                                        endif; ?>
                                     </select>
                                     <script>
                                         $(document).ready(function() {
@@ -1149,13 +1117,12 @@
                                     <select class="form-control" id="adherencia" name="adherencia">
                                         <option value="">Selecciona una Opcion</option>
                                         <?php
-                                if( !empty($adherencia) ):
-                                    foreach($adherencia as  $a){
+                                        if (!empty($adherencia)) :
+                                            foreach ($adherencia as  $a) {
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                                <option <?= ($mediaFiliacion->idAdherenciaHelix == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                                }
+                                                                                                                                                                            endif; ?>
                                     </select>
                                     <script>
                                         $(document).ready(function() {
@@ -1192,13 +1159,12 @@
                                     <select class="form-control" id="contorno" name="contorno">
                                         <option value="">Selecciona una Opcion</option>
                                         <?php
-                                if( !empty($contorno) ):
-                                    foreach($contorno as  $a){
+                                        if (!empty($contorno)) :
+                                            foreach ($contorno as  $a) {
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                                <option <?= ($mediaFiliacion->idContornoLobulo == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                                }
+                                                                                                                                                                            endif; ?>
                                     </select>
                                     <script>
                                         $(document).ready(function() {
@@ -1218,13 +1184,12 @@
                                     <select class="form-control" id="adherencia_lobulo" name="adherencia_lobulo">
                                         <option value="">Selecciona una Opcion</option>
                                         <?php
-                                if( !empty($adherencia_lobulo) ):
-                                    foreach($adherencia_lobulo as  $a){
+                                        if (!empty($adherencia_lobulo)) :
+                                            foreach ($adherencia_lobulo as  $a) {
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                                <option <?= ($mediaFiliacion->idAdherenciaLobulo == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                                }
+                                                                                                                                                                            endif; ?>
                                     </select>
                                     <script>
                                         $(document).ready(function() {
@@ -1244,13 +1209,12 @@
                                     <select class="form-control" id="particularidad" name="particularidad">
                                         <option value="">Selecciona una Opcion</option>
                                         <?php
-                                if( !empty($particularidad) ):
-                                    foreach($particularidad as  $a){
+                                        if (!empty($particularidad)) :
+                                            foreach ($particularidad as  $a) {
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                                <option <?= ($mediaFiliacion->idParticularidad == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                                }
+                                                                                                                                                                            endif; ?>
                                     </select>
                                     <script>
                                         $(document).ready(function() {
@@ -1270,13 +1234,12 @@
                                     <select class="form-control" id="dimension" name="dimension">
                                         <option value="">Selecciona una Opcion</option>
                                         <?php
-                                if( !empty($dimension) ):
-                                    foreach($dimension as  $a){
+                                        if (!empty($dimension)) :
+                                            foreach ($dimension as  $a) {
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                                <option <?= ($mediaFiliacion->idDimensionLobulo == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                                }
+                                                                                                                                                                            endif; ?>
                                     </select>
                                     <script>
                                         $(document).ready(function() {
@@ -1315,13 +1278,12 @@
                             <select class="form-control" id="tipo_sangre" name="tipo_sangre">
                                 <option value="">Selecciona un Tipo</option>
                                 <?php
-                                if( !empty($tipo_sangre) ):
-                                    foreach($tipo_sangre as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($tipo_sangre)) :
+                                    foreach ($tipo_sangre as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idSangreTipo == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                    }
+                                                                                                                                                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -1341,13 +1303,12 @@
                             <select class="form-control" id="RH_sangre" name="RH_sangre">
                                 <option value="">Selecciona un RH</option>
                                 <?php
-                                if( !empty($RH_sangre) ):
-                                    foreach($RH_sangre as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($RH_sangre)) :
+                                    foreach ($RH_sangre as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idRH == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                            }
+                                                                                                                                                        endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -1384,13 +1345,12 @@
                             <select class="form-control" id="cicatrices" name="cicatrices">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
-                                if( !empty($SiNo) ):
-                                    foreach($SiNo as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($SiNo)) :
+                                    foreach ($SiNo as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idCicatrices == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                    }
+                                                                                                                                                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -1406,7 +1366,10 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="cicatrices_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
-                        <textarea type="text" class="form-control " id="cicatrices_descripcion" name="cicatrices_descripcion"></textarea>
+                        <div>
+                            <input type="text" class="form-control " id="cicatrices_descripcion" name="cicatrices_descripcion" value=" <?= isset($mediaFiliacion->descrip_cicatrices) ? $mediaFiliacion->descrip_cicatrices : ''  ?>">
+
+                        </div>
                     </div>
                 </div>
                 <div class='col-6 col-sm-4'>
@@ -1416,13 +1379,13 @@
                             <select class="form-control" id="tatuajes" name="tatuajes">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
-                                if( !empty($SiNo) ):
-                                    foreach($SiNo as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
+                                if (!empty($SiNo)) :
+                                    foreach ($SiNo as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idTatuajes == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
                                     }
-                                endif;?>
+                                endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -1438,7 +1401,10 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="tatuajes_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
-                        <textarea type="text" class="form-control " id="tatuajes_descripcion" name="tatuajes_descripcion"></textarea>
+                        <div>
+                            <input type="text" class="form-control " id="tatuajes_descripcion" name="tatuajes_descripcion" value=" <?= isset($mediaFiliacion->descrip_tatuajes) ? $mediaFiliacion->descrip_tatuajes : ''  ?>">
+
+                        </div>
                     </div>
                 </div>
                 <div class='col-6 col-sm-4'>
@@ -1448,13 +1414,12 @@
                             <select class="form-control" id="lunares" name="lunares">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
-                                if( !empty($SiNo) ):
-                                    foreach($SiNo as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($SiNo)) :
+                                    foreach ($SiNo as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idLunares == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                }
+                                                                                                                                                            endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -1470,7 +1435,10 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="lunares_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
-                        <textarea type="text" class="form-control " id="lunares_descripcion" name="lunares_descripcion"></textarea>
+                        <div>
+                            <input type="text" class="form-control " id="tatuajes_descripcion" name="tatuajes_descripcion" value=" <?= isset($mediaFiliacion->descrip_lunares) ? $mediaFiliacion->descrip_lunares : ''  ?>">
+
+                        </div>
                     </div>
                 </div>
                 <div class='col-6 col-sm-4'>
@@ -1480,13 +1448,12 @@
                             <select class="form-control" id="fisico" name="fisico">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
-                                if( !empty($SiNo) ):
-                                    foreach($SiNo as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($SiNo)) :
+                                    foreach ($SiNo as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idDefectos == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                }
+                                                                                                                                                            endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -1502,7 +1469,10 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="fisico_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
-                        <textarea type="text" class="form-control " id="fisico_descripcion" name="fisico_descripcion"></textarea>
+                        <div>
+                            <input type="text" class="form-control " id="fisico_descripcion" name="fisico_descripcion" value=" <?= isset($mediaFiliacion->descrip_defectos) ? $mediaFiliacion->descrip_defectos : ''  ?>">
+
+                        </div>
                     </div>
                 </div>
                 <div class='col-6 col-sm-4'>
@@ -1512,13 +1482,12 @@
                             <select class="form-control" id="protesis" name="protesis">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
-                                if( !empty($SiNo) ):
-                                    foreach($SiNo as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($SiNo)) :
+                                    foreach ($SiNo as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idProtesis == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> <?php
+                                                                                                                                                                }
+                                                                                                                                                            endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -1534,7 +1503,10 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="protesis_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
-                        <textarea type="text" class="form-control " id="protesis_descripcion" name="protesis_descripcion"></textarea>
+                        <div>
+                            <input type="text" class="form-control " id="protesis_descripcion" name="protesis_descripcion" value=" <?= isset($mediaFiliacion->descrip_protesis) ? $mediaFiliacion->descrip_protesis : ''  ?>">
+
+                        </div>
                     </div>
                 </div>
                 <div class='col-6 col-sm-4'>
@@ -1544,13 +1516,13 @@
                             <select class="form-control" id="discapacidad" name="discapacidad">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
-                                if( !empty($SiNo) ):
-                                    foreach($SiNo as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
+                                if (!empty($SiNo)) :
+                                    foreach ($SiNo as  $a) {
+                                ?>
+                                        <option <?= ($mediaFiliacion->idDiscapacidad == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                         <?php
+                                         }
+                                 endif; ?>
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -1566,7 +1538,10 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="discapacidad_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
-                        <textarea type="text" class="form-control " id="discapacidad_descripcion" name="discapacidad_descripcion"></textarea>
+                        <div>
+                            <input type="text" class="form-control " id="discapacidad_descripcion" name="discapacidad_descripcion" value=" <?= isset($mediaFiliacion->descrip_discapacidad) ? $mediaFiliacion->descrip_discapacidad : ''  ?>">
+
+                        </div>
                     </div>
                 </div>
             </div>
