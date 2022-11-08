@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label for="tipo" class="control-label">Tipo: <span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->tipo_sancion) ? $variable->tipo_sancion : ''  ?>
+                            <?= isset($estimulos->tipo_sancion) ? $estimulos->tipo_sancion : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                     <div class="form-group">
                         <label for="determinacion" class=" control-label">Determinación:<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->determinacion) ? $variable->determinacion : ''  ?>
+                            <?= isset($estimulos->determinacion) ? $estimulos->determinacion : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                     <div class="form-group">
                         <label for="descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->descripcion_sancion) ? $variable->descripcion_sancion : ''  ?>
+                            <?= isset($estimulos->descripcion_sancion) ? $estimulos->descripcion_sancion : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                     <div class="form-group">
                         <label for="situacion" class=" control-label">Situación:<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->situacion) ? $variable->situacion : ''  ?>
+                            <?= isset($estimulos->situacion) ? $estimulos->situacion : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                     <div class="form-group">
                         <label for="inicio_inhabilitacion" class=" control-label">Inicio de la inhabilitación:<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->inicio_habilitacion) ? $variable->inicio_habilitacion : ''  ?>
+                            <?= isset($estimulos->inicio_habilitacion) ? $estimulos->inicio_habilitacion : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                     <div class="form-group">
                         <label for="termino_inhabilitacion" class=" control-label">Término de la inhabilitación:<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->termino_habilitacion) ? $variable->termino_habilitacion : ''  ?>
+                            <?= isset($estimulos->termino_habilitacion) ? $estimulos->termino_habilitacion : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                     <div class="form-group">
                         <label for="organismo" class=" control-label">Dependencia u organismo que emite la determinación :<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->dependencia) ? $variable->dependencia : ''  ?>
+                            <?= isset($estimulos->dependencia) ? $estimulos->dependencia : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
                         <div class="form-group">
                             <label for="emisora" class=" control-label">Institución emisora:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->institucion_emisora) ? $variable->institucion_emisora : ''  ?>
+                            <?= isset($estimulos->institucion_emisora) ? $estimulos->institucion_emisora : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -115,7 +115,7 @@
                         <div class="form-group">
                             <label for="entidad_federativaSE" class=" control-label">Entidad federativa:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->idEstado) ? $variable->idEstado : ''  ?>
+                            <?= isset($estimulos->idEstado) ? $estimulos->idEstado : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -123,7 +123,7 @@
                         <div class="form-group">
                             <label for="delitos" class="control-label">Delitos: <span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->delitos) ? $variable->delitos : ''  ?>
+                            <?= isset($estimulos->delitos) ? $estimulos->delitos : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -132,7 +132,7 @@
                             <label for="motivo" class=" control-label">Motivo:
                                 <span class="text-danger">*</span></label>
                                 <div>
-                            <?= isset($variable->motivos) ? $variable->motivos : ''  ?>
+                            <?= isset($estimulos->motivos) ? $estimulos->motivos : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -140,7 +140,7 @@
                         <div class="form-group">
                             <label for="no_expediente" class="control-label">No. Expediente: <span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->numero_expediente) ? $variable->numero_expediente : ''  ?>
+                            <?= isset($estimulos->numero_expediente) ? $estimulos->numero_expediente : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -149,7 +149,7 @@
                             <label for="agencia_mp" class=" control-label">Agencia del MP:
                                 <span class="text-danger">*</span></label>
                                 <div>
-                            <?= isset($variable->agencia_mp) ? $variable->agencia_mp : ''  ?>
+                            <?= isset($estimulos->agencia_mp) ? $estimulos->agencia_mp : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -157,7 +157,7 @@
                         <div class="form-group">
                             <label for="averiguacion_previa" class="control-label">Averiguación previa: <span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->averiguacion_previa) ? $variable->averiguacion_previa : ''  ?>
+                            <?= isset($estimulos->averiguacion_previa) ? $estimulos->averiguacion_previa : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -165,7 +165,7 @@
                         <div class="form-group">
                             <label for="tipo_fuero" class="control-label">Tipo de Fuero: <span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->idTipoFuero) ? $variable->idTipoFuero : ''  ?>
+                            <?= isset($estimulos->idTipoFuero) ? $estimulos->idTipoFuero : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -173,7 +173,7 @@
                         <div class="form-group">
                             <label for="averiguacion_estado" class="control-label">Estado de la averiguación previa: <span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->estado_averiguacion) ? $variable->estado_averiguacion : ''  ?>
+                            <?= isset($estimulos->estado_averiguacion) ? $estimulos->estado_averiguacion : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -181,7 +181,7 @@
                         <div class='form-group'>
                             <label for="inicio_averiguacion">Inicio de la averiguación: <span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->inicio_averiguacion) ? $variable->inicio_averiguacion : ''  ?>
+                            <?= isset($estimulos->inicio_averiguacion) ? $estimulos->inicio_averiguacion : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -189,7 +189,7 @@
                         <div class='form-group'>
                             <label for="al_dia">Al día: <span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->aldia_averiguacion) ? $variable->aldia_averiguacion : ''  ?>
+                            <?= isset($estimulos->aldia_averiguacion) ? $estimulos->aldia_averiguacion : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -197,7 +197,7 @@
                         <div class="form-group">
                             <label for="juzgado" class=" control-label">Juzgado:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->juzgado) ? $variable->juzgado : ''  ?>
+                            <?= isset($estimulos->juzgado) ? $estimulos->juzgado : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -205,7 +205,7 @@
                         <div class="form-group">
                             <label for="no_proceso" class=" control-label">No. Proceso:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->num_proceso) ? $variable->num_proceso : ''  ?>
+                            <?= isset($estimulos->num_proceso) ? $estimulos->num_proceso : ''  ?>
                         </div>
 
                         </div>
@@ -214,7 +214,7 @@
                         <div class="form-group">
                             <label for="estado_procesal" class=" control-label">Estado Procesal:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->estado_procesal) ? $variable->estado_procesal : ''  ?>
+                            <?= isset($estimulos->estado_procesal) ? $estimulos->estado_procesal : ''  ?>
                         </div>
 
                         </div>
@@ -223,7 +223,7 @@
                         <div class='form-group'>
                             <label for="inicio_proceso">Inicio del proceso: <span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->inicio_proceso) ? $variable->inicio_proceso : ''  ?>
+                            <?= isset($estimulos->inicio_proceso) ? $estimulos->inicio_proceso : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -231,7 +231,7 @@
                         <div class='form-group'>
                             <label for="al_dia_proceso">Al día: <span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->aldia_proceso) ? $variable->aldia_proceso : ''  ?>
+                            <?= isset($estimulos->aldia_proceso) ? $estimulos->aldia_proceso : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -268,7 +268,7 @@
                 <div class="form-group">
                     <label for="tipo_estimulo" class=" control-label">Tipo:<span class="text-danger">*</span></label>
                     <div>
-                            <?= isset($variable->tipo_estimulo) ? $variable->tipo_estimulo : ''  ?>
+                            <?= isset($estimulos->tipo_estimulo) ? $estimulos->tipo_estimulo : ''  ?>
                         </div>
                 </div>
             </div>
@@ -276,7 +276,7 @@
                 <div class="form-group">
                     <label for="descripcion_estimulo" class=" control-label">Descripción:<span class="text-danger">*</span></label>
                     <div>
-                            <?= isset($variable->descripcion_estimulo) ? $variable->descripcion_estimulo : ''  ?>
+                            <?= isset($estimulos->descripcion_estimulo) ? $estimulos->descripcion_estimulo : ''  ?>
                         </div>
                 </div>
             </div>
@@ -284,7 +284,7 @@
                 <div class="form-group">
                     <label for="dependencia" class=" control-label">Dependencia que otorga:<span class="text-danger">*</span></label>
                     <div>
-                            <?= isset($variable->dependencia_otorga) ? $variable->dependencia_otorga : ''  ?>
+                            <?= isset($estimulos->dependencia_otorga) ? $estimulos->dependencia_otorga : ''  ?>
                         </div>
                 </div>
             </div>
@@ -292,7 +292,7 @@
                 <div class='form-group'>
                     <label for="otrogado_estimulo">Otorgado: <span class="text-danger">*</span></label>
                     <div>
-                            <?= isset($variable->otorgado) ? $variable->otorgado : ''  ?>
+                            <?= isset($estimulos->otorgado) ? $estimulos->otorgado : ''  ?>
                         </div>
                 </div>
             </div>

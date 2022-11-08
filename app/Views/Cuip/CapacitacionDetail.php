@@ -23,7 +23,7 @@
                         <div class="form-group">
                             <label for="dependencia" class=" control-label">Dependencia responsable:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->dependencia) ? $variable->dependencia : ''  ?>
+                            <?= isset($capacitacion->dependencia) ? $capacitacion->dependencia : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <label for="institucion" class=" control-label">Institución Capacitadora:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->inst_capacitadora) ? $variable->inst_capacitadora : ''  ?>
+                            <?= isset($capacitacion->inst_capacitadora) ? $capacitacion->inst_capacitadora : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                         <div class="form-group">
                             <label for="nombre_curso" class=" control-label">Nombre del curso:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                            <?= isset($capacitacion->nombre_curso) ? $capacitacion->nombre_curso : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                         <div class="form-group">
                             <label for="tema_curso" class=" control-label">Tema del curso:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->tema_curso) ? $variable->tema_curso : ''  ?>
+                            <?= isset($capacitacion->tema_curso) ? $capacitacion->tema_curso : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                         <div class="form-group">
                             <label for="nivel_curso" class="control-label">Nivel del curso recibido: <span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->idNivel_curso) ? $variable->idNivel_curso : ''  ?>
+                            <?= isset($capacitacion->idNivel_curso) ? $capacitacion->idNivel_curso : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                         <div class="form-group">
                             <label for="eficienciaCursos" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->idEficienciaCurso) ? $variable->idEficienciaCurso : ''  ?>
+                            <?= isset($capacitacion->idEficienciaCurso) ? $capacitacion->idEficienciaCurso : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                         <div class="form-group">
                             <label for="inicio" class=" control-label">Inicio:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->inicio_curso) ? $variable->inicio_curso : ''  ?>
+                            <?= isset($capacitacion->inicio_curso) ? $capacitacion->inicio_curso : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                         <div class="form-group">
                             <label for="conclusion" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->conclusion_curso) ? $variable->conclusion_curso : ''  ?>
+                            <?= isset($capacitacion->conclusion_curso) ? $capacitacion->conclusion_curso : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                         <div class="form-group">
                             <label for="duracion" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->duracion_horas_curso) ? $variable->duracion_horas_curso : ''  ?>
+                            <?= isset($capacitacion->duracion_horas_curso) ? $capacitacion->duracion_horas_curso : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                         <div class="form-group">
                             <label for="comprobante" class=" control-label">Tipo de comprobante:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->tipo_comprobante) ? $variable->tipo_comprobante : ''  ?>
+                            <?= isset($capacitacion->tipo_comprobante) ? $capacitacion->tipo_comprobante : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -134,7 +134,7 @@
                         <div class="form-group">
                             <label for="empresa" class=" control-label">Insitutción o Empresa:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->institucion) ? $variable->institucion : ''  ?>
+                            <?= isset($capacitacion->institucion) ? $capacitacion->institucion : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -142,7 +142,7 @@
                         <div class="form-group">
                             <label for="curso" class=" control-label">Estudio o Curso:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->curso) ? $variable->curso : ''  ?>
+                            <?= isset($capacitacion->curso) ? $capacitacion->curso : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -150,7 +150,7 @@
                         <div class="form-group">
                             <label for="tipo_curso" class=" control-label">Tipo de curso:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->tipo_curso) ? $variable->tipo_curso : ''  ?>
+                            <?= isset($capacitacion->tipo_curso) ? $capacitacion->tipo_curso : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -158,7 +158,7 @@
                         <div class="form-group">
                             <label for="cuso_tomado" class="control-label">¿El curso fue?: <span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->cursofue) ? $variable->cursofue : ''  ?>
+                            <?= isset($capacitacion->cursofue) ? $capacitacion->cursofue : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -166,7 +166,7 @@
                         <div class="form-group">
                             <label for="eficiencia" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($capacitacion->primer_nombre) ? $capacitacion->primer_nombre : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -174,7 +174,7 @@
                         <div class="form-group">
                             <label for="inicioAdicional" class=" control-label">Inicio:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->inicio_adicional) ? $variable->inicio_adicional : ''  ?>
+                            <?= isset($capacitacion->inicio_adicional) ? $capacitacion->inicio_adicional : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -182,7 +182,7 @@
                         <div class="form-group">
                             <label for="conclusionAdicional" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->conclusion_adicional) ? $variable->conclusion_adicional : ''  ?>
+                            <?= isset($capacitacion->conclusion_adicional) ? $capacitacion->conclusion_adicional : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -190,7 +190,7 @@
                         <div class="form-group">
                             <label for="duracion_horas" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->duracion_horas_adicional) ? $variable->primer_nombduracion_horas_adicionalre : ''  ?>
+                            <?= isset($capacitacion->duracion_horas_adicional) ? $capacitacion->duracion_horas_adicional : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -225,7 +225,7 @@
                 <div class="form-group">
                     <label for="idioma" class="control-label">Idioma o Dialecto: <span class="text-danger">*</span></label>
                     <div>
-                            <?= isset($variable->idIdioma) ? $variable->idIdioma : ''  ?>
+                            <?= isset($capacitacion->idIdioma) ? $capacitacion->idIdioma : ''  ?>
                         </div>
                 </div>
             </div>
@@ -233,7 +233,7 @@
                 <div class="form-group">
                     <label for="lectura" class=" control-label">% Lectura:<span class="text-danger">*</span></label>
                     <div>
-                            <?= isset($variable->idIdiomaLectura) ? $variable->idIdiomaLectura : ''  ?>
+                            <?= isset($capacitacion->idIdiomaLectura) ? $capacitacion->idIdiomaLectura : ''  ?>
                         </div>
                 </div>
             </div>
@@ -241,7 +241,7 @@
                 <div class="form-group">
                     <label for="escritura" class=" control-label">% Escritura:<span class="text-danger">*</span></label>
                     <div>
-                            <?= isset($variable->idIdiomaEscritura) ? $variable->idIdiomaEscritura : ''  ?>
+                            <?= isset($capacitacion->idIdiomaEscritura) ? $capacitacion->idIdiomaEscritura : ''  ?>
                         </div>
                 </div>
             </div>
@@ -249,7 +249,7 @@
                 <div class="form-group">
                     <label for="conversacion" class=" control-label">% Conversación:<span class="text-danger">*</span></label>
                     <div>
-                            <?= isset($variable->idIdiomaConversacion) ? $variable->idIdiomaConversacion : ''  ?>
+                            <?= isset($capacitacion->idIdiomaConversacion) ? $capacitacion->idIdiomaConversacion : ''  ?>
                         </div>
                 </div>
             </div>
@@ -286,7 +286,7 @@
                         <div class="form-group">
                             <label for="tipo_habilidad" class="control-label">Tipo: <span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->idTipoHabilidad) ? $variable->idTipoHabilidad : ''  ?>
+                            <?= isset($capacitacion->idTipoHabilidad) ? $capacitacion->idTipoHabilidad : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -294,7 +294,7 @@
                         <div class="form-group">
                             <label for="especificacion" class=" control-label">Especifique:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->especifique_habilidad) ? $variable->especifique_habilidad : ''  ?>
+                            <?= isset($capacitacion->especifique_habilidad) ? $capacitacion->especifique_habilidad : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -302,7 +302,7 @@
                         <div class="form-group">
                             <label for="grado_habilidadCap" class="control-label">Grado de aptitude o dominio: <span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->idGradoHabilidad) ? $variable->idGradoHabilidad : ''  ?>
+                            <?= isset($capacitacion->idGradoHabilidad) ? $capacitacion->idGradoHabilidad : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -341,7 +341,7 @@
                         <div class="form-group">
                             <label for="nombre" class=" control-label">Nombre:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->nombre_agrupacion) ? $variable->nombre_agrupacion : ''  ?>
+                            <?= isset($capacitacion->nombre_agrupacion) ? $capacitacion->nombre_agrupacion : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -349,7 +349,7 @@
                         <div class="form-group">
                             <label for="tipoAgrupa" class=" control-label">Tipo:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->idTipoAgrupacion) ? $variable->idTipoAgrupacion : ''  ?>
+                            <?= isset($capacitacion->idTipoAgrupacion) ? $capacitacion->idTipoAgrupacion : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -357,7 +357,7 @@
                         <div class="form-group">
                             <label for="desde" class=" control-label">Desde:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->desde) ? $variable->desde : ''  ?>
+                            <?= isset($capacitacion->desde) ? $capacitacion->desde : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -365,7 +365,7 @@
                         <div class="form-group">
                             <label for="hasta" class=" control-label">Hasta:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->hasta) ? $variable->hasta : ''  ?>
+                            <?= isset($capacitacion->hasta) ? $capacitacion->hasta : ''  ?>
                         </div>
                         </div>
                     </div>
