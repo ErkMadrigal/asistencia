@@ -725,7 +725,7 @@
                     <div class="form-group">
                         <label for="institucion_adscripcion" class=" control-label">Institución:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="institucion_adscripcion" name="institucion_adscripcion" value=" <?= isset($variable->fecha_ingreso) ? $variable->fecha_ingreso : ''  ?>">
+                            <input type="text" class="form-control " id="institucion_adscripcion" name="institucion_adscripcion" value=" <?= isset($variable->institucion) ? $variable->institucion : ''  ?>">
 
                         </div>
                     </div>
@@ -734,7 +734,7 @@
                     <div class='form-group'>
                         <label for="fechaingreso_adscripcion">Fecha de Ingreso: <span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="fechaingreso_adscripcion" name="fechaingreso_adscripcion" value=" <?= isset($variable->institucion) ? $variable->institucion : ''  ?>">
+                            <input type="text" class="form-control " id="fechaingreso_adscripcion" name="fechaingreso_adscripcion" value=" <?= isset($variable->fecha_ingreso) ? $variable-> fecha_ingreso: ''  ?>">
 
                         </div>
                         <script type="text/javascript">
