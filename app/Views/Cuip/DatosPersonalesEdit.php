@@ -837,10 +837,10 @@
                         <select class="form-control" id="entidad_adscripcion" name="entidad_adscripcion">
                             <option value="">Selecciona una Opcion</option>
                             <?php
-                            if (!empty($entidad_federativa)) :
-                                foreach ($entidad_federativa as  $a) {
+                            if (!empty($entidad_adscripcion)) :
+                                foreach ($entidad_adscripcion as  $a) {
                             ?>
-                      <option <?= ($variable->entidad_adscripcion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                      <option <?= ($variable->idEstado_adscripcion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                             <?php
                                 }
@@ -995,8 +995,8 @@
                     <select class="form-control" id="federativa_adscripcion" name="federativa_adscripcion">
                         <option value="">Selecciona una Opcion</option>
                         <?php
-                        if (!empty($entidad_federativa)) :
-                            foreach ($entidad_federativa as  $a) {
+                        if (!empty($federativa_adscripcion)) :
+                            foreach ($federativa_adscripcion as  $a) {
                         ?>
                     <option <?= ($variable->idEstado_dom_adscripcion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
