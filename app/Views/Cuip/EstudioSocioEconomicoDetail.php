@@ -20,7 +20,7 @@
                         <div class="form-group">
                             <label for="familia" class="control-label">¿Vive con su Familia?: <span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->vive) ? $variable->vive : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                             <label for="ingreso" class=" control-label">Ingreso familiar adicional
                                 (Mensual):<span class="text-danger">*</span></label>
                                 <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->ingreso_familiar) ? $variable->ingreso_familiar : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                         <div class="form-group">
                             <label for="domicilio_tipo" class="control-label">Su domicilio es: <span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->domicilio) ? $variable->domicilio : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                             <label for="actividad" class=" control-label">Actividades culturales o deportivas
                                 que practique:<span class="text-danger">*</span></label>
                                 <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->actividades_culturales) ? $variable->actividades_culturales : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                             <label for="especificacion" class=" control-label">Especifiación de inmueble y
                                 costo:<span class="text-danger">*</span></label>
                                 <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->especificacion_inmueble) ? $variable->especificacion_inmueble : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                             <label for="inversion" class=" control-label">Inversiones y monto
                                 aproximado:<span class="text-danger">*</span></label>
                                 <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->inversiones) ? $variable->inversiones : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                         <div class="form-group">
                             <label for="vehiculo" class=" control-label">Vehiculo y costo Aproximado:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->vehiculo) ? $variable->vehiculo : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                         <div class="form-group">
                             <label for="calidad" class=" control-label">Calidad de Vida:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->calidad_vida) ? $variable->calidad_vida : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                         <div class="form-group">
                             <label for="vicio" class=" control-label">Vicios:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->vicios) ? $variable->vicios : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                         <div class="form-group">
                             <label for="imagen" class=" control-label">Imagen Publica:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->imagen_publica) ? $variable->imagen_publica : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                         <div class="form-group">
                             <label for="comportamiento" class=" control-label">Comportamiento Social:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->comportamiento) ? $variable->comportamiento : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -137,7 +137,7 @@
                             <label for="apellidoPaterno" class=" control-label">Apellido
                                 Paterno:<span class="text-danger">*</span></label>
                                 <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->apellido_paterno) ? $variable->apellido_paterno : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -146,7 +146,7 @@
                             <label for="apellidoMaterno" class=" control-label">Apellido
                                 Materno:<span class="text-danger">*</span></label>
                                 <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->apellido_materno) ? $variable->apellido_materno : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -162,7 +162,7 @@
                         <div class="form-group">
                             <label for="segundoNombre" class=" control-label">Segundo Nombre:</label>
                             <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->segundo_nombre) ? $variable->segundo_nombre : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -170,7 +170,7 @@
                         <div class='form-group'>
                             <label for="fecha_nacimiento_dep">Fecha de Nacimiento: <span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->fecha_nacimiento) ? $variable->fecha_nacimiento : ''  ?>
                         </div>
                         </div>
                     </div>

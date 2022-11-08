@@ -25,7 +25,7 @@
                     <div class="form-group">
                         <label for="segundoNombre" class=" control-label">Segundo Nombre:</label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->segundo_nombre) ? $variable->segundo_nombre : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                     <div class="form-group">
                         <label for="apellidoPaterno" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->apellido_paterno) ? $variable->apellido_paterno : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <label for="apellidoMaterno" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->apellido_materno) ? $variable->apellido_materno : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                     <div class='form-group'>
                         <label for="fecha_nacimiento">Fecha de Nacimiento: <span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->fecha_nacimiento) ? $variable->fecha_nacimiento : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                     <div class="form-group">
                         <label for="sexo" class=" control-label">Sexo:<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->sexo) ? $variable->sexo : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                     <div class="form-group">
                         <label for="rfc" class=" control-label">R.F.C.:<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->rfc) ? $variable->rfc : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                     <div class="form-group">
                         <label for="claveE" class=" control-label">Clave Electoral:<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->clave_electoral) ? $variable->clave_electoral : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                     <div class="form-group">
                         <label for="cartilla" class=" control-label">Cartilla SMN:<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->cartilla_smn) ? $variable->cartilla_smn : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                     <div class="form-group">
                         <label for="licencia" class=" control-label">Licencia de Conducir:</label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->licencia_conducir) ? $variable->licencia_conducir : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                     <div class="form-group">
                         <label for="vigenciaLic" class=" control-label">Vigencia de Licencia:</label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->vigencia_licencia) ? $variable->vigencia_licencia : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
                     <div class="form-group">
                         <label for="CURP" class=" control-label">CURP:<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->curp) ? $variable->curp : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -113,7 +113,7 @@
                     <div class="form-group">
                         <label for="pasaporte" class=" control-label">Pasaporte:</label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->pasaporte) ? $variable->pasaporte : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                     <div class="form-group">
                         <label for="modo_nacionalidad" class="control-label">Modo de Nacionalidad: <span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->nacionalidad) ? $variable->nacionalidad : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -129,7 +129,7 @@
                     <div class='form-group'>
                         <label for="fecha_naturalizacion">Fecha de Naturalización: <span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->fecha_naturalizacion) ? $variable->fecha_naturalizacion : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -137,7 +137,7 @@
                     <div class="form-group">
                         <label for="pais_nacimiento" class="control-label">Pais de Nacimiento: <span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->pais) ? $variable->pais : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -145,7 +145,7 @@
                     <div class="form-group">
                         <label for="entidad_nacimiento" class="control-label">Entidad de Nacimiento: <span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->naciE) ? $variable->naciE : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -153,7 +153,7 @@
                     <div class="form-group">
                         <label for="nacionalidad" class="control-label">Nacionalidad: <span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->nacion) ? $variable->nacion : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -161,7 +161,7 @@
                     <div class="form-group">
                         <label for="municipio_nacimiento" class="control-label">Municipio de Nacimiento: <span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->municipio) ? $variable->municipio : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -169,7 +169,7 @@
                     <div class="form-group">
                         <label for="cuidad_nacimiento" class="control-label">Cuidad de Nacimiento: <span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->ciudad) ? $variable->ciudad : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -177,7 +177,7 @@
                     <div class="form-group">
                         <label for="estado_civil" class="control-label">Estado Civil: <span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->civil) ? $variable->civil : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -185,7 +185,7 @@
                     <div class="form-group">
                         <label for="desarrollo_academico" class="control-label">Desarrollo Académico: <span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->desarrollo_academico) ? $variable->desarrollo_academico : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -193,7 +193,7 @@
                     <div class="form-group">
                         <label for="escuela" class=" control-label">Escuela :<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->escuela) ? $variable->escuela : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -201,7 +201,7 @@
                     <div class="form-group">
                         <label for="especialidad" class=" control-label">Especialidad o Estudio :<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->especialidad) ? $variable->especialidad : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -209,7 +209,7 @@
                     <div class="form-group">
                         <label for="cedula" class=" control-label">No. Cédula Profesional:</label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->cedula_profesional) ? $variable->cedula_profesional : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -217,7 +217,7 @@
                     <div class='form-group'>
                         <label for="anno_inicio">Año de Inicio: <span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->año_inicio) ? $variable->año_inicio : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -225,7 +225,7 @@
                     <div class='form-group'>
                         <label for="anno_termino">Año de Termino: <span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->año_termino) ? $variable->año_termino : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -233,7 +233,7 @@
                     <div class="form-group">
                         <label for="sep" class=" control-label">Registro SEP:<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->registro_sep) ? $variable->registro_sep : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -241,7 +241,7 @@
                     <div class="form-group">
                         <label for="certificado" class=" control-label">Num. de Folio Certificado :<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->folio_certificado) ? $variable->folio_certificado : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -276,7 +276,7 @@
                     <div class="form-group">
                         <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->calle) ? $variable->calle : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -284,7 +284,7 @@
                     <div class="form-group">
                         <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->numero_exterior) ? $variable->numero_exterior : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -292,7 +292,7 @@
                     <div class="form-group">
                         <label for="interior" class=" control-label">No. Interior:</label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->numero_interior) ? $variable->numero_interior : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -301,7 +301,7 @@
                         <label for="numeroTelefono" class=" control-label">Numero
                             Telefónico:<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->numero_telefono) ? $variable->numero_telefono : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -310,7 +310,7 @@
                         <label for="entrecalle" class=" control-label">Entre la calle
                             de:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->entre_calle1) ? $variable->entre_calle1 : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -318,7 +318,7 @@
                     <div class="form-group">
                         <label for="ylacalle" class=" control-label">Y la calle :<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->entre_calle2) ? $variable->entre_calle2 : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -326,7 +326,7 @@
                     <div class="form-group">
                         <label for="codigo" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->postal) ? $variable->postal : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -334,7 +334,7 @@
                     <div class="form-group">
                         <label for="coloniacodigo" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->colonia) ? $variable->colonia : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -342,7 +342,7 @@
                     <div class="form-group">
                         <label for="estadocodigo" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->estado) ? $variable->estado : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -350,7 +350,7 @@
                     <div class="form-group">
                         <label for="municipiocodigo" class="control-label">Municipio: <span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->municipio) ? $variable->municipio : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -358,7 +358,7 @@
                     <div class="form-group">
                         <label for="ciudadcodigo" class="control-label">Ciudad: <span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->ciudad) ? $variable->ciudad : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -392,7 +392,7 @@
                         <label for="nombrecurso" class=" control-label">Nombre del Curso
                             :<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -401,7 +401,7 @@
                         <label for="nombreInstitucion" class=" control-label">Nombre de
                             la Institución:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->nombre_institucion) ? $variable->nombre_institucion : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -409,7 +409,7 @@
                     <div class='form-group'>
                         <label for="fecha_inicial">Fecha de Inicio: <span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->fecha_inicio) ? $variable->primer_nombre : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -417,7 +417,7 @@
                     <div class='form-group'>
                         <label for="fecha_final">Fecha de Término: <span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->fecha_termino) ? $variable->fecha_termino : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -426,7 +426,7 @@
                         <label for="certificado_por" class=" control-label">Certificado
                             por:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->certificado_por) ? $variable->certificado_por : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -456,7 +456,7 @@
                     <div class="form-group">
                         <label for="dependencia_adscripcion" class=" control-label">Dependencia:<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->dependencia) ? $variable->dependencia : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -464,7 +464,7 @@
                     <div class="form-group">
                         <label for="institucion_adscripcion" class=" control-label">Institución:<span class="text-danger">*</span></label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->institucion) ? $variable->institucion : ''  ?>
                         </div>
                     </div>
                 </div>
