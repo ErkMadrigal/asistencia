@@ -697,107 +697,6 @@
         </div>
     </div>
 
-
-    <div class="card card-primary">
-        <div class="card-header ">
-
-            <h3 class="card-title">DATOS GENERALES: EXPERIENCIA DOCENTE</h3>
-
-
-            <div class="card-tools">
-
-                <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
-                <input type="checkbox" class="form-check-input mt-2" id="btnNingunodged">
-
-                <a href="#" class="btn btn-tool form-check-label add-more-btn-dged" id="btnAdddged">Agregar +</a>
-
-                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- /.card-header -->
-        <div class="card-body">
-            <form class="form-horizontal" id="FormDatosGeneralesDocente">
-                <div id="CardDatosGeneralesDocente">
-                    <div class="row form-block-dged">
-                        <div class='col-12 col-sm-12 col-md-6'>
-                            <div class="form-group">
-                                <label for="nombrecurso" class=" control-label">Nombre del Curso
-                                    :<span class="text-danger">*</span></label>
-                                <div>
-                                    <input type="text" class="form-control " id="nombre_curso" name="nombre_curso" value=" <?= isset($variable->institucion) ? $variable->institucion : ''  ?>">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-12 col-sm-12 col-md-6'>
-                            <div class="form-group">
-                                <label for="nombreInstitucion" class=" control-label">Nombre de
-                                    la Institución:<span class="text-danger">*</span></label>
-                                <div>
-                                    <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion" value=" <?= isset($variable->institucion) ? $variable->institucion : ''  ?>">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-12 col-sm-6'>
-                            <div class='form-group'>
-                                <label for="fecha_inicial">Fecha de Inicio: <span class="text-danger">*</span></label>
-
-
-                                <div>
-                                    <input type="text" class="form-control " id="fecha_inicial" name="fecha_inicial" value="<?= isset($variable->fecha_inicial) ? $variable->fecha_inicial : ''  ?>">
-
-                                </div>
-
-                                <script type="text/javascript">
-                                    $(function() {
-                                        $("#fecha_inicial").datetimepicker({
-                                            format: 'DD-MM-YYYY',
-                                            locale: moment.locale('es')
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-12 col-sm-6'>
-                        <div class='form-group'>
-                            <label for="fecha_final">Fecha de Término: <span class="text-danger">*</span></label>
-                            <div>
-                                <input type="text" class="form-control " id="fecha_final" name="fecha_final" value=" <?= isset($variable->fecha_final) ? $variable->fecha_final : ''  ?>">
-
-                            </div>
-                            <script type="text/javascript">
-                                $(function() {
-                                    $("#fecha_final").datetimepicker({
-                                        format: "DD-MM-YYYY",
-                                        locale: moment.locale('es')
-
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                    <div class='col-12 col-sm-12 col-md-12'>
-                        <div class="form-group">
-                            <label for="certificado_por" class=" control-label">Certificado
-                                por:<span class="text-danger">*</span></label>
-                            <div>
-                                <input type="text" class="form-control " id="certificado" name="certificado" value=" <?= isset($variable->institucion) ? $variable->institucion : ''  ?>">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </div>
-        <hr class="mt-3 mb-3" />
-        <div id="CardDatosGeneralesDocenteB">
-        </div>
-        </form>
-    </div>
 </div>
 <div class="card card-primary">
     <div class="card-header">
@@ -816,23 +715,27 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="dependencia_adscripcion" class=" control-label">Dependencia:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="dependencia_adscripcion" name="dependencia_adscripcion">
+                        <div>
+                            <input type="text" class="form-control " id="dependencia_adscripcion" name="dependencia_adscripcion" value=" <?= isset($variable->dependencia) ? $variable->dependencia : ''  ?>">
+
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="institucion_adscripcion" class=" control-label">Institución:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="institucion_adscripcion" name="institucion_adscripcion">
+                        <div>
+                            <input type="text" class="form-control " id="institucion_adscripcion" name="institucion_adscripcion" value=" <?= isset($variable->fecha_ingreso) ? $variable->fecha_ingreso : ''  ?>">
+
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-6'>
                     <div class='form-group'>
                         <label for="fechaingreso_adscripcion">Fecha de Ingreso: <span class="text-danger">*</span></label>
-                        <div class="input-group date" id="fechaingreso_adscripcion" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#fechaingreso_adscripcion" id="datetime-fechaingreso_adscripcion" name="fechaingreso_adscripcion" placeholder="" value="" />
-                            <div class="input-group-append" data-target="#fechaingreso_adscripcion" data-toggle="datetimepicker">
-                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
-                            </div>
+                        <div>
+                            <input type="text" class="form-control " id="fechaingreso_adscripcion" name="fechaingreso_adscripcion" value=" <?= isset($variable->institucion) ? $variable->institucion : ''  ?>">
+
                         </div>
                         <script type="text/javascript">
                             $(function() {
@@ -853,7 +756,7 @@
                             if (!empty($puesto)) :
                                 foreach ($puesto as  $a) {
                             ?>
-                                    <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= ($variable->puesto == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -878,7 +781,7 @@
                             if (!empty($rango)) :
                                 foreach ($rango as  $a) {
                             ?>
-                   <option <?= ($variable->cuidad == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                   <option <?= ($variable->rango == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                             <?php
                                 }
@@ -903,7 +806,7 @@
                             if (!empty($mando)) :
                                 foreach ($mando as  $a) {
                             ?>
-                      <option <?= ($variable->cuidad == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                      <option <?= ($variable->nivel_mando == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -922,7 +825,10 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="nombrejefe_adscripcion" class=" control-label">Nombre del jefe inmediato:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="nombrejefe_adscripcion" name="nombrejefe_adscripcion">
+                        <div>
+                            <input type="text" class="form-control " id="nombrejefe_adscripcion" name="nombrejefe_adscripcion" value=" <?= isset($variable->nombre_jefe) ? $variable->nombre_jefe : ''  ?>">
+
+                        </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -934,7 +840,7 @@
                             if (!empty($entidad_federativa)) :
                                 foreach ($entidad_federativa as  $a) {
                             ?>
-                      <option <?= ($variable->naciE == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                      <option <?= ($variable->entidad_adscripcion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                             <?php
                                 }
@@ -955,6 +861,15 @@
                         <label for="municipio_adscripcion" class=" control-label">Municipio:<span class="text-danger">*</span></label>
                         <select class="form-control" id="municipio_adscripcion" name="municipio_adscripcion">
                             <option value="">Selecciona una Opcion</option>
+                            <?php
+                            if (!empty($municipio_adscripcion)) :
+                                foreach ($municipio_adscripcion as  $a) {
+                            ?>
+                      <option <?= ($variable->municipio_adscripcion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                            <?php
+                                }
+                            endif; ?>
                         </select>
                         <script>
                             $(document).ready(function() {
@@ -988,52 +903,82 @@
             <div class='col-12 col-sm-12 col-md-12'>
                 <div class="form-group">
                     <label for="calle_adscripcion" class=" control-label">Calle:<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="calle_adscripcion" name="calle_adscripcion">
+                    <div>
+                            <input type="text" class="form-control " id="calle_adscripcion" name="calle_adscripcion" value=" <?= isset($variable->calle_adscripcion) ? $variable->calle_adscripcion : ''  ?>">
+
+                        </div>
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="exterior_adscripcion" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="exterior_adscripcion" name="exterior_adscripcion">
+                    <div>
+                            <input type="text" class="form-control " id="exterior_adscripcion" name="exterior_adscripcion" value=" <?= isset($variable->numero_exterior_adscripcion) ? $variable->numero_exterior_adscripcion : ''  ?>">
+
+                        </div>
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="interior_adscripcion" class=" control-label">No. Interior:</label>
-                    <input type="text" class="form-control " id="interior_adscripcion" name="interior_adscripcion">
+                    <div>
+                            <input type="text" class="form-control " id="interior_adscripcion" name="interior_adscripcion" value=" <?= isset($variable->numero_interior_adscripcion) ? $variable->numero_interior_adscripcion : ''  ?>">
+
+                        </div>
                 </div>
             </div>
 
             <div class='col-12 col-sm-12 col-md-12'>
                 <div class="form-group">
                     <label for="entrecalle_adscripcion" class=" control-label">Entre la calle de:<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="entrecalle_adscripcion" name="entrecalle_adscripcion">
+                    <div>
+                            <input type="text" class="form-control " id="entrecalle_adscripcion" name="entrecalle_adscripcion" value=" <?= isset($variable->entre_calle1_adscripcion) ? $variable->entre_calle1_adscripcion : ''  ?>">
+
+                        </div>
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-12'>
                 <div class="form-group">
                     <label for="ylacalle_adscripcion" class=" control-label">Y la calle:<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="ylacalle_adscripcion" name="ylacalle_adscripcion">
+                    <div>
+                            <input type="text" class="form-control " id="ylacalle_adscripcion" name="ylacalle_adscripcion" value=" <?= isset($variable->entre_calle2_adscripcion) ? $variable->entre_calle2_adscripcion : ''  ?>">
+
+                        </div>
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="telefono_adscripcion" class=" control-label">Número Telefonico:<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="telefono_adscripcion" name="telefono_adscripcion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10">
+                    <div>
+                            <input type="text" class="form-control " id="nombrejefe_adscripcion" name="nombrejefe_adscripcion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value=" <?= isset($variable->numero_telefono_adscripcion) ? $variable->numero_telefono_adscripcion : ''  ?>">
+
+                        </div>
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="codigoAds" class=" control-label">Código Postal:<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control " id="codigoAds" name="codigoAds" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5">
+                    <div>
+                            <input type="text" class="form-control " id="nombrejefe_adscripcion" name="nombrejefe_adscripcion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value=" <?= isset($variable->idCodigoPostal_adscripcion) ? $variable->idCodigoPostal_adscripcion : ''  ?>">
+
+                        </div>
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="coloniacodigoAds" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                     <select class="form-control" id="coloniacodigoAds" name="coloniacodigoAds">
-                        <option value="">Selecciona una Opcion</option>
-                    </select>
+                            <option value="">Selecciona una Opcion</option>
+                            <?php
+                            if (!empty($coloniacodigoAds)) :
+                                foreach ($coloniacodigoAds as  $a) {
+                            ?>
+                      <option <?= ($variable->colonia_adscripcion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                            <?php
+                                }
+                            endif; ?>
+                        </select>
                     <script>
                         $(document).ready(function() {
                             $("#coloniacodigoAds").select2({
@@ -1053,7 +998,8 @@
                         if (!empty($entidad_federativa)) :
                             foreach ($entidad_federativa as  $a) {
                         ?>
-                                <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                    <option <?= ($variable->idEstado_dom_adscripcion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                         <?php
                             }
                         endif; ?>
@@ -1073,6 +1019,15 @@
                     <label for="delegacion_adscripcion" class=" control-label">Municipio o Delegación:<span class="text-danger">*</span></label>
                     <select class="form-control" id="delegacion_adscripcion" name="delegacion_adscripcion">
                         <option value="">Selecciona una Opcion</option>
+                        <?php
+                        if (!empty($delegacion_adscripcion)) :
+                            foreach ($delegacion_adscripcion as  $a) {
+                        ?>
+                    <option <?= ($variable->municipio_delegacion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                        <?php
+                            }
+                        endif; ?>
                     </select>
                     <script>
                         $(document).ready(function() {
@@ -1089,6 +1044,15 @@
                     <label for="ciudadcodigoAds" class=" control-label">Ciudad o Poblacion:<span class="text-danger">*</span></label>
                     <select class="form-control" id="ciudadcodigoAds" name="ciudadcodigoAds">
                         <option value="">Selecciona una Opcion</option>
+                        <?php
+                        if (!empty($ciudadcodigoAds)) :
+                            foreach ($ciudadcodigoAds as  $a) {
+                        ?>
+                    <option <?= ($variable->ciudad_poblacion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                        <?php
+                            }
+                        endif; ?>
                     </select>
                     <script>
                         $(document).ready(function() {
@@ -1104,6 +1068,107 @@
         </form>
     </div>
 </div>
+
+<div class="card card-primary">
+        <div class="card-header ">
+
+            <h3 class="card-title">DATOS GENERALES: EXPERIENCIA DOCENTE</h3>
+
+
+            <div class="card-tools">
+
+                <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" class="form-check-input mt-2" id="btnNingunodged">
+
+                <a href="#" class="btn btn-tool form-check-label add-more-btn-dged" id="btnAdddged">Agregar +</a>
+
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- /.card-header -->
+        <div class="card-body">
+            <form class="form-horizontal" id="FormDatosGeneralesDocente">
+                <div id="CardDatosGeneralesDocente">
+                    <div class="row form-block-dged">
+                        <div class='col-12 col-sm-12 col-md-6'>
+                            <div class="form-group">
+                                <label for="nombrecurso" class=" control-label">Nombre del Curso
+                                    :<span class="text-danger">*</span></label>
+                                <div>
+                                    <input type="text" class="form-control " id="nombre_curso" name="nombre_curso" value=" <?= isset($experiencia->nombre_curso) ? $experiencia->nombre_curso : ''  ?>">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-12 col-sm-12 col-md-6'>
+                            <div class="form-group">
+                                <label for="nombreInstitucion" class=" control-label">Nombre de
+                                    la Institución:<span class="text-danger">*</span></label>
+                                <div>
+                                    <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion" value=" <?= isset($experiencia->nombre_institucion) ? $experiencia->nombre_institucion : ''  ?>">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-12 col-sm-6'>
+                            <div class='form-group'>
+                                <label for="fecha_inicial">Fecha de Inicio: <span class="text-danger">*</span></label>
+
+
+                                <div>
+                                    <input type="text" class="form-control " id="fecha_inicial" name="fecha_inicial" value="<?= isset($experiencia->fecha_inicio) ? $experiencia->fecha_inicio : ''  ?>">
+
+                                </div>
+
+                                <script type="text/javascript">
+                                    $(function() {
+                                        $("#fecha_inicial").datetimepicker({
+                                            format: 'DD-MM-YYYY',
+                                            locale: moment.locale('es')
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-6'>
+                        <div class='form-group'>
+                            <label for="fecha_final">Fecha de Término: <span class="text-danger">*</span></label>
+                            <div>
+                                <input type="text" class="form-control " id="fecha_final" name="fecha_final" value=" <?= isset($experiencia->fecha_termino) ? $experiencia->fecha_termino : ''  ?>">
+
+                            </div>
+                            <script type="text/javascript">
+                                $(function() {
+                                    $("#fecha_final").datetimepicker({
+                                        format: "DD-MM-YYYY",
+                                        locale: moment.locale('es')
+
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-12 col-md-12'>
+                        <div class="form-group">
+                            <label for="certificado_por" class=" control-label">Certificado
+                                por:<span class="text-danger">*</span></label>
+                            <div>
+                                <input type="text" class="form-control " id="certificado" name="certificado" value=" <?= isset($experiencia->certificado_por) ? $experiencia->certificado_por : ''  ?>">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <hr class="mt-3 mb-3" />
+        <div id="CardDatosGeneralesDocenteB">
+        </div>
+        </form>
+    </div>
 <div class="card-footer bg-transparent clearfix">
     <div class="row">
         <div class="col-12 col-sm-6 col-md-9">

@@ -2529,7 +2529,7 @@ class Cuip extends BaseController {
 			if (!empty($economico)){
 				$data['economico_dependientes'] = $this->modelCuip->GetSocioEconomicoDependientesById($economico->id);
 			}
-			//var_dump($data['economico_dependientes']);
+			//var_dump($data['variable']);
 			
 			$data['seguridad'] = $this->modelCuip->GetEmpleosSeridadById($id);
 			$data['diversos'] = $this->modelCuip->GetEmpleosDiversos($id);
