@@ -2054,8 +2054,9 @@ class Cuip extends BaseController {
 			$data['modulos'] = $this->menu->Permisos();
 			$empresa = session()->get('empresa');
 			$idEmpresa = $this->encrypter->decrypt($empresa);
-			
-			$documentos = $this->modelCuip->GetDocumentos($idEmpresa);
+			$getId = str_replace(" ", "+", $_GET['id']);
+			$id = $this->encrypt->Decrytp($getId);
+			$documentos = $this->modelCuip->GetDocumentos($idEmpresa,$id);
 
 			$result = [];
 
