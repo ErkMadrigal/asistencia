@@ -306,10 +306,10 @@ class CuipModel
         return $builder->get()->getRow();
     }
 
-    public function GetDocumentos($idEmpresa){
+    public function GetDocumentos($idEmpresa,$id){
         $builder = $this->db->table('documentos_expediente_digital');
         $builder->select('id,documento,tipo');
-        $builder->join("documentos","documentos_expediente_digital.id = documentos.idDocExp","left");
+        $builder->join("documentos","documentos_expediente_digital.id = documentos.idDocExp AND documentos.idPersonal = '$id'","left");
         $builder->orderBy("documento","asc");
         $builder->where('activo', true);
         $builder->where('nombre_documento IS NULL');
