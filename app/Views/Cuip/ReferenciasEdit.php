@@ -1032,6 +1032,7 @@
                             }
                         endif; ?>
                     </select>
+                    
                     <script>
                         $(document).ready(function() {
                             $("#coloniacodigoLaboral").select2({
