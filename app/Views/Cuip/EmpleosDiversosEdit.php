@@ -75,7 +75,7 @@
                                     if (!empty($coloniacodigoEmpDiv)) :
                                         foreach ($coloniacodigoEmpDiv as  $a) {
                                     ?>
-                            <option <?= ($diversos->colonia == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                       <option <?= (isset($diversos->colonia) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                     <?php
                                         }
@@ -103,7 +103,7 @@
                                     if (!empty($estadocodigoEmpDiv)) :
                                         foreach ($estadocodigoEmpDiv as  $a) {
                                     ?>
-                            <option <?= ($diversos->estado == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                               <option <?= (isset($diversos->estado) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                     <?php
                                         }
@@ -130,7 +130,7 @@
                                     if (!empty($municipiocodigoEmpDiv)) :
                                         foreach ($municipiocodigoEmpDiv as  $a) {
                                     ?>
-                            <option <?= ($diversos->municipio == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                   <option <?= (isset($diversos->municipio) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                     <?php
                                         }
@@ -296,7 +296,7 @@
                         if (!empty($SiNo)) :
                             foreach ($SiNo as  $a) {
                         ?>
-                                    <option <?= ($diversos->reglamento == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+             <option <?= (isset($diversos->reglamento) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                         <?php
                             }
                         endif; ?>
@@ -331,7 +331,7 @@
                         if (!empty($SiNo)) :
                             foreach ($SiNo as  $a) {
                         ?>
-                                    <option <?= ($diversos->reglamento == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                     <option <?= (isset($diversos->reglamento) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                         <?php
                             }
                         endif; ?>
@@ -396,7 +396,7 @@
                         if (!empty($tipoDisciplina)) :
                             foreach ($tipoDisciplina as  $a) {
                         ?>
-                                    <option <?= ($diversos->disciplina == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+              <option <?= (isset($diversos->disciplina) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                         <?php
                             }
                         endif; ?>
@@ -493,7 +493,7 @@
                         if (!empty($duracion)) :
                             foreach ($duracion as  $a) {
                         ?>
-               <option <?= ($diversos->duracion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                      <option <?= (isset($diversos->duracion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                         <?php
                             }

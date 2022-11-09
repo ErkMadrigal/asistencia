@@ -19,160 +19,161 @@
     <div class="card-body">
         <form class="form-horizontal" id="Capacitaciones">
             <div id="CardDatoscapacitacion">
-            <?php
-        if( !empty($capacitacion_publica) ):
-            $label = '';
-            foreach($capacitacion_publica as  $e){
-                                        ?>  
-                <div class="row">
-                    <div class='col-12 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="dependencia" class=" control-label">Dependencia responsable:<span class="text-danger">*</span></label>
-                            <div>
-                                <input type="text" class="form-control " id="certificado" name="certificado" value="<?= isset($capacitacion->dependencia) ? $capacitacion->dependencia : ''  ?>">
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-12 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="institucion" class=" control-label">Institución Capacitadora:<span class="text-danger">*</span></label>
-                            <div>
-                                <input type="text" class="form-control " id="institucion" name="institucion" value=" <?= isset($capacitacion->inst_capacitadora) ? $capacitacion->inst_capacitadora : ''  ?>">
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-12 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="nombre_curso" class=" control-label">Nombre del curso:<span class="text-danger">*</span></label>
-                            <div>
-                                <input type="text" class="form-control " id="nombre_curso" name="nombre_curso" value="<?= isset($capacitacion->nombre_curso) ? $capacitacion->nombre_curso : ''  ?>">
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-12 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="tema_curso" class=" control-label">Tema del curso:<span class="text-danger">*</span></label>
-                            <div>
-                                <input type="text" class="form-control " id="tema_curso" name="tema_curso" value=" <?= isset($capacitacion->tema_curso) ? $capacitacion->tema_curso : ''  ?>">
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-6 col-sm-6'>
-                        <div class="form-group">
-                            <label for="nivel_curso" class="control-label">Nivel del curso recibido: <span class="text-danger">*</span></label>
-                            <div>
-                                <select class="form-control" id="nivel_curso" name="nivel_curso">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($nivel_curso)) :
-                                        foreach ($nivel_curso as  $a) {
-                                    ?>
-           <option <?= ($capacitacion->curso == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-
-                                    <?php
-                                        }
-                                    endif; ?>
-                                </select>
-                                <script>
-                                    $(document).ready(function() {
-                                        $("#nivel_curso").select2({
-                                            theme: "bootstrap4",
-                                            width: "100%"
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-6 col-sm-6'>
-                        <div class="form-group">
-                            <label for="eficienciaCursos" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
-                            <div>
-                                <select class="form-control" id="eficienciaCursos" name="eficienciaCursos">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($eficiencia)) :
-                                        foreach ($eficiencia as  $a) {
-                                    ?>
-
-                                    <?php
-                                        }
-                                    endif; ?>
-                                </select>
-                                <script>
-                                    $(document).ready(function() {
-                                        $("#eficienciaCursos").select2({
-                                            theme: "bootstrap4",
-                                            width: "100%"
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-12 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="inicio" class=" control-label">Inicio:<span class="text-danger">*</span></label>
-                            <div>
-                                <input type="text" class="form-control " id="inicio" name="inicio" value=" <?= isset($capacitacion->inicio_curso) ? $capacitacion->inicio_curso : ''  ?>">
-
-                            </div>
-                            <script type="text/javascript">
-                                $(function() {
-                                    $("#inicio").datetimepicker({
-                                        format: 'DD-MM-YYYY',
-                                        locale: moment.locale('es')
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                    <div class='col-12 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="conclusion" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
-                            <div>
-                                <input type="text" class="form-control " id="conclusion" name="conclusion" value="<?= isset($capacitacion->conclusion_curso) ? $capacitacion->conclusion_curso : ''  ?>">
-
-                            </div>
-                            <script type="text/javascript">
-                                $(function() {
-                                    $("#conclusion").datetimepicker({
-                                        format: 'DD-MM-YYYY',
-                                        locale: moment.locale('es')
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                    <div class='col-12 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="duracion" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
-                            <div>
-                                <input type="text" class="form-control " id="duracion" name="duracion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" value="<?= isset($capacitacion->duracion_horas_curso) ? $capacitacion->duracion_horas_curso : ''  ?>">
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class='col-12 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="comprobante" class=" control-label">Tipo de comprobante:<span class="text-danger">*</span></label>
-                            <div>
-                                <input type="text" class="form-control " id="comprobante" name="comprobante" value="<?= isset($capacitacion->tipo_comprobante) ? $capacitacion->tipo_comprobante : ''  ?>">
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
                 <?php
-            $label = 'B';
-            }
-            endif;?>    
+                if (!empty($capacitacion_publica)) :
+                    $label = '';
+                    foreach ($capacitacion_publica as  $e) {
+                ?>
+                        <div class="row">
+                            <div class='col-12 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="dependencia" class=" control-label">Dependencia responsable:<span class="text-danger">*</span></label>
+                                    <div>
+                                        <input type="text" class="form-control " id="certificado" name="certificado" value="<?= isset($capacitacion->dependencia) ? $capacitacion->dependencia : ''  ?>">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-12 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="institucion" class=" control-label">Institución Capacitadora:<span class="text-danger">*</span></label>
+                                    <div>
+                                        <input type="text" class="form-control " id="institucion" name="institucion" value=" <?= isset($capacitacion->inst_capacitadora) ? $capacitacion->inst_capacitadora : ''  ?>">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-12 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="nombre_curso" class=" control-label">Nombre del curso:<span class="text-danger">*</span></label>
+                                    <div>
+                                        <input type="text" class="form-control " id="nombre_curso" name="nombre_curso" value="<?= isset($capacitacion->nombre_curso) ? $capacitacion->nombre_curso : ''  ?>">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-12 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="tema_curso" class=" control-label">Tema del curso:<span class="text-danger">*</span></label>
+                                    <div>
+                                        <input type="text" class="form-control " id="tema_curso" name="tema_curso" value=" <?= isset($capacitacion->tema_curso) ? $capacitacion->tema_curso : ''  ?>">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-6 col-sm-6'>
+                                <div class="form-group">
+                                    <label for="nivel_curso" class="control-label">Nivel del curso recibido: <span class="text-danger">*</span></label>
+                                    <div>
+                                        <select class="form-control" id="nivel_curso" name="nivel_curso">
+                                            <option value="">Selecciona una Opcion</option>
+                                            <?php
+                                            if (!empty($nivel_curso)) :
+                                                foreach ($nivel_curso as  $a) {
+                                            ?>
+                                                    <option <?= (isset($capacitacion->curso) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                                            <?php
+                                                }
+                                            endif; ?>
+                                        </select>
+                                        <script>
+                                            $(document).ready(function() {
+                                                $("#nivel_curso").select2({
+                                                    theme: "bootstrap4",
+                                                    width: "100%"
+                                                });
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-6 col-sm-6'>
+                                <div class="form-group">
+                                    <label for="eficienciaCursos" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
+                                    <div>
+                                        <select class="form-control" id="eficienciaCursos" name="eficienciaCursos">
+                                            <option value="">Selecciona una Opcion</option>
+                                            <?php
+                                            if (!empty($eficiencia)) :
+                                                foreach ($eficiencia as  $a) {
+                                            ?>
+                                                    <option <?= (isset($capacitacion->eficiencia) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                                            <?php
+                                                }
+                                            endif; ?>
+                                        </select>
+                                        <script>
+                                            $(document).ready(function() {
+                                                $("#eficienciaCursos").select2({
+                                                    theme: "bootstrap4",
+                                                    width: "100%"
+                                                });
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-12 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="inicio" class=" control-label">Inicio:<span class="text-danger">*</span></label>
+                                    <div>
+                                        <input type="text" class="form-control " id="inicio" name="inicio" value=" <?= isset($capacitacion->inicio_curso) ? $capacitacion->inicio_curso : ''  ?>">
+
+                                    </div>
+                                    <script type="text/javascript">
+                                        $(function() {
+                                            $("#inicio").datetimepicker({
+                                                format: 'DD-MM-YYYY',
+                                                locale: moment.locale('es')
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <div class='col-12 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="conclusion" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
+                                    <div>
+                                        <input type="text" class="form-control " id="conclusion" name="conclusion" value="<?= isset($capacitacion->conclusion_curso) ? $capacitacion->conclusion_curso : ''  ?>">
+
+                                    </div>
+                                    <script type="text/javascript">
+                                        $(function() {
+                                            $("#conclusion").datetimepicker({
+                                                format: 'DD-MM-YYYY',
+                                                locale: moment.locale('es')
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <div class='col-12 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="duracion" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
+                                    <div>
+                                        <input type="text" class="form-control " id="duracion" name="duracion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" value="<?= isset($capacitacion->duracion_horas_curso) ? $capacitacion->duracion_horas_curso : ''  ?>">
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class='col-12 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="comprobante" class=" control-label">Tipo de comprobante:<span class="text-danger">*</span></label>
+                                    <div>
+                                        <input type="text" class="form-control " id="comprobante" name="comprobante" value="<?= isset($capacitacion->tipo_comprobante) ? $capacitacion->tipo_comprobante : ''  ?>">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                <?php
+                        $label = 'B';
+                    }
+                endif; ?>
             </div>
             <hr class="mt-3 mb-3" />
             <div id="CardDatoscapacitacionB">
@@ -202,156 +203,147 @@
     <div class="card-body">
         <form class="form-horizontal" id="adicional">
             <div id="CardDatosAdicional">
-            <?php
-        if( !empty($economico_dependientes) ):
-            $label = '';
-            foreach($economico_dependientes as  $e){
-                                        ?>  
-                <div class="row">
-                    <div class='col-12 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="empresa" class=" control-label">Insitutción o Empresa:<span class="text-danger">*</span></label>
-                            <div>
-                                <input type="text" class="form-control " id="empresa" name="empresa" value="<?= isset($capacitacion->institucion) ? $capacitacion->institucion : ''  ?>">
+                <?php
+                if (!empty($economico_dependientes)) :
+                    $label = '';
+                    foreach ($economico_dependientes as  $e) {
+                ?>
+                        <div class="row">
+                            <div class='col-12 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="empresa" class=" control-label">Insitutción o Empresa:<span class="text-danger">*</span></label>
+                                    <div>
+                                        <input type="text" class="form-control " id="empresa" name="empresa" value="<?= isset($capacitacion->institucion) ? $capacitacion->institucion : ''  ?>">
 
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class='col-12 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="curso" class=" control-label">Estudio o Curso:<span class="text-danger">*</span></label>
-                            <div>
-                                <input type="text" class="form-control " id="curso" name="curso" value="<?= isset($capacitacion->curso) ? $capacitacion->curso : ''  ?>">
+                            <div class='col-12 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="curso" class=" control-label">Estudio o Curso:<span class="text-danger">*</span></label>
+                                    <div>
+                                        <input type="text" class="form-control " id="curso" name="curso" value="<?= isset($capacitacion->curso) ? $capacitacion->curso : ''  ?>">
 
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class='col-12 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="tipo_curso" class=" control-label">Tipo de curso:<span class="text-danger">*</span></label>
-                            <div>
-                                <input type="text" class="form-control " id="tipo_curso" name="tipo_curso" value="<?= isset($capacitacion->tipo_curso) ? $capacitacion->tipo_curso : ''  ?>">
+                            <div class='col-12 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="tipo_curso" class=" control-label">Tipo de curso:<span class="text-danger">*</span></label>
+                                    <div>
+                                        <input type="text" class="form-control " id="tipo_curso" name="tipo_curso" value="<?= isset($capacitacion->tipo_curso) ? $capacitacion->tipo_curso : ''  ?>">
 
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class='col-6 col-sm-6'>
-                        <div class="form-group">
-                            <label for="cuso_tomado" class="control-label">¿El curso fue?: <span class="text-danger">*</span></label>
-                            <div>
-                                <select class="form-control" id="cuso_tomado" name="cuso_tomado">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($cuso_tomado)) :
-                                        foreach ($cuso_tomado as  $a) {
-                                    ?>
-                                          <option <?= ($capacitacion->cursofue == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                            <div class='col-6 col-sm-6'>
+                                <div class="form-group">
+                                    <label for="cuso_tomado" class="control-label">¿El curso fue?: <span class="text-danger">*</span></label>
+                                    <div>
+                                        <select class="form-control" id="cuso_tomado" name="cuso_tomado">
+                                            <option value="">Selecciona una Opcion</option>
+                                            <?php
+                                            if (!empty($cuso_tomado)) :
+                                                foreach ($cuso_tomado as  $a) {
+                                            ?>
+                                                    <option <?= (isset($capacitacion->cursofue) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
-                                    <?php
-                                        }
-                                    endif; ?>
-                                </select>
-                                <script>
-                                    $(document).ready(function() {
-                                        $("#cuso_tomado").select2({
-                                            theme: "bootstrap4",
-                                            width: "100%"
+
+                                            <?php
+                                                }
+                                            endif; ?>
+                                        </select>
+                                        <script>
+                                            $(document).ready(function() {
+                                                $("#cuso_tomado").select2({
+                                                    theme: "bootstrap4",
+                                                    width: "100%"
+                                                });
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-6 col-sm-6'>
+                                <div class="form-group">
+                                    <label for="eficiencia" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
+                                    <div>
+                                        <select class="form-control" id="eficiencia" name="eficiencia">
+                                            <option value="">Selecciona una Opcion</option>
+                                            <?php
+                                            if (!empty($eficiencia)) :
+                                                foreach ($eficiencia as  $a) {
+                                            ?>
+                                                    <option <?= (isset($capacitacion->eficiencia) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                                            <?php
+                                                }
+                                            endif; ?>
+                                        </select>
+                                        <script>
+                                            $(document).ready(function() {
+                                                $("#eficiencia").select2({
+                                                    theme: "bootstrap4",
+                                                    width: "100%"
+                                                });
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-12 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="inicioAdicional" class=" control-label">Inicio:<span class="text-danger">*</span></label>
+                                    <div>
+                                        <input type="text" class="form-control " id="tipo_curso" name="tipo_curso" value="<?= isset($capacitacion->inicio_adicional) ? $capacitacion->inicio_adicional : ''  ?>">
+                                    </div>
+
+                                    <script type="text/javascript">
+                                        $(function() {
+                                            $("#inicioAdicional").datetimepicker({
+                                                format: 'DD-MM-YYYY',
+                                                locale: moment.locale('es')
+                                            });
                                         });
-                                    });
-                                </script>
+                                    </script>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class='col-6 col-sm-6'>
-                        <div class="form-group">
-                            <label for="eficiencia" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
-                            <div>
-                                <select class="form-control" id="eficiencia" name="eficiencia">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($eficiencia)) :
-                                        foreach ($eficiencia as  $a) {
-                                    ?>
+                            <div class='col-12 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="conclusionAdicional" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
 
-                                    <?php
-                                        }
-                                    endif; ?>
-                                </select>
-                                <script>
-                                    $(document).ready(function() {
-                                        $("#eficiencia").select2({
-                                            theme: "bootstrap4",
-                                            width: "100%"
+                                    <div>
+                                        <input type="text" class="form-control " id="tipo_curso" name="tipo_curso" value="<?= isset($capacitacion->conclusion_adicional) ? $capacitacion->conclusion_adicional : ''  ?>">
+                                    </div>
+                                    <script type="text/javascript">
+                                        $(function() {
+                                            $("#conclusionAdicional").datetimepicker({
+                                                format: 'DD-MM-YYYY',
+                                                locale: moment.locale('es')
+                                            });
                                         });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-12 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="inicioAdicional" class=" control-label">Inicio:<span class="text-danger">*</span></label>
-                            <div>
-                                <select class="form-control" id="eficiencia" name="eficiencia">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($eficiencia)) :
-                                        foreach ($eficiencia as  $a) {
-                                    ?>
-                         <option <?= ($capacitacion->inicio_adicional == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-
-                                          
-                                    <?php
-                                        }
-                                    endif; ?>
-                                </select>
-                                <script type="text/javascript">
-                                    $(function() {
-                                        $("#inicioAdicional").datetimepicker({
-                                            format: 'DD-MM-YYYY',
-                                            locale: moment.locale('es')
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-12 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="conclusionAdicional" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
-
-                            <div>
-                                <input type="text" class="form-control " id="tipo_curso" name="tipo_curso" value="<?= isset($capacitacion->conclusion_adicional) ? $capacitacion->conclusion_adicional : ''  ?>">
-                            </div>
-                            <script type="text/javascript">
-                                $(function() {
-                                    $("#conclusionAdicional").datetimepicker({
-                                        format: 'DD-MM-YYYY',
-                                        locale: moment.locale('es')
-                                    });
-                                });
-                            </script>
-
-                        </div>
-                    </div>
-                    <div class='col-12 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="duracion_horas" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
-                            <div>
-                                <div>
-                                    <input type="text" class="form-control " id="duracion_horas" name="duracion_horas" value="<?= isset($capacitacion->duracion_horas_adicional) ? $capacitacion->duracion_horas_adicional : ''  ?>">
+                                    </script>
 
                                 </div>
-
                             </div>
-                        </div>
-                    </div>
+                            <div class='col-12 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="duracion_horas" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
+                                    <div>
+                                        <div>
+                                            <input type="text" class="form-control " id="duracion_horas" name="duracion_horas" value="<?= isset($capacitacion->duracion_horas_adicional) ? $capacitacion->duracion_horas_adicional : ''  ?>">
 
-                </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                 <?php
-            $label = 'B';
-            }
-            endif;?> 
+                        $label = 'B';
+                    }
+                endif; ?>
             </div>
             <hr class="mt-3 mb-3" />
             <div id="CardDatosAdicionalB">
@@ -378,122 +370,126 @@
     <div class="card-body">
         <form class="form-horizontal" id="IDIOMAS">
             <div id="CardIdiomas">
-            <?php
-        if( !empty($idiomas) ):
-            $label = '';
-            foreach($idiomas as  $e){
-                                        ?>   
-                <div class="row">
-                    <div class='col-6 col-sm-6'>
-                        <div class="form-group">
-                            <label for="idioma" class="control-label">Idioma o Dialecto: <span class="text-danger">*</span></label>
-                            <div>
-                                <select class="form-control" id="idioma" name="idioma">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($idioma)) :
-                                        foreach ($idioma as  $a) {
-                                    ?>
-
-                                    <?php
-                                        }
-                                    endif; ?>
-                                </select>
-                                <script>
-                                    $(document).ready(function() {
-                                        $("#idioma").select2({
-                                            theme: "bootstrap4",
-                                            width: "100%"
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-6 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="lectura" class=" control-label">% Lectura:<span class="text-danger">*</span></label>
-                            <div>
-                                <select class="form-control" id="lectura" name="lectura">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($porsentajeIdioma)) :
-                                        foreach ($porsentajeIdioma as  $a) {
-                                    ?>          
-
-                                    <?php
-                                        }
-                                    endif; ?>
-                                </select>
-                                <script>
-                                    $(document).ready(function() {
-                                        $("#lectura").select2({
-                                            theme: "bootstrap4",
-                                            width: "100%"
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-6 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="escritura" class=" control-label">% Escritura:<span class="text-danger">*</span></label>
-                            <div>
-                                <select class="form-control" id="escritura" name="escritura">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($porsentajeIdioma)) :
-                                        foreach ($porsentajeIdioma as  $a) {
-                                    ?>
-
-                                    <?php
-                                        }
-                                    endif; ?>
-                                </select>
-                                <script>
-                                    $(document).ready(function() {
-                                        $("#escritura").select2({
-                                            theme: "bootstrap4",
-                                            width: "100%"
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-6 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="conversacion" class=" control-label">% Conversación:<span class="text-danger">*</span></label>
-                            <div>
-                                <select class="form-control" id="conversacion" name="conversacion">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($porsentajeIdioma)) :
-                                        foreach ($porsentajeIdioma as  $a) {
-                                    ?>
-
-                                    <?php
-                                        }
-                                    endif; ?>
-                                </select>
-                                <script>
-                                    $(document).ready(function() {
-                                        $("#conversacion").select2({
-                                            theme: "bootstrap4",
-                                            width: "100%"
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
                 <?php
-            $label = 'B';
-            }
-            endif;?> 
+                if (!empty($idiomas)) :
+                    $label = '';
+                    foreach ($idiomas as  $e) {
+                ?>
+                        <div class="row">
+                            <div class='col-6 col-sm-6'>
+                                <div class="form-group">
+                                    <label for="idioma" class="control-label">Idioma o Dialecto: <span class="text-danger">*</span></label>
+                                    <div>
+                                        <select class="form-control" id="idioma" name="idioma">
+                                            <option value="">Selecciona una Opcion</option>
+                                            <?php
+                                            if (!empty($idioma)) :
+                                                foreach ($idioma as  $a) {
+                                            ?>
+                                         <option <?= (isset($idiomas->idIdioma) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                                            <?php
+                                                }
+                                            endif; ?>
+                                        </select>
+                                        <script>
+                                            $(document).ready(function() {
+                                                $("#idioma").select2({
+                                                    theme: "bootstrap4",
+                                                    width: "100%"
+                                                });
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-6 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="lectura" class=" control-label">% Lectura:<span class="text-danger">*</span></label>
+                                    <div>
+                                        <select class="form-control" id="lectura" name="lectura">
+                                            <option value="">Selecciona una Opcion</option>
+                                            <?php
+                                            if (!empty($porsentajeIdioma)) :
+                                                foreach ($porsentajeIdioma as  $a) {
+                                            ?>
+                                                    <option <?= (isset($idiomas->idIdiomaLectura) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                                            <?php
+                                                }
+                                            endif; ?>
+                                        </select>
+                                        <script>
+                                            $(document).ready(function() {
+                                                $("#lectura").select2({
+                                                    theme: "bootstrap4",
+                                                    width: "100%"
+                                                });
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-6 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="escritura" class=" control-label">% Escritura:<span class="text-danger">*</span></label>
+                                    <div>
+                                        <select class="form-control" id="escritura" name="escritura">
+                                            <option value="">Selecciona una Opcion</option>
+                                            <?php
+                                            if (!empty($porsentajeIdioma)) :
+                                                foreach ($porsentajeIdioma as  $a) {
+                                            ?>
+                                                    <option <?= (isset($idiomas->idIdiomaEscritura) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                                            <?php
+                                                }
+                                            endif; ?>
+                                        </select>
+                                        <script>
+                                            $(document).ready(function() {
+                                                $("#escritura").select2({
+                                                    theme: "bootstrap4",
+                                                    width: "100%"
+                                                });
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-6 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="conversacion" class=" control-label">% Conversación:<span class="text-danger">*</span></label>
+                                    <div>
+                                        <select class="form-control" id="conversacion" name="conversacion">
+                                            <option value="">Selecciona una Opcion</option>
+                                            <?php
+                                            if (!empty($porsentajeIdioma)) :
+                                                foreach ($porsentajeIdioma as  $a) {
+                                            ?>
+                                                    <option <?= (isset($idiomas->idIdiomaConversacion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                                            <?php
+                                                }
+                                            endif; ?>
+                                        </select>
+                                        <script>
+                                            $(document).ready(function() {
+                                                $("#conversacion").select2({
+                                                    theme: "bootstrap4",
+                                                    width: "100%"
+                                                });
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                <?php
+                        $label = 'B';
+                    }
+                endif; ?>
             </div>
             <hr class="mt-3 mb-3" />
             <div id="CardIdiomasB">
@@ -522,79 +518,81 @@
     <div class="card-body">
         <form class="form-horizontal" id="HABILIDAD">
             <div id="CardDatosHabilidad">
-            <?php
-        if( !empty($habilidades) ):
-            $label = '';
-            foreach($habilidades as  $e){
-                                        ?>   
-                <div class="row">
-                    <div class='col-6 col-sm-6'>
-                        <div class="form-group">
-                            <label for="tipo_habilidad" class="control-label">Tipo: <span class="text-danger">*</span></label>
-                            <div>
-                                <select class="form-control" id="tipo_habilidad" name="tipo_habilidad">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($tipo_habilidad)) :
-                                        foreach ($tipo_habilidad as  $a) {
-                                    ?>
-
-                                    <?php
-                                        }
-                                    endif; ?>
-                                </select>
-                                <script>
-                                    $(document).ready(function() {
-                                        $("#tipo_habilidad").select2({
-                                            theme: "bootstrap4",
-                                            width: "100%"
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-12 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="especificacion" class=" control-label">Especifique:<span class="text-danger">*</span></label>
-                            <div>
-                                <input type="text" class="form-control " id="especificacion" name="especificacion" value="<?= isset($capacitacion->especifique_habilidad) ? $capacitacion->especifique_habilidad : ''  ?>">
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-6 col-sm-6'>
-                        <div class="form-group">
-                            <label for="grado_habilidadCap" class="control-label">Grado de aptitude o dominio: <span class="text-danger">*</span></label>
-                            <div>
-                                <select class="form-control" id="grado_habilidadCap" name="grado_habilidadCap">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($grado_habilidad)) :
-                                        foreach ($grado_habilidad as  $a) {
-                                    ?>
-
-                                    <?php
-                                        }
-                                    endif; ?>
-                                </select>
-                                <script>
-                                    $(document).ready(function() {
-                                        $("#grado_habilidadCap").select2({
-                                            theme: "bootstrap4",
-                                            width: "100%"
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
                 <?php
-            $label = 'B';
-            }
-            endif;?> 
+                if (!empty($habilidades)) :
+                    $label = '';
+                    foreach ($habilidades as  $e) {
+                ?>
+                        <div class="row">
+                            <div class='col-6 col-sm-6'>
+                                <div class="form-group">
+                                    <label for="tipo_habilidad" class="control-label">Tipo: <span class="text-danger">*</span></label>
+                                    <div>
+                                        <select class="form-control" id="tipo_habilidad" name="tipo_habilidad">
+                                            <option value="">Selecciona una Opcion</option>
+                                            <?php
+                                            if (!empty($tipo_habilidad)) :
+                                                foreach ($tipo_habilidad as  $a) {
+                                            ?>
+                                                    <option <?= (isset($habilidades->idTipoHabilidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                                            <?php
+                                                }
+                                            endif; ?>
+                                        </select>
+                                        <script>
+                                            $(document).ready(function() {
+                                                $("#tipo_habilidad").select2({
+                                                    theme: "bootstrap4",
+                                                    width: "100%"
+                                                });
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-12 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="especificacion" class=" control-label">Especifique:<span class="text-danger">*</span></label>
+                                    <div>
+                                        <input type="text" class="form-control " id="especificacion" name="especificacion" value="<?= isset($capacitacion->especifique_habilidad) ? $capacitacion->especifique_habilidad : ''  ?>">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-6 col-sm-6'>
+                                <div class="form-group">
+                                    <label for="grado_habilidadCap" class="control-label">Grado de aptitude o dominio: <span class="text-danger">*</span></label>
+                                    <div>
+                                        <select class="form-control" id="grado_habilidadCap" name="grado_habilidadCap">
+                                            <option value="">Selecciona una Opcion</option>
+                                            <?php
+                                            if (!empty($grado_habilidad)) :
+                                                foreach ($grado_habilidad as  $a) {
+                                            ?>
+                                                    <option <?= (isset($habilidades->idGradoHabilidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                                            <?php
+                                                }
+                                            endif; ?>
+                                        </select>
+                                        <script>
+                                            $(document).ready(function() {
+                                                $("#grado_habilidadCap").select2({
+                                                    theme: "bootstrap4",
+                                                    width: "100%"
+                                                });
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                <?php
+                        $label = 'B';
+                    }
+                endif; ?>
             </div>
             <hr class="mt-3 mb-3" />
             <div id="CardDatosHabilidadB">
@@ -625,96 +623,97 @@
         <form class="form-horizontal" id="AFILIACION">
 
             <div id="CardDatosAfiliacion">
-            <?php
-        if( !empty($agrupaciones) ):
-            $label = '';
-            foreach($agrupaciones as  $e){
-                                        ?>
-                <div class="row">
-                    <div class='col-12 col-sm-12 col-md-12'>
-                        <div class="form-group">
-                            <label for="nombre" class=" control-label">Nombre:<span class="text-danger">*</span></label>
-                            <div>
-                                <input type="text" class="form-control " id="nombre" name="nombre" value="<?= isset($capacitacion->nombre_agrupacion) ? $capacitacion->nombre_agrupacion : ''  ?>">
+                <?php
+                if (!empty($agrupaciones)) :
+                    $label = '';
+                    foreach ($agrupaciones as  $e) {
+                ?>
+                        <div class="row">
+                            <div class='col-12 col-sm-12 col-md-12'>
+                                <div class="form-group">
+                                    <label for="nombre" class=" control-label">Nombre:<span class="text-danger">*</span></label>
+                                    <div>
+                                        <input type="text" class="form-control " id="nombre" name="nombre" value="<?= isset($capacitacion->nombre_agrupacion) ? $capacitacion->nombre_agrupacion : ''  ?>">
 
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class='col-12 col-sm-12 col-md-6'>
-                        <div class="form-group">
-                            <label for="tipoAgrupa" class=" control-label">Tipo:<span class="text-danger">*</span></label>
-                            <div>
-                                <select class="form-control" id="tipoAgrupa" name="tipoAgrupa">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($tipo_agrupacion)) :
-                                        foreach ($tipo_agrupacion as  $a) {
-                                    ?>
+                            <div class='col-12 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="tipoAgrupa" class=" control-label">Tipo:<span class="text-danger">*</span></label>
+                                    <div>
+                                        <select class="form-control" id="tipoAgrupa" name="tipoAgrupa">
+                                            <option value="">Selecciona una Opcion</option>
+                                            <?php
+                                            if (!empty($tipo_agrupacion)) :
+                                                foreach ($tipo_agrupacion as  $a) {
+                                            ?>
+                                                    <option <?= (isset($agrupaciones->idTipoAgrupacion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
-                                    <?php
-                                        }
-                                    endif; ?>
-                                </select>
-                                <script>
-                                    $(document).ready(function() {
-                                        $("#tipoAgrupa").select2({
-                                            theme: "bootstrap4",
-                                            width: "100%"
+                                            <?php
+                                                }
+                                            endif; ?>
+                                        </select>
+                                        <script>
+                                            $(document).ready(function() {
+                                                $("#tipoAgrupa").select2({
+                                                    theme: "bootstrap4",
+                                                    width: "100%"
+                                                });
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-12 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="desde" class=" control-label">Desde:<span class="text-danger">*</span></label>
+
+                                    <div>
+                                        <input type="text" class="form-control " id="desde" name="desde" value="<?= isset($capacitacion->desde) ? $capacitacion->desde : ''  ?>">
+
+                                    </div>
+                                    <script type="text/javascript">
+                                        $(function() {
+                                            $("#desde").datetimepicker({
+                                                format: 'DD-MM-YYYY',
+                                                locale: moment.locale('es')
+                                            });
                                         });
-                                    });
-                                </script>
+                                    </script>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                        <div class='col-12 col-sm-12 col-md-6'>
-                            <div class="form-group">
-                                <label for="desde" class=" control-label">Desde:<span class="text-danger">*</span></label>
 
-                                <div>
-                                    <input type="text" class="form-control " id="desde" name="desde" value="<?= isset($capacitacion->desde) ? $capacitacion->desde : ''  ?>">
+                            <div class='col-12 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="hasta" class=" control-label">Hasta:<span class="text-danger">*</span></label>
+
+                                    <div>
+                                        <input type="text" class="form-control " id="desde" name="desde" value="<?= isset($capacitacion->hasta) ? $capacitacion->hasta : ''  ?>">
+
+                                    </div>
+                                    <script type="text/javascript">
+                                        $(function() {
+                                            $("#hasta").datetimepicker({
+                                                format: 'DD-MM-YYYY',
+                                                locale: moment.locale('es')
+                                            });
+                                        });
+                                    </script>
 
                                 </div>
-                                <script type="text/javascript">
-                                    $(function() {
-                                        $("#desde").datetimepicker({
-                                            format: 'DD-MM-YYYY',
-                                            locale: moment.locale('es')
-                                        });
-                                    });
-                                </script>
                             </div>
+
+
                         </div>
-
-                        <div class='col-12 col-sm-12 col-md-6'>
-                            <div class="form-group">
-                                <label for="hasta" class=" control-label">Hasta:<span class="text-danger">*</span></label>
-
-                                <div>
-                                    <input type="text" class="form-control " id="desde" name="desde" value="<?= isset($capacitacion->hasta) ? $capacitacion->hasta : ''  ?>">
-
-                                </div>
-                                <script type="text/javascript">
-                                    $(function() {
-                                        $("#hasta").datetimepicker({
-                                            format: 'DD-MM-YYYY',
-                                            locale: moment.locale('es')
-                                        });
-                                    });
-                                </script>
-
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <?php
-            $label = 'B';
-            }
-            endif;?> 
-                </div>
-                <hr class="mt-3 mb-3" />
-                <div id="CardDatosAfiliacionB">
-                </div>
+                <?php
+                        $label = 'B';
+                    }
+                endif; ?>
+            </div>
+            <hr class="mt-3 mb-3" />
+            <div id="CardDatosAfiliacionB">
+            </div>
         </form>
     </div>
 </div>
@@ -929,7 +928,7 @@
 
         var clone = '<div class="row">   <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">   <label for="empresaB" class=" control-label">Insitutción o Empresa:<span class="text-danger">*</span></label>    <input type="text" class="form-control " id="empresaB" name="empresaB"> </div>  </div>    <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">   <label for="cursoB" class=" control-label">Estudio o Curso:<span class="text-danger">*</span></label>    <input type="text" class="form-control " id="cursoB" name="cursoB">    </div>   </div>   <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">    <label for="tipo_cursoB" class=" control-label">Tipo de curso:<span class="text-danger">*</span></label>   <input type="text" class="form-control " id="tipo_cursoB" name="tipo_cursoB">   </div>   </div>    <div class="col-6 col-sm-6">    <div class="form-group">    <label for="cuso_tomadoB" class="control-label">¿El curso fue?: <span class="text-danger">*</span></label>    <div>   <select class="form-control" id="cuso_tomadoB" name="cuso_tomadoB">   <option value="">Selecciona una Opcion</option>    <?php if (!empty($cuso_tomado)) :   foreach ($cuso_tomado as  $a) {    ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>    <?php     }
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 endif; ?>    </select>   <script>   $(document).ready(function() {    $("#cuso_tomadoB").select2({    theme: "bootstrap4",    width: "100%"    });    });    <\/script>    </div>   </div>   </div> <div class="col-6 col-sm-6">  <div class="form-group">    <label for="eficienciaB" class="control-label">eficiencia terminal: <span class="text-danger">*</span></label>    <div>    <select class="form-control" id="eficienciaB" name="eficienciaB">   <option value="">Selecciona una Opcion</option>    <?php if (!empty($eficiencia)) :    foreach ($eficiencia as  $a) {    ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>    <?php    }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    endif; ?>    </select>   <script>    $(document).ready(function() {    $("#eficienciaB").select2({     theme: "bootstrap4",    width: "100%"    });    });   <\/script>  </div>   </div>   </div>  <div class="col-12 col-sm-12 col-md-6">  <div class="form-group">   <label for="inicioAdicionalB" class=" control-label">Inicio:<span class="text-danger">*</span></label>  <div class="input-group date" id="inicioAdicionalB" data-target-input="nearest">     <input type="text" required class="form-control datetimepicker-input" data-target="#inicioAdicionalB" id="datetime-inicioAdicionalB" name="inicioAdicionalB" placeholder="" value="" /> <div class="input-group-append" data-target="#inicioAdicionalB" data-toggle="datetimepicker">    <div class="input-group-text"><i class="far fa-calendar"></i></div>    </div>    </div>   <script type="text/javascript"> $(function() {   $("#inicioAdicionalB").datetimepicker({    format: "DD-MM-YYYY",     locale: moment.locale("es")    });    });   <\/script>   </div>  </div> <div class="col-12 col-sm-12 col-md-6"> <div class="form-group">    <label for="conclusionAdicionalB" class=" control-label">Conclusión:<span class="text-danger">*</span></label>   <div class="input-group date" id="conclusionAdicionalB" data-target-input="nearest">    <input type="text" required class="form-control datetimepicker-input" data-target="#conclusionAdicionalB" id="datetime-conclusionAdicionalB" name="conclusionAdicionalB" placeholder="" value="" />   <div class="input-group-append" data-target="#conclusionAdicionalB" data-toggle="datetimepicker">    <div class="input-group-text"><i class="far fa-calendar"></i></div>   </div> </div>  <script type="text/javascript">   $(function() {    $("#conclusionAdicionalB").datetimepicker({    format: "DD-MM-YYYY",    locale: moment.locale("es")    });   });   <\/script>  </div>  </div>  <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">    <label for="duracion_horasB" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>   <input type="text" class="form-control " id="duracion_horasB" name="duracion_horasB" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">  </div>   </div> </div>';
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                endif; ?>    </select>   <script>    $(document).ready(function() {    $("#eficienciaB").select2({     theme: "bootstrap4",    width: "100%"    });    });   <\/script>  </div>   </div>   </div>  <div class="col-12 col-sm-12 col-md-6">  <div class="form-group">   <label for="inicioAdicionalB" class=" control-label">Inicio:<span class="text-danger">*</span></label>  <div class="input-group date" id="inicioAdicionalB" data-target-input="nearest">     <input type="text" required class="form-control datetimepicker-input" data-target="#inicioAdicionalB" id="datetime-inicioAdicionalB" name="inicioAdicionalB" placeholder="" value="" /> <div class="input-group-append" data-target="#inicioAdicionalB" data-toggle="datetimepicker">    <div class="input-group-text"><i class="far fa-calendar"></i></div>    </div>    </div>   <script type="text/javascript"> $(function() {   $("#inicioAdicionalB").datetimepicker({    format: "DD-MM-YYYY",     locale: moment.locale("es")    });    });   <\/script>   </div>  </div> <div class="col-12 col-sm-12 col-md-6"> <div class="form-group">    <label for="conclusionAdicionalB" class=" control-label">Conclusión:<span class="text-danger">*</span></label>   <div class="input-group date" id="conclusionAdicionalB" data-target-input="nearest">    <input type="text" required class="form-control datetimepicker-input" data-target="#conclusionAdicionalB" id="datetime-conclusionAdicionalB" name="conclusionAdicionalB" placeholder="" value="" />   <div class="input-group-append" data-target="#conclusionAdicionalB" data-toggle="datetimepicker">    <div class="input-group-text"><i class="far fa-calendar"></i></div>   </div> </div>  <script type="text/javascript">   $(function() {    $("#conclusionAdicionalB").datetimepicker({    format: "DD-MM-YYYY",    locale: moment.locale("es")    });   });   <\/script>  </div>  </div>  <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">    <label for="duracion_horasB" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>   <input type="text" class="form-control " id="duracion_horasB" name="duracion_horasB" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">  </div>   </div> </div>';
         $('#CardDatosAdicionalB').append(clone);
         $('#btnAdddadicional').removeClass('add-more-btn-adi');
         $('#btnAdddadicional').addClass('remove-more-btn-adi');
@@ -964,9 +963,9 @@
 
         var clone = '<div class="row">   <div class="col-6 col-sm-6">    <div class="form-group">    <label for="idiomaB" class="control-label">Idioma o Dialecto: <span class="text-danger">*</span></label>   <div>   <select class="form-control" id="idiomaB" name="idiomaB">   <option value="">Selecciona una Opcion</option>  <?php if (!empty($idioma)) :   foreach ($idioma as  $a) {    ?>     <option value="<?= $a->id ?>"><?= $a->valor ?></option>    <?php    }
                                                                                                                                                                                                                                                                                                                                                                                                                                                             endif; ?>    </select>    <script>    $(document).ready(function() {   $("#idiomaB").select2({    theme: "bootstrap4",    width: "100%"   });    });    <\/script>    </div>   </div>   </div>  <div class="col-6 col-sm-12 col-md-6">  <div class="form-group">   <label for="lecturaB" class=" control-label">% Lectura:<span class="text-danger">*</span></label>   <select class="form-control" id="lecturaB" name="lecturaB">     <option value="">Selecciona una Opcion</option>    <?php if (!empty($porsentajeIdioma)) :    foreach ($porsentajeIdioma as  $a) {   ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>   <?php   }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    endif; ?>    </select>    <script>    $(document).ready(function() {    $("#lecturaB").select2({    theme: "bootstrap4",    width: "100%"    });    });    <\/script>    </div>   </div>  <div class="col-6 col-sm-12 col-md-6">  <div class="form-group">   <label for="escrituraB" class=" control-label">% Escritura:<span class="text-danger">*</span></label>   <select class="form-control" id="escrituraB" name="escrituraB">  <option value="">Selecciona una Opcion</option>   <?php if (!empty($porsentajeIdioma)) :   foreach ($porsentajeIdioma as  $a) {   ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>    <?php    }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                endif; ?>  </select>  <script>   $(document).ready(function() {   $("#escrituraB").select2({    theme: "bootstrap4",    width: "100%"    });    });   <\/script>    </div>  </div> <div class="col-6 col-sm-12 col-md-6">  <div class="form-group">   <label for="conversacionB" class=" control-label">% Conversación:<span class="text-danger">*</span></label>   <select class="form-control" id="conversacionB" name="conversacionB">  <option value="">Selecciona una Opcion</option>  <?php if (!empty($porsentajeIdioma)) :    foreach ($porsentajeIdioma as  $a) {   ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>   <?php    }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            endif; ?>   </select>    <script>    $(document).ready(function() {    $("#conversacionB").select2({    theme: "bootstrap4",    width: "100%"    });    });   <\/script>   </div>   </div> </div>';
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                endif; ?>    </select>    <script>    $(document).ready(function() {    $("#lecturaB").select2({    theme: "bootstrap4",    width: "100%"    });    });    <\/script>    </div>   </div>  <div class="col-6 col-sm-12 col-md-6">  <div class="form-group">   <label for="escrituraB" class=" control-label">% Escritura:<span class="text-danger">*</span></label>   <select class="form-control" id="escrituraB" name="escrituraB">  <option value="">Selecciona una Opcion</option>   <?php if (!empty($porsentajeIdioma)) :   foreach ($porsentajeIdioma as  $a) {   ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>    <?php    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        endif; ?>  </select>  <script>   $(document).ready(function() {   $("#escrituraB").select2({    theme: "bootstrap4",    width: "100%"    });    });   <\/script>    </div>  </div> <div class="col-6 col-sm-12 col-md-6">  <div class="form-group">   <label for="conversacionB" class=" control-label">% Conversación:<span class="text-danger">*</span></label>   <select class="form-control" id="conversacionB" name="conversacionB">  <option value="">Selecciona una Opcion</option>  <?php if (!empty($porsentajeIdioma)) :    foreach ($porsentajeIdioma as  $a) {   ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>   <?php    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        endif; ?>   </select>    <script>    $(document).ready(function() {    $("#conversacionB").select2({    theme: "bootstrap4",    width: "100%"    });    });   <\/script>   </div>   </div> </div>';
         $('#CardIdiomasB').append(clone);
         $('#btnAdddadicionalIdioma').removeClass('add-more-btn-idioma');
         $('#btnAdddadicionalIdioma').addClass('remove-more-btn-idioma');
@@ -1001,7 +1000,7 @@
 
         var clone = '<div class="row">  <div class="col-6 col-sm-6">  <div class="form-group">  <label for="tipo_habilidadB" class="control-label">Tipo: <span class="text-danger">*</span></label>  <div>   <select class="form-control" id="tipo_habilidadB" name="tipo_habilidadB">    <option value="">Selecciona una Opcion</option>    <?php if (!empty($tipo_habilidad)) :    foreach ($tipo_habilidad as  $a) {  ?>   <option value="<?= $a->id ?>"><?= $a->valor ?></option>   <?php     }
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 endif; ?>     </select>    <script>   $(document).ready(function() {   $("#tipo_habilidadB").select2({   theme: "bootstrap4",   width: "100%"   });   });    <\/script>   </div>    </div>  </div>  <div class="col-12 col-sm-12 col-md-6">   <div class="form-group">   <label for="especificacionB" class=" control-label">Especifique:<span class="text-danger">*</span></label>    <input type="text" class="form-control " id="especificacionB" name="especificacionB">   </div>   </div>  <div class="col-6 col-sm-6">  <div class="form-group">    <label for="grado_habilidadCapB" class="control-label">Grado de aptitude o dominio: <span class="text-danger">*</span></label>   <div>   <select class="form-control" id="grado_habilidadCapB" name="grado_habilidadCapB">   <option value="">Selecciona una Opcion</option>  <?php if (!empty($grado_habilidad)) :    foreach ($grado_habilidad as  $a) {  ?>    <option value="<?= $a->id ?>"><?= $a->valor ?></option>    <?php    }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    endif; ?>   </select>   <script>   $(document).ready(function() {   $("#grado_habilidadCapB").select2({   theme: "bootstrap4",   width: "100%"   });    });   <\/script>  </div>  </div>   </div>  </div>';
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                endif; ?>   </select>   <script>   $(document).ready(function() {   $("#grado_habilidadCapB").select2({   theme: "bootstrap4",   width: "100%"   });    });   <\/script>  </div>  </div>   </div>  </div>';
         $('#CardDatosHabilidadB').append(clone);
         $('#btnAdddHABILIDAD').removeClass('add-more-btn-hab');
         $('#btnAdddHABILIDAD').addClass('remove-btn-hab');

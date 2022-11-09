@@ -76,7 +76,8 @@
                             if (!empty($genero)) :
                                 foreach ($genero as  $a) {
                             ?>
-                                    <option <?= ($variable->sexo == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                 <option <?= (isset($variable->sexo) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                             <?php
                                 }
                             endif; ?>
@@ -175,7 +176,8 @@
                             if (!empty($modo_nacionalidad)) :
                                 foreach ($modo_nacionalidad as  $a) {
                             ?>
-                              <option <?= ($variable->nacionalidad == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                             <option <?= (isset($variable->nacionalidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                                 
                             <?php
                                 } 
@@ -221,7 +223,8 @@
                                 if (!empty($pais_nacimiento)) :
                                     foreach ($pais_nacimiento as  $a) {
                                 ?>
-                                <option <?= ($variable->pais == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                                             <option <?= (isset($variable->pais) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                                 <?php
                                     }
                                 endif; ?>
@@ -247,7 +250,8 @@
                                 if (!empty($entidad_federativa)) :
                                     foreach ($entidad_federativa as  $a) {
                                 ?>
-                                <option <?= ($variable->estado == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                        <option <?= (isset($variable->estado) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                                        
                                 <?php
                                     }
@@ -274,7 +278,8 @@
                                 if (!empty($nacionalidad)) :
                                     foreach ($nacionalidad as  $a) {
                                 ?>
-                      <option <?= ($variable->nacionalidad == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                          <option <?= (isset($variable->nacionalidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
 
                                 <?php
                                     }
@@ -301,7 +306,8 @@
                                 if (!empty($nacionalidad)) :
                                     foreach ($nacionalidad as  $a) {
                                 ?>
-                       <option <?= ($variable->municipio == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <option <?= (isset($variable->municipio) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
 
                                 <?php
                                     }
@@ -328,8 +334,7 @@
                                 if (!empty($cuidad_nacimiento)) :
                                     foreach ($cuidad_nacimiento as  $a) {
                                 ?>
-                   <option <?= ($variable->ciudad == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-
+                    <option <?= (isset($variable->ciudad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                                 <?php
                                     }
                                 endif; ?>
@@ -355,7 +360,8 @@
                                 if (!empty($estado_civil)) :
                                     foreach ($estado_civil as  $a) {
                                 ?>
-                   <option <?= ($variable->civil == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                         <option <?= (isset($variable->civil) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                                 <?php
                                     }
                                 endif; ?>
@@ -381,7 +387,8 @@
                                 if (!empty($desarrollo_academico)) :
                                     foreach ($desarrollo_academico as  $a) {
                                 ?>
-                 <option <?= ($variable->desarrollo_academico == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                 <option <?= (isset($variable->desarrollo_academico) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
 
                                 <?php
                                     }
@@ -469,7 +476,8 @@
                                 if (!empty($SiNo)) :
                                     foreach ($SiNo as  $a) {
                                 ?>
-         <option <?= ($variable->registro_sep == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                           <option <?= (isset($variable->registro_sep) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
 
                                 <?php
                                     }
@@ -597,7 +605,8 @@
                             if (!empty($entidad_federativa)) :
                                 foreach ($entidad_federativa as  $a) {
                             ?>
-                      <option <?= ($variable->colonia == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                         <option <?= (isset($variable->colonia) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
 
                             <?php
                                 }
@@ -623,7 +632,8 @@
                                 if (!empty($entidad_federativa)) :
                                     foreach ($entidad_federativa as  $a) {
                                 ?>
-                      <option <?= ($variable->naciE == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                  <option <?= (isset($variable->naciE) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                                 <?php
                                     }
                                 endif; ?>
@@ -649,7 +659,8 @@
                                 if (!empty($entidad_federativa)) :
                                     foreach ($entidad_federativa as  $a) {
                                 ?>
-                                  <option <?= ($variable->municipio == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                         <option <?= (isset($variable->municipio) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
 
                                 <?php
                                     }
@@ -676,7 +687,8 @@
                                 if (!empty($ciudadcodigo)) :
                                     foreach ($ciudadcodigo as  $a) {
                                 ?>
-                      <option <?= ($variable->cuidad == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                             <option <?= (isset($variable->cuidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                                 <?php
                                     }
                                 endif; ?>
@@ -756,7 +768,8 @@
                             if (!empty($puesto)) :
                                 foreach ($puesto as  $a) {
                             ?>
-                                    <option <?= ($variable->puesto == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                         <option <?= (isset($variable->puesto) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                             <?php
                                 }
                             endif; ?>
@@ -781,7 +794,8 @@
                             if (!empty($rango)) :
                                 foreach ($rango as  $a) {
                             ?>
-                   <option <?= ($variable->rango == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                   <option <?= (isset($variable->rango) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                   
 
                             <?php
                                 }
@@ -806,7 +820,8 @@
                             if (!empty($mando)) :
                                 foreach ($mando as  $a) {
                             ?>
-                      <option <?= ($variable->nivel_mando == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+           <option <?= (isset($variable->nivel_mando) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
                             <?php
                                 }
                             endif; ?>
@@ -840,7 +855,8 @@
                             if (!empty($entidad_adscripcion)) :
                                 foreach ($entidad_adscripcion as  $a) {
                             ?>
-                      <option <?= ($variable->idEstado_adscripcion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                       <option <?= (isset($variable->idEstado_adscripcion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
 
                             <?php
                                 }
@@ -865,8 +881,7 @@
                             if (!empty($municipio_adscripcion)) :
                                 foreach ($municipio_adscripcion as  $a) {
                             ?>
-                      <option <?= ($variable->municipio_adscripcion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-
+                        <option <?= (isset($variable->municipio_adscripcion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -973,7 +988,7 @@
                             if (!empty($coloniacodigoAds)) :
                                 foreach ($coloniacodigoAds as  $a) {
                             ?>
-                      <option <?= ($variable->colonia_adscripcion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                            <option <?= (isset($variable->colonia_adscripcion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                             <?php
                                 }
@@ -998,7 +1013,7 @@
                         if (!empty($federativa_adscripcion)) :
                             foreach ($federativa_adscripcion as  $a) {
                         ?>
-                    <option <?= ($variable->idEstado_dom_adscripcion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                            <option <?= (isset($variable->idEstado_dom_adscripcion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                         <?php
                             }
@@ -1023,7 +1038,8 @@
                         if (!empty($delegacion_adscripcion)) :
                             foreach ($delegacion_adscripcion as  $a) {
                         ?>
-                    <option <?= ($variable->municipio_delegacion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+            <option <?= (isset($variable->municipio_delegacion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
 
                         <?php
                             }
@@ -1048,7 +1064,8 @@
                         if (!empty($ciudadcodigoAds)) :
                             foreach ($ciudadcodigoAds as  $a) {
                         ?>
-                    <option <?= ($variable->ciudad_poblacion == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                    <option <?= (isset($variable->ciudad_poblacion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
 
                         <?php
                             }
@@ -1103,7 +1120,7 @@
                                 <label for="nombrecurso<?=$label ?>" class=" control-label">Nombre del Curso
                                     :<span class="text-danger">*</span></label>
                                 <div>
-                                    <input type="text" class="form-control " id="nombrecurso<?=$label ?>" name="nombrecurso<?=$label ?>" value=" <?= isset($e->nombre_curso) ? $e->nombre_curso : ''  ?>">
+                                    <input type="text" class="form-control " id="nombrecurso<?=$label ?>" name="nombrecurso<?=$label ?>" value=" <?= isset($experiencia->nombre_curso) ? $experiencia->nombre_curso : ''  ?>">
 
                                 </div>
                             </div>

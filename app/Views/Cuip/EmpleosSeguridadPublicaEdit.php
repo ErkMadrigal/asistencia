@@ -91,7 +91,8 @@
                         if (!empty($duracion)) :
                             foreach ($duracion as  $a) {
                         ?>
-               <option <?= ($seguridad->colonia == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                          <option <?= (isset($seguridad->colonia) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
 
                         <?php
                             }
@@ -261,7 +262,7 @@
                         if (!empty($estadocodigoSegPub)) :
                             foreach ($estadocodigoSegPub as  $a) {
                         ?>
-               <option <?= ($seguridad->estado == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                              <option <?= (isset($seguridad->estado) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                         <?php
                             }
@@ -289,8 +290,7 @@
                         if (!empty($municipiocodigoSegPub)) :
                             foreach ($municipiocodigoSegPub as  $a) {
                         ?>
-               <option <?= ($seguridad->municipio == $a->valor ? 'selected' : '' ) ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-
+                           <option <?= (isset($seguridad->municipio) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                         <?php
                             }
                         endif; ?>
