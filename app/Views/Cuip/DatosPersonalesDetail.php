@@ -386,13 +386,18 @@
     <div class="card-body">
         <form class="form-horizontal" id="FormDatosGeneralesDocente">
         <div id="CardDatosGeneralesDocente">
+        <?php
+        if( !empty($experiencia) ):
+            
+            foreach($experiencia as  $e){
+                                        ?>    
             <div class="row form-block-dged">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="nombrecurso" class=" control-label">Nombre del Curso
                             :<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($variable->nombre_curso) ? $variable->nombre_curso : ''  ?>
+                            <?= isset($e->nombre_curso) ? $e->nombre_curso : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -431,6 +436,10 @@
                     </div>
                 </div>
             </div>
+        <?php
+            
+            }
+            endif;?>    
         </div>
 
         <div id="CardDatosGeneralesDocenteB">

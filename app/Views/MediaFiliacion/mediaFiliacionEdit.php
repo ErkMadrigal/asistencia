@@ -22,7 +22,7 @@
                                 if (!empty($complexion)) :
                                     foreach ($complexion as  $a) {
                                 ?>
-                                        <option <?= ($mediaFiliacion->idComplexion == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= (isset($mediaFiliacion->idComplexion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                 <?php
                                     }
