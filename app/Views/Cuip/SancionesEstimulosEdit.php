@@ -18,6 +18,11 @@
     <div class="card-body table-responsive ">
         <form class="form-horizontal" id="sancionesEstimulos">
         <div id="CardDatossanciones">
+        <?php
+        if( !empty($sanciones) ):
+            $label = '';
+            foreach($sanciones as  $e){
+                                        ?>   
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
@@ -107,6 +112,10 @@
                     </div>
                 </div>
             </div>
+            <?php
+            $label = 'B';
+            }
+            endif;?>   
         </div>
         <hr class="mt-3 mb-3" />
             <div id="CardDatossancionesB">
@@ -134,6 +143,11 @@
     <div class="card-body">
         <form class="form-horizontal" id="resoluciones">
             <div id="CardDatosResoluion">
+            <?php
+        if( !empty($resoluciones) ):
+            $label = '';
+            foreach($resoluciones as  $e){
+                                        ?>   
                 <div class="row">
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
@@ -351,6 +365,10 @@
                         </div>
                     </div>
                 </div>
+                <?php
+            $label = 'B';
+            }
+            endif;?>   
             </div>
             <hr class="mt-3 mb-3" />
             <div id="CardDatosResoluionB">
@@ -379,6 +397,11 @@
     <div class="card-body">
     <form class="form-horizontal" id="estimulo">
             <div id="CardDatosEstimulo">
+            <?php
+        if( !empty($estimulos) ):
+            $label = '';
+            foreach($estimulos as  $e){
+                                        ?>   
         <div class="row">
             <div class='col-6 col-sm-12 col-md-6'>
                 <div class="form-group">
@@ -425,6 +448,10 @@
                 </div>
             </div>
         </div>
+        <?php
+            $label = 'B';
+            }
+            endif;?>   
     </div>
             <hr class="mt-3 mb-3" />
             <div id="CardDatosEstimuloB">

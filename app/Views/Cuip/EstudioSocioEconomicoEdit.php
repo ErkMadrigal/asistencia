@@ -187,6 +187,11 @@
 
         <form class="form-horizontal" id="DatosDependientes">
             <div id="CardConyuge">
+            <?php
+        if( !empty($economico_dependientes) ):
+            $label = '';
+            foreach($economico_dependientes as  $e){
+                                        ?>   
                 <div class="row" class="form-block">
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
@@ -293,7 +298,10 @@
                         </div>
                     </div>
                 </div>
-
+                <?php
+            $label = 'B';
+            }
+            endif;?>    
             </div>
 
             <hr class="mt-3 mb-3" />

@@ -19,6 +19,11 @@
     <div class="card-body">
         <form class="form-horizontal" id="Capacitaciones">
             <div id="CardDatoscapacitacion">
+            <?php
+        if( !empty($capacitacion_publica) ):
+            $label = '';
+            foreach($capacitacion_publica as  $e){
+                                        ?>  
                 <div class="row">
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
@@ -164,6 +169,10 @@
                     </div>
 
                 </div>
+                <?php
+            $label = 'B';
+            }
+            endif;?>    
             </div>
             <hr class="mt-3 mb-3" />
             <div id="CardDatoscapacitacionB">
@@ -193,6 +202,11 @@
     <div class="card-body">
         <form class="form-horizontal" id="adicional">
             <div id="CardDatosAdicional">
+            <?php
+        if( !empty($economico_dependientes) ):
+            $label = '';
+            foreach($economico_dependientes as  $e){
+                                        ?>  
                 <div class="row">
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
@@ -334,6 +348,10 @@
                     </div>
 
                 </div>
+                <?php
+            $label = 'B';
+            }
+            endif;?> 
             </div>
             <hr class="mt-3 mb-3" />
             <div id="CardDatosAdicionalB">
@@ -360,6 +378,11 @@
     <div class="card-body">
         <form class="form-horizontal" id="IDIOMAS">
             <div id="CardIdiomas">
+            <?php
+        if( !empty($idiomas) ):
+            $label = '';
+            foreach($idiomas as  $e){
+                                        ?>   
                 <div class="row">
                     <div class='col-6 col-sm-6'>
                         <div class="form-group">
@@ -467,6 +490,10 @@
                     </div>
 
                 </div>
+                <?php
+            $label = 'B';
+            }
+            endif;?> 
             </div>
             <hr class="mt-3 mb-3" />
             <div id="CardIdiomasB">
@@ -495,6 +522,11 @@
     <div class="card-body">
         <form class="form-horizontal" id="HABILIDAD">
             <div id="CardDatosHabilidad">
+            <?php
+        if( !empty($habilidades) ):
+            $label = '';
+            foreach($habilidades as  $e){
+                                        ?>   
                 <div class="row">
                     <div class='col-6 col-sm-6'>
                         <div class="form-group">
@@ -559,6 +591,10 @@
                     </div>
 
                 </div>
+                <?php
+            $label = 'B';
+            }
+            endif;?> 
             </div>
             <hr class="mt-3 mb-3" />
             <div id="CardDatosHabilidadB">
@@ -589,6 +625,11 @@
         <form class="form-horizontal" id="AFILIACION">
 
             <div id="CardDatosAfiliacion">
+            <?php
+        if( !empty($agrupaciones) ):
+            $label = '';
+            foreach($agrupaciones as  $e){
+                                        ?>
                 <div class="row">
                     <div class='col-12 col-sm-12 col-md-12'>
                         <div class="form-group">
@@ -666,6 +707,10 @@
 
 
                     </div>
+                    <?php
+            $label = 'B';
+            }
+            endif;?> 
                 </div>
                 <hr class="mt-3 mb-3" />
                 <div id="CardDatosAfiliacionB">
