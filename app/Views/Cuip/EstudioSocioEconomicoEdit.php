@@ -198,7 +198,7 @@
                             <label for="apellidoPaterno" class=" control-label">Apellido
                                 Paterno:<span class="text-danger">*</span></label>
                             <div>
-                                <input type="text" class="form-control " id="apellidoPaterno" name="apellidoPaterno" value="<?= isset($economico_dependientes->apellido_paterno) ? $economico_dependientes->apellido_paterno : ''  ?>">
+                                <input type="text" class="form-control " id="apellidoPaterno" name="apellidoPaterno" value="<?= isset($e->apellido_paterno) ? $e->apellido_paterno : ''  ?>">
 
                             </div>
                         </div>
@@ -209,7 +209,7 @@
                             <label for="apellidoMaterno" class=" control-label">Apellido
                                 Materno:<span class="text-danger">*</span></label>
                             <div>
-                                <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno" value="<?= isset($economico_dependientes->apellido_materno) ? $economico_dependientes->apellido_materno : ''  ?>">
+                                <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno" value="<?= isset($e->apellido_materno) ? $e->apellido_materno : ''  ?>">
 
                             </div>
                         </div>
@@ -218,7 +218,7 @@
                         <div class="form-group">
                             <label for="primerNombre" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
                             <div>
-                                <input type="text" class="form-control " id="primerNombre" name="primerNombre" value="<?= isset($economico_dependientes->primer_nombre) ? $economico_dependientes->primer_nombre : ''  ?>">
+                                <input type="text" class="form-control " id="primerNombre" name="primerNombre" value="<?= isset($e->primer_nombre) ? $e->primer_nombre : ''  ?>">
 
                             </div>
                         </div>
@@ -227,7 +227,7 @@
                         <div class="form-group">
                             <label for="segundoNombre" class=" control-label">Segundo Nombre:</label>
                             <div>
-                                <input type="text" class="form-control " id="segundoNombre" name="segundoNombre" value="<?= isset($economico_dependientes->segundo_nombre) ? $economico_dependientes->segundo_nombre : ''  ?>">
+                                <input type="text" class="form-control " id="segundoNombre" name="segundoNombre" value="<?= isset($e->segundo_nombre) ? $e->segundo_nombre : ''  ?>">
 
                             </div>
                         </div>
@@ -236,7 +236,7 @@
                         <div class='form-group'>
                             <label for="fecha_nacimiento_dep">Fecha de Nacimiento: <span class="text-danger">*</span></label>
                             <div>
-                                <input type="text" class="form-control " id="fecha_nacimiento_dep" name="fecha_nacimiento_dep" value="<?= isset($economico_dependientes->fecha_nacimiento) ? $economico_dependientes->fecha_nacimiento : ''  ?>">
+                                <input type="text" class="form-control " id="fecha_nacimiento_dep" name="fecha_nacimiento_dep" value="<?= isset($e->fecha_nacimiento) ? $e->fecha_nacimiento : ''  ?>">
 
                             </div>
                             <script type="text/javascript">
@@ -258,7 +258,7 @@
                                 if (!empty($genero)) :
                                     foreach ($genero as  $a) {
                                 ?>
-           <option <?= (isset($economico_dependientes->idGenero) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+           <option <?= (isset($e->idGenero) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                 <?php
                                     }
@@ -285,7 +285,7 @@
                                 if (!empty($parentesco_todos)) :
                                     foreach ($parentesco_todos as  $a) {
                                 ?>
-                                           <option <?= (isset($economico_dependientes->idParentesco) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                           <option <?= (isset($e->idParentesco) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                                 <?php
                                     }
                                 endif; ?>

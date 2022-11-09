@@ -29,7 +29,7 @@
                                 <div class="form-group">
                                     <label for="dependencia" class=" control-label">Dependencia responsable:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="certificado" name="certificado" value="<?= isset($capacitacion->dependencia) ? $capacitacion->dependencia : ''  ?>">
+                                        <input type="text" class="form-control " id="certificado" name="certificado" value="<?= isset($e->dependencia) ? $e->dependencia : ''  ?>">
 
                                     </div>
                                 </div>
@@ -38,7 +38,7 @@
                                 <div class="form-group">
                                     <label for="institucion" class=" control-label">Institución Capacitadora:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="institucion" name="institucion" value=" <?= isset($capacitacion->inst_capacitadora) ? $capacitacion->inst_capacitadora : ''  ?>">
+                                        <input type="text" class="form-control " id="institucion" name="institucion" value=" <?= isset($e->inst_capacitadora) ? $e->inst_capacitadora : ''  ?>">
 
                                     </div>
                                 </div>
@@ -47,7 +47,7 @@
                                 <div class="form-group">
                                     <label for="nombre_curso" class=" control-label">Nombre del curso:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="nombre_curso" name="nombre_curso" value="<?= isset($capacitacion->nombre_curso) ? $capacitacion->nombre_curso : ''  ?>">
+                                        <input type="text" class="form-control " id="nombre_curso" name="nombre_curso" value="<?= isset($e->nombre_curso) ? $e->nombre_curso : ''  ?>">
 
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@
                                 <div class="form-group">
                                     <label for="tema_curso" class=" control-label">Tema del curso:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="tema_curso" name="tema_curso" value=" <?= isset($capacitacion->tema_curso) ? $capacitacion->tema_curso : ''  ?>">
+                                        <input type="text" class="form-control " id="tema_curso" name="tema_curso" value=" <?= isset($e->tema_curso) ? $e->tema_curso : ''  ?>">
 
                                     </div>
                                 </div>
@@ -71,7 +71,7 @@
                                             if (!empty($nivel_curso)) :
                                                 foreach ($nivel_curso as  $a) {
                                             ?>
-                                                    <option <?= (isset($capacitacion->curso) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= (isset($e->curso) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
@@ -98,7 +98,7 @@
                                             if (!empty($eficiencia)) :
                                                 foreach ($eficiencia as  $a) {
                                             ?>
-                                                    <option <?= (isset($capacitacion->eficiencia) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= (isset($e->eficiencia) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
@@ -119,7 +119,7 @@
                                 <div class="form-group">
                                     <label for="inicio" class=" control-label">Inicio:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="inicio" name="inicio" value=" <?= isset($capacitacion->inicio_curso) ? $capacitacion->inicio_curso : ''  ?>">
+                                        <input type="text" class="form-control " id="inicio" name="inicio" value=" <?= isset($e->inicio_curso) ? $e->inicio_curso : ''  ?>">
 
                                     </div>
                                     <script type="text/javascript">
@@ -136,7 +136,7 @@
                                 <div class="form-group">
                                     <label for="conclusion" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="conclusion" name="conclusion" value="<?= isset($capacitacion->conclusion_curso) ? $capacitacion->conclusion_curso : ''  ?>">
+                                        <input type="text" class="form-control " id="conclusion" name="conclusion" value="<?= isset($e->conclusion_curso) ? $e->conclusion_curso : ''  ?>">
 
                                     </div>
                                     <script type="text/javascript">
@@ -153,7 +153,7 @@
                                 <div class="form-group">
                                     <label for="duracion" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="duracion" name="duracion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" value="<?= isset($capacitacion->duracion_horas_curso) ? $capacitacion->duracion_horas_curso : ''  ?>">
+                                        <input type="text" class="form-control " id="duracion" name="duracion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" value="<?= isset($e->duracion_horas_curso) ? $e->duracion_horas_curso : ''  ?>">
 
                                     </div>
 
@@ -163,7 +163,7 @@
                                 <div class="form-group">
                                     <label for="comprobante" class=" control-label">Tipo de comprobante:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="comprobante" name="comprobante" value="<?= isset($capacitacion->tipo_comprobante) ? $capacitacion->tipo_comprobante : ''  ?>">
+                                        <input type="text" class="form-control " id="comprobante" name="comprobante" value="<?= isset($e->tipo_comprobante) ? $e->tipo_comprobante : ''  ?>">
 
                                     </div>
                                 </div>
@@ -204,16 +204,16 @@
         <form class="form-horizontal" id="adicional">
             <div id="CardDatosAdicional">
                 <?php
-                if (!empty($economico_dependientes)) :
+                if (!empty($capacitacion)) :
                     $label = '';
-                    foreach ($economico_dependientes as  $e) {
+                    foreach ($capacitacion as  $e) {
                 ?>
                         <div class="row">
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
                                     <label for="empresa" class=" control-label">Insitutción o Empresa:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="empresa" name="empresa" value="<?= isset($capacitacion->institucion) ? $capacitacion->institucion : ''  ?>">
+                                        <input type="text" class="form-control " id="empresa" name="empresa" value="<?= isset($e->institucion) ? $e->institucion : ''  ?>">
 
                                     </div>
                                 </div>
@@ -222,7 +222,7 @@
                                 <div class="form-group">
                                     <label for="curso" class=" control-label">Estudio o Curso:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="curso" name="curso" value="<?= isset($capacitacion->curso) ? $capacitacion->curso : ''  ?>">
+                                        <input type="text" class="form-control " id="curso" name="curso" value="<?= isset($e->curso) ? $e->curso : ''  ?>">
 
                                     </div>
                                 </div>
@@ -231,7 +231,7 @@
                                 <div class="form-group">
                                     <label for="tipo_curso" class=" control-label">Tipo de curso:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="tipo_curso" name="tipo_curso" value="<?= isset($capacitacion->tipo_curso) ? $capacitacion->tipo_curso : ''  ?>">
+                                        <input type="text" class="form-control " id="tipo_curso" name="tipo_curso" value="<?= isset($e->tipo_curso) ? $e->tipo_curso : ''  ?>">
 
                                     </div>
                                 </div>
@@ -246,7 +246,7 @@
                                             if (!empty($cuso_tomado)) :
                                                 foreach ($cuso_tomado as  $a) {
                                             ?>
-                                                    <option <?= (isset($capacitacion->cursofue) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= (isset($e->cursofue) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                                             <?php
@@ -274,7 +274,7 @@
                                             if (!empty($eficiencia)) :
                                                 foreach ($eficiencia as  $a) {
                                             ?>
-                                                    <option <?= (isset($capacitacion->eficiencia) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= (isset($e->eficiencia) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
@@ -295,7 +295,7 @@
                                 <div class="form-group">
                                     <label for="inicioAdicional" class=" control-label">Inicio:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="tipo_curso" name="tipo_curso" value="<?= isset($capacitacion->inicio_adicional) ? $capacitacion->inicio_adicional : ''  ?>">
+                                        <input type="text" class="form-control " id="tipo_curso" name="tipo_curso" value="<?= isset($e->inicio_adicional) ? $e->inicio_adicional : ''  ?>">
                                     </div>
 
                                     <script type="text/javascript">
@@ -313,7 +313,7 @@
                                     <label for="conclusionAdicional" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
 
                                     <div>
-                                        <input type="text" class="form-control " id="tipo_curso" name="tipo_curso" value="<?= isset($capacitacion->conclusion_adicional) ? $capacitacion->conclusion_adicional : ''  ?>">
+                                        <input type="text" class="form-control " id="tipo_curso" name="tipo_curso" value="<?= isset($e->conclusion_adicional) ? $e->conclusion_adicional : ''  ?>">
                                     </div>
                                     <script type="text/javascript">
                                         $(function() {
@@ -331,7 +331,7 @@
                                     <label for="duracion_horas" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
                                     <div>
                                         <div>
-                                            <input type="text" class="form-control " id="duracion_horas" name="duracion_horas" value="<?= isset($capacitacion->duracion_horas_adicional) ? $capacitacion->duracion_horas_adicional : ''  ?>">
+                                            <input type="text" class="form-control " id="duracion_horas" name="duracion_horas" value="<?= isset($e->duracion_horas_adicional) ? $e->duracion_horas_adicional : ''  ?>">
 
                                         </div>
 
@@ -386,7 +386,7 @@
                                             if (!empty($idioma)) :
                                                 foreach ($idioma as  $a) {
                                             ?>
-                                         <option <?= (isset($idiomas->idIdioma) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                         <option <?= (isset($e->idIdioma) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
@@ -413,7 +413,7 @@
                                             if (!empty($porsentajeIdioma)) :
                                                 foreach ($porsentajeIdioma as  $a) {
                                             ?>
-                                                    <option <?= (isset($idiomas->idIdiomaLectura) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= (isset($e->idIdiomaLectura) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
@@ -440,7 +440,7 @@
                                             if (!empty($porsentajeIdioma)) :
                                                 foreach ($porsentajeIdioma as  $a) {
                                             ?>
-                                                    <option <?= (isset($idiomas->idIdiomaEscritura) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= (isset($e->idIdiomaEscritura) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
@@ -467,7 +467,7 @@
                                             if (!empty($porsentajeIdioma)) :
                                                 foreach ($porsentajeIdioma as  $a) {
                                             ?>
-                                                    <option <?= (isset($idiomas->idIdiomaConversacion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= (isset($e->idIdiomaConversacion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
@@ -534,7 +534,7 @@
                                             if (!empty($tipo_habilidad)) :
                                                 foreach ($tipo_habilidad as  $a) {
                                             ?>
-                                                    <option <?= (isset($habilidades->idTipoHabilidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= (isset($e->idTipoHabilidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
@@ -555,7 +555,7 @@
                                 <div class="form-group">
                                     <label for="especificacion" class=" control-label">Especifique:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="especificacion" name="especificacion" value="<?= isset($capacitacion->especifique_habilidad) ? $capacitacion->especifique_habilidad : ''  ?>">
+                                        <input type="text" class="form-control " id="especificacion" name="especificacion" value="<?= isset($e->especifique_habilidad) ? $e->especifique_habilidad : ''  ?>">
 
                                     </div>
                                 </div>
@@ -570,7 +570,7 @@
                                             if (!empty($grado_habilidad)) :
                                                 foreach ($grado_habilidad as  $a) {
                                             ?>
-                                                    <option <?= (isset($habilidades->idGradoHabilidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= (isset($e->idGradoHabilidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
@@ -633,7 +633,7 @@
                                 <div class="form-group">
                                     <label for="nombre" class=" control-label">Nombre:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="nombre" name="nombre" value="<?= isset($capacitacion->nombre_agrupacion) ? $capacitacion->nombre_agrupacion : ''  ?>">
+                                        <input type="text" class="form-control " id="nombre" name="nombre" value="<?= isset($e->nombre_agrupacion) ? $e->nombre_agrupacion : ''  ?>">
 
                                     </div>
                                 </div>
@@ -648,7 +648,7 @@
                                             if (!empty($tipo_agrupacion)) :
                                                 foreach ($tipo_agrupacion as  $a) {
                                             ?>
-                                                    <option <?= (isset($agrupaciones->idTipoAgrupacion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= (isset($e->idTipoAgrupacion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
@@ -670,7 +670,7 @@
                                     <label for="desde" class=" control-label">Desde:<span class="text-danger">*</span></label>
 
                                     <div>
-                                        <input type="text" class="form-control " id="desde" name="desde" value="<?= isset($capacitacion->desde) ? $capacitacion->desde : ''  ?>">
+                                        <input type="text" class="form-control " id="desde" name="desde" value="<?= isset($e->desde) ? $e->desde : ''  ?>">
 
                                     </div>
                                     <script type="text/javascript">
@@ -689,7 +689,7 @@
                                     <label for="hasta" class=" control-label">Hasta:<span class="text-danger">*</span></label>
 
                                     <div>
-                                        <input type="text" class="form-control " id="desde" name="desde" value="<?= isset($capacitacion->hasta) ? $capacitacion->hasta : ''  ?>">
+                                        <input type="text" class="form-control " id="desde" name="desde" value="<?= isset($e->hasta) ? $e->hasta : ''  ?>">
 
                                     </div>
                                     <script type="text/javascript">

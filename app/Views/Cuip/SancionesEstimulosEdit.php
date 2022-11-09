@@ -153,7 +153,7 @@
                         <div class="form-group">
                             <label for="emisora" class=" control-label">Institución emisora:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="emisora" name="emisora"  value="<?= isset($resoluciones->institucion_emisora) ? $resoluciones->institucion_emisora : ''  ?>">
+                                  <input type="text"  class="form-control "  id="emisora" name="emisora"  value="<?= isset($e->institucion_emisora) ? $e->institucion_emisora : ''  ?>">
                             
                         </div>
                         </div>
@@ -168,7 +168,7 @@
                                 if (!empty($entidad_federativa)) :
                                     foreach ($entidad_federativa as  $a) {
                                 ?>
-                <option <?= (isset($resoluciones->idEstado) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                <option <?= (isset($e->idEstado) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                 <?php
                                     }
@@ -189,7 +189,7 @@
                         <div class="form-group">
                             <label for="delitos" class="control-label">Delitos: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="delitos" name="delitos"  value="<?= isset($resoluciones->delitos) ? $resoluciones->delitos : ''  ?> ">
+                                  <input type="text"  class="form-control "  id="delitos" name="delitos"  value="<?= isset($e->delitos) ? $e->delitos : ''  ?> ">
                             
                         </div>
                         </div>
@@ -199,7 +199,7 @@
                             <label for="motivo" class=" control-label">Motivo:
                                 <span class="text-danger">*</span></label>
                                 <div >    
-                                  <input type="text"  class="form-control "  id="motivo" name="motivo"  value=" <?= isset($resoluciones->motivos) ? $resoluciones->motivos : ''  ?>">
+                                  <input type="text"  class="form-control "  id="motivo" name="motivo"  value=" <?= isset($e->motivos) ? $e->motivos : ''  ?>">
                             
                         </div>
                         </div>
@@ -208,7 +208,7 @@
                         <div class="form-group">
                             <label for="no_expediente" class="control-label">No. Expediente: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="no_expediente" name="no_expediente"  value="<?= isset($resoluciones->dependencia) ? $resoluciones->dependencia : ''  ?>">
+                                  <input type="text"  class="form-control "  id="no_expediente" name="no_expediente"  value="<?= isset($e->dependencia) ? $e->dependencia : ''  ?>">
                             
                         </div>
                         </div>
@@ -218,7 +218,7 @@
                             <label for="agencia_mp" class=" control-label">Agencia del MP:
                                 <span class="text-danger">*</span></label>
                                 <div >    
-                                  <input type="text"  class="form-control "  id="agencia_mp" name="agencia_mp"  value=" <?= isset($resoluciones->agencia_mp) ? $resoluciones->agencia_mp : ''  ?>">
+                                  <input type="text"  class="form-control "  id="agencia_mp" name="agencia_mp"  value=" <?= isset($e->agencia_mp) ? $e->agencia_mp : ''  ?>">
                             
                         </div>
                         </div>
@@ -227,7 +227,7 @@
                         <div class="form-group">
                             <label for="averiguacion_previa" class="control-label">Averiguación previa: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="averiguacion_previa" name="averiguacion_previa"  value="<?= isset($resoluciones->averiguacion_estado) ? $resoluciones->averiguacion_estado : ''  ?> ">
+                                  <input type="text"  class="form-control "  id="averiguacion_previa" name="averiguacion_previa"  value="<?= isset($e->averiguacion_estado) ? $e->averiguacion_estado : ''  ?> ">
                     
                         </div>
                         </div>
@@ -242,7 +242,7 @@
                                     if (!empty($tipo_fuero)) :
                                         foreach ($tipo_fuero as  $a) {
                                     ?>
-                <option <?= (isset($resoluciones->idTipoFuero) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                <option <?= (isset($e->idTipoFuero) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                     <?php
                                         }
@@ -263,7 +263,7 @@
                         <div class="form-group">
                             <label for="averiguacion_estado" class="control-label">Estado de la averiguación previa: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="averiguacion_estado" name="averiguacion_estado"  value="<?= isset($resoluciones->estado_averiguacion) ? $resoluciones->estado_averiguacion : ''  ?> ">
+                                  <input type="text"  class="form-control "  id="averiguacion_estado" name="averiguacion_estado"  value="<?= isset($e->estado_averiguacion) ? $e->estado_averiguacion : ''  ?> ">
                             
                         </div>
                         </div>
@@ -272,7 +272,7 @@
                         <div class='form-group'>
                             <label for="inicio_averiguacion">Inicio de la averiguación: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="inicio_averiguacion" name="inicio_averiguacion"  value="<?= isset($resoluciones->inicio_averiguacion) ? $resoluciones->inicio_averiguacion : ''  ?> ">
+                                  <input type="text"  class="form-control "  id="inicio_averiguacion" name="inicio_averiguacion"  value="<?= isset($e->inicio_averiguacion) ? $e->inicio_averiguacion : ''  ?> ">
                             
                         </div>
                             <script type="text/javascript">
@@ -289,7 +289,7 @@
                         <div class='form-group'>
                             <label for="al_dia">Al día: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="al_dia" name="al_dia"  value="<?= isset($resoluciones->aldia_averiguacion) ? $resoluciones->aldia_averiguacion : ''  ?>">
+                                  <input type="text"  class="form-control "  id="al_dia" name="al_dia"  value="<?= isset($e->aldia_averiguacion) ? $e->aldia_averiguacion : ''  ?>">
                             
                         </div>
                             <script type="text/javascript">
@@ -306,7 +306,7 @@
                         <div class="form-group">
                             <label for="juzgado" class=" control-label">Juzgado:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="juzgado" name="juzgado"  value="<?= isset($resoluciones->juzgado) ? $resoluciones->juzgado : ''  ?>">
+                                  <input type="text"  class="form-control "  id="juzgado" name="juzgado"  value="<?= isset($e->juzgado) ? $e->juzgado : ''  ?>">
                             
                         </div>
 
@@ -316,7 +316,7 @@
                         <div class="form-group">
                             <label for="no_proceso" class=" control-label">No. Proceso:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="no_proceso" name="no_proceso"  value="<?= isset($resoluciones->num_proceso) ? $resoluciones->num_proceso : ''  ?> ">
+                                  <input type="text"  class="form-control "  id="no_proceso" name="no_proceso"  value="<?= isset($e->num_proceso) ? $e->num_proceso : ''  ?> ">
                             
                         </div>
 
@@ -326,7 +326,7 @@
                         <div class="form-group">
                             <label for="estado_procesal" class=" control-label">Estado Procesal:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="estado_procesal" name="estado_procesal"  value="<?= isset($resoluciones->estado_procesal) ? $resoluciones->estado_procesal : ''  ?> ">
+                                  <input type="text"  class="form-control "  id="estado_procesal" name="estado_procesal"  value="<?= isset($e->estado_procesal) ? $e->estado_procesal : ''  ?> ">
                             
                         </div>
 
@@ -336,7 +336,7 @@
                         <div class='form-group'>
                             <label for="inicio_proceso">Inicio del proceso: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="inicio_proceso" name="inicio_proceso"  value="<?= isset($resoluciones->inicio_proceso) ? $resoluciones->inicio_proceso : ''  ?>">
+                                  <input type="text"  class="form-control "  id="inicio_proceso" name="inicio_proceso"  value="<?= isset($e->inicio_proceso) ? $e->inicio_proceso : ''  ?>">
                             
                         </div>
                             <script type="text/javascript">
@@ -353,7 +353,7 @@
                         <div class='form-group'>
                             <label for="al_dia_proceso">Al día: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="al_dia_proceso" name="al_dia_proceso"  value="<?= isset($resoluciones->aldia_proceso) ? $resoluciones->aldia_proceso : ''  ?>">
+                                  <input type="text"  class="form-control "  id="al_dia_proceso" name="al_dia_proceso"  value="<?= isset($e->aldia_proceso) ? $e->aldia_proceso : ''  ?>">
                             
                         </div>
                             <script type="text/javascript">
@@ -409,7 +409,7 @@
                 <div class="form-group">
                     <label for="tipo_estimulo" class=" control-label">Tipo:<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="tipo_estimulo" name="tipo_estimulo"  value="<?= isset($estimulos->tipo_estimulo) ? $estimulos->tipo_estimulo : ''  ?>">
+                                  <input type="text"  class="form-control "  id="tipo_estimulo" name="tipo_estimulo"  value="<?= isset($e->tipo_estimulo) ? $e->tipo_estimulo : ''  ?>">
                             
                         </div>
                 </div>
@@ -418,7 +418,7 @@
                 <div class="form-group">
                     <label for="descripcion_estimulo" class=" control-label">Descripción:<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="descripcion_estimulo" name="descripcion_estimulo"  value="<?= isset($estimulos->descripcion_estimulo) ? $estimulos->descripcion_estimulo : ''  ?>">
+                                  <input type="text"  class="form-control "  id="descripcion_estimulo" name="descripcion_estimulo"  value="<?= isset($e->descripcion_estimulo) ? $e->descripcion_estimulo : ''  ?>">
                             
                         </div>
                 </div>
@@ -427,7 +427,7 @@
                 <div class="form-group">
                     <label for="dependencia" class=" control-label">Dependencia que otorga:<span class="text-danger">*</span></label>
                     <div >    
-                           <input type="text"  class="form-control "  id="dependencia" name="dependencia"  value="<?= isset($estimulos->dependencia_otorga) ? $estimulos->dependencia_otorga : ''  ?>">
+                           <input type="text"  class="form-control "  id="dependencia" name="dependencia"  value="<?= isset($e->dependencia_otorga) ? $e->dependencia_otorga : ''  ?>">
                             
                         </div>
                 </div>
@@ -436,7 +436,7 @@
                 <div class='form-group'>
                     <label for="otrogado_estimulo">Otorgado: <span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="otrogado_estimulo" name="otrogado_estimulo"  value=" <?= isset($estimulos->otorgado) ? $estimulos->otorgado : ''  ?>">
+                                  <input type="text"  class="form-control "  id="otrogado_estimulo" name="otrogado_estimulo"  value=" <?= isset($e->otorgado) ? $e->otorgado : ''  ?>">
                             
                         </div>
                     <script type="text/javascript">
@@ -449,7 +449,7 @@
                     </script>
                 </div>
             </div>
-            
+
         </div>
         <?php
             $label = 'B';

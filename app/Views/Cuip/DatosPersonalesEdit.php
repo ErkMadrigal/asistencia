@@ -1120,7 +1120,7 @@
                                 <label for="nombrecurso<?=$label ?>" class=" control-label">Nombre del Curso
                                     :<span class="text-danger">*</span></label>
                                 <div>
-                                    <input type="text" class="form-control " id="nombrecurso<?=$label ?>" name="nombrecurso<?=$label ?>" value=" <?= isset($experiencia->nombre_curso) ? $experiencia->nombre_curso : ''  ?>">
+                                    <input type="text" class="form-control " id="nombrecurso<?=$label ?>" name="nombrecurso<?=$label ?>" value=" <?= isset($e->nombre_curso) ? $e->nombre_curso : ''  ?>">
 
                                 </div>
                             </div>
@@ -1130,7 +1130,7 @@
                                 <label for="nombreInstitucion" class=" control-label">Nombre de
                                     la Institución:<span class="text-danger">*</span></label>
                                 <div>
-                                    <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion" value=" <?= isset($experiencia->nombre_institucion) ? $experiencia->nombre_institucion : ''  ?>">
+                                    <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion" value=" <?= isset($e->nombre_institucion) ? $e->nombre_institucion : ''  ?>">
 
                                 </div>
                             </div>
@@ -1141,7 +1141,7 @@
 
 
                                 <div>
-                                    <input type="text" class="form-control " id="fecha_inicial" name="fecha_inicial" value="<?= isset($experiencia->fecha_inicio) ? $experiencia->fecha_inicio : ''  ?>">
+                                    <input type="text" class="form-control " id="fecha_inicial" name="fecha_inicial" value="<?= isset($e->fecha_inicio) ? $e->fecha_inicio : ''  ?>">
 
                                 </div>
 
@@ -1160,7 +1160,7 @@
                         <div class='form-group'>
                             <label for="fecha_final">Fecha de Término: <span class="text-danger">*</span></label>
                             <div>
-                                <input type="text" class="form-control " id="fecha_final" name="fecha_final" value=" <?= isset($experiencia->fecha_termino) ? $experiencia->fecha_termino : ''  ?>">
+                                <input type="text" class="form-control " id="fecha_final" name="fecha_final" value=" <?= isset($e->fecha_termino) ? $e->fecha_termino : ''  ?>">
 
                             </div>
                             <script type="text/javascript">
@@ -1179,7 +1179,7 @@
                             <label for="certificado_por" class=" control-label">Certificado
                                 por:<span class="text-danger">*</span></label>
                             <div>
-                                <input type="text" class="form-control " id="certificado" name="certificado" value=" <?= isset($experiencia->certificado_por) ? $experiencia->certificado_por : ''  ?>">
+                                <input type="text" class="form-control " id="certificado" name="certificado" value=" <?= isset($e->certificado_por) ? $e->certificado_por : ''  ?>">
 
                             </div>
                         </div>
