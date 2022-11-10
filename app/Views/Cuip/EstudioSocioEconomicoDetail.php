@@ -131,13 +131,17 @@
 
         <form class="form-horizontal" id="DatosDependientes">
             <div id="CardConyuge">
+            <?php
+        if( !empty($economico_dependientes) ):
+            foreach($economico_dependientes as  $e){
+                                        ?>   
                 <div class="row" class="form-block">
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="apellidoPaterno" class=" control-label">Apellido
                                 Paterno:<span class="text-danger">*</span></label>
                                 <div>
-                            <?= isset($estudio->apellido_paterno) ? $estudio->apellido_paterno : ''  ?>
+                            <?= isset($e->apellido_paterno) ? $e->apellido_paterno : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -146,7 +150,7 @@
                             <label for="apellidoMaterno" class=" control-label">Apellido
                                 Materno:<span class="text-danger">*</span></label>
                                 <div>
-                            <?= isset($estudio->apellido_materno) ? $estudio->apellido_materno : ''  ?>
+                            <?= isset($e->apellido_materno) ? $e->apellido_materno : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -154,7 +158,7 @@
                         <div class="form-group">
                             <label for="primerNombre" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($estudio->primer_nombre) ? $estudio->primer_nombre : ''  ?>
+                            <?= isset($e->primer_nombre) ? $e->primer_nombre : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -162,7 +166,7 @@
                         <div class="form-group">
                             <label for="segundoNombre" class=" control-label">Segundo Nombre:</label>
                             <div>
-                            <?= isset($estudio->segundo_nombre) ? $estudio->segundo_nombre : ''  ?>
+                            <?= isset($e->segundo_nombre) ? $e->segundo_nombre : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -170,7 +174,7 @@
                         <div class='form-group'>
                             <label for="fecha_nacimiento_dep">Fecha de Nacimiento: <span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($estudio->fecha_nacimiento) ? $estudio->fecha_nacimiento : ''  ?>
+                            <?= isset($e->fecha_nacimiento) ? $e->fecha_nacimiento : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -178,7 +182,7 @@
                         <div class="form-group">
                             <label for="sexo_dep" class=" control-label">Sexo:<span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($estudio->primer_nombre) ? $estudio->primer_nombre : ''  ?>
+                            <?= isset($e->idGenero) ? $e->idGenero : ''  ?>
                         </div>
                         </div>
                     </div>
@@ -186,11 +190,14 @@
                         <div class="form-group">
                             <label for="parentesco_familiar" class="control-label">Parentesco: <span class="text-danger">*</span></label>
                             <div>
-                            <?= isset($estudio->primer_nombre) ? $estudio->primer_nombre : ''  ?>
+                            <?= isset($e->idParentesco) ? $e->idParentesco : ''  ?>
                         </div>
                         </div>
                     </div>
                 </div>
+                <?php           
+        }
+        endif;?> 
             </div>
             <hr  class="mt-3 mb-3"/>
             <div id="CardConyugeB">
@@ -198,7 +205,3 @@
         </form>
     </div>
 </div>
-
-<script>
-
-</script>
