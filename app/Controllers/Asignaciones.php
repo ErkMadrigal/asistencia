@@ -147,8 +147,35 @@ class Asignaciones extends BaseController{
             if($this->validate($rules)){
                 $fechaActual = date('Y-m-d'); 
                 $fechaEntrega = $_POST['FechaEntrega'] == '' ? $fechaActual : $_POST['FechaEntrega'];
-                $nuevaFecha = strtotime ('+1 year' , strtotime($fechaEntrega)); //Se añade un año mas
+                
+                $tiempo = 0;
+                $strtotime = '';
+                switch ($_POST["periodicidad"]) {
+                    case "mensual":
+                        $tiempo = $_POST["pagos"]*1;
+                        $strtotime = "+$tiempo month";
+                    break;
+                    case "bimestral":
+                        $tiempo = $_POST["pagos"]*2;
+                        $strtotime = "+$tiempo month";
+                    break;
+                    case "trimestral":
+                        $tiempo = $_POST["pagos"]*3;
+                        $strtotime = "+$tiempo month";
+                        break;
+                    case "semestral":
+                        $tiempo = $_POST["pagos"]*6;
+                        $strtotime = "+$tiempo month";
+                    break;
+                    case "anual":
+                        $tiempo = $_POST["pagos"];
+                        $strtotime = "+$tiempo year";
+                    break;
+                }           
+                
+                $nuevaFecha = strtotime ($strtotime , strtotime($fechaEntrega)); //Se añade un año mas
                 $nuevaFecha = date ('Y-m-d',$nuevaFecha);
+
                 $insertData = array(
                     "id" => $idAsignacion,
                     "idCliente" =>  $_POST["cliente"],

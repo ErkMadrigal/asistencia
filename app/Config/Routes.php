@@ -135,8 +135,6 @@ $routes->post('getCompromisoPago', 'Asignaciones::getCompromisoPago',['filter' =
 $routes->post('setCompromisoPago', 'Asignaciones::setCompromisoPago',['filter' => 'auth']);
 $routes->get('getAllData', 'Asignaciones::getAllData',['filter' => 'auth']);
 $routes->get('detailAsignacion', 'Asignaciones::detailAsignacion',['filter' => 'auth']);
-$routes->get('editAsignacion', 'Asignaciones::editAsignacion',['filter' => 'auth']);
-$routes->post('updateDataAsignacion', 'Asignaciones::pullData',['filter' => 'auth']);
 $routes->post('deleteData', 'Asignaciones::deleteData',['filter' => 'auth']);
 
 
