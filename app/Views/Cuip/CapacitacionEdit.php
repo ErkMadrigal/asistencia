@@ -295,7 +295,7 @@
                                 <div class="form-group">
                                     <label for="inicioAdicional" class=" control-label">Inicio:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="tipo_curso" name="tipo_curso" value="<?= isset($e->inicio_adicional) ? $e->inicio_adicional : ''  ?>">
+                                        <input type="text" class="form-control " id="inicioAdicional" name="inicioAdicional" value="<?= isset($e->inicio_adicional) ? $e->inicio_adicional : ''  ?>">
                                     </div>
 
                                     <script type="text/javascript">
@@ -313,7 +313,7 @@
                                     <label for="conclusionAdicional" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
 
                                     <div>
-                                        <input type="text" class="form-control " id="tipo_curso" name="tipo_curso" value="<?= isset($e->conclusion_adicional) ? $e->conclusion_adicional : ''  ?>">
+                                        <input type="text" class="form-control " id="conclusionAdicional" name="conclusionAdicional" value="<?= isset($e->conclusion_adicional) ? $e->conclusion_adicional : ''  ?>">
                                     </div>
                                     <script type="text/javascript">
                                         $(function() {
@@ -689,7 +689,7 @@
                                     <label for="hasta" class=" control-label">Hasta:<span class="text-danger">*</span></label>
 
                                     <div>
-                                        <input type="text" class="form-control " id="desde" name="desde" value="<?= isset($e->hasta) ? $e->hasta : ''  ?>">
+                                        <input type="text" class="form-control " id="hasta" name="hasta" value="<?= isset($e->hasta) ? $e->hasta : ''  ?>">
 
                                     </div>
                                     <script type="text/javascript">
