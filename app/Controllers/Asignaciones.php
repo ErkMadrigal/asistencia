@@ -46,13 +46,14 @@ class Asignaciones extends BaseController{
             $data = [];
 			$validate = [];
 
-            
+
+
             $dataGet = array(
                 "periodicidad" =>  empty($_POST["periodicidad"]) ? '': $_POST["periodicidad"],
                 "fechaInicial" =>  empty($_POST["fechaInicial"]) ? '': $_POST["fechaInicial"],
                 "fechaFinal" =>  empty($_POST["fechaFinal"]) ? '': $_POST["fechaFinal"],
                 "tipoFecha" =>  empty($_POST["tipoFecha"]) ? '': $_POST["tipoFecha"],
-                "activo" =>  $_POST["clasificacion"],
+                "activo" =>  empty($_POST["clasificacion"]) ? '': $_POST["clasificacion"],
             );		
 
             if($_POST["tipoFecha"] != ''){
@@ -70,7 +71,7 @@ class Asignaciones extends BaseController{
                     $succes = ["mensaje" => 'Exito', "succes" => "succes"];
                     $data = $select;
                 } else {
-                    $dontSucces = ["error" => "error", "mensaje" => 'Hubo un error al Obtener los Datos.'];
+                    $dontSucces = ["error" => "error", "mensaje" => 'Datos no encontrados.'];
                 }
             }else{
 				$dontSucces = ["error" => "error", "mensaje" => 'Es Requerido Seleccionar las 2 Fechas'];
@@ -107,6 +108,7 @@ class Asignaciones extends BaseController{
 			$data['clientes'] = $this->modelAsign->getClientes();
 			$data['elementos'] = $this->modelAsign->getElemento();
 			$data['armas'] = $this->modelAsign->getArmas();
+			$data['modalidad'] = $this->modelAsign->getModalidad();
 			
 
 
@@ -115,12 +117,14 @@ class Asignaciones extends BaseController{
     }
 
     public function setData(){
-        if ($this->request->getMethod() == "post" && $this->request->getvar(['cliente', 'elemento', 'arma', 'tipoPago', 'periodicidad', 'renta'],FILTER_SANITIZE_STRING)){
+        if ($this->request->getMethod() == "post" && $this->request->getvar(['cliente', 'elemento', 'arma', 'modalidad', 'cartuchos', 'tipoPago', 'periodicidad', 'renta'],FILTER_SANITIZE_STRING)){
             
             $rules = [
 				'cliente' => ['label' => '', 'rules' => 'required'],
 				'elemento' => ['label' => '', 'rules' => 'required'],
 				'arma' => ['label' => '', 'rules' => 'required'],
+				'modalidad' => ['label' => '', 'rules' => 'required'],
+				'cartuchos' => ['label' => '', 'rules' => 'required'],
 				'tipoPago' => ['label' => '', 'rules' => 'required'],
 				'periodicidad' => ['label' => '', 'rules' => 'required'],
 				'renta' => ['label' => '', 'rules' => 'required'],
@@ -136,10 +140,14 @@ class Asignaciones extends BaseController{
         
             $idAsignacion = $uuid->toString();
             $idComp = $uuid->toString();
+            $getUser = session()->get('IdUser');
+            $LoggedUserId = $this->encrypter->decrypt($getUser);
+            $empresa = session()->get('empresa');
 
             if($this->validate($rules)){
                 $fechaActual = date('Y-m-d'); 
-                $nuevaFecha = strtotime ('+1 year' , strtotime($fechaActual)); //Se añade un año mas
+                $fechaEntrega = $_POST['FechaEntrega'] == '' ? $fechaActual : $_POST['FechaEntrega'];
+                $nuevaFecha = strtotime ('+1 year' , strtotime($fechaEntrega)); //Se añade un año mas
                 $nuevaFecha = date ('Y-m-d',$nuevaFecha);
                 $insertData = array(
                     "id" => $idAsignacion,
@@ -147,6 +155,7 @@ class Asignaciones extends BaseController{
                     "id_datos_personales" =>  $_POST["elemento"],
                     "id_armas" =>  $_POST["arma"],
                     "cantidad_Cartuchos" =>  $_POST["cartuchos"],
+                    "modalidad" =>  $_POST["modalidad"],
                     "tipo_pago" => $_POST["tipoPago"],
                     "periodicidad" =>  $_POST["periodicidad"],
                     "pagos" =>  $_POST["pagos"],
@@ -155,12 +164,13 @@ class Asignaciones extends BaseController{
                     "asignacion" =>  $_POST["asignacion"],
                     "garantia" =>  $_POST["garantia"],
                     "total" =>  $_POST["total"],
-                    "entrega" => $fechaActual,
+                    "entrega" => $fechaEntrega,
                     "final" =>  $nuevaFecha,
                     "tipo_movimiento" =>  'ingreso',
+                    "activo" => 1,
                     "aplicado" => 0, 
                     "saldo" =>  $_POST['saldo'],
-                    "activo" => 1,
+                    "createdby" => $LoggedUserId,
                     "updateddate" =>  date("Y-m-d H:i:s"),
                 );
                                 
@@ -192,6 +202,7 @@ class Asignaciones extends BaseController{
                             "saldo" =>  0,
                             "forma_pago" =>  $_POST["tipoPago"],
                             "activo" => 1,
+                            "createdby" => $LoggedUserId,
                             "id_asignacion" => $idAsignacion,
                         );
                         $insert = $this->modelAsign->addCompromiso($insertCompr);
@@ -222,6 +233,7 @@ class Asignaciones extends BaseController{
                             "saldo" =>  0,
                             "forma_pago" =>  $_POST["tipoPago"],
                             "activo" => 1,
+                            "createdby" => $LoggedUserId,
                             "id_asignacion" => $idAsignacion,
                         );	
                         $insert = $this->modelAsign->addCompromiso($insertCompr);
@@ -237,6 +249,7 @@ class Asignaciones extends BaseController{
                             "saldo" =>  0,
                             "forma_pago" =>  $_POST["tipoPago"],
                             "activo" => 1,
+                            "createdby" => $LoggedUserId,
                             "id_asignacion" => $idAsignacion,
                         );	
                         $insert = $this->modelAsign->addCompromiso($insertCompr);
@@ -247,6 +260,7 @@ class Asignaciones extends BaseController{
                         "id_portador" =>  $_POST["elemento"],
                         "activo" =>  0,
                         "updateddate" =>  date("Y-m-d H:i:s"),
+                        "updatedby" => $LoggedUserId,
                     );		
                     
 
@@ -303,6 +317,8 @@ class Asignaciones extends BaseController{
             $data = [];
             $this->db->transStart();
         
+            $getUser = session()->get('IdUser');
+            $LoggedUserId = $this->encrypter->decrypt($getUser);
 
             if($this->validate($rules)){
                     
@@ -318,11 +334,13 @@ class Asignaciones extends BaseController{
                         "aplicado" =>  $select[0]->aplicado+$_POST["saldo"],
                         "activo" =>  0,
                         "updateddate" =>  date("Y-m-d H:i:s"),
+                        "updatedby" => $LoggedUserId,
                     );		
                 }else{
                     $updateAsign = array(
                         "saldo" =>  $saldoT,
                         "aplicado" =>  $select[0]->aplicado+$_POST["saldo"],
+                        "updatedby" => $LoggedUserId,
                         "updateddate" =>  date("Y-m-d H:i:s"),
                     );		
                 }
@@ -336,6 +354,8 @@ class Asignaciones extends BaseController{
                         "banco" =>  $_POST["banco"],
                         "cuenta" =>  $_POST["cuenta"],
                         "forma_pago" =>  $_POST["formaPago"],
+                        "updatedby" => $LoggedUserId,
+
                     );	
                 }else{
                     $dataCP = array(
@@ -345,6 +365,7 @@ class Asignaciones extends BaseController{
                         "banco" =>  $_POST["banco"],
                         "cuenta" =>  $_POST["cuenta"],
                         "forma_pago" =>  $_POST["formaPago"],
+                        "updatedby" => $LoggedUserId,
                     );		
                 }
 
@@ -378,6 +399,7 @@ class Asignaciones extends BaseController{
 			$idAdmin = session()->get('IdUser');
 
 			$data['datos'] = $this->modelAsign->getData($id);
+			$data['getById'] = $this->modelAsign->getById($id);
 			$data['datosPagos'] = $this->modelAsign->getPagos($id);
 
 
@@ -385,172 +407,7 @@ class Asignaciones extends BaseController{
 		}
     }
    
-    public function editAsignacion(){
 
-        if ($this->request->getMethod() == "get" && $this->request->getvar(['id'],FILTER_SANITIZE_STRING)){
-
-			$data['modulos'] = $this->menu->Permisos();
-			$data['breadcrumb'] = ["inicio" => 'Asignaciones' ,
-                    				"url" => 'asignaciones',
-                    				"titulo" => 'Actualizar'];
-			$id = str_replace(" ", "+", $_GET['id']);
-			$idAdmin = session()->get('IdUser');
-
-			$data['clientes'] = $this->modelAsign->getClientes();
-			$data['elementos'] = $this->modelAsign->getElemento();
-			$data['armas'] = $this->modelAsign->getArmas();
-			$data['data'] = $this->modelAsign->getData($id);
-            $data['id'] = $id;
-			return view('asignaciones/editAsign', $data);
-		}
-    }
-    public function pullData(){
-        if ($this->request->getMethod() == "post" && $this->request->getvar(['cliente', 'elemento', 'arma', 'tipoPago', 'periodicidad', 'renta'],FILTER_SANITIZE_STRING)){
-            
-            $rules = [
-				'cliente' => ['label' => '', 'rules' => 'required'],
-				'elemento' => ['label' => '', 'rules' => 'required'],
-				'arma' => ['label' => '', 'rules' => 'required'],
-				'tipoPago' => ['label' => '', 'rules' => 'required'],
-				'periodicidad' => ['label' => '', 'rules' => 'required'],
-				'renta' => ['label' => '', 'rules' => 'required'],
-			];
-            
-            $errors = [];
-            $succes = [];
-            $dontSucces = [];
-            $data = [];
-            $this->db->transStart();
-        
-            if($this->validate($rules)){
-                $idAsign = $_POST['id'];
-
-                $fechaActual = date('Y-m-d'); 
-                $nuevaFecha = strtotime ('+1 year' , strtotime($fechaActual)); //Se añade un año mas
-                $nuevaFecha = date ('Y-m-d',$nuevaFecha);
-                $pullData = array(
-                    "idCliente" =>  $_POST["cliente"],
-                    "id_datos_personales" =>  $_POST["elemento"],
-                    "id_armas" =>  $_POST["arma"],
-                    "tipo_pago" => $_POST["tipoPago"],
-                    "periodicidad" =>  $_POST["periodicidad"],
-                    "pagos" =>  $_POST["pagos"],
-                    "renta" =>  $_POST["renta"],
-                    "tramite" =>  $_POST["tramite"],
-                    "asignacion" =>  $_POST["asignacion"],
-                    "garantia" =>  $_POST["garantia"],
-                    "total" =>  $_POST["total"],
-                    "entrega" => $fechaActual,
-                    "final" =>  $nuevaFecha,
-                    "tipo_movimiento" =>  'ingreso',
-                    "aplicado" => 0, 
-                    "saldo" =>  $_POST['saldo'],
-                    "activo" => 1,
-                    "updateddate" =>  date("Y-m-d H:i:s"),
-                );
-                                
-                $pull = $this->modelAsign->addData($pullData);
-                if($pull){
-                    $contador = 0;
-                    for ($i=0; $i < $_POST["pagos"]; $i++) { 
-                        if($_POST["periodicidad"] == "mensual"){
-                            $contador = $i*1;
-                        }
-                        if($_POST["periodicidad"] == "bimestral"){
-                            $contador = $i*2;
-                        }
-                        if($_POST["periodicidad"] == "trimestral"){
-                            $contador = $i*3;
-                        }
-                        if($_POST["periodicidad"] == "semestral"){
-                            $contador = $i*6;
-                        }
-                        if($_POST["periodicidad"] == "anual"){
-                            $contador = $i*1;
-                        }
-                        $pullCompr = array(
-                            "pago" =>  $i+1,
-                            "fecha" =>  date("Y-m-d",strtotime($fechaActual."+ $contador month")),
-                            "concepto" =>  "Renta",
-                            "importe" => $_POST["renta"],
-                            "aplicado" =>  $_POST["renta"],
-                            "saldo" =>  0,
-                            "forma_pago" =>  $_POST["tipoPago"],
-                            "activo" => 1,
-                            "id_asignacion" => $idAsignacion,
-                        );
-                        $pull = $this->modelAsign->addCompromiso($pullCompr);
-                        
-                    }
-                    if($_POST['tramite'] != ''){
-                        $pullCompr = array(
-                            "pago" =>  1,
-                            "fecha" => $fechaActual,
-                            "concepto" =>  "Tramite",
-                            "importe" => $_POST["renta"],
-                            "aplicado" =>  $_POST["renta"],
-                            "saldo" =>  0,
-                            "forma_pago" =>  $_POST["tipoPago"],
-                            "activo" => 1,
-                            "id_asignacion" => $idAsignacion,
-                        );	
-                        $pull = $this->modelAsign->addCompromiso($pullCompr);
-                    }
-                    
-                    if($_POST['asignacion'] != ''){
-                        $pullCompr = array(
-                            "pago" =>  1,
-                            "fecha" => $fechaActual,
-                            "concepto" =>  "Asignacion",
-                            "importe" => $_POST["renta"],
-                            "aplicado" =>  $_POST["renta"],
-                            "saldo" =>  0,
-                            "forma_pago" =>  $_POST["tipoPago"],
-                            "activo" => 1,
-                            "id_asignacion" => $idAsignacion,
-                        );	
-                        $pull = $this->modelAsign->addCompromiso($pullCompr);
-                    }
-                    
-                    if($_POST['garantia'] != ''){
-                        $pullCompr = array(
-                            "pago" =>  1,
-                            "fecha" => $fechaActual,
-                            "concepto" =>  "Garantia",
-                            "importe" => $_POST["renta"],
-                            "aplicado" =>  $_POST["renta"],
-                            "saldo" =>  0,
-                            "forma_pago" =>  $_POST["tipoPago"],
-                            "activo" => 1,
-                            "id_asignacion" => $idAsignacion,
-                        );	
-                        $pull = $this->modelAsign->addCompromiso($pullCompr);
-                    }
-
-                    $idArm = $_POST["arma"];
-                    $asignArm = array(
-                        "id_portador" =>  $_POST["elemento"],
-                        "activo" =>  0,
-                        "updateddate" =>  date("Y-m-d H:i:s"),
-                    );		
-                    
-
-                    $update = $this->modelAsign->elementAignArm($asignArm, $idArm);
-                }
-
-                $this->db->transComplete();
-
-                if ($insert) {
-                    $succes = ["mensaje" => 'Guardado con Exito', "succes" => "succes"];
-                } else {
-                    $dontSucces = ["error" => "error", "mensaje" => 'Hubo un error al intentar Guardar.'];
-                }
-            } else {	
-                $errors = $this->validator->getErrors();
-            }
-            echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
-		}	
-    }
 
     public function deleteData(){
         if ($this->request->getMethod() == "post"){
