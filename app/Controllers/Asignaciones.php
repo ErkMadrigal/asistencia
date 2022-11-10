@@ -125,6 +125,7 @@ class Asignaciones extends BaseController{
 				'arma' => ['label' => '', 'rules' => 'required'],
 				'modalidad' => ['label' => '', 'rules' => 'required'],
 				'cartuchos' => ['label' => '', 'rules' => 'required'],
+				'pagos' => ['label' => '', 'rules' => 'required'],
 				'tipoPago' => ['label' => '', 'rules' => 'required'],
 				'periodicidad' => ['label' => '', 'rules' => 'required'],
 				'renta' => ['label' => '', 'rules' => 'required'],
