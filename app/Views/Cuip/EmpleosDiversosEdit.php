@@ -25,9 +25,7 @@
                             
                         </div>
                     </div>
-                </div>
-
-            
+                </div>            
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
@@ -97,7 +95,7 @@
                     <div class="form-group">
                         <label for="estadocodigoEmpDiv" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
                         <div>
-                        <select class="form-control" id="estadocodigoEmpDiv" name="estadocodigoEmpDiv">
+                        <select class="form-control" id="estadocodigoEmpDiv<" name="estadocodigoEmpDiv">
                                     <option value="">Selecciona una Opcion</option>
                                     <?php
                                     if (!empty($estadocodigoEmpDiv)) :
@@ -149,7 +147,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
+                        <label for="numero<" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
                         <div >    
                                   <input type="text"  class="form-control "  id="numero" name="numero"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"  value="<?= isset($diversos->numero_telefono) ? $diversos->numero_telefono : ''  ?>">
                             

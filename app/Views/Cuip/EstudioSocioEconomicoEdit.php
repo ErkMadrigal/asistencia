@@ -195,10 +195,10 @@
                 <div class="row" class="form-block">
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="apellidoPaterno" class=" control-label">Apellido
+                            <label for="apellidoPaterno<?= $label ?>" class=" control-label">Apellido
                                 Paterno:<span class="text-danger">*</span></label>
                             <div>
-                                <input type="text" class="form-control " id="apellidoPaterno" name="apellidoPaterno" value="<?= isset($e->apellido_paterno) ? $e->apellido_paterno : ''  ?>">
+                                <input type="text" class="form-control " id="apellidoPaterno<?= $label ?>" name="apellidoPaterno<?= $label ?>" value="<?= isset($e->apellido_paterno) ? $e->apellido_paterno : ''  ?>">
 
                             </div>
                         </div>
@@ -206,37 +206,37 @@
                     
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="apellidoMaterno" class=" control-label">Apellido
+                            <label for="apellidoMaterno<?= $label ?>" class=" control-label">Apellido
                                 Materno:<span class="text-danger">*</span></label>
                             <div>
-                                <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno" value="<?= isset($e->apellido_materno) ? $e->apellido_materno : ''  ?>">
+                                <input type="text" class="form-control " id="apellidoMaterno<?= $label ?>" name="apellidoMaterno<?= $label ?>" value="<?= isset($e->apellido_materno) ? $e->apellido_materno : ''  ?>">
 
                             </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="primerNombre" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
+                            <label for="primerNombre<?= $label ?>" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
                             <div>
-                                <input type="text" class="form-control " id="primerNombre" name="primerNombre" value="<?= isset($e->primer_nombre) ? $e->primer_nombre : ''  ?>">
+                                <input type="text" class="form-control " id="primerNombre<?= $label ?>" name="primerNombre<?= $label ?>" value="<?= isset($e->primer_nombre) ? $e->primer_nombre : ''  ?>">
 
                             </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="segundoNombre" class=" control-label">Segundo Nombre:</label>
+                            <label for="segundoNombre<?= $label ?>" class=" control-label">Segundo Nombre:</label>
                             <div>
-                                <input type="text" class="form-control " id="segundoNombre" name="segundoNombre" value="<?= isset($e->segundo_nombre) ? $e->segundo_nombre : ''  ?>">
+                                <input type="text" class="form-control " id="segundoNombre<?= $label ?>" name="segundoNombre<?= $label ?>" value="<?= isset($e->segundo_nombre) ? $e->segundo_nombre : ''  ?>">
 
                             </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-6'>
                         <div class='form-group'>
-                            <label for="fecha_nacimiento_dep">Fecha de Nacimiento: <span class="text-danger">*</span></label>
+                            <label for="fecha_nacimiento_dep<?= $label ?>">Fecha de Nacimiento: <span class="text-danger">*</span></label>
                             <div>
-                                <input type="text" class="form-control " id="fecha_nacimiento_dep" name="fecha_nacimiento_dep" value="<?= isset($e->fecha_nacimiento) ? $e->fecha_nacimiento : ''  ?>">
+                                <input type="text" class="form-control " id="fecha_nacimiento_dep<?= $label ?>" name="fecha_nacimiento_dep<?= $label ?>" value="<?= isset($e->fecha_nacimiento) ? $e->fecha_nacimiento : ''  ?>">
 
                             </div>
                             <script type="text/javascript">
@@ -251,8 +251,8 @@
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="sexo_dep" class=" control-label">Sexo:<span class="text-danger">*</span></label>
-                            <select class="form-control" id="sexo_dep" name="sexo_dep">
+                            <label for="sexo_dep<?= $label ?>" class=" control-label">Sexo:<span class="text-danger">*</span></label>
+                            <select class="form-control" id="sexo_dep<?= $label ?>" name="sexo_dep<?= $label ?>">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
                                 if (!empty($genero)) :
@@ -277,9 +277,9 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="municipiocodigoSegPub" class="control-label">Parentesco: <span class="text-danger">*</span></label>
+                        <label for="municipiocodigoSegPub<?= $label ?>" class="control-label">Parentesco: <span class="text-danger">*</span></label>
                         <div>
-                            <select class="form-control" id="parentesco_familiar" name="parentesco_familiar">
+                            <select class="form-control" id="parentesco_familiar<?= $label ?>" name="parentesco_familiar<?= $label ?>">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
                                 if (!empty($parentesco_todos)) :

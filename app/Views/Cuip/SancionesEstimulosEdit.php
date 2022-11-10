@@ -26,18 +26,18 @@
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="tipo" class="control-label">Tipo: <span class="text-danger">*</span></label>
+                        <label for="tipo<?= $label ?>" class="control-label">Tipo: <span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="tipo" name="tipo"  value="<?= isset($sanciones->tipo_sancion) ? $sanciones->tipo_sancion : ''  ?>">
+                                  <input type="text"  class="form-control "  id="tipo<?= $label ?>" name="tipo<?= $label ?>"  value="<?= isset($sanciones->tipo_sancion) ? $sanciones->tipo_sancion : ''  ?>">
                             
                         </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="determinacion" class=" control-label">Determinación:<span class="text-danger">*</span></label>
+                        <label for="determinacion<?= $label ?>" class=" control-label">Determinación:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="determinacion" name="determinacion"  value="<?= isset($sanciones->determinacion) ? $sanciones->determinacion : ''  ?>">
+                                  <input type="text"  class="form-control "  id="determinacion<?= $label ?>" name="determinacion<?= $label ?>"  value="<?= isset($sanciones->determinacion) ? $sanciones->determinacion : ''  ?>">
                             
                         </div>
                         <script type="text/javascript">
@@ -52,27 +52,27 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
+                        <label for="descripcion<?= $label ?>" class=" control-label">Descripción:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="descripcion" name="descripcion"  value="<?= isset($sanciones->descripcion_sancion) ? $sanciones->descripcion_sancion : ''  ?>">
+                                  <input type="text"  class="form-control "  id="descripcion<?= $label ?>" name="descripcion<?= $label ?>"  value="<?= isset($sanciones->descripcion_sancion) ? $sanciones->descripcion_sancion : ''  ?>">
                             
                         </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                    <label for="situacion" class=" control-label">Situación:<span class="text-danger">*</span></label>
+                    <label for="situacion<?= $label ?>" class=" control-label">Situación:<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="situacion" name="situacion"  value="<?= isset($sanciones->situacion) ? $sanciones->situacion : ''  ?>">
+                                  <input type="text"  class="form-control "  id="situacion<?= $label ?>" name="situacion<?= $label ?>"  value="<?= isset($sanciones->situacion) ? $sanciones->situacion : ''  ?>">
                             
                         </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="inicio_inhabilitacion" class=" control-label">Inicio de la inhabilitación:<span class="text-danger">*</span></label>
+                        <label for="inicio_inhabilitacion<?= $label ?>" class=" control-label">Inicio de la inhabilitación:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="inicio_inhabilitacion" name="inicio_inhabilitacion"  value="<?= isset($sanciones->inicio_habilitacion) ? $sanciones->inicio_habilitacion : ''  ?>">
+                                  <input type="text"  class="form-control "  id="inicio_inhabilitacion<?= $label ?>" name="inicio_inhabilitacion<?= $label ?>"  value="<?= isset($sanciones->inicio_habilitacion) ? $sanciones->inicio_habilitacion : ''  ?>">
                             
                         </div>
                         <script type="text/javascript">
@@ -87,9 +87,9 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="termino_inhabilitacion" class=" control-label">Término de la inhabilitación:<span class="text-danger">*</span></label>
+                        <label for="termino_inhabilitacion<?= $label ?>" class=" control-label">Término de la inhabilitación:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="termino_inhabilitacion" name="termino_inhabilitacion"  value="<?= isset($sanciones->termino_habilitacion) ? $sanciones->termino_habilitacion : ''  ?>">
+                                  <input type="text"  class="form-control "  id="termino_inhabilitacion<?= $label ?>" name="termino_inhabilitacion<?= $label ?>"  value="<?= isset($sanciones->termino_habilitacion) ? $sanciones->termino_habilitacion : ''  ?>">
                             
                         </div>
                         <script type="text/javascript">
@@ -104,9 +104,9 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-12'>
                     <div class="form-group">
-                        <label for="organismo" class=" control-label">Dependencia u organismo que emite la determinación :<span class="text-danger">*</span></label>
+                        <label for="organismo<?= $label ?>" class=" control-label">Dependencia u organismo que emite la determinación :<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="organismo" name="organismo"  value="<?= isset($sanciones->dependencia) ? $sanciones->dependencia : ''  ?>">
+                                  <input type="text"  class="form-control "  id="organismo<?= $label ?>" name="organismo<?= $label ?>"  value="<?= isset($sanciones->dependencia) ? $sanciones->dependencia : ''  ?>">
                             
                         </div>
                     </div>
@@ -115,7 +115,7 @@
             <?php
             $label = 'B';
             }
-            endif;?>   
+            endif;?>  
         </div>
         <hr class="mt-3 mb-3" />
             <div id="CardDatossancionesB">
@@ -151,18 +151,18 @@
                 <div class="row">
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="emisora" class=" control-label">Institución emisora:<span class="text-danger">*</span></label>
+                            <label for="emisora<?= $label ?>" class=" control-label">Institución emisora:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="emisora" name="emisora"  value="<?= isset($e->institucion_emisora) ? $e->institucion_emisora : ''  ?>">
+                                  <input type="text"  class="form-control "  id="emisora<?= $label ?>" name="emisora<?= $label ?>"  value="<?= isset($e->institucion_emisora) ? $e->institucion_emisora : ''  ?>">
                             
                         </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="entidad_federativaSE" class=" control-label">Entidad federativa:<span class="text-danger">*</span></label>
+                            <label for="entidad_federativaSE<?= $label ?>" class=" control-label">Entidad federativa:<span class="text-danger">*</span></label>
                             <div >    
-                            <select class="form-control" id="entidad_federativaSE" name="entidad_federativaSE">
+                            <select class="form-control" id="entidad_federativaSE<?= $label ?>" name="entidad_federativaSE<?= $label ?>">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
                                 if (!empty($entidad_federativa)) :
@@ -187,56 +187,56 @@
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="delitos" class="control-label">Delitos: <span class="text-danger">*</span></label>
+                            <label for="delitos<?= $label ?>" class="control-label">Delitos: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="delitos" name="delitos"  value="<?= isset($e->delitos) ? $e->delitos : ''  ?> ">
+                                  <input type="text"  class="form-control "  id="delitos<?= $label ?>" name="delitos<?= $label ?>"  value="<?= isset($e->delitos) ? $e->delitos : ''  ?> ">
                             
                         </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="motivo" class=" control-label">Motivo:
+                            <label for="motivo<?= $label ?>" class=" control-label">Motivo:
                                 <span class="text-danger">*</span></label>
                                 <div >    
-                                  <input type="text"  class="form-control "  id="motivo" name="motivo"  value=" <?= isset($e->motivos) ? $e->motivos : ''  ?>">
+                                  <input type="text"  class="form-control "  id="motivo<?= $label ?>" name="motivo<?= $label ?>"  value=" <?= isset($e->motivos) ? $e->motivos : ''  ?>">
                             
                         </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="no_expediente" class="control-label">No. Expediente: <span class="text-danger">*</span></label>
+                            <label for="no_expediente<?= $label ?>" class="control-label">No. Expediente: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="no_expediente" name="no_expediente"  value="<?= isset($e->dependencia) ? $e->dependencia : ''  ?>">
+                                  <input type="text"  class="form-control "  id="no_expediente<?= $label ?>" name="no_expediente<?= $label ?>"  value="<?= isset($e->dependencia) ? $e->dependencia : ''  ?>">
                             
                         </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="agencia_mp" class=" control-label">Agencia del MP:
+                            <label for="agencia_mp<?= $label ?>" class=" control-label">Agencia del MP:
                                 <span class="text-danger">*</span></label>
                                 <div >    
-                                  <input type="text"  class="form-control "  id="agencia_mp" name="agencia_mp"  value=" <?= isset($e->agencia_mp) ? $e->agencia_mp : ''  ?>">
+                                  <input type="text"  class="form-control "  id="agencia_mp<?= $label ?>" name="agencia_mp<?= $label ?>"  value=" <?= isset($e->agencia_mp) ? $e->agencia_mp : ''  ?>">
                             
                         </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="averiguacion_previa" class="control-label">Averiguación previa: <span class="text-danger">*</span></label>
+                            <label for="averiguacion_previa<?= $label ?>" class="control-label">Averiguación previa: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="averiguacion_previa" name="averiguacion_previa"  value="<?= isset($e->averiguacion_estado) ? $e->averiguacion_estado : ''  ?> ">
+                                  <input type="text"  class="form-control "  id="averiguacion_previa<?= $label ?>" name="averiguacion_previa<?= $label ?>"  value="<?= isset($e->averiguacion_estado) ? $e->averiguacion_estado : ''  ?> ">
                     
                         </div>
                         </div>
                     </div>
                     <div class='col-6 col-sm-6'>
                         <div class="form-group">
-                            <label for="tipo_fuero" class="control-label">Tipo de Fuero: <span class="text-danger">*</span></label>
+                            <label for="tipo_fuero<?= $label ?>" class="control-label">Tipo de Fuero: <span class="text-danger">*</span></label>
                             <div>
-                            <select class="form-control" id="tipo_fuero" name="tipo_fuero">
+                            <select class="form-control" id="tipo_fuero<?= $label ?>" name="tipo_fuero<?= $label ?>">
                                     <option value="">Selecciona una Opcion</option>
                                     <?php
                                     if (!empty($tipo_fuero)) :
@@ -261,18 +261,18 @@
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="averiguacion_estado" class="control-label">Estado de la averiguación previa: <span class="text-danger">*</span></label>
+                            <label for="averiguacion_estado<?= $label ?>" class="control-label">Estado de la averiguación previa: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="averiguacion_estado" name="averiguacion_estado"  value="<?= isset($e->estado_averiguacion) ? $e->estado_averiguacion : ''  ?> ">
+                                  <input type="text"  class="form-control "  id="averiguacion_estado<?= $label ?>" name="averiguacion_estado<?= $label ?>"  value="<?= isset($e->estado_averiguacion) ? $e->estado_averiguacion : ''  ?> ">
                             
                         </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-6'>
                         <div class='form-group'>
-                            <label for="inicio_averiguacion">Inicio de la averiguación: <span class="text-danger">*</span></label>
+                            <label for="inicio_averiguacion<?= $label ?>">Inicio de la averiguación: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="inicio_averiguacion" name="inicio_averiguacion"  value="<?= isset($e->inicio_averiguacion) ? $e->inicio_averiguacion : ''  ?> ">
+                                  <input type="text"  class="form-control "  id="inicio_averiguacion<?= $label ?>" name="inicio_averiguacion<?= $label ?>"  value="<?= isset($e->inicio_averiguacion) ? $e->inicio_averiguacion : ''  ?> ">
                             
                         </div>
                             <script type="text/javascript">
@@ -287,9 +287,9 @@
                     </div>
                     <div class='col-12 col-sm-6'>
                         <div class='form-group'>
-                            <label for="al_dia">Al día: <span class="text-danger">*</span></label>
+                            <label for="al_dia<?= $label ?>">Al día: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="al_dia" name="al_dia"  value="<?= isset($e->aldia_averiguacion) ? $e->aldia_averiguacion : ''  ?>">
+                                  <input type="text"  class="form-control "  id="al_dia<?= $label ?>" name="al_dia<?= $label ?>"  value="<?= isset($e->aldia_averiguacion) ? $e->aldia_averiguacion : ''  ?>">
                             
                         </div>
                             <script type="text/javascript">
@@ -304,9 +304,9 @@
                     </div>
                     <div class='col-6 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="juzgado" class=" control-label">Juzgado:<span class="text-danger">*</span></label>
+                            <label for="juzgado<?= $label ?>" class=" control-label">Juzgado:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="juzgado" name="juzgado"  value="<?= isset($e->juzgado) ? $e->juzgado : ''  ?>">
+                                  <input type="text"  class="form-control "  id="juzgado<?= $label ?>" name="juzgado<?= $label ?>"  value="<?= isset($e->juzgado) ? $e->juzgado : ''  ?>">
                             
                         </div>
 
@@ -314,9 +314,9 @@
                     </div>
                     <div class='col-6 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="no_proceso" class=" control-label">No. Proceso:<span class="text-danger">*</span></label>
+                            <label for="no_proceso<?= $label ?>" class=" control-label">No. Proceso:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="no_proceso" name="no_proceso"  value="<?= isset($e->num_proceso) ? $e->num_proceso : ''  ?> ">
+                                  <input type="text"  class="form-control "  id="no_proceso<?= $label ?>" name="no_proceso<?= $label ?>"  value="<?= isset($e->num_proceso) ? $e->num_proceso : ''  ?> ">
                             
                         </div>
 
@@ -324,9 +324,9 @@
                     </div>
                     <div class='col-6 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="estado_procesal" class=" control-label">Estado Procesal:<span class="text-danger">*</span></label>
+                            <label for="estado_procesal<?= $label ?>" class=" control-label">Estado Procesal:<span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="estado_procesal" name="estado_procesal"  value="<?= isset($e->estado_procesal) ? $e->estado_procesal : ''  ?> ">
+                                  <input type="text"  class="form-control "  id="estado_procesal<?= $label ?>" name="estado_procesal<?= $label ?>"  value="<?= isset($e->estado_procesal) ? $e->estado_procesal : ''  ?> ">
                             
                         </div>
 
@@ -334,9 +334,9 @@
                     </div>
                     <div class='col-12 col-sm-6'>
                         <div class='form-group'>
-                            <label for="inicio_proceso">Inicio del proceso: <span class="text-danger">*</span></label>
+                            <label for="inicio_proceso<?= $label ?>">Inicio del proceso: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="inicio_proceso" name="inicio_proceso"  value="<?= isset($e->inicio_proceso) ? $e->inicio_proceso : ''  ?>">
+                                  <input type="text"  class="form-control "  id="inicio_proceso<?= $label ?>" name="inicio_proceso<?= $label ?>"  value="<?= isset($e->inicio_proceso) ? $e->inicio_proceso : ''  ?>">
                             
                         </div>
                             <script type="text/javascript">
@@ -351,9 +351,9 @@
                     </div>
                     <div class='col-12 col-sm-6'>
                         <div class='form-group'>
-                            <label for="al_dia_proceso">Al día: <span class="text-danger">*</span></label>
+                            <label for="al_dia_proceso<?= $label ?>">Al día: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="al_dia_proceso" name="al_dia_proceso"  value="<?= isset($e->aldia_proceso) ? $e->aldia_proceso : ''  ?>">
+                                  <input type="text"  class="form-control "  id="al_dia_proceso<?= $label ?>" name="al_dia_proceso<?= $label ?>"  value="<?= isset($e->aldia_proceso) ? $e->aldia_proceso : ''  ?>">
                             
                         </div>
                             <script type="text/javascript">
@@ -407,36 +407,36 @@
         <div class="row">
             <div class='col-6 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="tipo_estimulo" class=" control-label">Tipo:<span class="text-danger">*</span></label>
+                    <label for="tipo_estimulo<?= $label ?>" class=" control-label">Tipo:<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="tipo_estimulo" name="tipo_estimulo"  value="<?= isset($e->tipo_estimulo) ? $e->tipo_estimulo : ''  ?>">
+                                  <input type="text"  class="form-control "  id="tipo_estimulo<?= $label ?>" name="tipo_estimulo<?= $label ?>"  value="<?= isset($e->tipo_estimulo) ? $e->tipo_estimulo : ''  ?>">
                             
                         </div>
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="descripcion_estimulo" class=" control-label">Descripción:<span class="text-danger">*</span></label>
+                    <label for="descripcion_estimulo<?= $label ?>" class=" control-label">Descripción:<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="descripcion_estimulo" name="descripcion_estimulo"  value="<?= isset($e->descripcion_estimulo) ? $e->descripcion_estimulo : ''  ?>">
+                                  <input type="text"  class="form-control "  id="descripcion_estimulo<?= $label ?>" name="descripcion_estimulo<?= $label ?>"  value="<?= isset($e->descripcion_estimulo) ? $e->descripcion_estimulo : ''  ?>">
                             
                         </div>
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="dependencia" class=" control-label">Dependencia que otorga:<span class="text-danger">*</span></label>
+                    <label for="dependencia<?= $label ?>" class=" control-label">Dependencia que otorga:<span class="text-danger">*</span></label>
                     <div >    
-                           <input type="text"  class="form-control "  id="dependencia" name="dependencia"  value="<?= isset($e->dependencia_otorga) ? $e->dependencia_otorga : ''  ?>">
+                           <input type="text"  class="form-control "  id="dependencia<?= $label ?>" name="dependencia<?= $label ?>"  value="<?= isset($e->dependencia_otorga) ? $e->dependencia_otorga : ''  ?>">
                             
                         </div>
                 </div>
             </div>
             <div class='col-12 col-sm-6'>
                 <div class='form-group'>
-                    <label for="otrogado_estimulo">Otorgado: <span class="text-danger">*</span></label>
+                    <label for="otrogado_estimulo<?= $label ?>">Otorgado: <span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="otrogado_estimulo" name="otrogado_estimulo"  value=" <?= isset($e->otorgado) ? $e->otorgado : ''  ?>">
+                                  <input type="text"  class="form-control "  id="otrogado_estimulo<?= $label ?>" name="otrogado_estimulo<?= $label ?>"  value=" <?= isset($e->otorgado) ? $e->otorgado : ''  ?>">
                             
                         </div>
                     <script type="text/javascript">

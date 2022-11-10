@@ -27,45 +27,45 @@
                         <div class="row">
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
-                                    <label for="dependencia" class=" control-label">Dependencia responsable:<span class="text-danger">*</span></label>
+                                    <label for="dependencia<?= $label ?>" class=" control-label">Dependencia responsable:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="certificado" name="certificado" value="<?= isset($e->dependencia) ? $e->dependencia : ''  ?>">
+                                        <input type="text" class="form-control " id="certificado<?= $label ?>" name="certificado<?= $label ?>" value="<?= isset($e->dependencia) ? $e->dependencia : ''  ?>">
 
                                     </div>
                                 </div>
                             </div>
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
-                                    <label for="institucion" class=" control-label">Institución Capacitadora:<span class="text-danger">*</span></label>
+                                    <label for="institucion<?= $label ?>" class=" control-label">Institución Capacitadora:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="institucion" name="institucion" value=" <?= isset($e->inst_capacitadora) ? $e->inst_capacitadora : ''  ?>">
+                                        <input type="text" class="form-control " id="institucion<?= $label ?>" name="institucion<?= $label ?>" value=" <?= isset($e->inst_capacitadora) ? $e->inst_capacitadora : ''  ?>">
 
                                     </div>
                                 </div>
                             </div>
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
-                                    <label for="nombre_curso" class=" control-label">Nombre del curso:<span class="text-danger">*</span></label>
+                                    <label for="nombre_curso<?= $label ?>" class=" control-label">Nombre del curso:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="nombre_curso" name="nombre_curso" value="<?= isset($e->nombre_curso) ? $e->nombre_curso : ''  ?>">
+                                        <input type="text" class="form-control " id="nombre_curso<?= $label ?>" name="nombre_curso<?= $label ?>" value="<?= isset($e->nombre_curso) ? $e->nombre_curso : ''  ?>">
 
                                     </div>
                                 </div>
                             </div>
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
-                                    <label for="tema_curso" class=" control-label">Tema del curso:<span class="text-danger">*</span></label>
+                                    <label for="tema_curso<?= $label ?>" class=" control-label">Tema del curso:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="tema_curso" name="tema_curso" value=" <?= isset($e->tema_curso) ? $e->tema_curso : ''  ?>">
+                                        <input type="text" class="form-control " id="tema_curso<?= $label ?>" name="tema_curso<?= $label ?>" value=" <?= isset($e->tema_curso) ? $e->tema_curso : ''  ?>">
 
                                     </div>
                                 </div>
                             </div>
                             <div class='col-6 col-sm-6'>
                                 <div class="form-group">
-                                    <label for="nivel_curso" class="control-label">Nivel del curso recibido: <span class="text-danger">*</span></label>
+                                    <label for="nivel_curso<?= $label ?>" class="control-label">Nivel del curso recibido: <span class="text-danger">*</span></label>
                                     <div>
-                                        <select class="form-control" id="nivel_curso" name="nivel_curso">
+                                        <select class="form-control" id="nivel_curso<?= $label ?>" name="nivel_curso<?= $label ?>">
                                             <option value="">Selecciona una Opcion</option>
                                             <?php
                                             if (!empty($nivel_curso)) :
@@ -90,9 +90,9 @@
                             </div>
                             <div class='col-6 col-sm-6'>
                                 <div class="form-group">
-                                    <label for="eficienciaCursos" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
+                                    <label for="eficienciaCursos<?= $label ?>" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
                                     <div>
-                                        <select class="form-control" id="eficienciaCursos" name="eficienciaCursos">
+                                        <select class="form-control" id="eficienciaCursos<?= $label ?>" name="eficienciaCursos<?= $label ?>">
                                             <option value="">Selecciona una Opcion</option>
                                             <?php
                                             if (!empty($eficiencia)) :
@@ -117,9 +117,9 @@
                             </div>
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
-                                    <label for="inicio" class=" control-label">Inicio:<span class="text-danger">*</span></label>
+                                    <label for="inicio<?= $label ?>" class=" control-label">Inicio:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="inicio" name="inicio" value=" <?= isset($e->inicio_curso) ? $e->inicio_curso : ''  ?>">
+                                        <input type="text" class="form-control " id="inicio<?= $label ?>" name="inicio<?= $label ?>" value=" <?= isset($e->inicio_curso) ? $e->inicio_curso : ''  ?>">
 
                                     </div>
                                     <script type="text/javascript">
@@ -134,9 +134,9 @@
                             </div>
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
-                                    <label for="conclusion" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
+                                    <label for="conclusion<?= $label ?>" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="conclusion" name="conclusion" value="<?= isset($e->conclusion_curso) ? $e->conclusion_curso : ''  ?>">
+                                        <input type="text" class="form-control " id="conclusion<?= $label ?>" name="conclusion<?= $label ?>" value="<?= isset($e->conclusion_curso) ? $e->conclusion_curso : ''  ?>">
 
                                     </div>
                                     <script type="text/javascript">
@@ -151,9 +151,9 @@
                             </div>
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
-                                    <label for="duracion" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
+                                    <label for="duracion<?= $label ?>" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="duracion" name="duracion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" value="<?= isset($e->duracion_horas_curso) ? $e->duracion_horas_curso : ''  ?>">
+                                        <input type="text" class="form-control " id="duracion<?= $label ?>" name="duracion<?= $label ?>" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" value="<?= isset($e->duracion_horas_curso) ? $e->duracion_horas_curso : ''  ?>">
 
                                     </div>
 
@@ -161,9 +161,9 @@
                             </div>
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
-                                    <label for="comprobante" class=" control-label">Tipo de comprobante:<span class="text-danger">*</span></label>
+                                    <label for="comprobante<?= $label ?>" class=" control-label">Tipo de comprobante:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="comprobante" name="comprobante" value="<?= isset($e->tipo_comprobante) ? $e->tipo_comprobante : ''  ?>">
+                                        <input type="text" class="form-control " id="comprobante<?= $label ?>" name="comprobante<?= $label ?>" value="<?= isset($e->tipo_comprobante) ? $e->tipo_comprobante : ''  ?>">
 
                                     </div>
                                 </div>
@@ -211,36 +211,36 @@
                         <div class="row">
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
-                                    <label for="empresa" class=" control-label">Insitutción o Empresa:<span class="text-danger">*</span></label>
+                                    <label for="empresa<?= $label ?>" class=" control-label">Insitutción o Empresa:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="empresa" name="empresa" value="<?= isset($e->institucion) ? $e->institucion : ''  ?>">
+                                        <input type="text" class="form-control " id="empresa<?= $label ?>" name="empresa<?= $label ?>" value="<?= isset($e->institucion) ? $e->institucion : ''  ?>">
 
                                     </div>
                                 </div>
                             </div>
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
-                                    <label for="curso" class=" control-label">Estudio o Curso:<span class="text-danger">*</span></label>
+                                    <label for="curso<?= $label ?>" class=" control-label">Estudio o Curso:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="curso" name="curso" value="<?= isset($e->curso) ? $e->curso : ''  ?>">
+                                        <input type="text" class="form-control " id="curso<?= $label ?>" name="curso<?= $label ?>" value="<?= isset($e->curso) ? $e->curso : ''  ?>">
 
                                     </div>
                                 </div>
                             </div>
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
-                                    <label for="tipo_curso" class=" control-label">Tipo de curso:<span class="text-danger">*</span></label>
+                                    <label for="tipo_curso<?= $label ?>" class=" control-label">Tipo de curso:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="tipo_curso" name="tipo_curso" value="<?= isset($e->tipo_curso) ? $e->tipo_curso : ''  ?>">
+                                        <input type="text" class="form-control " id="tipo_curso<?= $label ?>" name="tipo_curso<?= $label ?>" value="<?= isset($e->tipo_curso) ? $e->tipo_curso : ''  ?>">
 
                                     </div>
                                 </div>
                             </div>
                             <div class='col-6 col-sm-6'>
                                 <div class="form-group">
-                                    <label for="cuso_tomado" class="control-label">¿El curso fue?: <span class="text-danger">*</span></label>
+                                    <label for="cuso_tomado<?= $label ?>" class="control-label">¿El curso fue?: <span class="text-danger">*</span></label>
                                     <div>
-                                        <select class="form-control" id="cuso_tomado" name="cuso_tomado">
+                                        <select class="form-control" id="cuso_tomado<?= $label ?>" name="cuso_tomado<?= $label ?>">
                                             <option value="">Selecciona una Opcion</option>
                                             <?php
                                             if (!empty($cuso_tomado)) :
@@ -266,9 +266,9 @@
                             </div>
                             <div class='col-6 col-sm-6'>
                                 <div class="form-group">
-                                    <label for="eficiencia" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
+                                    <label for="eficiencia<?= $label ?>" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
                                     <div>
-                                        <select class="form-control" id="eficiencia" name="eficiencia">
+                                        <select class="form-control" id="eficiencia<?= $label ?>" name="eficiencia<?= $label ?>">
                                             <option value="">Selecciona una Opcion</option>
                                             <?php
                                             if (!empty($eficiencia)) :
@@ -293,9 +293,9 @@
                             </div>
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
-                                    <label for="inicioAdicional" class=" control-label">Inicio:<span class="text-danger">*</span></label>
+                                    <label for="inicioAdicional<?= $label ?>" class=" control-label">Inicio:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="inicioAdicional" name="inicioAdicional" value="<?= isset($e->inicio_adicional) ? $e->inicio_adicional : ''  ?>">
+                                        <input type="text" class="form-control " id="inicioAdicional<?= $label ?>" name="inicioAdicional<?= $label ?>" value="<?= isset($e->inicio_adicional) ? $e->inicio_adicional : ''  ?>">
                                     </div>
 
                                     <script type="text/javascript">
@@ -310,10 +310,10 @@
                             </div>
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
-                                    <label for="conclusionAdicional" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
+                                    <label for="conclusionAdicional<?= $label ?>" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
 
                                     <div>
-                                        <input type="text" class="form-control " id="conclusionAdicional" name="conclusionAdicional" value="<?= isset($e->conclusion_adicional) ? $e->conclusion_adicional : ''  ?>">
+                                        <input type="text" class="form-control " id="conclusionAdicional<?= $label ?>" name="conclusionAdicional<?= $label ?>" value="<?= isset($e->conclusion_adicional) ? $e->conclusion_adicional : ''  ?>">
                                     </div>
                                     <script type="text/javascript">
                                         $(function() {
@@ -328,10 +328,10 @@
                             </div>
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
-                                    <label for="duracion_horas" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
+                                    <label for="duracion_horas<?= $label ?>" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
                                     <div>
                                         <div>
-                                            <input type="text" class="form-control " id="duracion_horas" name="duracion_horas" value="<?= isset($e->duracion_horas_adicional) ? $e->duracion_horas_adicional : ''  ?>">
+                                            <input type="text" class="form-control " id="duracion_horas<?= $label ?>" name="duracion_horas<?= $label ?>" value="<?= isset($e->duracion_horas_adicional) ? $e->duracion_horas_adicional : ''  ?>">
 
                                         </div>
 
@@ -378,9 +378,9 @@
                         <div class="row">
                             <div class='col-6 col-sm-6'>
                                 <div class="form-group">
-                                    <label for="idioma" class="control-label">Idioma o Dialecto: <span class="text-danger">*</span></label>
+                                    <label for="idioma<?= $label ?>" class="control-label">Idioma o Dialecto: <span class="text-danger">*</span></label>
                                     <div>
-                                        <select class="form-control" id="idioma" name="idioma">
+                                        <select class="form-control" id="idioma<?= $label ?>" name="idioma<?= $label ?>">
                                             <option value="">Selecciona una Opcion</option>
                                             <?php
                                             if (!empty($idioma)) :
@@ -405,9 +405,9 @@
                             </div>
                             <div class='col-6 col-sm-12 col-md-6'>
                                 <div class="form-group">
-                                    <label for="lectura" class=" control-label">% Lectura:<span class="text-danger">*</span></label>
+                                    <label for="lectura<?= $label ?>" class=" control-label">% Lectura:<span class="text-danger">*</span></label>
                                     <div>
-                                        <select class="form-control" id="lectura" name="lectura">
+                                        <select class="form-control" id="lectura<?= $label ?>" name="lectura<?= $label ?>">
                                             <option value="">Selecciona una Opcion</option>
                                             <?php
                                             if (!empty($porsentajeIdioma)) :
@@ -432,9 +432,9 @@
                             </div>
                             <div class='col-6 col-sm-12 col-md-6'>
                                 <div class="form-group">
-                                    <label for="escritura" class=" control-label">% Escritura:<span class="text-danger">*</span></label>
+                                    <label for="escritura<?= $label ?>" class=" control-label">% Escritura:<span class="text-danger">*</span></label>
                                     <div>
-                                        <select class="form-control" id="escritura" name="escritura">
+                                        <select class="form-control" id="escritura<?= $label ?>" name="escritura<?= $label ?>">
                                             <option value="">Selecciona una Opcion</option>
                                             <?php
                                             if (!empty($porsentajeIdioma)) :
@@ -459,9 +459,9 @@
                             </div>
                             <div class='col-6 col-sm-12 col-md-6'>
                                 <div class="form-group">
-                                    <label for="conversacion" class=" control-label">% Conversación:<span class="text-danger">*</span></label>
+                                    <label for="conversacion<?= $label ?>" class=" control-label">% Conversación:<span class="text-danger">*</span></label>
                                     <div>
-                                        <select class="form-control" id="conversacion" name="conversacion">
+                                        <select class="form-control" id="conversacion<?= $label ?>" name="conversacion<?= $label ?>">
                                             <option value="">Selecciona una Opcion</option>
                                             <?php
                                             if (!empty($porsentajeIdioma)) :
@@ -526,9 +526,9 @@
                         <div class="row">
                             <div class='col-6 col-sm-6'>
                                 <div class="form-group">
-                                    <label for="tipo_habilidad" class="control-label">Tipo: <span class="text-danger">*</span></label>
+                                    <label for="tipo_habilidad<?= $label ?>" class="control-label">Tipo: <span class="text-danger">*</span></label>
                                     <div>
-                                        <select class="form-control" id="tipo_habilidad" name="tipo_habilidad">
+                                        <select class="form-control" id="tipo_habilidad<?= $label ?>" name="tipo_habilidad<?= $label ?>">
                                             <option value="">Selecciona una Opcion</option>
                                             <?php
                                             if (!empty($tipo_habilidad)) :
@@ -553,18 +553,18 @@
                             </div>
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
-                                    <label for="especificacion" class=" control-label">Especifique:<span class="text-danger">*</span></label>
+                                    <label for="especificacion<?= $label ?>" class=" control-label">Especifique:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="especificacion" name="especificacion" value="<?= isset($e->especifique_habilidad) ? $e->especifique_habilidad : ''  ?>">
+                                        <input type="text" class="form-control " id="especificacion<?= $label ?>" name="especificacion<?= $label ?>" value="<?= isset($e->especifique_habilidad) ? $e->especifique_habilidad : ''  ?>">
 
                                     </div>
                                 </div>
                             </div>
                             <div class='col-6 col-sm-6'>
                                 <div class="form-group">
-                                    <label for="grado_habilidadCap" class="control-label">Grado de aptitude o dominio: <span class="text-danger">*</span></label>
+                                    <label for="grado_habilidadCap<?= $label ?>" class="control-label">Grado de aptitude o dominio: <span class="text-danger">*</span></label>
                                     <div>
-                                        <select class="form-control" id="grado_habilidadCap" name="grado_habilidadCap">
+                                        <select class="form-control" id="grado_habilidadCap<?= $label ?>" name="grado_habilidadCap<?= $label ?>">
                                             <option value="">Selecciona una Opcion</option>
                                             <?php
                                             if (!empty($grado_habilidad)) :
@@ -631,18 +631,18 @@
                         <div class="row">
                             <div class='col-12 col-sm-12 col-md-12'>
                                 <div class="form-group">
-                                    <label for="nombre" class=" control-label">Nombre:<span class="text-danger">*</span></label>
+                                    <label for="nombre<?= $label ?>" class=" control-label">Nombre:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="nombre" name="nombre" value="<?= isset($e->nombre_agrupacion) ? $e->nombre_agrupacion : ''  ?>">
+                                        <input type="text" class="form-control " id="nombre<?= $label ?>" name="nombre<?= $label ?>" value="<?= isset($e->nombre_agrupacion) ? $e->nombre_agrupacion : ''  ?>">
 
                                     </div>
                                 </div>
                             </div>
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
-                                    <label for="tipoAgrupa" class=" control-label">Tipo:<span class="text-danger">*</span></label>
+                                    <label for="tipoAgrupa<?= $label ?>" class=" control-label">Tipo:<span class="text-danger">*</span></label>
                                     <div>
-                                        <select class="form-control" id="tipoAgrupa" name="tipoAgrupa">
+                                        <select class="form-control" id="tipoAgrupa<?= $label ?>" name="tipoAgrupa<?= $label ?>">
                                             <option value="">Selecciona una Opcion</option>
                                             <?php
                                             if (!empty($tipo_agrupacion)) :
@@ -667,10 +667,10 @@
                             </div>
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
-                                    <label for="desde" class=" control-label">Desde:<span class="text-danger">*</span></label>
+                                    <label for="desde<?= $label ?>" class=" control-label">Desde:<span class="text-danger">*</span></label>
 
                                     <div>
-                                        <input type="text" class="form-control " id="desde" name="desde" value="<?= isset($e->desde) ? $e->desde : ''  ?>">
+                                        <input type="text" class="form-control " id="desde<?= $label ?>" name="desde<?= $label ?>" value="<?= isset($e->desde) ? $e->desde : ''  ?>">
 
                                     </div>
                                     <script type="text/javascript">
@@ -686,10 +686,10 @@
 
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
-                                    <label for="hasta" class=" control-label">Hasta:<span class="text-danger">*</span></label>
+                                    <label for="hasta<?= $label ?>" class=" control-label">Hasta:<span class="text-danger">*</span></label>
 
                                     <div>
-                                        <input type="text" class="form-control " id="hasta" name="hasta" value="<?= isset($e->hasta) ? $e->hasta : ''  ?>">
+                                        <input type="text" class="form-control " id="hasta<?= $label ?>" name="hasta<?= $label ?>" value="<?= isset($e->hasta) ? $e->hasta : ''  ?>">
 
                                     </div>
                                     <script type="text/javascript">
