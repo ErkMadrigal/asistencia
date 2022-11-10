@@ -35,7 +35,7 @@
                             <select id="cliente" name="cliente" class="form-control" >
                                 <option value="" selected>Selecciona una Opción</option>
                                 <?php foreach($clientes as $cli):?>
-                                    <option value="<?=$cli->id?>"><?=$cli->razon_social?> <?=$cli->nombre_corto?></option>
+                                    <option value="<?=$cli->id?>"><?=$cli->nombre_corto?></option>
                                 <?php endforeach;?>
                             </select>
                             <script>
@@ -96,6 +96,28 @@
                         <label for="cartuchos" class="control-label">Cartuchos <span class="text-danger">*</span></label>
                         <div >
                             <input type="text"  class="form-control " id="cartuchos" name="cartuchos" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="3" >
+                        </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-6'>    
+                    <div class="form-group">
+                        <label for="modalidad" class="control-label">Modalidad<span class="text-danger">*</span></label>
+                        <div >
+                            <select id="modalidad" name="modalidad" class="form-control" >
+                                <option value="" selected>Selecciona una Opción</option>
+                                <?php foreach($modalidad as $mod):?>
+                                    <option value="<?=$mod->id?>"><?=$mod->valor?></option>
+                                <?php endforeach;?>
+                                
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#modalidad").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -203,7 +225,14 @@
                         </div>
                     </div>
                 </div>
-
+                <div class='col-12 col-sm-6'>    
+                    <div class="form-group">
+                        <label for="fecha" class="control-label">Fecha de entrega </label>
+                        <div >
+                            <input type="date"  class="form-control " id="FechaEntrega" name=FechaEntrega>
+                        </div>
+                    </div>
+                </div>
             </div> 
         </form>
          

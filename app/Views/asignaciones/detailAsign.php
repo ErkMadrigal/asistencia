@@ -125,8 +125,17 @@
             <div class='col-12 col-sm-4'>
                 <div class="form-group">
                     <i class="m-2 fa fa-user " aria-hidden="true"></i>
-                    <label for="updateddate" class="control-label">Cliente</label>
+                    <label for="updateddate" class="control-label">Elemento</label>
                     <p class="ml-5"><?=$datos[0]->nombre?></p>
+                    <p class="ml-5">Cuip: <?=$datos[0]->Cuip?></p>
+                    
+                </div>
+            </div>
+            <div class='col-12 col-sm-4'>
+                <div class="form-group">
+                    <i class="m-2 fa fa-list " aria-hidden="true"></i>
+                    <label for="updateddate" class="control-label">Modalidad</label>
+                    <p class="ml-5"><?=$datos[0]->modalidad?></p>
                 </div>
             </div>
             <div class='col-12 col-sm-4'>
@@ -137,6 +146,12 @@
                     <p class="ml-5">Cartuchos: <?=$datos[0]->cantidad_Cartuchos?></p>
                 </div>
             </div>
+            
+        </div>
+    </div>
+    <hr>
+    <div class="card">
+        <div class="card-body row">
             <div class='col-12 col-sm-4'>
                 <div class="form-group">
                     <i class="m-2 fa fa-money-bill " aria-hidden="true"></i>
@@ -204,6 +219,46 @@
             </div>
         </div>
     </div>
+    <hr>
+    <div class="row callout callout-warning">
+        <div class='col-12 col-sm-6'>
+            <div class="form-group">
+                <i class="fa fa-user " aria-hidden="true"></i>
+                <label for="creado" class="control-label">Creado por: </label>
+                <div>
+                <?=$getById->nombreC ?> <?=$getById->paternoC ?> <?=$getById->maternoC ?>
+                </div>
+            </div>
+        </div>
+        
+        <div class='col-12 col-sm-6'>
+            <div class="form-group">
+                <i class="fa fa-calendar " aria-hidden="true"></i>
+                <label for="createddate" class="control-label">Fecha creación: </label>
+                <div>
+                <?=$getById->createddate ?>
+                </div>
+            </div>
+        </div>
+        <div class='col-12 col-sm-6'>
+            <div class="form-group">
+                <i class="fa fa-user " aria-hidden="true"></i>
+                <label for="actualizado" class="control-label">Actualizado por: </label>
+                <div>
+                <?=$getById->nombreU ?> <?=$getById->paternoU ?> <?=$getById->maternoU ?>
+                </div>
+            </div>
+        </div>
+        <div class='col-12 col-sm-6'>
+            <div class="form-group">
+                <i class="fa fa-calendar " aria-hidden="true"></i>
+                <label for="updateddate" class="control-label">Fecha actualización: </label>
+                <div>
+                <?=$getById->updateddate ?>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -214,8 +269,8 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <table id="data" class="table stripe text-center table-hover table-head-fixed text-nowrap">
+            <div class="modal-body container-fluid">
+                <table id="data" class="table-stripe text-center table-hover table-head-fixed text-nowrap">
                     <thead>
                     <tr>
                         <th>Pago</th>
@@ -226,6 +281,7 @@
                         <th>Saldo</th>
                         <th>Activo</th>
                         <th>Estatus</th>
+                        <th>Asignado Por</th>
                     </tr>
                     </thead>
                 </table>
@@ -303,9 +359,9 @@
                     { data: "pago"},
                     { data: "fecha"},
                     { data: "concepto"},
-                    { data: "importe"},
-                    { data: "aplicado"},
-                    { data: "saldo"},
+                    { data: "importe", render: (data, type, full, meta) => numeral(full.importe).format('0,0')},
+                    { data: "aplicado", render: (data, type, full, meta) => numeral(full.aplicado).format('0,0')},
+                    { data: "saldo", render: (data, type, full, meta) => numeral(full.saldo).format('0,0')},
                     { data: "activo", render: estatusRenderer }, 
                     { data: "id",
                         render: (data, type, full, meta) => {
@@ -314,9 +370,18 @@
                             if(parseInt(full.aplicado) == 0){
                                 campoValor = '<h5 class="text-success">pagado</h5>'
                             }else{
-                                campoValor = '<h5 class="text-success"></h5>'
+                                campoValor = '<h5 class="text-danger">sin pago</h5>'
                             }
                             return campoValor 
+                        }
+                    },
+                    {data: "pago",
+                        render: (data, type, full, meta) => {
+                            let nombre = ' '
+                            nombre = full.nombre != null ? full.nombre+' ': ' '
+                            nombre += full.paterno != null ? full.paterno+' ': ' '
+
+                            return nombre   
                         }
                     }
                 ]

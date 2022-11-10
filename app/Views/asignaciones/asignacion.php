@@ -97,11 +97,11 @@
                         <label for="cp" class="control-label">Clasificación</label>
                         <div >
                             <div class="custom-control custom-radio">
-                                <input type="radio" id="customRadio1" name="clasificacion" class="custom-control-input" value="1">
+                                <input type="radio" id="customRadio1" name="clasificacion" class="custom-control-input" value="true">
                                 <label class="custom-control-label" for="customRadio1">Saldo Pendiente</label>
                             </div>
                             <div class="custom-control custom-radio">
-                                <input type="radio" id="customRadio2" name="clasificacion" class="custom-control-input" value="0">
+                                <input type="radio" id="customRadio2" name="clasificacion" class="custom-control-input" value="false">
                                 <label class="custom-control-label" for="customRadio2">Saldadas</label>
                             </div>
                         </div>
@@ -218,7 +218,7 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body table-responsive ">
-            <table id="dataGrid" class="table  text-center table-hover table-head-fixed text-nowrap">
+            <table id="dataGrid" class="table table-stripe text-center table-hover table-head-fixed text-nowrap">
                 <thead>
                 <tr>
                     <th>Cliente</th>
@@ -257,7 +257,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <table id="data" class="table stripe text-center table-hover table-head-fixed text-nowrap">
+                <table id="data" class="table-stripe text-center table-hover table-head-fixed text-nowrap">
                     <thead>
                     <tr>
                         <th>Pago</th>
@@ -382,7 +382,6 @@
                             {  data: "eliminar",
                                 render: (data, type, full, meta) => {
                                     return `<button onclick='eliminar("${full.id}", "${full.aplicado}", "${full.idArma}")' class='nav-link btn btn-link'><i class='fa fa-trash nav-icon'></i></button>`;
-                                    // return "<a href='" + base_url + "/editAsignacion?id=" + full.id + "' class='nav-link'><i class='fa fa-pencil-square-o nav-icon'></i>";
                         
                                 }
                             }, 
@@ -444,7 +443,7 @@
                                                     <strong>${datosBanco}</strong>
                                                 `
                                             }else{
-                                                campoValor = `<br><button class="btn btn-primary mt-2" onclick="signarPago('${full.id}', '${dataIdAsign}', '${full.importe}', '${full.saldo}')">Asignar Monto</button>`
+                                                campoValor = `<br><button class="btn btn-primary mt-2" onclick="signarPago('${full.id}', '${dataIdAsign}', '${full.importe}', '${full.saldo}', '${full.aplicado}', '${full.fecha}')">Asignar Monto</button>`
                                             }
                                             return campoValor 
                                         }
@@ -459,18 +458,18 @@
             });
         };
 
-        const signarPago = (id, idPadre, importe, saldo) => {
+        const signarPago = (id, idPadre, importe, saldo, aplicado, fecha) => {
             $("#exampleModal").modal("hide")
 
             const { value: formValues } = Swal.fire({
                 title: 'Asignar Monto',
                 html:
-                    `
+                    `   <p class="font-weight-lighter">fecha: ${fecha} monto: $ ${numeral(aplicado).format('0,0')}</¿>
                         <div class="form-group">
-                            <input type="text" placeholder="monto"  class="form-control mt-2" id="asign" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="8" >
+                            <input type="text" placeholder="monto" required class="form-control mt-2" id="asign" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="8" >
                             <input type="date" placeholder="Fecha" class="form-control mt-2" id="fechaSaldo">
                             <select id="formaPago" class="form-control mt-2 >
-                                <option value="" selected>Método de Pago</option>
+                                <option value="">Método de Pago</option>
                                 <option value="efectivo" >Efectivo</option>
                                 <option value="transferencia" >Transferencia</option>
                             </select>
@@ -478,7 +477,13 @@
                             <input type="text" placeholder="cuenta" class="form-control mt-2" id="cuenta" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="20">
                         </div>
                     `,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',    
+                confirmButtonText: 'Salvar',
+                cancelButtonText: 'Cancelar',
                 focusConfirm: false,
+
                 preConfirm: () => {
                     // return [
                     let asign = document.getElementById('asign').value
@@ -490,16 +495,16 @@
                     if(parseInt(saldo)+parseInt(asign) > parseInt(importe)){
                         toastr.error("No puede superar el importe asignado");
                     }else{
-                        let err = []
+                        let err = false
                         if(formaPago == "transferencia"){
-                            if(banco != ''){
-                                err.push(1)
+                            if(banco == ''){
+                                err = true
                             }
-                            if(cuenta != ''){
-                                err.push(1)
+                            if(cuenta == ''){
+                                err = true
                             }
                         }
-                        if(err.length > 0){
+                        if(!err){
                             let formData = new FormData($(`#frmAsignacion`)[0]);
                             formData.append("id", id)
                             formData.append("saldo", parseInt(saldo)+parseInt(asign))
@@ -610,60 +615,78 @@
 
         const eliminar = (id, val, idElemento, idArma) => {
             if(val == 0){
-                $('#loadBtn').show();
-                var formData = new FormData($("form#frmAsignacion")[0]);
-                formData.append("idElimn", id)
-                formData.append("idArma", idArma)
-                $.ajax({
-                    url: base_url + '/deleteData',
-                    type: 'POST',
-                    dataType: 'json',
-                    data: formData,
-                    cache: false,
-                    async: true,
-                    contentType: false,
-                    processData: false,
-                    success: function (response) {
-                        $('.errorparticipante').remove();
-                        
-                        if (response.succes.succes == 'succes') {
-                            
-                            
-                        toastr.success(response.succes.mensaje);
-
-                        var count = 3;
-                        setInterval(function(){
-                        count--;
-                        if (count == 0) {
-                            window.location = base_url + '/asignaciones'; 
-                        }
-                        },1000);
-    
-                        } else if (response.dontsucces.error == 'error'){
-                            toastr.error(response.dontsucces.mensaje);
-                                    
-                        } else if (Object.keys(response.error).length > 0 ){
-    
-                            for (var clave in response.error){
-                                        
-                                $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
-                                    
-                            }
-                                toastr.error('<?= lang('Layout.camposObligatorios') ?>');
-    
-                        }
-    
-                        
-                        $('#loadBtn').hide();
+                Swal.fire({
+                    title: 'Seguro que lo deseas eliminar?',
+                    text: "¡No podrás revertir esto!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '¡Sí, bórralo!',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#loadBtn').show();
+                        var formData = new FormData($("form#frmAsignacion")[0]);
+                        formData.append("idElimn", id)
+                        formData.append("idArma", idArma)
+                        $.ajax({
+                            url: base_url + '/deleteData',
+                            type: 'POST',
+                            dataType: 'json',
+                            data: formData,
+                            cache: false,
+                            async: true,
+                            contentType: false,
+                            processData: false,
+                            success: function (response) {
+                                $('.errorparticipante').remove();
                                 
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        toastr.error('<?=lang('Layout.toastrError') ?>');
-                        $('#loadBtn').hide();           
+                                if (response.succes.succes == 'succes') {
+                                    Swal.fire(
+                                        'Eliminado!',
+                                        'Su registro ha sido eliminado.',
+                                        'success'
+                                    )
+                                    var count = 3;
+                                    setInterval(function(){
+                                        count--;
+                                        if (count == 0) {
+                                            window.location = base_url + '/asignaciones'; 
+                                        }
+                                    },1000);
+            
+                                } else if (response.dontsucces.error == 'error'){
+                                    toastr.error(response.dontsucces.mensaje);
+                                            
+                                } else if (Object.keys(response.error).length > 0 ){
+            
+                                    for (var clave in response.error){
+                                                
+                                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                                            
+                                    }
+                                        toastr.error('<?= lang('Layout.camposObligatorios') ?>');
+            
+                                }
+            
+                                
+                                $('#loadBtn').hide();
+                                        
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                toastr.error('<?=lang('Layout.toastrError') ?>');
+                                $('#loadBtn').hide();           
+                            }
+                        });
                     }
-                });
+                })
             }else{
-                toastr.error("No se puede eliminar despues de un pago procesado");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: '¡No se puede eliminar despues de un pago procesado!',
+                })
             }
         };
         

@@ -23,7 +23,7 @@ class AsignacionesModel
 
     public function getAllData(){
         $builder = $this->db->table('asignaciones asg ');
-        $builder->select("asg.id, CONCAT(cl.razon_social, ' ', cl.nombre_corto) as cliente, CONCAT(dp.primer_nombre, ' ', dp.apellido_paterno, ' ',  dp.apellido_materno) as nombre, CONCAT(cdc.valor, ' ', cdma.valor, ' ', cdm.valor) as arma, asg.tipo_pago, asg.pagos, asg.periodicidad, asg.renta, asg.tramite, asg.asignacion, asg.garantia, asg.total, asg.entrega, asg.final, asg.tipo_movimiento, asg.aplicado, asg.saldo, asg.activo");
+        $builder->select("asg.id, cl.nombre_corto as cliente, CONCAT(dp.primer_nombre, ' ', dp.apellido_paterno, ' ',  dp.apellido_materno) as nombre, CONCAT(cdc.valor, ' ', cdma.valor, ' ', cdm.valor) as arma, asg.tipo_pago, asg.pagos, asg.periodicidad, asg.renta, asg.tramite, asg.asignacion, asg.garantia, asg.total, asg.entrega, asg.final, asg.tipo_movimiento, asg.aplicado, asg.saldo, asg.activo");
         $builder->join("cliente cl","asg.idCliente = cl.id", "left");
         $builder->join("datos_personales dp","asg.id_datos_personales = dp.id", "left");
         $builder->join("armas a","asg.id_armas = a.id", "left");
@@ -32,17 +32,28 @@ class AsignacionesModel
         $builder->join("catalogos_detalle cdma","a.idMarca = cdma.id", "left");
         return $builder->get()->getResult();
     }
+    
     public function getData($id){
         $builder = $this->db->table('asignaciones asg ');
-        $builder->select("asg.id, CONCAT(cl.razon_social, ' ', cl.nombre_corto) as cliente, cl.id idCliente, CONCAT(dp.primer_nombre, ' ', dp.apellido_paterno, ' ',  dp.apellido_materno) as nombre, dp.id idElemento, CONCAT(cdc.valor, ' ', cdma.valor, ' ', cdm.valor, ' ', a.matricula) as arma, a.id idArma, asg.tipo_pago, asg.pagos, asg.periodicidad, asg.renta, asg.tramite, asg.asignacion, asg.garantia, asg.total, asg.entrega, asg.final, asg.tipo_movimiento, asg.aplicado, asg.saldo, asg.pagos, asg.activo, asg.cantidad_Cartuchos");
+        $builder->select("asg.id, CONCAT(cl.razon_social, ' ', cl.nombre_corto) as cliente, cl.id idCliente, CONCAT(dp.primer_nombre, ' ', dp.apellido_paterno, ' ',  dp.apellido_materno) as nombre, dp.id idElemento, dp.Cuip, CONCAT(cdc.valor, ' ', cdma.valor, ' ', cdm.valor, ' ', a.matricula) as arma, a.id idArma, asg.tipo_pago, asg.pagos, asg.periodicidad, asg.renta, asg.tramite, asg.asignacion, asg.garantia, asg.total, asg.entrega, asg.final, asg.tipo_movimiento, asg.aplicado, asg.saldo, asg.pagos, asg.activo, asg.cantidad_Cartuchos, cdmod.valor as modalidad");
         $builder->join("cliente cl","asg.idCliente = cl.id", "left");
         $builder->join("datos_personales dp","asg.id_datos_personales = dp.id", "left");
         $builder->join("armas a","asg.id_armas = a.id", "left");
         $builder->join("catalogos_detalle cdc","a.idClase = cdc.id", "left");
         $builder->join("catalogos_detalle cdm","a.idModelo = cdm.id", "left");
         $builder->join("catalogos_detalle cdma","a.idMarca = cdma.id", "left");
+        $builder->join("catalogos_detalle cdmod","asg.modalidad = cdmod.id", "left");
         $builder->where("asg.id", $id);
         return $builder->get()->getResult();
+    }
+
+    public function getById($id){
+        $builder = $this->db->table('asignaciones asg');
+        $builder->select("ac.nombre nombreC, ac.apellido_paterno paternoC, ac.apellido_materno maternoC, asg.createddate, au.nombre nombreU, au.apellido_paterno paternoU, au.apellido_materno maternoU, asg.updateddate");
+       $builder->join("sys_usuarios_admin ac","asg.createdby = ac.id","left");
+       $builder->join("sys_usuarios_admin au"," asg.updatedby = au.id","left");
+       $builder->where('asg.id', $id);
+        return $builder->get()->getRow();
     }
 
     public function getDatos( $where ){
@@ -59,19 +70,24 @@ class AsignacionesModel
         if(!empty($where["periodicidad"])){
             $builder->where('asg.periodicidad', $where["periodicidad"]);
         }
+
         if(!empty($where["activo"])){
-            $builder->where('asg.activo', $where["activo"]);
+            if($where["activo"] == "true"){
+                $builder->where('asg.activo', 1);
+            }else{
+                $builder->where('asg.activo', 0);
+            }
         }
-        
+
         if(!empty($where["tipoFecha"])){
 
             $fechaInicial = $where['fechaInicial'];
             $fechaFinal = $where['fechaFinal'];
 
             if($where["tipoFecha"] == 'inicial'){
-                $builder->where("asg.entrega BETWEEN $fechaInicial and $fechaFinal ");
-            }elseif($where["tipoFecha" == 'final']){
-                $builder->where("asg.final BETWEEN $fechaInicial and $fechaFinal ");
+                $builder->where("asg.entrega BETWEEN '$fechaInicial' and '$fechaFinal' ");
+            }else{
+                $builder->where("asg.final BETWEEN '$fechaInicial' and '$fechaFinal' ");
             }
         }
 
@@ -125,6 +141,16 @@ class AsignacionesModel
         return $builder->get()->getResult();
 
     }
+    public function getModalidad(){
+        $builder = $this->db->table('catalogos ct');
+        $builder->select("cd.id, cd.valor");
+        $builder->join("catalogos_detalle cd "," ct.idCatalogo = cd.idCatalogo", "left");
+        $builder->where("ct.valor", "modalidad");
+        $builder->where("cd.activo",1);
+        $builder->where("cd.id <>",360);
+        return $builder->get()->getResult();
+
+    }
    
     public function addData($insert){
 
@@ -164,7 +190,9 @@ class AsignacionesModel
     }
 
     public function getPagos($idCompormisoPago){
-        $builder = $this->db->table('compromiso_pago');
+        $builder = $this->db->table('compromiso_pago cp');
+        $builder->select("sua.nombre, sua.apellido_paterno paterno, sua.apellido_materno materno, cp.*");
+        $builder->join("sys_usuarios_admin sua"," cp.updatedby = sua.id", "left");
         $builder->where("id_asignacion	", $idCompormisoPago);
         $builder->orderBy("id_asignacion","asc");
 
