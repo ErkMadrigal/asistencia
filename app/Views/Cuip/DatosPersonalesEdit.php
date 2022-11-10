@@ -76,7 +76,7 @@
                             if (!empty($genero)) :
                                 foreach ($genero as  $a) {
                             ?>
-                 <option <?= (isset($variable->sexo) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= (isset($variable->sexo) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                             <?php
                                 }
@@ -176,11 +176,11 @@
                             if (!empty($modo_nacionalidad)) :
                                 foreach ($modo_nacionalidad as  $a) {
                             ?>
-                                             <option <?= (isset($variable->nacionalidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= (isset($variable->nacionalidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
-                                
+
                             <?php
-                                } 
+                                }
                             endif; ?>
                         </select>
                         <script>
@@ -223,7 +223,7 @@
                                 if (!empty($pais_nacimiento)) :
                                     foreach ($pais_nacimiento as  $a) {
                                 ?>
-                                                                             <option <?= (isset($variable->pais) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= (isset($variable->pais) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                 <?php
                                     }
@@ -250,9 +250,9 @@
                                 if (!empty($entidad_federativa)) :
                                     foreach ($entidad_federativa as  $a) {
                                 ?>
-                                                        <option <?= (isset($variable->estado) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= (isset($variable->estado) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
-                                       
+
                                 <?php
                                     }
                                 endif; ?>
@@ -278,7 +278,7 @@
                                 if (!empty($nacionalidad)) :
                                     foreach ($nacionalidad as  $a) {
                                 ?>
-                                          <option <?= (isset($variable->nacionalidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= (isset($variable->nacionalidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                                 <?php
@@ -306,7 +306,7 @@
                                 if (!empty($nacionalidad)) :
                                     foreach ($nacionalidad as  $a) {
                                 ?>
-                                <option <?= (isset($variable->municipio) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= (isset($variable->municipio) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                                 <?php
@@ -334,7 +334,7 @@
                                 if (!empty($cuidad_nacimiento)) :
                                     foreach ($cuidad_nacimiento as  $a) {
                                 ?>
-                    <option <?= (isset($variable->ciudad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= (isset($variable->ciudad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                                 <?php
                                     }
                                 endif; ?>
@@ -360,7 +360,7 @@
                                 if (!empty($estado_civil)) :
                                     foreach ($estado_civil as  $a) {
                                 ?>
-                         <option <?= (isset($variable->civil) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= (isset($variable->civil) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                 <?php
                                     }
@@ -387,7 +387,7 @@
                                 if (!empty($desarrollo_academico)) :
                                     foreach ($desarrollo_academico as  $a) {
                                 ?>
-                                 <option <?= (isset($variable->desarrollo_academico) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= (isset($variable->desarrollo_academico) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                                 <?php
@@ -476,7 +476,7 @@
                                 if (!empty($SiNo)) :
                                     foreach ($SiNo as  $a) {
                                 ?>
-                                           <option <?= (isset($variable->registro_sep) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= (isset($variable->registro_sep) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                                 <?php
@@ -516,7 +516,7 @@
 
             </div>
     </div>
-
+</div>
     <div class="card card-primary">
         <div class="card-header">
             <h3 class="card-title">DATOS DEL DOMICILIO</h3>
@@ -605,7 +605,7 @@
                             if (!empty($entidad_federativa)) :
                                 foreach ($entidad_federativa as  $a) {
                             ?>
-                                         <option <?= (isset($variable->colonia) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= (isset($variable->colonia) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                             <?php
@@ -632,7 +632,7 @@
                                 if (!empty($entidad_federativa)) :
                                     foreach ($entidad_federativa as  $a) {
                                 ?>
-                                  <option <?= (isset($variable->naciE) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= (isset($variable->naciE) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                 <?php
                                     }
@@ -659,7 +659,7 @@
                                 if (!empty($entidad_federativa)) :
                                     foreach ($entidad_federativa as  $a) {
                                 ?>
-                         <option <?= (isset($variable->municipio) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= (isset($variable->municipio) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                                 <?php
@@ -681,13 +681,13 @@
                     <div class="form-group">
                         <label for="ciudadcodigo" class="control-label">Ciudad: <span class="text-danger">*</span></label>
                         <div>
-                        <select class="form-control" id="ciudadcodigo" name="ciudadcodigo">
+                            <select class="form-control" id="ciudadcodigo" name="ciudadcodigo">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
                                 if (!empty($ciudadcodigo)) :
                                     foreach ($ciudadcodigo as  $a) {
                                 ?>
-                             <option <?= (isset($variable->cuidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= (isset($variable->cuidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                 <?php
                                     }
@@ -708,8 +708,6 @@
             </form>
         </div>
     </div>
-
-</div>
 <div class="card card-primary">
     <div class="card-header">
         <h3 class="card-title">ADSCRIPCION</h3>
@@ -746,7 +744,7 @@
                     <div class='form-group'>
                         <label for="fechaingreso_adscripcion">Fecha de Ingreso: <span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="fechaingreso_adscripcion" name="fechaingreso_adscripcion" value=" <?= isset($variable->fecha_ingreso) ? $variable-> fecha_ingreso: ''  ?>">
+                            <input type="text" class="form-control " id="fechaingreso_adscripcion" name="fechaingreso_adscripcion" value=" <?= isset($variable->fecha_ingreso) ? $variable->fecha_ingreso : ''  ?>">
 
                         </div>
                         <script type="text/javascript">
@@ -768,7 +766,7 @@
                             if (!empty($puesto)) :
                                 foreach ($puesto as  $a) {
                             ?>
-                                                         <option <?= (isset($variable->puesto) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= (isset($variable->puesto) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                             <?php
                                 }
@@ -794,8 +792,8 @@
                             if (!empty($rango)) :
                                 foreach ($rango as  $a) {
                             ?>
-                                   <option <?= (isset($variable->rango) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-                   
+                                    <option <?= (isset($variable->rango) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
 
                             <?php
                                 }
@@ -820,7 +818,7 @@
                             if (!empty($mando)) :
                                 foreach ($mando as  $a) {
                             ?>
-           <option <?= (isset($variable->nivel_mando) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= (isset($variable->nivel_mando) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                             <?php
                                 }
@@ -855,7 +853,7 @@
                             if (!empty($entidad_adscripcion)) :
                                 foreach ($entidad_adscripcion as  $a) {
                             ?>
-                                       <option <?= (isset($variable->idEstado_adscripcion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= (isset($variable->idEstado_adscripcion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                             <?php
@@ -881,7 +879,7 @@
                             if (!empty($municipio_adscripcion)) :
                                 foreach ($municipio_adscripcion as  $a) {
                             ?>
-                        <option <?= (isset($variable->municipio_adscripcion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= (isset($variable->municipio_adscripcion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -919,27 +917,27 @@
                 <div class="form-group">
                     <label for="calle_adscripcion" class=" control-label">Calle:<span class="text-danger">*</span></label>
                     <div>
-                            <input type="text" class="form-control " id="calle_adscripcion" name="calle_adscripcion" value=" <?= isset($variable->calle_adscripcion) ? $variable->calle_adscripcion : ''  ?>">
+                        <input type="text" class="form-control " id="calle_adscripcion" name="calle_adscripcion" value=" <?= isset($variable->calle_adscripcion) ? $variable->calle_adscripcion : ''  ?>">
 
-                        </div>
+                    </div>
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="exterior_adscripcion" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                     <div>
-                            <input type="text" class="form-control " id="exterior_adscripcion" name="exterior_adscripcion" value=" <?= isset($variable->numero_exterior_adscripcion) ? $variable->numero_exterior_adscripcion : ''  ?>">
+                        <input type="text" class="form-control " id="exterior_adscripcion" name="exterior_adscripcion" value=" <?= isset($variable->numero_exterior_adscripcion) ? $variable->numero_exterior_adscripcion : ''  ?>">
 
-                        </div>
+                    </div>
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="interior_adscripcion" class=" control-label">No. Interior:</label>
                     <div>
-                            <input type="text" class="form-control " id="interior_adscripcion" name="interior_adscripcion" value=" <?= isset($variable->numero_interior_adscripcion) ? $variable->numero_interior_adscripcion : ''  ?>">
+                        <input type="text" class="form-control " id="interior_adscripcion" name="interior_adscripcion" value=" <?= isset($variable->numero_interior_adscripcion) ? $variable->numero_interior_adscripcion : ''  ?>">
 
-                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -947,53 +945,53 @@
                 <div class="form-group">
                     <label for="entrecalle_adscripcion" class=" control-label">Entre la calle de:<span class="text-danger">*</span></label>
                     <div>
-                            <input type="text" class="form-control " id="entrecalle_adscripcion" name="entrecalle_adscripcion" value=" <?= isset($variable->entre_calle1_adscripcion) ? $variable->entre_calle1_adscripcion : ''  ?>">
+                        <input type="text" class="form-control " id="entrecalle_adscripcion" name="entrecalle_adscripcion" value=" <?= isset($variable->entre_calle1_adscripcion) ? $variable->entre_calle1_adscripcion : ''  ?>">
 
-                        </div>
+                    </div>
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-12'>
                 <div class="form-group">
                     <label for="ylacalle_adscripcion" class=" control-label">Y la calle:<span class="text-danger">*</span></label>
                     <div>
-                            <input type="text" class="form-control " id="ylacalle_adscripcion" name="ylacalle_adscripcion" value=" <?= isset($variable->entre_calle2_adscripcion) ? $variable->entre_calle2_adscripcion : ''  ?>">
+                        <input type="text" class="form-control " id="ylacalle_adscripcion" name="ylacalle_adscripcion" value=" <?= isset($variable->entre_calle2_adscripcion) ? $variable->entre_calle2_adscripcion : ''  ?>">
 
-                        </div>
+                    </div>
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="telefono_adscripcion" class=" control-label">Número Telefonico:<span class="text-danger">*</span></label>
                     <div>
-                            <input type="text" class="form-control " id="nombrejefe_adscripcion" name="nombrejefe_adscripcion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value=" <?= isset($variable->numero_telefono_adscripcion) ? $variable->numero_telefono_adscripcion : ''  ?>">
+                        <input type="text" class="form-control " id="nombrejefe_adscripcion" name="nombrejefe_adscripcion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value=" <?= isset($variable->numero_telefono_adscripcion) ? $variable->numero_telefono_adscripcion : ''  ?>">
 
-                        </div>
+                    </div>
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="codigoAds" class=" control-label">Código Postal:<span class="text-danger">*</span></label>
                     <div>
-                            <input type="text" class="form-control " id="nombrejefe_adscripcion" name="nombrejefe_adscripcion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value=" <?= isset($variable->idCodigoPostal_adscripcion) ? $variable->idCodigoPostal_adscripcion : ''  ?>">
+                        <input type="text" class="form-control " id="nombrejefe_adscripcion" name="nombrejefe_adscripcion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value=" <?= isset($variable->idCodigoPostal_adscripcion) ? $variable->idCodigoPostal_adscripcion : ''  ?>">
 
-                        </div>
+                    </div>
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="coloniacodigoAds" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                     <select class="form-control" id="coloniacodigoAds" name="coloniacodigoAds">
-                            <option value="">Selecciona una Opcion</option>
-                            <?php
-                            if (!empty($coloniacodigoAds)) :
-                                foreach ($coloniacodigoAds as  $a) {
-                            ?>
-                            <option <?= (isset($variable->colonia_adscripcion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                        <option value="">Selecciona una Opcion</option>
+                        <?php
+                        if (!empty($coloniacodigoAds)) :
+                            foreach ($coloniacodigoAds as  $a) {
+                        ?>
+                                <option <?= (isset($variable->colonia_adscripcion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
-                            <?php
-                                }
-                            endif; ?>
-                        </select>
+                        <?php
+                            }
+                        endif; ?>
+                    </select>
                     <script>
                         $(document).ready(function() {
                             $("#coloniacodigoAds").select2({
@@ -1013,7 +1011,7 @@
                         if (!empty($federativa_adscripcion)) :
                             foreach ($federativa_adscripcion as  $a) {
                         ?>
-                            <option <?= (isset($variable->idEstado_dom_adscripcion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <option <?= (isset($variable->idEstado_dom_adscripcion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                         <?php
                             }
@@ -1038,7 +1036,7 @@
                         if (!empty($delegacion_adscripcion)) :
                             foreach ($delegacion_adscripcion as  $a) {
                         ?>
-            <option <?= (isset($variable->municipio_delegacion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <option <?= (isset($variable->municipio_delegacion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                         <?php
@@ -1064,7 +1062,7 @@
                         if (!empty($ciudadcodigoAds)) :
                             foreach ($ciudadcodigoAds as  $a) {
                         ?>
-                    <option <?= (isset($variable->ciudad_poblacion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <option <?= (isset($variable->ciudad_poblacion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                         <?php
@@ -1087,115 +1085,115 @@
 </div>
 
 <div class="card card-primary">
-        <div class="card-header ">
+    <div class="card-header ">
 
-            <h3 class="card-title">DATOS GENERALES: EXPERIENCIA DOCENTE</h3>
+        <h3 class="card-title">DATOS GENERALES: EXPERIENCIA DOCENTE</h3>
 
 
-            <div class="card-tools">
+        <div class="card-tools">
 
-                <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
-                <input type="checkbox" class="form-check-input mt-2" id="btnNingunodged">
+            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" class="form-check-input mt-2" id="btnNingunodged">
 
-                <a href="#" class="btn btn-tool form-check-label add-more-btn-dged" id="btnAdddged">Agregar +</a>
+            <a href="#" class="btn btn-tool form-check-label add-more-btn-dged" id="btnAdddged">Agregar +</a>
 
-                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                </button>
-            </div>
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
         </div>
+    </div>
 
-        <!-- /.card-header -->
-        <div class="card-body">
-            <form class="form-horizontal" id="FormDatosGeneralesDocente">
-                <div id="CardDatosGeneralesDocente">
-        <?php
-        if( !empty($experiencia) ):
-            $label = '';
-            foreach($experiencia as  $e){
-                                        ?>            
-                    <div class="row form-block-dged">
-                        <div class='col-12 col-sm-12 col-md-6'>
-                            <div class="form-group">
-                                <label for="nombrecurso<?=$label ?>" class=" control-label">Nombre del Curso
-                                    :<span class="text-danger">*</span></label>
-                                <div>
-                                    <input type="text" class="form-control " id="nombrecurso<?=$label ?>" name="nombrecurso<?=$label ?>" value=" <?= isset($e->nombre_curso) ? $e->nombre_curso : ''  ?>">
+    <!-- /.card-header -->
+    <div class="card-body">
+        <form class="form-horizontal" id="FormDatosGeneralesDocente">
+            <div id="CardDatosGeneralesDocente">
+                <?php
+                if (!empty($experiencia)) :
+                    $label = '';
+                    foreach ($experiencia as  $e) {
+                ?>
+                        <div class="row form-block-dged">
+                            <div class='col-12 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="nombrecurso<?= $label ?>" class=" control-label">Nombre del Curso
+                                        :<span class="text-danger">*</span></label>
+                                    <div>
+                                        <input type="text" class="form-control " id="nombrecurso<?= $label ?>" name="nombrecurso<?= $label ?>" value=" <?= isset($e->nombre_curso) ? $e->nombre_curso : ''  ?>">
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class='col-12 col-sm-12 col-md-6'>
-                            <div class="form-group">
-                                <label for="nombreInstitucion" class=" control-label">Nombre de
-                                    la Institución:<span class="text-danger">*</span></label>
-                                <div>
-                                    <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion" value=" <?= isset($e->nombre_institucion) ? $e->nombre_institucion : ''  ?>">
+                            <div class='col-12 col-sm-12 col-md-6'>
+                                <div class="form-group">
+                                    <label for="nombreInstitucion" class=" control-label">Nombre de
+                                        la Institución:<span class="text-danger">*</span></label>
+                                    <div>
+                                        <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion" value=" <?= isset($e->nombre_institucion) ? $e->nombre_institucion : ''  ?>">
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class='col-12 col-sm-6'>
-                            <div class='form-group'>
-                                <label for="fecha_inicial">Fecha de Inicio: <span class="text-danger">*</span></label>
+                            <div class='col-12 col-sm-6'>
+                                <div class='form-group'>
+                                    <label for="fecha_inicial">Fecha de Inicio: <span class="text-danger">*</span></label>
 
 
-                                <div>
-                                    <input type="text" class="form-control " id="fecha_inicial" name="fecha_inicial" value="<?= isset($e->fecha_inicio) ? $e->fecha_inicio : ''  ?>">
+                                    <div>
+                                        <input type="text" class="form-control " id="fecha_inicial" name="fecha_inicial" value="<?= isset($e->fecha_inicio) ? $e->fecha_inicio : ''  ?>">
 
-                                </div>
+                                    </div>
 
-                                <script type="text/javascript">
-                                    $(function() {
-                                        $("#fecha_inicial").datetimepicker({
-                                            format: 'DD-MM-YYYY',
-                                            locale: moment.locale('es')
+                                    <script type="text/javascript">
+                                        $(function() {
+                                            $("#fecha_inicial").datetimepicker({
+                                                format: 'DD-MM-YYYY',
+                                                locale: moment.locale('es')
+                                            });
                                         });
-                                    });
-                                </script>
+                                    </script>
+                                </div>
+                            </div>
+
+                            <div class='col-12 col-sm-6'>
+                                <div class='form-group'>
+                                    <label for="fecha_final">Fecha de Término: <span class="text-danger">*</span></label>
+                                    <div>
+                                        <input type="text" class="form-control " id="fecha_final" name="fecha_final" value=" <?= isset($e->fecha_termino) ? $e->fecha_termino : ''  ?>">
+
+                                    </div>
+                                    <script type="text/javascript">
+                                        $(function() {
+                                            $("#fecha_final").datetimepicker({
+                                                format: "DD-MM-YYYY",
+                                                locale: moment.locale('es')
+
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <div class='col-12 col-sm-12 col-md-12'>
+                                <div class="form-group">
+                                    <label for="certificado_por" class=" control-label">Certificado
+                                        por:<span class="text-danger">*</span></label>
+                                    <div>
+                                        <input type="text" class="form-control " id="certificado" name="certificado" value=" <?= isset($e->certificado_por) ? $e->certificado_por : ''  ?>">
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                   
-                    <div class='col-12 col-sm-6'>
-                        <div class='form-group'>
-                            <label for="fecha_final">Fecha de Término: <span class="text-danger">*</span></label>
-                            <div>
-                                <input type="text" class="form-control " id="fecha_final" name="fecha_final" value=" <?= isset($e->fecha_termino) ? $e->fecha_termino : ''  ?>">
-
-                            </div>
-                            <script type="text/javascript">
-                                $(function() {
-                                    $("#fecha_final").datetimepicker({
-                                        format: "DD-MM-YYYY",
-                                        locale: moment.locale('es')
-
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                    <div class='col-12 col-sm-12 col-md-12'>
-                        <div class="form-group">
-                            <label for="certificado_por" class=" control-label">Certificado
-                                por:<span class="text-danger">*</span></label>
-                            <div>
-                                <input type="text" class="form-control " id="certificado" name="certificado" value=" <?= isset($e->certificado_por) ? $e->certificado_por : ''  ?>">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        <?php
-            $label = 'B';
-            }
-            endif;?>        
-        </div>
-        <hr class="mt-3 mb-3" />
-        <div id="CardDatosGeneralesDocenteB">
-        </div>
+                <?php
+                        $label = 'B';
+                    }
+                endif; ?>
+            </div>
+            <hr class="mt-3 mb-3" />
+            <div id="CardDatosGeneralesDocenteB">
+            </div>
         </form>
     </div>
-</div>    
+</div>
 <div class="card-footer bg-transparent clearfix">
     <div class="row">
         <div class="col-12 col-sm-6 col-md-9">
