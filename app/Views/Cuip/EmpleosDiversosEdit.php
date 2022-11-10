@@ -8,7 +8,7 @@
             <input type="checkbox" class="form-check-input mt-2" id="btnNingunodiversos">
 
 
-            <button type="button" class="btn btn-tool" data-card-widget="collapse">ta
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">Agregar
                 <i class="fas fa-minus"></i>
             </button>
         </div>
