@@ -174,7 +174,7 @@ class Asignaciones extends BaseController{
                     break;
                 }           
                 
-                $nuevaFecha = strtotime ($strtotime , strtotime($fechaEntrega)); //Se añade un año mas
+                $nuevaFecha = strtotime ($strtotime , strtotime($fechaEntrega)); 
                 $nuevaFecha = date ('Y-m-d',$nuevaFecha);
 
                 $insertData = array(
