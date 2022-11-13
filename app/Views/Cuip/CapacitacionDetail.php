@@ -4,11 +4,7 @@
 
         <div class="card-tools">
 
-            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" class="form-check-input mt-2" id="btnNingunocapa">
-
-            <a href="#" class="btn btn-tool form-check-label add-more-btn-public" id="btnAdddcapacitacion">Agregar +</a>
-
+            
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
             </button>
@@ -26,7 +22,7 @@
                 <div class="row">
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="dependencia" class=" control-label">Dependencia responsable:<span class="text-danger">*</span></label>
+                            <label for="dependencia" class=" control-label">Dependencia responsable:</label>
                             <div>
                             <?= isset($e->dependencia) ? $e->dependencia : ''  ?>
                         </div>
@@ -34,7 +30,7 @@
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="institucion" class=" control-label">Institución Capacitadora:<span class="text-danger">*</span></label>
+                            <label for="institucion" class=" control-label">Institución Capacitadora:</label>
                             <div>
                             <?= isset($e->inst_capacitadora) ? $e->inst_capacitadora : ''  ?>
                         </div>
@@ -42,7 +38,7 @@
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="nombre_curso" class=" control-label">Nombre del curso:<span class="text-danger">*</span></label>
+                            <label for="nombre_curso" class=" control-label">Nombre del curso:</label>
                             <div>
                             <?= isset($e->nombre_curso) ? $e->nombre_curso : ''  ?>
                         </div>
@@ -50,7 +46,7 @@
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="tema_curso" class=" control-label">Tema del curso:<span class="text-danger">*</span></label>
+                            <label for="tema_curso" class=" control-label">Tema del curso:</label>
                             <div>
                             <?= isset($e->tema_curso) ? $e->tema_curso : ''  ?>
                         </div>
@@ -58,7 +54,7 @@
                     </div>
                     <div class='col-6 col-sm-6'>
                         <div class="form-group">
-                            <label for="nivel_curso" class="control-label">Nivel del curso recibido: <span class="text-danger">*</span></label>
+                            <label for="nivel_curso" class="control-label">Nivel del curso recibido: </label>
                             <div>
                             <?= isset($e->idNivel_curso) ? $e->idNivel_curso : ''  ?>
                         </div>
@@ -66,7 +62,7 @@
                     </div>
                     <div class='col-6 col-sm-6'>
                         <div class="form-group">
-                            <label for="eficienciaCursos" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
+                            <label for="eficienciaCursos" class="control-label">Eficiencia terminal: </label>
                             <div>
                             <?= isset($e->idEficienciaCurso) ? $e->idEficienciaCurso : ''  ?>
                         </div>
@@ -74,23 +70,23 @@
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="inicio" class=" control-label">Inicio:<span class="text-danger">*</span></label>
+                            <label for="inicio" class=" control-label">Inicio:</label>
                             <div>
-                            <?= isset($e->inicio_curso) ? $e->inicio_curso : ''  ?>
+                            <?= isset($e->inicio_curso) ? date( "d-m-Y" ,strtotime($e->inicio_curso)) : ''  ?>
                         </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="conclusion" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
+                            <label for="conclusion" class=" control-label">Conclusión:</label>
                             <div>
-                            <?= isset($e->conclusion_curso) ? $e->conclusion_curso : ''  ?>
+                            <?= isset($e->conclusion_curso) ? date( "d-m-Y" ,strtotime($e->conclusion_curso)) : ''  ?>
                         </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="duracion" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
+                            <label for="duracion" class=" control-label">Duración en horas:</label>
                             <div>
                             <?= isset($e->duracion_horas_curso) ? $e->duracion_horas_curso : ''  ?>
                         </div>
@@ -98,7 +94,7 @@
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="comprobante" class=" control-label">Tipo de comprobante:<span class="text-danger">*</span></label>
+                            <label for="comprobante" class=" control-label">Tipo de comprobante:</label>
                             <div>
                             <?= isset($e->tipo_comprobante) ? $e->tipo_comprobante : ''  ?>
                         </div>
@@ -106,13 +102,13 @@
                     </div>
 
                 </div>
+                <hr  class="mt-3 mb-3"/>
                 <?php
             
         }
         endif;?>   
             </div>
-            <div id="CardDatoscapacitacionB">
-            </div>
+            
         </form>
     </div>
 </div>
@@ -124,10 +120,7 @@
 
         <div class="card-tools">
 
-            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" class="form-check-input mt-2" id="btnNingunOADICIONAL">
-
-            <a href="#" class="btn btn-tool form-check-label add-more-btn-adi" id="btnAdddadicional">Agregar +</a>
+           
 
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
@@ -146,7 +139,7 @@
                 <div class="row">
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="empresa" class=" control-label">Insitutción o Empresa:<span class="text-danger">*</span></label>
+                            <label for="empresa" class=" control-label">Insitutción o Empresa:</label>
                             <div>
                             <?= isset($e->institucion) ? $e->institucion : ''  ?>
                         </div>
@@ -154,7 +147,7 @@
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="curso" class=" control-label">Estudio o Curso:<span class="text-danger">*</span></label>
+                            <label for="curso" class=" control-label">Estudio o Curso:</label>
                             <div>
                             <?= isset($e->curso) ? $e->curso : ''  ?>
                         </div>
@@ -162,7 +155,7 @@
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="tipo_curso" class=" control-label">Tipo de curso:<span class="text-danger">*</span></label>
+                            <label for="tipo_curso" class=" control-label">Tipo de curso:</label>
                             <div>
                             <?= isset($e->tipo_curso) ? $e->tipo_curso : ''  ?>
                         </div>
@@ -170,7 +163,7 @@
                     </div>
                     <div class='col-6 col-sm-6'>
                         <div class="form-group">
-                            <label for="cuso_tomado" class="control-label">¿El curso fue?: <span class="text-danger">*</span></label>
+                            <label for="cuso_tomado" class="control-label">¿El curso fue?: </label>
                             <div>
                             <?= isset($e->cursofue) ? $e->cursofue : ''  ?>
                         </div>
@@ -178,44 +171,44 @@
                     </div>
                     <div class='col-6 col-sm-6'>
                         <div class="form-group">
-                            <label for="eficiencia" class="control-label">Eficiencia terminal: <span class="text-danger">*</span></label>
+                            <label for="eficiencia" class="control-label">Eficiencia terminal: </label>
                             <div>
-                            <?= isset($e->primer_nombre) ? $e->primer_nombre : ''  ?>
+                            <?= isset($e->adicional) ? $e->adicional : ''  ?>
                         </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="inicioAdicional" class=" control-label">Inicio:<span class="text-danger">*</span></label>
+                            <label for="inicioAdicional" class=" control-label">Inicio:</label>
                             <div>
-                            <?= isset($e->inicio_adicional) ? $e->inicio_adicional : ''  ?>
+                            <?= isset($e->inicio_adicional) ? date( "d-m-Y" ,strtotime($e->inicio_adicional)) : ''  ?>
                         </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="conclusionAdicional" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
+                            <label for="conclusionAdicional" class=" control-label">Conclusión:</label>
                             <div>
-                            <?= isset($e->conclusion_adicional) ? $e->conclusion_adicional : ''  ?>
+                            <?= isset($e->conclusion_adicional) ? date( "d-m-Y" ,strtotime($e->conclusion_adicional)) : ''  ?>
                         </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="duracion_horas" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
+                            <label for="duracion_horas" class=" control-label">Duración en horas:</label>
                             <div>
                             <?= isset($e->duracion_horas_adicional) ? $e->duracion_horas_adicional : ''  ?>
                         </div>
                         </div>
                     </div>
                 </div>
+                <hr  class="mt-3 mb-3"/>
                 <?php
             
         }
         endif;?>   
             </div>
-            <div id="CardDatosAdicionalB">
-            </div>
+            
         </form>
     </div>
 </div>
@@ -224,10 +217,7 @@
         <h3 class="card-title">IDIOMAS O DIALECTOS</h3>
         <div class="card-tools">
 
-            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" class="form-check-input mt-2" id="btnNingunoIDIOMAS">
-
-            <a href="#" class="btn btn-tool form-check-label add-more-btn-idioma" id="btnAdddadicionalIdioma">Agregar +</a>
+            
 
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
@@ -246,7 +236,7 @@
         <div class="row">
             <div class='col-6 col-sm-6'>
                 <div class="form-group">
-                    <label for="idioma" class="control-label">Idioma o Dialecto: <span class="text-danger">*</span></label>
+                    <label for="idioma" class="control-label">Idioma o Dialecto: </label>
                     <div>
                             <?= isset($e->idIdioma) ? $e->idIdioma : ''  ?>
                         </div>
@@ -254,7 +244,7 @@
             </div>
             <div class='col-6 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="lectura" class=" control-label">% Lectura:<span class="text-danger">*</span></label>
+                    <label for="lectura" class=" control-label">% Lectura:</label>
                     <div>
                             <?= isset($e->idIdiomaLectura) ? $e->idIdiomaLectura : ''  ?>
                         </div>
@@ -262,7 +252,7 @@
             </div>
             <div class='col-6 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="escritura" class=" control-label">% Escritura:<span class="text-danger">*</span></label>
+                    <label for="escritura" class=" control-label">% Escritura:</label>
                     <div>
                             <?= isset($e->idIdiomaEscritura) ? $e->idIdiomaEscritura : ''  ?>
                         </div>
@@ -270,20 +260,20 @@
             </div>
             <div class='col-6 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="conversacion" class=" control-label">% Conversación:<span class="text-danger">*</span></label>
+                    <label for="conversacion" class=" control-label">% Conversación:</label>
                     <div>
                             <?= isset($e->idIdiomaConversacion) ? $e->idIdiomaConversacion : ''  ?>
                         </div>
                 </div>
             </div>
         </div>
+        <hr  class="mt-3 mb-3"/>
         <?php
             
         }
         endif;?>   
     </div>
-            <div id="CardIdiomasB">
-            </div>
+            
 </form>        
     </div>
 </div>
@@ -294,10 +284,7 @@
 
         <div class="card-tools">
 
-            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" class="form-check-input mt-2" id="btnNingunHABILIDAD">
-
-            <a href="#" class="btn btn-tool form-check-label add-more-btn-hab" id="btnAdddHABILIDAD">Agregar +</a>
+            
 
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
@@ -316,7 +303,7 @@
                 <div class="row">
                     <div class='col-6 col-sm-6'>
                         <div class="form-group">
-                            <label for="tipo_habilidad" class="control-label">Tipo: <span class="text-danger">*</span></label>
+                            <label for="tipo_habilidad" class="control-label">Tipo: </label>
                             <div>
                             <?= isset($e->idTipoHabilidad) ? $e->idTipoHabilidad : ''  ?>
                         </div>
@@ -324,7 +311,7 @@
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="especificacion" class=" control-label">Especifique:<span class="text-danger">*</span></label>
+                            <label for="especificacion" class=" control-label">Especifique:</label>
                             <div>
                             <?= isset($e->especifique_habilidad) ? $e->especifique_habilidad : ''  ?>
                         </div>
@@ -332,20 +319,20 @@
                     </div>
                     <div class='col-6 col-sm-6'>
                         <div class="form-group">
-                            <label for="grado_habilidadCap" class="control-label">Grado de aptitude o dominio: <span class="text-danger">*</span></label>
+                            <label for="grado_habilidadCap" class="control-label">Grado de aptitude o dominio: </label>
                             <div>
                             <?= isset($e->idGradoHabilidad) ? $e->idGradoHabilidad : ''  ?>
                         </div>
                         </div>
                     </div>
                 </div>
+                <hr  class="mt-3 mb-3"/>
                 <?php
             
         }
         endif;?>   
             </div>
-            <div id="CardDatosHabilidadB">
-            </div>
+            
         </form>
     </div>
 </div>
@@ -355,10 +342,7 @@
 
         <div class="card-tools">
 
-            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" class="form-check-input mt-2" id="btnNingunAFILIACION">
-
-            <a href="#" class="btn btn-tool form-check-label add-more-btn-afil" id="btnAdddAFILIACION">Agregar +</a>
+            
 
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
@@ -380,7 +364,7 @@
                 <div class="row">
                     <div class='col-12 col-sm-12 col-md-12'>
                         <div class="form-group">
-                            <label for="nombre" class=" control-label">Nombre:<span class="text-danger">*</span></label>
+                            <label for="nombre" class=" control-label">Nombre:</label>
                             <div>
                             <?= isset($e->nombre_agrupacion) ? $e->nombre_agrupacion : ''  ?>
                         </div>
@@ -388,7 +372,7 @@
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="tipoAgrupa" class=" control-label">Tipo:<span class="text-danger">*</span></label>
+                            <label for="tipoAgrupa" class=" control-label">Tipo:</label>
                             <div>
                             <?= isset($e->idTipoAgrupacion) ? $e->idTipoAgrupacion : ''  ?>
                         </div>
@@ -396,34 +380,29 @@
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="desde" class=" control-label">Desde:<span class="text-danger">*</span></label>
+                            <label for="desde" class=" control-label">Desde:</label>
                             <div>
-                            <?= isset($e->desde) ? $e->desde : ''  ?>
+                            <?= isset($e->desde) ? date( "d-m-Y" ,strtotime($e->desde)) : ''  ?>
                         </div>
                         </div>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
-                            <label for="hasta" class=" control-label">Hasta:<span class="text-danger">*</span></label>
+                            <label for="hasta" class=" control-label">Hasta:</label>
                             <div>
-                            <?= isset($e->hasta) ? $e->hasta : ''  ?>
+                            <?= isset($e->hasta) ? date( "d-m-Y" ,strtotime($e->hasta)) : ''  ?>
                         </div>
                         </div>
                     </div>
                 </div>
+                <hr  class="mt-3 mb-3"/>
                 <?php
             
         }
         endif;?>   
             </div>
-            <hr class="mt-3 mb-3" />
-            <div id="CardDatosAfiliacionB">
-            </div>
+            
+            
         </form>
     </div>
 </div>
-
-
-<script>
-
-</script>
