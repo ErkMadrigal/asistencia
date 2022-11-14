@@ -71,7 +71,7 @@
                                             if (!empty($nivel_curso)) :
                                                 foreach ($nivel_curso as  $a) {
                                             ?>
-                                                    <option <?= (isset($e->curso) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= (isset($e->idNivel_curso) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
@@ -98,7 +98,7 @@
                                             if (!empty($eficiencia)) :
                                                 foreach ($eficiencia as  $a) {
                                             ?>
-                                                    <option <?= (isset($e->eficiencia) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= (isset($e->idEficienciaCurso) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
@@ -273,7 +273,7 @@
                                             if (!empty($eficiencia)) :
                                                 foreach ($eficiencia as  $a) {
                                             ?>
-                                                    <option <?= (isset($e->eficiencia) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= (isset($e->adicional) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }

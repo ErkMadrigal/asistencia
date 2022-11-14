@@ -176,7 +176,7 @@
                     <div class="form-group">
                         <label for="funciones" class=" control-label">Funciones:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="funciones" name="funciones"  value="<?= isset($diversos->dependencia) ? $diversos->dependencia : ''  ?>">
+                                  <input type="text"  class="form-control "  id="funciones" name="funciones"  value="<?= isset($diversos->funciones) ? $diversos->funciones : ''  ?>">
                             
                         </div>
                     </div>
@@ -314,7 +314,7 @@
                 <div class="form-group">
                     <label for="reconomiento" class=" control-label">¿Razones por las que no ha recibido un reconocimiento?<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="reconomiento" name="reconomiento"  value="<?= isset($diversos->razon_ascenso) ? $diversos->razon_ascenso : ''  ?>">
+                                  <input type="text"  class="form-control "  id="reconomiento" name="reconomiento"  value="<?= isset($diversos->razon_no_reconocimiento) ? $diversos->razon_no_reconocimiento : ''  ?>">
                             
                         </div>
                 </div>
@@ -329,7 +329,7 @@
                         if (!empty($SiNo)) :
                             foreach ($SiNo as  $a) {
                         ?>
-                                     <option <?= (isset($diversos->reglamento) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                     <option <?= (isset($diversos->razon_ascenso) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                         <?php
                             }
                         endif; ?>
@@ -350,7 +350,7 @@
                     
                     <label for="razones_ascenso" class=" control-label">¿Razones por las que no ha recibido un ascenso?<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="razones_ascenso" name="razones_ascenso"  value="<?= isset($diversos->razon_ascenso) ? $diversos->razon_ascenso : ''  ?>">
+                                  <input type="text"  class="form-control "  id="razones_ascenso" name="razones_ascenso"  value="<?= isset($diversos->razon_no_ascenso) ? $diversos->razon_no_ascenso : ''  ?>">
                             
                         </div>
                 </div>
@@ -423,7 +423,7 @@
                 <div class="form-group">
                     <label for="motivo" class=" control-label">Motivo<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="motivo" name="motivo"  value="<?= isset($diversos->tipo) ? $diversos->tipo : ''  ?>">
+                                  <input type="text"  class="form-control "  id="motivo" name="motivo"  value="<?= isset($diversos->motivo) ? $diversos->motivo : ''  ?>">
                             
                         </div>
                 </div>

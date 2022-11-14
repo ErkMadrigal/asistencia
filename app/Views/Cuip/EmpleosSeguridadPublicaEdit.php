@@ -310,7 +310,7 @@
                     <div class="form-group">
                         <label for="motivo_separacion" class=" control-label">Motivo de separación:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="motivo_separacion" name="motivo_separacion"  value=" <?= isset($seguridad->separacion) ? $seguridad->separacion : ''  ?>">
+                                  <input type="text"  class="form-control "  id="motivo_separacion" name="motivo_separacion"  value=" <?= isset($seguridad->motivoSeparacion) ? $seguridad->motivoSeparacion : ''  ?>">
                             
                         </div>
                     </div>
