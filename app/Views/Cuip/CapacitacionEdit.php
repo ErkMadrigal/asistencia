@@ -214,7 +214,6 @@
                                     <label for="empresa<?= $label ?>" class=" control-label">Insitutción o Empresa:<span class="text-danger">*</span></label>
                                     <div>
                                         <input type="text" class="form-control " id="empresa<?= $label ?>" name="empresa<?= $label ?>" value="<?= isset($e->institucion) ? $e->institucion : ''  ?>">
-
                                     </div>
                                 </div>
                             </div>

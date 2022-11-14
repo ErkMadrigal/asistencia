@@ -24,7 +24,7 @@
                                   <input type="text"  class="form-control "  id="empresa" name="empresa"  value="<?= isset($diversos->empresa) ? $diversos->empresa : ''  ?>">
                             
                         </div>
-                    </div>
+                    </div> 
                 </div>            
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
