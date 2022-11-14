@@ -255,6 +255,10 @@ class Cuip extends BaseController {
         	$data['puesto'] = $this->cuipCatalgo($getPuesto);
         	//////////////
 
+        	$data['breadcrumb'] = ["inicio" => 'CUIP' ,
+                    				"url" => 'cuip',
+                    				"titulo" => 'Nueva'];
+
 
 			return view('Cuip/RegistroCUIP', $data);	
 			}
@@ -529,14 +533,14 @@ class Cuip extends BaseController {
 					  "puesto" => $puesto,
 					  "rango" => $rango,
 					  "nivel_mando" => $nivel_mando,
-					  "nombre_jefe" => $this->request->getPost('nombrejefe_adscripcion'),
+					  "nombre_jefe" => strtoupper($this->request->getPost('nombrejefe_adscripcion')),
 					  "idEstado_adscripcion" => $entidad_adscripcion,
 					  "municipio_adscripcion" => $municipio_adscripcion,
-					  "calle_adscripcion" => $this->request->getPost('calle_adscripcion'),
-					  "numero_exterior_adscripcion" => $this->request->getPost('exterior_adscripcion'),
-					  "numero_interior_adscripcion" => $this->request->getPost('interior_adscripcion'),
-					  "entre_calle1_adscripcion" => $this->request->getPost('entrecalle_adscripcion'),
-					  "entre_calle2_adscripcion" => $this->request->getPost('ylacalle_adscripcion'),
+					  "calle_adscripcion" => strtoupper($this->request->getPost('calle_adscripcion')),
+					  "numero_exterior_adscripcion" => strtoupper($this->request->getPost('exterior_adscripcion')),
+					  "numero_interior_adscripcion" => strtoupper($this->request->getPost('interior_adscripcion')),
+					  "entre_calle1_adscripcion" => strtoupper($this->request->getPost('entrecalle_adscripcion')),
+					  "entre_calle2_adscripcion" => strtoupper($this->request->getPost('ylacalle_adscripcion')),
 					  "numero_telefono_adscripcion" => $this->request->getPost('telefono_adscripcion'),
 					  "idCodigoPostal_adscripcion" => $this->request->getPost('codigoAds'),
 					  "colonia_adscripcion" => $this->request->getPost('coloniacodigoAds'),
@@ -1001,7 +1005,7 @@ class Cuip extends BaseController {
 
 	        			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
 
-
+	        			
 	        			$getIngresoEmpPublic = $this->request->getPost('ingresoEmpPublic');
 
 	        			$ingresoEmpPublic = date( "Y-m-d" ,strtotime($getIngresoEmpPublic));
@@ -1030,7 +1034,7 @@ class Cuip extends BaseController {
 							"numero_telefono" => $this->request->getPost('numero')  , 
 							"ingreso" =>  $ingresoEmpPublic , 
 							"separacion" =>  $separacion , 
-							"idPuestoFuncional" =>  $this->request->getPost('puesto_funcional') , 
+							"idPuestoFuncional" =>  strtoupper($this->request->getPost('puesto_funcional')) , 
 							"funciones" => strtoupper($this->request->getPost('funciones'))  , 
 							"especialidad" => strtoupper($this->request->getPost('especialidad'))  , 
 							"rango" =>  strtoupper($this->request->getPost('rango')) , 
@@ -1042,9 +1046,9 @@ class Cuip extends BaseController {
 							"division" =>  strtoupper($this->request->getPost('division')) , 
 							"cuip_jefe" =>  strtoupper($this->request->getPost('jefe_inmediato')) , 
 							"nombre_jefe" =>  strtoupper($this->request->getPost('nombre_jefe')) , 
-							"idEstado" =>  $this->request->getPost('estadocodigoSegPub') , 
-							"municipio" => $this->request->getPost('municipiocodigoSegPub')  , 
-							"idMotivoSeparacion" =>  $this->request->getPost('motivo_separacion') , 
+							"idEstado" =>  strtoupper($this->request->getPost('estadocodigoSegPub')) , 
+							"municipio" => strtoupper($this->request->getPost('municipiocodigoSegPub'))  , 
+							"idMotivoSeparacion" =>  strtoupper($this->request->getPost('motivo_separacion')) , 
 							"tipo_separacion" => strtoupper($this->request->getPost('tipo_separacion'))  , 
 							"tipo_baja" =>  strtoupper($this->request->getPost('tipo_baja')) , 
 							"comentarios" => strtoupper($this->request->getPost('comentarios')) , 
@@ -1199,8 +1203,8 @@ class Cuip extends BaseController {
 					$uuid = Uuid::uuid4();
         			
 
-        			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
-
+        		//	$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
+$idPersonal = $getIdPersonal;
         			
         			
         			$datosSanciones=[];
@@ -1278,19 +1282,28 @@ class Cuip extends BaseController {
 
         				$al_dia_proceso = date( "Y-m-d" ,strtotime($getAl_dia_proceso));
 
+
+        				$getIdTipoFuero = $this->request->getPost('tipo_fuero'.$val);
+
+        				$idTipoFuero = $this->encrypt->Decrytp($getIdTipoFuero);
+
+        				$getIdEstado = $this->request->getPost('entidad_federativaSE'.$val);
+
+        				$idEstado = $this->encrypt->Decrytp($getIdEstado);
+
 						$datosResoluciones[] = array(
 
 							"id" => $idRes ,
 							"idPersonal" => $idPersonal , 
 							"idEmpresa" => $idEmpresa ,
 							"institucion_emisora" =>  strtoupper($this->request->getPost('emisora'.$val)) , 
-							"idEstado" =>  $this->request->getPost('entidad_federativaSE'.$val) , 
+							"idEstado" =>  $idEstado , 
 							"delitos" =>  strtoupper($this->request->getPost('delitos'.$val)) , 
 							"motivos" =>  strtoupper($this->request->getPost('motivo'.$val)) , 
 							"numero_expediente" =>  strtoupper($this->request->getPost('no_expediente'.$val)) , 
 							"agencia_mp" =>  strtoupper($this->request->getPost('agencia_mp'.$val)) , 
 							"averiguacion_previa" =>  strtoupper($this->request->getPost('averiguacion_previa'.$val)) , 
-							"idTipoFuero" =>  $this->request->getPost('tipo_fuero'.$val) , 
+							"idTipoFuero" =>  $idTipoFuero , 
 							"estado_averiguacion" =>  strtoupper($this->request->getPost('averiguacion_estado'.$val)) , 
 							"inicio_averiguacion" =>  $inicio_averiguacion , 
 							"aldia_averiguacion" => $al_dia  , 
@@ -1892,6 +1905,7 @@ class Cuip extends BaseController {
         			
         			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
 
+        			
         			$getingresoEmpDiv = $this->request->getPost('ingresoEmpDiv');
 
         			$ingresoEmpDiv = date( "Y-m-d" ,strtotime($getingresoEmpDiv));
@@ -1981,12 +1995,13 @@ class Cuip extends BaseController {
 						"numero_telefono"  =>  $this->request->getPost('numero') , 
 						"ingreso"  =>  $ingresoEmpDiv , 
 						
-						"area"  =>  strtoupper($this->request->getPost('area')) , 
+						"area"  =>  strtoupper($this->request->getPost('area')) ,
+						"funciones"  =>  strtoupper($this->request->getPost('funciones')) ,
 						"sueldo_base"  => strtoupper($this->request->getPost('sueldo'))  , 
 						 
-						"idEstado"  =>  $this->request->getPost('estadocodigoEmpDiv') , 
+						"idEstado"  =>  strtoupper($this->request->getPost('estadocodigoEmpDiv')) , 
 						"municipio"  =>  $this->request->getPost('municipiocodigoEmpDiv') , 
-						"idMotivoSeparacion"  => $this->request->getPost('motivo_separacion')  , 
+						"idMotivoSeparacion"  => strtoupper($this->request->getPost('motivo_separacion'))  , 
 						"tipo_separacion"  => strtoupper($this->request->getPost('tipo_separacion'))  , 
 						
 						"comentarios"  => strtoupper($this->request->getPost('comentarios'))  , 
@@ -1995,7 +2010,9 @@ class Cuip extends BaseController {
 						"area_gustaria"  =>  strtoupper($this->request->getPost('area_gustaria')) , 
 						"tiempo_ascenso"  =>  strtoupper($this->request->getPost('ascender')) , 
 						"reglamento"  =>  $reglamentacion , 
-						"razon_ascenso"  => $reglamentacion_ascenso  , 
+						"razon_ascenso"  => $reglamentacion_ascenso  ,
+						"razon_no_reconocimiento" => strtoupper($this->request->getPost('reconomiento')),
+						"razon_no_ascenso" => strtoupper($this->request->getPost('razones_ascenso')), 
 						"capacitacion"  =>  strtoupper($this->request->getPost('capacitacion')) , 
 						"idTipoDisciplina"  =>  $desciplina , 
 						"subtipo_disciplina"  =>  strtoupper($this->request->getPost('subtipo_disciplina')) , 
@@ -2118,6 +2135,7 @@ class Cuip extends BaseController {
 
 			$data['estimulos'] = $this->modelCuip->GetEstimulosById($id);
 			$data['referencia'] = $this->modelCuip->GetReferenciaById($id);
+			$data['referenciaLab'] = $this->modelCuip->GetReferenciaLabById($id);
 			$data['mediaFiliacion'] = $this->modelCuip->GetMedFiliacionById($id);
 
 			$documentos = $this->modelCuip->GetDocumentosById($id);
@@ -2547,7 +2565,25 @@ class Cuip extends BaseController {
 			$data['referencia'] = $this->modelCuip->GetReferenciaById($id);
 
 			$data['mediaFiliacion'] = $this->modelCuip->GetMedFiliacionById($id);
-			$documentos = $this->modelCuip->GetDocumentosById($id);
+			$documentos = $this->modelCuip->GetDocumentosEditById($id);
+
+			$result = [];
+
+    		foreach ( $documentos as $value){
+				
+				$idDoc = $this->encrypt->Encrypt($value->idDocumento);
+				$result[] = (object) array (
+					'id' => $idDoc ,
+					'documento' => $value->documento,
+					'tipo' => $value->tipo,
+					'estatus' => $value->idEstatus
+
+				) ;
+			}
+
+
+			$data['documentos'] = $result;
+
 			
 			$data['id'] = $this->encrypt->Encrypt($id); 
 			

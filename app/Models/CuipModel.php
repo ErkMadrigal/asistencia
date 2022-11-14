@@ -219,15 +219,24 @@ class CuipModel
 
     public function GetDatosPersonalesById($id){
         $builder = $this->db->table('datos_personales');
-        $builder->select("'' AS institucion,'' AS dependencia,idEntidadNacimiento AS naciE,idEstado AS estado,idCodigoPostal AS postal,FN.valor AS nacionalidad,EC.valor AS civil,MN.valor AS nacion,PN.valor AS pais,datos_personales.apellido_paterno,datos_personales.apellido_materno,primer_nombre,segundo_nombre,fecha_nacimiento,SG.valor AS sexo,rfc,clave_electoral,cartilla_smn,licencia_conducir,idNivelEducativo as desarrollo_academico,vigencia_licencia,curp,pasaporte,fecha_naturalizacion,escuela,especialidad,cedula_profesional,año_inicio,año_termino,registro_sep,folio_certificado,calle,numero_exterior,numero_interior,colonia,entre_calle1,entre_calle2,numero_telefono,municipio,ciudad,dependencia,institucion,fecha_ingreso,puesto,rango,nivel_mando,nombre_jefe,idEstado_adscripcion,municipio_adscripcion,calle_adscripcion,numero_exterior_adscripcion,numero_interior_adscripcion,entre_calle1_adscripcion,entre_calle2_adscripcion,numero_telefono_adscripcion,idCodigoPostal_adscripcion,colonia_adscripcion,idEstado_dom_adscripcion,municipio_delegacion,ciudad_poblacion,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->select("'' AS institucion,'' AS dependencia,NE.estado AS naciE,E.estado AS estado,idCodigoPostal AS postal,FN.valor AS nacionalidad,EC.valor AS civil,MN.valor AS nacion,PN.valor AS pais,datos_personales.apellido_paterno,datos_personales.apellido_materno,primer_nombre,segundo_nombre,fecha_nacimiento,SG.valor AS sexo,rfc,clave_electoral,cartilla_smn,licencia_conducir,DA.valor as desarrollo_academico,vigencia_licencia,curp,pasaporte,fecha_naturalizacion,escuela,especialidad,cedula_profesional,año_inicio,año_termino,RS.valor AS registro_sep,folio_certificado,calle,numero_exterior,numero_interior,colonia,entre_calle1,entre_calle2,numero_telefono,ED.descripcion AS municipio,ciudad,dependencia,institucion,fecha_ingreso,PT.valor AS puesto,RG.valor AS rango,NM.valor AS nivel_mando,nombre_jefe,EA.estado AS idEstado_adscripcion,MA.descripcion AS municipio_adscripcion,calle_adscripcion,numero_exterior_adscripcion,numero_interior_adscripcion,entre_calle1_adscripcion,entre_calle2_adscripcion,numero_telefono_adscripcion,idCodigoPostal_adscripcion,colonia_adscripcion,ADA.estado AS idEstado_dom_adscripcion,AMA.descripcion AS municipio_delegacion,ciudad_poblacion,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
         $builder->join("catalogos_detalle SG"," datos_personales.idGenero= SG.id  ","left");
         $builder->join("catalogos_detalle FN","datos_personales.idFormaNacionalidad = FN.id ","left");
+        $builder->join("catalogos_detalle RS","datos_personales.registro_sep = RS.id ","left");
+        $builder->join("catalogos_detalle DA","datos_personales.idNivelEducativo = DA.id ","left");
         $builder->join("catalogos_detalle PN"," datos_personales.idPaisNacimiento= PN.id ","left");
-        //$builder->join("catalogos_detalle NE"," datos_personales.idEntidadNacimiento= NE.id ","left");
+        $builder->join("estados NE"," datos_personales.idEntidadNacimiento= NE.claveEstado","left");
+        $builder->join("estados_detalles MA"," datos_personales.municipio_adscripcion= MA.claveMunicipio","left");
+        $builder->join("estados E"," datos_personales.idEstado= E.claveEstado","left");
+        $builder->join("estados EA"," datos_personales.idEstado_adscripcion= EA.claveEstado","left");
+        $builder->join("estados ADA"," datos_personales.idEstado_dom_adscripcion= ADA.claveEstado","left");
         $builder->join("catalogos_detalle MN"," datos_personales.idNacionalidad= MN.id ","left");
         $builder->join("catalogos_detalle EC"," datos_personales.idEstadoCivil= EC.id  ","left");
-        //$builder->join("catalogos_detalle CP"," datos_personales.idCodigoPostal= CP.id  ","left");
-        //$builder->join("catalogos_detalle ES"," datos_personales.idEstado= ES.id  ","left");
+        $builder->join("catalogos_detalle NM"," datos_personales.nivel_mando= NM.id  ","left");
+        $builder->join("catalogos_detalle RG"," datos_personales.rango= RG.id  ","left");
+        $builder->join("estados_detalles ED"," datos_personales.municipio= ED.claveMunicipio","left");
+        $builder->join("estados_detalles AMA"," datos_personales.municipio_delegacion= AMA.claveMunicipio","left");
+        $builder->join("catalogos_detalle PT"," datos_personales.puesto= PT.id  ","left");
         $builder->join("sys_usuarios_admin UA","datos_personales.createdby = UA.id","left");
         $builder->join("sys_usuarios_admin UU","datos_personales.updatedby = UU.id","left");
         $builder->where('datos_personales.id', $id);
@@ -249,10 +258,8 @@ class CuipModel
 
     public function GetEmpleosSeridadById($id){
         $builder = $this->db->table('empleos_seg_publica');
-        $builder->select("dependencia,corporacion,calle,numero_interior,numero_exterior,colonia,idCodigoPostal,numero_telefono,ingreso,separacion,PF.valor AS funcional,funciones,especialidad,rango,numero_placa,numero_empleado,sueldo_base,compensacion,area,division,cuip_jefe,nombre_jefe,ES.valor AS estado,municipio,MS.valor AS separacion,tipo_separacion,tipo_baja,comentarios,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
-        $builder->join("catalogos_detalle PF"," empleos_seg_publica.idPuestoFuncional= PF.id  ","left");
-        $builder->join("catalogos_detalle ES"," empleos_seg_publica.idEstado= ES.id  ","left");
-        $builder->join("catalogos_detalle MS"," empleos_seg_publica.idMotivoSeparacion= MS.id  ","left");
+        $builder->select("dependencia,corporacion,calle,numero_interior,numero_exterior,colonia,idCodigoPostal,numero_telefono,ingreso,separacion,idPuestoFuncional AS funcional,funciones,especialidad,rango,numero_placa,numero_empleado,sueldo_base,compensacion,area,division,cuip_jefe,nombre_jefe,idEstado AS estado,municipio,idMotivoSeparacion AS motivoSeparacion,tipo_separacion,tipo_baja,comentarios,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        
         $builder->join("sys_usuarios_admin UA","empleos_seg_publica.createdby = UA.id","left");
         $builder->join("sys_usuarios_admin UU","empleos_seg_publica.updatedby = UU.id","left");
         $builder->where('empleos_seg_publica.idPersonal', $id);
@@ -262,10 +269,9 @@ class CuipModel
     public function GetEmpleosDiversos($id)
     {
         $builder = $this->db->table('empleos_diversos');
-        $builder->select("empresa,calle,numero_exterior,numero_interior,colonia,idCodigoPostal,numero_telefono,ingreso,area,sueldo_base,ES.valor AS estado,municipio,MS.valor AS separacion,tipo_separacion,comentarios,eligio_empleo,puesto_gustaria,area_gustaria,tiempo_ascenso,reglamento,razon_ascenso,capacitacion,TD.valor AS disciplina,subtipo_disciplina,motivo,tipo,fecha_inicio,fecha_termino,TDU.valor AS duracion,cantidad,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
-        
-        $builder->join("catalogos_detalle ES"," empleos_diversos.idEstado= ES.id  ","left");
-        $builder->join("catalogos_detalle MS"," empleos_diversos.idMotivoSeparacion= MS.id  ","left");
+        $builder->select("empresa,calle,numero_exterior,numero_interior,colonia,idCodigoPostal,numero_telefono,ingreso,area,sueldo_base,idEstado AS estado,municipio,idMotivoSeparacion AS separacion,tipo_separacion,comentarios,eligio_empleo,puesto_gustaria,area_gustaria,tiempo_ascenso,RR.valor AS reglamento,RA.valor AS razon_ascenso,capacitacion,TD.valor AS disciplina,subtipo_disciplina,motivo,tipo,fecha_inicio,fecha_termino,funciones,razon_no_reconocimiento,razon_no_ascenso,TDU.valor AS duracion,cantidad,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->join("catalogos_detalle RR"," empleos_diversos.reglamento= RR.id  ","left");
+        $builder->join("catalogos_detalle RA"," empleos_diversos.razon_ascenso= RA.id  ","left");
         $builder->join("catalogos_detalle TD"," empleos_diversos.idTipoDisciplina= TD.id  ","left");
         $builder->join("catalogos_detalle TDU"," empleos_diversos.idDuracion= TDU.id  ","left");
         $builder->join("sys_usuarios_admin UA","empleos_diversos.createdby = UA.id","left");
@@ -292,7 +298,7 @@ class CuipModel
         $builder->join("sys_usuarios_admin UA","capacitaciones.createdby = UA.id","left");
         $builder->join("sys_usuarios_admin UU","capacitaciones.updatedby = UU.id","left");
         $builder->where('capacitaciones.idPersonal', $id);
-        return $builder->get()->getRow();
+        return $builder->get()->getResult();
     }
 
     public function GetSanciones($id){
@@ -303,7 +309,7 @@ class CuipModel
         $builder->join("sys_usuarios_admin UA","sanciones.createdby = UA.id","left");
         $builder->join("sys_usuarios_admin UU","sanciones.updatedby = UU.id","left");
         $builder->where('sanciones.idPersonal', $id);
-        return $builder->get()->getRow();
+        return $builder->get()->getResult();
     }
 
     public function GetDocumentos($idEmpresa,$id){
@@ -516,7 +522,57 @@ class CuipModel
 
     public function GetReferenciaById($id){
         $builder = $this->db->table('referencias');
-        $builder->select("apellido_paterno_fam, apellido_materno_fam, primer_nombre_fam, segundo_nombre_fam, idGenero_fam, ocupacion_fam, idParentesco_fam, calle_fam, numero_exterior_fam, numero_interior_fam, colonia_fam, idCodigoPostal_fam, numero_telefono_fam, idPaisNacimiento_fam, idEstado_fam, municipio_fam, ciudad_fam, apellido_paterno_pariente, apellido_materno_pariente, primer_nombre_pariente, segundo_nombre_pariente, idGenero_pariente, ocupacion_pariente, idParentesco_pariente, calle_pariente, numero_exterior_pariente, numero_interior_pariente, colonia_pariente, idCodigoPostal_pariente, numero_telefono_pariente, idPaisNacimiento_pariente, idEstado_pariente, municipio_pariente, ciudad_pariente, apellido_paterno_personal, apellido_materno_personal, primer_nombre_personal, segundo_nombre_personal, idGenero_personal, ocupacion_personal, idParentesco_personal, calle_personal, numero_exterior_personal, numero_interior_personal, colonia_personal, idCodigoPostal_personal, numero_telefono_personal, idPaisNacimiento_personal, idEstado_personal, municipio_personal, ciudad_personal, apellido_paterno_laboral, apellido_materno_laboral, primer_nombre_laboral, segundo_nombre_laboral, idGenero_laboral, ocupacion_laboral, idParentesco_laboral, calle_laboral, numero_exterior_laboral, numero_interior_laboral, colonia_laboral, idCodigoPostal_laboral, numero_telefono_laboral, idPaisNacimiento_laboral, idEstado_laboral, municipio_laboral, ciudad_laboral");
+        $builder->select("apellido_paterno_fam, apellido_materno_fam, primer_nombre_fam, segundo_nombre_fam, SF.valor AS idGenero_fam, OF.valor AS ocupacion_fam, RF.parentesco AS idParentesco_fam, calle_fam, numero_exterior_fam, numero_interior_fam, colonia_fam, idCodigoPostal_fam, numero_telefono_fam,PF.valor AS  idPaisNacimiento_fam, EF.estado AS idEstado_fam, MF.descripcion AS municipio_fam, ciudad_fam, apellido_paterno_pariente, apellido_materno_pariente, primer_nombre_pariente, segundo_nombre_pariente, 
+            SPA.valor AS idGenero_pariente,
+            OPA.valor AS ocupacion_pariente,
+            RPA.parentesco AS idParentesco_pariente, calle_pariente, numero_exterior_pariente, numero_interior_pariente, colonia_pariente, idCodigoPostal_pariente, numero_telefono_pariente,
+            PPA.valor AS idPaisNacimiento_pariente, 
+            EPA.estado AS idEstado_pariente,
+            MPA.descripcion AS municipio_pariente, ciudad_pariente");
+        $builder->join("catalogos_detalle SF","referencias.idGenero_fam = SF.id","left");
+        $builder->join("catalogos_detalle OF","referencias.ocupacion_fam = OF.id","left");
+        $builder->join("catalogo_referencias RF","referencias.idParentesco_fam = RF.id","left");
+        $builder->join("catalogos_detalle PF","referencias.idPaisNacimiento_fam = PF.id","left");
+        $builder->join("estados EF","referencias.idEstado_fam = EF.claveEstado","left");
+        $builder->join("estados_detalles MF","referencias.municipio_fam = MF.claveMunicipio","left");
+        $builder->join("catalogos_detalle SPA","referencias.idGenero_pariente = SPA.id","left");
+        $builder->join("catalogos_detalle OPA","referencias.ocupacion_pariente = OPA.id","left");
+        $builder->join("catalogo_referencias RPA","referencias.idParentesco_pariente = RPA.id","left");
+        $builder->join("catalogos_detalle PPA","referencias.idPaisNacimiento_pariente = PPA.id","left");
+        $builder->join("estados EPA","referencias.idEstado_pariente = EPA.claveEstado","left");
+        $builder->join("estados_detalles MPA","referencias.municipio_pariente = MPA.claveMunicipio","left");
+        $builder->where('idPersonal', $id);
+        return $builder->get()->getRow();
+    }
+
+
+    public function GetReferenciaLabById($id){
+        $builder = $this->db->table('referencias');
+        $builder->select("apellido_paterno_personal, apellido_materno_personal, primer_nombre_personal, segundo_nombre_personal,
+            SPE.valor AS idGenero_personal, 
+            OPE.valor AS ocupacion_personal,
+            RPE.parentesco AS idParentesco_personal, calle_personal, numero_exterior_personal, numero_interior_personal, colonia_personal, idCodigoPostal_personal, numero_telefono_personal,
+            PPE.valor AS idPaisNacimiento_personal,
+            EPE.estado AS idEstado_personal,
+            MPE.descripcion AS municipio_personal, ciudad_personal, apellido_paterno_laboral, apellido_materno_laboral, primer_nombre_laboral, segundo_nombre_laboral,
+            SLA.valor AS idGenero_laboral,
+            OLA.valor AS ocupacion_laboral,
+            RLA.parentesco AS idParentesco_laboral, calle_laboral, numero_exterior_laboral, numero_interior_laboral, colonia_laboral, idCodigoPostal_laboral, numero_telefono_laboral,
+            PLA.valor AS idPaisNacimiento_laboral,
+            ELA.estado AS idEstado_laboral,
+            MLA.descripcion AS municipio_laboral, ciudad_laboral");
+        $builder->join("catalogos_detalle SPE","referencias.idGenero_personal = SPE.id","left");
+        $builder->join("catalogos_detalle OPE","referencias.ocupacion_personal = OPE.id","left");
+        $builder->join("catalogo_referencias RPE","referencias.idParentesco_personal = RPE.id","left");
+        $builder->join("catalogos_detalle PPE","referencias.idPaisNacimiento_personal = PPE.id","left");
+        $builder->join("estados EPE","referencias.idEstado_personal = EPE.claveEstado","left");
+        $builder->join("estados_detalles MPE","referencias.municipio_personal = MPE.claveMunicipio","left");
+        $builder->join("catalogos_detalle SLA","referencias.idGenero_laboral = SLA.id","left");
+        $builder->join("catalogos_detalle OLA","referencias.ocupacion_laboral = OLA.id","left");
+        $builder->join("catalogo_referencias RLA","referencias.idParentesco_laboral = RLA.id","left");
+        $builder->join("catalogos_detalle PLA","referencias.idPaisNacimiento_laboral = PLA.id","left");
+        $builder->join("estados ELA","referencias.idEstado_laboral = ELA.claveEstado","left");
+        $builder->join("estados_detalles MLA","referencias.municipio_laboral = MLA.claveMunicipio","left");
         $builder->where('idPersonal', $id);
         return $builder->get()->getRow();
     }
@@ -524,14 +580,18 @@ class CuipModel
 
     public function GetSocioEconomicoDependientesById($id){
         $builder = $this->db->table('estudio_socioeconomico_dependientes');
-        $builder->select("apellido_paterno, apellido_materno, primer_nombre, segundo_nombre, fecha_nacimiento, idGenero, idParentesco");
+        $builder->select("apellido_paterno, apellido_materno, primer_nombre, segundo_nombre, fecha_nacimiento, catalogos_detalle.valor AS idGenero, parentesco AS idParentesco");
+        $builder->join("catalogos_detalle","estudio_socioeconomico_dependientes.idGenero = catalogos_detalle.id","left");
+        $builder->join("catalogo_referencias","estudio_socioeconomico_dependientes.idParentesco = catalogo_referencias.id","left");
         $builder->where('idSocioeconomico', $id);
         return $builder->get()->getResult();
     }
 
     public function GetResolucionesById($id){
         $builder = $this->db->table('resoluciones_ministeriales');
-        $builder->select("institucion_emisora, idEstado, delitos, motivos, numero_expediente, agencia_mp, averiguacion_previa, idTipoFuero, estado_averiguacion, inicio_averiguacion, aldia_averiguacion, juzgado, num_proceso, estado_procesal, inicio_proceso, aldia_proceso");
+        $builder->select("institucion_emisora, estados.estado AS idEstado, delitos, motivos, numero_expediente, agencia_mp, averiguacion_previa, catalogos_detalle.valor AS idTipoFuero, estado_averiguacion, inicio_averiguacion, aldia_averiguacion, juzgado, num_proceso, estado_procesal, inicio_proceso, aldia_proceso");
+        $builder->join("catalogos_detalle","resoluciones_ministeriales.idTipoFuero = catalogos_detalle.id","left");
+        $builder->join("estados","resoluciones_ministeriales.idEstado = estados.claveEstado","left");
         $builder->where('idPersonal', $id);
         return $builder->get()->getResult();
     }
@@ -545,28 +605,37 @@ class CuipModel
 
     public function GetCapacitacionesPublicById($id){
         $builder = $this->db->table('capacitacion_publica');
-        $builder->select("dependencia, inst_capacitadora, nombre_curso, tema_curso, idNivel_curso, idEficienciaCurso, inicio_curso, conclusion_curso, duracion_horas_curso, tipo_comprobante");
+        $builder->select("dependencia, inst_capacitadora, nombre_curso, tema_curso, catalogos_detalle.valor AS idNivel_curso, EF.valor AS idEficienciaCurso, inicio_curso, conclusion_curso, duracion_horas_curso, tipo_comprobante");
+        $builder->join("catalogos_detalle","capacitacion_publica.idNivel_curso = catalogos_detalle.id","left");
+        $builder->join("catalogos_detalle EF","capacitacion_publica.idEficienciaCurso = EF.id","left");
         $builder->where('idPersonal', $id);
         return $builder->get()->getResult();
     }
 
     public function GetIdiomasById($id){
         $builder = $this->db->table('idiomas_dialectos');
-        $builder->select("idIdioma, idIdiomaLectura, idIdiomaEscritura, idIdiomaConversacion");
+        $builder->select("ID.valor AS idIdioma,IL.valor AS  idIdiomaLectura, IE.valor AS idIdiomaEscritura, IC.valor AS idIdiomaConversacion");
+        $builder->join("catalogos_detalle ID","idiomas_dialectos.idIdioma = ID.id","left");
+        $builder->join("catalogos_detalle IL","idiomas_dialectos.idIdiomaLectura = IL.id","left");
+        $builder->join("catalogos_detalle IE","idiomas_dialectos.idIdiomaEscritura = IE.id","left");
+        $builder->join("catalogos_detalle IC","idiomas_dialectos.idIdiomaConversacion = IC.id","left");
         $builder->where('idPersonal', $id);
         return $builder->get()->getResult();
     }
 
     public function GetHabilidadesById($id){
         $builder = $this->db->table('habilidades_haptitudes');
-        $builder->select("idTipoHabilidad, especifique_habilidad, idGradoHabilidad");
+        $builder->select("THA.valor AS idTipoHabilidad, especifique_habilidad,GHA.valor AS  idGradoHabilidad");
+        $builder->join("catalogos_detalle THA","habilidades_haptitudes.idTipoHabilidad = THA.id","left");
+        $builder->join("catalogos_detalle GHA","habilidades_haptitudes.idGradoHabilidad = GHA.id","left");
         $builder->where('idPersonal', $id);
         return $builder->get()->getResult();
     }
 
     public function GetAgrupacionesById($id){
         $builder = $this->db->table('afiliacion_agrupaciones');
-        $builder->select("nombre_agrupacion, idTipoAgrupacion, desde, hasta");
+        $builder->select("nombre_agrupacion, catalogos_detalle.valor AS idTipoAgrupacion, desde, hasta");
+        $builder->join("catalogos_detalle","afiliacion_agrupaciones.idTipoAgrupacion = catalogos_detalle.id","left");
         $builder->where('idPersonal', $id);
         return $builder->get()->getResult();
     }
@@ -576,6 +645,17 @@ class CuipModel
         $builder->select("idComplexion, idPiel, idCara, idCantidadCabello, idColorCabello, idFormaCabello, idCalvicie, idImplantacionCabello, idAlturaFrente, idInclinacionFrente, idAnchoFrente, idDireccionCejas, idImplantacionCejas, idFormaCejas, idTamanoCejas, idColorOjos, idFormaOjos, idTamanoOjos, idRaiz, idDorso, idAnchoNariz, idBaseNariz, idAlturaNariz, idTamanoBoca, idComisuras, idEspesorLabio, idAlturaNasolabial, idProminenciaLabio, idMentonTipo, idMentonForma, idMentonInclinacion, idFormaOreja, idOriginal, idSuperior, idPosterior, idAdherenciaHelix, idContornoLobulo, idAdherenciaLobulo, idParticularidad, idDimensionLobulo, idSangreTipo, idRH, idUsaAnteojos, estatura, peso, idCicatrices, descrip_cicatrices, idTatuajes, descrip_tatuajes, idLunares, descrip_lunares, idDefectos, descrip_defectos, idProtesis, descrip_protesis, idDiscapacidad, descrip_discapacidad");
         $builder->where('idPersonal', $id);
         return $builder->get()->getRow();
+    }
+
+    public function GetDocumentosEditById($id){
+        $builder = $this->db->table('documentos_expediente_digital');
+        $builder->select('documentos.idDocumento,documento,tipo,idEstatus');
+        $builder->join("documentos"," documentos_expediente_digital.id= documentos.idDocExp AND documentos.idPersonal = '$id'","left");
+        $builder->orderBy("documento","asc");
+        $builder->where('activo', true);
+        //$builder->where('idPersonal', $id);
+        return $builder->get()->getResult();
+        
     }
     
 }

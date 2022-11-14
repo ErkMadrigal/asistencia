@@ -4,10 +4,7 @@
 
         <div class="card-tools">
 
-            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" class="form-check-input mt-2" id="btnNingunodiversos">
-
-
+            
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
             </button>
@@ -19,7 +16,7 @@
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="empresa" class=" control-label">Empresa:<span class="text-danger">*</span></label>
+                        <label for="empresa" class=" control-label">Empresa:</label>
                         <div>
                             <?= isset($diversos->empresa) ? $diversos->empresa : ''  ?>
                         </div>
@@ -28,7 +25,7 @@
 
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
+                        <label for="calle" class=" control-label">Calle :</label>
                         <div>
                             <?= isset($diversos->calle) ? $diversos->calle : ''  ?>
                         </div>
@@ -36,7 +33,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
+                        <label for="exterior" class=" control-label">No. Exterior:</label>
                         <div>
                             <?= isset($diversos->numero_exterior) ? $diversos->numero_exterior : ''  ?>
                         </div>
@@ -52,7 +49,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="codigoEmpDiv" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
+                        <label for="codigoEmpDiv" class=" control-label">Código Postal :</label>
                         <div>
                             <?= isset($diversos->idCodigoPostal) ? $diversos->idCodigoPostal : ''  ?>
                         </div>
@@ -60,7 +57,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="coloniacodigoEmpDiv" class=" control-label">Colonia:<span class="text-danger">*</span></label>
+                        <label for="coloniacodigoEmpDiv" class=" control-label">Colonia:</label>
                         <div>
                             <?= isset($diversos->colonia) ? $diversos->colonia : ''  ?>
                         </div>
@@ -68,7 +65,7 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="estadocodigoEmpDiv" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
+                        <label for="estadocodigoEmpDiv" class="control-label">Entidad Federativa: </label>
                        <div>
                             <?= isset($diversos->estado) ? $diversos->estado : ''  ?>
                         </div>
@@ -76,7 +73,7 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="municipiocodigoEmpDiv" class="control-label">Municipio: <span class="text-danger">*</span></label>
+                        <label for="municipiocodigoEmpDiv" class="control-label">Municipio: </label>
                         <div>
                             <?= isset($diversos->municipio) ? $diversos->municipio : ''  ?>
                         </div>
@@ -84,7 +81,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
+                        <label for="numero" class=" control-label">Numero Telefónico:</label>
                         <div>
                             <?= isset($diversos->numero_telefono) ? $diversos->numero_telefono : ''  ?>
                         </div>
@@ -92,24 +89,24 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="ingresoEmpDiv" class=" control-label">Ingreso:<span class="text-danger">*</span></label>
+                        <label for="ingresoEmpDiv" class=" control-label">Ingreso:</label>
                         <div>
-                            <?= isset($diversos->ingreso) ? $diversos->ingreso : ''  ?>
+                            <?= isset($diversos->ingreso) ? date( "d-m-Y" ,strtotime($diversos->ingreso)) : ''  ?>
                         </div>
                     </div>
                 </div>
 
                 <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="funciones" class=" control-label">Funciones:<span class="text-danger">*</span></label>
+                        <label for="funciones" class=" control-label">Funciones:</label>
                         <div>
-                            <?= isset($diversos->primer_nombre) ? $diversos->primer_nombre : ''  ?>
+                            <?= isset($diversos->funciones) ? $diversos->funciones : ''  ?>
                         </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="sueldo" class=" control-label">Ingreso Neto (Mensual):<span class="text-danger">*</span></label>
+                        <label for="sueldo" class=" control-label">Ingreso Neto (Mensual):</label>
                         <div>
                             <?= isset($diversos->sueldo_base) ? $diversos->sueldo_base : ''  ?>
                         </div>
@@ -118,16 +115,16 @@
 
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="area" class=" control-label">Area:<span class="text-danger">*</span></label>
+                        <label for="area" class=" control-label">Area:</label>
                         <div>
-                            <?= isset($diversos->primer_nombre) ? $diversos->primer_nombre : ''  ?>
+                            <?= isset($diversos->area) ? $diversos->area : ''  ?>
                         </div>
                     </div>
                 </div>
 
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="motivo_separacion" class=" control-label">Motivo de separación:<span class="text-danger">*</span></label>
+                        <label for="motivo_separacion" class=" control-label">Motivo de separación:</label>
                         <div>
                             <?= isset($diversos->separacion) ? $diversos->separacion : ''  ?>
                         </div>
@@ -135,7 +132,7 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="tipo_separacion" class=" control-label">Tipo de Separación:<span class="text-danger">*</span></label>
+                        <label for="tipo_separacion" class=" control-label">Tipo de Separación:</label>
                         <div>
                             <?= isset($diversos->tipo_separacion) ? $diversos->tipo_separacion : ''  ?>
                         </div>
@@ -144,7 +141,7 @@
 
                 <div class='col-12 col-sm-12 col-md-12'>
                     <div class="form-group">
-                        <label for="comentarios" class=" control-label">Comentarios:<span class="text-danger">*</span></label>
+                        <label for="comentarios" class=" control-label">Comentarios:</label>
                         <div>
                             <?= isset($diversos->comentarios) ? $diversos->comentarios : ''  ?>
                         </div>
@@ -171,7 +168,7 @@
         <div class="row">
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="empleo" class=" control-label">¿Por qué Eligio este empleo?<span class="text-danger">*</span></label>
+                    <label for="empleo" class=" control-label">¿Por qué Eligio este empleo?</label>
                     <div>
                             <?= isset($diversos->eligio_empleo) ? $diversos->eligio_empleo : ''  ?>
                         </div>
@@ -179,7 +176,7 @@
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="puesto" class=" control-label">¿Qué puesto le gustaria tener?<span class="text-danger">*</span></label>
+                    <label for="puesto" class=" control-label">¿Qué puesto le gustaria tener?</label>
                     <div>
                             <?= isset($diversos->puesto_gustaria) ? $diversos->puesto_gustaria : ''  ?>
                         </div>
@@ -187,7 +184,7 @@
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="area_gustaria" class=" control-label">¿En que area le gustaría estar?<span class="text-danger">*</span></label>
+                    <label for="area_gustaria" class=" control-label">¿En que area le gustaría estar?</label>
                     <div>
                             <?= isset($diversos->area_gustaria) ? $diversos->area_gustaria : ''  ?>
                         </div>
@@ -195,7 +192,7 @@
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="ascender" class=" control-label">¿En que tiempo desea ascender?<span class="text-danger">*</span></label>
+                    <label for="ascender" class=" control-label">¿En que tiempo desea ascender?</label>
                     <div>
                             <?= isset($diversos->tiempo_ascenso) ? $diversos->tiempo_ascenso : ''  ?>
                         </div>
@@ -203,7 +200,7 @@
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="reglamentacion" class=" control-label">¿Conoce la reglamentación de los reconocimientos?<span class="text-danger">*</span></label>
+                    <label for="reglamentacion" class=" control-label">¿Conoce la reglamentación de los reconocimientos?</label>
                     <div>
                             <?= isset($diversos->reglamento) ? $diversos->reglamento : ''  ?>
                         </div>
@@ -211,7 +208,15 @@
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="reconomiento" class=" control-label">¿Razones por las que no ha recibido un reconocimiento?<span class="text-danger">*</span></label>
+                    <label for="reconomiento" class=" control-label">¿Razones por las que no ha recibido un reconocimiento?</label>
+                    <div>
+                            <?= isset($diversos->razon_no_reconocimiento) ? $diversos->razon_no_reconocimiento : ''  ?>
+                        </div>
+                </div>
+            </div>
+            <div class='col-12 col-sm-12 col-md-6'>
+                <div class="form-group">
+                    <label for="reglamentacion_ascenso" class=" control-label">¿Conoce la reglamentación de los ascensos?</label>
                     <div>
                             <?= isset($diversos->razon_ascenso) ? $diversos->razon_ascenso : ''  ?>
                         </div>
@@ -219,23 +224,15 @@
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="reglamentacion_ascenso" class=" control-label">¿Conoce la reglamentación de los ascensos?<span class="text-danger">*</span></label>
+                    <label for="razones_ascenso" class=" control-label">¿Razones por las que no ha recibido un ascenso?</label>
                     <div>
-                            <?= isset($diversos->primer_nombre) ? $diversos->primer_nombre : ''  ?>
+                            <?= isset($diversos->razon_no_ascenso) ? $diversos->razon_no_ascenso : ''  ?>
                         </div>
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="razones_ascenso" class=" control-label">¿Razones por las que no ha recibido un ascenso?<span class="text-danger">*</span></label>
-                    <div>
-                            <?= isset($diversos->razon_ascenso) ? $diversos->razon_ascenso : ''  ?>
-                        </div>
-                </div>
-            </div>
-            <div class='col-12 col-sm-12 col-md-6'>
-                <div class="form-group">
-                    <label for="capacitacion" class=" control-label">¿Qué capacitación le gustaría recibir?<span class="text-danger">*</span></label>
+                    <label for="capacitacion" class=" control-label">¿Qué capacitación le gustaría recibir?</label>
                     <div>
                             <?= isset($diversos->capacitacion) ? $diversos->capacitacion : ''  ?>
                         </div>
@@ -262,7 +259,7 @@
         <div class="row">
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="desciplina" class=" control-label">Tipo de Disciplina:<span class="text-danger">*</span></label>
+                    <label for="desciplina" class=" control-label">Tipo de Disciplina:</label>
                     <div>
                             <?= isset($diversos->disciplina) ? $diversos->disciplina : ''  ?>
                         </div>
@@ -270,7 +267,7 @@
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="subtipo_disciplina" class=" control-label">Subtipo de disciplina<span class="text-danger">*</span></label>
+                    <label for="subtipo_disciplina" class=" control-label">Subtipo de disciplina</label>
                     <div>
                             <?= isset($diversos->subtipo_disciplina) ? $diversos->subtipo_disciplina : ''  ?>
                         </div>
@@ -278,7 +275,7 @@
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="motivo" class=" control-label">Motivo<span class="text-danger">*</span></label>
+                    <label for="motivo" class=" control-label">Motivo</label>
                     <div>
                             <?= isset($diversos->motivo) ? $diversos->motivo : ''  ?>
                         </div>
@@ -286,7 +283,7 @@
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="tipo" class=" control-label">Tipo<span class="text-danger">*</span></label>
+                    <label for="tipo" class=" control-label">Tipo</label>
                     <div>
                             <?= isset($diversos->tipo) ? $diversos->tipo : ''  ?>
                         </div>
@@ -294,17 +291,17 @@
             </div>
             <div class='col-12 col-sm-6'>
                 <div class='form-group'>
-                    <label for="fecha_inicialDis">Fecha de Inicio: <span class="text-danger">*</span></label>
+                    <label for="fecha_inicialDis">Fecha de Inicio: </label>
                     <div>
-                            <?= isset($diversos->fecha_inicio) ? $diversos->fecha_inicio : ''  ?>
+                            <?= isset($diversos->fecha_inicio) ? date( "d-m-Y" ,strtotime($diversos->fecha_inicio)) : ''  ?>
                         </div>
                 </div>
             </div>
             <div class='col-12 col-sm-6'>
                 <div class='form-group'>
-                    <label for="fecha_finalDis">Fecha de Término: <span class="text-danger">*</span></label>
+                    <label for="fecha_finalDis">Fecha de Término: </label>
                     <div>
-                            <?= isset($diversos->fecha_termino) ? $diversos->fecha_termino : ''  ?>
+                            <?= isset($diversos->fecha_termino) ? date( "d-m-Y" ,strtotime($diversos->fecha_termino)) : ''  ?>
                         </div>
                 </div>
             </div>
@@ -331,7 +328,7 @@
                 </div>
             </div>
         </div>
-        <hr  class="mt-3 mb-3"/>
+        
         </form>
     </div>
 </div>

@@ -141,7 +141,15 @@
                         </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-6'>    
+                <div class='col-12 col-sm-3'>    
+                    <div class="form-group">
+                        <label for="pagos" class="control-label">Cantidad de Pagos<span class="text-danger">*</span></label>
+                        <div >
+                            <input type="text"  class="form-control " id="pagos" name="pagos" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" >
+                        </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-3'>    
                     <div class="form-group">
                         <label for="periodicidad" class="control-label">Periodicidad <span class="text-danger">*</span></label>
                         <div >
@@ -201,7 +209,6 @@
                         <label for="estado" class="control-label">Total</label>
                         <input type="text"  class="d-none" id="saldo" name="saldo" >
                         <input type="text"  class="d-none" id="total" name="total" >
-                        <input type="text"  class="d-none" id="pagos" name="pagos" >
 
                         <div >
                             <div class="card borderLeftPrimary">
@@ -253,6 +260,7 @@
         let cliente = document.querySelector("#cliente")
         let elemento = document.querySelector("#elemento")
         let arma = document.querySelector("#arma")
+        let modalidad = document.querySelector("#modalidad")
         let tipoPago = document.querySelector("#tipoPago")
         let periodicidad = document.querySelector("#periodicidad")
         let renta = document.querySelector("#renta")
@@ -261,6 +269,7 @@
         let garantia = document.querySelector("#garantia")
         let cardTotal = document.querySelector("#cardTotal")
         let txtTotal = document.querySelector("#txtTotal")
+        let cartuchos = document.querySelector("#cartuchos")
 
 
         let saldo = document.querySelector("#saldo")
@@ -278,11 +287,13 @@
             elemento.value = ''
             arma.value = ''
             tipoPago.value = ''
+            modalidad.value = ''
             periodicidad.value = ''
             renta.value = ''
             tramite.value = ''
             asignacion.value = ''
             garantia.value = ''
+            cartuchos.value = ''
             $("#periodicidad").select2({
                 allowClear: true,
                 placeholder: "Selecciona una Opción"
@@ -303,6 +314,16 @@
                 allowClear: true,
                 placeholder: "Selecciona una Opción"
             });
+            
+            $("#arma").select2({
+                allowClear: true,
+                placeholder: "Selecciona una Opción"
+            });
+            
+            $("#modalidad").select2({
+                allowClear: true,
+                placeholder: "Selecciona una Opción"
+            });
         } 
 
         
@@ -317,34 +338,16 @@
             cardTotal.style.transition = '2s'
 
             let _total = 0
-            let _pagos = 0
-            switch (periodicidad.value) {
-                case "mensual":
-                    _pagos = 12
-                break;
-                case "bimestral":
-                    _pagos = 6
-                break;
-                case "trimestral":
-                    _pagos = 4
-                break;
-                case "semestral":
-                    _pagos = 2
-                break;
-                case "anual":
-                    _pagos = 1
-                break;
-            }
+            
 
             let valTramite = tramite.value == '' ? 0 : parseInt(tramite.value)
             let valAsign = asignacion.value == '' ? 0 : parseInt(asignacion.value)
             let valGarantia = garantia.value == '' ? 0 : parseInt(garantia.value)
 
-            _total = (renta.value*_pagos)+valTramite+valAsign+valGarantia 
+            _total = (renta.value*pagos.value)+valTramite+valAsign+valGarantia 
             
             saldo.value = _total
             total.value = _total
-            pagos.value = _pagos
             txtTotal.innerHTML = `$ ${numeral(_total).format('0,0')}`
         };
 
