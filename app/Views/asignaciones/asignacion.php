@@ -218,7 +218,7 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body table-responsive ">
-            <table id="dataGrid" class="table table-stripe text-center table-hover table-head-fixed text-nowrap">
+            <table id="dataGrid" class="table stripe text-center table-hover table-head-fixed text-nowrap">
                 <thead>
                 <tr>
                     <th>Cliente</th>
@@ -257,7 +257,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <table id="data" class="table-stripe text-center table-hover table-head-fixed text-nowrap">
+                <table id="data" class="table stripe text-center table-hover table-head-fixed text-nowrap">
                     <thead>
                     <tr>
                         <th>Pago</th>
