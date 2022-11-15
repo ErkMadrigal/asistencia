@@ -599,7 +599,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -685,9 +685,6 @@
                         </div>
                                           <?= isset($mediaFiliacion->descrip_discapacidad) ? $mediaFiliacion->descrip_discapacidad : ''  ?>
                 </div>
-                    </div>
-                </div>
             </div>
-        </form>
     </div>
 </div>
