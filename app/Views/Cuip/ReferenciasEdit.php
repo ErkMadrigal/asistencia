@@ -592,7 +592,7 @@
                 <div class="form-group">
                     <label for="apellidoPaternoRefPer" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="apellidoPaternoRefPer" name="apellidoPaternoRefPer" value=" <?= isset($referencia->apellido_paterno_personal) ? $referencia->apellido_paterno_personal : ''  ?>">
+                        <input type="text" class="form-control " id="apellidoPaternoRefPer" name="apellidoPaternoRefPer" value=" <?= isset($referenciaLab->apellido_paterno_personal) ? $referenciaLab->apellido_paterno_personal : ''  ?>">
 
                     </div>
                 </div>
@@ -601,7 +601,7 @@
                 <div class="form-group">
                     <label for="apellidoMaternoRefPer" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="apellidoMaternoRefPer" name="apellidoMaternoRefPer" value=" <?= isset($referencia->apellido_materno_personal) ? $referencia->apellido_materno_personal : ''  ?>">
+                        <input type="text" class="form-control " id="apellidoMaternoRefPer" name="apellidoMaternoRefPer" value=" <?= isset($referenciaLab->apellido_materno_personal) ? $referenciaLab->apellido_materno_personal : ''  ?>">
 
                     </div>
                 </div>
@@ -610,7 +610,7 @@
                 <div class="form-group">
                     <label for="primerNombreRefPer" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="primerNombreRefPer" name="primerNombreRefPer" value=" <?= isset($referencia->primer_nombre_personal) ? $referencia->primer_nombre_personal : ''  ?>">
+                        <input type="text" class="form-control " id="primerNombreRefPer" name="primerNombreRefPer" value=" <?= isset($referenciaLab->primer_nombre_personal) ? $referenciaLab->primer_nombre_personal : ''  ?>">
 
                     </div>
                 </div>
@@ -619,7 +619,7 @@
                 <div class="form-group">
                     <label for="segundoNombreRefPer" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="segundoNombreRefPer" name="segundoNombreRefPer" value=" <?= isset($referencia->segundo_nombre_personal) ? $referencia->segundo_nombre_personal : ''  ?>">
+                        <input type="text" class="form-control " id="segundoNombreRefPer" name="segundoNombreRefPer" value=" <?= isset($referenciaLab->segundo_nombre_personal) ? $referenciaLab->segundo_nombre_personal : ''  ?>">
 
                     </div>
                 </div>
@@ -633,7 +633,7 @@
                         if (!empty($genero)) :
                             foreach ($genero as  $a) {
                         ?>
-                           <option <?= (isset($referencia->idGenero_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                           <option <?= (isset($referenciaLab->idGenero_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                         <?php
                             }
                         endif; ?>
@@ -652,7 +652,7 @@
                 <div class="form-group">
                     <label for="ocupacionRefPer" class=" control-label">Ocupación:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="ocupacionRefPer" name="ocupacionRefPer" value=" <?= isset($referencia->ocupacion_personal) ? $referencia->ocupacion_personal : ''  ?>">
+                        <input type="text" class="form-control " id="ocupacionRefPer" name="ocupacionRefPer" value=" <?= isset($referenciaLab->ocupacion_personal) ? $referenciaLab->ocupacion_personal : ''  ?>">
 
                     </div>
                 </div>
@@ -667,7 +667,7 @@
                             if (!empty($parentesco_familiar)) :
                                 foreach ($parentesco_familiar as  $a) {
                             ?>
-                           <option <?= (isset($referencia->idParentesco_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                           <option <?= (isset($referenciaLab->idParentesco_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -687,7 +687,7 @@
                 <div class="form-group">
                     <label for="calleRefPer" class=" control-label">Calle :<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="calleRefPer" name="calleRefPer" value=" <?= isset($referencia->calle_personal) ? $referencia->calle_personal : ''  ?>">
+                        <input type="text" class="form-control " id="calleRefPer" name="calleRefPer" value=" <?= isset($referenciaLab->calle_personal) ? $referenciaLab->calle_personal : ''  ?>">
 
                     </div>
                 </div>
@@ -696,7 +696,7 @@
                 <div class="form-group">
                     <label for="exteriorRefPer" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="exteriorRefPer" name="exteriorRefPer" value=" <?= isset($referencia->numero_exterior_personal) ? $referencia->numero_exterior_personal : ''  ?>">
+                        <input type="text" class="form-control " id="exteriorRefPer" name="exteriorRefPer" value=" <?= isset($referenciaLab->numero_exterior_personal) ? $referenciaLab->numero_exterior_personal : ''  ?>">
 
                     </div>
                 </div>
@@ -705,7 +705,7 @@
                 <div class="form-group">
                     <label for="interiorRefPer" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="interiorRefPer" name="interiorRefPer" value=" <?= isset($referencia->numero_interior_personal) ? $referencia->numero_interior_personal : ''  ?>">
+                        <input type="text" class="form-control " id="interiorRefPer" name="interiorRefPer" value=" <?= isset($referenciaLab->numero_interior_personal) ? $referenciaLab->numero_interior_personal : ''  ?>">
 
                     </div>
                 </div>
@@ -714,7 +714,7 @@
                 <div class="form-group">
                     <label for="numeroRefPer" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="numeroRefPer" name="numeroRefPer" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value=" <?= isset($referencia->numero_telefono_personal) ? $referencia->numero_telefono_personal : ''  ?>">
+                        <input type="text" class="form-control " id="numeroRefPer" name="numeroRefPer" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value=" <?= isset($referenciaLab->numero_telefono_personal) ? $referenciaLab->numero_telefono_personal : ''  ?>">
 
                     </div>
                 </div>
@@ -723,7 +723,7 @@
                 <div class="form-group">
                     <label for="codigoPersonal" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="codigoPersonal" name="codigoPersonal" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value=" <?= isset($referencia->idCodigoPostal_personal) ? $referencia->idCodigoPostal_personal : ''  ?>">
+                        <input type="text" class="form-control " id="codigoPersonal" name="codigoPersonal" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value=" <?= isset($referenciaLab->idCodigoPostal_personal) ? $referenciaLab->idCodigoPostal_personal : ''  ?>">
 
                     </div>
                 </div>
@@ -737,7 +737,7 @@
                         if (!empty($coloniacodigoPersonal)) :
                             foreach ($coloniacodigoPersonal as  $a) {
                         ?>
-                               <option <?= (isset($referencia->colonia_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                               <option <?= (isset($referenciaLab->colonia_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                         <?php
                             }
                         endif; ?>
@@ -762,7 +762,7 @@
                             if (!empty($estadocodigoPersonal)) :
                                 foreach ($estadocodigoPersonal as  $a) {
                             ?>
-                                   <option <?= (isset($referencia->idEstado_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                   <option <?= (isset($referenciaLab->idEstado_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -788,7 +788,7 @@
                             if (!empty($municipiocodigoPersonal)) :
                                 foreach ($municipiocodigoPersonal as  $a) {
                             ?>
-                     <option <?= (isset($referencia->municipio_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                     <option <?= (isset($referenciaLab->municipio_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -814,7 +814,7 @@
                             if (!empty($ciudadcodigoPersonal)) :
                                 foreach ($ciudadcodigoPersonal as  $a) {
                             ?>
-                     <option <?= (isset($referencia->ciudad_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                     <option <?= (isset($referenciaLab->ciudad_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -840,7 +840,7 @@
                             if (!empty($pais)) :
                                 foreach ($pais as  $a) {
                             ?>
-                             <option <?= (isset($referencia->idPaisNacimiento_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                             <option <?= (isset($referenciaLab->idPaisNacimiento_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                             <?php
                                 }
@@ -880,7 +880,7 @@
                 <div class="form-group">
                     <label for="apellidoPaternoRefLab" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="apellidoPaternoRefLab" name="apellidoPaternoRefLab" value=" <?= isset($referencia->apellido_paterno_laboral) ? $referencia->apellido_paterno_laboral : ''  ?>">
+                        <input type="text" class="form-control " id="apellidoPaternoRefLab" name="apellidoPaternoRefLab" value=" <?= isset($referenciaLab->apellido_paterno_laboral) ? $referenciaLab->apellido_paterno_laboral : ''  ?>">
 
                     </div>
                 </div>
@@ -889,7 +889,7 @@
                 <div class="form-group">
                     <label for="apellidoMaternoRefLab" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="apellidoMaternoRefLab" name="apellidoMaternoRefLab" value=" <?= isset($referencia->apellido_materno_laboral) ? $referencia->apellido_materno_laboral : ''  ?>">
+                        <input type="text" class="form-control " id="apellidoMaternoRefLab" name="apellidoMaternoRefLab" value=" <?= isset($referenciaLab->apellido_materno_laboral) ? $referenciaLab->apellido_materno_laboral : ''  ?>">
 
                     </div>
                 </div>
@@ -898,7 +898,7 @@
                 <div class="form-group">
                     <label for="primerNombreRefLab" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="primerNombreRefLab" name="primerNombreRefLab" value=" <?= isset($referencia->primer_nombre_laboral) ? $referencia->primer_nombre_laboral : ''  ?>">
+                        <input type="text" class="form-control " id="primerNombreRefLab" name="primerNombreRefLab" value=" <?= isset($referenciaLab->primer_nombre_laboral) ? $referenciaLab->primer_nombre_laboral : ''  ?>">
 
                     </div>
                 </div>
@@ -907,7 +907,7 @@
                 <div class="form-group">
                     <label for="segundoNombreRefLab" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="segundoNombreRefLab" name="segundoNombreRefLab" value=" <?= isset($referencia->segundo_nombre_laboral) ? $referencia->segundo_nombre_laboral : ''  ?>">
+                        <input type="text" class="form-control " id="segundoNombreRefLab" name="segundoNombreRefLab" value=" <?= isset($referenciaLab->segundo_nombre_laboral) ? $referenciaLab->segundo_nombre_laboral : ''  ?>">
 
                     </div>
                 </div>
@@ -921,7 +921,7 @@
                         if (!empty($genero)) :
                             foreach ($genero as  $a) {
                         ?>
-                             <option <?= (isset($referencia->idGenero_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                             <option <?= (isset($referenciaLab->idGenero_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                         <?php
                             }
@@ -941,7 +941,7 @@
                 <div class="form-group">
                     <label for="ocupacionRefLab" class=" control-label">Ocupación:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="ocupacionRefLab" name="ocupacionRefLab" value=" <?= isset($referencia->ocupacion_laboral) ? $referencia->ocupacion_laboral : ''  ?>">
+                        <input type="text" class="form-control " id="ocupacionRefLab" name="ocupacionRefLab" value=" <?= isset($referenciaLab->ocupacion_laboral) ? $referenciaLab->ocupacion_laboral : ''  ?>">
 
                     </div>
                 </div>
@@ -956,7 +956,7 @@
                             if (!empty($parentesco_familiar)) :
                                 foreach ($parentesco_familiar as  $a) {
                             ?>
-                                 <option <?= (isset($referencia->idParentesco_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                 <option <?= (isset($referenciaLab->idParentesco_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -976,7 +976,7 @@
                 <div class="form-group">
                     <label for="calleRefLab" class=" control-label">Calle :<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="calleRefLab" name="calleRefLab" value=" <?= isset($referencia->calle_laboral) ? $referencia->calle_laboral : ''  ?>">
+                        <input type="text" class="form-control " id="calleRefLab" name="calleRefLab" value=" <?= isset($referenciaLab->calle_laboral) ? $referenciaLab->calle_laboral : ''  ?>">
 
                     </div>
                 </div>
@@ -985,7 +985,7 @@
                 <div class="form-group">
                     <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="exterior" name="exterior" value=" <?= isset($referencia->numero_exterior_laboral) ? $referencia->numero_exterior_laboral : ''  ?>">
+                        <input type="text" class="form-control " id="exterior" name="exterior" value=" <?= isset($referenciaLab->numero_exterior_laboral) ? $referenciaLab->numero_exterior_laboral : ''  ?>">
 
                     </div>
                 </div>
@@ -995,7 +995,7 @@
                 <div class="form-group">
                     <label for="interiorRefLab" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="interiorRefLab" name="interiorRefLab" value=" <?= isset($referencia->numero_interior_laboral) ? $referencia->numero_interior_laboral : ''  ?>">
+                        <input type="text" class="form-control " id="interiorRefLab" name="interiorRefLab" value=" <?= isset($referenciaLab->numero_interior_laboral) ? $referenciaLab->numero_interior_laboral : ''  ?>">
 
                     </div>
                 </div>
@@ -1004,7 +1004,7 @@
                 <div class="form-group">
                     <label for="numeroRefLab" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="numeroRefLab" name="numeroRefLab" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value=" <?= isset($referencia->numero_telefono_laboral) ? $referencia->numero_telefono_laboral : ''  ?>">
+                        <input type="text" class="form-control " id="numeroRefLab" name="numeroRefLab" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value=" <?= isset($referenciaLab->numero_telefono_laboral) ? $referenciaLab->numero_telefono_laboral : ''  ?>">
 
                     </div>
                 </div>
@@ -1013,7 +1013,7 @@
                 <div class="form-group">
                     <label for="codigoLaboral" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="codigoLaboral" name="codigoLaboral" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value=" <?= isset($referencia->idCodigoPostal_laboral) ? $referencia->idCodigoPostal_laboral : ''  ?>">
+                        <input type="text" class="form-control " id="codigoLaboral" name="codigoLaboral" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value=" <?= isset($referenciaLab->idCodigoPostal_laboral) ? $referenciaLab->idCodigoPostal_laboral : ''  ?>">
 
                     </div>
                 </div>
@@ -1027,7 +1027,7 @@
                         if (!empty($colonia_fam_cercano)) :
                             foreach ($colonia_fam_cercano as  $a) {
                         ?>
-                                 <option <?= (isset($referencia->colonia_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                 <option <?= (isset($referenciaLab->colonia_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                         <?php
                             }
                         endif; ?>
@@ -1053,7 +1053,7 @@
                             if (!empty($estadocodigoLaboral)) :
                                 foreach ($estadocodigoLaboral as  $a) {
                             ?>
-                                     <option <?= (isset($referencia->idEstado_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                     <option <?= (isset($referenciaLab->idEstado_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -1079,7 +1079,7 @@
                             if (!empty($municipiocodigoLaboral)) :
                                 foreach ($municipiocodigoLaboral as  $a) {
                             ?>
-                                         <option <?= (isset($referencia->municipio_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                         <option <?= (isset($referenciaLab->municipio_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -1105,7 +1105,7 @@
                             if (!empty($ciudadcodigoLaboral)) :
                                 foreach ($ciudadcodigoLaboral as  $a) {
                             ?>
-            <option <?= (isset($referencia->ciudad_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+            <option <?= (isset($referenciaLab->ciudad_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -1132,7 +1132,7 @@
                             if (!empty($pais)) :
                                 foreach ($pais as  $a) {
                             ?>
-                <option <?= (isset($referencia->idPaisNacimiento_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                <option <?= (isset($referenciaLab->idPaisNacimiento_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>

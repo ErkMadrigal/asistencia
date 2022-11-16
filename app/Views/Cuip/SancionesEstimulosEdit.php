@@ -28,7 +28,7 @@
                     <div class="form-group">
                         <label for="tipo<?= $label ?>" class="control-label">Tipo: <span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="tipo<?= $label ?>" name="tipo<?= $label ?>"  value="<?= isset($sanciones->tipo_sancion) ? $sanciones->tipo_sancion : ''  ?>">
+                                  <input type="text"  class="form-control "  id="tipo<?= $label ?>" name="tipo<?= $label ?>"  value="<?= isset($e->tipo_sancion) ? $e->tipo_sancion : ''  ?>">
                             
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                     <div class="form-group">
                         <label for="determinacion<?= $label ?>" class=" control-label">Determinación:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="determinacion<?= $label ?>" name="determinacion<?= $label ?>"  value="<?= isset($sanciones->determinacion) ? $sanciones->determinacion : ''  ?>">
+                                  <input type="text"  class="form-control "  id="determinacion<?= $label ?>" name="determinacion<?= $label ?>"  value="<?= isset($e->determinacion) ? $e->determinacion : ''  ?>">
                             
                         </div>
                         <script type="text/javascript">
@@ -54,7 +54,7 @@
                     <div class="form-group">
                         <label for="descripcion<?= $label ?>" class=" control-label">Descripción:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="descripcion<?= $label ?>" name="descripcion<?= $label ?>"  value="<?= isset($sanciones->descripcion_sancion) ? $sanciones->descripcion_sancion : ''  ?>">
+                                  <input type="text"  class="form-control "  id="descripcion<?= $label ?>" name="descripcion<?= $label ?>"  value="<?= isset($e->descripcion_sancion) ? $e->descripcion_sancion : ''  ?>">
                             
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                     <div class="form-group">
                     <label for="situacion<?= $label ?>" class=" control-label">Situación:<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="situacion<?= $label ?>" name="situacion<?= $label ?>"  value="<?= isset($sanciones->situacion) ? $sanciones->situacion : ''  ?>">
+                                  <input type="text"  class="form-control "  id="situacion<?= $label ?>" name="situacion<?= $label ?>"  value="<?= isset($e->situacion) ? $e->situacion : ''  ?>">
                             
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                     <div class="form-group">
                         <label for="inicio_inhabilitacion<?= $label ?>" class=" control-label">Inicio de la inhabilitación:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="inicio_inhabilitacion<?= $label ?>" name="inicio_inhabilitacion<?= $label ?>"  value="<?= isset($sanciones->inicio_habilitacion) ? $sanciones->inicio_habilitacion : ''  ?>">
+                                  <input type="text"  class="form-control "  id="inicio_inhabilitacion<?= $label ?>" name="inicio_inhabilitacion<?= $label ?>"  value="<?= isset($e->inicio_habilitacion) ? $e->inicio_habilitacion : ''  ?>">
                             
                         </div>
                         <script type="text/javascript">
@@ -89,7 +89,7 @@
                     <div class="form-group">
                         <label for="termino_inhabilitacion<?= $label ?>" class=" control-label">Término de la inhabilitación:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="termino_inhabilitacion<?= $label ?>" name="termino_inhabilitacion<?= $label ?>"  value="<?= isset($sanciones->termino_habilitacion) ? $sanciones->termino_habilitacion : ''  ?>">
+                                  <input type="text"  class="form-control "  id="termino_inhabilitacion<?= $label ?>" name="termino_inhabilitacion<?= $label ?>"  value="<?= isset($e->termino_habilitacion) ? $e->termino_habilitacion : ''  ?>">
                             
                         </div>
                         <script type="text/javascript">
@@ -106,7 +106,7 @@
                     <div class="form-group">
                         <label for="organismo<?= $label ?>" class=" control-label">Dependencia u organismo que emite la determinación :<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="organismo<?= $label ?>" name="organismo<?= $label ?>"  value="<?= isset($sanciones->dependencia) ? $sanciones->dependencia : ''  ?>">
+                                  <input type="text"  class="form-control "  id="organismo<?= $label ?>" name="organismo<?= $label ?>"  value="<?= isset($e->dependencia) ? $e->dependencia : ''  ?>">
                             
                         </div>
                     </div>
@@ -119,7 +119,7 @@
         </div>
         <hr class="mt-3 mb-3" />
             <div id="CardDatossancionesB">
-            </div>
+        </div>
         </form>
     </div>
 </div>
