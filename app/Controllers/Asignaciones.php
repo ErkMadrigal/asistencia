@@ -71,7 +71,7 @@ class Asignaciones extends BaseController{
                     $succes = ["mensaje" => 'Exito', "succes" => "succes"];
                     $data = $select;
                 } else {
-                    $dontSucces = ["error" => "error", "mensaje" => 'Datos no encontrados.'];
+                    $dontSucces = ["error" => "error", "mensaje" => 'Sin Informacion.'];
                 }
             }else{
 				$dontSucces = ["error" => "error", "mensaje" => 'Es Requerido Seleccionar las 2 Fechas'];
@@ -223,7 +223,7 @@ class Asignaciones extends BaseController{
                         }
                         $insertCompr = array(
                             "pago" =>  $i+1,
-                            "fecha" =>  date("Y-m-d",strtotime($fechaActual."+ $contador month")),
+                            "fecha" =>  date("Y-m-d",strtotime($fechaEntrega."+ $contador month")),
                             "concepto" =>  "Renta",
                             "importe" => $_POST["renta"],
                             "aplicado" =>  $_POST["renta"],
@@ -239,7 +239,7 @@ class Asignaciones extends BaseController{
                     if($_POST['tramite'] != ''){
                         $insertCompr = array(
                             "pago" =>  1,
-                            "fecha" => $fechaActual,
+                            "fecha" => $fechaEntrega,
                             "concepto" =>  "Tramite",
                             "importe" => $_POST["tramite"],
                             "aplicado" =>  $_POST["tramite"],
@@ -254,7 +254,7 @@ class Asignaciones extends BaseController{
                     if($_POST['asignacion'] != ''){
                         $insertCompr = array(
                             "pago" =>  1,
-                            "fecha" => $fechaActual,
+                            "fecha" => $fechaEntrega,
                             "concepto" =>  "Asignacion",
                             "importe" => $_POST["asignacion"],
                             "aplicado" =>  $_POST["asignacion"],
@@ -270,7 +270,7 @@ class Asignaciones extends BaseController{
                     if($_POST['garantia'] != ''){
                         $insertCompr = array(
                             "pago" =>  1,
-                            "fecha" => $fechaActual,
+                            "fecha" => $fechaEntrega,
                             "concepto" =>  "Garantia",
                             "importe" => $_POST["garantia"],
                             "aplicado" =>  $_POST["garantia"],

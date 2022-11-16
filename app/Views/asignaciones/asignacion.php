@@ -613,7 +613,7 @@
             });
         };
 
-        const eliminar = (id, val, idElemento, idArma) => {
+        const eliminar = (id, val, idArma) => {
             if(val == 0){
                 Swal.fire({
                     title: 'Seguro que lo deseas eliminar?',
