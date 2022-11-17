@@ -52,7 +52,7 @@ use Ramsey\Uuid\Provider\Node\StaticNodeProvider;
                         </div>';
             if($d->estatus != null){
 
-                $img = '<div ><p><a href="#" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#viewModal" onclick="hrefDoc(\'<?= $d->id?>\')" ><i class="fa fa-file nav-icon" aria-hidden="true"></i></a></p></div>';
+                $img = '<div ><p><a href="#" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#viewModal" onclick="hrefDoc(\''. $d->id.'\')" ><i class="fa fa-file nav-icon" aria-hidden="true"></i></a></p></div>';
 
             }   else {
 

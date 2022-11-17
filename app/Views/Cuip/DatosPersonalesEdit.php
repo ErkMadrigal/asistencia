@@ -1145,7 +1145,7 @@
 
                                     <script type="text/javascript">
                                         $(function() {
-                                            $("#fecha_inicial").datetimepicker({
+                                            $("#fecha_inicial<?= $label ?>").datetimepicker({
                                                 format: 'DD-MM-YYYY',
                                                 locale: moment.locale('es')
                                             });
@@ -1163,7 +1163,7 @@
                                     </div>
                                     <script type="text/javascript">
                                         $(function() {
-                                            $("#fecha_final").datetimepicker({
+                                            $("#fecha_final<?= $label ?>").datetimepicker({
                                                 format: "DD-MM-YYYY",
                                                 locale: moment.locale('es')
 

@@ -2235,7 +2235,22 @@ $idPersonal = $getIdPersonal;
 			////////////////////////////////////////////////
 
 
-			$parentesco_familiar = $this->modelCuip->GetCatalogoCuip('e608d93e-8d57-4378-a867-1a98dfb538be');
+			$parentesco_pariente = $this->modelCuip->GetParenteco(2);
+			
+			$data['parentesco_pariente'] = $this->GetDatos($parentesco_pariente);
+			////////////////////////////////////////////////
+
+			$parentesco_personal = $this->modelCuip->GetParenteco(3);
+			
+			$data['parentesco_personal'] = $this->GetDatos($parentesco_personal);
+			////////////////////////////////////////////////
+
+			$parentesco_laboral = $this->modelCuip->GetParenteco(4);
+			
+			$data['parentesco_laboral'] = $this->GetDatos($parentesco_laboral);
+			////////////////////////////////////////////////
+
+			$parentesco_familiar = $this->modelCuip->GetParenteco(1);
 			
 			$data['parentesco_familiar'] = $this->GetDatos($parentesco_familiar);
 			////////////////////////////////////////////////
@@ -2548,7 +2563,7 @@ $idPersonal = $getIdPersonal;
 			if (!empty($economico)){
 				$data['economico_dependientes'] = $this->modelCuip->GetSocioEconomicoDependientesById($economico->id);
 			}
-			//var_dump($data['variable']);
+			
 			
 			$data['seguridad'] = $this->modelCuip->GetEmpleosSeridadById($id);
 			$data['diversos'] = $this->modelCuip->GetEmpleosDiversos($id);
@@ -2566,6 +2581,8 @@ $idPersonal = $getIdPersonal;
 			$data['referenciaLab'] = $this->modelCuip->GetReferenciaLabById($id);
 			$data['mediaFiliacion'] = $this->modelCuip->GetMedFiliacionById($id);
 			$documentos = $this->modelCuip->GetDocumentosEditById($id);
+
+			
 
 			$result = [];
 
@@ -3138,23 +3155,37 @@ $idPersonal = $getIdPersonal;
 	{
 		$data = $this->modelCuip->GetPreConsulta();
 
-		if($data){
-
-		$file_name = 'PRECONSULTA.xlsx';
 
 		$getRuta = WRITEPATH . 'uploads/files/';
+		$file_name = 'PRECONSULTA.xlsx';
+		$newFile_name = 'F_PRECONSULTA.xlsx';
 
-		$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($getRuta.$file_name);;
+
+
+		if($data){
+
+		
+
+		if (copy($getRuta.$file_name, $getRuta.$newFile_name)) {
+
+		
+
+		
+
+		$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($getRuta.$newFile_name);;
 
 		$sheet = $spreadsheet->getActiveSheet();
 
 		
 
-		$count = 2;
+		$count = 12;
+		$i = 1;
 
 		foreach($data as $row)
 		{
 			
+			$sheet->setCellValue('A' . $count, $i);
+
 			$sheet->setCellValue('B' . $count, $row->apellido_paterno);
 
 			$sheet->setCellValue('C' . $count, $row->apellido_materno);
@@ -3170,19 +3201,22 @@ $idPersonal = $getIdPersonal;
 		
 
 			$count++;
+			$i++;
 		}
 
 		$writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
 
 		
-
-		$writer->save($getRuta.$file_name);
+		
+		$writer->save($getRuta.$newFile_name);
 
 		
 		$this->response->setHeader('Content-Type', 'application/vnd.ms-excel');
 
+		
 			
-		readfile($getRuta.$file_name);
+		readfile($getRuta.$newFile_name);
+		}
 		}
 	}
 
