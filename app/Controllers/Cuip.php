@@ -2137,7 +2137,7 @@ $idPersonal = $getIdPersonal;
 			$data['referencia'] = $this->modelCuip->GetReferenciaById($id);
 			$data['referenciaLab'] = $this->modelCuip->GetReferenciaLabById($id);
 			$data['mediaFiliacion'] = $this->modelCuip->GetMedFiliacionById($id);
-
+//var_dump($data['referenciaLab']);
 			$documentos = $this->modelCuip->GetDocumentosById($id);
 
 
@@ -2563,7 +2563,7 @@ $idPersonal = $getIdPersonal;
 
 			$data['estimulos'] = $this->modelCuip->GetEstimulosById($id);
 			$data['referencia'] = $this->modelCuip->GetReferenciaById($id);
-
+			$data['referenciaLab'] = $this->modelCuip->GetReferenciaLabById($id);
 			$data['mediaFiliacion'] = $this->modelCuip->GetMedFiliacionById($id);
 			$documentos = $this->modelCuip->GetDocumentosEditById($id);
 

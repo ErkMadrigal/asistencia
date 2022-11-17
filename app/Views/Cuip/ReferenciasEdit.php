@@ -664,8 +664,8 @@
                         <select class="form-control" id="parentesco_personal" name="parentesco_personal">
                             <option value="">Selecciona una Opcion</option>
                             <?php
-                            if (!empty($parentesco_familiar)) :
-                                foreach ($parentesco_familiar as  $a) {
+                            if (!empty($parentesco_personal)) :
+                                foreach ($parentesco_personal as  $a) {
                             ?>
                            <option <?= (isset($referenciaLab->idParentesco_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
