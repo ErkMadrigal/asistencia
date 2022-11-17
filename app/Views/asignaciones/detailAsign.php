@@ -312,9 +312,7 @@
                 processData: false,
                 success: function (response) {
                     if(response.succes.succes == 'succes'){
-                        console.log()
                         AlltotalGeneral.innerHTML = `$ ${numeral(response.data.sumSA[0].total).format('0,0')} `
-                        Allsaldo.innerHTML = `$ ${numeral(response.data.sumSA[0].saldo).format('0,0')} `
                         Allaplicado.innerHTML = `$ ${numeral(response.data.sumSA[0].aplicado).format('0,0')} `
                     }    
                 },
@@ -327,6 +325,8 @@
             tramite.innerHTML = `$ ${numeral(<?=$datos[0]->tramite?>).format('0,0')} `
             asigacion.innerHTML = `$ ${numeral(<?=$datos[0]->asignacion?>).format('0,0')} `
             garantia.innerHTML = `$ ${numeral(<?=$datos[0]->garantia?>).format('0,0')} `
+            Allsaldo.innerHTML = `$ ${numeral(<?=$datos[0]->saldo?>).format('0,0')} `
+
             
         }
                 

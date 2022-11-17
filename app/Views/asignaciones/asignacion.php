@@ -264,8 +264,8 @@
                         <th>Fecha</th>
                         <th>Concepto</th>
                         <th>Importe</th>
-                        <th>Aplicado</th>
                         <th>Saldo</th>
+                        <th>Aplicado</th>
                         <th>Activo</th>
                         <th>aplicar Saldo</th>
                     </tr>
@@ -353,6 +353,9 @@
                 paging: false,
                 fixedColumns:   {
                     leftColumns: 2,
+                },
+                language: {
+                    url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
                 },
                 pageLength: 5,
                 columns: [{ data: "cliente"},
