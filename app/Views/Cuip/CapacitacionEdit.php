@@ -314,14 +314,15 @@
                                     <div>
                                         <input type="text" class="form-control " id="conclusionAdicional<?= $label ?>" name="conclusionAdicional<?= $label ?>" value="<?= isset($e->conclusion_adicional) ? $e->conclusion_adicional : ''  ?>">
                                     </div>
+                     
                                     <script type="text/javascript">
-                                        $(function() {
-                                            $("#conclusionAdicional").datetimepicker({
-                                                format: 'DD-MM-YYYY',
-                                                locale: moment.locale('es')
-                                            });
-                                        });
-                                    </script>
+                            $(function() {
+                                $("#conclusionAdicional").datetimepicker({
+                                    format: 'DD-MM-YYYY',
+                                    locale: moment.locale('es')
+                                });
+                            });
+                        </script>
 
                                 </div>
                             </div>

@@ -2550,7 +2550,23 @@ $idPersonal = $getIdPersonal;
 			
         	$data['ocupacion'] = $this->cuipCatalgo($getOcupacion);
         	//////////////
+		
+			///////
+			
+        	$getRango = $this->modelCuip->GetCatalogoCuip('190ea697-f3c7-44f3-832b-02e063d9a518');
+			
+        	$data['rango'] = $this->cuipCatalgo($getRango);
+        	//////////////
 
+        	$getMando = $this->modelCuip->GetCatalogoCuip('448ea88c-222f-4bf4-a157-7bac6846d822');
+			
+        	$data['mando'] = $this->cuipCatalgo($getMando);
+        	//////////////
+
+        	$getPuesto = $this->modelCuip->GetCatalogoCuip('29773b6a-a69c-4245-ba1c-755e17398d73');
+			
+        	$data['puesto'] = $this->cuipCatalgo($getPuesto);
+			////////////////////
         	$getId = str_replace(" ", "+", $_GET['id']);
 			$id = $this->encrypt->Decrytp($getId);
 
