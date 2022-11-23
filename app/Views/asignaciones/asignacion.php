@@ -331,7 +331,7 @@
            
         }  
            
-        setInterval(() => mostrarDatosGen() ,1000);
+        mostrarDatosGen(); 
         
         const  estatusRenderer = (data, type, full, meta) => {
             var src;
