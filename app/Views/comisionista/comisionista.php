@@ -357,6 +357,10 @@
                 processData: false,
                 success: function (response) {
                     if(response.succes.succes == 'succes'){
+                        modalContent.innerHTML = ''
+                        modalBody.innerHTML = ''
+                        modalCenter.innerHTML = ''
+
                         modalContent.innerHTML = `
                             <div class="card">
                                 <div class="card-body row">
