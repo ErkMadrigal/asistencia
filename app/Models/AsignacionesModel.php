@@ -32,6 +32,13 @@ class AsignacionesModel
         $builder->join("catalogos_detalle cdma","a.idMarca = cdma.id", "left");
         return $builder->get()->getResult();
     }
+
+    public function getComisionista(){
+        $builder = $this->db->table('comision');
+        $builder->select("id, nombre");
+        return $builder->get()->getResult();
+    }
+
     
     public function getData($id){
         $builder = $this->db->table('asignaciones asg ');

@@ -240,6 +240,36 @@
                         </div>
                     </div>
                 </div>
+                <div class='col-12 col-sm-6'>    
+                    <div class="form-group">
+                        <label for="comisionista" class="control-label">Comisionista <span class="text-danger">*</span></label>
+                        <div >
+                            <?= csrf_field() ?>
+                            <select id="comisionista" name="comisionista" class="form-control" >
+                                <option value="" selected>Selecciona una Opción</option>
+                                <?php foreach($comisionista as $com):?>
+                                    <option value="<?=$com->id?>"><?=$com->nombre?></option>
+                                <?php endforeach;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#comisionista").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-3'>    
+                    <div class="form-group">
+                        <label for="comision" class="control-label">Comisión</label>
+                        <div >
+                            <input type="text"  class="form-control " id="comision" name="comision" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" >
+                        </div>
+                    </div>
+                </div>
             </div> 
         </form>
          

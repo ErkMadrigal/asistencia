@@ -109,6 +109,7 @@ class Asignaciones extends BaseController{
 			$data['elementos'] = $this->modelAsign->getElemento();
 			$data['armas'] = $this->modelAsign->getArmas();
 			$data['modalidad'] = $this->modelAsign->getModalidad();
+			$data['comisionista'] = $this->modelAsign->getComisionista();
 			
 
 
@@ -117,7 +118,7 @@ class Asignaciones extends BaseController{
     }
 
     public function setData(){
-        if ($this->request->getMethod() == "post" && $this->request->getvar(['cliente', 'elemento', 'arma', 'modalidad', 'cartuchos', 'tipoPago', 'periodicidad', 'renta'],FILTER_SANITIZE_STRING)){
+        if ($this->request->getMethod() == "post" && $this->request->getvar(['cliente', 'elemento', 'arma', 'modalidad', 'cartuchos', 'tipoPago', 'periodicidad', 'renta', 'comisionista', 'comision'],FILTER_SANITIZE_STRING)){
             
             $rules = [
 				'cliente' => ['label' => '', 'rules' => 'required'],
@@ -129,6 +130,8 @@ class Asignaciones extends BaseController{
 				'tipoPago' => ['label' => '', 'rules' => 'required'],
 				'periodicidad' => ['label' => '', 'rules' => 'required'],
 				'renta' => ['label' => '', 'rules' => 'required'],
+				'comisionista' => ['label' => '', 'rules' => 'required'],
+				'comision' => ['label' => '', 'rules' => 'required'],
 			];
             
             $errors = [];
@@ -198,6 +201,8 @@ class Asignaciones extends BaseController{
                     "activo" => 1,
                     "aplicado" => 0, 
                     "saldo" =>  $_POST['saldo'],
+                    "id_comisionista" =>  $_POST['comisionista'],
+                    "comision" =>  $_POST['comision'],
                     "createdby" => $LoggedUserId,
                     "updateddate" =>  date("Y-m-d H:i:s"),
                 );

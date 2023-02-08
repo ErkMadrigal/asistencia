@@ -179,6 +179,13 @@ $routes->get('getAllData', 'Asignaciones::getAllData',['filter' => 'auth']);
 $routes->get('detailAsignacion', 'Asignaciones::detailAsignacion',['filter' => 'auth']);
 $routes->post('deleteData', 'Asignaciones::deleteData',['filter' => 'auth']);
 
+$routes->get('comisionista', 'Comision::index',['filter' => 'auth']);
+$routes->post('addComisionista', 'Comision::setData',['filter' => 'auth']);
+$routes->post('UpdateComisionista', 'Comision::update',['filter' => 'auth']);
+$routes->post('deleteComisionista', 'Comision::delete',['filter' => 'auth']);
+$routes->post('detalleComisionista', 'Comision::detail',['filter' => 'auth']);
+
+
 
 
 /*
