@@ -101,7 +101,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Detalles Comisionista</h5>
+                    <h5 class="modal-title" id="modalTitle"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -124,6 +124,7 @@
         let modalContent = document.querySelector("#modal-Content")
         let modalCenter = document.querySelector("#modal-Center")
         let modalBody = document.querySelector("#modal-Body")
+        let modalTitle = document.querySelector("#modalTitle")
         
         btnLimpiar.onclick = (e) => {
             e.preventDefault()
@@ -239,45 +240,41 @@
 
         const editar = (dataId, nombre, telefono, activo) => {
             let act = activo == 1 ? 'checked' : ''
+            modalTitle.innerHTML = 'Editar Comisionista'
+            modalBody.innerHTML = ''
+            modalCenter.innerHTML = ''
             modalContent.innerHTML = `
-                <div class="modal-header">
-                    <h5 class="modal-title">Editar Comisionista</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal" id="frmComisionistaUp">
-                        <div class="row">
-                            <div class='col-12 col-sm-6'>    
-                                <div class="form-group">
-                                    <label for="comisionista" class="control-label">Nombre del Comisionista <span class="text-danger">*</span></label>
-                                    <div>
-                                        <input type="text" value ="${nombre}" class="form-control " id="comisionistaUp" name="comisionistaUp" >
-                                        <input type="hidden"  class="form-control " value ="${dataId}" id="id" name="id" ><?= csrf_field() ?>
-                                    </div>
+                
+                <form class="form-horizontal" id="frmComisionistaUp">
+                    <div class="row">
+                        <div class='col-12 col-sm-6'>    
+                            <div class="form-group">
+                                <label for="comisionista" class="control-label">Nombre del Comisionista <span class="text-danger">*</span></label>
+                                <div>
+                                    <input type="text" value ="${nombre}" class="form-control " id="comisionistaUp" name="comisionistaUp" >
+                                    <input type="hidden"  class="form-control " value ="${dataId}" id="id" name="id" ><?= csrf_field() ?>
                                 </div>
                             </div>
-                            <div class='col-12 col-sm-6'>    
-                                <div class="form-group">
-                                    <label for="telefono" class="control-label">Telefono<span class="text-danger">*</span></label>
-                                    <div >
-                                        <input type="text"  value ="${telefono}" class="form-control " id="telefonoUp" name="telefonoUp" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="13" >
-                                    </div>
+                        </div>
+                        <div class='col-12 col-sm-6'>    
+                            <div class="form-group">
+                                <label for="telefono" class="control-label">Telefono<span class="text-danger">*</span></label>
+                                <div >
+                                    <input type="text"  value ="${telefono}" class="form-control " id="telefonoUp" name="telefonoUp" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="13" >
                                 </div>
                             </div>
-                            <div class='col-12 col-sm-6'>    
-                                <div class="form-check">
-                                    <input class="form-check-input"  type="checkbox" name="activo" id="activo" ${act} value="${activo}">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Activo
-                                    </label>
-                                </div>
+                        </div>
+                        <div class='col-12 col-sm-6'>    
+                            <div class="form-check">
+                                <input class="form-check-input"  type="checkbox" name="activo" id="activo" ${act} value="${activo}">
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Activo
+                                </label>
                             </div>
-                        </div> 
-                    </form>
-                </div>
-                <div class="modal-footer">
+                        </div>
+                    </div> 
+                </form>
+                <div class=" mt-5 modal-footer">
                     <button id="btnGuardar" onclick="actualizar()" class="btn btn-primary"><i id="loadBtn" class="fa fa-circle-o-notch fa-spin" style="display:none;"></i>&nbsp&nbsp<i class="fa fa-window-restore" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
                 </div>
             `
@@ -342,6 +339,8 @@
         }
 
         const detalles = (id) => {
+            modalTitle.innerHTML = 'Detalles Comisionista'
+
             $(`#loadBtnDetail${id}`).show();
             var formData = new FormData($("form#frmComisionista")[0]);
             formData.append("id", id)
