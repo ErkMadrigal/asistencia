@@ -396,7 +396,7 @@
                                             <hr>
                                             Restan <b>$${dt.comision}</b>
                                             <hr>
-                                            <button class="btn btn-primary btn-sm"><i class='fa fa-list-alt nav-icon'></i> &nbsp;&nbsp;&nbsp; Detalles</button>
+                                            <button class="btn btn-primary btn-sm" onclick="detallesComision('${dt.idComision}','${dt.idAsignacion}')"><i class='fa fa-list-alt nav-icon'></i> &nbsp;&nbsp;&nbsp; Detalles</button>
                                         </div>
                                     </div>
                                 `
@@ -458,6 +458,10 @@
 
         const detallesComision = (idComision, idAsignacion) => {
             modalTitle.innerHTML = 'Detalles Comision'
+            modalContent.innerHTML = ''
+            modalBody.innerHTML = ''
+            modalCenter.innerHTML = ''
+            modalCenter.classList.remove("card-columns")
 
             var formData = new FormData($("form#frmComisionista")[0]);
             formData.append("idComision", idComision)
@@ -474,10 +478,7 @@
                 processData: false,
                 success: function (response) {
                     if(response.succes.succes == 'succes'){
-                        modalContent.innerHTML = ''
-                        modalBody.innerHTML = ''
-                        modalCenter.innerHTML = ''
-
+                        
                         if(response.data.length){
                             response.data.forEach( dt => {
                                 modalCenter.innerHTML +=`
