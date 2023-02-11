@@ -38,7 +38,7 @@ class ComisionModel
     
     public function getDataComisionista($id){
         $builder = $this->db->table('asignaciones asg ');
-        $builder->select("asg.comision, arm.matricula matricula, cCls.valor clase, cCal.valor calibre, cMar.valor marca, cMod.valor modelo, dPer.primer_nombre, dPer.apellido_paterno, dPer.apellido_materno, cli.nombre_corto, com.nombre");
+        $builder->select("com.id idComision, asg.id idAsignacion, asg.comision, arm.matricula matricula, cCls.valor clase, cCal.valor calibre, cMar.valor marca, cMod.valor modelo, dPer.primer_nombre, dPer.apellido_paterno, dPer.apellido_materno, cli.nombre_corto, com.nombre");
         $builder->join("comision com","com.id = asg.id_comisionista", "left");
         $builder->join("armas arm","arm.id = asg.id_armas", "left");
         $builder->join("catalogos_detalle cCls","cCls.id = arm.idClase", "left");
@@ -49,6 +49,42 @@ class ComisionModel
         $builder->join("cliente cli","cli.id = asg.idCliente", "left");
         $builder->where("com.id", $id);
         return $builder->get()->getResult();
+    }
+
+    public function getDataComisionistaAsignacion($idComision, $idAsignacion){
+        $builder = $this->db->table('asignaciones asg ');
+        $builder->select("com.id idComision, asg.id idAsignacion, asg.comision_asignado, asg.comision, arm.matricula matricula, cCls.valor clase, cCal.valor calibre, cMar.valor marca, cMod.valor modelo, dPer.primer_nombre, dPer.apellido_paterno, dPer.apellido_materno, cli.nombre_corto, com.nombre");
+        $builder->join("comision com","com.id = asg.id_comisionista", "left");
+        $builder->join("armas arm","arm.id = asg.id_armas", "left");
+        $builder->join("catalogos_detalle cCls","cCls.id = arm.idClase", "left");
+        $builder->join("catalogos_detalle cCal","cCal.id = arm.idCalibre", "left");
+        $builder->join("catalogos_detalle cMar","cMar.id = arm.idMarca", "left");
+        $builder->join("catalogos_detalle cMod","cMod.id = arm.idModelo", "left");
+        $builder->join("datos_personales dPer","dPer.id = arm.id_portador", "left");
+        $builder->join("cliente cli","cli.id = asg.idCliente", "left");
+        $builder->where("com.id", $idComision);
+        $builder->where("asg.id", $idAsignacion);
+        return $builder->get()->getResult();
+    }
+
+    public function getMonto($idAsignacion){
+        $builder = $this->db->table('asignaciones');
+        $builder->select("comision, comision_asignado comisionAS");
+        $builder->where("id", $idAsignacion);
+        return $builder->get()->getResult();
+    }
+
+    public function asignarMonto( $update, $id ){
+
+        $return = false;
+        $this->db->table('asignaciones')->where('id', $id)->update($update);
+
+        if ($this->db->affectedRows() > 0){
+            $return = true;
+            
+        } 
+
+        return $return; 
     }
 
     public function addData($insert){

@@ -1,6 +1,5 @@
 <?= $this->extend('includes/main') ?>
 <?= $this->section('content') ?>
-
     <style>
         .borderSolid{
             /* border: solid 1px !important; */
@@ -237,6 +236,8 @@
                     <th>Tipo Mov.</th>
                     <th>Aplicado</th>
                     <th>Saldo</th>
+                    <th>Comisionista</th>
+                    <th>Comision</th>
                     <th>Activo</th>
                     <th>Pago</th>
                     <th>Eliminar</th>
@@ -374,6 +375,8 @@
                             { data: "tipo_movimiento"},
                             { data: "aplicado", render: (data, type, full, meta) => numeral(full.aplicado).format('0,0')},
                             { data: "saldo", render: (data, type, full, meta) => numeral(full.saldo).format('0,0')},
+                            { data: "nomComisionista"},
+                            { data: "comision"},
                             { data: "activo", render: estatusRenderer },
                             {  data: "Pago",
                                 render: (data, type, full, meta) => {

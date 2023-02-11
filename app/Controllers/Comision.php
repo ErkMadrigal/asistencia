@@ -38,6 +38,44 @@ class Comision extends BaseController{
 		}	
     }
 
+    public function asignarComision(){
+        if ($this->request->getMethod() == "post" && $this->request->getvar(['montoComision', 'montoComisionejemplo'],FILTER_SANITIZE_STRING)){
+            
+            $rules = [
+				'montoComision' => ['label' => '', 'rules' => 'required'],
+			];
+            
+            $errors = [];
+            $succes = [];
+            $dontSucces = [];
+            $data = [];
+
+            $getUser = session()->get('IdUser');
+            $LoggedUserId = $this->encrypter->decrypt($getUser);
+            $comision = $this->modelComision->getMonto($_POST['idAsignacion']);
+            
+
+            if($this->validate($rules)){
+                $update = array(
+                    "comision" => $comision[0]->comision - $_POST['montoComision'],
+                    "comision_asignado" => $comision[0]->comisionAS + $_POST['montoComision'],
+                    "updatedby" => $LoggedUserId,
+                    "updateddate" =>  date("Y-m-d H:i:s"),
+                );		
+                $update = $this->modelComision->asignarMonto($update, $_POST['idAsignacion']);
+                $update = true;
+                if ($update) {
+                    $succes = ["mensaje" => 'Actualizado con Exito', "succes" => "succes"];
+                    $data = $update;
+                } else {
+                    $dontSucces = ["error" => "error", "mensaje" => 'Hubo un error al intentar Guardar.'];
+                }
+            } else {	
+                $errors = $this->validator->getErrors();
+            }
+            echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+        }
+    }
 
     public function setData(){
         if ($this->request->getMethod() == "post" && $this->request->getvar(['comisionista', 'telefono'],FILTER_SANITIZE_STRING)){
@@ -165,6 +203,27 @@ class Comision extends BaseController{
             }
 				
 			echo json_encode(['error'=> $errors , 'succes' => $succes , 'detail' => $select1, 'dontsucces' => $dontSucces , 'data' => $data]);
+		}
+    }
+
+    public function detailAC(){
+        if ($this->request->getMethod() == "post" && $this->request->getvar(['idComision', 'idAsignacion'],FILTER_SANITIZE_STRING)){
+            $errors = [];
+            $succes = [];
+            $dontSucces = [];
+            $data = [];
+			$validate = [];
+
+            
+            $select = $this->modelComision->getDataComisionistaAsignacion( $_POST['idComision'], $_POST['idAsignacion'] );
+            if ($select) {
+                    $succes = ["mensaje" => 'Exito', "succes" => "succes"];
+                    $data = $select;
+            } else {
+                $dontSucces = ["error" => "error", "mensaje" => 'Hubo un error al Obtener los Datos.'];
+            }
+				
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
 		}
     }
 }

@@ -142,6 +142,8 @@ $routes->post('addComisionista', 'Comision::setData',['filter' => 'auth']);
 $routes->post('UpdateComisionista', 'Comision::update',['filter' => 'auth']);
 $routes->post('deleteComisionista', 'Comision::delete',['filter' => 'auth']);
 $routes->post('detalleComisionista', 'Comision::detail',['filter' => 'auth']);
+$routes->post('detalleComisionistaAsignacion', 'Comision::detailAC',['filter' => 'auth']);
+$routes->post('asignarComision', 'Comision::asignarComision',['filter' => 'auth']);
 
 
 

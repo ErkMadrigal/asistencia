@@ -387,38 +387,16 @@
                                 </div>
                             </div>`;
                         if(response.detail.length){
+                            modalCenter.classList.add("card-columns")
                             response.detail.forEach( dt => {
-                                modalCenter.innerHTML +=`
+                                modalCenter.innerHTML += `
                                     <div class="card">
-                                        <div class="card-body row">
-                                            <div class='col-12 col-sm-6'>
-                                                <div class="form-group">
-                                                    <i class="m-2 fa fa-dollar " aria-hidden="true"></i>
-                                                    <label for="updateddate" class="control-label">Comisión</label>
-                                                    <p class="ml-5">${dt.comision}</p>
-                                                </div>
-                                            </div>
-                                            <div class='col-12 col-sm-6'>
-                                                <div class="form-group">
-                                                    <i class="m-2 fa fa-user " aria-hidden="true"></i>
-                                                    <label for="updateddate" class="control-label">Elemento</label>
-                                                    <p class="ml-5">${dt.primer_nombre} ${dt.apellido_paterno} ${dt.apellido_materno} <b></b></p>
-                                                </div>
-                                            </div>
-                                            <div class='col-12 col-sm-6'>
-                                                <div class="form-group">
-                                                    <i class="m-2 fa fa-building " aria-hidden="true"></i>
-                                                    <label for="updateddate" class="control-label">Cliente</label>
-                                                    <p class="ml-5">${dt.nombre_corto}</p>
-                                                </div>
-                                            </div>
-                                            <div class='col-12 col-sm-6'>
-                                                <div class="form-group">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" style="width: 43px;height: 19px;"><path d="M528 56c0-13.3-10.7-24-24-24s-24 10.7-24 24v8H32C14.3 64 0 78.3 0 96V208c0 17.7 14.3 32 32 32H42c20.8 0 36.1 19.6 31 39.8L33 440.2c-2.4 9.6-.2 19.7 5.8 27.5S54.1 480 64 480h96c14.7 0 27.5-10 31-24.2L217 352H321.4c23.7 0 44.8-14.9 52.7-37.2L400.9 240H432c8.5 0 16.6-3.4 22.6-9.4L477.3 208H544c17.7 0 32-14.3 32-32V96c0-17.7-14.3-32-32-32H528V56zM321.4 304H229l16-64h105l-21 58.7c-1.1 3.2-4.2 5.3-7.5 5.3zM80 128H464c8.8 0 16 7.2 16 16s-7.2 16-16 16H80c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>
-                                                    <label for="updateddate" class="control-label">Tipo Arma</label>
-                                                    <p class="ml-5">${dt.clase} ${dt.marca} ${dt.calibre} ${dt.modelo} ${dt.matricula}</p>
-                                                </div>
-                                            </div>
+                                        <div class="card-body">
+                                            ${dt.clase} ${dt.marca} ${dt.calibre} ${dt.modelo} ${dt.matricula}
+                                            <hr>
+                                            Restan <b>$${dt.comision}</b>
+                                            <hr>
+                                            <button class="btn btn-primary btn-sm"><i class='fa fa-list-alt nav-icon'></i> &nbsp;&nbsp;&nbsp; Detalles</button>
                                         </div>
                                     </div>
                                 `
@@ -476,6 +454,162 @@
                 }
             });
             
+        }
+
+        const detallesComision = (idComision, idAsignacion) => {
+            modalTitle.innerHTML = 'Detalles Comision'
+
+            var formData = new FormData($("form#frmComisionista")[0]);
+            formData.append("idComision", idComision)
+            formData.append("idAsignacion", idAsignacion)
+
+            $.ajax({
+                url: base_url + '/detalleComisionistaAsignacion',
+                type: 'POST',
+                dataType: 'json',
+                data: formData,
+                cache: false,
+                async: true,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if(response.succes.succes == 'succes'){
+                        modalContent.innerHTML = ''
+                        modalBody.innerHTML = ''
+                        modalCenter.innerHTML = ''
+
+                        if(response.data.length){
+                            response.data.forEach( dt => {
+                                modalCenter.innerHTML +=`
+                                    <div class="card">
+                                        <div class="card-body row">
+                                            <div class='col-12 col-sm-3'>
+                                                <div class="form-group">
+                                                    <i class="m-2 fa fa-dollar " aria-hidden="true"></i>
+                                                    <label for="updateddate" class="control-label">Aportado</label>
+                                                    <p class="ml-5">${dt.comision_asignado}</p>
+                                                </div>
+                                            </div>
+                                            <div class='col-12 col-sm-3'>
+                                                <div class="form-group">
+                                                    <i class="m-2 fa fa-dollar " aria-hidden="true"></i>
+                                                    <label for="updateddate" class="control-label">Comisión</label>
+                                                    <p class="ml-5">${dt.comision}</p>
+                                                </div>
+                                            </div>
+                                            <div class='col-12 col-sm-6'>
+                                                <div class="form-group">
+                                                    <i class="m-2 fa fa-user " aria-hidden="true"></i>
+                                                    <label for="updateddate" class="control-label">Elemento</label>
+                                                    <p class="ml-5">${dt.primer_nombre} ${dt.apellido_paterno} ${dt.apellido_materno} <b></b></p>
+                                                </div>
+                                            </div>
+                                            <div class='col-12 col-sm-6'>
+                                                <div class="form-group">
+                                                    <i class="m-2 fa fa-building " aria-hidden="true"></i>
+                                                    <label for="updateddate" class="control-label">Cliente</label>
+                                                    <p class="ml-5">${dt.nombre_corto}</p>
+                                                </div>
+                                            </div>
+                                            <div class='col-12 col-sm-6'>
+                                                <div class="form-group">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" style="width: 43px;height: 19px;"><path d="M528 56c0-13.3-10.7-24-24-24s-24 10.7-24 24v8H32C14.3 64 0 78.3 0 96V208c0 17.7 14.3 32 32 32H42c20.8 0 36.1 19.6 31 39.8L33 440.2c-2.4 9.6-.2 19.7 5.8 27.5S54.1 480 64 480h96c14.7 0 27.5-10 31-24.2L217 352H321.4c23.7 0 44.8-14.9 52.7-37.2L400.9 240H432c8.5 0 16.6-3.4 22.6-9.4L477.3 208H544c17.7 0 32-14.3 32-32V96c0-17.7-14.3-32-32-32H528V56zM321.4 304H229l16-64h105l-21 58.7c-1.1 3.2-4.2 5.3-7.5 5.3zM80 128H464c8.8 0 16 7.2 16 16s-7.2 16-16 16H80c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>
+                                                    <label for="updateddate" class="control-label">Tipo Arma</label>
+                                                    <p class="ml-5">${dt.clase} ${dt.marca} ${dt.calibre} ${dt.modelo} ${dt.matricula}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `
+                            })
+                        }else{
+                            modalCenter.innerHTML = ''
+                        }
+                        modalBody.innerHTML = `
+                            <div class="card">
+                                <div class="card-body" >
+                                    Asignar pago
+                                </div>
+                                <div class="input-group w-50 m-3">
+                                    <input type="text" id="montoComision" name="montoComision" class="form-control" placeholder="Asignar Monto" aria-label="Asignar Monto" aria-describedby="basic-addon2" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5 ">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" onclick="asignarMonto('${response.data[0].comision}', '${response.data[0].idAsignacion}')"><i class="fa fa-dollar " aria-hidden="true"></i> &nbsp; Asignar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    }    
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    toastr.error('<?=lang('Layout.toastrError') ?>');
+                }
+            });
+        } 
+
+        const asignarMonto = (comision, idAsignacion) => {
+            let montoComision = document.querySelector("#montoComision").value
+            let mont = parseInt(montoComision)
+            let com = parseInt(comision)
+
+            if(montoComision){
+                if(mont > com){
+                    toastr.error('El monto asignado no debe de superar la comision');
+                }else{
+                    var formData = new FormData($("form#frmComisionista")[0]);
+                    formData.append("idAsignacion", idAsignacion)
+                    formData.append("montoComision", montoComision)
+
+                    $.ajax({
+                        url: base_url + '/asignarComision',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: formData,
+                        cache: false,
+                        async: true,
+                        contentType: false,
+                        processData: false,
+                        success: function (response) {
+                            $('.errorparticipante').remove();
+
+                            if (response.succes.succes == 'succes') {
+                                
+                                $("#exampleModal").modal("hide");
+
+                                toastr.success(response.succes.mensaje);
+
+                                var count = 3;
+                                setInterval(function(){
+                                count--;
+                                if (count == 0) {
+                                    window.location = base_url + '/comision'; 
+                                }
+                                },1000);
+
+                            } else if (response.dontsucces.error == 'error'){
+                                toastr.error(response.dontsucces.mensaje);
+                                        
+                            } else if (Object.keys(response.error).length > 0 ){
+
+                                for (var clave in response.error){
+                                            
+                                    $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                                        
+                                }
+                                    toastr.error('<?= lang('Layout.camposObligatorios') ?>');
+
+                            }
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            toastr.error('<?=lang('Layout.toastrError') ?>');
+                            $('#loadBtn').hide();           
+                        }
+                    });
+
+                }
+            }else{
+                toastr.error('Es requerido un monto');
+            }
+
         }
 
         const eliminar = (id) => {
