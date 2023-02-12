@@ -12,12 +12,8 @@ use Ramsey\Uuid\Provider\Node\StaticNodeProvider;
     
 
 
-?>
-<?= $this->extend('includes/main') ?>
-<?= $this->section('content') ?>
-    <div id="load" class=" spinner text-secondary" role="status">
-    </div>
-    <div class="card card-primary">
+?>  
+<div class="card card-primary">
         <div class="card-header" >
             <h3 class="card-title">Expediente</h3>
                 <div class="card-tools">
@@ -52,21 +48,26 @@ use Ramsey\Uuid\Provider\Node\StaticNodeProvider;
 
                 $load ='<div class="input-group ">
                             <button type="button" 
-                                id="creaExpediente<?=$i?>" class="btnAdjunta btn btn-block  btn-flat btn-primary"  data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#fileModal">Cargar Archivo</button>
+                                id="creaExpediente'.$i.'" class="btnAdjunta btn btn-block  btn-flat btn-primary"  data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#fileModal">Cargar Archivo</button>
                         </div>';
+            if($d->estatus != null){
+
+                $img = '<div ><p><a href="#" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#viewModal" onclick="hrefDoc(\''. $d->id.'\')" ><i class="fa fa-file nav-icon" aria-hidden="true"></i></a></p></div>';
+
+            }   else {
+
+                $img = '';
+
+            }         
+
+                        
+
             ?>
-            <tr><td><?= $i ?><input type="hidden" id="documento<?=$i?>" name="documento<?=$i?>"  value="<?= $this->encrypt->Encrypt($d->id)?>"></td>
-                    <td><?=$d->documento?></td>
-                    <td><div id="view<?=$i?>">
-
-                   
-
-                    <div id="<?=$i?>div" ><p><input type = "hidden" value="" id="input" name="input" ></input><a href="#" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#viewModal" onclick=" hrefDoc('');" ><i class='fa fa-file nav-icon' aria-hidden='true'></i></a><strong> </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#exampleModal" onclick=" hrefDeleteDoc('' ,'','<?=$i?>');"><i  class=" fa fa-window-close nav-icon" aria-hidden="true"></i></a></p></div>
-
-
-
-                </div></td>
-                    <td><?=$load?></td></tr>       
+            <tr><td><?= $i ?><input type="hidden" id="documento<?=$i?>" name="documento<?=$i?>"  value="<?= $d->id ?>"> </td>
+                <td><?=$d->documento?></td>
+                <td><?= $img ?></td>
+                <td><?=$load?></td>
+            </tr>       
 
 <?php
             $i++;
@@ -94,13 +95,11 @@ use Ramsey\Uuid\Provider\Node\StaticNodeProvider;
         <div class="modal-body">
             <form id="frmRegistro" class="form-horizontal">
             <div class="row">
-                <div id="metaDataEst" class="col-12 col-sm-12 col-md-12">
-                </div>
-                <div id="metaDataDoc" class="col-12 col-sm-12 col-md-12">
-                </div>
                 
-                <input type="hidden" class="form-control " id="idDocumento" name="idDocumento"  readonly>
+                
+                
                 <input type="hidden" class="form-control " id="idElemento" name="idElemento"  readonly>
+                <input type="hidden" class="form-control " id="idDocumento" name="idDocumento"  readonly>
             <?=csrf_field()?>
                 <div class="input-group">
                     <div class="custom-file" lang="es">
@@ -176,11 +175,33 @@ hrefDoc = function(idDocumento){
 
 
 }
+
+
+hrefDeleteDoc = function(idDocumento , idElemento, idView){
+
+
+    $("#idDelete").val(idDocumento);
+    $("#idSubElemento").val(idElemento);
+    $("#idView").val(idView);
+
+
+}
     
-    $(document).on('click', '.cargaArchivo', function (event) {        
+    $(document).on('click', '.crearExp', function (event) {        
         event.preventDefault();
-        $('#load').addClass( "spinner-border" );
-        var formData = new FormData($("form#Archivos")[0]);
+        $("#loadModal").show();
+        $('.errorField').remove();
+        var formData = new FormData($("form#frmRegistro")[0]);
+        
+ 
+        var idElemento = $('#idElemento').val();
+
+        var idPersonal = $('#idPersonal').val();
+
+        var num = $('#view'+idElemento+' div').length;
+        
+        formData.append('num', num);
+        formData.append('idPersonal', idPersonal);
         
         
         $.ajax({
@@ -197,7 +218,9 @@ hrefDoc = function(idDocumento){
 
                 if (response.succes.succes == 'succes') {
 
-                    $('#'+response.data.elemento).append(response.data.archivo);
+                    $('#view'+ response.data.elemento).append(response.data.archivo);
+                    $("#frmRegistro").trigger("reset");
+                    $("#fileModal").modal("hide");
                     
                    
 
@@ -227,16 +250,83 @@ hrefDoc = function(idDocumento){
 
                 }
                 
-                    $('#load').removeClass( "spinner-border" );
+                    $("#loadModal").attr("style", "display: none !important");
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                $('#load').removeClass( "spinner-border" );
-                toastr.error('<?=lang('Layout.toastrError') ?>');           
+
+                toastr.error('<?=lang('Layout.toastrError')?>');
+
+
+                $("#loadModal").attr("style", "display: none !important");            
             }
         });
             
     }); 
 
-</script>
 
-<?= $this->endSection() ?>
+    $(document).on('click', '.btnAdjunta', function (event) {
+                
+    
+    var idElement = $(this).attr("id");
+    var id = idElement.substring(14,100);
+    var idDocumento = $('#documento'+id).val();
+    $('#idDocumento').val(idDocumento);
+    $('#idElemento').val(id);
+        
+    
+        
+          
+
+    });
+
+
+    $('#deleteDocumento').click(function (event) {
+    
+    event.preventDefault();
+    $("#loadModalDele").show();
+
+    var idElemento = $('#idSubElemento').val();
+    var idView = $('#idView').val();
+
+    var formData = new FormData($("form#frmDelete")[0]);
+    
+
+    $.ajax({
+        url: base_url + '/eliminaDocumento',
+        type: 'POST',
+        dataType: 'json',
+        data: formData,
+        cache: false,
+        async: true,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            $('.error').remove();
+            if (response.succes.succes == 'succes') {
+
+                $('#exampleModal').modal('hide');
+                
+                $('#'+idView+'div'+idElemento).remove();
+                
+            } else if (response.dontsucces.error == 'error'){
+
+                toastr.error('<?=lang('Layout.toastrError')?>');
+
+            }
+
+            $("#loadModalDele").attr("style", "display: none !important");
+               
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+            
+            toastr.error('<?=lang('Layout.toastrError')?>');
+
+            $("#loadModalDele").attr("style", "display: none !important");                    
+                
+        }
+    });
+
+    });
+
+</script>

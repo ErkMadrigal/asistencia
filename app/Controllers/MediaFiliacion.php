@@ -259,17 +259,36 @@ class MediaFiliacion extends BaseController {
 
 			$foto = $this->modelMediaFiliacion->GetFotoById($id);
 			if ($foto){
-				$path = $this->encrypt->Decrytp($foto->ruta);
+				
 
-				$fileName = $this->encrypt->Decrytp($foto->nombre_almacen);
-
-				$img = $path.'/'.$fileName;
+				$img = $this->encrypt->Encrypt($foto->idDocumento);
 
 				$data['foto'] = $img;
 
+			}
+
+			$fotoIzq = $this->modelMediaFiliacion->GetFotoIzqById($id);
+			if ($fotoIzq){
+				
+
+				$imgfotoIzq = $this->encrypt->Encrypt($fotoIzq->idDocumento);
+
+				$data['fotoIzq'] = $imgfotoIzq;
+
+			}
+
+
+			$fotoDer = $this->modelMediaFiliacion->GetFotoDerById($id);
+			if ($fotoDer){
+				
+
+				$imgfotoDer = $this->encrypt->Encrypt($fotoDer->idDocumento);
+
+				$data['fotoDer'] = $imgfotoDer;
+
 			}	
 
-
+			
         	$data['id'] = $this->encrypt->Encrypt($id);
 
         	$data['breadcrumb'] = ["inicio" => 'CUIP' ,
@@ -582,16 +601,16 @@ class MediaFiliacion extends BaseController {
 						"idDireccionCejas" => $direccion_cejas , 
 						"idImplantacionCejas" => $implantacion_cejas , 
 						"idFormaCejas" => $forma , 
-						"idTamañoCejas" => $tamanno , 
+						"idTamanoCejas" => $tamanno , 
 						"idColorOjos" => $color , 
 						"idFormaOjos" => $forma_ojos , 
-						"idTamañoOjos" => $tamanno_ojos , 
+						"idTamanoOjos" => $tamanno_ojos , 
 						"idRaiz" => $raiz , 
 						"idDorso" => $dorso , 
 						"idAnchoNariz" => $ancho_nariz , 
 						"idBaseNariz" => $base_nariz , 
 						"idAlturaNariz" => $altura_nariz , 
-						"idTamañoBoca" => $tamanno_boca , 
+						"idTamanoBoca" => $tamanno_boca , 
 						"idComisuras" => $comisura_boca , 
 						"idEspesorLabio" => $espesor_labios , 
 						"idAlturaNasolabial" => $altura_labial , 

@@ -1,16 +1,21 @@
 <div class="card card-primary" id="cardEmplSeguridad">
     <div class="card-header">
         <h3 class="card-title">EMPLEOS EN SEGURIDAD PUBLICA</h3>
-
         <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                <i class="fas fa-minus"></i>
-            </button>
-        </div>
+
+<a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
+        <input type="checkbox" class="form-check-input mt-2" id="btnNinguno">
+
+<button type="button" class="btn btn-tool" data-card-widget="collapse" >
+    <i class="fas fa-minus"></i>
+</button>
+</div> 
+       
     </div>
     <!-- /.card-header -->
     <div class="card-body">
         <form class="form-horizontal" id="EmpleoSeguridadPublica">
+        <div id="CardEMPLEOS">
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
@@ -244,6 +249,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+            <hr  class="mt-3 mb-3"/>
+        <div id="CardEMPLEOS">
+        </div>
         </form>
     </div>
 </div>
@@ -269,9 +278,19 @@
 
         var idPersonal = $('#idPersonal').val()
         var csrfName = $("input[name=app_csrf]").val();
+
+        if($('#btnNinguno').is(':checked')) {
+            val = 1;
+            
+        } else {
+            val = 0;
+
+        }
+
         var formData = new FormData($("form#EmpleoSeguridadPublica")[0]);
         formData.append('idPersonal', idPersonal);
         formData.append('app_csrf', csrfName);
+        formData.append('empleo', val);
         
         $.ajax({
             url: base_url + '/GuardarEmpSegPublica',
@@ -326,7 +345,24 @@
             
     });
 
+    
 
+    $(document).on('click','#btnNinguno',function(){ 
+
+if($('#btnNinguno').is(':checked')) {
+
+
+    $('#EmpleoSeguridadPublica input').attr('disabled','disabled');
+    $('#EmpleoSeguridadPublica select').attr('disabled','disabled');
+    $('#EmpleoSeguridadPublica textarea').attr('disabled','disabled');
+} else {
+    $('#EmpleoSeguridadPublica input').attr('disabled',false);
+    $('#EmpleoSeguridadPublica select').attr('disabled',false);
+    $('#EmpleoSeguridadPublica textarea').attr('disabled',false);
+}
+
+
+});
     
 
 </script>

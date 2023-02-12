@@ -228,7 +228,7 @@
                                 if( !empty($pais) ):
                                     foreach($pais as  $a){
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= ($a->valor == 'México' ? 'selected' : '' ) ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -479,7 +479,7 @@
                                 if( !empty($pais) ):
                                     foreach($pais as  $a){
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= ($a->valor == 'México' ? 'selected' : '' ) ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -730,7 +730,7 @@
                                 if( !empty($pais) ):
                                     foreach($pais as  $a){
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= ($a->valor == 'México' ? 'selected' : '' ) ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -981,7 +981,7 @@
                                 if( !empty($pais) ):
                                     foreach($pais as  $a){
                                         ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= ($a->valor == 'México' ? 'selected' : '' ) ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -1007,7 +1007,7 @@
             
         </div>
         <div class="col-12 col-sm-6 col-md-3 ">    
-            <button id="saveReferencias" disabled class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" ></i>&nbsp;&nbsp;Guardar</button>
+            <button id="saveReferencias"  class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" ></i>&nbsp;&nbsp;Guardar</button>
         </div>
     </div>    
 </div>

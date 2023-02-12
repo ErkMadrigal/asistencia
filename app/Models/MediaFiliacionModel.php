@@ -63,9 +63,27 @@ class MediaFiliacionModel
 
     public function GetFotoById($id){
         $builder = $this->db->table('documentos');
-        $builder->select('nombre_documento,extension_documento,nombre_almacen,ruta');
+        $builder->select('idDocumento');
         $builder->where("idPersonal",$id);
         $builder->where("idDocExp", "d2282fcc-76ba-410e-828b-2fe365e874ff");
+        return $builder->get()->getRow();
+        
+    }
+
+    public function GetFotoIzqById($id){
+        $builder = $this->db->table('documentos');
+        $builder->select('idDocumento');
+        $builder->where("idPersonal",$id);
+        $builder->where("idDocExp", "d9289eb1-c76d-4945-9f59-4618b146dabe");
+        return $builder->get()->getRow();
+        
+    }
+
+    public function GetFotoDerById($id){
+        $builder = $this->db->table('documentos');
+        $builder->select('idDocumento');
+        $builder->where("idPersonal",$id);
+        $builder->where("idDocExp", "cf82912d-8f84-4e79-afb2-e60622ff72c5");
         return $builder->get()->getRow();
         
     }

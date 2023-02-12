@@ -125,6 +125,48 @@ $routes->get('editReferencia', 'Referencia::EditarReferencia',['filter' => 'auth
 $routes->post('EditInfoReferenci', 'Referencia::SaveReferencia',['filter' => 'auth']);
 $routes->get('AddReferencia', 'Referencia::AgreRefe',['filter' => 'auth']);
 $routes->post('GuardarRefe', 'Referencia::AgregarReferencia',['filter' => 'auth']);
+//clientes//
+$routes->get('clientes', 'Cliente::GetCliente',['filter' => 'auth']);
+$routes->get('detailCliente', 'Cliente::DetalleReferencia',['filter' => 'auth']);
+$routes->get('editCliente', 'Cliente::EditarCliente',['filter' => 'auth']);
+$routes->post('EditInfoCliente', 'Cliente::SaveClientes',['filter' => 'auth']);
+$routes->get('AddCliente', 'Cliente::Agrecliente',['filter' => 'auth']);
+$routes->post('GuardarCliente', 'Cliente::AgregarClientes',['filter' => 'auth']);
+
+///puesto///
+$routes->get('puesto', 'Puesto::GetPuestos',['filter' => 'auth']);
+$routes->get('detailPuesto', 'Puesto::DetallePuesto',['filter' => 'auth']);
+$routes->get('editPuesto', 'Puesto::EditarCliente',['filter' => 'auth']);
+$routes->post('EditInfoPuesto', 'Puesto::SavePuesto',['filter' => 'auth']);
+$routes->get('AddPuesto', 'Puesto::AgregaPuesto',['filter' => 'auth']);
+$routes->post('GuardarPuesto', 'Puesto::AgregarPuesto',['filter' => 'auth']);
+
+///ubicacion//
+$routes->get('ubicacion', 'Ubicacion::GetUbica',['filter' => 'auth']);
+$routes->get('detailUbicacion', 'Ubicacion::DetalleUbicacion',['filter' => 'auth']);
+$routes->get('editUbicacion', 'Ubicacion::EditarUbicacion',['filter' => 'auth']);
+$routes->post('EditInfoUbicacion', 'Ubicacion::SaveUbicacion',['filter' => 'auth']);
+$routes->get('AddUbicacion', 'Ubicacion::AgregaUbicacion',['filter' => 'auth']);
+$routes->post('GuardarUbicacion', 'Ubicacion::AgregarUbicacion',['filter' => 'auth']);
+
+
+////turno/////
+$routes->get('turnos', 'Turno::GetTurno',['filter' => 'auth']);
+$routes->get('detailTurno', 'Turno::DetalleTurno',['filter' => 'auth']);
+$routes->get('editTurno', 'Turno::EditarTurno',['filter' => 'auth']);
+$routes->post('EditInfoturno', 'Turno::SaveTurno',['filter' => 'auth']);
+$routes->get('AddTurno', 'Turno::AgregaTurno',['filter' => 'auth']);
+$routes->post('GuardarTurno', 'Turno::AgregarTurnos',['filter' => 'auth']);
+
+$routes->post('getUbicaciones', 'Turno::Ubicaciones',['filter' => 'auth']);
+$routes->post('getTurnos', 'Puesto::Turnos',['filter' => 'auth']);
+
+
+
+
+$routes->get('ubicacioncatalogo', 'Ubicacion::GetUbica',['filter' => 'auth']);
+$routes->get('turnocatalogo', 'Turno::GetTurno',['filter' => 'auth']);
+$routes->get('puestocatalogo', 'Puesto::GetPuestos',['filter' => 'auth']);
 
 $routes->get('asignaciones', 'Asignaciones::index',['filter' => 'auth']);
 $routes->post('buscarData', 'Asignaciones::buscarData',['filter' => 'auth']);

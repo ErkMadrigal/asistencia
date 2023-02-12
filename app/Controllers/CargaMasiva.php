@@ -168,6 +168,7 @@ class CargaMasiva extends BaseController {
 			$getId = str_replace(" ", "+", $this->request->getGet('h'));
 			$idExpDoc = $this->encrypt->Decrytp($getId);
 
+			
 
 			$file = $this->modelCarga->FileIni($idExpDoc);
 
