@@ -8,7 +8,7 @@
             
         </div>
         <div class="col-12 col-sm-6 col-md-3 ">
-            <a href="<?php echo base_url('/exportCuip'); ?>" class="btn btn-block btn-flat btn-secondary"><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Crear Plantilla CUIP</a>
+            <a href="<?php echo base_url('/exportCuip'); ?>" class="btn btn-block btn-flat btn-secondary"><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Crear Plantilla 45 Campos</a>
         </div>
 
         <div class="col-12 col-sm-6 col-md-3">
