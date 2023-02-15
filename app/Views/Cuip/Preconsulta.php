@@ -4,8 +4,11 @@
     </div>
 <div class=" mb-2">    
     <div class="row">
-        <div class="col-12 col-sm-6 col-md-5 ">
+        <div class="col-12 col-sm-6 col-md-2 ">
             
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 ">
+            <a class="btn btn-block btn-flat btn-primary" href="<?php echo base_url('/exportPreconsulta'); ?>" class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Bajas</a>
         </div>
         <div class="col-12 col-sm-6 col-md-4 ">
             <a href="#" class="btn btn-block btn-flat btn-secondary"><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Cargar Respuesta Pre-Consulta</a>

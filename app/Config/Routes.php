@@ -186,6 +186,7 @@ $routes->post('deleteComisionista', 'Comision::delete',['filter' => 'auth']);
 $routes->post('detalleComisionista', 'Comision::detail',['filter' => 'auth']);
 $routes->post('detalleComisionistaAsignacion', 'Comision::detailAC',['filter' => 'auth']);
 $routes->post('asignarComision', 'Comision::asignarComision',['filter' => 'auth']);
+$routes->get('sendEmail', 'Administrador::sendEmailTest',['filter' => 'auth']);
 
 
 

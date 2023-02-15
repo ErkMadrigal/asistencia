@@ -478,10 +478,23 @@ class Administrador extends BaseController {
     public function sendEmailTest(){
 
 
-    	$uuid = Uuid::uuid4();
-        $id = $uuid->toString();
+    //	$uuid = Uuid::uuid4();
+      //  $id = $uuid->toString();
 
-        echo $id;
+      //  echo $id;
+
+
+        $email = \Config\Services::email();
+		
+		$email->setFrom('soporte.tech@arma2.com.mx','Arma2 Administrador');
+		$email->setTo('ferma_3@live.com.mx');
+		$email->setCC('fmartinez@aesoftware.com.mx');
+		
+		$email->setSubject('teste');
+		$email->setMessage('hola');
+		$email->send();
+
+    		$email->printDebugger(['headers']);
 
        
 	}
