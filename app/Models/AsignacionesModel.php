@@ -43,7 +43,7 @@ class AsignacionesModel
     
     public function getData($id){
         $builder = $this->db->table('asignaciones asg ');
-        $builder->select("asg.id, cl.razon_social, cl.nombre_corto as cliente, cl.id idCliente, CONCAT(dp.primer_nombre, ' ', dp.apellido_paterno, ' ',  dp.apellido_materno) as nombre, dp.id idElemento, dp.Cuip, CONCAT(cdc.valor, ' ', cdma.valor, ' ', cdm.valor, ' ', a.matricula) as arma, a.id idArma, asg.tipo_pago, asg.pagos, asg.periodicidad, asg.renta, asg.tramite, asg.asignacion, asg.garantia, asg.total, asg.entrega, asg.final, asg.tipo_movimiento, asg.aplicado, asg.saldo, asg.pagos, asg.activo, asg.cantidad_Cartuchos, cdmod.valor as modalidad");
+        $builder->select("asg.id, asg.comision_asignado, asg.comision, cl.razon_social, cl.nombre_corto as cliente, cl.id idCliente, CONCAT(dp.primer_nombre, ' ', dp.apellido_paterno, ' ',  dp.apellido_materno) as nombre, dp.id idElemento, dp.Cuip, CONCAT(cdc.valor, ' ', cdma.valor, ' ', cdm.valor, ' ', a.matricula) as arma, a.id idArma, asg.tipo_pago, asg.pagos, asg.periodicidad, asg.renta, asg.tramite, asg.asignacion, asg.garantia, asg.total, asg.entrega, asg.final, asg.tipo_movimiento, asg.aplicado, asg.saldo, asg.pagos, asg.activo, asg.cantidad_Cartuchos, cdmod.valor as modalidad");
         $builder->join("cliente cl","asg.idCliente = cl.id", "left");
         $builder->join("datos_personales dp","asg.id_datos_personales = dp.id", "left");
         $builder->join("armas a","asg.id_armas = a.id", "left");
@@ -67,8 +67,9 @@ class AsignacionesModel
     public function getDatos( $where ){
 
         $builder = $this->db->table('asignaciones asg ');
-        $builder->select("asg.id, CONCAT(cl.razon_social, ' ', cl.nombre_corto) as cliente, CONCAT(dp.primer_nombre, ' ', dp.apellido_paterno, ' ',  dp.apellido_materno) as nombre, CONCAT(cdc.valor, ' ', cdma.valor, ' ', cdm.valor) as arma, asg.tipo_pago, asg.pagos, asg.periodicidad, asg.renta, asg.tramite, asg.asignacion, asg.garantia, asg.total, asg.entrega, asg.final, asg.tipo_movimiento, asg.aplicado, asg.saldo, asg.activo");
+        $builder->select("asg.id, asg.comision_asignado, asg.comision, , co.nombre as nomComisionista, CONCAT(cl.razon_social, ' ', cl.nombre_corto) as cliente, CONCAT(dp.primer_nombre, ' ', dp.apellido_paterno, ' ',  dp.apellido_materno) as nombre, CONCAT(cdc.valor, ' ', cdma.valor, ' ', cdm.valor) as arma, asg.tipo_pago, asg.pagos, asg.periodicidad, asg.renta, asg.tramite, asg.asignacion, asg.garantia, asg.total, asg.entrega, asg.final, asg.tipo_movimiento, asg.aplicado, asg.saldo, asg.activo");
         $builder->join("cliente cl","asg.idCliente = cl.id", "left");
+        $builder->join("comision co","co.id = asg.id_comisionista", "left");
         $builder->join("datos_personales dp","asg.id_datos_personales = dp.id", "left");
         $builder->join("armas a","asg.id_armas = a.id", "left");
         $builder->join("catalogos_detalle cdc","a.idClase = cdc.id", "left");
