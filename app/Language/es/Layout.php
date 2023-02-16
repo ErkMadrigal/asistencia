@@ -16,7 +16,7 @@
 
 return [
    'Inicio' => 'Inicio',
-   'Empresa' => 'Serprosep',
+   'Empresa' => 'Arma2',
    'Contacto' => 'Contacto',
    'Derechos' => 'Todos los derechos reservados',
    'Perfil' =>'Perfil',
@@ -24,8 +24,8 @@ return [
    'Idioma' => 'es',
    'emailFrom' => 'Arma2 Administrador',
    'email' => 'soporte.tech@arma2.com.mx',
-   'Layout' => 'Copyright © 2022 Serprosep',
-   'emailFooter' => 'Copyright © 2022 Serprosep',
+   'Layout' => 'Copyright © 2022 Arma2',
+   'emailFooter' => 'Copyright © 2022 Arma2',
    'camposObligatorios' => 'Verificar los campos obligatorios',
    'toastrError' => 'Hubo un error , intente nuevamente.'
 ];

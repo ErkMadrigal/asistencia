@@ -52,6 +52,15 @@ function estatusRenderer(data, type, full, meta) {
     return src;
 }
 	var table = $('#dataGrid').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+        {
+            extend: 'excel',  
+            text: 'Excel', 
+            className: 'btn  btn-flat btn-success' , 
+            title: 'Multicatalogo'
+        }
+        ],
             data: <?= json_encode($catalogo) ?> ,
             deferRender: true,
             pageLength: 10,
