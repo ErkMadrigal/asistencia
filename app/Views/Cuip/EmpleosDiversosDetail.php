@@ -47,14 +47,7 @@
                         </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="codigoEmpDiv" class=" control-label">Código Postal :</label>
-                        <div>
-                            <?= isset($diversos->idCodigoPostal) ? $diversos->idCodigoPostal : ''  ?>
-                        </div>
-                    </div>
-                </div>
+                
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="coloniacodigoEmpDiv" class=" control-label">Colonia:</label>
@@ -81,6 +74,14 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
+                        <label for="codigoEmpDiv" class=" control-label">Código Postal :</label>
+                        <div>
+                            <?= isset($diversos->idCodigoPostal) ? $diversos->idCodigoPostal : ''  ?>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
                         <label for="numero" class=" control-label">Numero Telefónico:</label>
                         <div>
                             <?= isset($diversos->numero_telefono) ? $diversos->numero_telefono : ''  ?>
@@ -89,13 +90,12 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="ingresoEmpDiv" class=" control-label">Ingreso:</label>
+                        <label for="area" class=" control-label">Area:</label>
                         <div>
-                            <?= isset($diversos->ingreso) ? date( "d-m-Y" ,strtotime($diversos->ingreso)) : ''  ?>
+                            <?= isset($diversos->area) ? $diversos->area : ''  ?>
                         </div>
                     </div>
                 </div>
-
                 <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="funciones" class=" control-label">Funciones:</label>
@@ -111,17 +111,15 @@
                             <?= isset($diversos->sueldo_base) ? $diversos->sueldo_base : ''  ?>
                         </div>
                     </div>
-                </div>
-
+                </div>  
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="area" class=" control-label">Area:</label>
+                        <label for="ingresoEmpDiv" class=" control-label">Ingreso:</label>
                         <div>
-                            <?= isset($diversos->area) ? $diversos->area : ''  ?>
+                            <?= isset($diversos->ingreso) ? date( "d-m-Y" ,strtotime($diversos->ingreso)) : ''  ?>
                         </div>
                     </div>
-                </div>
-
+                </div>                             
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="motivo_separacion" class=" control-label">Motivo de separación:</label>

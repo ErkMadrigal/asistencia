@@ -64,25 +64,6 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
-                        <div >    
-                                  <input type="text"  class="form-control "  id="numero" name="numero" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value="<?= isset($seguridad->numero_telefono) ? $seguridad->numero_telefono : ''  ?>">
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="codigoSegPub" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
-                        <div >    
-                                  <input type="text"  class="form-control "  id="codigoSegPub" name="codigoSegPub" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value=" <?= isset($seguridad->idCodigoPostal) ? $seguridad->idCodigoPostal : ''  ?>">
-                            
-                        </div>
-                 
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
                         <label for="coloniacodigoSegPub" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                         <div >    
                         <select class="form-control" id="coloniacodigoSegPub" name="coloniacodigoSegPub">
@@ -109,6 +90,25 @@
                         </div>
                     </div>
                 </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
+                        <div >    
+                                  <input type="text"  class="form-control "  id="numero" name="numero" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value="<?= isset($seguridad->numero_telefono) ? $seguridad->numero_telefono : ''  ?>">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="codigoSegPub" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
+                        <div >    
+                                  <input type="text"  class="form-control "  id="codigoSegPub" name="codigoSegPub" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value=" <?= isset($seguridad->idCodigoPostal) ? $seguridad->idCodigoPostal : ''  ?>">
+                            
+                        </div>
+                 
+                    </div>
+                </div>              
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="ingresoEmpPublic" class=" control-label">Ingreso:<span class="text-danger">*</span></label>

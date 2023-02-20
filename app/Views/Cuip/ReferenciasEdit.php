@@ -137,24 +137,6 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
-                        <div>
-                            <input type="text" class="form-control " id="numero" name="numero" value=" <?= isset($referencia->numero_telefono_fam) ? $referencia->numero_telefono_fam : ''  ?>">
-
-                        </div>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="codigoRefCer" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
-                        <div>
-                            <input type="text" class="form-control " id="codigoRefCer" name="codigoRefCer" value=" <?= isset($referencia->idCodigoPostal_fam) ? $referencia->idCodigoPostal_fam : ''  ?>">
-
-                        </div>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
                         <label for="coloniacodigoRefCer" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                         <select class="form-control" id="coloniacodigoRefCer" name="coloniacodigoRefCer">
                             <option value="">Selecciona una Opcion</option>
@@ -176,7 +158,51 @@
                             });
                         </script>
                     </div>
+                </div>                
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="codigoRefCer" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
+                        <div>
+                            <input type="text" class="form-control " id="codigoRefCer" name="codigoRefCer" value=" <?= isset($referencia->idCodigoPostal_fam) ? $referencia->idCodigoPostal_fam : ''  ?>">
+
+                        </div>
+                    </div>
                 </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
+                        <div>
+                            <input type="text" class="form-control " id="numero" name="numero" value=" <?= isset($referencia->numero_telefono_fam) ? $referencia->numero_telefono_fam : ''  ?>">
+
+                        </div>
+                    </div>
+                </div> 
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="pais" class="control-label">Pais: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="pais" name="pais">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if (!empty($pais)) :
+                                    foreach ($pais as  $a) {
+                                ?>
+                                          <option <?= (isset($referencia->idPaisNacimiento_fam) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
+                                    }
+                                endif; ?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#pais").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>              
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
                         <label for="estadocodigoRefCer" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
@@ -255,33 +281,7 @@
                             </script>
                         </div>
                     </div>
-                </div>
-                <div class='col-6 col-sm-6'>
-                    <div class="form-group">
-                        <label for="pais" class="control-label">Pais: <span class="text-danger">*</span></label>
-                        <div>
-                            <select class="form-control" id="pais" name="pais">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if (!empty($pais)) :
-                                    foreach ($pais as  $a) {
-                                ?>
-                                          <option <?= (isset($referencia->idPaisNacimiento_fam) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-                                <?php
-                                    }
-                                endif; ?>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#pais").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                </div>
+                </div>                
             </div>
 
     </div>
@@ -425,24 +425,6 @@
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="numeroParCer" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
-                    <div>
-                        <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value=" <?= isset($referencia->numero_telefono_pariente) ? $referencia->numero_telefono_pariente : ''  ?>">
-
-                    </div>
-                </div>
-            </div>
-            <div class='col-12 col-sm-12 col-md-6'>
-                <div class="form-group">
-                    <label for="codigoParCer" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
-                    <div>
-                        <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value=" <?= isset($referencia->idCodigoPostal_pariente) ? $referencia->idCodigoPostal_pariente : ''  ?>">
-
-                    </div>
-                </div>
-            </div>
-            <div class='col-12 col-sm-12 col-md-6'>
-                <div class="form-group">
                     <label for="coloniacodigoParCer" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                     <select class="form-control" id="coloniacodigoParCer" name="coloniacodigoParCer">
                         <option value="">Selecciona una Opcion</option>
@@ -465,6 +447,50 @@
                     </script>
                 </div>
             </div>
+            <div class='col-12 col-sm-12 col-md-6'>
+                <div class="form-group">
+                    <label for="codigoParCer" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
+                    <div>
+                        <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value=" <?= isset($referencia->idCodigoPostal_pariente) ? $referencia->idCodigoPostal_pariente : ''  ?>">
+
+                    </div>
+                </div>
+            </div>
+            <div class='col-12 col-sm-12 col-md-6'>
+                <div class="form-group">
+                    <label for="numeroParCer" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
+                    <div>
+                        <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value=" <?= isset($referencia->numero_telefono_pariente) ? $referencia->numero_telefono_pariente : ''  ?>">
+
+                    </div>
+                </div>
+            </div>
+            <div class='col-6 col-sm-6'>
+                <div class="form-group">
+                    <label for="paisParCer" class="control-label">Pais: <span class="text-danger">*</span></label>
+                    <div>
+                        <select class="form-control" id="paisParCer" name="paisParCer">
+                            <option value="">Selecciona una Opcion</option>
+                            <?php
+                            if (!empty($pais)) :
+                                foreach ($pais as  $a) {
+                            ?>
+                           <option <?= (isset($referencia->idPaisNacimiento_pariente) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                            <?php
+                                }
+                            endif; ?>
+                        </select>
+                        <script>
+                            $(document).ready(function() {
+                                $("#paisParCer").select2({
+                                    theme: "bootstrap4",
+                                    width: "100%"
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>         
             <div class='col-6 col-sm-6'>
                 <div class="form-group">
                     <label for="estadocodigoParCer" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
@@ -543,32 +569,7 @@
                     </div>
                 </div>
             </div>
-            <div class='col-6 col-sm-6'>
-                <div class="form-group">
-                    <label for="paisParCer" class="control-label">Pais: <span class="text-danger">*</span></label>
-                    <div>
-                        <select class="form-control" id="paisParCer" name="paisParCer">
-                            <option value="">Selecciona una Opcion</option>
-                            <?php
-                            if (!empty($pais)) :
-                                foreach ($pais as  $a) {
-                            ?>
-                           <option <?= (isset($referencia->idPaisNacimiento_pariente) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-                            <?php
-                                }
-                            endif; ?>
-                        </select>
-                        <script>
-                            $(document).ready(function() {
-                                $("#paisParCer").select2({
-                                    theme: "bootstrap4",
-                                    width: "100%"
-                                });
-                            });
-                        </script>
-                    </div>
-                </div>
-            </div>
+            
         </div>
 
     </div>
@@ -712,24 +713,6 @@
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="numeroRefPer" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
-                    <div>
-                        <input type="text" class="form-control " id="numeroRefPer" name="numeroRefPer" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value=" <?= isset($referenciaLab->numero_telefono_personal) ? $referenciaLab->numero_telefono_personal : ''  ?>">
-
-                    </div>
-                </div>
-            </div>
-            <div class='col-12 col-sm-12 col-md-6'>
-                <div class="form-group">
-                    <label for="codigoPersonal" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
-                    <div>
-                        <input type="text" class="form-control " id="codigoPersonal" name="codigoPersonal" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value=" <?= isset($referenciaLab->idCodigoPostal_personal) ? $referenciaLab->idCodigoPostal_personal : ''  ?>">
-
-                    </div>
-                </div>
-            </div>
-            <div class='col-12 col-sm-12 col-md-6'>
-                <div class="form-group">
                     <label for="coloniacodigoPersonal" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                     <select class="form-control" id="coloniacodigoPersonal" name="coloniacodigoPersonal">
                         <option value="">Selecciona una Opcion</option>
@@ -752,6 +735,52 @@
                     </script>
                 </div>
             </div>
+            <div class='col-12 col-sm-12 col-md-6'>
+                <div class="form-group">
+                    <label for="codigoPersonal" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
+                    <div>
+                        <input type="text" class="form-control " id="codigoPersonal" name="codigoPersonal" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value=" <?= isset($referenciaLab->idCodigoPostal_personal) ? $referenciaLab->idCodigoPostal_personal : ''  ?>">
+
+                    </div>
+                </div>
+            </div>
+            <div class='col-12 col-sm-12 col-md-6'>
+                <div class="form-group">
+                    <label for="numeroRefPer" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
+                    <div>
+                        <input type="text" class="form-control " id="numeroRefPer" name="numeroRefPer" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value=" <?= isset($referenciaLab->numero_telefono_personal) ? $referenciaLab->numero_telefono_personal : ''  ?>">
+
+                    </div>
+                </div>
+            </div>
+            <div class='col-6 col-sm-6'>
+                <div class="form-group">
+                    <label for="paisRefPer" class="control-label">Pais: <span class="text-danger">*</span></label>
+                    <div>
+                        <select class="form-control" id="paisRefPer" name="paisRefPer">
+                            <option value="">Selecciona una Opcion</option>
+                            <?php
+                            if (!empty($pais)) :
+                                foreach ($pais as  $a) {
+                            ?>
+                             <option <?= (isset($referenciaLab->idPaisNacimiento_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+                            <?php
+                                }
+                            endif; ?>
+                        </select>
+                        <script>
+                            $(document).ready(function() {
+                                $("#paisRefPer").select2({
+                                    theme: "bootstrap4",
+                                    width: "100%"
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+           
             <div class='col-6 col-sm-6'>
                 <div class="form-group">
                     <label for="estadocodigoPersonal" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
@@ -830,35 +859,7 @@
                     </div>
                 </div>
             </div>
-            <div class='col-6 col-sm-6'>
-                <div class="form-group">
-                    <label for="paisRefPer" class="control-label">Pais: <span class="text-danger">*</span></label>
-                    <div>
-                        <select class="form-control" id="paisRefPer" name="paisRefPer">
-                            <option value="">Selecciona una Opcion</option>
-                            <?php
-                            if (!empty($pais)) :
-                                foreach ($pais as  $a) {
-                            ?>
-                             <option <?= (isset($referenciaLab->idPaisNacimiento_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-
-                            <?php
-                                }
-                            endif; ?>
-                        </select>
-                        <script>
-                            $(document).ready(function() {
-                                $("#paisRefPer").select2({
-                                    theme: "bootstrap4",
-                                    width: "100%"
-                                });
-                            });
-                        </script>
-                    </div>
-                </div>
-            </div>
         </div>
-
     </div>
 </div>
 
@@ -1002,24 +1003,6 @@
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="numeroRefLab" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
-                    <div>
-                        <input type="text" class="form-control " id="numeroRefLab" name="numeroRefLab" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value=" <?= isset($referenciaLab->numero_telefono_laboral) ? $referenciaLab->numero_telefono_laboral : ''  ?>">
-
-                    </div>
-                </div>
-            </div>
-            <div class='col-12 col-sm-12 col-md-6'>
-                <div class="form-group">
-                    <label for="codigoLaboral" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
-                    <div>
-                        <input type="text" class="form-control " id="codigoLaboral" name="codigoLaboral" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value=" <?= isset($referenciaLab->idCodigoPostal_laboral) ? $referenciaLab->idCodigoPostal_laboral : ''  ?>">
-
-                    </div>
-                </div>
-            </div>
-            <div class='col-12 col-sm-12 col-md-6'>
-                <div class="form-group">
                     <label for="colonia_fam_cercano" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                     <select class="form-control" id="colonia_fam_cercano" name="colonia_fam_cercano">
                         <option value="">Selecciona una Opcion</option>
@@ -1043,6 +1026,50 @@
                     </script>
                 </div>
             </div>
+            <div class='col-12 col-sm-12 col-md-6'>
+                <div class="form-group">
+                    <label for="codigoLaboral" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
+                    <div>
+                        <input type="text" class="form-control " id="codigoLaboral" name="codigoLaboral" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value=" <?= isset($referenciaLab->idCodigoPostal_laboral) ? $referenciaLab->idCodigoPostal_laboral : ''  ?>">
+
+                    </div>
+                </div>
+            </div>
+            <div class='col-12 col-sm-12 col-md-6'>
+                <div class="form-group">
+                    <label for="numeroRefLab" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
+                    <div>
+                        <input type="text" class="form-control " id="numeroRefLab" name="numeroRefLab" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value=" <?= isset($referenciaLab->numero_telefono_laboral) ? $referenciaLab->numero_telefono_laboral : ''  ?>">
+
+                    </div>
+                </div>
+            </div>
+            <div class='col-6 col-sm-6'>
+                <div class="form-group">
+                    <label for="paisRefLab" class="control-label">Pais: <span class="text-danger">*</span></label>
+                    <div>
+                        <select class="form-control" id="paisRefLab" name="paisRefLab">
+                            <option value="">Selecciona una Opcion</option>
+                            <?php
+                            if (!empty($pais)) :
+                                foreach ($pais as  $a) {
+                            ?>
+                <option <?= (isset($referenciaLab->idPaisNacimiento_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                            <?php
+                                }
+                            endif; ?>
+                        </select>
+                        <script>
+                            $(document).ready(function() {
+                                $("#paisRefLab").select2({
+                                    theme: "bootstrap4",
+                                    width: "100%"
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>           
             <div class='col-6 col-sm-6'>
                 <div class="form-group">
                     <label for="estadocodigoLaboral" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
@@ -1120,34 +1147,7 @@
                         </script>
                     </div>
                 </div>
-            </div>
-
-            <div class='col-6 col-sm-6'>
-                <div class="form-group">
-                    <label for="paisRefLab" class="control-label">Pais: <span class="text-danger">*</span></label>
-                    <div>
-                        <select class="form-control" id="paisRefLab" name="paisRefLab">
-                            <option value="">Selecciona una Opcion</option>
-                            <?php
-                            if (!empty($pais)) :
-                                foreach ($pais as  $a) {
-                            ?>
-                <option <?= (isset($referenciaLab->idPaisNacimiento_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-                            <?php
-                                }
-                            endif; ?>
-                        </select>
-                        <script>
-                            $(document).ready(function() {
-                                $("#paisRefLab").select2({
-                                    theme: "bootstrap4",
-                                    width: "100%"
-                                });
-                            });
-                        </script>
-                    </div>
-                </div>
-            </div>
+            </div>            
         </div>
         </form>
     </div>

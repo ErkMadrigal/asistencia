@@ -94,12 +94,12 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="numero" class=" control-label">Numero Telefónico:</label>
+                        <label for="coloniacodigoRefCer" class=" control-label">Colonia:</label>
                         <div>
-                            <?= isset($referencia->numero_telefono_fam) ? $referencia->numero_telefono_fam : ''  ?>
+                            <?= isset($referencia->colonia_fam) ? $referencia->colonia_fam : ''  ?>
                         </div>
                     </div>
-                </div>
+                </div>                
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="codigoRefCer" class=" control-label">Código Postal :</label>
@@ -110,12 +110,20 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="coloniacodigoRefCer" class=" control-label">Colonia:</label>
+                        <label for="numero" class=" control-label">Numero Telefónico:</label>
                         <div>
-                            <?= isset($referencia->colonia_fam) ? $referencia->colonia_fam : ''  ?>
+                            <?= isset($referencia->numero_telefono_fam) ? $referencia->numero_telefono_fam : ''  ?>
                         </div>
                     </div>
-                </div>
+                </div> 
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="pais" class="control-label">Pais: </label>
+                        <div>
+                            <?= isset($referencia->idPaisNacimiento_fam) ? $referencia->idPaisNacimiento_fam : ''  ?>
+                        </div>
+                    </div>
+                </div>          
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
                         <label for="estadocodigoRefCer" class="control-label">Entidad Federativa: </label>
@@ -139,15 +147,7 @@
                             <?= isset($referencia->ciudad_fam) ? $referencia->ciudad_fam : ''  ?>
                         </div>
                     </div>
-                </div>
-                <div class='col-6 col-sm-6'>
-                    <div class="form-group">
-                        <label for="pais" class="control-label">Pais: </label>
-                        <div>
-                            <?= isset($referencia->idPaisNacimiento_fam) ? $referencia->idPaisNacimiento_fam : ''  ?>
-                        </div>
-                    </div>
-                </div>
+                </div>               
             </div>
         
     </div>
@@ -249,9 +249,9 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="numeroParCer" class=" control-label">Numero Telefónico:</label>
+                        <label for="coloniacodigoParCer" class=" control-label">Colonia:</label>
                         <div>
-                            <?= isset($referencia->numero_telefono_pariente) ? $referencia->numero_telefono_pariente : ''  ?>
+                            <?= isset($referencia->colonia_pariente) ? $referencia->colonia_pariente : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -265,12 +265,20 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="coloniacodigoParCer" class=" control-label">Colonia:</label>
+                        <label for="numeroParCer" class=" control-label">Numero Telefónico:</label>
                         <div>
-                            <?= isset($referencia->colonia_pariente) ? $referencia->colonia_pariente : ''  ?>
+                            <?= isset($referencia->numero_telefono_pariente) ? $referencia->numero_telefono_pariente : ''  ?>
                         </div>
                     </div>
                 </div>
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="paisParCer" class="control-label">Pais: </label>
+                        <div>
+                            <?= isset($referencia->idPaisNacimiento_pariente) ? $referencia->idPaisNacimiento_pariente : ''  ?>
+                        </div>
+                    </div>
+                </div>               
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
                         <label for="estadocodigoParCer" class="control-label">Entidad Federativa: </label>
@@ -294,17 +302,8 @@
                             <?= isset($referencia->ciudad_pariente) ? $referencia->ciudad_pariente : ''  ?>
                         </div>
                     </div>
-                </div>
-                <div class='col-6 col-sm-6'>
-                    <div class="form-group">
-                        <label for="paisParCer" class="control-label">Pais: </label>
-                        <div>
-                            <?= isset($referencia->idPaisNacimiento_pariente) ? $referencia->idPaisNacimiento_pariente : ''  ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
+                </div>                
+            </div>       
     </div>
 </div>
 
@@ -393,7 +392,7 @@
                             <?= isset($referenciaLab->numero_exterior_personal) ? $referenciaLab->numero_exterior_personal : ''  ?>
                         </div>
                     </div>
-                </div>
+                </div>               
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="interiorRefPer" class=" control-label">No. Interior:</label>
@@ -404,12 +403,12 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="numeroRefPer" class=" control-label">Numero Telefónico:</label>
+                        <label for="coloniacodigoPersonal" class=" control-label">Colonia:</label>
                         <div>
-                            <?= isset($referenciaLab->numero_telefono_personal) ? $referenciaLab->numero_telefono_personal : ''  ?>
+                            <?= isset($referenciaLab->colonia_personal) ? $referenciaLab->colonia_personal : ''  ?>
                         </div>
                     </div>
-                </div>
+                </div>               
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="codigoPersonal" class=" control-label">Código Postal :</label>
@@ -417,15 +416,23 @@
                             <?= isset($referenciaLab->idCodigoPostal_personal) ? $referenciaLab->idCodigoPostal_personal : ''  ?>
                         </div>
                     </div>
-                </div>
+                </div> 
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="coloniacodigoPersonal" class=" control-label">Colonia:</label>
+                        <label for="numeroRefPer" class=" control-label">Numero Telefónico:</label>
                         <div>
-                            <?= isset($referenciaLab->colonia_personal) ? $referenciaLab->colonia_personal : ''  ?>
+                            <?= isset($referenciaLab->numero_telefono_personal) ? $referenciaLab->numero_telefono_personal : ''  ?>
                         </div>
                     </div>
-                </div>
+                </div>  
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="paisRefPer" class="control-label">Pais: </label>
+                        <div>
+                            <?= isset($referenciaLab->idPaisNacimiento_personal) ? $referenciaLab->idPaisNacimiento_personal : ''  ?>
+                        </div>
+                    </div>
+                </div>             
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
                         <label for="estadocodigoPersonal" class="control-label">Entidad Federativa: </label>
@@ -449,15 +456,7 @@
                             <?= isset($referenciaLab->ciudad_personal) ? $referenciaLab->ciudad_personal : ''  ?>
                         </div>
                     </div>
-                </div>
-                <div class='col-6 col-sm-6'>
-                    <div class="form-group">
-                        <label for="paisRefPer" class="control-label">Pais: </label>
-                        <div>
-                            <?= isset($referenciaLab->idPaisNacimiento_personal) ? $referenciaLab->idPaisNacimiento_personal : ''  ?>
-                        </div>
-                    </div>
-                </div>
+                </div>               
             </div>
         
     </div>
@@ -559,9 +558,9 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="numeroRefLab" class=" control-label">Numero Telefónico:</label>
+                        <label for="colonia_fam_cercano" class=" control-label">Colonia:</label>
                         <div>
-                            <?= isset($referenciaLab->numero_telefono_laboral) ? $referenciaLab->numero_telefono_laboral : ''  ?>
+                            <?= isset($referenciaLab->colonia_laboral) ? $referenciaLab->colonia_laboral : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -572,15 +571,23 @@
                             <?= isset($referenciaLab->idCodigoPostal_laboral) ? $referenciaLab->idCodigoPostal_laboral : ''  ?>
                         </div>
                     </div>
-                </div>
+                </div>  
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="colonia_fam_cercano" class=" control-label">Colonia:</label>
+                        <label for="numeroRefLab" class=" control-label">Numero Telefónico:</label>
                         <div>
-                            <?= isset($referenciaLab->colonia_laboral) ? $referenciaLab->colonia_laboral : ''  ?>
+                            <?= isset($referenciaLab->numero_telefono_laboral) ? $referenciaLab->numero_telefono_laboral : ''  ?>
                         </div>
                     </div>
                 </div>
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="paisRefLab" class="control-label">Pais: </label>
+                        <div>
+                            <?= isset($referenciaLab->idPaisNacimiento_laboral) ? $referenciaLab->idPaisNacimiento_laboral : ''  ?>
+                        </div>
+                    </div>
+                </div>            
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
                         <label for="estadocodigoLaboral" class="control-label">Entidad Federativa: </label>
@@ -605,14 +612,7 @@
                         </div>
                     </div>
                 </div>
-                <div class='col-6 col-sm-6'>
-                    <div class="form-group">
-                        <label for="paisRefLab" class="control-label">Pais: </label>
-                        <div>
-                            <?= isset($referenciaLab->idPaisNacimiento_laboral) ? $referenciaLab->idPaisNacimiento_laboral : ''  ?>
-                        </div>
-                    </div>
-                </div>              
+                             
             </div>
             <hr  class="mt-3 mb-3"/>
         </form>

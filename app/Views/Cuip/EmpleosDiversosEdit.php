@@ -52,17 +52,7 @@
                             
                         </div>
                     </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="codigoEmpDiv" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
-                        <div >    
-                                  <input type="text"  class="form-control "  id="codigoEmpDiv" name="codigoEmpDiv" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value="<?= isset($diversos->idCodigoPostal) ? $diversos->idCodigoPostal : ''  ?>">
-                            
-                        </div>
-                        
-                    </div>
-                </div>
+                </div>               
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="coloniacodigoEmpDiv" class=" control-label">Colonia:<span class="text-danger">*</span></label>
@@ -147,9 +137,46 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
+                        <label for="codigoEmpDiv" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
+                        <div >    
+                                  <input type="text"  class="form-control "  id="codigoEmpDiv" name="codigoEmpDiv" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value="<?= isset($diversos->idCodigoPostal) ? $diversos->idCodigoPostal : ''  ?>">
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
                         <label for="numero<" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
                         <div >    
                                   <input type="text"  class="form-control "  id="numero" name="numero"  onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"  value="<?= isset($diversos->numero_telefono) ? $diversos->numero_telefono : ''  ?>">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="area" class=" control-label">Area:<span class="text-danger">*</span></label>
+                        <div >    
+                                  <input type="text"  class="form-control "  id="area" name="area"  value="<?= isset($diversos->area) ? $diversos->area : ''  ?>">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class='col-6 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="funciones" class=" control-label">Funciones:<span class="text-danger">*</span></label>
+                        <div >    
+                                  <input type="text"  class="form-control "  id="funciones" name="funciones"  value="<?= isset($diversos->funciones) ? $diversos->funciones : ''  ?>">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="sueldo" class=" control-label">Ingreso Neto (Mensual):<span class="text-danger">*</span></label>
+                        <div >    
+                                  <input type="text"  class="form-control "  id="sueldo" name="sueldo"  value="<?= isset($diversos->sueldo_base) ? $diversos->sueldo_base : ''  ?>">
                             
                         </div>
                     </div>
@@ -170,37 +197,7 @@
                             });
                         </script>
                     </div>
-                </div>
-
-                <div class='col-6 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="funciones" class=" control-label">Funciones:<span class="text-danger">*</span></label>
-                        <div >    
-                                  <input type="text"  class="form-control "  id="funciones" name="funciones"  value="<?= isset($diversos->funciones) ? $diversos->funciones : ''  ?>">
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="sueldo" class=" control-label">Ingreso Neto (Mensual):<span class="text-danger">*</span></label>
-                        <div >    
-                                  <input type="text"  class="form-control "  id="sueldo" name="sueldo"  value="<?= isset($diversos->sueldo_base) ? $diversos->sueldo_base : ''  ?>">
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="area" class=" control-label">Area:<span class="text-danger">*</span></label>
-                        <div >    
-                                  <input type="text"  class="form-control "  id="area" name="area"  value="<?= isset($diversos->area) ? $diversos->area : ''  ?>">
-                            
-                        </div>
-                    </div>
-                </div>
-
+                </div>                              
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="motivo_separacion" class=" control-label">Motivo de separación:<span class="text-danger">*</span></label>

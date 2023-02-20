@@ -151,20 +151,12 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="nacionalidad" class="control-label">Nacionalidad: </label>
-                        <div>
-                            <?= isset($variable->nacion) ? $variable->nacion : ''  ?>
-                        </div>
-                    </div>
-                </div>
-                <div class='col-6 col-sm-6'>
-                    <div class="form-group">
                         <label for="municipio_nacimiento" class="control-label">Municipio de Nacimiento: </label>
                         <div>
                             <?= isset($variable->municipio) ? $variable->municipio : ''  ?>
                         </div>
                     </div>
-                </div>
+                </div>                       
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
                         <label for="cuidad_nacimiento" class="control-label">Cuidad de Nacimiento: </label>
@@ -173,6 +165,14 @@
                         </div>
                     </div>
                 </div>
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="nacionalidad" class="control-label">Nacionalidad: </label>
+                        <div>
+                            <?= isset($variable->nacion) ? $variable->nacion : ''  ?>
+                        </div>
+                    </div>
+                </div> 
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
                         <label for="estado_civil" class="control-label">Estado Civil: </label>
@@ -298,13 +298,12 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="numeroTelefono" class=" control-label">Numero
-                            Telefónico:</label>
+                        <label for="coloniacodigo" class=" control-label">Colonia:</label>
                         <div>
-                            <?= isset($variable->numero_telefono) ? $variable->numero_telefono : ''  ?>
+                            <?= isset($variable->colonia) ? $variable->colonia : ''  ?>
                         </div>
                     </div>
-                </div>
+                </div>               
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="entrecalle" class=" control-label">Entre la calle
@@ -332,12 +331,13 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="coloniacodigo" class=" control-label">Colonia:</label>
+                        <label for="numeroTelefono" class=" control-label">Numero
+                            Telefónico:</label>
                         <div>
-                            <?= isset($variable->colonia) ? $variable->colonia : ''  ?>
+                            <?= isset($variable->numero_telefono) ? $variable->numero_telefono : ''  ?>
                         </div>
                     </div>
-                </div>
+                </div>               
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
                         <label for="estadocodigo" class="control-label">Entidad Federativa: </label>
@@ -497,7 +497,14 @@
                         </div>
                     </div>
                 </div>
-                
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="coloniacodigoAds" class=" control-label">Colonia:</label>
+                        <div>
+                            <?= isset($variable->colonia_adscripcion) ? $variable->colonia_adscripcion : ''  ?>
+                        </div>
+                    </div>
+                </div>
                 <div class='col-12 col-sm-12 col-md-12'>
                     <div class="form-group">
                         <label for="entrecalle_adscripcion" class=" control-label">Entre la calle de:</label>
@@ -529,15 +536,7 @@
                             <?= isset($variable->idCodigoPostal_adscripcion) ? $variable->idCodigoPostal_adscripcion : ''  ?>
                         </div>
                     </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="coloniacodigoAds" class=" control-label">Colonia:</label>
-                        <div>
-                            <?= isset($variable->colonia_adscripcion) ? $variable->colonia_adscripcion : ''  ?>
-                        </div>
-                    </div>
-                </div>
+                </div>               
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="federativa_adscripcion" class=" control-label">Entidad Federativa:</label>

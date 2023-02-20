@@ -41,13 +41,7 @@
                         <label for="interior" class=" control-label">No. Interior:</label>
                         <input type="text" class="form-control " id="interior" name="interior">
                     </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="codigoEmpDiv" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="codigoEmpDiv" name="codigoEmpDiv" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5">
-                    </div>
-                </div>
+                </div>               
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="coloniacodigoEmpDiv" class=" control-label">Colonia:<span class="text-danger">*</span></label>
@@ -104,8 +98,32 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
+                        <label for="codigoEmpDiv" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="codigoEmpDiv" name="codigoEmpDiv" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
                         <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="numero" name="numero" maxlength="10" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="area" class=" control-label">Area:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="area" name="area">
+                    </div>
+                </div>
+                <div class='col-6 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="funciones" class=" control-label">Funciones:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="funciones" name="funciones">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="sueldo" class=" control-label">Ingreso Neto (Mensual):<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="sueldo" name="sueldo">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -127,27 +145,6 @@
                         </script>
                     </div>
                 </div>
-
-                <div class='col-6 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="funciones" class=" control-label">Funciones:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="funciones" name="funciones">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="sueldo" class=" control-label">Ingreso Neto (Mensual):<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="sueldo" name="sueldo">
-                    </div>
-                </div>
-
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="area" class=" control-label">Area:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="area" name="area">
-                    </div>
-                </div>
-
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="motivo_separacion" class=" control-label">Motivo de separación:<span class="text-danger">*</span></label>
