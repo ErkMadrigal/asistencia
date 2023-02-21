@@ -231,33 +231,7 @@
                             </script>
                         </div>
                     </div>
-                </div>
-                <div class='col-6 col-sm-6'>
-                    <div class="form-group">
-                        <label for="nacionalidad" class="control-label">Nacionalidad: <span class="text-danger">*</span></label>
-                        <div>
-                            <select class="form-control" id="nacionalidad" name="nacionalidad">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($nacionalidad) ):
-                                    foreach($nacionalidad as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#nacionalidad").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                </div>
+                </div>                
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
                         <label for="municipio_nacimiento" class="control-label">Municipio de Nacimiento: <span class="text-danger">*</span></label>
@@ -304,6 +278,32 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
+                        <label for="nacionalidad" class="control-label">Nacionalidad: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="nacionalidad" name="nacionalidad">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($nacionalidad) ):
+                                    foreach($nacionalidad as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#nacionalidad").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
                         <label for="estado_civil" class="control-label">Estado Civil: <span class="text-danger">*</span></label>
                         <div>
                             <select class="form-control" id="estado_civil" name="estado_civil">
@@ -327,7 +327,7 @@
                             </script>
                         </div>
                     </div>
-                </div>
+                </div>               
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
                         <label for="desarrollo_academico" class="control-label">Desarrollo Académico: <span class="text-danger">*</span></label>
@@ -485,11 +485,20 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="numeroTelefono" class=" control-label">Numero
-                            Telefónico:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="numeroTelefono" name="numeroTelefono" maxlength="10" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+                        <label for="coloniacodigo" class=" control-label">Colonia:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="coloniacodigo" name="coloniacodigo">
+                                <option value="">Selecciona una Opcion</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#coloniacodigo").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
-                </div>
+                </div>               
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="entrecalle" class=" control-label">Entre la calle
@@ -511,20 +520,11 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="coloniacodigo" class=" control-label">Colonia:<span class="text-danger">*</span></label>
-                        <select class="form-control" id="coloniacodigo" name="coloniacodigo">
-                                <option value="">Selecciona una Opcion</option>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#coloniacodigo").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
+                        <label for="numeroTelefono" class=" control-label">Numero
+                            Telefónico:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="numeroTelefono" name="numeroTelefono" maxlength="10" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
                     </div>
-                </div>
+                </div>              
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
                         <label for="estadocodigo" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
@@ -793,7 +793,22 @@
                         <input type="text" class="form-control " id="interior_adscripcion" name="interior_adscripcion">
                     </div>
                 </div>
-                
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="coloniacodigoAds" class=" control-label">Colonia:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="coloniacodigoAds" name="coloniacodigoAds">
+                                <option value="">Selecciona una Opcion</option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#coloniacodigoAds").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                    </div>
+                </div>
                 <div class='col-12 col-sm-12 col-md-12'>
                     <div class="form-group">
                         <label for="entrecalle_adscripcion" class=" control-label">Entre la calle de:<span class="text-danger">*</span></label>
@@ -817,23 +832,7 @@
                         <label for="codigoAds" class=" control-label">Código Postal:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="codigoAds" name="codigoAds" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5">
                     </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="coloniacodigoAds" class=" control-label">Colonia:<span class="text-danger">*</span></label>
-                        <select class="form-control" id="coloniacodigoAds" name="coloniacodigoAds">
-                                <option value="">Selecciona una Opcion</option>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#coloniacodigoAds").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
-                    </div>
-                </div>
+                </div>                
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="federativa_adscripcion" class=" control-label">Entidad Federativa:<span class="text-danger">*</span></label>

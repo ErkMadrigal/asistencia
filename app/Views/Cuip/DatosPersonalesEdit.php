@@ -267,35 +267,7 @@
                             </script>
                         </div>
                     </div>
-                </div>
-                <div class='col-6 col-sm-6'>
-                    <div class="form-group">
-                        <label for="nacionalidad" class="control-label">Nacionalidad: <span class="text-danger">*</span></label>
-                        <div>
-                            <select class="form-control" id="nacionalidad" name="nacionalidad">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if (!empty($nacionalidad)) :
-                                    foreach ($nacionalidad as  $a) {
-                                ?>
-                                        <option <?= (isset($variable->nacionalidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-
-
-                                <?php
-                                    }
-                                endif; ?>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#nacionalidad").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                </div>
+                </div>               
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
                         <label for="municipio_nacimiento" class="control-label">Municipio de Nacimiento: <span class="text-danger">*</span></label>
@@ -342,6 +314,34 @@
                             <script>
                                 $(document).ready(function() {
                                     $("#cuidad_nacimiento").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="nacionalidad" class="control-label">Nacionalidad: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="nacionalidad" name="nacionalidad">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if (!empty($nacionalidad)) :
+                                    foreach ($nacionalidad as  $a) {
+                                ?>
+                                        <option <?= (isset($variable->nacionalidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+
+
+                                <?php
+                                    }
+                                endif; ?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#nacionalidad").select2({
                                         theme: "bootstrap4",
                                         width: "100%"
                                     });
@@ -560,14 +560,30 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="numeroTelefono" class=" control-label">Numero
-                            Telefónico:<span class="text-danger">*</span></label>
-                        <div>
-                            <input type="text" class="form-control " id="numeroTelefono" name="numeroTelefono" maxlength="10" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" value="<?= isset($variable->numero_telefono) ? $variable->numero_telefono : ''  ?>">
+                        <label for="coloniacodigo" class=" control-label">Colonia:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="estadocodigo" name="estadocodigo">
+                            <option value="">Selecciona una Opcion</option>
+                            <?php
+                            if (!empty($entidad_federativa)) :
+                                foreach ($entidad_federativa as  $a) {
+                            ?>
+                                    <option <?= (isset($variable->colonia) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
-                        </div>
+
+                            <?php
+                                }
+                            endif; ?>
+                        </select>
+                        <script>
+                            $(document).ready(function() {
+                                $("#coloniacodigo").select2({
+                                    theme: "bootstrap4",
+                                    width: "100%"
+                                });
+                            });
+                        </script>
                     </div>
-                </div>
+                </div>               
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="entrecalle" class=" control-label">Entre la calle
@@ -595,33 +611,17 @@
 
                         </div>
                     </div>
-                </div>
+                </div> 
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="coloniacodigo" class=" control-label">Colonia:<span class="text-danger">*</span></label>
-                        <select class="form-control" id="estadocodigo" name="estadocodigo">
-                            <option value="">Selecciona una Opcion</option>
-                            <?php
-                            if (!empty($entidad_federativa)) :
-                                foreach ($entidad_federativa as  $a) {
-                            ?>
-                                    <option <?= (isset($variable->colonia) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                        <label for="numeroTelefono" class=" control-label">Numero
+                            Telefónico:<span class="text-danger">*</span></label>
+                        <div>
+                            <input type="text" class="form-control " id="numeroTelefono" name="numeroTelefono" maxlength="10" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" value="<?= isset($variable->numero_telefono) ? $variable->numero_telefono : ''  ?>">
 
-
-                            <?php
-                                }
-                            endif; ?>
-                        </select>
-                        <script>
-                            $(document).ready(function() {
-                                $("#coloniacodigo").select2({
-                                    theme: "bootstrap4",
-                                    width: "100%"
-                                });
-                            });
-                        </script>
+                        </div>
                     </div>
-                </div>
+                </div>              
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
                         <label for="estadocodigo" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
@@ -940,7 +940,31 @@
                     </div>
                 </div>
             </div>
+            <div class='col-12 col-sm-12 col-md-6'>
+                <div class="form-group">
+                    <label for="coloniacodigoAds" class=" control-label">Colonia:<span class="text-danger">*</span></label>
+                    <select class="form-control" id="coloniacodigoAds" name="coloniacodigoAds">
+                        <option value="">Selecciona una Opcion</option>
+                        <?php
+                        if (!empty($coloniacodigoAds)) :
+                            foreach ($coloniacodigoAds as  $a) {
+                        ?>
+                                <option <?= (isset($variable->colonia_adscripcion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
+                        <?php
+                            }
+                        endif; ?>
+                    </select>
+                    <script>
+                        $(document).ready(function() {
+                            $("#coloniacodigoAds").select2({
+                                theme: "bootstrap4",
+                                width: "100%"
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
             <div class='col-12 col-sm-12 col-md-12'>
                 <div class="form-group">
                     <label for="entrecalle_adscripcion" class=" control-label">Entre la calle de:<span class="text-danger">*</span></label>
@@ -976,32 +1000,7 @@
 
                     </div>
                 </div>
-            </div>
-            <div class='col-12 col-sm-12 col-md-6'>
-                <div class="form-group">
-                    <label for="coloniacodigoAds" class=" control-label">Colonia:<span class="text-danger">*</span></label>
-                    <select class="form-control" id="coloniacodigoAds" name="coloniacodigoAds">
-                        <option value="">Selecciona una Opcion</option>
-                        <?php
-                        if (!empty($coloniacodigoAds)) :
-                            foreach ($coloniacodigoAds as  $a) {
-                        ?>
-                                <option <?= (isset($variable->colonia_adscripcion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-
-                        <?php
-                            }
-                        endif; ?>
-                    </select>
-                    <script>
-                        $(document).ready(function() {
-                            $("#coloniacodigoAds").select2({
-                                theme: "bootstrap4",
-                                width: "100%"
-                            });
-                        });
-                    </script>
-                </div>
-            </div>
+            </div>            
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="federativa_adscripcion" class=" control-label">Entidad Federativa:<span class="text-danger">*</span></label>

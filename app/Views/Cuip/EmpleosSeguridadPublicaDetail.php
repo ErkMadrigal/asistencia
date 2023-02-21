@@ -58,6 +58,14 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
+                        <label for="coloniacodigoSegPub" class=" control-label">Colonia:</label>
+                        <div>
+                            <?= isset($seguridad->colonia) ? $seguridad->colonia : ''  ?>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
                         <label for="numero" class=" control-label">Numero Telefónico:</label>
                         <div>
                             <?= isset($seguridad->numero_telefono) ? $seguridad->numero_telefono : ''  ?>
@@ -71,15 +79,7 @@
                             <?= isset($seguridad->idCodigoPostal) ? $seguridad->idCodigoPostal : ''  ?>
                         </div>
                     </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="coloniacodigoSegPub" class=" control-label">Colonia:</label>
-                        <div>
-                            <?= isset($seguridad->colonia) ? $seguridad->colonia : ''  ?>
-                        </div>
-                    </div>
-                </div>
+                </div>               
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="ingresoEmpPublic" class=" control-label">Ingreso:</label>
