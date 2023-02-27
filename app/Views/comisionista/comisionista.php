@@ -88,7 +88,6 @@
                     <th>Telefono</th>
                     <th>activo</th>
                     <th>Editar</th>
-                    <th>Eliminar</th>
                     <th>Detalles</th>
                 </tr>
                 </thead>
@@ -219,12 +218,6 @@
                                     
                                 }
                             }, 
-                            {  data: "eliminar",
-                                render: (data, type, full, meta) => {
-                                    return `<button onclick='eliminar("${full.id}")' class='btn btn-outline-light text-primary text-center'><i id="loadBtnTrash${full.id}" class="fa fa-circle-o-notch fa-spin" style="display:none;"></i>&nbsp&nbsp<i class='fa fa-trash nav-icon'></i></button>`;
-                        
-                                }
-                            }, 
                             { data: "detail",
                                 render: (data, type, full, meta) => {
                                     return `<button class="btn btn-outline-light text-primary" data-toggle="modal" data-target="#exampleModal" onclick='detalles("${full.id}")'><i id="loadBtnDetail${full.id}" class="fa fa-circle-o-notch fa-spin" style="display:none;"></i>&nbsp&nbsp<i class='fa fa-list-alt nav-icon'></i></button>`
@@ -339,6 +332,7 @@
         }
 
         const detalles = (id) => {
+            let tableArms = ''
             modalTitle.innerHTML = 'Detalles Comisionista'
 
             $(`#loadBtnDetail${id}`).show();
@@ -386,24 +380,33 @@
                                     </div>
                                 </div>
                             </div>`;
+                        
                         if(response.detail.length){
-                            modalCenter.classList.add("card-columns")
+                            tableArms = `<table class="table" id="dataTableArms"> <thead><tr><th>Arma</th><th>Resta</th><th>Acción</th></tr></thead><tbody>`
                             response.detail.forEach( dt => {
-                                modalCenter.innerHTML += `
-                                    <div class="card">
-                                        <div class="card-body">
-                                            ${dt.clase} ${dt.marca} ${dt.calibre} ${dt.modelo} ${dt.matricula}
-                                            <hr>
-                                            Restan <b>$${dt.comision}</b>
-                                            <hr>
-                                            <button class="btn btn-primary btn-sm" onclick="detallesComision('${dt.idComision}','${dt.idAsignacion}')"><i class='fa fa-list-alt nav-icon'></i> &nbsp;&nbsp;&nbsp; Detalles</button>
-                                        </div>
-                                    </div>
-                                `
+                                tableArms += `<tr>
+                                    <td>${dt.clase} ${dt.marca} ${dt.calibre}</td>
+                                    <td>${dt.comision}</td>
+                                    <td><button class="btn btn-primary btn-sm" onclick="detallesComision('${dt.idComision}','${dt.idAsignacion}')"><i class='fa fa-list-alt nav-icon'></i> &nbsp;&nbsp;&nbsp; Detalles</button></td>
+                                </tr>`
                             })
+                            tableArms += `</tbody></table>`
+
                         }else{
                             modalCenter.innerHTML = ''
                         }
+                        modalCenter.innerHTML = tableArms
+                        $("#dataTableArms").DataTable({
+                            destroy: true,
+                            deferRender: true,
+                            paging: true,
+                            language: {
+                                url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
+                            },
+                            pageLength: 5,
+                            lengthMenu: [[5, 10, 20], [5, 10, 20]]
+                        })
+                        
                         modalBody.innerHTML=`
                             <div class="row callout callout-warning m-3">
                                 <div class='col-12 col-sm-6'>
@@ -611,69 +614,8 @@
                 toastr.error('Es requerido un monto');
             }
 
-        }
-
-        const eliminar = (id) => {
-            Swal.fire({
-                title: 'Seguro que lo deseas eliminar?',
-                text: "¡No podrás revertir esto!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: '¡Sí, bórralo!',
-                cancelButtonText: 'Cancelar'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $(`#loadBtnTrash${id}`).show();
-                    var formData = new FormData($("form#frmComisionista")[0]);
-                    formData.append("idElimn", id)
-                    $.ajax({
-                        url: base_url + '/deleteComisionista',
-                        type: 'POST',
-                        dataType: 'json',
-                        data: formData,
-                        cache: false,
-                        async: true,
-                        contentType: false,
-                        processData: false,
-                        success: function (response) {
-                            $('.errorparticipante').remove();
-                            
-                            if (response.succes.succes == 'succes') {
-                                Swal.fire(
-                                    'Eliminado!',
-                                    'Su registro ha sido eliminado.',
-                                    'success'
-                                )
-                                var count = 3;
-                                setInterval(function(){
-                                    count--;
-                                    if (count == 0) {
-                                        window.location = base_url + '/comisionista'; 
-                                    }
-                                },1000);
-        
-                            } else if (response.dontsucces.error == 'error'){
-                                toastr.error(response.dontsucces.mensaje);
-                                        
-                            } else if (Object.keys(response.error).length > 0 ){
-        
-                                for (var clave in response.error){
-                                    $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
-                                }
-                                    toastr.error('<?= lang('Layout.camposObligatorios') ?>');
-                            }
-                            $(`#loadBtnTrash${id}`).hide();
-                        },
-                        error: function (jqXHR, textStatus, errorThrown) {
-                            toastr.error('<?=lang('Layout.toastrError') ?>');
-                            $(`#loadBtn${id}`).hide();           
-                        }
-                    });
-                }
-            })
         };
+
         
     </script>
 
