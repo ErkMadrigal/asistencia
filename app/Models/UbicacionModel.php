@@ -20,11 +20,12 @@ class UbicacionModel
 
     }
 
-    public function GetUbicacion(){
+    public function GetUbicacion($idCliente){
         $builder = $this->db->table('ubicacion');
         $builder->select('ubicacion.id, razon_social,nombre_ubicacion,ubicacion.activo');
         $builder->join("cliente","ubicacion.idCliente = cliente.id","left");
-        $builder->orderBy('razon_social');
+        $builder->where('idCliente', $idCliente );
+        $builder->orderBy('nombre_ubicacion');
         $builder->orderBy('nombre_ubicacion');
         return $builder->get()->getResult();
         
@@ -32,7 +33,7 @@ class UbicacionModel
 
     public function GetUbicacionById($id){
         $builder = $this->db->table('ubicacion');
-        $builder->select("razon_social AS idCliente,cliente.nombre_corto,nombre_ubicacion,ubicacion.activo,ubicacion.idCodigoPostal,ubicacion.calle_num,ubicacion.colonia,ubicacion.municipio,ubicacion.ciudad,ubicacion.estado, ubicacion.createddate, ubicacion.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->select("cliente.id, razon_social AS idCliente,cliente.nombre_corto,nombre_ubicacion,ubicacion.activo,ubicacion.idCodigoPostal,ubicacion.calle_num,ubicacion.colonia,ubicacion.municipio,ubicacion.ciudad,ubicacion.estado, ubicacion.createddate, ubicacion.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
        $builder->join("cliente","ubicacion.idCliente = cliente.id","left"); 
         
        $builder->join("sys_usuarios_admin UA","ubicacion.createdby = UA.id","left");
@@ -81,6 +82,14 @@ class UbicacionModel
         $builder->where("activo",true);
         $builder->orderBy("razon_social");
         return $builder->get()->getResult();
+        
+    }
+
+    public function getCliente($idCliente){
+        $builder = $this->db->table('cliente');
+        $builder->select('id,razon_social');
+        $builder->where("id",$idCliente);
+        return $builder->get()->getRow();
         
     }
 

@@ -41,10 +41,10 @@ class ClienteModel
 
 
 
-   public function Updatecliente( $updateEmpresa, $idCatalogo ){
+   public function Updatecliente( $updateCliente, $idCliente ){
 
         $return = false;
-        $this->db->table('cliente')->where('id')->update($updateEmpresa);
+        $this->db->table('cliente')->where('id',$idCliente)->update($updateCliente);
 
         if ($this->db->affectedRows() > 0){
             $return = true;

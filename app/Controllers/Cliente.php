@@ -120,14 +120,14 @@ class Cliente extends BaseController {
 					$TodayDate = date("Y-m-d H:i:s");
 					$idModi = $this->request->getPost('id');
 					$idCliente = $this->encrypt->Decrytp($idModi);	
-					$updateEmpresa = array(
+					$updateCliente = array(
 
                         "activo" => $this->request->getPost('activo'),
                         "updatedby" => $LoggedUserId,
                 		"updateddate" => $TodayDate
                     );
 
-					$cliente = $this->modelCliente->Savecliente($updateEmpresa, $idC);
+					$cliente = $this->modelCliente->Updatecliente($updateCliente, $idCliente);
 
 					if ($cliente){
 

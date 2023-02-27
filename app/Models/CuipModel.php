@@ -22,10 +22,12 @@ class CuipModel
 
     public function GetCuip($idEmpresa){
         $builder = $this->db->table('datos_personales');
-        $builder->select('datos_personales.id,primer_nombre,segundo_nombre,apellido_paterno,apellido_materno,media_filiacion.idPersonal');
+        $builder->select('datos_personales.id,primer_nombre,segundo_nombre,apellido_paterno,apellido_materno,media_filiacion.idPersonal,respuesta,fecha_consulta');
         $builder->join("media_filiacion"," datos_personales.id= media_filiacion.idPersonal","left");
         $builder->orderBy("primer_nombre","asc");
         $builder->orderBy("apellido_paterno","asc");
+        $builder->where("cuip","");
+        $builder->where("respuesta != 'INACTIVO'");
         return $builder->get()->getResult();
         
     }
@@ -487,6 +489,7 @@ class CuipModel
         $builder->select("apellido_paterno,apellido_materno, CONCAT(primer_nombre,' ' ,segundo_nombre) AS nombre,curp,rfc,fecha_nacimiento");
         $builder->where("activo",true);
         $builder->where("Cuip",'');
+        $builder->where("fecha_consulta = '0000-00-00 00:00:00'");
         $builder->orderBy("primer_nombre","asc");
         return $builder->get()->getResult();
         
@@ -703,6 +706,46 @@ class CuipModel
         $builder->orderBy("documento","asc");
         $builder->where('activo', true);
         //$builder->where('idPersonal', $id);
+        return $builder->get()->getResult();
+        
+    }
+
+
+    public function updateRespuesta( $respuesta, $curp ){
+
+        $return = false;
+        $this->db->table('datos_personales')->where('curp',$curp)->update($respuesta);
+
+        if ($this->db->affectedRows() > 0){
+            $return = true;
+            
+        } 
+
+        return $return; 
+    }
+
+    public function updateFechaConsulta( $fecha, $curp ){
+
+        $return = false;
+        $this->db->table('datos_personales')->where('curp',$curp)->update($fecha);
+
+        if ($this->db->affectedRows() > 0){
+            $return = true;
+            
+        } 
+
+        return $return; 
+    }
+
+
+    public function GetBajas(){
+        $builder = $this->db->table("datos_personales");
+        $builder->select("respuesta");
+        $builder->where("activo",true);
+        $builder->where("Cuip",'');
+        $builder->where("fecha_consulta != '0000-00-00 00:00:00'");
+        $builder->where("respuesta != 'INACTIVO'");
+        $builder->orderBy("primer_nombre","asc");
         return $builder->get()->getResult();
         
     }

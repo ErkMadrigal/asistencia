@@ -1,5 +1,14 @@
 <?= $this->extend('includes/main') ?>
 <?= $this->section('content') ?>
+<?php
+
+use CodeIgniter\HTTP\RequestInterface;
+use App\Models\ArmasModel;
+use App\Libraries\Encrypt;
+
+ $encrypt = new Encrypt();
+
+?>
 <div id="load" class=" spinner text-secondary" role="status">
 </div>
 <div class="card card-primary">
@@ -151,7 +160,7 @@
                     setInterval(function() {
                         count--;
                         if (count == 0) {
-                            window.location = base_url + '/puesto';
+                            window.location = base_url + '/puestocatalogo?id=<?= $encrypt->Encrypt($Puesto->id) ?>';
                         }
                     }, 1000);
 

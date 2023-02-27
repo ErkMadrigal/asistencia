@@ -32,7 +32,10 @@ class Ubicacion extends BaseController {
 			$data['modulos'] = $this->menu->Permisos();
 			$empresa = session()->get('empresa');
 			$idEmpresa = $this->encrypter->decrypt($empresa);
-			$resultData = $this->modelUbica->GetUbicacion();
+			$getId = str_replace(" ", "+", $_GET['id']);
+			$idCliente = $this->encrypt->Decrytp($getId);
+			$resultData = $this->modelUbica->GetUbicacion($idCliente);
+			$cliente = $this->modelUbica->GetCliente($idCliente); 
 			$result = [];
 
 
@@ -46,12 +49,20 @@ class Ubicacion extends BaseController {
 					'activo' => $v->activo
 
 				) ;
+
+				
 			}
 		
 			$dataCrud = [
-                'data' => $result]; 
+                'data' => $result];
 
+            $data['cliente'] = $cliente;
+            $data['idCliente'] =  $this->encrypt->Encrypt($idCliente);
         	$data['ubicacion'] = $dataCrud['data'];
+
+        	$data['breadcrumb'] = ["inicio" => 'Clientes' ,
+                    				"url" => 'clientes',
+                    				"titulo" => 'Ubicaciones'];
 
 			
 			return view('Ubicacion/ubicacioncatalogo', $data);
@@ -68,10 +79,12 @@ class Ubicacion extends BaseController {
 			$idAdmin = session()->get('IdUser');
 
         	$data['ubicacion'] = $this->modelUbica->GetUbicacionById($id);
+
+        	
         	
 			
-			$data['breadcrumb'] = ["inicio" => 'Ubicacion' ,
-                    				"url" => 'ubicacion',
+			$data['breadcrumb'] = ["inicio" => 'Ubicaciones' ,
+                    				"url" => 'ubicacioncatalogo?id='.$this->encrypt->Encrypt($data['ubicacion']->id),
                     				"titulo" => 'Detalle'];
 		
 			return view('Ubicacion/detailUbicacion', $data);
@@ -93,8 +106,8 @@ class Ubicacion extends BaseController {
 
             $data['ubicacion'] = $this->modelUbica->GetUbicacionById($id);
 
-			$data['breadcrumb'] = ["inicio" => 'Ubicacion' ,
-                    				"url" => 'ubicacion',
+			$data['breadcrumb'] = ["inicio" => 'Ubicaciones' ,
+                    				"url" => 'ubicacioncatalogo?id='.$this->encrypt->Encrypt($data['ubicacion']->id),
                     				"titulo" => 'Editar'];
 			return view('Ubicacion/editUbicacion', $data);
 		}	
@@ -151,16 +164,15 @@ class Ubicacion extends BaseController {
 
             $getEmpresa = session()->get('empresa');
             $idEmpresa = $this->encrypter->decrypt($getEmpresa);
-
+            $getId = str_replace(" ", "+", $_GET['id']);
+			$idCliente = $this->encrypt->Decrytp($getId);
+			$cliente = $this->modelUbica->GetCliente($idCliente);
 			$data['modulos'] = $this->menu->Permisos();
 
+			$data['cliente'] = $cliente;
 
-			$data['cliente'] = $this->modelUbica->getClientes();
-            
-
-
-			$data['breadcrumb'] = ["inicio" => 'Ubicacion' ,
-                    				"url" => 'ubicacion',
+			$data['breadcrumb'] = ["inicio" => 'Ubicaciones' ,
+                    				"url" => 'ubicacioncatalogo?id='.$this->encrypt->Encrypt($idCliente),
                     				"titulo" => 'Agregar'];
 
 			

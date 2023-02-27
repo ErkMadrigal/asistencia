@@ -7,13 +7,13 @@
         <div class="col-12 col-sm-6 col-md-9 ">
         </div>
             <div class="col-12 col-sm-6 col-md-3">
-                <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/AddPuesto " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i> Agregar Puesto</a>
+                <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/AddPuesto?id=<?= $idCliente  ?> " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i> Agregar Puesto</a>
             </div>   
     </div>
 </div>
 <div class="card card-primary">
     <div class="card-header" id="tabMain">
-        <h3 class="card-title">Puesto</h3>
+        <h3 class="card-title">Puestos: <?= $cliente->razon_social ?></h3>
     
     <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -26,7 +26,6 @@
         <table id="dataGrid" class="table  text-center table-hover table-head-fixed text-nowrap">
             <thead>
             <tr>
-                <th>Cliente</th>
                 <th>Ubicacion</th>
                 <th>Turno</th>
                 <th>Puesto</th>
@@ -60,8 +59,7 @@ function estatusRenderer(data, type, full, meta) {
             language: {
                 url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
             },
-            columns: [{ data: "idCliente"
-                      },
+            columns: [
                       { data: "idUbicacion"
                       },
                       { data: "idTurno"

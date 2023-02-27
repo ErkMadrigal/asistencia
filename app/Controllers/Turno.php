@@ -32,7 +32,11 @@ class Turno extends BaseController {
 			$data['modulos'] = $this->menu->Permisos();
 			$empresa = session()->get('empresa');
 			$idEmpresa = $this->encrypter->decrypt($empresa);
-			$resultData = $this->modelTurno->GetTurnosAll();
+			$getId = str_replace(" ", "+", $_GET['id']);
+			$idCliente = $this->encrypt->Decrytp($getId);
+			$resultData = $this->modelTurno->GetTurnosAll($idCliente);
+			$cliente = $this->modelTurno->GetCliente($idCliente);
+
 			$result = [];
 
 
@@ -50,9 +54,15 @@ class Turno extends BaseController {
 			}
 		
 			$dataCrud = [
-                'data' => $result]; 
+                'data' => $result];
 
+            $data['cliente'] = $cliente;
+            $data['idCliente'] =  $this->encrypt->Encrypt($idCliente);    
         	$data['turno'] = $dataCrud['data'];
+
+        	$data['breadcrumb'] = ["inicio" => 'Clientes' ,
+                    				"url" => 'clientes',
+                    				"titulo" => 'Turnos'];
 
 			
 			return view('Turnos/turnos', $data);
@@ -71,8 +81,8 @@ class Turno extends BaseController {
         	$data['turno'] = $this->modelTurno->GetTurnoById($id);
         	
 			
-			$data['breadcrumb'] = ["inicio" => 'Turno' ,
-                    				"url" => 'turnos',
+			$data['breadcrumb'] = ["inicio" => 'Turnos' ,
+                    				"url" => 'turnocatalogo?id='.$this->encrypt->Encrypt($data['turno']->idCliente),
                     				"titulo" => 'Detalle'];
 		
 			return view('Turnos/detailTurnos', $data);
@@ -92,8 +102,8 @@ class Turno extends BaseController {
             $data['turno'] = $this->modelTurno->GetTurnoById($id);
             $data['id'] = $this->encrypt->Encrypt($id);
 
-			$data['breadcrumb'] = ["inicio" => 'Turno' ,
-                    				"url" => 'turnos',
+			$data['breadcrumb'] = ["inicio" => 'Turnos' ,
+                    				"url" => 'turnocatalogo?id='.$this->encrypt->Encrypt($data['turno']->idCliente),
                     				"titulo" => 'Editar'];
 			return view('Turnos/editTurnos', $data);
 		}	
@@ -152,14 +162,19 @@ class Turno extends BaseController {
 
 			$data['modulos'] = $this->menu->Permisos();
             
-			$data['cliente'] = $this->modelTurno->getClientes();
+            $getId = str_replace(" ", "+", $_GET['id']);
+			$idCliente = $this->encrypt->Decrytp($getId);
+			$cliente = $this->modelTurno->GetCliente($idCliente);
+
+			$data['cliente'] = $cliente;
 
 			$data['turnos'] = $this->modelTurno->GetTurnos();
+			$data['ubicaciones'] = $this->modelTurno->getUbicaciones($idCliente);
 
 			$data['horarios'] = $this->modelTurno->GetHorarios();
 
-			$data['breadcrumb'] = ["inicio" => 'Turno' ,
-                    				"url" => 'turnos',
+			$data['breadcrumb'] = ["inicio" => 'Turnos' ,
+                    				"url" => 'turnocatalogo?id='.$this->encrypt->Encrypt($idCliente),
                     				"titulo" => 'Agregar'];
 
 			

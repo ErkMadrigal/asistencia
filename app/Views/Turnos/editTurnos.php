@@ -1,5 +1,14 @@
 <?= $this->extend('includes/main') ?>
 <?= $this->section('content') ?>
+<?php
+
+use CodeIgniter\HTTP\RequestInterface;
+use App\Models\ArmasModel;
+use App\Libraries\Encrypt;
+
+ $encrypt = new Encrypt();
+
+?>
 <div id="load" class=" spinner text-secondary" role="status">
     </div>
 
@@ -118,7 +127,7 @@
                     setInterval(function(){
                       count--;
                       if (count == 0) {
-                        window.location = base_url + '/turnos'; 
+                        window.location = base_url + '/turnocatalogo?id=<?= $encrypt->Encrypt($turno->idCliente) ?>'; 
                       }
                     },1000);
 

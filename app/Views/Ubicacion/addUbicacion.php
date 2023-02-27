@@ -27,19 +27,11 @@ use App\Libraries\Encrypt;
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="cliente" class="control-label">Cliente: <span class="text-danger">*</span></label>
-                        <select class="form-control" id="cliente" name="cliente">
-                        <option value="">Seleccione un Cliente</option>';
-                        <?php
-                                if( !empty($cliente) ):
-                                    foreach($cliente as  $a){
-                                        $idCliente = $encrypt->Encrypt($a->id);?>
-                                            <option value="<?=$idCliente?>"><?= $a->razon_social ?></option>
-                                            <?php
-                                    }
-                                endif;?>
-                                    </select><script>$(document).ready(function() {
-                                        $("#cliente").select2({theme: "bootstrap4",width:"100%"});
-                                        });</script>
+                        <div>
+                            <?= $cliente->razon_social ?>
+                            <input type="hidden" class="form-control " id="cliente" name="cliente" value="<?= $encrypt->Encrypt($cliente->id)?>">
+                        </div>
+                        
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
@@ -193,7 +185,7 @@ use App\Libraries\Encrypt;
                     setInterval(function(){
                       count--; 
                       if (count == 0) {
-                        window.location = base_url + '/ubicacion'; 
+                        window.location = base_url + '/ubicacioncatalogo?id=<?= $encrypt->Encrypt($cliente->id) ?> '; 
                       }
                     },1000);
 

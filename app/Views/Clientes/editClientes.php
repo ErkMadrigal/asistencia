@@ -368,7 +368,7 @@
         } else {
             val = 0;
         }
-        var formData = new FormData($("form#frmMulticatalogo")[0]);
+        var formData = new FormData($("form#DatosPersonales")[0]);
         formData.append('activo', val);
 
         $.ajax({

@@ -195,7 +195,6 @@ return array(
     'PHPUnit\\Runner\\BaseTestRunner' => $vendorDir . '/phpunit/phpunit/src/Runner/BaseTestRunner.php',
     'PHPUnit\\Runner\\BeforeFirstTestHook' => $vendorDir . '/phpunit/phpunit/src/Runner/Hook/BeforeFirstTestHook.php',
     'PHPUnit\\Runner\\BeforeTestHook' => $vendorDir . '/phpunit/phpunit/src/Runner/Hook/BeforeTestHook.php',
-    'PHPUnit\\Runner\\DefaultTestResultCache' => $vendorDir . '/phpunit/phpunit/src/Runner/DefaultTestResultCache.php',
     'PHPUnit\\Runner\\Exception' => $vendorDir . '/phpunit/phpunit/src/Runner/Exception.php',
     'PHPUnit\\Runner\\Extension\\ExtensionHandler' => $vendorDir . '/phpunit/phpunit/src/Runner/Extension/ExtensionHandler.php',
     'PHPUnit\\Runner\\Extension\\PharLoader' => $vendorDir . '/phpunit/phpunit/src/Runner/Extension/PharLoader.php',

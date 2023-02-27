@@ -29,9 +29,11 @@
                 <th>Razón Social</th>
                 <th>Nombre Corto</th>
                 <th>Activo</th>
-                <th>Ubicación</th>
-                <th>Turno</th>
-                <th>Puesto</th>
+                <th>Ubicaciones</th>
+                <th>Turnos</th>
+                <th>Puestos</th>
+                <th>Editar</th>
+                <th>Consultar</th>
        		</tr>
             </thead>
         </table>
@@ -89,7 +91,7 @@ function estatusRenderer(data, type, full, meta) {
                     }
                 },
                     
-                     /* {  data: "edit",
+                      {  data: "edit",
                     render: function (data, type, full, meta) {
                     
                         return "<a href='" + base_url + "/editCliente?id=" + full.id + "' class='nav-link'><i class='fa fa-pencil-square-o nav-icon'></i>";
@@ -102,7 +104,7 @@ function estatusRenderer(data, type, full, meta) {
                         return "<a href='" + base_url + "/detailCliente?id=" + full.id + "' class='nav-link'><i class='fa fa-list-alt nav-icon'></i>";
                     
                     }
-                }*/
+                }
             ]
         });
 

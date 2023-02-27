@@ -41,7 +41,7 @@ class TurnoModel
 
     public function GetTurnoById($id){
         $builder = $this->db->table('turnos');
-        $builder->select("turnos.id, razon_social,catalogos_detalle.valor As turno,H.valor AS horario,cliente.nombre_corto,turnos.activo,ubicacion.nombre_ubicacion, turnos.createddate, turnos.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->select("cliente.id AS idCliente, turnos.id, razon_social,catalogos_detalle.valor As turno,H.valor AS horario,cliente.nombre_corto,turnos.activo,ubicacion.nombre_ubicacion, turnos.createddate, turnos.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
         $builder->join("cliente","turnos.idCliente = cliente.id","left");
         $builder->join("ubicacion","turnos.idUbicacion = ubicacion.id","left");
         $builder->join("catalogos_detalle","turnos.idTurnos = catalogos_detalle.id","left");
@@ -107,15 +107,24 @@ class TurnoModel
         
     }
 
-    public function GetTurnosAll(){
+    public function GetTurnosAll($idCliente){
         $builder = $this->db->table('turnos');
         $builder->select('turnos.id, razon_social,catalogos_detalle.valor As turno, turnos.activo,ubicacion.nombre_ubicacion');
         $builder->join("cliente","turnos.idCliente = cliente.id","left");
         $builder->join("ubicacion","turnos.idUbicacion = ubicacion.id","left");
         $builder->join("catalogos_detalle","turnos.idTurnos = catalogos_detalle.id","left");
+        $builder->where('turnos.idCliente',$idCliente);
         $builder->orderBy('razon_social');
         $builder->orderBy('turno');
         return $builder->get()->getResult();
+        
+    }
+
+    public function getCliente($idCliente){
+        $builder = $this->db->table('cliente');
+        $builder->select('id,razon_social');
+        $builder->where("id",$idCliente);
+        return $builder->get()->getRow();
         
     }
     

@@ -32,7 +32,10 @@ class Puesto extends BaseController {
 			$data['modulos'] = $this->menu->Permisos();
 			$empresa = session()->get('empresa');
 			$idEmpresa = $this->encrypter->decrypt($empresa);
-			$resultData = $this->modelPuesto->GetPuesto();
+			$getId = str_replace(" ", "+", $_GET['id']);
+			$idCliente = $this->encrypt->Decrytp($getId);
+			$resultData = $this->modelPuesto->GetPuesto($idCliente);
+			$cliente = $this->modelPuesto->GetCliente($idCliente);
 			$result = [];
 
 
@@ -51,9 +54,15 @@ class Puesto extends BaseController {
 			}
 		
 			$dataCrud = [
-                'data' => $result]; 
+                'data' => $result];
 
+            $data['cliente'] = $cliente;     
+            $data['idCliente'] =  $this->encrypt->Encrypt($idCliente);
         	$data['puesto'] = $dataCrud['data'];
+
+        	$data['breadcrumb'] = ["inicio" => 'Clientes' ,
+                    				"url" => 'clientes',
+                    				"titulo" => 'Puestos'];
 
 			
 			return view('Puesto/puesto', $data);
@@ -72,8 +81,8 @@ class Puesto extends BaseController {
         	$data['Puesto'] = $this->modelPuesto->GetPuestoById($id);
         	
 			
-			$data['breadcrumb'] = ["inicio" => 'Puesto' ,
-                    				"url" => 'puesto',
+			$data['breadcrumb'] = ["inicio" => 'Puestos' ,
+                    				"url" => 'puestocatalogo?id='.$this->encrypt->Encrypt($data['Puesto']->id),
                     				"titulo" => 'Detalle'];
 		
 			return view('Puesto/detailPuesto', $data);
@@ -93,8 +102,8 @@ class Puesto extends BaseController {
             $data['Puesto'] = $this->modelPuesto->GetPuestoById($id);
             $data['id'] = $this->encrypt->Encrypt($id);
 
-			$data['breadcrumb'] = ["inicio" => 'Puesto' ,
-                    				"url" => 'puesto',
+			$data['breadcrumb'] = ["inicio" => 'Puestos' ,
+                    				"url" => 'puestocatalogo?id='.$this->encrypt->Encrypt($data['Puesto']->id),
                     				"titulo" => 'Editar'];
 			return view('Puesto/editPuesto', $data);
 		}	
@@ -152,10 +161,14 @@ class Puesto extends BaseController {
 
 			$data['modulos'] = $this->menu->Permisos();
             
-			$data['cliente'] = $this->modelPuesto->getClientes();
+			$getId = str_replace(" ", "+", $_GET['id']);
+			$idCliente = $this->encrypt->Decrytp($getId);
+			$cliente = $this->modelPuesto->GetCliente($idCliente);
 
-			$data['breadcrumb'] = ["inicio" => 'Puesto' ,
-                    				"url" => 'puesto',
+			$data['cliente'] = $cliente;
+			$data['ubicaciones'] = $this->modelPuesto->getUbicaciones($idCliente);
+			$data['breadcrumb'] = ["inicio" => 'Puestos' ,
+                    				"url" => 'puestocatalogo?id='.$this->encrypt->Encrypt($idCliente),
                     				"titulo" => 'Agregar'];
 
 			

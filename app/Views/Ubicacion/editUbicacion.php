@@ -1,5 +1,14 @@
 <?= $this->extend('includes/main') ?>
 <?= $this->section('content') ?>
+<?php
+
+use CodeIgniter\HTTP\RequestInterface;
+use App\Models\ArmasModel;
+use App\Libraries\Encrypt;
+
+ $encrypt = new Encrypt();
+
+?>
 <div id="load" class=" spinner text-secondary" role="status">
 </div>
 
@@ -100,49 +109,50 @@
                     </script>
                 </div>
             </div>
-        </div>
+            
 
-        <div class='col-6 col-sm-6'>
-            <div class="form-group">
-                <label for="ciudadcodigo" class="control-label">Ciudad: </label>
-                <div>
-                    <input type="text" class="form-control " disabled id="colonia" name="colonia" value="<?= $ubicacion->ciudad ?>">
-                </div>
-                <script>
-                    $(document).ready(function() {
-                        $("#ciudadcodigo").select2({
-                            theme: "bootstrap4",
-                            width: "100%"
+            <div class='col-6 col-sm-6'>
+                <div class="form-group">
+                    <label for="ciudadcodigo" class="control-label">Ciudad: </label>
+                    <div>
+                        <input type="text" class="form-control " disabled id="colonia" name="colonia" value="<?= $ubicacion->ciudad ?>">
+                    </div>
+                    <script>
+                        $(document).ready(function() {
+                            $("#ciudadcodigo").select2({
+                                theme: "bootstrap4",
+                                width: "100%"
+                            });
                         });
-                    });
-                </script>
+                    </script>
+                </div>
             </div>
-        </div>
 
-        <div class='col-6 col-sm-6'>
-            <div class="form-group">
-                <label for="estadocodigo" class="control-label">Estado: </label>
-                <div>
-                    <input type="text" class="form-control " disabled id="colonia" name="colonia" value="<?= $ubicacion->nombre_ubicacion ?>">
-                </div>
-                <script>
-                    $(document).ready(function() {
-                        $("#estadocodigo").select2({
-                            theme: "bootstrap4",
-                            width: "100%"
+            <div class='col-6 col-sm-6'>
+                <div class="form-group">
+                    <label for="estadocodigo" class="control-label">Estado: </label>
+                    <div>
+                        <input type="text" class="form-control " disabled id="colonia" name="colonia" value="<?= $ubicacion->nombre_ubicacion ?>">
+                    </div>
+                    <script>
+                        $(document).ready(function() {
+                            $("#estadocodigo").select2({
+                                theme: "bootstrap4",
+                                width: "100%"
+                            });
                         });
-                    });
-                </script>
-            </div>
-        </div>
-        <div class='col-12 col-sm-6'>
-            <div class="form-group">
-                <label for="Activo" class="control-label">Activo:</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="activo" name="activo" <?= ($ubicacion->activo == 1 ? 'checked' : '') ?>>
+                    </script>
                 </div>
             </div>
-        </div>
+            <div class='col-12 col-sm-6'>
+                <div class="form-group">
+                    <label for="Activo" class="control-label">Activo:</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="activo" name="activo" <?= ($ubicacion->activo == 1 ? 'checked' : '') ?>>
+                    </div>
+                </div>
+            </div>
+        </div>    
         <div class="card-footer bg-transparent clearfix">
             <div class="row">
 
@@ -188,7 +198,7 @@
                         setInterval(function() {
                             count--;
                             if (count == 0) {
-                                window.location = base_url + '/ubicacion';
+                                window.location = base_url + '/ubicacioncatalogo?id=<?= $encrypt->Encrypt($ubicacion->id) ?>';
                             }
                         }, 1000);
 

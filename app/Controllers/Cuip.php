@@ -10,6 +10,7 @@ use Ramsey\Uuid\Provider\Node\StaticNodeProvider;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
+
 class Cuip extends BaseController { 
 
     private $encrypter;
@@ -2966,7 +2967,7 @@ $idPersonal = $getIdPersonal;
 
 		
 
-		$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($getRuta.$newFile_name);;
+		$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($getRuta.$newFile_name);
 
 		$sheet = $spreadsheet->getActiveSheet();
 
@@ -3151,7 +3152,9 @@ $idPersonal = $getIdPersonal;
 					'primer_nombre' => $v->primer_nombre,
 					'segundo_nombre' => $v->segundo_nombre,
                     'apellido_paterno' => $v->apellido_paterno,
-                    'apellido_materno' => $v->apellido_materno
+                    'apellido_materno' => $v->apellido_materno,
+                    'respuesta' => $v->respuesta,
+                    'fecha_consulta' => $v->fecha_consulta
 				) ;
 			}
 		
@@ -3176,63 +3179,67 @@ $idPersonal = $getIdPersonal;
 		$file_name = 'PRECONSULTA.xlsx';
 		$newFile_name = 'F_PRECONSULTA.xlsx';
 
-
-
 		if($data){
 
-		
-
-		if (copy($getRuta.$file_name, $getRuta.$newFile_name)) {
+			if (copy($getRuta.$file_name, $getRuta.$newFile_name)) {
 
 		
+				$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($getRuta.$newFile_name);;
 
-		
-
-		$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($getRuta.$newFile_name);;
-
-		$sheet = $spreadsheet->getActiveSheet();
+				$sheet = $spreadsheet->getActiveSheet();
 
 		
 
-		$count = 12;
-		$i = 1;
+				$count = 12;
+				$i = 1;
 
-		foreach($data as $row)
-		{
+				foreach($data as $row){
 			
-			$sheet->setCellValue('A' . $count, $i);
+					$sheet->setCellValue('A' . $count, $i);
 
-			$sheet->setCellValue('B' . $count, $row->apellido_paterno);
+					$sheet->setCellValue('B' . $count, $row->apellido_paterno);
 
-			$sheet->setCellValue('C' . $count, $row->apellido_materno);
+					$sheet->setCellValue('C' . $count, $row->apellido_materno);
 
-			$sheet->setCellValue('D' . $count, $row->nombre);
+					$sheet->setCellValue('D' . $count, $row->nombre);
 
-			$sheet->setCellValue('E' . $count, $row->curp);
+					$sheet->setCellValue('E' . $count, $row->curp);
 
-			$sheet->setCellValue('F' . $count, $row->rfc);
+					$sheet->setCellValue('F' . $count, $row->rfc);
 
-			$sheet->setCellValue('G' . $count, date( "d/m/Y" ,strtotime($row->fecha_nacimiento)));
+					$sheet->setCellValue('G' . $count, date( "d/m/Y" ,strtotime($row->fecha_nacimiento)));
+
+					$fecha = array(
+			         				
+						"fecha_consulta" => date("Y-m-d H:i:s"));
+
+	        		$curp = $row->curp;
+
+					$result = $this->modelCuip->updateFechaConsulta($fecha, $curp);
+
+					$count++;
+					$i++;
+				}
+
+				$writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
+		
+				$writer->save($getRuta.$newFile_name);
 
 		
+				$this->response->setHeader('Content-Type', 'application/vnd.ms-excel');
 
-			$count++;
-			$i++;
-		}
-
-		$writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
 
 		
-		
-		$writer->save($getRuta.$newFile_name);
+				readfile($getRuta.$newFile_name);
 
-		
-		$this->response->setHeader('Content-Type', 'application/vnd.ms-excel');
 
-		
+
+
+				
+			} 
+
+				
 			
-		readfile($getRuta.$newFile_name);
-		}
 		}
 	}
 
@@ -3249,5 +3256,179 @@ $idPersonal = $getIdPersonal;
 	}
 
 
+	public function cargaRespuestasPre(){
+		
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['InputFile'],FILTER_SANITIZE_STRING)){
 
-}
+			$rules = [
+				'InputFile' =>  ['label' => 'Archivo', 'rules' => 'uploaded[InputFile]|max_size[InputFile,10000]|ext_in[InputFile,xlsx,csv]']];
+				
+				$errors = [];
+				$succes = [];
+				$dontSucces = [];
+				$data = [];
+
+				if($this->validate($rules)){
+
+        			$file = $this->request->getFile('InputFile');
+
+        			if ($file->isValid() && !$file->hasMoved()){
+
+        				$getUser = session()->get('IdUser');
+						$LoggedUserId = $this->encrypter->decrypt($getUser);
+        			 	$newName = 'Respuesta'.$LoggedUserId;
+                		$file->move(WRITEPATH . 'uploads/csvfile', $newName);
+                		
+                		$getRuta = WRITEPATH . 'uploads/csvfile/';
+                		
+						$inputFileType = \PhpOffice\PhpSpreadsheet\IOFactory::identify($getRuta.$newName);
+
+						$objReader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputFileType);
+
+
+ 						$objPHPExcel = $objReader->load($getRuta.$newName);
+	 					$sheet = $objPHPExcel->getSheet(0); 
+	 					$highestRow = $sheet->getHighestRow();
+	 
+	 					
+	 					for ($row = 2; $row <= $highestRow; $row++){ 
+	   
+	 	
+	 						$respuesta = array(
+			         				
+								"respuesta" => $sheet->getCell("I".$row)->getValue());
+
+	                		$curp = $sheet->getCell("H".$row)->getValue();
+
+							$result = $this->modelCuip->updateRespuesta($respuesta, $curp);
+	           
+	        
+	     				}
+
+
+	                	$msg = 'Respuestas cargadas correctamente';
+	            			
+	                    $succes = ["mensaje" =>  $msg ,
+	                            	   "succes" => "succes"];
+
+	                } else {
+	                	$dontSucces = ["error" => "error",
+	                    				  "mensaje" => 'Hubo un error al cargar las respuestas' ];
+
+	                }
+
+
+				} else {	
+						
+					$errors = $this->validator->getErrors();
+				}
+
+					echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+
+
+				
+			}	
+		}
+
+
+		public function valPreconsulta(){
+		
+		if ($this->request->getMethod() == "post"){
+				
+			$errors = [];
+			$succes = [];
+			$dontSucces = [];
+			$data = [];
+
+				
+			$data = $this->modelCuip->GetPreConsulta();
+        			
+        	if ($data){
+
+	            $succes = ["mensaje" =>  "" ,
+	                            	   "succes" => "succes"];
+
+	        } else {
+	                	
+	            $dontSucces = ["error" => "error",
+	                  			 "mensaje" => 'Ningun registro encontrado' ];
+
+	        }
+
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+
+
+				
+			}	
+		}
+
+
+		public function valBajas(){
+		
+		if ($this->request->getMethod() == "post"){
+				
+			$errors = [];
+			$succes = [];
+			$dontSucces = [];
+			$data = [];
+
+				
+			$data = $this->modelCuip->GetBajas();
+        			
+        	if ($data){
+
+	            $succes = ["mensaje" =>  "" ,
+	                            	   "succes" => "succes"];
+
+	        } else {
+	                	
+	            $dontSucces = ["error" => "error",
+	                  			 "mensaje" => 'Ningun registro encontrado' ];
+
+	        }
+
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+
+
+				
+			}	
+		}
+
+
+		function bajasExport(){
+
+			$data = $this->modelCuip->GetBajas();
+
+
+			if($data){
+
+				$phpWord = new \PhpOffice\PhpWord\PhpWord();
+        		$template = new \PhpOffice\PhpWord\TemplateProcessor(WRITEPATH . 'uploads/files/SEGURIDAD_PRIVADA_PARA_BAJAS.docx');
+
+        		$getRuta = WRITEPATH . 'uploads/files/';
+        		$temp_filename = 'SEGURIDAD_PRIVADA_BAJAS.docx';
+        		
+
+        		foreach($data as $row){
+
+					$empresa = 'SERVICIOS TERRESTRES DE SEGURIDAD PRIVADA S.A. DE C.V. ';
+					$respuesta = $row->respuesta;
+					$baja = 'VOLUNTARIA';
+
+        			$template->setValue('empresa', $empresa);
+        			$template->setValue('respuesta', $respuesta);
+        			$template->setValue('baja', $baja);
+
+        			$template->saveAs($getRuta.$temp_filename);
+
+        			$this->response->setHeader('Content-Type', 'application/msword');
+
+        			readfile($getRuta.$temp_filename);
+        			
+        		}
+			}
+		}
+
+
+
+	}

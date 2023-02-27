@@ -322,7 +322,7 @@
         <div class="col-12 col-sm-6 col-md-9">
             
         </div>
-        <div class="col-12 col-sm-6 col-md-3 ">    
+        <div class="col-12 col-sm-6 col-md-3">    
             <button id="saveCliente" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" ></i>&nbsp;&nbsp;Guardar</button>
         </div>
     </div>    

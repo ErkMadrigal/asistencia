@@ -118,7 +118,9 @@ $routes->post('eliminaDocumento', 'CargaMasiva::deleteDocumento',['filter' => 'a
 $routes->get('exportCuip', 'Cuip::export',['filter' => 'auth']);
 $routes->get('preconsulta', 'Cuip::GetPreconsulta',['filter' => 'auth']);
 $routes->get('exportPreconsulta', 'Cuip::exportPreconsulta',['filter' => 'auth']);
-
+$routes->post('validaPreconsulta', 'Cuip::valPreconsulta',['filter' => 'auth']);
+$routes->get('exportBajas', 'Cuip::bajasExport',['filter' => 'auth']);
+$routes->post('validaBajas', 'Cuip::valBajas',['filter' => 'auth']);
 $routes->get('referencias', 'Referencia::GetReferencias',['filter' => 'auth']);
 $routes->get('detailReferencia', 'Referencia::DetalleReferencia',['filter' => 'auth']);
 $routes->get('editReferencia', 'Referencia::EditarReferencia',['filter' => 'auth']);
@@ -187,6 +189,7 @@ $routes->post('detalleComisionista', 'Comision::detail',['filter' => 'auth']);
 $routes->post('detalleComisionistaAsignacion', 'Comision::detailAC',['filter' => 'auth']);
 $routes->post('asignarComision', 'Comision::asignarComision',['filter' => 'auth']);
 $routes->get('sendEmail', 'Administrador::sendEmailTest',['filter' => 'auth']);
+$routes->post('cargarRespuestasConsulta', 'Cuip::cargaRespuestasPre',['filter' => 'auth']);
 
 
 

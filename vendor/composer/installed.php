@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '429ba487bf833ab2beeed2f2fe303570c00b9b80',
+        'reference' => 'b54546f32331b2cc8bdd390addaf0fd5cbb16da2',
         'name' => 'codeigniter4/appstarter',
         'dev' => true,
     ),
@@ -25,7 +25,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '429ba487bf833ab2beeed2f2fe303570c00b9b80',
+            'reference' => 'b54546f32331b2cc8bdd390addaf0fd5cbb16da2',
             'dev_requirement' => false,
         ),
         'codeigniter4/framework' => array(
@@ -170,6 +170,15 @@
             'install_path' => __DIR__ . '/../phpoffice/phpspreadsheet',
             'aliases' => array(),
             'reference' => 'a317a09e7def49852400a4b3eca4a4b0790ceeb5',
+            'dev_requirement' => false,
+        ),
+        'phpoffice/phpword' => array(
+            'pretty_version' => '1.0.0',
+            'version' => '1.0.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpoffice/phpword',
+            'aliases' => array(),
+            'reference' => '8521612b39edeec9055d3688ad555342a40857dd',
             'dev_requirement' => false,
         ),
         'phpunit/php-code-coverage' => array(
