@@ -30,7 +30,7 @@
                 <th>Marca</th>
                 <th>Matricula</th>
                 <th>Folio-Manif</th>
-                <th>Activo</th>
+                <th>Asignado</th>
                 <th>Editar</th>
                 <th>Detalle</th>
        		</tr>
@@ -41,18 +41,18 @@
 </div>
 
 <script>
-function estatusRenderer(data, type, full, meta) {
-    var src;
-    
-    if (full.activo == 1) {
-        src = "<i class=\'fa fa-check-circle\'></i>";
-    } else  {
-        src = "<i class=\'fa fa-times-circle\'></i>";
-    } 
+    const  estatusRenderer = (data, type, full, meta) => {
+        var src;
+        
+        if (full.activo == 1) {
+            src = "<i class='fa fa-times-circle text-danger'></i>";
+        } else  {
+            src = "<i class='fa fa-check-circle text-success'></i>";
+        } 
 
-   
-    return src;
-}
+        return src;
+    }
+
 	var table = $('#dataGrid').DataTable({
             data: <?= json_encode($arma) ?> ,
             deferRender: true,

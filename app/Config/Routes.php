@@ -172,6 +172,7 @@ $routes->get('puestocatalogo', 'Puesto::GetPuestos',['filter' => 'auth']);
 
 $routes->get('asignaciones', 'Asignaciones::index',['filter' => 'auth']);
 $routes->post('buscarData', 'Asignaciones::buscarData',['filter' => 'auth']);
+$routes->post('getAllDataSearch', 'Asignaciones::getAllDataSearch',['filter' => 'auth']);
 
 $routes->get('addAsignacion', 'Asignaciones::add',['filter' => 'auth']);
 $routes->post('addDataAsignacion', 'Asignaciones::setData',['filter' => 'auth']);
@@ -185,6 +186,7 @@ $routes->get('comisionista', 'Comision::index',['filter' => 'auth']);
 $routes->post('addComisionista', 'Comision::setData',['filter' => 'auth']);
 $routes->post('UpdateComisionista', 'Comision::update',['filter' => 'auth']);
 $routes->post('deleteComisionista', 'Comision::delete',['filter' => 'auth']);
+$routes->post('detallesPagos', 'Comision::detallesPagos',['filter' => 'auth']);
 $routes->post('detalleComisionista', 'Comision::detail',['filter' => 'auth']);
 $routes->post('detalleComisionistaAsignacion', 'Comision::detailAC',['filter' => 'auth']);
 $routes->post('asignarComision', 'Comision::asignarComision',['filter' => 'auth']);

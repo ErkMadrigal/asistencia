@@ -34,7 +34,8 @@ class ArmasModel
 
     public function GetArmaById($id){
         $builder = $this->db->table('armas');
-        $builder->select("armas.matricula, armas.folio_manif,armas.activo,CL.valor AS clase,CA.valor AS calibre,M.valor AS marca,MO.valor AS modelo, armas.createddate, armas.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->select("armas.matricula, armas.folio_manif,armas.activo,CL.valor AS clase,CA.valor AS calibre,M.valor AS marca,MO.valor AS modelo, armas.createddate, armas.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby,  CONCAT(dp.primer_nombre,' ' ,dp.apellido_paterno) portador, dp.Cuip");
+        $builder->join("datos_personales dp"," armas.id_portador = dp.id ","left");
         $builder->join("catalogos_detalle CL"," armas.idClase= CL.id  ","left");
         $builder->join("catalogos_detalle CA","armas.idCalibre = CA.id","left");
         $builder->join("catalogos_detalle M"," armas.idMarca= M.id  ","left");

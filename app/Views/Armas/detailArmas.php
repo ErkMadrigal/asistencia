@@ -67,9 +67,22 @@
                         <div class="form-group">
                             <label for="Activo" class="control-label">Activo: </label>
                             <div class="form-check" >
-                            <input class=""  onclick="return false;" type="checkbox" <?=($arma->activo == 1 ? "checked" : "" ) ?>>                            </div>
+                                <input class=""  onclick="return false;" type="checkbox" <?=($arma->activo == 1 ? "checked" : "" ) ?>>                            
+                            </div>
                         </div>
                     </div>
+                    <?php if($arma->portador != ''):?>
+                    <div class='col-12 col-sm-6'>    
+                        <div class="form-group">
+                            <label for="Activo" class="control-label">Protador </label>
+                            <div class="form-check" >
+                                <?= $arma->portador ?> <br>
+                                <b>Cuip: <?= $arma->Cuip ?></b>
+
+                            </div>
+                        </div>
+                    </div>
+                    <?php endif;?>
                 </div>        
             </form>
         </div>

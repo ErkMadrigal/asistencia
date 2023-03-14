@@ -51,10 +51,12 @@ class ComisionModel
         return $builder->get()->getResult();
     }
 
+
     public function getDataComisionistaAsignacion($idComision, $idAsignacion){
         $builder = $this->db->table('asignaciones asg ');
-        $builder->select("com.id idComision, asg.id idAsignacion, asg.comision_asignado, asg.comision, arm.matricula matricula, cCls.valor clase, cCal.valor calibre, cMar.valor marca, cMod.valor modelo, dPer.primer_nombre, dPer.apellido_paterno, dPer.apellido_materno, cli.nombre_corto, com.nombre");
+        $builder->select("com.id idComision, asg.id idAsignacion, asg.comision, arm.matricula matricula, cCls.valor clase, cCal.valor calibre, cMar.valor marca, cMod.valor modelo, dPer.primer_nombre, dPer.apellido_paterno, dPer.apellido_materno, cli.nombre_corto, com.nombre, sum(cp.aplicado) aplicado");
         $builder->join("comision com","com.id = asg.id_comisionista", "left");
+        $builder->join("compromiso_pago cp","asg.id = cp.id_asignacion", "left");
         $builder->join("armas arm","arm.id = asg.id_armas", "left");
         $builder->join("catalogos_detalle cCls","cCls.id = arm.idClase", "left");
         $builder->join("catalogos_detalle cCal","cCal.id = arm.idCalibre", "left");
@@ -62,22 +64,43 @@ class ComisionModel
         $builder->join("catalogos_detalle cMod","cMod.id = arm.idModelo", "left");
         $builder->join("datos_personales dPer","dPer.id = arm.id_portador", "left");
         $builder->join("cliente cli","cli.id = asg.idCliente", "left");
+        $builder->where("cp.concepto", 'Pago Comision');
+        $builder->where("cp.id_asignacion", $idAsignacion);
         $builder->where("com.id", $idComision);
         $builder->where("asg.id", $idAsignacion);
         return $builder->get()->getResult();
     }
 
+    public function getHitorialPagos($idAsignacion){
+        $builder = $this->db->table('compromiso_pago');
+        $builder->where("concepto", 'Pago Comision');
+        $builder->where("id_asignacion", $idAsignacion);
+        return $builder->get()->getResult();
+    }
+
     public function getMonto($idAsignacion){
         $builder = $this->db->table('asignaciones');
-        $builder->select("comision, comision_asignado comisionAS");
+        $builder->select("comision");
         $builder->where("id", $idAsignacion);
         return $builder->get()->getResult();
     }
 
-    public function asignarMonto( $update, $id ){
+    public function asignarMonto( $insert ){
 
         $return = false;
-        $this->db->table('asignaciones')->where('id', $id)->update($update);
+        $this->db->table('compromiso_pago')->insert($insert);
+
+        if ($this->db->affectedRows() > 0){
+            $return = true;
+            
+        } 
+
+        return $return; 
+    }
+    public function modificarMonto( $update, $id ){
+
+        $return = false;
+        $this->db->table('comision')->where('id', $id)->update($update);
 
         if ($this->db->affectedRows() > 0){
             $return = true;

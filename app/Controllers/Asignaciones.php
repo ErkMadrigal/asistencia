@@ -82,6 +82,51 @@ class Asignaciones extends BaseController{
 		}
     }
 
+    public function getAllDataSearch(){
+        if ($this->request->getMethod() == "post"){
+            $errors = [];
+            $succes = [];
+            $dontSucces = [];
+            $data = [];
+			$validate = [];
+
+
+
+            $dataGet = array(
+                "periodicidad" =>  empty($_POST["periodicidad"]) ? '': $_POST["periodicidad"],
+                "fechaInicial" =>  empty($_POST["fechaInicial"]) ? '': $_POST["fechaInicial"],
+                "fechaFinal" =>  empty($_POST["fechaFinal"]) ? '': $_POST["fechaFinal"],
+                "tipoFecha" =>  empty($_POST["tipoFecha"]) ? '': $_POST["tipoFecha"],
+                "activo" =>  empty($_POST["clasificacion"]) ? '': $_POST["clasificacion"],
+            );		
+
+            if($_POST["tipoFecha"] != ''){
+                if($_POST["fechaInicial"] == ''){
+                    array_push($validate, 1);
+                }
+                
+                if($_POST["fechaFinal"] == ''){
+                    array_push($validate, 1);
+                }
+            }
+            if(count($validate) == 0 ){
+                $select['asig'] = $this->modelAsign->getCountAsignacionesBusc($dataGet);
+			    $select['sumSA'] = $this->modelAsign->getSumSaldoAplicadoBusc($dataGet);
+                if ($select['asig'] && $select['sumSA']) {
+                    $succes = ["mensaje" => 'Exito', "succes" => "succes"];
+                    $data = $select;
+                } else {
+                    $dontSucces = ["error" => "error", "mensaje" => 'Sin Informacion.'];
+                }
+            }else{
+				$dontSucces = ["error" => "error", "mensaje" => 'Es Requerido Seleccionar las 2 Fechas'];
+
+            }
+				
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+		}
+    }
+
     public function getAllData(){
         if ($this->request->getMethod() == "get"){
 			
@@ -432,6 +477,7 @@ class Asignaciones extends BaseController{
 			$idAdmin = session()->get('IdUser');
 
 			$data['datos'] = $this->modelAsign->getData($id);
+			$data['datosRentaUnitaria'] = $this->modelAsign->getDataRentaUnitaria($id);
 			$data['getById'] = $this->modelAsign->getById($id);
 			$data['datosPagos'] = $this->modelAsign->getPagos($id);
 

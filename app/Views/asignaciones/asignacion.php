@@ -141,13 +141,13 @@
                 </div>
             </div>
             <div class="col-4 col-sm-4 col-md-3">
-                <div class="card borderLeftSuccess">
+                <div class="card borderLeftDanger">
                     <div class="card-body p-3">
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Aplicado</p>
-                                    <h5 class="font-weight-bolder mb-0" id="aplicado">
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Saldo</p>
+                                    <h5 class="font-weight-bolder mb-0" id="saldo">
                                         
                                     </h5>
                                 </div>
@@ -162,13 +162,13 @@
                 </div>
             </div>
             <div class="col-4 col-sm-4 col-md-3">
-                <div class="card borderLeftDanger">
+                <div class="card borderLeftSuccess">
                     <div class="card-body p-3">
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Saldo</p>
-                                    <h5 class="font-weight-bolder mb-0" id="saldo">
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Aplicado</p>
+                                    <h5 class="font-weight-bolder mb-0" id="aplicado">
                                         
                                     </h5>
                                 </div>
@@ -216,10 +216,12 @@
             </div>
         </div>
         <!-- /.card-header -->
-        <div class="card-body table-responsive ">
+        <div class="card-body">
             <table id="dataGrid" class="table stripe text-center table-hover table-head-fixed text-nowrap">
                 <thead>
                 <tr>
+                    <th>Detalles</th>
+                    <th>Pago</th>
                     <th>Cliente</th>
                     <th>Elemento</th>
                     <th>Arma</th>
@@ -239,9 +241,7 @@
                     <th>Comisionista</th>
                     <th>Comision</th>
                     <th>Activo</th>
-                    <th>Pago</th>
                     <th>Eliminar</th>
-                    <th>Detalles</th>
                 </tr>
                 </thead>
             </table>
@@ -285,6 +285,7 @@
         let Allsaldo = document.querySelector("#saldo")
         let Allaplicado = document.querySelector("#aplicado")
         let AlltotalAsignaciones = document.querySelector("#totalAsignaciones")
+
         let btnMostrar = document.querySelector("#btnMostrar")
         let btnLimpiar = document.querySelector("#btnLimpiar")
         
@@ -352,14 +353,30 @@
                 deferRender: true,
                 scrollX: true,
                 paging: false,
+                scrollCollapse: true,
                 fixedColumns:   {
-                    leftColumns: 2,
+                    left: 2//Le indico que deje fijas solo las 2 primeras columnas
                 },
                 language: {
                     url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
                 },
                 pageLength: 5,
-                columns: [{ data: "cliente"},
+                columns: [
+                            { data: "detail",
+                                render: (data, type, full, meta) => {
+                        
+                                    return "<a href='" + base_url + "/detailAsignacion?id=" + full.id + "' class='nav-link'><i class='fa fa-list-alt nav-icon'></i>";
+                        
+                                }
+                            },
+                            {  data: "Pago",
+                                render: (data, type, full, meta) => {
+                                    
+                                    return `<button data-toggle='modal' data-target='#exampleModal' onclick='asignData("${full.id}")' class='nav-link btn btn-link'><i class='fa fa-dollar nav-icon'></i></button>`;
+                                    
+                                }
+                            },
+                            { data: "cliente"},
                             { data: "nombre"},
                             { data: "arma"},
                             { data: "tipo_pago"},
@@ -378,26 +395,13 @@
                             { data: "nomComisionista"},
                             { data: "comision"},
                             { data: "activo", render: estatusRenderer },
-                            {  data: "Pago",
-                                render: (data, type, full, meta) => {
-                                    
-                                    return `<button data-toggle='modal' data-target='#exampleModal' onclick='asignData("${full.id}")' class='nav-link btn btn-link'><i class='fa fa-dollar nav-icon'></i></button>`;
-                                    
-                                }
-                            }, 
+                            
                             {  data: "eliminar",
                                 render: (data, type, full, meta) => {
                                     return `<button onclick='eliminar("${full.id}", "${full.aplicado}", "${full.idArma}")' class='nav-link btn btn-link'><i class='fa fa-trash nav-icon'></i></button>`;
                         
                                 }
                             }, 
-                            { data: "detail",
-                                render: (data, type, full, meta) => {
-                        
-                                    return "<a href='" + base_url + "/detailAsignacion?id=" + full.id + "' class='nav-link'><i class='fa fa-list-alt nav-icon'></i>";
-                        
-                                }
-                            }
                             
                         ]
             });
@@ -611,6 +615,29 @@
                     
                     $('#loadBtn').hide();
                             
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    toastr.error('<?=lang('Layout.toastrError') ?>');
+                    $('#loadBtn').hide();           
+                }
+            });
+
+            $.ajax({
+                url: base_url + '/getAllDataSearch',
+                type: 'POST',
+                dataType: 'json',
+                data: formData,
+                cache: false,
+                async: true,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if(response.succes.succes == 'succes'){
+                        AlltotalGeneral.innerHTML = `$ ${numeral(response.data.sumSA[0].total).format('0,0')} `
+                        Allsaldo.innerHTML = `$ ${numeral(response.data.sumSA[0].saldo).format('0,0')} `
+                        Allaplicado.innerHTML = `$ ${numeral(response.data.sumSA[0].aplicado).format('0,0')} `
+                        AlltotalAsignaciones.innerHTML = `${response.data.asig[0].totalAsign}`
+                    }    
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     toastr.error('<?=lang('Layout.toastrError') ?>');

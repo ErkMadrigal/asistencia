@@ -382,10 +382,10 @@
                             </div>`;
                         
                         if(response.detail.length){
-                            tableArms = `<table class="table" id="dataTableArms"> <thead><tr><th>Arma</th><th>Resta</th><th>Acción</th></tr></thead><tbody>`
-                            response.detail.forEach( dt => {
+                            tableArms = `<table class="table" id="dataTableArms"> <thead><tr><th>Arma</th><th>Comision Total</th><th>Acción</th></tr></thead><tbody>`
+                            response.detail.forEach( (dt, index) => {
                                 tableArms += `<tr>
-                                    <td>${dt.clase} ${dt.marca} ${dt.calibre}</td>
+                                    <td>${dt.clase} ${dt.marca} ${dt.calibre} <br> Matricula: <span class="badge badge-dark">${dt.matricula}</span></td>
                                     <td>${dt.comision}</td>
                                     <td><button class="btn btn-primary btn-sm" onclick="detallesComision('${dt.idComision}','${dt.idAsignacion}')"><i class='fa fa-list-alt nav-icon'></i> &nbsp;&nbsp;&nbsp; Detalles</button></td>
                                 </tr>`
@@ -408,6 +408,9 @@
                         })
                         
                         modalBody.innerHTML=`
+                            <br>
+                            <hr>
+                            <bt>
                             <div class="row callout callout-warning m-3">
                                 <div class='col-12 col-sm-6'>
                                     <div class="form-group">
@@ -465,7 +468,7 @@
             modalBody.innerHTML = ''
             modalCenter.innerHTML = ''
             modalCenter.classList.remove("card-columns")
-
+            let saldo = 0;
             var formData = new FormData($("form#frmComisionista")[0]);
             formData.append("idComision", idComision)
             formData.append("idAsignacion", idAsignacion)
@@ -484,38 +487,48 @@
                         
                         if(response.data.length){
                             response.data.forEach( dt => {
+                                saldo = dt.comision-dt.aplicado
                                 modalCenter.innerHTML +=`
                                     <div class="card">
                                         <div class="card-body row">
-                                            <div class='col-12 col-sm-3'>
+                                            
+                                            
+                                            <div class='col-12 col-sm-4 mt-4'>
                                                 <div class="form-group">
                                                     <i class="m-2 fa fa-dollar " aria-hidden="true"></i>
-                                                    <label for="updateddate" class="control-label">Aportado</label>
-                                                    <p class="ml-5">${dt.comision_asignado}</p>
-                                                </div>
-                                            </div>
-                                            <div class='col-12 col-sm-3'>
-                                                <div class="form-group">
-                                                    <i class="m-2 fa fa-dollar " aria-hidden="true"></i>
-                                                    <label for="updateddate" class="control-label">Comisión</label>
+                                                    <label for="updateddate" class="control-label">Comisión Total</label>
                                                     <p class="ml-5">${dt.comision}</p>
                                                 </div>
                                             </div>
-                                            <div class='col-12 col-sm-6'>
+                                            <div class='col-12 col-sm-4 mt-4'>
+                                                <div class="form-group">
+                                                    <i class="m-2 fa fa-dollar " aria-hidden="true"></i>
+                                                    <label for="updateddate" class="control-label">Restante</label>
+                                                    <p class="ml-5">${dt.comision-dt.aplicado}</p>
+                                                </div>
+                                            </div>
+                                            <div class='col-12 col-sm-4 mt-4'>
+                                                <div class="form-group">
+                                                    <i class="m-2 fa fa-dollar " aria-hidden="true"></i>
+                                                    <label for="updateddate" class="control-label">Aportado</label>
+                                                    <p class="ml-5">${dt.aplicado == null ? '' : dt.aplicado }</p>
+                                                </div>
+                                            </div>
+                                            <div class='col-12 col-sm-6 mt-4'>
                                                 <div class="form-group">
                                                     <i class="m-2 fa fa-user " aria-hidden="true"></i>
                                                     <label for="updateddate" class="control-label">Elemento</label>
                                                     <p class="ml-5">${dt.primer_nombre} ${dt.apellido_paterno} ${dt.apellido_materno} <b></b></p>
                                                 </div>
                                             </div>
-                                            <div class='col-12 col-sm-6'>
+                                            <div class='col-12 col-sm-6 mt-4'>
                                                 <div class="form-group">
                                                     <i class="m-2 fa fa-building " aria-hidden="true"></i>
                                                     <label for="updateddate" class="control-label">Cliente</label>
                                                     <p class="ml-5">${dt.nombre_corto}</p>
                                                 </div>
                                             </div>
-                                            <div class='col-12 col-sm-6'>
+                                            <div class='col-12 col-sm-12 mt-4'>
                                                 <div class="form-group">
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" style="width: 43px;height: 19px;"><path d="M528 56c0-13.3-10.7-24-24-24s-24 10.7-24 24v8H32C14.3 64 0 78.3 0 96V208c0 17.7 14.3 32 32 32H42c20.8 0 36.1 19.6 31 39.8L33 440.2c-2.4 9.6-.2 19.7 5.8 27.5S54.1 480 64 480h96c14.7 0 27.5-10 31-24.2L217 352H321.4c23.7 0 44.8-14.9 52.7-37.2L400.9 240H432c8.5 0 16.6-3.4 22.6-9.4L477.3 208H544c17.7 0 32-14.3 32-32V96c0-17.7-14.3-32-32-32H528V56zM321.4 304H229l16-64h105l-21 58.7c-1.1 3.2-4.2 5.3-7.5 5.3zM80 128H464c8.8 0 16 7.2 16 16s-7.2 16-16 16H80c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>
                                                     <label for="updateddate" class="control-label">Tipo Arma</label>
@@ -532,15 +545,36 @@
                         modalBody.innerHTML = `
                             <div class="card">
                                 <div class="card-body" >
-                                    Asignar pago
-                                </div>
-                                <div class="input-group w-50 m-3">
-                                    <input type="text" id="montoComision" name="montoComision" class="form-control" placeholder="Asignar Monto" aria-label="Asignar Monto" aria-describedby="basic-addon2" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5 ">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" onclick="asignarMonto('${response.data[0].comision}', '${response.data[0].idAsignacion}')"><i class="fa fa-dollar " aria-hidden="true"></i> &nbsp; Asignar</button>
+                                    <h3>Asignar pago</h3>
+                                    <div class="mt-3 row">
+                                        <div class="col-6 mt-2">
+                                            <select id="formaPago" class="form-control >
+                                                <option value="">Método de Pago</option>
+                                                <option value="efectivo" >Efectivo</option>
+                                                <option value="transferencia" >Transferencia</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-6 mt-2">
+                                            <input type="text" id="montoComision" name="montoComision" class="form-control" placeholder="Asignar Monto" aria-label="Asignar Monto" aria-describedby="basic-addon2" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5 ">
+                                        </div>
+                                        <div class="col-6 mt-2">
+                                            <input type="text" id="banco" name="banco" class="form-control" placeholder="Banco" aria-label="Asignar Monto" aria-describedby="basic-addon2">
+                                        </div>
+                                        <div class="col-6 mt-2">
+                                            <input type="text" id="cuenta" name="montoComision" class="form-control" placeholder="Cuenta" aria-label="Asignar Monto" aria-describedby="basic-addon2" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="18 ">
+                                        </div>
+                                        <div class="col-6 mt-2">
+                                            <input type="date" id="fechaComision" name="fechaComision" class="form-control" placeholder="Fecha de Entrega" aria-label="Fecha de Entrega" aria-describedby="basic-addon2">
+                                        </div>
+                                        <div class="col-12 mt-2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary m-2" onclick="asignarMonto('${response.data[0].comision}', '${response.data[0].idAsignacion}', '${saldo}')"><i class="fa fa-dollar " aria-hidden="true"></i> &nbsp; Asignar</button>
+                                                <button class="btn btn-danger m-2" onclick="pagosHistorico('${response.data[0].idAsignacion}')"><i class="fa fa-dollar " aria-hidden="true"></i> &nbsp; Historial de pagos</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </divv>
                         `
                     }    
                 },
@@ -550,72 +584,163 @@
             });
         } 
 
-        const asignarMonto = (comision, idAsignacion) => {
+        const asignarMonto = (comision, idAsignacion, saldo) => {
             let montoComision = document.querySelector("#montoComision").value
+            let fechaComision = document.querySelector("#fechaComision").value
+            let banco = document.querySelector("#banco").value
+            let cuenta = document.querySelector("#cuenta").value
+            let formaPago = document.querySelector("#formaPago").value
             let mont = parseInt(montoComision)
-            let com = parseInt(comision)
-
-            if(montoComision){
-                if(mont > com){
-                    toastr.error('El monto asignado no debe de superar la comision');
-                }else{
-                    var formData = new FormData($("form#frmComisionista")[0]);
-                    formData.append("idAsignacion", idAsignacion)
-                    formData.append("montoComision", montoComision)
-
-                    $.ajax({
-                        url: base_url + '/asignarComision',
-                        type: 'POST',
-                        dataType: 'json',
-                        data: formData,
-                        cache: false,
-                        async: true,
-                        contentType: false,
-                        processData: false,
-                        success: function (response) {
-                            $('.errorparticipante').remove();
-
-                            if (response.succes.succes == 'succes') {
-                                
-                                $("#exampleModal").modal("hide");
-
-                                toastr.success(response.succes.mensaje);
-
-                                var count = 3;
-                                setInterval(function(){
-                                count--;
-                                if (count == 0) {
-                                    window.location = base_url + '/comision'; 
-                                }
-                                },1000);
-
-                            } else if (response.dontsucces.error == 'error'){
-                                toastr.error(response.dontsucces.mensaje);
-                                        
-                            } else if (Object.keys(response.error).length > 0 ){
-
-                                for (var clave in response.error){
-                                            
-                                    $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
-                                        
-                                }
-                                    toastr.error('<?= lang('Layout.camposObligatorios') ?>');
-
-                            }
-                        },
-                        error: function (jqXHR, textStatus, errorThrown) {
-                            toastr.error('<?=lang('Layout.toastrError') ?>');
-                            $('#loadBtn').hide();           
-                        }
-                    });
-
+            let com = parseInt(saldo)
+            let erroresBanco = true 
+            if(formaPago == 'transferencia'){
+                if(banco == '') {
+                    erroresBanco = false
+                    toastr.error('Es requerido Un Banco');
                 }
-            }else{
-                toastr.error('Es requerido un monto');
+                if(cuenta == '') {
+                    erroresBanco = false 
+                    toastr.error('Es requerido Una Cuenta');
+                }
+            }
+            if(erroresBanco){
+                if(fechaComision){
+                    if(montoComision){
+                        if(mont > com){
+                            toastr.error('El monto asignado no debe de superar el Saldo Restante');
+                        }else{
+                            var formData = new FormData($("form#frmComisionista")[0]);
+                            formData.append("idAsignacion", idAsignacion)
+                            formData.append("montoComision", montoComision)
+                            formData.append("fechaComision", fechaComision)
+                            formData.append("banco", banco)
+                            formData.append("cuenta", cuenta)
+                            formData.append("saldo", saldo)
+                            formData.append("formaPago", formaPago)
+        
+                            $.ajax({
+                                url: base_url + '/asignarComision',
+                                type: 'POST',
+                                dataType: 'json',
+                                data: formData,
+                                cache: false,
+                                async: true,
+                                contentType: false,
+                                processData: false,
+                                success: function (response) {
+                                    $('.errorparticipante').remove();
+        
+                                    if (response.succes.succes == 'succes') {
+                                        
+                                        $("#exampleModal").modal("hide");
+        
+                                        toastr.success(response.succes.mensaje);
+        
+                                        var count = 3;
+                                        setInterval(function(){
+                                        count--;
+                                        if (count == 0) {
+                                            window.location = base_url + '/comision'; 
+                                        }
+                                        },1000);
+        
+                                    } else if (response.dontsucces.error == 'error'){
+                                        toastr.error(response.dontsucces.mensaje);
+                                                
+                                    } else if (Object.keys(response.error).length > 0 ){
+        
+                                        for (var clave in response.error){
+                                                    
+                                            $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                                                
+                                        }
+                                            toastr.error('<?= lang('Layout.camposObligatorios') ?>');
+        
+                                    }
+                                },
+                                error: function (jqXHR, textStatus, errorThrown) {
+                                    toastr.error('<?=lang('Layout.toastrError') ?>');
+                                    $('#loadBtn').hide();           
+                                }
+                            });
+        
+                        }
+                    }else{
+                        toastr.error('Es requerido un monto');
+                    }
+                }else{
+                    toastr.error('Es requerido una Fecha');
+                }
             }
 
         };
 
+        const pagosHistorico = (idAsignacion) => {
+            let tablePagos = ''
+
+            modalTitle.innerHTML = 'Historial Pagos'
+            modalBody.innerHTML = ''
+            modalCenter.innerHTML = ``
+            modalContent.innerHTML = ``
+            var formData = new FormData($("form#frmComisionista")[0]);
+            formData.append("idAsignacion", idAsignacion)
+
+            $.ajax({
+                url: base_url + '/detallesPagos',
+                type: 'POST',
+                dataType: 'json',
+                data: formData,
+                cache: false,
+                async: true,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if(response.succes.succes == 'succes'){
+                        if(response.data.length > 0){
+                            tablePagos = `<table class="table" id="dataTablePagos"> <thead><tr><th>Aplicado</th><th>Fecha pago</th><th>Forma Pago</th><th>Banco</th><th>Cuenta</th></tr></thead><tbody>`
+                            response.data.forEach( dt => {
+                                tablePagos += `<tr>
+                                    <td>${dt.aplicado}</td>
+                                    <td>${dt.fecha_pago}</td>
+                                    <td>${dt.forma_pago}</td>
+                                    <td>${dt.banco}</td>
+                                    <td>${dt.cuenta}</td>
+                                </tr>`
+                            })
+                            tablePagos += `</tbody></table>`
+
+                        }
+                        
+                        modalCenter.innerHTML = tablePagos
+                        $("#dataTablePagos").DataTable({
+                            destroy: true,
+                            deferRender: true,
+                            paging: true,
+                            language: {
+                                url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
+                            },
+                            pageLength: 5,
+                            lengthMenu: [[5, 10, 20], [5, 10, 20]]
+                        })
+                        
+                    }   
+                    if(response.dontsucces.error == 'error'){
+                        tablePagos = `<div class="alert alert-danger text-center" role="alert">
+                            Sin Pagos
+                        </div>`
+                        modalCenter.innerHTML = tablePagos
+
+                    } 
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    toastr.error('<?=lang('Layout.toastrError') ?>');
+                    $('#loadBtnDetail').hide();           
+                }
+            });
+
+
+            
+        };
         
     </script>
 
