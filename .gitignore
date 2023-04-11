@@ -127,3 +127,5 @@ public/index.php
 /results/
 /phpunit*.xml
 /.phpunit.*.cache
+vendor/bin/phpunit
+vendor/bin/php-parse
