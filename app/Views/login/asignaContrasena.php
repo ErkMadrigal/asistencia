@@ -21,7 +21,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="<?= base_url() ?>"><img src="<?= base_url() ?>/assets/dist/img/logoPanel.jpg" alt="<?= lang('Layout.Empresa') ?>" class="brand-image" ></a>
+    <a href="<?= base_url() ?>"><img src="<?= base_url() ?>/assets/dist/img/iconoDash.jpg" style="width: 361px;" alt="<?= lang('Layout.Empresa') ?>" class="brand-image" ></a>
   </div>
   <div class="card">
     <div class="card-body login-card-body">

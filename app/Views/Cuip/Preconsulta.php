@@ -62,7 +62,13 @@
             </div>
             <div class="modal-body">
                 <form id="frmRegistro" >
-                
+                    <div class="form-group">
+                        <label for="Empresa" class="control-label">Volante: <span class="text-danger">*</span></label>
+                        <div >
+                            <input type="text" class="form-control " id="volante" name="volante" >
+                        </div>
+                    </div>
+                    
                     <div class="input-group">
                       <div class="custom-file" lang="es">
                         <input type="file" class="custom-file-input" id="InputFile" name="InputFile" >

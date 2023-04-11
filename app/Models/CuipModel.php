@@ -26,8 +26,8 @@ class CuipModel
         $builder->join("media_filiacion"," datos_personales.id= media_filiacion.idPersonal","left");
         $builder->orderBy("primer_nombre","asc");
         $builder->orderBy("apellido_paterno","asc");
-        $builder->where("cuip","");
-        $builder->where("respuesta != 'INACTIVO'");
+       // $builder->where("cuip","");
+       // $builder->where("respuesta != 'INACTIVO'");
         return $builder->get()->getResult();
         
     }
