@@ -49,6 +49,27 @@
                 </div>
             </div>
             <div class="col-4 col-sm-4 col-md-3">
+                <div class="card borderLeftDanger">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="numbers">
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Saldo</p>
+                                    <h5 class="font-weight-bolder mb-0" id="saldo">
+                                        
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="col-4 col-sm-4 col-md-3">
                 <div class="card borderLeftSuccess">
                     <div class="card-body p-3">
                         <div class="row">
@@ -69,27 +90,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4 col-sm-4 col-md-3">
-                <div class="card borderLeftDanger">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Saldo</p>
-                                    <h5 class="font-weight-bolder mb-0" id="saldo">
-                                        
-                                    </h5>
-                                </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>    
             <div class="col-4 col-sm-4 col-md-3">
                 <div class="card borderLeftSuccess">
                     <div class="card-body p-3">
@@ -120,6 +120,13 @@
                     <i class="m-2 fa fa-building " aria-hidden="true"></i>
                     <label for="updateddate" class="control-label">Cliente</label>
                     <p class="ml-5"><?=$datos[0]->cliente?></p>
+                </div>
+            </div>
+            <div class='col-12 col-sm-4'>
+                <div class="form-group">
+                    <i class="m-2 fa fa-user " aria-hidden="true"></i>
+                    <label for="updateddate" class="control-label">Nombre Comisionista</label>
+                    <p class="ml-5"><?=$datos[0]->nombre_comisionista?></p>
                 </div>
             </div>
             <div class='col-12 col-sm-4'>
@@ -263,30 +270,30 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Compromiso de pagos</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Compromiso de pagos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body container-fluid">
+                    <table id="data" class="table-stripe text-center table-hover table-head-fixed text-nowrap">
+                        <thead>
+                        <tr>
+                            <th>Pago</th>
+                            <th>Fecha</th>
+                            <th>Concepto</th>
+                            <th>Importe</th>
+                            <th>Aplicado</th>
+                            <th>Saldo</th>
+                            <th>Activo</th>
+                            <th>Estatus</th>
+                            <th>Asignado Por</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
-            <div class="modal-body container-fluid">
-                <table id="data" class="table-stripe text-center table-hover table-head-fixed text-nowrap">
-                    <thead>
-                    <tr>
-                        <th>Pago</th>
-                        <th>Fecha</th>
-                        <th>Concepto</th>
-                        <th>Importe</th>
-                        <th>Aplicado</th>
-                        <th>Saldo</th>
-                        <th>Activo</th>
-                        <th>Estatus</th>
-                        <th>Asignado Por</th>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
-            
         </div>
     </div>
 
@@ -296,41 +303,44 @@
         let AlltotalGeneral = document.querySelector("#totalGeneral")
         let Allsaldo = document.querySelector("#saldo")
         let Allaplicado = document.querySelector("#aplicado")
-        let renta = document.querySelector("#renta")
+        let renta = document.querySelector("#renta")  
+
         let tramite = document.querySelector("#tramite")
         let asigacion = document.querySelector("#asigacion")
         let garantia = document.querySelector("#garantia")
         
+
         const mostrarDatosGen = () => {
-            $.ajax({
-                url: base_url + '/getAllData',
-                type: 'GET',
-                dataType: 'json',
-                cache: false,
-                async: true,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    if(response.succes.succes == 'succes'){
-                        AlltotalGeneral.innerHTML = `$ ${numeral(response.data.sumSA[0].total).format('0,0')} `
-                        Allaplicado.innerHTML = `$ ${numeral(response.data.sumSA[0].aplicado).format('0,0')} `
-                    }    
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    toastr.error('<?=lang('Layout.toastrError') ?>');
-                    $('#loadBtn').hide();           
-                }
-            });
-            renta.innerHTML = `$ ${numeral(<?=$datos[0]->renta?>).format('0,0')} `
+            // $.ajax({
+            //     url: base_url + '/getAllData',
+            //     type: 'GET',
+            //     dataType: 'json',
+            //     cache: false,
+            //     async: true,
+            //     contentType: false,
+            //     processData: false,
+            //     success: function (response) {
+            //         if(response.succes.succes == 'succes'){
+            //         }    
+            //     },
+            //     error: function (jqXHR, textStatus, errorThrown) {
+            //         toastr.error('<?=lang('Layout.toastrError') ?>');
+            //         $('#loadBtn').hide();           
+            //     }
+            // });
+            AlltotalGeneral.innerHTML = `$ ${numeral(<?=$datosRentaUnitaria[0]->saldoTotal?>).format('0,0')} `
+            Allaplicado.innerHTML = `$ ${numeral(<?=$datosRentaUnitaria[0]->abonado?>).format('0,0')} `
+            renta.innerHTML = `$ ${numeral(<?=$datosRentaUnitaria[0]->importe?>).format('0,0')} `
+            Allsaldo.innerHTML = `$ ${numeral(<?=$datosRentaUnitaria[0]->restante?>).format('0,0')} `
+
             tramite.innerHTML = `$ ${numeral(<?=$datos[0]->tramite?>).format('0,0')} `
             asigacion.innerHTML = `$ ${numeral(<?=$datos[0]->asignacion?>).format('0,0')} `
             garantia.innerHTML = `$ ${numeral(<?=$datos[0]->garantia?>).format('0,0')} `
-            Allsaldo.innerHTML = `$ ${numeral(<?=$datos[0]->saldo?>).format('0,0')} `
 
             
         }
-                
-        setInterval(() => mostrarDatosGen() ,1000);
+
+        mostrarDatosGen();    
         
         const  estatusRenderer = (data, type, full, meta) => {
             var src;

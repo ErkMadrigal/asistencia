@@ -39,10 +39,11 @@ class Comision extends BaseController{
     }
 
     public function asignarComision(){
-        if ($this->request->getMethod() == "post" && $this->request->getvar(['montoComision', 'montoComisionejemplo'],FILTER_SANITIZE_STRING)){
+        if ($this->request->getMethod() == "post" && $this->request->getvar(['montoComision', 'fechaComision'],FILTER_SANITIZE_STRING)){
             
             $rules = [
 				'montoComision' => ['label' => '', 'rules' => 'required'],
+				'fechaComision' => ['label' => '', 'rules' => 'required'],
 			];
             
             $errors = [];
@@ -56,17 +57,30 @@ class Comision extends BaseController{
             
 
             if($this->validate($rules)){
-                $update = array(
-                    "comision" => $comision[0]->comision - $_POST['montoComision'],
-                    "comision_asignado" => $comision[0]->comisionAS + $_POST['montoComision'],
-                    "updatedby" => $LoggedUserId,
-                    "updateddate" =>  date("Y-m-d H:i:s"),
+                // $update = array(
+                //     "comision" => $comision[0]->comision - $_POST['montoComision'],
+                //     "updatedby" => $LoggedUserId,
+                //     "updateddate" =>  date("Y-m-d H:i:s"),
+                // );		
+                // $update = $this->modelComision->modificarMonto($update, $_POST['idAsignacion']);
+
+                $insert = array(
+                    "concepto" => "Pago Comision",
+                    "importe" => $comision[0]->comision,
+                    "aplicado" => $_POST['montoComision'],
+                    "saldo" => $_POST['saldo'],
+                    "banco" => $_POST['banco'],
+                    "cuenta" => $_POST['cuenta'],
+                    "forma_pago" => $_POST['formaPago'],
+                    "fecha_pago" => $_POST['fechaComision'],
+                    "createdby" => $LoggedUserId,
+                    "createddate" =>  date("Y-m-d H:i:s"),
+                    "id_asignacion" =>  $_POST['idAsignacion'],
                 );		
-                $update = $this->modelComision->asignarMonto($update, $_POST['idAsignacion']);
-                $update = true;
-                if ($update) {
+                $insert = $this->modelComision->asignarMonto($insert);
+                if ($insert) {
                     $succes = ["mensaje" => 'Actualizado con Exito', "succes" => "succes"];
-                    $data = $update;
+                    $data = $insert;
                 } else {
                     $dontSucces = ["error" => "error", "mensaje" => 'Hubo un error al intentar Guardar.'];
                 }
@@ -216,6 +230,26 @@ class Comision extends BaseController{
 
             
             $select = $this->modelComision->getDataComisionistaAsignacion( $_POST['idComision'], $_POST['idAsignacion'] );
+            if ($select) {
+                    $succes = ["mensaje" => 'Exito', "succes" => "succes"];
+                    $data = $select;
+            } else {
+                $dontSucces = ["error" => "error", "mensaje" => 'Hubo un error al Obtener los Datos.'];
+            }
+				
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+		}
+    }
+    public function detallesPagos(){
+        if ($this->request->getMethod() == "post" && $this->request->getvar(['idAsignacion'],FILTER_SANITIZE_STRING)){
+            $errors = [];
+            $succes = [];
+            $dontSucces = [];
+            $data = [];
+			$validate = [];
+
+            
+            $select = $this->modelComision->getHitorialPagos($_POST['idAsignacion'] );
             if ($select) {
                     $succes = ["mensaje" => 'Exito', "succes" => "succes"];
                     $data = $select;
