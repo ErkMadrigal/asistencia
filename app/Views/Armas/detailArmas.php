@@ -74,7 +74,7 @@
                     <?php if($arma->portador != ''):?>
                     <div class='col-12 col-sm-6'>    
                         <div class="form-group">
-                            <label for="Activo" class="control-label">Protador </label>
+                            <label for="Activo" class="control-label">Portador </label>
                             <div class="form-check" >
                                 <?= $arma->portador ?> <br>
                                 <b>Cuip: <?= $arma->Cuip ?></b>

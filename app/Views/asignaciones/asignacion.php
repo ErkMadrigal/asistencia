@@ -318,9 +318,10 @@
                 contentType: false,
                 processData: false,
                 success: function (response) {
+                    let saldo = response.data.sumSA[0].total-response.data.sumSA[0].aplicado
                     if(response.succes.succes == 'succes'){
                         AlltotalGeneral.innerHTML = `$ ${numeral(response.data.sumSA[0].total).format('0,0')} `
-                        Allsaldo.innerHTML = `$ ${numeral(response.data.sumSA[0].saldo).format('0,0')} `
+                        Allsaldo.innerHTML = `$ ${numeral(saldo).format('0,0')} `
                         Allaplicado.innerHTML = `$ ${numeral(response.data.sumSA[0].aplicado).format('0,0')} `
                         AlltotalAsignaciones.innerHTML = `${response.data.asig[0].totalAsign}`
                     }    

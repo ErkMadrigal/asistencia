@@ -43,7 +43,7 @@ class AsignacionesModel
     
     public function getDataRentaUnitaria($id){
         $builder = $this->db->table('asignaciones asg ');
-        $builder->select("sum(cp.importe) saldoTotal, cp.saldo abonado, sum(cp.aplicado) restante, importe");
+        $builder->select("sum(cp.importe) saldoTotal, sum(cp.saldo) abonado, sum(cp.aplicado) restante, importe");
         $builder->join("compromiso_pago cp","asg.id = cp.id_asignacion", "left");
         $builder->where("asg.id", $id);
         return $builder->get()->getResult();
