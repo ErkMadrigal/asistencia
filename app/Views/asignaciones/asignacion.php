@@ -258,7 +258,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table id="data" class="table stripe text-center table-hover table-head-fixed text-nowrap">
+                    <table id="data" class="table text-center table-hover table-head-fixed">
                         <thead>
                         <tr>
                             <th>Pago</th>
@@ -353,7 +353,7 @@
                 destroy: true,
                 deferRender: true,
                 scrollX: true,
-                paging: false,
+                paging: true,
                 scrollCollapse: true,
                 fixedColumns:   {
                     left: 2//Le indico que deje fijas solo las 2 primeras columnas

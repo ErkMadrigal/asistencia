@@ -277,7 +277,7 @@
                     </button>
                 </div>
                 <div class="modal-body container-fluid">
-                    <table id="data" class="table-stripe text-center table-hover table-head-fixed text-nowrap">
+                    <table id="data" class="table-stripe text-center table-hover table-head-fixed">
                         <thead>
                         <tr>
                             <th>Pago</th>

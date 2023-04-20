@@ -47,7 +47,7 @@ class Cuip extends BaseController {
 				$id = $this->encrypt->Encrypt($v->id);
 				$result[] = (object) array (
 					'id' => $id ,
-					'nCuip' => '' ,
+					'nCuip' => $v->cuip ,
 					'primer_nombre' => $v->primer_nombre,
 					'segundo_nombre' => $v->segundo_nombre,
                     'apellido_paterno' => $v->apellido_paterno,
