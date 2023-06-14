@@ -23,6 +23,7 @@
             <div class="col-12 col-sm-6 col-md-9 ">
             </div>
             <div class="col-12 col-sm-6 col-md-3">
+                <!-- <a class="btn btn-lg btn-flat btn-primary" href="<?= base_url() ?>/adeudos" class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Adeudos &nbsp;&nbsp;<?php if($pendientes[0]->total > 0):?><span class="badge badge-pill badge-danger" ><?= $pendientes[0]->total ?></span><?php endif;?></a> -->
                 <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/addAsignacion " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Agregar Asignacion</a>
             </div>
         </div>    
@@ -292,7 +293,8 @@
         let selectFecha1 = document.querySelector("#selectFecha1")
         let selectFecha2 = document.querySelector("#selectFecha2")
         let tipoFecha = document.querySelector("#tipoFecha")
-        
+        let totalPendeintes = document.querySelector("#totalPendeintes")
+       
         tipoFecha.onchange = () => {
             if(tipoFecha.value != ''){
                 selectFecha1.classList.remove('d-none')
@@ -454,7 +456,11 @@
                                                     <strong>${datosBanco}</strong>
                                                 `
                                             }else{
-                                                campoValor = `<br><button class="btn btn-primary mt-2" onclick="signarPago('${full.id}', '${dataIdAsign}', '${full.importe}', '${full.saldo}', '${full.aplicado}', '${full.fecha}')">Asignar Monto</button>`
+                                                if (full.activo == 1) {
+                                                    campoValor = `<br><button class="btn btn-primary mt-2" onclick="signarPago('${full.id}', '${dataIdAsign}', '${full.importe}', '${full.saldo}', '${full.aplicado}', '${full.fecha}')">Asignar Monto</button>`
+                                                } else  {
+                                                    campoValor = ''
+                                                } 
                                             }
                                             return campoValor 
                                         }
@@ -648,10 +654,10 @@
         };
 
         const eliminar = (id, val, idArma) => {
-            if(val == 0){
+            // if(val == 0){
                 Swal.fire({
                     title: 'Seguro que lo deseas eliminar?',
-                    text: "¡No podrás revertir esto!",
+                    text: `¡registrar los datos de todos los pagos recibidos antes de borrar!`,
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
@@ -715,13 +721,13 @@
                         });
                     }
                 })
-            }else{
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: '¡No se puede eliminar despues de un pago procesado!',
-                })
-            }
+            // }else{
+            //     Swal.fire({
+            //         icon: 'error',
+            //         title: 'Oops...',
+            //         text: '¡No se puede eliminar despues de un pago procesado!',
+            //     })
+            // }
         };
         
     </script>

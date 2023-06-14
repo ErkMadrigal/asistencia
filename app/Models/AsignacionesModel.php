@@ -34,6 +34,14 @@ class AsignacionesModel
         return $builder->get()->getResult();
     }
 
+    public function getCountPendientes(){
+        $builder = $this->db->table('compromiso_pago');
+        $builder->select("count(*) as total");
+        $builder->where("fecha < now() and activo = 1");
+
+        return $builder->get()->getResult();
+    }
+
     public function getComisionista(){
         $builder = $this->db->table('comision');
         $builder->select("id, nombre");
@@ -312,9 +320,9 @@ class AsignacionesModel
         $return = false;
         $this->db->transStart();
 
-        $query = "DELETE FROM asignaciones WHERE id = '$id'";
+        $query = "UPDATE asignaciones SET activo = 0 WHERE id = '$id'";
         $this->db->query($query);
-        $query = "DELETE FROM compromiso_pago WHERE id_asignacion = '$id'";
+        $query = "UPDATE compromiso_pago SET activo = 0 WHERE id_asignacion = '$id'";
         $this->db->query($query);
         $query = "UPDATE armas set id_portador = '', activo = 1 WHERE id = '$idArma'";
         $this->db->query($query);

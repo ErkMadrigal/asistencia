@@ -164,8 +164,6 @@ $routes->post('getUbicaciones', 'Turno::Ubicaciones',['filter' => 'auth']);
 $routes->post('getTurnos', 'Puesto::Turnos',['filter' => 'auth']);
 
 
-
-
 $routes->get('ubicacioncatalogo', 'Ubicacion::GetUbica',['filter' => 'auth']);
 $routes->get('turnocatalogo', 'Turno::GetTurno',['filter' => 'auth']);
 $routes->get('puestocatalogo', 'Puesto::GetPuestos',['filter' => 'auth']);
@@ -175,6 +173,7 @@ $routes->post('buscarData', 'Asignaciones::buscarData',['filter' => 'auth']);
 $routes->post('getAllDataSearch', 'Asignaciones::getAllDataSearch',['filter' => 'auth']);
 
 $routes->get('addAsignacion', 'Asignaciones::add',['filter' => 'auth']);
+$routes->get('adeudos', 'Asignaciones::adeudos',['filter' => 'auth']);
 $routes->post('addDataAsignacion', 'Asignaciones::setData',['filter' => 'auth']);
 $routes->post('getCompromisoPago', 'Asignaciones::getCompromisoPago',['filter' => 'auth']);
 $routes->post('setCompromisoPago', 'Asignaciones::setCompromisoPago',['filter' => 'auth']);

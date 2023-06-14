@@ -33,8 +33,22 @@ class Asignaciones extends BaseController{
 			
             $data['modulos'] = $this->menu->Permisos();
 			$data['datos'] = $this->modelAsign->getAllData();
+            $data['pendientes'] = $this->modelAsign->getCountPendientes();
 			
 			return view('asignaciones/asignacion', $data);
+		}	
+    }
+
+    public function adeudos(){
+        if ($this->request->getMethod() == "get"){
+			
+            $data['modulos'] = $this->menu->Permisos();
+			$data['breadcrumb'] = ["inicio" => 'Asignaciones' ,
+                    				"url" => 'asignaciones',
+                    				"titulo" => 'adeudos'];
+            $id = session()->get('IdUser');
+			
+			return view('asignaciones/adeudos', $data);
 		}	
     }
 
