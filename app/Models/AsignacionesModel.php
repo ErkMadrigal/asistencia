@@ -42,6 +42,21 @@ class AsignacionesModel
         return $builder->get()->getResult();
     }
 
+    public function reportPendientes(){
+        $builder = $this->db->table('compromiso_pago cp');
+        $builder->select("cl.nombre_corto as cliente, CONCAT(dp.primer_nombre, ' ', dp.apellido_paterno, ' ', dp.apellido_materno) as nombre, CONCAT(cdc.valor, ' ', cdma.valor, ' ', cdm.valor) as arma, asg.pagos, asg.periodicidad, asg.renta, COUNT(*) pagosVencidos, (select MAX(fecha_pago) from compromiso_pago where id_asignacion = asg.id) as ultimoPago");
+        $builder->join("asignaciones asg","asg.id = cp.id_asignacion", "left");
+        $builder->join("cliente cl","asg.idCliente = cl.id", "left");
+        $builder->join("datos_personales dp","asg.id_datos_personales = dp.id", "left");
+        $builder->join("armas a","asg.id_armas = a.id", "left");
+        $builder->join("catalogos_detalle cdc","a.idClase = cdc.id", "left");
+        $builder->join("catalogos_detalle cdm","a.idModelo = cdm.id", "left");
+        $builder->join("catalogos_detalle cdma","a.idMarca = cdma.id", "left");
+        $builder->where("cp.fecha < now() and cp.activo = 1");
+        $builder->groupBy("asg.id");
+        return $builder->get()->getResult();
+    }
+
     public function getComisionista(){
         $builder = $this->db->table('comision');
         $builder->select("id, nombre");

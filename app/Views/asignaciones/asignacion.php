@@ -23,8 +23,8 @@
             <div class="col-12 col-sm-6 col-md-9 ">
             </div>
             <div class="col-12 col-sm-6 col-md-3">
-                <!-- <a class="btn btn-lg btn-flat btn-primary" href="<?= base_url() ?>/adeudos" class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Adeudos &nbsp;&nbsp;<?php if($pendientes[0]->total > 0):?><span class="badge badge-pill badge-danger" ><?= $pendientes[0]->total ?></span><?php endif;?></a> -->
-                <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/addAsignacion " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Agregar Asignacion</a>
+                <a class="btn btn-lg btn-flat btn-primary" href="<?= base_url() ?>/adeudos" class='nav-link'><i class="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;Adeudos &nbsp;&nbsp;<?php if($pendientes[0]->total > 0):?><span class="badge badge-pill badge-danger" ><?= $pendientes[0]->total ?></span><?php endif;?></a>
+                <a class="btn btn-lg btn-flat btn-primary" href=" <?= base_url() ?>/addAsignacion " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Agregar Asignacion</a>
             </div>
         </div>    
     </div>   

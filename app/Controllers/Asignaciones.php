@@ -47,6 +47,7 @@ class Asignaciones extends BaseController{
                     				"url" => 'asignaciones',
                     				"titulo" => 'adeudos'];
             $id = session()->get('IdUser');
+			$data['datos'] = $this->modelAsign->reportPendientes();
 			
 			return view('asignaciones/adeudos', $data);
 		}	
