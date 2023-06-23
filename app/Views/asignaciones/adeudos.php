@@ -45,7 +45,7 @@
                 data: datos,
                 destroy: true,
                 deferRender: true,
-                // scrollX: true,
+                scrollX: true,
                 paging: true,
                 scrollCollapse: true,
                 fixedColumns:   {
@@ -55,6 +55,14 @@
                     url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
                 },
                 pageLength: 12,
+                dom: 'Bfrtip',
+                buttons: [
+                {
+                    extend: 'excel',  
+                    text: `<i class='fa fa-file-excel-o nav-icon'></i>&nbsp;&nbsp;&nbsp; Excel`, 
+                    className: 'btn  btn-flat btn-success' , 
+                    title: 'Adeudos'
+                }],
                 columns: [
                             // { data: "detail",
                             //     render: (data, type, full, meta) => {

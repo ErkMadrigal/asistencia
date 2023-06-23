@@ -749,5 +749,26 @@ class CuipModel
         return $builder->get()->getResult();
         
     }
+
+    public function searchCUIP($cuip){
+        $builder = $this->db->table('datos_personales');
+        $builder->select('id');
+        $builder->where('Cuip', $cuip);
+
+        return $builder->get()->getResult(); 
+    }
+    
+    public function addData($insert){
+        $this->db->transStart();
+        $return = false;
+        $this->db->table('datos_personales')->insert($insert);
+
+        // if ($this->db->affectedRows() > 0){
+        if ($this->db->transStatus()){
+            $return = true;
+        } 
+        $this->db->transComplete();
+        return $return; 
+    }
     
 }

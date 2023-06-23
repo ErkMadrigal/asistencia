@@ -180,6 +180,7 @@ $routes->post('setCompromisoPago', 'Asignaciones::setCompromisoPago',['filter' =
 $routes->get('getAllData', 'Asignaciones::getAllData',['filter' => 'auth']);
 $routes->get('detailAsignacion', 'Asignaciones::detailAsignacion',['filter' => 'auth']);
 $routes->post('deleteData', 'Asignaciones::deleteData',['filter' => 'auth']);
+$routes->post('modifyDate', 'Asignaciones::modifyDate',['filter' => 'auth']);
 
 $routes->get('comisionista', 'Comision::index',['filter' => 'auth']);
 $routes->post('addComisionista', 'Comision::setData',['filter' => 'auth']);
@@ -191,6 +192,7 @@ $routes->post('detalleComisionistaAsignacion', 'Comision::detailAC',['filter' =>
 $routes->post('asignarComision', 'Comision::asignarComision',['filter' => 'auth']);
 $routes->get('sendEmail', 'Administrador::sendEmailTest',['filter' => 'auth']);
 $routes->post('cargarRespuestasConsulta', 'Cuip::cargaRespuestasPre',['filter' => 'auth']);
+$routes->post('cargaMasivaCuip', 'Cuip::cargaMasivaCUIP',['filter' => 'auth']);
 
 
 

@@ -85,7 +85,7 @@
         <div class="row">
             
             <div class="col-12 col-sm-6 col-md-3 ">    
-                <button id="editArmas" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
+                <button id="editArmas"  <?= ($arma->activo == 3 ? 'disabled' : '' ) ?> class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
             </div>
         </div>    
     </div>

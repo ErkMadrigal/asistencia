@@ -501,8 +501,6 @@ class Asignaciones extends BaseController{
 		}
     }
    
-
-
     public function deleteData(){
         if ($this->request->getMethod() == "post"){
             $errors = [];
@@ -511,13 +509,44 @@ class Asignaciones extends BaseController{
             $data = [];
 			$validate = [];
 
-            
-            $delete = $this->modelAsign->delete( $_POST['idElimn'], $_POST["idArma"] );
+            $motivo = empty($_POST['motivo']) ? '' : $_POST['motivo'] ;
+            $delete = $this->modelAsign->delete( $_POST['idElimn'], $_POST["idArma"], $_POST["status"], $motivo );
             if ($delete) {
                 $succes = ["mensaje" => 'Exito', "succes" => "succes"];
                 $data = $delete;
             } else {
                 $dontSucces = ["error" => "error", "mensaje" => 'Hubo un error al Obtener los Datos.'];
+            }
+				
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+		}
+    }
+    public function modifyDate(){
+        if ($this->request->getMethod() == "post"){
+            $errors = [];
+            $succes = [];
+            $dontSucces = [];
+            $data = [];
+            $this->db->transStart();
+        
+            $getUser = session()->get('IdUser');
+            $LoggedUserId = $this->encrypter->decrypt($getUser);
+
+            $updateAsign = array(
+                "importe" =>  $_POST['monto'],
+                "aplicado" =>  $_POST['monto'],
+                "updateddate" =>  date("Y-m-d H:i:s"),
+                "updatedby" => $LoggedUserId,
+            );
+            $update = $this->modelAsign->updateMonto($updateAsign, $_POST['id'], $_POST['fecha']);
+
+            $this->db->transComplete();
+
+            if ($update) {
+                $succes = ["mensaje" => 'Exito', "succes" => "succes"];
+                $data = $update;
+            } else {
+                $dontSucces = ["error" => "error", "mensaje" => 'Hubo un error al registrar los Datos.'];
             }
 				
 			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);

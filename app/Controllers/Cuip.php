@@ -3429,6 +3429,83 @@ $idPersonal = $getIdPersonal;
 			}
 		}
 
+		function cargaMasivaCUIP(){
+			if ($this->request->getMethod() == "post"){
+				$errors = [];
+				$succes = [];
+				$dontSucces = [];
+				$data = [];
+				$this->db->transStart();
+        
+				$uuid = Uuid::uuid4();
+				$id = $uuid->toString();
+				$getUser = session()->get('IdUser');
+	            $LoggedUserId = $this->encrypter->decrypt($getUser);
+			
+				$genero = 48;
+				if(!empty($_POST["genero"])){
+					if(strtolower($_POST["genero"]) == 'm'){
+						$genero = 48;
+					}else{
+						$genero = 49;
+					}
+					
+				} 
+
+				$insert = array(
+					"id" => $id	,
+					"idEmpresa" => '82f42fd5-ac8e-4033-a21d-b4863ef1c826',
+					"Cuip" =>  empty($_POST["cuip"]) ? '': $_POST["cuip"],
+					"primer_nombre" =>  empty($_POST["primerN"]) ? '': $_POST["primerN"],
+					"segundo_nombre" =>  empty($_POST["segundoN"]) ? '': $_POST["segundoN"],
+					"apellido_paterno" =>  empty($_POST["apellidoP"]) ? '': $_POST["apellidoP"],
+					"apellido_materno" =>  empty($_POST["apellidoM"]) ? '': $_POST["apellidoM"],
+					"fecha_nacimiento" =>  empty($_POST["fechaN"]) ? '': $_POST["fechaN"],
+					"idGenero" =>  $genero,
+					"rfc" =>  empty($_POST["rfc"]) ? '': $_POST["rfc"],
+					"curp" =>  empty($_POST["curp"]) ? '': $_POST["curp"],
+					"idFormaNacionalidad" => 11,
+					"idPaisNacimiento" => 143,
+					"idNacionalidad" => 146,
+					"idEstadoCivil" => 54,
+					"idNivelEducativo" => 29,
+					"activo" => 1,
+                    "createdby" => $LoggedUserId,
+					"createddate" => date("Y-m-d H:i:s"),
+					"puesto" => 74,
+					"rango" => 631,
+					"nivel_mando" => 632,
+				);	
+
+				if(!empty($_POST['cuip']) && !empty($_POST['primerN']) && !empty($_POST['apellidoP'])){
+					$selectCuip = $this->modelCuip->searchCUIP($_POST['cuip']);
+					if(count($selectCuip) == 0){
+						$insert = $this->modelCuip->addData($insert);
+						if ($insert) {
+							$logFile = fopen("log.txt", "a");
+							$logMessage = date("[Y-m-d H:i:s] ") . "Este es un mensaje de registro." . PHP_EOL;
+							fwrite($logFile, $logMessage);
+							fclose($logFile);
+							$succes = ["mensaje" => 'Registrado con Exito', "succes" => "succes"];
+						} else {
+							$dontSucces = ["error" => "error", "mensaje" => "No se inserto el registro el CUIP ".$_POST['cuip']];
+						}
+	
+					}else{
+						$dontSucces = ["error" => "error", "mensaje" => "la CUIP ".$_POST['cuip']." ya ha existe"];
+					}
+				}else{
+					
+				}
+
+			} else {	
+				$errors = $this->validator->getErrors();
+			}
+			$this->db->transComplete();
+
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data, "validate" => $insert]);
+	
+		}
 
 
 	}

@@ -1,5 +1,18 @@
 <?= $this->extend('includes/main') ?>
 <?= $this->section('content') ?>
+<style>
+    .fila-roja {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+    }
+
+    .fila-azul {
+        color: #004085;
+        background-color: #cce5ff;
+        border-color: #b8daff;
+    }
+</style>
 	<div id="load" class=" spinner text-secondary" role="status">
     </div>
 <div class=" mb-2">    
@@ -45,9 +58,9 @@
         var src;
         
         if (full.activo == 1) {
-            src = "<i class='fa fa-times-circle text-danger'></i>";
-        } else  {
             src = "<i class='fa fa-check-circle text-success'></i>";
+        } else  {
+            src = "<i class='fa fa-times-circle text-danger'></i>";
         } 
 
         return src;
@@ -59,6 +72,13 @@
             pageLength: 10,
             language: {
                 url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
+            },
+            "createdRow": function(row, data, dataIndex) {
+                if (data.activo == 0) { // Supongamos que el primer elemento de cada fila contiene el color
+                    $(row).addClass('fila-azul');
+                } else if (data.activo == 3) {
+                    $(row).addClass('fila-roja');
+                }
             },
             columns: [{ data: "clase"
                       },

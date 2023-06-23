@@ -16,15 +16,28 @@
         .selectFechas{
             /* display:none; */
         }
+        .fila-roja {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        .fila-azul {
+            color: #004085;
+            background-color: #cce5ff;
+            border-color: #b8daff;
+        }
     </style>
     <div id="load" class=" spinner text-secondary" role="status"></div>
     <div class=" mb-2">    
         <div class="row">
-            <div class="col-12 col-sm-6 col-md-9 ">
+            <div class="col-12 col-sm-6 col-md-6 ">
             </div>
             <div class="col-12 col-sm-6 col-md-3">
-                <a class="btn btn-lg btn-flat btn-primary" href="<?= base_url() ?>/adeudos" class='nav-link'><i class="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;Adeudos &nbsp;&nbsp;<?php if($pendientes[0]->total > 0):?><span class="badge badge-pill badge-danger" ><?= $pendientes[0]->total ?></span><?php endif;?></a>
-                <a class="btn btn-lg btn-flat btn-primary" href=" <?= base_url() ?>/addAsignacion " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Agregar Asignacion</a>
+                <a class="btn btn-block btn-flat btn-primary" href="<?= base_url() ?>/adeudos" class='nav-link'><i class="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;Adeudos &nbsp;&nbsp;<?php if($pendientes[0]->total > 0):?><span class="badge badge-pill badge-danger" ><?= $pendientes[0]->total ?></span><?php endif;?></a>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/addAsignacion " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Agregar Asignacion</a>
             </div>
         </div>    
     </div>   
@@ -242,7 +255,8 @@
                     <th>Comisionista</th>
                     <th>Comision</th>
                     <th>Activo</th>
-                    <th>Eliminar</th>
+                    <th>Baja</th>
+                    <th>Juridico</th>
                 </tr>
                 </thead>
             </table>
@@ -259,6 +273,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <button class="btn btn-danger mt-2 mb-4" id="btnModifyMount"><i class='fa fa-dollar nav-icon'></i>&nbsp;&nbsp;&nbsp; Moificar Monto</button>
+                    <input type="text" id="id_asignacion" class="d-none">
                     <table id="data" class="table text-center table-hover table-head-fixed">
                         <thead>
                         <tr>
@@ -294,6 +310,8 @@
         let selectFecha2 = document.querySelector("#selectFecha2")
         let tipoFecha = document.querySelector("#tipoFecha")
         let totalPendeintes = document.querySelector("#totalPendeintes")
+        let btnModifyMount = document.querySelector("#btnModifyMount")
+        let id_asignacion = document.querySelector("#id_asignacion")
        
         tipoFecha.onchange = () => {
             if(tipoFecha.value != ''){
@@ -308,6 +326,105 @@
         btnLimpiar.onclick = () => {
             location.reload();
             
+        }
+
+        btnModifyMount.onclick = async () => {
+            $("#exampleModal").modal("hide")
+
+            const { value: formValues } = await Swal.fire({
+                title: 'Seguro que lo deseas Modificar El monto?',
+                html:`
+                    <div class="form-group">
+                        <label for="monto">Monto</label>
+                        <input type="number" id="input1" class="swal2-input"> 
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha">Fecha</label>
+                        <input type="date" id="input2" class="swal2-input">
+                    </div>
+                    `,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '¡Guardar!',
+                    cancelButtonText: 'Cancelar',
+                focusConfirm: false,
+                preConfirm: () => {
+                    return [
+                        document.getElementById('input1').value,
+                        document.getElementById('input2').value
+                    ]
+                }
+            })
+
+            if (formValues[0] != '' && formValues[1] != '') {
+                console.log(formValues)
+                var formData = new FormData($("form#frmAsignacion")[0]);
+                formData.append("monto", formValues[0])
+                formData.append("fecha", formValues[1])
+                formData.append("id", id_asignacion.value)
+                $.ajax({
+                    url: base_url + '/modifyDate',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: formData,
+                    cache: false,
+                    async: true,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        $('.errorparticipante').remove();
+                        
+                        if (response.succes.succes == 'succes') {
+                            Swal.fire({
+                                title: '¡Actualizado!',
+                                text: 'Se han actualizado los pagos .',
+                                icon: 'success',
+                                confirmButtonColor: '#3085d6',
+                            })
+                            var count = 3;
+                            setInterval(function(){
+                                count--;
+                                if (count == 0) {
+                                    window.location = base_url + '/asignaciones'; 
+                                }
+                            },1000);
+
+                        } else if (response.dontsucces.error == 'error'){
+                            toastr.error(response.dontsucces.mensaje);
+                                    
+                        } else if (Object.keys(response.error).length > 0 ){
+
+                            for (var clave in response.error){
+                                        
+                                $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                                    
+                            }
+                                toastr.error('<?= lang('Layout.camposObligatorios') ?>');
+
+                        }
+
+                        
+                        $('#loadBtn').hide();
+                                
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        toastr.error('<?=lang('Layout.toastrError') ?>');
+                        $('#loadBtn').hide();           
+                    }
+                });
+
+            }else{
+                Swal.fire({
+                    title: '!Ooops! Error',
+                    text: 'Los datos son requeridos.',
+                    icon: 'error',
+                    confirmButtonColor: '#d33',
+                    confirmButtonText: 'Cancelar',
+                    
+                })
+            }
         }
 
         const mostrarDatosGen = () => {
@@ -364,6 +481,13 @@
                     url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
                 },
                 pageLength: 5,
+                "createdRow": function(row, data, dataIndex) {
+                    if (data.activo == 0) { // Supongamos que el primer elemento de cada fila contiene el color
+                        $(row).addClass('fila-azul');
+                    } else if (data.activo == 3) {
+                        $(row).addClass('fila-roja');
+                    }
+                },
                 columns: [
                             { data: "detail",
                                 render: (data, type, full, meta) => {
@@ -405,6 +529,12 @@
                         
                                 }
                             }, 
+                            {  data: "juridico",
+                                render: (data, type, full, meta) => {
+                                    return `<button onclick='eliminarJuridico("${full.id}", "${full.idArma}")' class='nav-link btn btn-link'><i class='fa fa-trash nav-icon'></i></button>`;
+                        
+                                }
+                            }, 
                             
                         ]
             });
@@ -413,6 +543,7 @@
         table(<?= json_encode($datos) ?>);
 
         const asignData = (dataIdAsign) => {
+            id_asignacion.value = dataIdAsign
             let formData = new FormData($("form#frmAsignacion")[0]);
             formData.append("pago", dataIdAsign)
             $.ajax({
@@ -485,13 +616,16 @@
                         <div class="form-group">
                             <input type="text" placeholder="monto" required class="form-control mt-2" id="asign" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="8" >
                             <input type="date" placeholder="Fecha" class="form-control mt-2" id="fechaSaldo">
-                            <select id="formaPago" class="form-control mt-2 >
+                            <select id="formaPago" class="form-control mt-2" >
                                 <option value="">Método de Pago</option>
                                 <option value="efectivo" >Efectivo</option>
                                 <option value="transferencia" >Transferencia</option>
                             </select>
-                            <input type="text" placeholder="banco"  class="form-control mt-2" id="banco" >
-                            <input type="text" placeholder="cuenta" class="form-control mt-2" id="cuenta" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="20">
+                            <select id="cuenta" class="form-control mt-2">
+                                <option value="">Banco / Cuenta</option>
+                                <option value="047 694 5147" >BBVA 047 694 5147</option>
+                                <option value="015 491 0931" >BBVA 015 491 0931</option>
+                            </select>
                         </div>
                     `,
                 showCancelButton: true,
@@ -506,7 +640,6 @@
                     let asign = document.getElementById('asign').value
                     let fechaSaldo = document.getElementById('fechaSaldo').value
                     let formaPago = document.getElementById('formaPago').value
-                    let banco = document.getElementById('banco').value
                     let cuenta = document.getElementById('cuenta').value
 
                     if(parseInt(saldo)+parseInt(asign) > parseInt(importe)){
@@ -514,9 +647,6 @@
                     }else{
                         let err = false
                         if(formaPago == "transferencia"){
-                            if(banco == ''){
-                                err = true
-                            }
                             if(cuenta == ''){
                                 err = true
                             }
@@ -527,7 +657,7 @@
                             formData.append("saldo", parseInt(saldo)+parseInt(asign))
                             formData.append("fechaSaldo", fechaSaldo)
                             formData.append("formaPago", formaPago)
-                            formData.append("banco", banco)
+                            formData.append("banco", 'BBVA')
                             formData.append("cuenta", cuenta)
                             formData.append("idPadre", idPadre)
                             $.ajax({
@@ -670,6 +800,7 @@
                         var formData = new FormData($("form#frmAsignacion")[0]);
                         formData.append("idElimn", id)
                         formData.append("idArma", idArma)
+                        formData.append("status", 0)
                         $.ajax({
                             url: base_url + '/deleteData',
                             type: 'POST',
@@ -729,7 +860,84 @@
             //     })
             // }
         };
-        
+
+        const eliminarJuridico = (id, idArma) => {
+                Swal.fire({
+                    title: 'Seguro que lo deseas mandar a Juridico?',
+                    text: `¡Describe el motivo!`,
+                    input: 'select',
+                    inputOptions: {
+                        "Robo":"Robo", 
+                        "Extrabio":"Extravío",
+                        "Detención":"Detención"
+                    },
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '¡Sí, bórralo!',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#loadBtn').show();
+                        var formData = new FormData($("form#frmAsignacion")[0]);
+                        formData.append("idElimn", id)
+                        formData.append("idArma", idArma)
+                        formData.append("status", 3)
+                        formData.append("motivo", result.value)
+                        $.ajax({
+                            url: base_url + '/deleteData',
+                            type: 'POST',
+                            dataType: 'json',
+                            data: formData,
+                            cache: false,
+                            async: true,
+                            contentType: false,
+                            processData: false,
+                            success: function (response) {
+                                $('.errorparticipante').remove();
+                                
+                                if (response.succes.succes == 'succes') {
+                                    Swal.fire(
+                                        'Eliminado!',
+                                        'Su registro ha sido eliminado.',
+                                        'success'
+                                    )
+                                    var count = 3;
+                                    setInterval(function(){
+                                        count--;
+                                        if (count == 0) {
+                                            window.location = base_url + '/asignaciones'; 
+                                        }
+                                    },1000);
+            
+                                } else if (response.dontsucces.error == 'error'){
+                                    toastr.error(response.dontsucces.mensaje);
+                                            
+                                } else if (Object.keys(response.error).length > 0 ){
+            
+                                    for (var clave in response.error){
+                                                
+                                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                                            
+                                    }
+                                        toastr.error('<?= lang('Layout.camposObligatorios') ?>');
+            
+                                }
+            
+                                
+                                $('#loadBtn').hide();
+                                        
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                toastr.error('<?=lang('Layout.toastrError') ?>');
+                                $('#loadBtn').hide();           
+                            }
+                        });
+                    }
+                })
+        };
+
     </script>
 
 <?= $this->endSection() ?>

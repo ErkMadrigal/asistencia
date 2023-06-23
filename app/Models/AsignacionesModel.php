@@ -255,6 +255,18 @@ class AsignacionesModel
         return $builder->get()->getResult();
 
     }
+
+    public function getCuentaBancaria(){
+        $builder = $this->db->table('catalogos ct');
+        $builder->select("cdc.id ct.valor, cdb.valor banco, cdc.valor cuenta ");
+        $builder->join("catalogos_detalle cdx "," ct.idCatalogo = cdc.idCatalogo", "left");
+        $builder->join("catalogos_detalle cdb "," ct.idCatalogo = cdb.idCatalogo", "left");
+        $builder->where("ct.valor", "bancos");
+        $builder->where("cdc.idReferencia in (6,7)");
+        $builder->where("cdb.idReferencia",2);
+        return $builder->get()->getResult();
+
+    }
    
     public function addData($insert){
 
@@ -330,16 +342,19 @@ class AsignacionesModel
 
         return $return; 
     }
-    public function delete( $id, $idArma ){
+    public function delete( $id, $idArma, $status, $motivo = '' ){
 
         $return = false;
         $this->db->transStart();
-
-        $query = "UPDATE asignaciones SET activo = 0 WHERE id = '$id'";
+        $query = "UPDATE asignaciones SET activo = '$status', motivo = '$motivo' WHERE id = '$id'";
         $this->db->query($query);
         $query = "UPDATE compromiso_pago SET activo = 0 WHERE id_asignacion = '$id'";
         $this->db->query($query);
-        $query = "UPDATE armas set id_portador = '', activo = 1 WHERE id = '$idArma'";
+        if($status == 0){
+            $query = "UPDATE armas set id_portador = '', activo = 1 WHERE id = '$idArma'";
+        }else{
+            $query = "UPDATE armas set id_portador = '', activo = 3 WHERE id = '$idArma'";
+        }
         $this->db->query($query);
 
         $this->db->transComplete();
@@ -347,6 +362,19 @@ class AsignacionesModel
         if ($this->db->transStatus() === TRUE)
         {
             $return = true;
+        } 
+
+        return $return; 
+    }
+
+    public function updateMonto( $update ,$id, $fecha){
+
+        $return = false;
+        $this->db->table('compromiso_pago')->where('id_asignacion', $id)->where("fecha > '$fecha'")->update($update);
+
+        if ($this->db->affectedRows() > 0){
+            $return = true;
+            
         } 
 
         return $return; 
