@@ -151,6 +151,10 @@
                     <label for="updateddate" class="control-label">Arma</label>
                     <p class="ml-5"><?=$datos[0]->arma?></p>
                     <p class="ml-5">Cartuchos: <?=$datos[0]->cantidad_Cartuchos?></p>
+                    <?php if($datos[0]->estatusArma == 3):?>
+                        <p class="ml-5 text-danger"><b>Juridico: </b> <?=$datos[0]->motivo?></p>
+                    <?php endif;?>
+
                 </div>
             </div>
             
