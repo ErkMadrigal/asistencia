@@ -343,7 +343,6 @@
     
                         $('#load').removeClass( "spinner-border" );    
     
-                                
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         toastr.error('<?=lang('Layout.toastrError')?>');
