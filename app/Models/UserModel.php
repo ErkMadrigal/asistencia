@@ -115,7 +115,16 @@ class UserModel extends Model{
          $builder->orderBy("orden","ASC");
         
          return $builder->get()->getResult();
-     } */ 
+     } */
+
+     public function getEmpresaById($idEmpresa){
+        
+         $builder = $this->db->table('sys_empresas');
+         $builder->select("nombre");
+         $builder->where("id",$idEmpresa);
+         
+         return $builder->get()->getRow();
+    } 
 	
 
 }

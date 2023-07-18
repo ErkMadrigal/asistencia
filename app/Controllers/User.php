@@ -54,13 +54,15 @@ class User extends BaseController{
 
 				$user = $model->where('email', $this->request->getVar('email'))->select('sys_usuarios_admin.nombre,apellido_paterno,email,sys_usuarios_admin.id,rol,\''. $idEmpresa.'\' as idempresa')->first();
 
+				$nomEmpresa = $model->getEmpresaById($idEmpresa);
+
 				if(!$user){
 
 					$user = $model->userById($this->request->getVar('email'));
-					$this->setUserSession($user);
+					$this->setUserSession($user,$nomEmpresa);
 
 				} else {
-					$this->setUserSessionAdmin($user);
+					$this->setUserSessionAdmin($user,$nomEmpresa);
 
 				}
 
@@ -93,7 +95,7 @@ class User extends BaseController{
 		return view('login/login', $data);
 	}
 
-	private function setUserSessionAdmin($user){
+	private function setUserSessionAdmin($user,$nomEmpresa){
 		$encrypter = \Config\Services::encrypter();
 		$idUser = $encrypter->encrypt($user['id']);
 		$idEmpresa = $encrypter->encrypt($user['idempresa']);
@@ -103,7 +105,7 @@ class User extends BaseController{
 			'lastname' => $user['apellido_paterno'],
 			'email' => $user['email'],
 			//'rol' => $user['rol'],
-			
+			'nombreEmpresa' =>  $nomEmpresa->nombre,
 			'empresa' =>  $idEmpresa,
 			'isLoggedIn' => true
 		];
@@ -121,7 +123,7 @@ class User extends BaseController{
 		return redirect()->to(base_url());
 	}
 
-	private function setUserSession($user){
+	private function setUserSession($user,$nomEmpresa){
 		$encrypter = \Config\Services::encrypter();
 		$idUser = $encrypter->encrypt($user->id);
 		$idBase = $encrypter->encrypt($user->idbase);
@@ -134,6 +136,7 @@ class User extends BaseController{
 			//'rol' => $user->rol,
 			'base' =>  $idBase,
 			'empresa' =>  $idEmpresa,
+			'nombreEmpresa' =>  $nomEmpresa->nombre,
 			'isLoggedIn' => true
 		];
 
