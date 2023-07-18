@@ -2,7 +2,8 @@
 <?= $this->section('content') ?>
 	<div id="load" class=" spinner text-secondary" role="status">
     </div>
-<div class=" mb-2">    
+<div class=" mb-2"> 
+
     <div class="row">
         <div class="col-12 col-sm-6 col-md-3 ">
             
@@ -107,86 +108,257 @@
     lector.onload = function(e) {
       var contenidoArchivo = e.target.result;
       var libro = XLSX.read(contenidoArchivo, { type: 'binary' });
-      var hojaNombre = libro.SheetNames[0];
+      var hojaNombre = libro.SheetNames[1];
       var hoja = libro.Sheets[hojaNombre];
       var datos = XLSX.utils.sheet_to_json(hoja, { header: 1 });
 
       for (var fila = 1; fila < datos.length; fila++) {
-            let cuip =  datos[fila][0] == undefined ? '' : datos[fila][0];
-            let primerN =  datos[fila][1] == undefined ? '' : datos[fila][1];
-            let segundoN =  datos[fila][2] == undefined ? '' : datos[fila][2];
-            let apellidoP =  datos[fila][3] == undefined ? '' : datos[fila][3];
-            let apellidoM =  datos[fila][4] == undefined ? '' : datos[fila][4];
-            let fechaN =  datos[fila][5] == undefined ? '' : datos[fila][5];
-            let genero =  datos[fila][6] == undefined ? '' : datos[fila][6];
-            let rfc =  datos[fila][7] == undefined ? '' : datos[fila][7];
-            let curp =  datos[fila][8] == undefined ? '' : datos[fila][8];
-            let razonS =  datos[fila][9] == undefined ? '' : datos[fila][9];
-            let matricula =  datos[fila][10] == undefined ? '' : datos[fila][10];
+            let apellidoP =  datos[fila][1] 
+            let apellidoM =  datos[fila][2]
+            let nombreCompeto = datos[fila][3].split(' ')
+            let primerN =  nombreCompeto[0]
+            let segundoN =  ''
+            for (var i = 1; i < nombreCompeto.length; i++) {
+                segundoN += nombreCompeto[i]+' '
+            }
+            let fechaN =  datos[fila][4]
+            let estadoNacim =  datos[fila][5]
+            let MunNacim =  datos[fila][6]
+            let genero =  datos[fila][7]
+            let estadoCiv =  datos[fila][8]
+            let nivelEdu =  datos[fila][9]
+            let escuela =  datos[fila][10]
+            let especialidad =  datos[fila][11]
+            let rfc =  datos[fila][12]
+            let claveEl =  datos[fila][13]
+            let cartilla =  datos[fila][14]
+            let curp =  datos[fila][15]
+            let calleAds =  datos[fila][16]
+            let numExAds =  datos[fila][17]
+            let numIntAds =  datos[fila][18]
+            let coloniaAds =  datos[fila][19]
+            let cpAds =  datos[fila][20]
+            let telefonoAds =  datos[fila][21]
+            let estadoDom =  datos[fila][22]
+            let minicipioDom =  datos[fila][23]
+            let fecha_ingreso =  datos[fila][24]
+            let estadoAds =  datos[fila][25]
+            let municipioAds =  datos[fila][26]
+            let cuip =  datos[fila][88]
+
+            let paterno =  datos[fila][27]
+            let materno =  datos[fila][28]
+            let nombreCompetoRef = datos[fila][29].split(' ')
+            let nombre1 =  nombreCompetoRef[0]
+            let nombre2 =  ''
+            for (var i = 1; i < nombreCompetoRef.length; i++) {
+                nombre2 += nombreCompetoRef[i]+' '
+            }
+            let sexo =  datos[fila][30]
+            let ocupacion =  datos[fila][31]
+            let tipoRef =  datos[fila][32]
+            let parentesco =  datos[fila][33]
+            let calle =  datos[fila][34]
+            let noExterior =  datos[fila][35]
+            let noInterior =  datos[fila][36]
+            let colonia =  datos[fila][37]
+            let cp =  datos[fila][38]
+            let telefono =  datos[fila][39]
+            let entidad =  datos[fila][40]
+            let codMunicipal =  datos[fila][41]
+            let ciudad =  datos[fila][42]
+
+            let idSangreTipo = datos[fila][43]
+            let idRH =  datos[fila][44]
+            let idUsaAnteojos =  datos[fila][45]
+            let estatura =  datos[fila][46]
+            let peso =  datos[fila][47]
+            let idComplexion =  datos[fila][48]
+            let idPiel =  datos[fila][49]
+            let idCara =  datos[fila][50]
+            let idCantidadCabello =  datos[fila][51]
+            let idColorCabello =  datos[fila][52]
+            let idFormaCabello =  datos[fila][53]
+            let idCalvicie =  datos[fila][54]
+            let idImplantacionCabello =  datos[fila][55]
+            let idAlturaFrente =  datos[fila][56]
+            let idInclinacionFrente =  datos[fila][57]
+            let idAnchoFrente =  datos[fila][58]
+            let idDireccionCejas =  datos[fila][59]
+            let idImplantacionCejas =  datos[fila][60]
+            let idFormaCejas =  datos[fila][61]
+            let idTamanoCejas =  datos[fila][62]
+            let idColorOjos =  datos[fila][63]
+            let idFormaOjos =  datos[fila][64]
+            let idTamanoOjos =  datos[fila][65]
+            let idRaiz =  datos[fila][66]
+            let idDorso =  datos[fila][67]
+            let idAnchoNariz =  datos[fila][68]
+            let idBaseNariz =  datos[fila][69]
+            let idAlturaNariz =  datos[fila][70]
+            let idTamanoBoca =  datos[fila][71]
+            let idComisuras =  datos[fila][72]
+            let idEspesorLabio =  datos[fila][73]
+            let idAlturaNasolabial =  datos[fila][74]
+            let idProminenciaLabio =  datos[fila][75]
+            let idMentonTipo =  datos[fila][76]
+            let idMentonForma =  datos[fila][77]
+            let idMentonInclinacion =  datos[fila][78]
+            let idFormaOreja =  datos[fila][79]
+            let idOriginal =  datos[fila][80]
+            let idSuperior =  datos[fila][81]
+            let idPosterior =  datos[fila][82]
+            let idAdherenciaHelix =  datos[fila][83]
+            let idContornoLobulo =  datos[fila][84]
+            let idAdherenciaLobulo =  datos[fila][85]
+            let idParticularidad =  datos[fila][86]
+            let idDimensionLobulo =  datos[fila][87]
 
             let formData = new FormData($(`#frmCuip`)[0]);
-            formData.append("cuip", cuip)
-            formData.append("primerN", primerN)
-            formData.append("segundoN", segundoN)
             formData.append("apellidoP", apellidoP)
             formData.append("apellidoM", apellidoM)
+            formData.append("primerN", primerN)
+            formData.append("segundoN", segundoN)
             formData.append("fechaN", fechaN)
+            formData.append("estadoNacim", estadoNacim)
+            formData.append("MunNacim", MunNacim)
             formData.append("genero", genero)
+            formData.append("estadoCiv", estadoCiv)
+            formData.append("nivelEdu", nivelEdu)
+            formData.append("escuela", escuela)
+            formData.append("especialidad", especialidad)
             formData.append("rfc", rfc)
+            formData.append("claveEl", claveEl)
+            formData.append("cartilla", cartilla)
             formData.append("curp", curp)
-            formData.append("matricula", matricula)
-            $.ajax({
-                url: base_url + '/cargaMasivaCuip',
-                type: 'POST',
-                dataType: 'json',
-                data: formData,
-                cache: false,
-                async: true,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    $('.errorField').remove();
+            formData.append("calleAds", calleAds)
+            formData.append("numExAds", numExAds)
+            formData.append("numIntAds", numIntAds)
+            formData.append("coloniaAds", coloniaAds)
+            formData.append("cpAds", cpAds)
+            formData.append("telefonoAds", telefonoAds)
+            formData.append("estadoDom", estadoDom)
+            formData.append("minicipioDom", minicipioDom)
+            formData.append("fecha_ingreso", fecha_ingreso)
+            formData.append("estadoAds", estadoAds)
+            formData.append("municipioAds", municipioAds)
+            formData.append("cuip", cuip)
 
-                    if (response.succes.succes == 'succes') {
+            formData.append("paterno", paterno)
+            formData.append("materno", materno)
+            formData.append("nombre", nombre1)
+            formData.append("nombre2", nombre2)
+            formData.append("sexo", sexo)
+            formData.append("ocupacion", ocupacion)
+            formData.append("tipoRef", tipoRef)
+            formData.append("parentesco", parentesco)
+            formData.append("calle", calle)
+            formData.append("noExterior", noExterior)
+            formData.append("noInterior", noInterior)
+            formData.append("colonia", colonia)
+            formData.append("cp", cp)
+            formData.append("telefono", telefono)
+            formData.append("entidad", entidad)
+            formData.append("codMunicipal", codMunicipal)
+            formData.append("ciudad", ciudad)
 
-                        toastr.success(response.succes.mensaje);
-                        asignData(idPadre)
+            formData.append("idSangreTipo", idSangreTipo)
+            formData.append("idRH", idRH)
+            formData.append("idUsaAnteojos", idUsaAnteojos.toUpperCase())
+            formData.append("estatura", estatura)
+            formData.append("peso", peso)
+            formData.append("idComplexion", idComplexion)
+            formData.append("idPiel", idPiel)
+            formData.append("idCara", idCara)
+            formData.append("idCantidadCabello", idCantidadCabello)
+            formData.append("idColorCabello", idColorCabello)
+            formData.append("idFormaCabello", idFormaCabello)
+            formData.append("idCalvicie", idCalvicie)
+            formData.append("idImplantacionCabello", idImplantacionCabello)
+            formData.append("idAlturaFrente", idAlturaFrente)
+            formData.append("idInclinacionFrente", idInclinacionFrente)
+            formData.append("idAnchoFrente", idAnchoFrente)
+            formData.append("idDireccionCejas", idDireccionCejas)
+            formData.append("idImplantacionCejas", idImplantacionCejas)
+            formData.append("idFormaCejas", idFormaCejas)
+            formData.append("idTamanoCejas", idTamanoCejas)
+            formData.append("idColorOjos", idColorOjos)
+            formData.append("idFormaOjos", idFormaOjos)
+            formData.append("idTamanoOjos", idTamanoOjos)
+            formData.append("idRaiz", idRaiz)
+            formData.append("idDorso", idDorso)
+            formData.append("idAnchoNariz", idAnchoNariz)
+            formData.append("idBaseNariz", idBaseNariz)
+            formData.append("idAlturaNariz", idAlturaNariz)
+            formData.append("idTamanoBoca", idTamanoBoca)
+            formData.append("idComisuras", idComisuras)
+            formData.append("idEspesorLabio", idEspesorLabio)
+            formData.append("idAlturaNasolabial", idAlturaNasolabial)
+            formData.append("idProminenciaLabio", idProminenciaLabio)
+            formData.append("idMentonTipo", idMentonTipo)
+            formData.append("idMentonForma", idMentonForma)
+            formData.append("idMentonInclinacion", idMentonInclinacion)
+            formData.append("idFormaOreja", idFormaOreja)
+            formData.append("idOriginal", idOriginal)
+            formData.append("idSuperior", idSuperior)
+            formData.append("idPosterior", idPosterior)
+            formData.append("idAdherenciaHelix", idAdherenciaHelix)
+            formData.append("idContornoLobulo", idContornoLobulo)
+            formData.append("idAdherenciaLobulo", idAdherenciaLobulo)
+            formData.append("idParticularidad", idParticularidad)
+            formData.append("idDimensionLobulo", idDimensionLobulo)
 
-                    } else if (response.dontsucces.error == 'error'){
+            if(datos[fila][0] != undefined){
+                $.ajax({
+                    url: base_url + '/cargaMasivaCuip',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: formData,
+                    cache: false,
+                    async: true,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        $('.errorField').remove();
+    
+                        if (response.succes.succes == 'succes') {
+    
+                            toastr.success(response.succes.mensaje);
 
-                        toastr.error(response.dontsucces.mensaje);
-                                
-                    } else if (Object.keys(response.error).length > 0 ){
-
-                        for (var clave in response.error){
+                            asignData(idPadre)
+    
+                        } else if (response.dontsucces.error == 'error'){
+    
+                            toastr.error(response.dontsucces.mensaje);
                                     
-                            $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
-                                
+                        } else if (Object.keys(response.error).length > 0 ){
+    
+                            for (var clave in response.error){
+                                        
+                                $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                                    
+                            }
+                                toastr.error('<?=lang('Layout.camposObligatorios')?>');
+    
                         }
-                            toastr.error('<?=lang('Layout.camposObligatorios')?>');
-
+    
+                        $('#load').removeClass( "spinner-border" );    
+    
+                                
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        toastr.error('<?=lang('Layout.toastrError')?>');
+                        $('#load').removeClass( "spinner-border" );           
                     }
+                });
+            }
 
-                    $('#load').removeClass( "spinner-border" );    
-
-                            
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    toastr.error('<?=lang('Layout.toastrError')?>');
-                    $('#load').removeClass( "spinner-border" );           
-                }
-            });
-
-            console.log(cuip, primerN, segundoN, apellidoP, apellidoM, fechaN, genero, rfc, curp, razonS, matricula )
-        // for (var columna = 0; columna < datos[fila].length; columna++) {
-        //   var valorCelda = datos[fila][columna];
-        //   console.log('Celda[' + fila + '][' + columna + ']: ' + valorCelda);
-        // }
       }
     };
 
     lector.readAsBinaryString(archivo);
   }
+    
 
     function estatusRenderer(data, type, full, meta) {
         var src;

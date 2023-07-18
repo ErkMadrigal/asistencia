@@ -3438,37 +3438,48 @@ $idPersonal = $getIdPersonal;
 				$this->db->transStart();
         
 				$uuid = Uuid::uuid4();
-				$id = $uuid->toString();
+				$idDP = $uuid->toString();
+				$idMF = $uuid->toString();
+				$idRP = $uuid->toString();
 				$getUser = session()->get('IdUser');
 	            $LoggedUserId = $this->encrypter->decrypt($getUser);
+				$empresa = session()->get('empresa');
+				$idEmpresa = $this->encrypter->decrypt($empresa);
 			
-				$genero = 48;
-				if(!empty($_POST["genero"])){
-					if(strtolower($_POST["genero"]) == 'm'){
-						$genero = 48;
-					}else{
-						$genero = 49;
-					}
-					
-				} 
-
-				$insert = array(
-					"id" => $id	,
-					"idEmpresa" => '82f42fd5-ac8e-4033-a21d-b4863ef1c826',
-					"Cuip" =>  empty($_POST["cuip"]) ? '': $_POST["cuip"],
-					"primer_nombre" =>  empty($_POST["primerN"]) ? '': $_POST["primerN"],
-					"segundo_nombre" =>  empty($_POST["segundoN"]) ? '': $_POST["segundoN"],
-					"apellido_paterno" =>  empty($_POST["apellidoP"]) ? '': $_POST["apellidoP"],
-					"apellido_materno" =>  empty($_POST["apellidoM"]) ? '': $_POST["apellidoM"],
-					"fecha_nacimiento" =>  empty($_POST["fechaN"]) ? '': $_POST["fechaN"],
-					"idGenero" =>  $genero,
-					"rfc" =>  empty($_POST["rfc"]) ? '': $_POST["rfc"],
-					"curp" =>  empty($_POST["curp"]) ? '': $_POST["curp"],
+				$insertDP = array(
+					"id" => $idDP	,
+					"idEmpresa" => $idEmpresa,
+					"Cuip" =>  $_POST["cuip"],
+					"apellido_paterno" => $_POST["apellidoP"],
+					"apellido_materno" => $_POST["apellidoM"],
+					"primer_nombre" => $_POST["primerN"],
+					"segundo_nombre" => $_POST["segundoN"],
+					"fecha_nacimiento" => $_POST["fechaN"],
 					"idFormaNacionalidad" => 11,
 					"idPaisNacimiento" => 143,
+					"idEntidadNacimiento" => $_POST["estadoNacim"],
+					"idMunicipioNacimiento" => $_POST["MunNacim"],
+					"idGenero" =>  $this->modelCuip->searchEnMulticatalogo($_POST['genero'], 'genero')[0]->id,
+					"idEstadoCivil" =>  $this->modelCuip->searchEnMulticatalogo($_POST['estadoCiv'], 'estado civil')[0]->id,
+					"idNivelEducativo" => $this->modelCuip->searchEnMulticatalogo($_POST['nivelEdu'], 'Nivel Educativo')[0]->id,
+					"escuela" => $_POST['escuela'],
+					"especialidad" => $_POST['especialidad'],
+					"rfc" => $_POST["rfc"],
+					"clave_electoral" => $_POST["claveEl"],
+					"cartilla_smn" => $_POST["cartilla"],
+					"curp" => $_POST["curp"],
+					"calle_adscripcion" => $_POST["calleAds"],
+					"numero_exterior_adscripcion" => $_POST["numExAds"],
+					"numero_interior_adscripcion" => $_POST["numIntAds"],
+					"colonia_adscripcion" => $_POST["coloniaAds"],
+					"idCodigoPostal_adscripcion" => $_POST["cpAds"],
+					"numero_telefono_adscripcion" => $_POST["telefonoAds"],
+					"idEstado_dom_adscripcion" => $_POST["estadoDom"],
+					"municipio_delegacion" => $_POST["minicipioDom"],
+					"fecha_ingreso" => $_POST["fecha_ingreso"],
+					"idEstado_adscripcion" => $_POST["estadoAds"],
+					"municipio_adscripcion" => $_POST["municipioAds"],
 					"idNacionalidad" => 146,
-					"idEstadoCivil" => 54,
-					"idNivelEducativo" => 29,
 					"activo" => 1,
                     "createdby" => $LoggedUserId,
 					"createddate" => date("Y-m-d H:i:s"),
@@ -3477,16 +3488,119 @@ $idPersonal = $getIdPersonal;
 					"nivel_mando" => 632,
 				);	
 
-				if(!empty($_POST['cuip']) && !empty($_POST['primerN']) && !empty($_POST['apellidoP'])){
+				$insertMF = array(
+					"id" => $idMF	,
+					"idEmpresa" => $idEmpresa,
+					"idPersonal" => $idDP,
+					"idSangreTipo" => $this->modelCuip->searchEnMulticatalogo($_POST['idSangreTipo'], 'Tipo Sangre')[0]->id,
+					"idRH" => $this->modelCuip->searchEnMulticatalogo($_POST['idRH'], 'Sangre RH')[0]->id,
+					"idUsaAnteojos" => $this->modelCuip->searchSINO($_POST['idUsaAnteojos']== 'S' ? 'SI' : 'NO', 'Si / No')[0]->id,
+					"estatura" => $_POST["estatura"],
+					"peso" => $_POST["peso"],
+					"idComplexion" => $this->modelCuip->searchEnMulticatalogo($_POST['idComplexion'], 'Complexion')[0]->id,
+					"idPiel" => $this->modelCuip->searchEnMulticatalogo($_POST['idPiel'], 'piel')[0]->id,
+					"idCara" => $this->modelCuip->searchEnMulticatalogo($_POST['idCara'], 'Cara')[0]->id,
+					"idCantidadCabello" => $this->modelCuip->searchEnMulticatalogo($_POST['idCantidadCabello'], 'Cabello Cantidad')[0]->id,
+					"idColorCabello" => $this->modelCuip->searchEnMulticatalogo($_POST['idColorCabello'], 'Cabello Color')[0]->id,
+					"idFormaCabello" => $this->modelCuip->searchEnMulticatalogo($_POST['idFormaCabello'], 'Cabello Forma')[0]->id,
+					"idCalvicie" => $this->modelCuip->searchEnMulticatalogo($_POST['idCalvicie'], 'Cabello Calvicie')[0]->id,
+					"idImplantacionCabello" => $this->modelCuip->searchEnMulticatalogo($_POST['idImplantacionCabello'], 'Cabello Implantacion')[0]->id,
+					"idAlturaFrente" => $this->modelCuip->searchEnMulticatalogo($_POST['idAlturaFrente'], 'Frente Altura')[0]->id,
+					"idInclinacionFrente" => $this->modelCuip->searchEnMulticatalogo($_POST['idInclinacionFrente'], 'Frente Inclinacion')[0]->id,
+					"idAnchoFrente" => $this->modelCuip->searchEnMulticatalogo($_POST['idAnchoFrente'], 'Frente Ancho')[0]->id,
+					"idDireccionCejas" => $this->modelCuip->searchEnMulticatalogo($_POST['idDireccionCejas'], 'Cejas Direccion')[0]->id,
+					"idImplantacionCejas" => $this->modelCuip->searchEnMulticatalogo($_POST['idImplantacionCejas'], 'Cejas Implantacion')[0]->id,
+					"idFormaCejas" => $this->modelCuip->searchEnMulticatalogo($_POST['idFormaCejas'], 'cejas Forma')[0]->id,
+					"idTamanoCejas" => $this->modelCuip->searchEnMulticatalogo($_POST['idTamanoCejas'], 'cejas Tamaño')[0]->id,
+					"idColorOjos" => $this->modelCuip->searchEnMulticatalogo($_POST['idColorOjos'], 'Ojos Color')[0]->id,
+					"idFormaOjos" => $this->modelCuip->searchEnMulticatalogo($_POST['idFormaOjos'], 'Ojos Forma')[0]->id,
+					"idTamanoOjos" => $this->modelCuip->searchEnMulticatalogo($_POST['idTamanoOjos'], 'Ojos Tamaño')[0]->id,
+					"idRaiz" => $this->modelCuip->searchEnMulticatalogo($_POST['idRaiz'], 'Nariz raiz')[0]->id,
+					"idDorso" => $this->modelCuip->searchEnMulticatalogo($_POST['idDorso'], 'Nariz Dorso')[0]->id,
+					"idAnchoNariz" => $this->modelCuip->searchEnMulticatalogo($_POST['idAnchoNariz'], 'Nariz Ancho')[0]->id,
+					"idBaseNariz" => $this->modelCuip->searchEnMulticatalogo($_POST['idBaseNariz'], 'Nariz  base')[0]->id,
+					"idAlturaNariz" => $this->modelCuip->searchEnMulticatalogo($_POST['idAlturaNariz'], 'Nariz Altura')[0]->id,
+					"idTamanoBoca" => $this->modelCuip->searchEnMulticatalogo($_POST['idTamanoBoca'], 'Boca Tamaño')[0]->id,
+					"idComisuras" => $this->modelCuip->searchEnMulticatalogo($_POST['idComisuras'], 'Boca Comisuras')[0]->id,
+					"idEspesorLabio" => $this->modelCuip->searchEnMulticatalogo($_POST['idEspesorLabio'], 'Labios Espesor')[0]->id,
+					"idAlturaNasolabial" => $this->modelCuip->searchEnMulticatalogo($_POST['idAlturaNasolabial'], 'Labios Altura')[0]->id,
+					"idProminenciaLabio" => $this->modelCuip->searchEnMulticatalogo($_POST['idProminenciaLabio'], 'Labios Prominencia')[0]->id,
+					"idMentonTipo" => $this->modelCuip->searchEnMulticatalogo($_POST['idMentonTipo'], 'Menton Tipo')[0]->id,
+					"idMentonForma" => $this->modelCuip->searchEnMulticatalogo($_POST['idMentonForma'], 'Menton Forma')[0]->id,
+					"idMentonInclinacion" => $this->modelCuip->searchEnMulticatalogo($_POST['idMentonInclinacion'], 'Menton Inclinación')[0]->id,
+					"idFormaOreja" => $this->modelCuip->searchEnMulticatalogo($_POST['idFormaOreja'], 'Oreja Forma')[0]->id,
+					"idOriginal" => $this->modelCuip->searchEnMulticatalogo($_POST['idOriginal'], 'Oreja Original')[0]->id,
+					"idSuperior" => $this->modelCuip->searchEnMulticatalogo($_POST['idSuperior'], 'Oreja Superior')[0]->id,
+					"idPosterior" => $this->modelCuip->searchEnMulticatalogo($_POST['idPosterior'], 'Oreja Posterior')[0]->id,
+					"idAdherenciaHelix" => $this->modelCuip->searchEnMulticatalogo($_POST['idAdherenciaHelix'], 'Oreja Adherencia')[0]->id,
+					"idContornoLobulo" => $this->modelCuip->searchEnMulticatalogo($_POST['idContornoLobulo'], 'Oreja Contorno')[0]->id,
+					"idAdherenciaLobulo" => $this->modelCuip->searchEnMulticatalogo($_POST['idAdherenciaLobulo'], 'Oreja lobulo Adherencia')[0]->id,
+					"idParticularidad" => $this->modelCuip->searchEnMulticatalogo($_POST['idParticularidad'], 'Oreja Particularidad')[0]->id,
+					"idDimensionLobulo" => $this->modelCuip->searchEnMulticatalogo($_POST['idDimensionLobulo'], 'Oreja Dimensiones')[0]->id,
+					"activo" => 1,
+					"createdby" => $LoggedUserId,
+					"createddate" => date("Y-m-d H:i:s"),
+					"idCicatrices" => 1,
+					"idTatuajes" => 1,
+					"idLunares" => 1,
+					"idDefectos" => 1,
+					"idProtesis" => 1,
+					"idDiscapacidad"  => 1,
+				);
+				$insertRP = array(
+					"id" => $idRP	,
+					"idEmpresa" => $idEmpresa,
+					"idPersonal" => $idDP,
+					"apellido_paterno_fam" => $_POST["paterno"] , 
+					"apellido_materno_fam" => $_POST["materno"] , 
+					"primer_nombre_fam" => $_POST["nombre"] , 
+					"segundo_nombre_fam" => $_POST["nombre2"] , 
+					"idGenero_fam" => $this->modelCuip->searchEnMulticatalogo($_POST['sexo'], 'genero')[0]->id, 
+					"ocupacion_fam" => $_POST["ocupacion"] , 
+					"idParentesco_fam" => $this->modelCuip->searchParentesco($_POST['tipoRef'], $_POST['parentesco'])[0]->id, 
+					"calle_fam" => $_POST["calle"] , 
+					"numero_exterior_fam" => $_POST["noExterior"] , 
+					"numero_interior_fam" => $_POST["noInterior"] , 
+					"colonia_fam" => $_POST["colonia"] , 
+					"idCodigoPostal_fam" => $_POST["cp"] , 
+					"numero_telefono_fam" => $_POST["telefono"] , 
+					"idPaisNacimiento_fam" => 143 , 
+					"idEstado_fam" => $_POST["entidad"] , 
+					"municipio_fam" => $_POST["codMunicipal"] , 
+					"ciudad_fam" => $_POST["ciudad"] , 
+					"idGenero_personal" => 100 , 
+					"ocupacion_personal" => 100 , 
+					"idParentesco_personal" => $this->modelCuip->searchParentesco($_POST['tipoRef'], $_POST['parentesco'])[0]->id, 
+					"idGenero_laboral" => 100 , 
+					"ocupacion_laboral" => 100 , 
+					"idParentesco_laboral" => $this->modelCuip->searchParentesco($_POST['tipoRef'], $_POST['parentesco'])[0]->id, 
+					"idGenero_pariente" => 100 , 
+					"ocupacion_pariente" => 100 , 
+					"idParentesco_pariente" => $this->modelCuip->searchParentesco($_POST['tipoRef'], $_POST['parentesco'])[0]->id, 
+					"activo" => 1,
+					"createdby" => $LoggedUserId,
+					"createddate" => date("Y-m-d H:i:s"),
+				);
+
+				$errorsUndefined = [];
+				foreach ($_POST as $clave => $valor) {
+					if ($valor === "undefined") {
+						array_push($errorsUndefined, "sin datos");
+					}
+				}
+				if(count($errorsUndefined) === 0){
 					$selectCuip = $this->modelCuip->searchCUIP($_POST['cuip']);
 					if(count($selectCuip) == 0){
-						$insert = $this->modelCuip->addData($insert);
+						$insert = $this->modelCuip->addData($insertDP);
 						if ($insert) {
-							$logFile = fopen("log.txt", "a");
-							$logMessage = date("[Y-m-d H:i:s] ") . "Este es un mensaje de registro." . PHP_EOL;
-							fwrite($logFile, $logMessage);
-							fclose($logFile);
-							$succes = ["mensaje" => 'Registrado con Exito', "succes" => "succes"];
+							$insert = $this->modelCuip->addDataMF($insertMF);
+							$insert = $this->modelCuip->addDataRP($insertRP);
+							if($insert){
+								$succes = ["mensaje" => 'Registrado con Exito', "succes" => "succes"];
+							}else{
+
+								$dontSucces = ["error" => "error", "mensaje" => "No se inserto el registro verifica tus Datos"];
+							}
 						} else {
 							$dontSucces = ["error" => "error", "mensaje" => "No se inserto el registro el CUIP ".$_POST['cuip']];
 						}
@@ -3495,7 +3609,7 @@ $idPersonal = $getIdPersonal;
 						$dontSucces = ["error" => "error", "mensaje" => "la CUIP ".$_POST['cuip']." ya ha existe"];
 					}
 				}else{
-					
+					$dontSucces = ["error" => "error", "mensaje" => "comprueba que los campos esten completos"];
 				}
 
 			} else {	
@@ -3503,7 +3617,7 @@ $idPersonal = $getIdPersonal;
 			}
 			$this->db->transComplete();
 
-			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data, "validate" => $insert]);
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
 	
 		}
 

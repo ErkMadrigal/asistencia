@@ -757,11 +757,63 @@ class CuipModel
 
         return $builder->get()->getResult(); 
     }
+
+    public function searchEnMulticatalogo($data, $catalogo){
+        $builder = $this->db->table('catalogos cat');
+        $builder->select('cd.id');
+        $builder->join("catalogos_detalle cd","cat.idCatalogo = cd.idCatalogo","left");
+        $builder->like('cat.valor', $catalogo);
+        $builder->where('cd.idReferencia', $data);
+        return $builder->get()->getResult(); 
+    }
+
+    public function searchSINO($data, $catalogo){
+        $builder = $this->db->table('catalogos cat');
+        $builder->select('cd.id');
+        $builder->join("catalogos_detalle cd","cat.idCatalogo = cd.idCatalogo","left");
+        $builder->like('cat.valor', $catalogo);
+        $builder->where('cd.valor', $data);
+            return $builder->get()->getResult(); 
+    }
+
+    public function searchParentesco($cveRef, $idReferencia){
+        $builder = $this->db->table('catalogo_referencias');
+        $builder->select('id');
+        $builder->where('cve_parentesco', $cveRef);
+        $builder->where('idReferencia', $idReferencia);
+            return $builder->get()->getResult(); 
+    }
     
     public function addData($insert){
         $this->db->transStart();
         $return = false;
         $this->db->table('datos_personales')->insert($insert);
+        
+        // if ($this->db->affectedRows() > 0){
+        if ($this->db->transStatus()){
+            $return = true;
+        } 
+        $this->db->transComplete();
+        return $return; 
+    }
+    public function addDataMF($insert){
+        $this->db->transStart();
+        $return = false;
+        $this->db->table('media_filiacion')->insert($insert);
+
+
+        // if ($this->db->affectedRows() > 0){
+        if ($this->db->transStatus()){
+            $return = true;
+        } 
+        $this->db->transComplete();
+        return $return; 
+    }
+    public function addDataRP($insert){
+        $this->db->transStart();
+        $return = false;
+        $this->db->table('referencias')->insert($insert);
+
 
         // if ($this->db->affectedRows() > 0){
         if ($this->db->transStatus()){
