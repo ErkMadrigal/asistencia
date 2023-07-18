@@ -796,6 +796,7 @@ class CuipModel
         $this->db->transComplete();
         return $return; 
     }
+    
     public function addDataMF($insert){
         $this->db->transStart();
         $return = false;
@@ -809,6 +810,7 @@ class CuipModel
         $this->db->transComplete();
         return $return; 
     }
+
     public function addDataRP($insert){
         $this->db->transStart();
         $return = false;

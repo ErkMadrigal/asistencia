@@ -339,7 +339,6 @@
                                     
                             }
                                 toastr.error('<?=lang('Layout.camposObligatorios')?>');
-    
                         }
     
                         $('#load').removeClass( "spinner-border" );    

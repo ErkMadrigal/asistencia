@@ -3588,6 +3588,7 @@ $idPersonal = $getIdPersonal;
 						array_push($errorsUndefined, "sin datos");
 					}
 				}
+				
 				if(count($errorsUndefined) === 0){
 					$selectCuip = $this->modelCuip->searchCUIP($_POST['cuip']);
 					if(count($selectCuip) == 0){
