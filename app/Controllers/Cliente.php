@@ -105,9 +105,38 @@ class Cliente extends BaseController {
 
     public function SaveClientes(){
 
-		if($this->request->getMethod() == "post" && $this->request->getvar(['id'],FILTER_SANITIZE_STRING)) {
+		if($this->request->getMethod() == "post" && $this->request->getvar(['id,razon_social, nombre_corto, nombre_contacto, puesto_contacto, whatsApp, telefono_oficina, email, fecha_inicio_servicio, fecha_fin_servicio, calle, codigo, coloniacodigo, municipiocodigo, ciudadcodigo, estadocodigo, rfc, nombreInstitucion, codigoDatosFis, coloniacodigoDatosFis, municipiocodigoDatosFis, ciudadcodigoDatosFis, estadocodigoDatosFis,datosFiscales'],FILTER_SANITIZE_STRING)) {
 
-			$rules = ['id' =>  ['label' => '', 'rules' =>'required']];
+			$rules = ['id' =>  ['label' => '', 'rules' =>'required'],
+				'razon_social' =>  ['label' => "Razon social", 'rules' => 'required|max_length[255]'],
+				'nombre_corto' =>  ['label' => "Nombre Corto", 'rules' => 'required|max_length[255]'],
+                'email' =>  ['label' => "Email", 'rules' => 'required|max_length[255]|valid_email'],
+				'nombre_contacto' =>  ['label' => "Nombre del contacto", 'rules' => 'required|max_length[255]'],
+				'puesto_contacto' =>  ['label' => "Puesto del Contacto", 'rules' => 'required|max_length[255]'],
+				'whatsApp' =>  ['label' => "WhatsApp", 'rules' => 'required|max_length[10]|integer'],
+				'telefono_oficina' =>  ['label' => "Teléfono Oficina", 'rules' => 'required|max_length[10]|integer'],
+				'fecha_inicio_servicio' =>  ['label' => "Fecha de Inicio Servicio", 'rules' => 'required|valid_only_date_chek'],
+				'fecha_fin_servicio' =>  ['label' => "Fecha Fin Servicio:", 'rules' => 'required|valid_only_date_chek'],
+				'calle' =>  ['label' => "Calle y Número", 'rules' => 'required|max_length[255]'],
+				'codigo' =>  ['label' => "Código Postal", 'rules' => 'required|max_length[5]|integer'],
+				'coloniacodigo' =>  ['label' => "Colonia", 'rules' => 'required'],
+				'municipiocodigo' =>  ['label' => "Municipio", 'rules' => 'required'],
+				'ciudadcodigo' =>  ['label' => "Ciudad", 'rules' => 'required'],
+				'estadocodigo' =>  ['label' => "Estado", 'rules' => 'required'],
+				'rfc' =>  ['label' => "R.F.C", 'rules' => 'required|max_length[13]']];
+
+				$fiscales = $this->request->getPost('datosFiscales');
+
+				if($fiscales == 0){
+
+					
+					$rules['calleFiscales'] =  ['label' => "Calle y Número", 'rules' => 'required|max_length[255]'];
+					$rules['codigoDatosFis'] =  ['label' => "Código Postal", 'rules' => 'required|max_length[5]|integer'];
+					$rules['coloniacodigoDatosFis'] =  ['label' => "Colonia", 'rules' => 'required'];
+					$rules['municipiocodigoDatosFis'] =  ['label' => "Municipio", 'rules' => 'required'];
+					$rules['ciudadcodigoDatosFis'] =  ['label' => "Ciudad", 'rules' => 'required'];
+					$rules['estadocodigoDatosFis'] =  ['label' => "Estado", 'rules' => 'required'];
+				}
 
 				$errors = [];
 				$succes = [];
@@ -115,17 +144,76 @@ class Cliente extends BaseController {
 				$data = [];
 				
 				if($this->validate($rules)){
-                    $getUser = session()->get('IdUser');
+                    
+					$getUser = session()->get('IdUser');
 					$LoggedUserId = $this->encrypter->decrypt($getUser);
+					
+					
+					
 					$TodayDate = date("Y-m-d H:i:s");
-					$idModi = $this->request->getPost('id');
-					$idCliente = $this->encrypt->Decrytp($idModi);	
-					$updateCliente = array(
 
+					$getFecha_inicio_servicio = $this->request->getPost('fecha_inicio_servicio');
+
+        			$fecha_inicio_servicio = date( "Y-m-d" ,strtotime($getFecha_inicio_servicio));
+
+        			$getFecha_fin_servicio = $this->request->getPost('fecha_fin_servicio');
+
+        			$fecha_fin_servicio = date( "Y-m-d" ,strtotime($getFecha_fin_servicio));
+
+        			if($fiscales == 0){
+
+        				$fisCalle = $this->request->getPost('calleFiscales');
+        				$fisCodigo = $this->request->getPost('codigoDatosFis');
+        				$fisColonia = $this->request->getPost('coloniacodigoDatosFis');
+        				$fismunicipio = $this->request->getPost('municipiocodigoDatosFis');
+        				$fisCiudad = $this->request->getPost('ciudadcodigoDatosFis') ;
+        				$fisEstado = $this->request->getPost('estadocodigoDatosFis') ;
+
+        				
+
+        			} else {
+
+        				$fisCalle = $this->request->getPost('calle');
+        				$fisCodigo = $this->request->getPost('codigo');
+        				$fisColonia = $this->request->getPost('coloniacodigo');
+        				$fismunicipio = $this->request->getPost('municipiocodigo');
+        				$fisCiudad = $this->request->getPost('ciudadcodigo');
+        				$fisEstado = $this->request->getPost('estadocodigo');
+        				
+        			}
+					
+					$updateCliente = array(
+                         
+                        "razon_social" =>  $this->request->getPost('razon_social') , 
+                        "nombre_corto" =>  $this->request->getPost('nombre_corto') , 
+                        "nombre_contacto" =>  $this->request->getPost('nombre_contacto') , 
+                        "puesto" =>  $this->request->getPost('puesto_contacto') , 
+                        "whatsapp" => $this->request->getPost('whatsApp')  , 
+                        "tel_oficina" =>  $this->request->getPost('telefono_oficina') , 
+                        "email" => $this->request->getPost('email')  , 
+                        "fecha_inicio" => $fecha_inicio_servicio  , 
+                        "fecha_fin" => $fecha_fin_servicio  , 
+                        "calle_num" =>  $this->request->getPost('calle') , 
+                        "idCodigoPostal" =>  $this->request->getPost('codigo') , 
+                        "colonia" =>  $this->request->getPost('coloniacodigo') , 
+                        "municipio" =>  $this->request->getPost('municipiocodigo') , 
+                        "ciudad" =>  $this->request->getPost('ciudadcodigo') , 
+                        "estado" =>  $this->request->getPost('estadocodigo') , 
+                        "rfc" =>  $this->request->getPost('rfc') , 
+                        "calle_num_fiscal" => $fisCalle  , 
+                        "idCodigoPostal_fiscal" => $fisCodigo  , 
+                        "colonia_fiscal" => $fisColonia  , 
+                        "municipio_fiscal" =>  $fismunicipio , 
+                        "ciudad_fiscal" =>  $fisCiudad , 
+                        "estado_fiscal" => $fisEstado  , 
                         "activo" => $this->request->getPost('activo'),
                         "updatedby" => $LoggedUserId,
-                		"updateddate" => $TodayDate
+                		"updateddate" => $TodayDate 
                     );
+
+					$idModi = $this->request->getPost('id');
+					$idCliente = $this->encrypt->Decrytp($idModi);	
+					
 
 					$cliente = $this->modelCliente->Updatecliente($updateCliente, $idCliente);
 

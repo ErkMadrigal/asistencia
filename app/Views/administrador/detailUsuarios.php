@@ -105,6 +105,43 @@ if($parentStatus == 1){  ?>
 }       
 
 ?>
+<div class="card card-primary">
+    <div class="card-header" >
+        <h3 class="card-title">Empresas</h3>
+    
+    <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+     </div>
+     </div>
+    <!-- /.card-header -->
+    <div class="card-body table-responsive ">
+        <form class="form-horizontal" id="frmUsuario">
+            <div class="row">
+                <?php
+                    if( !empty($empresa) ):
+                        foreach($empresa as  $a){ ?>
+                            <div class='col-6 col-sm-3'>
+                    <div class="form-group">
+                        <label for="Empresa" class="control-label"><?= $a->nombre ?> </label>
+                        <div >
+                            
+                            <input type="checkbox" class="empresa" disabled="disabled" <?=($a->permiso == 1 ? "checked" : "" ) ?> data-bootstrap-switch data-off-color="danger" data-on-color="success">
+                        </div>
+                    </div>
+                </div>
+                            
+                                            <?php
+                        }
+                    endif;
+                ?>
+                
+                
+            </div>        
+        </form>
+    </div>
+</div>
 
 	<script>
      

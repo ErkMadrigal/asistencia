@@ -2,37 +2,57 @@
 	
 use App\Models\UserModel;
 use App\Libraries\Crud_email;
+use App\Libraries\Encrypt;
 
-class User extends BaseController
-{
+class User extends BaseController{
+
+	
+	private $encrypt;
+	
+
+	public function __construct()
+	{
+		
+		$this->encrypt = new Encrypt();
+		
+		
+	}
+
 	public function index()
 	{
 		
 		$data = [];
 		helper(['form']);
-
+		$model = new UserModel();
 		if ($this->request->getMethod() == 'post'){
 
 			$rules = [
 				'email' => 'required|min_length[6]|max_length[50]|valid_email',
 				'password' => 'required|min_length[4]|max_length[255]|validateUser[email,password]',
+				'empresa' => 'required|validateEmpresa[email,password]'
 
 			];
 
 			$errors = [
 				'password' => [
-					'validateUser' => 'email o pass incorrecto'
+					'validateUser' => 'email o pass incorrecto'],
+				'empresa' => [
+					'validateEmpresa' => 'No está registrado en la empresa seleccionada']
 
-				]
 
 			];
+
+
 
 			if (!$this->validate($rules,$errors)){
 				$data['validation'] = $this->validator;
 			} else{
-				$model = new UserModel();
 
-				$user = $model->where('email', $this->request->getVar('email'))->select('sys_usuarios_admin.nombre,apellido_paterno,email,sys_usuarios_admin.id,rol,idempresa')->first();
+				$valEmpresa = $this->request->getVar('empresa');
+				$idEmpresa = $this->encrypt->Decrytp($valEmpresa);
+				
+
+				$user = $model->where('email', $this->request->getVar('email'))->select('sys_usuarios_admin.nombre,apellido_paterno,email,sys_usuarios_admin.id,rol,\''. $idEmpresa.'\' as idempresa')->first();
 
 				if(!$user){
 
@@ -50,6 +70,26 @@ class User extends BaseController
 			}
 
 		}
+
+		$resultData = $model->getEmpresas();
+
+		$result = [];
+			foreach ( $resultData as $v){
+				
+				$id = $this->encrypt->Encrypt($v->id);
+				$result[] = (object) array (
+					'id' => $id ,
+					'nombre' => $v->nombre,
+					
+
+				) ;
+			}
+		
+		$dataCrud = [
+                'data' => $result]; 
+
+        $data['empresa'] = $dataCrud['data'];
+
 		return view('login/login', $data);
 	}
 

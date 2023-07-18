@@ -60,6 +60,29 @@ class UserModel extends Model{
         return $builder->get()->getResult();
     }
 
+    public function getEmpresas(){
+        
+         $builder = $this->db->table('sys_empresas');
+         $builder->select("id,nombre");
+         
+         $builder->where("activo","1");
+         $builder->orderBy("nombre","ASC");
+        
+         return $builder->get()->getResult();
+    }
+
+    public function validEmpresa($empresa, $email){
+        
+         $builder = $this->db->table('sys_empresas_usuarios');
+         $builder->select("sys_empresas_usuarios.id");
+         $builder->join("sys_usuarios_admin","sys_usuarios_admin.id = sys_empresas_usuarios.idusuario","left");
+         $builder->where("sys_empresas_usuarios.permiso","1");
+         $builder->where("sys_usuarios_admin.email",$email);
+         $builder->where("sys_empresas_usuarios.idempresa",$empresa);
+         
+         return $builder->get()->getRow();
+    }   
+
     // public function user($email)
     // {
         

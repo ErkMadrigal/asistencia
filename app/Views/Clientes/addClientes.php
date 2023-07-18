@@ -78,7 +78,7 @@
                 </div>
                 <div class='col-6 col-sm-12 col-md-6    '>
                     <div class="form-group">
-                        <label for="fecha_fin_servicio" class=" control-label">Fecha Fin Servicio:</label>
+                        <label for="fecha_fin_servicio" class=" control-label">Fecha Fin Servicio: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="fecha_fin_servicio" data-target-input="nearest">
                             <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_fin_servicio" id="datetime-fecha_fin_servicio" name="fecha_fin_servicio" placeholder="" value="" />
                             <div class="input-group-append" data-target="#fecha_fin_servicio" data-toggle="datetimepicker">

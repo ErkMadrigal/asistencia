@@ -12,10 +12,31 @@ $('.modulo').on('switchChange.bootstrapSwitch', function (event, state) {
     document.getElementById("idEdit").value = id;
     document.getElementById("valEdit").value = val;
     document.getElementById("nameEdit").value = name;
+    document.getElementById("type").value = 1;
 
 
     $('#exampleModal').modal('show');
 });
+
+$('.empresa').on('switchChange.bootstrapSwitch', function (event, state) {
+    var id = $(this).attr("id");
+    var name = $(this).attr("name");
+    var val = 0;
+    if($(this).is(':checked')) {
+      val = 1;
+    } else {
+      val = 0;
+    }
+    
+    document.getElementById("idEdit").value = id;
+    document.getElementById("valEdit").value = val;
+    document.getElementById("nameEdit").value = name;
+    document.getElementById("type").value = 2;
+
+
+    $('#exampleModal').modal('show');
+});
+
 
 
 $('#closeModal').click( function(){
