@@ -21,7 +21,8 @@
                     <div class="form-group">
                         <label for="empresa" class="control-label">Empresa: <span class="text-danger">*</span></label>
                         <div >
-                            <input type="text"  class="form-control " id="empresa" name="empresa"  value="<?= $empresa->nombre ?>"><?= csrf_field() ?>
+                            <input type="text"  class="form-control " id="empresa" name="empresa"  value="<?= $empresa->nombre ?>">
+                            <input type="hidden"  class="form-control " value =" <?=$id?> " id="id" name="id" ><?= csrf_field() ?>
                             
                         </div>
                     </div>

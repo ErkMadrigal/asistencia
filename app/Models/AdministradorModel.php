@@ -32,7 +32,7 @@ class AdministradorModel
 
     public function GetuserById($id){
         $builder = $this->db->table('sys_usuarios_admin');
-        $builder->select('sys_usuarios_admin.id, sys_usuarios_admin.nombre,apellido_paterno , email , activo ,sys_empresas.nombre AS empresa ');
+        $builder->select('sys_usuarios_admin.id, sys_usuarios_admin.nombre,apellido_paterno , email , sys_usuarios_admin.activo ,sys_empresas.nombre AS empresa ');
         $builder->join("sys_empresas","sys_usuarios_admin.idempresa = sys_empresas.id","left");
         $builder->orderBy("nombre","asc");
         $builder->where("sys_usuarios_admin.id",$id);
@@ -53,11 +53,13 @@ class AdministradorModel
         
     }
 
-    public function updatePermiso( $updatePermiso ,$idEdit,$idUser,$idUserAdmin , $valor){
+    public function updatePermiso( $updatePermiso ,$idEdit,$idUser,$idUserAdmin , $valor,$tipo){
 
         $return = false;
 
         $this->db->transStart();
+
+        if ($tipo == 1){
 
         $strModulo = substr($idEdit,0,4);
 
@@ -138,7 +140,11 @@ class AdministradorModel
                 }
             }
 
-        
+        } elseif ($tipo == 2) {
+
+            $this->db->table('sys_empresas_usuarios')->where('id', $idEdit)->update($updatePermiso);
+            $configModulos = true;
+        }
 
         $this->db->transComplete();
 
@@ -167,7 +173,7 @@ class AdministradorModel
 
     
 
-    public function createUsuario($data, $modulos , $idUserAdmin){
+    public function createUsuario($data, $modulos , $idUserAdmin, $empresas){
 
         $return = false;
 
@@ -267,6 +273,29 @@ class AdministradorModel
          $this->db->query($queryUpdatePermisos);
         
             
+        }
+
+        $getEmpresas = json_decode($empresas,true);
+
+        foreach($getEmpresas as $e =>$value){
+
+            $uuid1 = Uuid::uuid1($clockSequence);
+            $idEmpresa = $uuid1->toString();
+            $empresa = $value['empresa'];
+            $idEmp = $this->encrypt->Decrytp($empresa);
+            $queryEmpresas = "INSERT INTO sys_empresas_usuarios (id,
+                idusuario,
+                idempresa, 
+                permiso) VALUES (
+                '".$idEmpresa."',
+                '".$idUsuario."', 
+                '".$idEmp."', 
+                ".$value['val']." )";
+
+
+        
+            $this->db->query($queryEmpresas);
+
         }
 
 
@@ -417,6 +446,56 @@ class AdministradorModel
         $builder->select('rol');
         $builder->where("id",$idUser);
         return $builder->get()->getRow();
+        
+    }
+
+    public function GetEmpresas($idUser){
+        $builder = $this->db->table('sys_empresas');
+        $builder->select('sys_empresas.id,nombre,telefonos,permiso as activo');
+        $builder->join("sys_empresas_usuarios","sys_empresas_usuarios.idempresa = sys_empresas.id","left");
+        $builder->where("idusuario",$idUser);
+        return $builder->get()->getResult();
+        
+    }
+
+    public function NewEmpresa($empresa){
+
+        $this->db->transStart();
+
+        $this->db->table('sys_empresas')->insert($empresa);
+
+        $this->db->transComplete();
+
+        if ($this->db->transStatus() === TRUE)
+        {
+            $return = true;
+        } else {
+            $return = false ;
+        }
+
+        return $return;
+    }
+
+    public function GetAllEmpresas(){
+        $builder = $this->db->table('sys_empresas');
+        $builder->select('id, nombre');
+        $builder->orderBy("nombre","asc");
+        $builder->where("activo",1);
+        return $builder->get()->getResult();
+        
+    }
+
+    public function GetEmpresasUserById($id , $idUserAdmin){
+        
+        $query = "
+                SELECT sys_empresas_usuarios.id, sys_empresas_usuarios.permiso, sys_empresas.nombre
+                FROM sys_empresas_usuarios 
+                LEFT JOIN sys_empresas ON sys_empresas_usuarios.idempresa = sys_empresas.id 
+                WHERE sys_empresas_usuarios.idusuario = '$id'  
+                ORDER BY sys_empresas.nombre";
+        
+
+        return $this->db->query($query)->getResult();
         
     }
 

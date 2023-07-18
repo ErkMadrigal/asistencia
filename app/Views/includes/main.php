@@ -324,7 +324,7 @@
         <?= $this->include('includes/alerts') ?>
         <div class="row mb-2">
           <div class="col-sm-6">
-            
+            <h1 class="m-0 text-dark"><?= session()->get('nombreEmpresa') ?></h1>  
           </div><!-- /.col -->
           <div class="col-sm-6">
             <?php if( !empty($breadcrumb) ): ?>

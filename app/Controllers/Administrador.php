@@ -76,6 +76,8 @@ class Administrador extends BaseController {
 			$data['user'] = $this->modelAdministrador->GetuserById($id);
 
 			$data['getId'] =  $getId;
+
+			$data['empresa'] = $this->modelAdministrador->GetEmpresasUserById($id , $idUserAdmin);
 			
 			$data['breadcrumb'] = ["inicio" => 'Usuarios',
                     				"url" => 'usuarios',
@@ -86,11 +88,12 @@ class Administrador extends BaseController {
 
 	public function EditarPermiso(){
 		$rolUser = $this->Rol();
-		if ($this->request->getMethod() == "post" && $rolUser === "1" && $this->request->getvar(['idUser','idEdit','valEdit'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $rolUser === "1" && $this->request->getvar(['idUser','idEdit','valEdit','type'],FILTER_SANITIZE_STRING)){
 				$rules = [
 				'idUser' =>  'required',
 				'idEdit' =>  'required',
-				'valEdit' =>  'required|in_list[0,1]'];
+				'valEdit' =>  'required|in_list[0,1]',
+				'type' =>  'required|max_length[1]|integer|in_list[2,1]'];
 				
 				$errors = [];
 				$succes = [];
@@ -113,7 +116,7 @@ class Administrador extends BaseController {
 		    			"permiso" =>  $_POST["valEdit"]);		
 
 
-						$update = $this->modelAdministrador->updatePermiso( $updatePermiso ,$idEdit,$idUser , $idUserAdmin , $_POST["valEdit"]);
+						$update = $this->modelAdministrador->updatePermiso( $updatePermiso ,$idEdit,$idUser , $idUserAdmin , $_POST["valEdit"],$_POST["type"]);
 
                     	if ($update) {
                     	
@@ -147,6 +150,8 @@ class Administrador extends BaseController {
 
         	$data['user'] = $this->modelAdministrador->GetuserById($id);
         	$data['modulosUsuario'] = $this->modelAdministrador->GetModulosUserById($id , $idUserAdmin);
+
+        	$data['empresa'] = $this->modelAdministrador->GetEmpresasUserById($id , $idUserAdmin);
         	
 			
 			$data['breadcrumb'] = ["inicio" => 'Usuarios' ,
@@ -214,6 +219,25 @@ class Administrador extends BaseController {
 			$data['breadcrumb'] = ["inicio" => 'Usuarios' ,
                     				"url" => 'usuarios',
                     				"titulo" => 'Agregar'];
+
+            $resultData = $this->modelAdministrador->GetAllEmpresas();
+			$result = [];
+
+
+			foreach ( $resultData as $v){
+				
+				$id = $this->encrypt->Encrypt($v->id);
+				$result[] = (object) array (
+					'id' => $id ,
+					'nombre' => $v->nombre,
+					
+				) ;
+			}
+		
+			$dataCrud = [
+                'data' => $result]; 
+
+        	$data['empresa'] = $dataCrud['data'];        				
 			
 			$id = session()->get('IdUser');
         	$idUser = $this->encrypter->decrypt($id);
@@ -251,16 +275,24 @@ class Administrador extends BaseController {
 
 					}
 				}
+
+				$getEmpresas = json_decode($_POST['emp'],true);
+				$empresasCount = 0;
+				foreach ($getEmpresas as $x =>$value) {
+					if ($value['val'] == 1){
+
+						$empresasCount = $empresasCount + 1;
+
+					}
+				}
 				 
-				if($this->validate($rules) && $rolUser === "1" && $modulosCount > 0){
+				if($this->validate($rules) && $rolUser === "1" && $modulosCount > 0 && $empresasCount > 0){
 					
 					$getUser = session()->get('IdUser');
 					$idUser = $this->encrypter->decrypt($getUser);
 					
 						
-						$empresa = session()->get('empresa');
 						
-						$idEmpresa = $this->encrypter->decrypt($empresa);
 						
 						$pass = $this->randomPass();
 						$password = password_hash($pass, PASSWORD_DEFAULT); 
@@ -273,12 +305,12 @@ class Administrador extends BaseController {
 		    				"email" => $email,
 		    				"activo" =>  1,
 		    				"rol" => 2,
-		    				"idempresa" => $idEmpresa,
+		    				"idempresa" => '',
 		    				"password" => $password,
 		    				"ip" => $this->getRealIP()
 		    			);		
 
-						$create = $this->modelAdministrador->createUsuario( $createUsuario ,$_POST['mod'],$idUser ); 
+						$create = $this->modelAdministrador->createUsuario( $createUsuario ,$_POST['mod'],$idUser , $_POST['emp']); 
 					
 						
                     	if ($create) {
@@ -347,10 +379,30 @@ class Administrador extends BaseController {
 		if ($this->request->getMethod() == "get" && $rolUser === "1" ){
 
 			$data['modulos'] = $this->menu->Permisos();
-			$getEmpresa = session()->get('empresa');
-			$idEmpresa = $this->encrypter->decrypt($getEmpresa);
+			
+			$getUser = session()->get('IdUser');
+			$idUser = $this->encrypter->decrypt($getUser);
+			$resultData = $this->modelAdministrador->GetEmpresas($idUser);
+			$result = [];
 
-			$data['empresa'] = $this->modelAdministrador->GetEmpresaById($idEmpresa);
+
+			foreach ( $resultData as $v){
+				
+				$id = $this->encrypt->Encrypt($v->id);
+				$result[] = (object) array (
+					'id' => $id ,
+					'nombre' => $v->nombre,
+					'telefonos' => $v->telefonos,
+					'activo' => $v->activo
+
+				) ;
+			}
+		
+			$dataCrud = [
+                'data' => $result]; 
+
+        	$data['empresa'] = $dataCrud['data'];
+
         	
 		
 			return view('administrador/detailEmpresa', $data);
@@ -363,11 +415,13 @@ class Administrador extends BaseController {
 
 			$data['modulos'] = $this->menu->Permisos();
 			
-			$getEmpresa = session()->get('empresa');
-			$idEmpresa = $this->encrypter->decrypt($getEmpresa);
-
+			$getId = str_replace(" ", "+", $_GET['id']);
+			$idEmpresa = $this->encrypt->Decrytp($getId);
 			
 			$data['empresa'] = $this->modelAdministrador->GetEmpresaById($idEmpresa);
+
+			$data['id'] = $this->encrypt->Encrypt($idEmpresa);
+
 
 			$data['breadcrumb'] = ["inicio" => 'Empresa' ,
                     				"url" => 'empresa',
@@ -390,6 +444,9 @@ class Administrador extends BaseController {
 				if($this->validate($rules)){
 					$getEmpresa = session()->get('empresa');
 					$idEmpresa = $this->encrypter->decrypt($getEmpresa);
+
+					$idModi = $this->request->getPost('id');
+					$idEmpresa = $this->encrypt->Decrytp($idModi);
 
 
 					$updateEmpresa = array(
@@ -497,6 +554,81 @@ class Administrador extends BaseController {
     	// 	$email->printDebugger(['headers']);
 
        
+	}
+
+	public function agregarEmpresa(){
+		if ($this->request->getMethod() == "get"){
+
+			$data['modulos'] = $this->menu->Permisos();
+			
+			$data['breadcrumb'] = ["inicio" => 'Empresas' ,
+                    				"url" => 'empresa',
+                    				"titulo" => 'Agregar'];
+
+			
+			return view('administrador/addEmpresa', $data);
+		}	
+	}
+
+	public function AgrEmpresa(){
+		//helper(['form']);
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['nombre,telefonos'],FILTER_SANITIZE_STRING)){
+
+
+				$rules = [
+				
+				'nombre' =>  ['label' => "Nombre", 'rules' => 'required|max_length[200]|is_unique[sys_empresas.nombre]'],
+				'telefonos' =>  ['label' => "Telefonos", 'rules' => 'required|max_length[100]']];
+		 
+				$errors = [];
+				$succes = [];
+				$dontSucces = [];
+				$data = [];
+
+
+				if($this->validate($rules)){
+					
+					$getUser = session()->get('IdUser');
+					$LoggedUserId = $this->encrypter->decrypt($getUser);
+					
+                    
+					$uuid = Uuid::uuid4();
+        			$id = $uuid->toString();
+
+
+					$TodayDate = date("Y-m-d H:i:s");
+                    
+					$empresa = array(
+
+						"id" =>  $id , 
+						"nombre" =>  $this->request->getPost('nombre') ,
+						"telefonos" =>  $this->request->getPost('telefonos') , 
+						"activo" =>  1 , 
+						"created_at" => $TodayDate
+                        
+                    );
+
+					$result = $this->modelAdministrador->NewEmpresa($empresa);
+
+                    if ($result) {
+
+            			
+                    	$succes = ["mensaje" => 'Empresa agregada con exito' ,
+                            	   "succes" => "succes"];
+
+                           	   
+                    	
+                    } else {
+                    	$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	lang('Layout.toastrError')  ];
+
+                    }
+				} else {	
+					$errors = $this->validator->getErrors();
+				}
+
+				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+		}	
 	}
 
     

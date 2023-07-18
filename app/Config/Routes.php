@@ -193,6 +193,8 @@ $routes->post('asignarComision', 'Comision::asignarComision',['filter' => 'auth'
 $routes->get('sendEmail', 'Administrador::sendEmailTest',['filter' => 'auth']);
 $routes->post('cargarRespuestasConsulta', 'Cuip::cargaRespuestasPre',['filter' => 'auth']);
 $routes->post('cargaMasivaCuip', 'Cuip::cargaMasivaCUIP',['filter' => 'auth']);
+$routes->get('AddEmpresa', 'Administrador::agregarEmpresa',['filter' => 'auth']);
+$routes->post('GuardarEmpresa', 'Administrador::AgrEmpresa',['filter' => 'auth']);
 
 
 

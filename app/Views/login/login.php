@@ -14,6 +14,15 @@
   <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url() ?>/assets/dist/css/adminlte.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/select2/css/select2.min.css"> 
+  <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <!-- jQuery -->
+<script src="<?= base_url() ?>/assets/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="<?= base_url() ?>/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="<?= base_url() ?>/assets/plugins/select2/js/select2.full.min.js"></script>
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -49,6 +58,29 @@
             </div>
           </div>
         </div>
+        <div class="input-group mb-3">
+          <select class="form-control" id="empresa" name="empresa">
+            <option value="">Empresa</option>
+            <?php
+              if( !empty($empresa) ):
+                foreach($empresa as  $a){
+            ?>
+                <option value="<?=$a->id ?>"><?= $a->nombre ?></option>
+            <?php
+                }
+              endif;
+            ?>
+          </select>
+          <script>
+                                $(document).ready(function() {
+                                    $("#empresa").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+          
+        </div>
         <?php if(isset($validation)):?>
           <div class="col-12">
         <div class="alert alert-danger" role="alert">
@@ -81,10 +113,7 @@
 </div>
 <!-- /.login-box -->
 
-<!-- jQuery -->
-<script src="<?= base_url() ?>/assets/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="<?= base_url() ?>/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 <!-- AdminLTE App -->
 <script src="<?= base_url() ?>/assets/dist/js/adminlte.min.js"></script>
 

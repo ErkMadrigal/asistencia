@@ -140,6 +140,43 @@ if($parentStatus == 1){ ?>
 }       
 
 ?>
+<div class="card card-primary">
+    <div class="card-header" >
+        <h3 class="card-title">Empresas</h3>
+    
+    <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+     </div>
+     </div>
+    <!-- /.card-header -->
+    <div class="card-body table-responsive ">
+        <form class="form-horizontal" id="frmUsuario">
+            <div class="row">
+                <?php
+                    if( !empty($empresa) ):
+                        foreach($empresa as  $a){ ?>
+                            <div class='col-6 col-sm-3'>
+                    <div class="form-group">
+                        <label for="Empresa" class="control-label"><?= $a->nombre ?> </label>
+                        <div >
+                            
+                            <input type="checkbox" class="empresa" id="<?= $a->id ?>"  name='emp[]'  data-bootstrap-switch data-off-color="danger" data-on-color="success">
+                        </div>
+                    </div>
+                </div>
+                            
+                                            <?php
+                        }
+                    endif;
+                ?>
+                
+                
+            </div>        
+        </form>
+    </div>
+</div>
 
 
             <div class="row">
@@ -155,6 +192,7 @@ if($parentStatus == 1){ ?>
         $('#load').addClass( "spinner-border" );    
         var formData = new FormData($("form#frmUsuario")[0]);
         var mod = [];
+        var emp = [];
         
         $('.modulo').each(function( index ){
             var id = $(this).attr("id");
@@ -166,8 +204,20 @@ if($parentStatus == 1){ ?>
             }
 
         });
+
+        $('.empresa').each(function( index ){
+            var id = $(this).attr("id");
+
+            if($(this).is(':checked')) {
+                emp.push({"empresa": id , "val" : 1});
+            } else {
+                emp.push({"empresa": id , "val" : 0});
+            }
+
+        });
         
         formData.append('mod', JSON.stringify(mod));
+        formData.append('emp', JSON.stringify(emp));
         
         $.ajax({
             url: base_url + '/SaveUser',

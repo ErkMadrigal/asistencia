@@ -152,6 +152,49 @@ if($parentStatus == 1){
 }       
 
 ?>
+
+<div class="card card-primary">
+    <div class="card-header" >
+        <h3 class="card-title">Empresas</h3>
+    
+    <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+     </div>
+     </div>
+    <!-- /.card-header -->
+    <div class="card-body table-responsive ">
+        <form class="form-horizontal" >
+            <div class="row">
+                <?php
+                    if( !empty($empresa) ):
+                        $j = 0 ;
+                        foreach($empresa as  $a){ 
+                            $id = $encrypt->Encrypt($a->id);
+                        ?>
+                            <div class='col-6 col-sm-3'>
+                    <div class="form-group">
+                        <label for="Empresa" class="control-label"><?= $a->nombre ?> </label>
+                        <div >
+                            
+                            <input type="checkbox" class="empresa"  id="<?= $id ?>" name="my-checkbox<?=$j ?>" <?=($a->permiso == 1 ? "checked" : "" ) ?> data-bootstrap-switch data-off-color="danger" data-on-color="success">
+                        </div>
+                    </div>
+                </div>
+                            
+                                            <?php
+                        $j++;                    
+                        }
+                    endif;
+                ?>
+                
+                
+            </div>        
+        </form>
+    </div>
+</div>
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal"  aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" >
@@ -168,6 +211,7 @@ if($parentStatus == 1){
                 <input type="hidden"  class="form-control " id="idEdit" name="idEdit" >
                 <input type="hidden"  class="form-control " id="valEdit" name="valEdit" >
                 <input type="hidden"  class="form-control " id="nameEdit" name="nameEdit" >
+                <input type="hidden"  class="form-control " id="type" name="type" >
                 <p><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;Esta seguro de editar el permiso ?</p>
             </div>
             <div class="modal-footer justify-content-between">
