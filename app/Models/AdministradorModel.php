@@ -59,9 +59,10 @@ class AdministradorModel
 
         $this->db->transStart();
 
+        $strModulo = substr($idEdit,0,4);
         if ($tipo == 1){
 
-        $strModulo = substr($idEdit,0,4);
+        
 
             if ($strModulo == "new_"){
 
@@ -142,8 +143,31 @@ class AdministradorModel
 
         } elseif ($tipo == 2) {
 
-            $this->db->table('sys_empresas_usuarios')->where('id', $idEdit)->update($updatePermiso);
-            $configModulos = true;
+            if ($strModulo == "new_"){
+
+                $uuid = Uuid::uuid4();
+                $idPermiso = $uuid->toString();
+                $idEmpresa = substr($idEdit,4);
+
+                $queryInsert = "INSERT INTO sys_empresas_usuarios (id,
+                idusuario, 
+                idempresa,
+                permiso) VALUES (
+                '".$idPermiso."',
+                '".$idUser."', 
+                '".$idEmpresa."', 
+                ".$valor." )";
+        
+                $this->db->query($queryInsert);
+                
+                $configModulos = true;
+
+            } else {
+                $this->db->table('sys_empresas_usuarios')->where('id', $idEdit)->update($updatePermiso);
+                $configModulos = true;
+
+            }
+            
         }
 
         $this->db->transComplete();
@@ -492,7 +516,11 @@ class AdministradorModel
                 FROM sys_empresas_usuarios 
                 LEFT JOIN sys_empresas ON sys_empresas_usuarios.idempresa = sys_empresas.id 
                 WHERE sys_empresas_usuarios.idusuario = '$id'  
-                ORDER BY sys_empresas.nombre";
+                
+                UNION 
+                SELECT CONCAT('new_' , sys_empresas.id) AS id, 0 AS permiso, sys_empresas.nombre 
+                FROM sys_empresas 
+                WHERE sys_empresas.id  NOT IN ((SELECT idempresa FROM sys_empresas_usuarios WHERE idusuario = '$id' )) order BY nombre";
         
 
         return $this->db->query($query)->getResult();
