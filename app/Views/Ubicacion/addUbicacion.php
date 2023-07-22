@@ -36,7 +36,7 @@ use App\Libraries\Encrypt;
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="ubicacion" class=" control-label">Ubicacion:</label>
+                        <label for="ubicacion" class=" control-label">Ubicacion:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="ubicacion" name="ubicacion">
                     </div>
                 </div>

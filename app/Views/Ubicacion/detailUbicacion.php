@@ -114,14 +114,7 @@
                         <div>
                         <?= $ubicacion->colonia ?>
                         </div>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#coloniacodigo").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
+                            
                     </div>
                 </div>
                 
@@ -130,14 +123,7 @@
                         <label for="municipiocodigo" class="control-label">Municipio: </label>
                         <div>
                         <?= $ubicacion->municipio ?>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#municipiocodigo").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
+                            
                         </div>
                     </div>
                 </div>
@@ -147,14 +133,7 @@
                         <label for="ciudadcodigo" class="control-label">Ciudad: </label>
                         <div>
                         <?= $ubicacion->ciudad ?>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#ciudadcodigo").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
+                            
                         </div>
                     </div>
                 </div>
@@ -162,15 +141,8 @@
                     <div class="form-group">
                         <label for="estadocodigo" class="control-label">Estado: </label>
                         <div>
-                        <?= $ubicacion->nombre_ubicacion ?>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#estadocodigo").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
+                        <?= $ubicacion->estado ?>
+                            
                         </div>
                     </div>
                 </div>

@@ -30,14 +30,14 @@ use App\Libraries\Encrypt;
                     <div class="form-group">
                         <label for="cliente" class="control-label">Cliente: </label>
                         <div>
-                            <input type="text" class="form-control "  id="cliente" name="cliente" value="<?= $ubicacion->idCliente ?>"><input type="hidden" class="form-control " value=" <?= $id ?> " id="id" name="id"><?= csrf_field() ?>
+                            <?= $ubicacion->idCliente ?><input type="hidden" class="form-control " value=" <?= $id ?> " id="id" name="id"><?= csrf_field() ?>
 
                         </div>
                     </div>
                 </div>
                 <div class='col-12 col-sm-6'>
                     <div class="form-group">
-                        <label for="ubicacion" class="control-label">Ubicacion: </label>
+                        <label for="ubicacion" class="control-label">Ubicacion:<span class="text-danger">*</span></label>
                         <div>
                             <input type="text" class="form-control "  id="ubicacion" name="ubicacion" value="<?= $ubicacion->nombre_ubicacion ?>">
 
@@ -55,7 +55,8 @@ use App\Libraries\Encrypt;
                                     foreach($region as  $a){
                                         $idRegion = $encrypt->Encrypt($a->id);
                                         ?>
-                                            <option value="<?=$idRegion ?>"><?= $a->valor ?></option>
+                                            
+                                            <option <?= (isset($ubicacion->idRegion) == $a->valor ? 'selected' : '') ?> value="<?= $idRegion ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -82,7 +83,7 @@ use App\Libraries\Encrypt;
                                     foreach($zona as  $a){
                                         $idZona = $encrypt->Encrypt($a->id);
                                         ?>
-                                            <option value="<?=$idZona ?>"><?= $a->valor ?></option>
+                                            <option <?= (isset($ubicacion->idZona) == $a->valor ? 'selected' : '') ?> value="<?= $idZona ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -112,7 +113,7 @@ use App\Libraries\Encrypt;
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -131,86 +132,93 @@ use App\Libraries\Encrypt;
         <div class="row">
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="calle" class=" control-label">Calle y Número:</label>
+                    <label for="calle" class=" control-label">Calle y Número:<span class="text-danger">*</span></label>
                     <input type="text" class="form-control "  id="calle" name="calle" value="<?= $ubicacion->calle_num ?>">
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="codigo" class=" control-label">Código Postal :</label>
-                    <input type="text" class="form-control "  id="codigo" name="codigo" value="<?= $ubicacion->idCodigoPostal ?>">
+                    <label for="codigo" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control "  id="codigo" name="codigo" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value="<?= $ubicacion->idCodigoPostal ?>">
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
-                <div class="form-group">
-                    <label for="coloniacodigo" class=" control-label">Colonia:</label>
-                    <div>
-                        <input type="text" class="form-control "  id="colonia" name="colonia" value="<?= $ubicacion->colonia ?>">
-
+                    <div class="form-group">
+                        <label for="coloniacodigo" class=" control-label">Colonia:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="coloniacodigo" name="coloniacodigo">
+                                <option value="">Selecciona una Opcion</option>
+                                <option selected value="<?= $ubicacion->colonia ?>"><?= $ubicacion->colonia ?></option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#coloniacodigo").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
-                    <script>
-                        $(document).ready(function() {
-                            $("#coloniacodigo").select2({
-                                theme: "bootstrap4",
-                                width: "100%"
-                            });
-                        });
-                    </script>
                 </div>
-            </div>
-
-            <div class='col-6 col-sm-6'>
-                <div class="form-group">
-                    <label for="municipiocodigo" class="control-label">Municipio: </label>
-                    <div>
-                        <input type="text" class="form-control "  id="colonia" name="colonia" value="<?= $ubicacion->municipio ?>">
+                
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="municipiocodigo" class="control-label">Municipio: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="municipiocodigo" name="municipiocodigo">
+                                <option value="">Selecciona una Opcion</option>
+                                <option selected value="<?= $ubicacion->municipio ?>"><?= $ubicacion->municipio ?></option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#municipiocodigo").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
-
-                    <script>
-                        $(document).ready(function() {
-                            $("#municipiocodigo").select2({
-                                theme: "bootstrap4",
-                                width: "100%"
-                            });
-                        });
-                    </script>
                 </div>
-            </div>
-            
-
-            <div class='col-6 col-sm-6'>
-                <div class="form-group">
-                    <label for="ciudadcodigo" class="control-label">Ciudad: </label>
-                    <div>
-                        <input type="text" class="form-control "  id="colonia" name="colonia" value="<?= $ubicacion->ciudad ?>">
+                
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="ciudadcodigo" class="control-label">Ciudad: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="ciudadcodigo" name="ciudadcodigo">
+                                <option value="">Selecciona una Opcion</option>
+                                <option selected value="<?= $ubicacion->ciudad ?>"><?= $ubicacion->ciudad ?></option>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#ciudadcodigo").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
-                    <script>
-                        $(document).ready(function() {
-                            $("#ciudadcodigo").select2({
-                                theme: "bootstrap4",
-                                width: "100%"
-                            });
-                        });
-                    </script>
                 </div>
-            </div>
-
-            <div class='col-6 col-sm-6'>
-                <div class="form-group">
-                    <label for="estadocodigo" class="control-label">Estado: </label>
-                    <div>
-                        <input type="text" class="form-control "  id="colonia" name="colonia" value="<?= $ubicacion->estado ?>">
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="estadocodigo" class="control-label">Estado: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="estadocodigo" name="estadocodigo">
+                                <option value="">Selecciona una Opcion</option>
+                                <option selected value="<?= $ubicacion->estado ?>"><?= $ubicacion->estado ?></option>
+                                
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#estadocodigo").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
-                    <script>
-                        $(document).ready(function() {
-                            $("#estadocodigo").select2({
-                                theme: "bootstrap4",
-                                width: "100%"
-                            });
-                        });
-                    </script>
                 </div>
-            </div>
             <div class='col-12 col-sm-6'>
             </div>    
             <div class='col-12 col-sm-6'>
@@ -222,16 +230,19 @@ use App\Libraries\Encrypt;
                 </div>
             </div>
         </div>    
+        
+        </form>
+    </div>
+</div>
         <div class="card-footer bg-transparent clearfix">
             <div class="row">
-
+                <div class="col-12 col-sm-6 col-md-9 ">
+                </div>    
                 <div class="col-12 col-sm-6 col-md-3 ">
                     <button id="editubicacion" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
                 </div>
             </div>
         </div>
-    </div>
-</div>
     <script>
         $('#editubicacion').click(function(event) {
             event.preventDefault();
@@ -296,5 +307,90 @@ use App\Libraries\Encrypt;
             });
 
         });
+
+        $("#codigo").on('keyup', function(){
+        getSepomex(this.id)
+        });
+
+    
+
+
+    function getSepomex(id) {
+
+
+
+        var elemento = id;
+        
+        var num = $('#'+elemento).val().length
+
+        if (num === 5) {
+
+            $('#load').addClass( "spinner-border" );
+
+            let selectEstadoDom = document.querySelector("#estado"+elemento)
+
+            let selectMunicipioDom = document.querySelector("#municipio"+elemento)
+                
+            let selectColoniaDom = document.querySelector("#colonia"+elemento)
+
+            let selectCiudadDom = document.querySelector("#ciudad"+elemento)
+            
+              
+
+                selectCiudadDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+                selectEstadoDom.innerHTML = ''
+                selectMunicipioDom.innerHTML = ''
+              
+            
+            
+
+            $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
+
+        
+        var cp = $('#'+elemento).val()
+        var csrfName = $("input[name=app_csrf]").val();
+        
+            var data    = {
+                    cp : cp,
+                    app_csrf: csrfName
+                };
+
+        $.ajax({
+            url: base_url + '/getSepomex',
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            data: data,
+            ache: false,
+            async: true,
+            success: function (response) {
+                if(response.succes.succes === "succes"){
+
+                        
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectColoniaDom.innerHTML = response.data.colonia
+                    
+                        selectEstadoDom.innerHTML = response.data.estado
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                        
+                
+                    
+                    
+                }
+
+                $('#load').removeClass( "spinner-border" );
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('#load').removeClass( "spinner-border" );
+                toastr.error('<?=lang('Layout.toastrError') ?>');
+                           
+            }
+        });
+
+    }
+    };
+
+
     </script>
     <?= $this->endSection() ?>
