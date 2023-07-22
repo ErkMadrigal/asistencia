@@ -31,6 +31,38 @@
                         </div>
                     </div>
                 </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="region" class=" control-label">Región: </label>
+                        <div>
+                        <?= $ubicacion->idRegion ?>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="zona" class=" control-label">Zona: </label>
+                        <div>
+                        <?= $ubicacion->idZona ?>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="latitud" class=" control-label">Latitud: </label>
+                        <div>
+                        <?= $ubicacion->latitud ?>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="longitd" class=" control-label">Longitud: </label>
+                        <div>
+                        <?= $ubicacion->longitud ?>
+                        </div>
+                    </div>
+                </div>
                 
             </div>
         </form>

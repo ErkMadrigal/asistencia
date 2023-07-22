@@ -30,7 +30,7 @@ use App\Libraries\Encrypt;
                     <div class="form-group">
                         <label for="cliente" class="control-label">Cliente: </label>
                         <div>
-                            <input type="text" class="form-control " disabled id="cliente" name="cliente" value="<?= $ubicacion->idCliente ?>"><input type="hidden" class="form-control " value=" <?= $id ?> " id="id" name="id"><?= csrf_field() ?>
+                            <input type="text" class="form-control "  id="cliente" name="cliente" value="<?= $ubicacion->idCliente ?>"><input type="hidden" class="form-control " value=" <?= $id ?> " id="id" name="id"><?= csrf_field() ?>
 
                         </div>
                     </div>
@@ -39,9 +39,76 @@ use App\Libraries\Encrypt;
                     <div class="form-group">
                         <label for="ubicacion" class="control-label">Ubicacion: </label>
                         <div>
-                            <input type="text" class="form-control " disabled id="ubicacion" name="ubicacion" value="<?= $ubicacion->nombre_ubicacion ?>">
+                            <input type="text" class="form-control "  id="ubicacion" name="ubicacion" value="<?= $ubicacion->nombre_ubicacion ?>">
 
                         </div>
+                    </div>
+                </div>
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="region" class="control-label">Región: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="region" name="region">
+                            <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($region) ):
+                                    foreach($region as  $a){
+                                        $idRegion = $encrypt->Encrypt($a->id);
+                                        ?>
+                                            <option value="<?=$idRegion ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                        </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#region").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="zona" class="control-label">Zona: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="zona" name="zona">
+                            <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($zona) ):
+                                    foreach($zona as  $a){
+                                        $idZona = $encrypt->Encrypt($a->id);
+                                        ?>
+                                            <option value="<?=$idZona ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                        </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#zona").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="latitud" class=" control-label">Latitud:</label>
+                        <input type="text" class="form-control " id="latitud" name="latitud" maxlength="15">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="longitud" class=" control-label">Longitud:</label>
+                        <input type="text" class="form-control " id="longitud" name="longitud" maxlength="15">
                     </div>
                 </div>
             </div>
@@ -65,20 +132,20 @@ use App\Libraries\Encrypt;
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="calle" class=" control-label">Calle y Número:</label>
-                    <input type="text" class="form-control " disabled id="calle" name="calle" value="<?= $ubicacion->calle_num ?>">
+                    <input type="text" class="form-control "  id="calle" name="calle" value="<?= $ubicacion->calle_num ?>">
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="codigo" class=" control-label">Código Postal :</label>
-                    <input type="text" class="form-control " disabled id="codigo" name="codigo" value="<?= $ubicacion->idCodigoPostal ?>">
+                    <input type="text" class="form-control "  id="codigo" name="codigo" value="<?= $ubicacion->idCodigoPostal ?>">
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="coloniacodigo" class=" control-label">Colonia:</label>
                     <div>
-                        <input type="text" class="form-control " disabled id="colonia" name="colonia" value="<?= $ubicacion->colonia ?>">
+                        <input type="text" class="form-control "  id="colonia" name="colonia" value="<?= $ubicacion->colonia ?>">
 
                     </div>
                     <script>
@@ -96,7 +163,7 @@ use App\Libraries\Encrypt;
                 <div class="form-group">
                     <label for="municipiocodigo" class="control-label">Municipio: </label>
                     <div>
-                        <input type="text" class="form-control " disabled id="colonia" name="colonia" value="<?= $ubicacion->municipio ?>">
+                        <input type="text" class="form-control "  id="colonia" name="colonia" value="<?= $ubicacion->municipio ?>">
                     </div>
 
                     <script>
@@ -115,7 +182,7 @@ use App\Libraries\Encrypt;
                 <div class="form-group">
                     <label for="ciudadcodigo" class="control-label">Ciudad: </label>
                     <div>
-                        <input type="text" class="form-control " disabled id="colonia" name="colonia" value="<?= $ubicacion->ciudad ?>">
+                        <input type="text" class="form-control "  id="colonia" name="colonia" value="<?= $ubicacion->ciudad ?>">
                     </div>
                     <script>
                         $(document).ready(function() {
@@ -132,7 +199,7 @@ use App\Libraries\Encrypt;
                 <div class="form-group">
                     <label for="estadocodigo" class="control-label">Estado: </label>
                     <div>
-                        <input type="text" class="form-control " disabled id="colonia" name="colonia" value="<?= $ubicacion->nombre_ubicacion ?>">
+                        <input type="text" class="form-control "  id="colonia" name="colonia" value="<?= $ubicacion->estado ?>">
                     </div>
                     <script>
                         $(document).ready(function() {
@@ -144,6 +211,8 @@ use App\Libraries\Encrypt;
                     </script>
                 </div>
             </div>
+            <div class='col-12 col-sm-6'>
+            </div>    
             <div class='col-12 col-sm-6'>
                 <div class="form-group">
                     <label for="Activo" class="control-label">Activo:</label>

@@ -38,6 +38,10 @@
                     <a class="nav-link" id="custom-tabs-five-overlay-tab" data-toggle="pill" href="#custom-normal"
                         role="tab" aria-controls="custom-tabs-five-normal" aria-selected="false">Sanciones-Estimulos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-five-overlay-tab" data-toggle="pill" href="#custom-emp"
+                        role="tab" aria-controls="custom-tabs-five-normal" aria-selected="false">Alta de Empleado</a>
+                </li>
             </ul>
         </div>
 
@@ -88,6 +92,13 @@
                     aria-labelledby="custom-tabs-five-overlay-tab">
                     
                     <?php echo view('Cuip/SancionesEstimulos') ?> 
+
+                </div>
+
+                <div class="tab-pane fade" id="custom-emp" role="tabpanel"
+                    aria-labelledby="custom-tabs-five-overlay-tab">
+                    
+                    <?php echo view('Cuip/AltaEmpleado') ?> 
 
                 </div>
             </div>
