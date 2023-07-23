@@ -195,7 +195,9 @@ $routes->post('cargarRespuestasConsulta', 'Cuip::cargaRespuestasPre',['filter' =
 $routes->post('cargaMasivaCuip', 'Cuip::cargaMasivaCUIP',['filter' => 'auth']);
 $routes->get('AddEmpresa', 'Administrador::agregarEmpresa',['filter' => 'auth']);
 $routes->post('GuardarEmpresa', 'Administrador::AgrEmpresa',['filter' => 'auth']);
-
+$routes->post('getUbicacionAlta', 'Cuip::getUbicacion',['filter' => 'auth']);
+$routes->post('getPuestosAlta', 'Cuip::getPuesto',['filter' => 'auth']);
+$routes->post('GuardarAltaEmpleado', 'Cuip::AgregarAltasEmpleados',['filter' => 'auth']);
 
 
 

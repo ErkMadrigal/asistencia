@@ -486,6 +486,11 @@
                     $('#saveSancionesEstimulos').prop("disabled", true);
                     $('#saveSancionesEstimulos').html("Guardado&nbsp;<i class='fa fa-thumbs-up'></i>");
 
+                    $("html,body").animate({
+                        scrollTop: $("#cardAltaEmpleado").offset().top
+                    }, 2000);
+
+                    $('#tabs a[href="#custom-emp"]').trigger('click');
 
 
                 } else if (response.dontsucces.error == 'error') {

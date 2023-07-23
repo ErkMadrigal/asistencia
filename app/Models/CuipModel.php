@@ -824,5 +824,45 @@ class CuipModel
         $this->db->transComplete();
         return $return; 
     }
+
+    public function getClientes(){
+        $builder = $this->db->table('cliente');
+        $builder->select('id, nombre_corto');
+        $builder->where("activo",true);
+        $builder->orderBy("nombre_corto","asc");
+        return $builder->get()->getResult();
+        
+    }
+
+    public function getUbicacion($idCliente){
+        $builder = $this->db->table('ubicacion');
+        $builder->select('id, nombre_ubicacion');
+        $builder->where("activo",true);
+        $builder->where("idCliente",$idCliente);
+        $builder->orderBy("nombre_ubicacion","asc");
+        return $builder->get()->getResult();
+        
+    }
+
+     public function getPuesto($idTurno){
+        $builder = $this->db->table('puestos');
+        $builder->select('id, puesto');
+        $builder->where("activo",true);
+        $builder->where("idTurno",$idTurno);
+        $builder->orderBy("puesto","asc");
+        return $builder->get()->getResult();
+        
+    }
+
+
+    public function getJefes($idEmpresa){
+        $builder = $this->db->table('datos_personales');
+        $builder->select("id, CONCAT(primer_nombre,' ',segundo_nombre,' ',apellido_paterno,' ',apellido_paterno ) as nombre");
+        $builder->where("activo",true);
+        $builder->where("idEmpresa",$idEmpresa);
+        $builder->orderBy("primer_nombre","asc");
+        return $builder->get()->getResult();
+        
+    }
     
 }

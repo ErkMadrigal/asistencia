@@ -255,6 +255,19 @@ class Cuip extends BaseController {
 			
         	$data['puesto'] = $this->cuipCatalgo($getPuesto);
         	//////////////
+        	$data['clientes'] = $this->modelCuip->getClientes();
+        	//////////////
+        	$getBanco = $this->modelCuip->GetCatalogoCuip('9d392e39-27fa-4307-824b-66d40facba07');
+			
+        	$data['banco'] = $this->cuipCatalgo($getBanco);
+        	//////////////
+        	$getNomina = $this->modelCuip->GetCatalogoCuip('2b2bccdd-2f39-47b5-8aad-0272ea9096bb');
+			
+        	$data['nomina'] = $this->cuipCatalgo($getNomina);
+        	//////////////
+        	$data['jefes'] = $this->modelCuip->getJefes($idEmpresa);
+        	/////////////
+
 
         	$data['breadcrumb'] = ["inicio" => 'CUIP' ,
                     				"url" => 'cuip',
@@ -3622,5 +3635,267 @@ $idPersonal = $getIdPersonal;
 	
 		}
 
+
+		public function getUbicacion(){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['asignacionServ'])){
+			$errors = [];
+            $succes = [];
+            $dontSucces = [];
+            $data = [];
+
+			$rules = [
+				'asignacionServ' =>  'required'];
+				
+				$errors = [];
+				$succes = [];
+				$dontSucces = [];
+				$data = [];
+				
+				if($this->validate($rules)){
+					
+
+					$getCliente = $this->request->getPost('asignacionServ');
+
+					$cliente = $this->encrypt->Decrytp($getCliente);
+
+
+					
+					$getUbicaciones = $this->modelCuip->getUbicacion($cliente);
+
+					
+
+                    if ($getUbicaciones ) {
+
+                    	$ubicaciones = '<option value="">Selecciona una Opción</option>';
+                    	
+                    	foreach ( $getUbicaciones as $v){
+				
+							$id = $this->encrypt->Encrypt($v->id);
+							$ubicaciones.=  '<option value="'.$id.'">'.$v->nombre_ubicacion.'</option>';
+
+							
+						
+						}
+
+						
+                    	
+                    	$data['ubicacionRH']= $ubicaciones;
+
+
+                    	$succes = ["mensaje" => 'Exito.' ,
+                            	   "succes" => "succes"];
+                    	
+                    } else {
+                    		
+                    	$dontSucces = ["error" => "error" ,
+                    				   "mensaje" => 'Hubo un error al obtener los datos.'];
+
+                    }
+                    		
+
+				} else {	
+					$errors = $this->validator->getErrors();
+				}
+
+				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+			
+		}	
+    }
+
+    public function getPuesto(){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['asignacionServ'])){
+			$errors = [];
+            $succes = [];
+            $dontSucces = [];
+            $data = [];
+
+			$rules = [
+				'turno' =>  'required'];
+				
+				$errors = [];
+				$succes = [];
+				$dontSucces = [];
+				$data = [];
+				
+				if($this->validate($rules)){
+					
+
+					$getTurno = $this->request->getPost('turno');
+
+					$turno = $this->encrypt->Decrytp($getTurno);
+
+
+					
+					$getPuestos = $this->modelCuip->getPuesto($turno);
+
+					
+                    if ($getPuestos ) {
+
+                    	$puestos = '<option value="">Selecciona una Opción</option>';
+                    	
+                    	foreach ( $getPuestos as $v){
+				
+							$id = $this->encrypt->Encrypt($v->id);
+							$puestos.=  '<option value="'.$id.'">'.$v->puesto.'</option>';
+
+							
+						
+						}
+
+						
+                    	
+                    	$data['puestos']= $puestos;
+
+                    	
+                    	$succes = ["mensaje" => 'Exito.' ,
+                            	   "succes" => "succes"];
+                    	
+                    } else {
+                    		
+                    	$dontSucces = ["error" => "error" ,
+                    				   "mensaje" => 'Hubo un error al obtener los datos.'];
+
+                    }
+                    		
+
+				} else {	
+					$errors = $this->validator->getErrors();
+				}
+
+				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+			
+		}	
+    }
+
+    public function AgregarAltasEmpleados(){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['fecha_ingreso,asignacionServ,ubicacionRH,sueldoRH,turnoRH,puestoRH,pagoExterno,telEmpresaRH,nominaPeriodo,radioEmpresa,jefeInmediatoRH,bancoRH,cuentaRH,clabeRH'],FILTER_SANITIZE_STRING)){
+
+			$errors = [];
+			$succes = [];
+			$dontSucces = [];
+			$data = [];
+			
+			$getIdPersonal = $this->request->getPost('idPersonal');
+
+			if(empty($getIdPersonal)){	
+
+				
+					$rules = [
+					'fecha_ingreso' =>  ['label' => "Fecha de Ingreso", 'rules' => 'required|valid_only_date_chek'],
+					'asignacionServ' =>  ['label' => "Asignación Servicio", 'rules' => 'required'],
+					'ubicacionRH' =>  ['label' => "Ubicación", 'rules' => 'required'],
+					'sueldoRH' =>  ['label' => "Sueldo", 'rules' => 'required|max_length[25]'],
+					
+					'turnoRH' =>  ['label' => "Turno", 'rules' => 'required'],
+					'puestoRH' =>  ['label' => "Puesto", 'rules' => 'required'],
+					'pagoExterno' =>  ['label' => "Pago Externo", 'rules' => 'required|max_length[25]'],
+					'telEmpresaRH' =>  ['label' => "Teléfono Empresa", 'rules' => 'required|max_length[50]'],
+					'nominaPeriodo' =>  ['label' => "Periodicidad de la nómina", 'rules' => 'required'],
+					'radioEmpresa' =>  ['label' => "Radio Empresa", 'rules' => 'required|max_length[50]'],
+					'jefeInmediatoRH' =>  ['label' => "Jefe Inmediato", 'rules' => 'required'],
+					'bancoRH' =>  ['label' => "Banco", 'rules' => 'required'],
+					'cuentaRH' =>  ['label' => "Cuenta", 'rules' => 'required|max_length[50]'],
+					'clabeRH' =>  ['label' => "CLABE", 'rules' => 'required|max_length[30]']];
+		 
+				
+
+
+
+					if($this->validate($rules)){
+					
+						$getUser = session()->get('IdUser');
+						$LoggedUserId = $this->encrypter->decrypt($getUser);
+						$empresa = session()->get('empresa');
+						$idEmpresa = $this->encrypter->decrypt($empresa);
+						$uuid = Uuid::uuid4();
+	        			$id = $uuid->toString();
+
+	        			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
+
+	        			
+	        			$getIngresoEmpPublic = $this->request->getPost('ingresoEmpPublic');
+
+	        			$ingresoEmpPublic = date( "Y-m-d" ,strtotime($getIngresoEmpPublic));
+
+
+	        			$getSeparacion = $this->request->getPost('separacionEmpSeg');
+
+	        			$separacion = date( "Y-m-d" ,strtotime($getSeparacion));
+
+	        			
+
+						$empleosSeguridad = array(
+			    					
+			    					
+							"id" => $id  ,
+							"idPersonal" => $idPersonal  , 
+							"idEmpresa" =>  $idEmpresa , 
+							"dependencia" =>  strtoupper($this->request->getPost('dependencia')) , 
+							"corporacion" =>  strtoupper($this->request->getPost('corporacion')) , 
+							
+							"calle" =>  strtoupper($this->request->getPost('calle')) , 
+							"numero_exterior" => strtoupper($this->request->getPost('exterior'))  , 
+							"numero_interior" => strtoupper($this->request->getPost('interior'))  , 
+							"colonia" =>  strtoupper($this->request->getPost('coloniacodigoSegPub')) , 
+							"idCodigoPostal" => $this->request->getPost('codigoSegPub')  , 
+							"numero_telefono" => $this->request->getPost('numero')  , 
+							"ingreso" =>  $ingresoEmpPublic , 
+							"separacion" =>  $separacion , 
+							"idPuestoFuncional" =>  strtoupper($this->request->getPost('puesto_funcional')) , 
+							"funciones" => strtoupper($this->request->getPost('funciones'))  , 
+							"especialidad" => strtoupper($this->request->getPost('especialidad'))  , 
+							"rango" =>  strtoupper($this->request->getPost('rango')) , 
+							"numero_placa" => strtoupper($this->request->getPost('numero_placa'))  , 
+							"numero_empleado" => strtoupper($this->request->getPost('numero_empleado'))  , 
+							"sueldo_base" => strtoupper($this->request->getPost('sueldo'))  , 
+							"compensacion" =>  strtoupper($this->request->getPost('compensaciones')) , 
+							"area" =>  strtoupper($this->request->getPost('area')) , 
+							"division" =>  strtoupper($this->request->getPost('division')) , 
+							"cuip_jefe" =>  strtoupper($this->request->getPost('jefe_inmediato')) , 
+							"nombre_jefe" =>  strtoupper($this->request->getPost('nombre_jefe')) , 
+							"idEstado" =>  strtoupper($this->request->getPost('estadocodigoSegPub')) , 
+							"municipio" => strtoupper($this->request->getPost('municipiocodigoSegPub'))  , 
+							"idMotivoSeparacion" =>  strtoupper($this->request->getPost('motivo_separacion')) , 
+							"tipo_separacion" => strtoupper($this->request->getPost('tipo_separacion'))  , 
+							"tipo_baja" =>  strtoupper($this->request->getPost('tipo_baja')) , 
+							"comentarios" => strtoupper($this->request->getPost('comentarios')) , 
+							"activo" => 1 , 
+							"createdby" => $LoggedUserId , 
+							"createddate" => date("Y-m-d H:i:s") );
+						
+
+						$result = $this->modelCuip->insertEmpleosSeguridad( $empleosSeguridad);
+
+					
+					
+                    	if ($result) {
+
+            			
+                    		$succes = ["mensaje" => 'Empleos en Seguridad Publica agregados con exito' ,
+                            	   "succes" => "succes"];
+
+                           	   
+                    	
+                    	} else {
+                    	$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Hubo un error al registrar los Empleos en Seguridad Publica'  ];
+
+                    	}
+					} else {	
+						$errors = $this->validator->getErrors();
+					}
+					
+				
+				
+
+			} else {
+
+				$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Es necesario que primero capture la sección de datos personales'  ];
+			}
+
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);	
+		}	
+	}
 
 	}
