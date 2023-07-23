@@ -214,6 +214,60 @@ use App\Libraries\Encrypt;
                                 });
                             </script>
                     </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="nssRH" class=" control-label">NSS:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="nssRH" name="nssRH" maxlength="11">
+                    </div>
+                </div>
+                <div class='col-6 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="infonavit" class=" control-label">Crédito Infonavit:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="infonavit" name="infonavit">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($SiNo) ):
+                                    foreach($SiNo as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#infonavit").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                    </div>
+                </div>
+                <div class='col-6 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="pension" class=" control-label">Pensión Alimenticia:<span class="text-danger">*</span></label>
+                        <select class="form-control" id="pension" name="pension">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($SiNo) ):
+                                    foreach($SiNo as  $a){
+                                        ?>
+                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#pension").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                    </div>
                 </div>               
                                
             </div>
@@ -299,240 +353,8 @@ use App\Libraries\Encrypt;
     <div class="card-body">
         
         <div class="row">
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="apellidoPaternoRefPer" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="apellidoPaternoRefPer" name="apellidoPaternoRefPer">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="apellidoMaternoRefPer" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="apellidoMaternoRefPer" name="apellidoMaternoRefPer">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="primerNombreRefPer" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="primerNombreRefPer" name="primerNombreRefPer">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="segundoNombreRefPer" class=" control-label">Segundo Nombre:</label>
-                        <input type="text" class="form-control " id="segundoNombreRefPer" name="segundoNombreRefPer">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="sexo_per" class=" control-label">Sexo:<span class="text-danger">*</span></label>
-                        <select class="form-control" id="sexo_per" name="sexo_per">
-                            <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($genero) ):
-                                    foreach($genero as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
-                        </select>
-                        <script>
-                            $(document).ready(function() {
-                                $("#sexo_per").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                });
-                            });
-                         </script>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="ocupacionRefPer" class=" control-label">Ocupación:<span class="text-danger">*</span></label>
-                        <select class="form-control" id="ocupacionRefPer" name="ocupacionRefPer">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($ocupacion) ):
-                                    foreach($ocupacion as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#ocupacionRefPer").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
-                    </div>
-                </div>
-                <div class='col-6 col-sm-6'>
-                    <div class="form-group">
-                        <label for="parentesco_personal" class="control-label">Parentesco: <span class="text-danger">*</span></label>
-                        <div>
-                            <select class="form-control" id="parentesco_personal" name="parentesco_personal">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($parentesco_personal) ):
-                                    foreach($parentesco_personal as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#parentesco_personal").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="calleRefPer" class=" control-label">Calle :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="calleRefPer" name="calleRefPer">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="exteriorRefPer" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="exteriorRefPer" name="exteriorRefPer">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="interiorRefPer" class=" control-label">No. Interior:</label>
-                        <input type="text" class="form-control " id="interiorRefPer" name="interiorRefPer">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="coloniacodigoPersonal" class=" control-label">Colonia:<span class="text-danger">*</span></label>
-                        <select class="form-control" id="coloniacodigoPersonal" name="coloniacodigoPersonal">
-                                <option value="">Selecciona una Opcion</option>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#coloniacodigoPersonal").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="codigoPersonal" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="codigoPersonal" name="codigoPersonal" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5">
-                    </div>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <div class="form-group">
-                        <label for="numeroRefPer" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="numeroRefPer" name="numeroRefPer" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10">
-                    </div>
-                </div> 
-                <div class='col-6 col-sm-6'>
-                    <div class="form-group">
-                        <label for="paisRefPer" class="control-label">Pais: <span class="text-danger">*</span></label>
-                        <div>
-                            <select class="form-control" id="paisRefPer" name="paisRefPer">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($pais) ):
-                                    foreach($pais as  $a){
-                                        ?>
-                                            <option <?= ($a->valor == 'México' ? 'selected' : '' ) ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#paisRefPer").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                </div>                             
-                <div class='col-6 col-sm-6'>
-                    <div class="form-group">
-                        <label for="estadocodigoPersonal" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
-                        <div>
-                            <select class="form-control" id="estadocodigoPersonal" name="estadocodigoPersonal">
-                                <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if( !empty($entidad_federativa) ):
-                                    foreach($entidad_federativa as  $a){
-                                        ?>
-                                            <option value="<?=$a->id ?>"><?= $a->valor ?></option>
-                                            <?php
-                                    }
-                                endif;?>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#estadocodigoPersonal").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                </div>
-                <div class='col-6 col-sm-6'>
-                    <div class="form-group">
-                        <label for="municipiocodigoPersonal" class="control-label">Municipio: <span class="text-danger">*</span></label>
-                        <div>
-                            <select class="form-control" id="municipiocodigoPersonal" name="municipiocodigoPersonal">
-                                <option value="">Selecciona una Opcion</option>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#municipiocodigoPersonal").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                </div>
-                <div class='col-6 col-sm-6'>
-                    <div class="form-group">
-                        <label for="ciudadcodigoPersonal" class="control-label">Ciudad: <span class="text-danger">*</span></label>
-                        <div>
-                            <select class="form-control" id="ciudadcodigoPersonal" name="ciudadcodigoPersonal">
-                                <option value="">Selecciona una Opcion</option>
-                            </select>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#ciudadcodigoPersonal").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                </div>                
-            </div>
-        
+                
+        </div>
     </div>
 </div>
 

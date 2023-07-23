@@ -3768,7 +3768,7 @@ $idPersonal = $getIdPersonal;
     }
 
     public function AgregarAltasEmpleados(){
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['fecha_ingreso,asignacionServ,ubicacionRH,sueldoRH,turnoRH,puestoRH,pagoExterno,telEmpresaRH,nominaPeriodo,radioEmpresa,jefeInmediatoRH,bancoRH,cuentaRH,clabeRH'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['fecha_ingreso,asignacionServ,ubicacionRH,sueldoRH,turnoRH,puestoRH,pagoExterno,telEmpresaRH,nominaPeriodo,radioEmpresa,jefeInmediatoRH,bancoRH,cuentaRH,clabeRH,nssRH,pension,infonavit'],FILTER_SANITIZE_STRING)){
 
 			$errors = [];
 			$succes = [];
@@ -3795,7 +3795,10 @@ $idPersonal = $getIdPersonal;
 					'jefeInmediatoRH' =>  ['label' => "Jefe Inmediato", 'rules' => 'required'],
 					'bancoRH' =>  ['label' => "Banco", 'rules' => 'required'],
 					'cuentaRH' =>  ['label' => "Cuenta", 'rules' => 'required|max_length[50]'],
-					'clabeRH' =>  ['label' => "CLABE", 'rules' => 'required|max_length[30]']];
+					'clabeRH' =>  ['label' => "CLABE", 'rules' => 'required|max_length[30]'],
+					'infonavit' =>  ['label' => "Crédito Infonavit", 'rules' => 'required'],
+					'nssRH' =>  ['label' => "NSS", 'rules' => 'required|max_length[11]'],
+					'pension' =>  ['label' => "Pensión Alimenticia", 'rules' => 'required']];
 		 
 				
 
@@ -3813,72 +3816,93 @@ $idPersonal = $getIdPersonal;
 	        			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
 
 	        			
-	        			$getIngresoEmpPublic = $this->request->getPost('ingresoEmpPublic');
+	        			$getFechaIngreso = $this->request->getPost('fecha_ingreso');
 
-	        			$ingresoEmpPublic = date( "Y-m-d" ,strtotime($getIngresoEmpPublic));
+	        			$fechaIngreso = date( "Y-m-d" ,strtotime($getFechaIngreso));
 
+	        			$getasignacionServ = $this->request->getPost('asignacionServ');
 
-	        			$getSeparacion = $this->request->getPost('separacionEmpSeg');
+        				$signacionServ = $this->encrypt->Decrytp($getasignacionServ);
 
-	        			$separacion = date( "Y-m-d" ,strtotime($getSeparacion));
+        				$getubicacionRH = $this->request->getPost('ubicacionRH');
 
+        				$ubicacionRH = $this->encrypt->Decrytp($getubicacionRH);
+
+        				$getturnoRH = $this->request->getPost('turnoRH');
+
+        				$turnoRH = $this->encrypt->Decrytp($$getturnoRH);
+
+        				$getpuestoRH = $this->request->getPost('puestoRH');
+
+        				$puestoRH = $this->encrypt->Decrytp($getpuestoRH);
+
+        				$getjefeInmediatoRH = $this->request->getPost('jefeInmediatoRH');
+
+        				$jefeInmediatoRHj = $this->encrypt->Decrytp($getjefeInmediatoRH);
+
+        				$getbancoRH = $this->request->getPost('bancoRH');
+
+        				$bancoRH = $this->encrypt->Decrytp($getbancoRH);
+
+        				$getinfonavit = $this->request->getPost('infonavit');
+
+        				$infonavit = $this->encrypt->Decrytp($getinfonavit);
+
+        				$getpension = $this->request->getPost('pension');
+
+        				$pension = $this->encrypt->Decrytp($getpension);
+
+        				$getNomimaPeriodo = $this->request->getPost('idNomimaPeriodo');
+
+        				$NomimaPeriodo = $this->encrypt->Decrytp($getNomimaPeriodo);
+
+	        			$numEmpleado = '';
 	        			
 
-						$empleosSeguridad = array(
+						$altaEmpleado = array(
 			    					
 			    					
 							"id" => $id  ,
+							"numEmpleado" => $numEmpleado , 
 							"idPersonal" => $idPersonal  , 
 							"idEmpresa" =>  $idEmpresa , 
-							"dependencia" =>  strtoupper($this->request->getPost('dependencia')) , 
-							"corporacion" =>  strtoupper($this->request->getPost('corporacion')) , 
-							
-							"calle" =>  strtoupper($this->request->getPost('calle')) , 
-							"numero_exterior" => strtoupper($this->request->getPost('exterior'))  , 
-							"numero_interior" => strtoupper($this->request->getPost('interior'))  , 
-							"colonia" =>  strtoupper($this->request->getPost('coloniacodigoSegPub')) , 
-							"idCodigoPostal" => $this->request->getPost('codigoSegPub')  , 
-							"numero_telefono" => $this->request->getPost('numero')  , 
-							"ingreso" =>  $ingresoEmpPublic , 
-							"separacion" =>  $separacion , 
-							"idPuestoFuncional" =>  strtoupper($this->request->getPost('puesto_funcional')) , 
-							"funciones" => strtoupper($this->request->getPost('funciones'))  , 
-							"especialidad" => strtoupper($this->request->getPost('especialidad'))  , 
-							"rango" =>  strtoupper($this->request->getPost('rango')) , 
-							"numero_placa" => strtoupper($this->request->getPost('numero_placa'))  , 
-							"numero_empleado" => strtoupper($this->request->getPost('numero_empleado'))  , 
-							"sueldo_base" => strtoupper($this->request->getPost('sueldo'))  , 
-							"compensacion" =>  strtoupper($this->request->getPost('compensaciones')) , 
-							"area" =>  strtoupper($this->request->getPost('area')) , 
-							"division" =>  strtoupper($this->request->getPost('division')) , 
-							"cuip_jefe" =>  strtoupper($this->request->getPost('jefe_inmediato')) , 
-							"nombre_jefe" =>  strtoupper($this->request->getPost('nombre_jefe')) , 
-							"idEstado" =>  strtoupper($this->request->getPost('estadocodigoSegPub')) , 
-							"municipio" => strtoupper($this->request->getPost('municipiocodigoSegPub'))  , 
-							"idMotivoSeparacion" =>  strtoupper($this->request->getPost('motivo_separacion')) , 
-							"tipo_separacion" => strtoupper($this->request->getPost('tipo_separacion'))  , 
-							"tipo_baja" =>  strtoupper($this->request->getPost('tipo_baja')) , 
-							"comentarios" => strtoupper($this->request->getPost('comentarios')) , 
+							"fecha_ingreso" =>  $fechaIngreso , 
+							"idCliente" => $signacionServ   ,
+							"idUbicacion" => $ubicacionRH  , 
+							"sueldo" => $this->request->getPost('sueldoRH')  , 
+							"idTurno" =>  $turnoRH , 
+							"idPuesto" =>  $puestoRH , 
+							"pagoExterno" => $this->request->getPost('pagoExterno')  , 
+							"telefonoEmpresa" => $this->request->getPost('telEmpresaRH')  , 
+							"idNomimaPeriodo" =>  $NomimaPeriodo , 
+							"radioEmpresa" =>  $this->request->getPost('radioEmpresa') , 
+							"idJefeInmediato" => $jefeInmediatoRHj  , 
+							"idBanco" =>  $bancoRH , 
+							"cuentaBanco" => $this->request->getPost('cuentaBanco')  , 
+							"CLABE" =>  $this->request->getPost('clabeRH') , 
+							"nss" => $this->request->getPost('nssRH')  , 
+							"infonavit" =>  $infonavit , 
+							"pension" =>  $pension ,
 							"activo" => 1 , 
 							"createdby" => $LoggedUserId , 
 							"createddate" => date("Y-m-d H:i:s") );
 						
 
-						$result = $this->modelCuip->insertEmpleosSeguridad( $empleosSeguridad);
+						$result = $this->modelCuip->insertAltaEmpleado($altaEmpleado);
 
 					
 					
                     	if ($result) {
 
             			
-                    		$succes = ["mensaje" => 'Empleos en Seguridad Publica agregados con exito' ,
+                    		$succes = ["mensaje" => 'Alta de Empleado realizada con exito, Número de empleado: '.$numEmpleado  ,
                             	   "succes" => "succes"];
 
                            	   
                     	
                     	} else {
                     	$dontSucces = ["error" => "error",
-                    				  "mensaje" => 	'Hubo un error al registrar los Empleos en Seguridad Publica'  ];
+                    				  "mensaje" => 	'Hubo un error al realizar la Alta de Empleado realizada'  ];
 
                     	}
 					} else {	
