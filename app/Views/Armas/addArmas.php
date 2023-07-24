@@ -117,6 +117,44 @@ use App\Libraries\Encrypt;
 
                     </div>
                 </div>
+                <div class='col-12 col-sm-6'>    
+                    <div class="form-group">
+                        <label for="tipo de Arma" class="control-label">Tipo de Arma: <span class="text-danger">*</span></label>
+                        <select id="tipoArma" name="tipoArma" class="form-control" >
+                            <option value="" selected>Selecciona una Opción</option>
+                            <?php foreach($tipoArma as $tipoAr):?>
+                                <option value="<?=$tipoAr->id?>"><?=$tipoAr->valor?></option>
+                            <?php endforeach;?>
+                        </select>
+                        <script>
+                            $(document).ready(function() {
+                                $("#tipoArma").select2({
+                                    theme: "bootstrap4",
+                                    width: "100%"
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-6'>    
+                    <div class="form-group">
+                        <label for="modelo" class="control-label">Ubicacion: <span class="text-danger">*</span></label>
+                        <select id="ubicaciones" name="ubicaciones" class="form-control" >
+                            <option value="" selected>Selecciona una Opción</option>
+                            <?php foreach($ubicaciones as $ubicacion):?>
+                                <option value="<?=$ubicacion->id_ubicacion?>"><?=$ubicacion->direccion?></option>
+                            <?php endforeach;?>
+                        </select>
+                        <script>
+                            $(document).ready(function() {
+                                $("#ubicaciones").select2({
+                                    theme: "bootstrap4",
+                                    width: "100%"
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
             </div>        
         
     </div>

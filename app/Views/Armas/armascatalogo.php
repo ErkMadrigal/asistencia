@@ -17,7 +17,13 @@
     </div>
 <div class=" mb-2">    
     <div class="row">
-        <div class="col-12 col-sm-6 col-md-9 ">
+        <div class="col-12 col-sm-6 col-md-3 ">
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 ">
+            <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/licencias " class='nav-link'><i class="fa fa-id-card" aria-hidden="true"></i>&nbsp;&nbsp;Licencias</a>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 ">
+            <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/ubicaciones" class='nav-link'><i class="fa fa-map-pin" aria-hidden="true"></i>&nbsp;&nbsp;Ubicaciones</a>
         </div>
         <div class="col-12 col-sm-6 col-md-3">
             <a class="btn btn-block btn-flat btn-primary" href=" <?= base_url() ?>/AddArmas " class='nav-link'><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Agregar Arma</a>

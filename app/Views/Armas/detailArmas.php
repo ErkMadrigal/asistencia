@@ -64,6 +64,22 @@
                         </div>
                     </div>
                     <div class='col-12 col-sm-6'>    
+                    <div class="form-group">
+                        <label for="Activo" class="control-label">Tipo de Arma: </label>
+                        <div>
+                            <?= $arma->tipoArma ?>
+                        </div>
+                    </div>
+                </div> 
+                <div class='col-12 col-sm-6'>    
+                    <div class="form-group">
+                        <label for="Activo" class="control-label">Direccion: </label>
+                        <div>
+                            <?= $arma->direccion ?>
+                        </div>
+                    </div>
+                </div> 
+                    <div class='col-12 col-sm-6'>    
                         <div class="form-group">
                             <label for="Activo" class="control-label">Activo: </label>
                             <div class="form-check" >
@@ -83,7 +99,8 @@
                         </div>
                     </div>
                     <?php endif;?>
-                </div>        
+                </div>  
+                     
             </form>
         </div>
     <div class="card-footer  clearfix  ">

@@ -72,6 +72,44 @@
                 </div>
                 <div class='col-12 col-sm-6'>    
                     <div class="form-group">
+                        <label for="tipo de Arma" class="control-label">Tipo de Arma: <span class="text-danger">*</span></label>
+                        <select disabled id="tipoArma" name="tipoArma" class="form-control" >
+                            <option value="" selected>Selecciona una Opción</option>
+                            <?php foreach($tipoArma as $tipoAr):?>
+                                <option <?= (isset($arma->id_tipo_arma) == $tipoAr->id ? 'selected' : '') ?> value="<?=$tipoAr->id?>"><?=$tipoAr->valor?></option>
+                            <?php endforeach;?>
+                        </select>
+                        <script>
+                            $(document).ready(function() {
+                                $("#tipoArma").select2({
+                                    theme: "bootstrap4",
+                                    width: "100%"
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-6'>    
+                    <div class="form-group">
+                        <label for="modelo" class="control-label">Ubicacion: <span class="text-danger">*</span></label>
+                        <select disabled id="ubicaciones" name="ubicaciones" class="form-control" >
+                            <option value="" selected>Selecciona una Opción</option>
+                            <?php foreach($ubicaciones as $ubicacion):?>
+                                <option <?= (isset($arma->id_ubicacion) == $ubicacion->id_ubicacion ? 'selected' : '') ?> value="<?=$ubicacion->id_ubicacion?>"><?=$ubicacion->direccion?></option>
+                            <?php endforeach;?>
+                        </select>
+                        <script>
+                            $(document).ready(function() {
+                                $("#ubicaciones").select2({
+                                    theme: "bootstrap4",
+                                    width: "100%"
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-6'>    
+                    <div class="form-group">
                         <label for="Activo" class="control-label">Activo:</label>
                         <div class="form-check" >
                             <input class="form-check-input"  type="checkbox" id="activo" name="activo"  <?= ($arma->activo == 1 ? 'checked' : '' ) ?>>
