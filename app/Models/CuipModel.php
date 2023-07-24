@@ -22,8 +22,9 @@ class CuipModel
 
     public function GetCuip($idEmpresa){
         $builder = $this->db->table('datos_personales');
-        $builder->select('cuip, datos_personales.id,primer_nombre,segundo_nombre,apellido_paterno,apellido_materno,media_filiacion.idPersonal,respuesta,fecha_consulta');
+        $builder->select('cuip, datos_personales.id,primer_nombre,segundo_nombre,apellido_paterno,apellido_materno,media_filiacion.idPersonal,respuesta,fecha_consulta,numEmpleado');
         $builder->join("media_filiacion"," datos_personales.id= media_filiacion.idPersonal","left");
+        $builder->join("datos_empleado"," datos_personales.id= datos_empleado.idPersonal","left");
         $builder->orderBy("primer_nombre","asc");
         $builder->orderBy("apellido_paterno","asc");
        // $builder->where("cuip","");
