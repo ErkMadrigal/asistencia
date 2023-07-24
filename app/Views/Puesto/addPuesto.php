@@ -73,7 +73,19 @@ use App\Libraries\Encrypt;
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="puesto" class=" control-label">Puesto:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="puesto" name="puesto">
+                        <select class="form-control" id="puesto" name="puesto">
+                        <option value="">Seleccione un Puesto</option>;
+                        <?php
+                                if( !empty($puestos) ):
+                                    foreach($puestos as  $a){
+                                        $idTurno = $encrypt->Encrypt($a->id);?>
+                                            <option value="<?=$idTurno?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                                    </select><script>$(document).ready(function() {
+                                        $("#puesto").select2({theme: "bootstrap4",width:"100%"});
+                                        });</script>
                         
                     </div>
                 </div>

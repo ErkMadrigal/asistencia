@@ -1219,8 +1219,8 @@ class Cuip extends BaseController {
 					$uuid = Uuid::uuid4();
         			
 
-        		//	$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
-$idPersonal = $getIdPersonal;
+        			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
+//$idPersonal = $getIdPersonal;
         			
         			
         			$datosSanciones=[];

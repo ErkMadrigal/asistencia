@@ -846,8 +846,9 @@ class CuipModel
 
      public function getPuesto($idTurno){
         $builder = $this->db->table('puestos');
-        $builder->select('id, puesto');
-        $builder->where("activo",true);
+        $builder->select('puestos.id, valor as puesto');
+        $builder->join("catalogos_detalle","puestos.puesto = catalogos_detalle.id","left");
+        $builder->where("puestos.activo",true);
         $builder->where("idTurno",$idTurno);
         $builder->orderBy("puesto","asc");
         return $builder->get()->getResult();

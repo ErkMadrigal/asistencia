@@ -167,6 +167,7 @@ class Puesto extends BaseController {
 
 			$data['cliente'] = $cliente;
 			$data['ubicaciones'] = $this->modelPuesto->getUbicaciones($idCliente);
+			$data['puestos'] = $this->modelPuesto->getPuestos($idEmpresa);
 			$data['breadcrumb'] = ["inicio" => 'Puestos' ,
                     				"url" => 'puestocatalogo?id='.$this->encrypt->Encrypt($idCliente),
                     				"titulo" => 'Agregar'];
@@ -185,7 +186,7 @@ class Puesto extends BaseController {
 				'cliente' =>  ['label' => "Cliente", 'rules' => 'required'],
 				'ubicacion' =>  ['label' => "Ubicación", 'rules' => 'required'],
 				'turno' =>  ['label' => "Turno", 'rules' => 'required'],
-				'puesto' =>  ['label' => "Puesto", 'rules' => 'required|max_length[255]'],
+				'puesto' =>  ['label' => "Puesto", 'rules' => 'required'],
 				'numGuardias' =>  ['label' => "Numero de Guardias", 'rules' => 'required|max_length[255]'],
 				'cantArmaCorta' =>  ['label' => "Cantidad Arma Corta", 'rules' => 'required|max_length[255]'],
 				'cantSinarmas' =>  ['label' => "Cantidad Sin Arma", 'rules' => 'required|max_length[255]'],
@@ -219,6 +220,9 @@ class Puesto extends BaseController {
 					$getTurno = $this->request->getPost('turno');
 					$turno = $this->encrypt->Decrytp($getTurno);
 
+					$getPuesto = $this->request->getPost('puesto');
+					$puesto = $this->encrypt->Decrytp($getPuesto);
+
 					$TodayDate = date("Y-m-d H:i:s");
                     
 					$puesto = array(
@@ -227,7 +231,7 @@ class Puesto extends BaseController {
 						"idCliente" =>  $idCliente , 
 						"idUbicacion" =>  $ubicacion , 
 						"idTurno" =>  $turno , 
-						"puesto" =>  $this->request->getPost('puesto') , 
+						"puesto" =>  $puesto , 
 						"num_guardias" =>  $this->request->getPost('numGuardias') , 
 						"cant_arma_corta" =>  $this->request->getPost('cantArmaCorta') , 
 						"cant_arma_larga" => $this->request->getPost('cantArmaLarga')  , 
