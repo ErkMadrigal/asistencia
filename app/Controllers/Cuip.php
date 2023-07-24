@@ -267,7 +267,9 @@ class Cuip extends BaseController {
         	//////////////
         	$data['jefes'] = $this->modelCuip->getJefes($idEmpresa);
         	/////////////
+        	$data['uniformes'] = $this->modelCuip->getUniformes($idEmpresa);
 
+        	$data['equipos'] = $this->modelCuip->getEquipos($idEmpresa);
 
         	$data['breadcrumb'] = ["inicio" => 'CUIP' ,
                     				"url" => 'cuip',
@@ -3768,7 +3770,7 @@ $idPersonal = $getIdPersonal;
     }
 
     public function AgregarAltasEmpleados(){
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['fecha_ingreso,asignacionServ,ubicacionRH,sueldoRH,turnoRH,puestoRH,pagoExterno,telEmpresaRH,nominaPeriodo,radioEmpresa,jefeInmediatoRH,bancoRH,cuentaRH,clabeRH,nssRH,pension,infonavit'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['fecha_ingreso,asignacionServ,ubicacionRH,sueldoRH,turnoRH,puestoRH,pagoExterno,telEmpresaRH,nominaPeriodo,radioEmpresa,jefeInmediatoRH,bancoRH,cuentaRH,clabeRH,nssRH,pension,infonavit,fonacot,soldi'],FILTER_SANITIZE_STRING)){
 
 			$errors = [];
 			$succes = [];
@@ -3777,7 +3779,8 @@ $idPersonal = $getIdPersonal;
 			
 			$getIdPersonal = $this->request->getPost('idPersonal');
 
-			if(empty($getIdPersonal)){	
+			
+			if(!empty($getIdPersonal)){	
 
 				
 					$rules = [
@@ -3797,8 +3800,10 @@ $idPersonal = $getIdPersonal;
 					'cuentaRH' =>  ['label' => "Cuenta", 'rules' => 'required|max_length[50]'],
 					'clabeRH' =>  ['label' => "CLABE", 'rules' => 'required|max_length[30]'],
 					'infonavit' =>  ['label' => "Crédito Infonavit", 'rules' => 'required'],
-					'nssRH' =>  ['label' => "NSS", 'rules' => 'required|max_length[11]'],
-					'pension' =>  ['label' => "Pensión Alimenticia", 'rules' => 'required']];
+					'nssRH' =>  ['label' => "NSS", 'rules' => 'required|min_length[11]|max_length[11]'],
+					'pension' =>  ['label' => "Pensión Alimenticia", 'rules' => 'required'],
+					'soldi' =>  ['label' => "SOLDI", 'rules' => 'required'],
+					'fonacot' =>  ['label' => "Crédito Fonacot", 'rules' => 'required']];
 		 
 				
 
@@ -3814,7 +3819,7 @@ $idPersonal = $getIdPersonal;
 	        			$id = $uuid->toString();
 
 	        			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
-
+	        			
 	        			
 	        			$getFechaIngreso = $this->request->getPost('fecha_ingreso');
 
@@ -3830,7 +3835,7 @@ $idPersonal = $getIdPersonal;
 
         				$getturnoRH = $this->request->getPost('turnoRH');
 
-        				$turnoRH = $this->encrypt->Decrytp($$getturnoRH);
+        				$turnoRH = $this->encrypt->Decrytp($getturnoRH);
 
         				$getpuestoRH = $this->request->getPost('puestoRH');
 
@@ -3842,7 +3847,9 @@ $idPersonal = $getIdPersonal;
 
         				$getbancoRH = $this->request->getPost('bancoRH');
 
-        				$bancoRH = $this->encrypt->Decrytp($getbancoRH);
+
+
+        				$banco = $this->encrypt->Decrytp($getbancoRH);
 
         				$getinfonavit = $this->request->getPost('infonavit');
 
@@ -3852,11 +3859,26 @@ $idPersonal = $getIdPersonal;
 
         				$pension = $this->encrypt->Decrytp($getpension);
 
-        				$getNomimaPeriodo = $this->request->getPost('idNomimaPeriodo');
+        				$getNomimaPeriodo = $this->request->getPost('nominaPeriodo');
 
         				$NomimaPeriodo = $this->encrypt->Decrytp($getNomimaPeriodo);
 
-	        			$numEmpleado = '';
+	        			$date = date('y') ;
+	        			$consecutivo = $this->modelCuip->consecutivo();
+	        			$fecNac = $this->modelCuip->fecNac($idPersonal);
+
+	        			$fechaNacimiento = date('y',strtotime($fecNac->fecha));
+
+	        			$numEmpleado = $date.$consecutivo->con.$fechaNacimiento;
+
+	        			$getfonacot = $this->request->getPost('fonacot');
+
+        				$fonacot = $this->encrypt->Decrytp($getfonacot);
+
+        				$getsoldi = $this->request->getPost('soldi');
+
+        				$soldi = $this->encrypt->Decrytp($getsoldi);
+
 	        			
 
 						$altaEmpleado = array(
@@ -3877,20 +3899,19 @@ $idPersonal = $getIdPersonal;
 							"idNomimaPeriodo" =>  $NomimaPeriodo , 
 							"radioEmpresa" =>  $this->request->getPost('radioEmpresa') , 
 							"idJefeInmediato" => $jefeInmediatoRHj  , 
-							"idBanco" =>  $bancoRH , 
-							"cuentaBanco" => $this->request->getPost('cuentaBanco')  , 
+							"idBanco" =>  $banco , 
+							"cuentaBanco" => $this->request->getPost('cuentaRH')  , 
 							"CLABE" =>  $this->request->getPost('clabeRH') , 
 							"nss" => $this->request->getPost('nssRH')  , 
 							"infonavit" =>  $infonavit , 
 							"pension" =>  $pension ,
-							"activo" => 1 , 
+							"fonacot" =>  $fonacot ,
+							"soldi" =>  $soldi ,
 							"createdby" => $LoggedUserId , 
 							"createddate" => date("Y-m-d H:i:s") );
-						
+						 
+						$result = $this->modelCuip->insertAltaEmpleado($altaEmpleado,$_POST['pTableDataEquipo'],$_POST['pTableDataUniforme'],$idPersonal);
 
-						$result = $this->modelCuip->insertAltaEmpleado($altaEmpleado);
-
-					
 					
                     	if ($result) {
 
