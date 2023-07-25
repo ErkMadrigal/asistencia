@@ -961,5 +961,47 @@ class CuipModel
         return $builder->get()->getResult();
         
     }
+
+    public function GetAltaEmpleadoById($id){
+        $builder = $this->db->table('datos_empleado');
+        $builder->select("numEmpleado, datos_empleado.fecha_ingreso, cliente.nombre_corto AS idCliente, nombre_ubicacion AS idUbicacion, sueldo, T.valor AS idTurno, P.valor AS idPuesto, pagoExterno, telefonoEmpresa, N.valor AS idNomimaPeriodo, radioEmpresa, CONCAT(primer_nombre,' ',segundo_nombre,' ',apellido_paterno,' ',apellido_paterno ) as idJefeInmediato, B.valor AS idBanco, cuentaBanco, CLABE, nss, I.valor AS infonavit, PE.valor AS pension, F.valor AS fonacot, S.valor AS soldi");
+        $builder->join("cliente","datos_empleado.idCliente = cliente.id","left");
+        $builder->join("ubicacion","datos_empleado.idUbicacion = ubicacion.id","left");
+        $builder->join("turnos","datos_empleado.idTurno = turnos.id","left");
+        $builder->join("catalogos_detalle T","turnos.idTurnos = T.id","left");
+        $builder->join("puestos","datos_empleado.idPuesto = puestos.id","left");
+        $builder->join("catalogos_detalle P","puestos.puesto = P.id","left");
+        $builder->join("catalogos_detalle N","datos_empleado.idNomimaPeriodo = N.id","left");
+        $builder->join("catalogos_detalle B","datos_empleado.idBanco = B.id","left");
+        $builder->join("catalogos_detalle I","datos_empleado.infonavit = I.id","left");
+        $builder->join("catalogos_detalle PE","datos_empleado.pension = PE.id","left");
+        $builder->join("catalogos_detalle F","datos_empleado.fonacot = F.id","left");
+        $builder->join("catalogos_detalle S","datos_empleado.soldi = S.id","left");
+        $builder->join("datos_personales","datos_empleado.idJefeInmediato = datos_personales.id","left");
+
+        $builder->where("idPersonal",$id);
+        return $builder->get()->getRow();
+    }
+
+
+    public function GetUniformesById($id){
+        $builder = $this->db->table('uniformes');
+        $builder->select("CONCAT(valor,' ',idReferencia ) as uniforme, cantidad,talla");
+        $builder->join("catalogos_detalle","uniformes.idUniforme = catalogos_detalle.id","left");
+        $builder->where("idPersonal",$id);
+        $builder->orderBy("uniforme","asc");
+        return $builder->get()->getResult();
+        
+    }
+
+    public function GetEquiposById($id){
+        $builder = $this->db->table('equipos');
+        $builder->select("CONCAT(valor,' ',idReferencia ) as equipo, cantidad");
+        $builder->join("catalogos_detalle","equipos.idTipo = catalogos_detalle.id","left");
+        $builder->where("idPersonal",$id);
+        $builder->orderBy("equipo","asc");
+        return $builder->get()->getResult();
+        
+    }    
     
 }

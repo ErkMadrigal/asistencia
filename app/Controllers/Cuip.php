@@ -2154,6 +2154,9 @@ class Cuip extends BaseController {
 			$data['referencia'] = $this->modelCuip->GetReferenciaById($id);
 			$data['referenciaLab'] = $this->modelCuip->GetReferenciaLabById($id);
 			$data['mediaFiliacion'] = $this->modelCuip->GetMedFiliacionById($id);
+			$data['datosEmpleado'] = $this->modelCuip->GetAltaEmpleadoById($id);
+			$data['uniforme'] = $this->modelCuip->GetUniformesById($id);
+			$data['equipo'] = $this->modelCuip->GetEquiposById($id);
 //var_dump($data['referenciaLab']);
 			$documentos = $this->modelCuip->GetDocumentosById($id);
 
