@@ -624,6 +624,8 @@ use App\Libraries\Encrypt;
             success: function (response) {
                 if(response.succes.succes === "succes"){
 
+                    $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
+
                     $('#ubicacionRH').append(response.data.ubicacionRH);
                         
                     
@@ -641,6 +643,9 @@ use App\Libraries\Encrypt;
                            
             }
         });
+
+
+        $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
 
     
     });
@@ -668,6 +673,7 @@ use App\Libraries\Encrypt;
             success: function (response) {
                 if(response.succes.succes === "succes"){
 
+                    $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
                     $('#turnoRH').append(response.data.turnos);
                         
                     
@@ -685,6 +691,8 @@ use App\Libraries\Encrypt;
                            
             }
         });
+
+        $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
 
     
     });
@@ -712,6 +720,7 @@ use App\Libraries\Encrypt;
             success: function (response) {
                 if(response.succes.succes === "succes"){
 
+                    $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
                     $('#puestoRH').append(response.data.puestos);
                         
                     
@@ -729,6 +738,8 @@ use App\Libraries\Encrypt;
                            
             }
         });
+
+        $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
 
     
     });
@@ -818,6 +829,8 @@ use App\Libraries\Encrypt;
                 $('#load').removeClass( "spinner-border" );           
             }
         });
+
+        $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
             
     });
 

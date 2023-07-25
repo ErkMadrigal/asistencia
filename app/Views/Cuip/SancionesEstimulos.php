@@ -482,6 +482,8 @@
 
                     toastr.success(response.succes.mensaje);
 
+                    $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
+
                     $('#saveSancionesEstimulos').addClass("btn-success");
                     $('#saveSancionesEstimulos').prop("disabled", true);
                     $('#saveSancionesEstimulos').html("Guardado&nbsp;<i class='fa fa-thumbs-up'></i>");
@@ -521,6 +523,8 @@
                 $('#load').removeClass("spinner-border");
             }
         });
+
+        $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
 
     });
     /*RESOLUCIONES */

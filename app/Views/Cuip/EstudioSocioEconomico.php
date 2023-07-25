@@ -350,6 +350,9 @@
             }
         });
 
+
+        $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
+
     });
 
 
