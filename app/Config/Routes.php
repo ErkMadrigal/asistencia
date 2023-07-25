@@ -199,6 +199,20 @@ $routes->post('getUbicacionAlta', 'Cuip::getUbicacion',['filter' => 'auth']);
 $routes->post('getPuestosAlta', 'Cuip::getPuesto',['filter' => 'auth']);
 $routes->post('GuardarAltaEmpleado', 'Cuip::AgregarAltasEmpleados',['filter' => 'auth']);
 
+$routes->get('licencias', 'Armas::licencias',['filter' => 'auth']);
+$routes->post('GuardarLic', 'Armas::GuardarLic',['filter' => 'auth']);
+$routes->get('editarLicenia', 'Armas::editarLicenia',['filter' => 'auth']);
+$routes->post('editLicencia', 'Armas::editLicencia',['filter' => 'auth']);
+$routes->post('editDoc', 'Armas::editDoc',['filter' => 'auth']);
+$routes->get('detialLicencia', 'Armas::detialLicencia',['filter' => 'auth']);
+$routes->get('ubicaciones', 'Armas::ubicaciones',['filter' => 'auth']);
+$routes->post('GuardarUbicacionArmas', 'Armas::GuardarUbicacionArmas',['filter' => 'auth']);
+$routes->get('editarUbicacion', 'Armas::editarUbicacion',['filter' => 'auth']);
+$routes->post('editUbicacion', 'Armas::editUbicacion',['filter' => 'auth']);
+$routes->get('detialUbicacion', 'Armas::detialUbicacion',['filter' => 'auth']);
+$routes->post('llenadoCampos', 'Armas::mostrarDatos',['filter' => 'auth']);
+
+
 
 
 /*
