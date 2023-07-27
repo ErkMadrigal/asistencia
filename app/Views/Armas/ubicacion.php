@@ -82,7 +82,7 @@
                                 </div>
                                 <div class='col-12 col-sm-3'>    
                                     <div class="form-group">
-                                        <label for="No.Interior" class="control-label">No.Interior: <span class="text-danger">*</span></label>
+                                        <label for="No.Interior" class="control-label">No.Interior: </label>
                                         <div >
                                             <input type="text"  class="form-control " id="No_Interior" name="No_Interior" >
                                         </div>

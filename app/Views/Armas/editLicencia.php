@@ -92,7 +92,7 @@
                     <div class="form-group">
                         <label for="responsable" class="control-label">Total Personas: <span class="text-danger">*</span></label>
                         <div >
-                            <input value="<?=$licencia->personas_asignadas?>" type="number"  class="form-control " id="tPersonas" name="tPersonas" >
+                            <input value="<?=$licencia->total_Personas?>" type="number"  class="form-control " id="tPersonas" name="tPersonas" >
                         </div>
                     </div>
                 </div>
