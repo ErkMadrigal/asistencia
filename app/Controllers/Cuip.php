@@ -47,6 +47,7 @@ class Cuip extends BaseController {
 				$id = $this->encrypt->Encrypt($v->id);
 				$result[] = (object) array (
 					'id' => $id ,
+					'numEmpleado' => $v->numEmpleado ,
 					'nCuip' => $v->cuip ,
 					'primer_nombre' => $v->primer_nombre,
 					'segundo_nombre' => $v->segundo_nombre,
@@ -255,6 +256,21 @@ class Cuip extends BaseController {
 			
         	$data['puesto'] = $this->cuipCatalgo($getPuesto);
         	//////////////
+        	$data['clientes'] = $this->modelCuip->getClientes();
+        	//////////////
+        	$getBanco = $this->modelCuip->GetCatalogoCuip('9d392e39-27fa-4307-824b-66d40facba07');
+			
+        	$data['banco'] = $this->cuipCatalgo($getBanco);
+        	//////////////
+        	$getNomina = $this->modelCuip->GetCatalogoCuip('2b2bccdd-2f39-47b5-8aad-0272ea9096bb');
+			
+        	$data['nomina'] = $this->cuipCatalgo($getNomina);
+        	//////////////
+        	$data['jefes'] = $this->modelCuip->getJefes($idEmpresa);
+        	/////////////
+        	$data['uniformes'] = $this->modelCuip->getUniformes($idEmpresa);
+
+        	$data['equipos'] = $this->modelCuip->getEquipos($idEmpresa);
 
         	$data['breadcrumb'] = ["inicio" => 'CUIP' ,
                     				"url" => 'cuip',
@@ -1204,8 +1220,8 @@ class Cuip extends BaseController {
 					$uuid = Uuid::uuid4();
         			
 
-        		//	$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
-$idPersonal = $getIdPersonal;
+        			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
+//$idPersonal = $getIdPersonal;
         			
         			
         			$datosSanciones=[];
@@ -3622,5 +3638,310 @@ $idPersonal = $getIdPersonal;
 	
 		}
 
+
+		public function getUbicacion(){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['asignacionServ'])){
+			$errors = [];
+            $succes = [];
+            $dontSucces = [];
+            $data = [];
+
+			$rules = [
+				'asignacionServ' =>  'required'];
+				
+				$errors = [];
+				$succes = [];
+				$dontSucces = [];
+				$data = [];
+				
+				if($this->validate($rules)){
+					
+
+					$getCliente = $this->request->getPost('asignacionServ');
+
+					$cliente = $this->encrypt->Decrytp($getCliente);
+
+
+					
+					$getUbicaciones = $this->modelCuip->getUbicacion($cliente);
+
+					
+
+                    if ($getUbicaciones ) {
+
+                    	$ubicaciones = '<option value="">Selecciona una Opción</option>';
+                    	
+                    	foreach ( $getUbicaciones as $v){
+				
+							$id = $this->encrypt->Encrypt($v->id);
+							$ubicaciones.=  '<option value="'.$id.'">'.$v->nombre_ubicacion.'</option>';
+
+							
+						
+						}
+
+						
+                    	
+                    	$data['ubicacionRH']= $ubicaciones;
+
+
+                    	$succes = ["mensaje" => 'Exito.' ,
+                            	   "succes" => "succes"];
+                    	
+                    } else {
+                    		
+                    	$dontSucces = ["error" => "error" ,
+                    				   "mensaje" => 'Hubo un error al obtener los datos.'];
+
+                    }
+                    		
+
+				} else {	
+					$errors = $this->validator->getErrors();
+				}
+
+				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+			
+		}	
+    }
+
+    public function getPuesto(){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['asignacionServ'])){
+			$errors = [];
+            $succes = [];
+            $dontSucces = [];
+            $data = [];
+
+			$rules = [
+				'turno' =>  'required'];
+				
+				$errors = [];
+				$succes = [];
+				$dontSucces = [];
+				$data = [];
+				
+				if($this->validate($rules)){
+					
+
+					$getTurno = $this->request->getPost('turno');
+
+					$turno = $this->encrypt->Decrytp($getTurno);
+
+
+					
+					$getPuestos = $this->modelCuip->getPuesto($turno);
+
+					
+                    if ($getPuestos ) {
+
+                    	$puestos = '<option value="">Selecciona una Opción</option>';
+                    	
+                    	foreach ( $getPuestos as $v){
+				
+							$id = $this->encrypt->Encrypt($v->id);
+							$puestos.=  '<option value="'.$id.'">'.$v->puesto.'</option>';
+
+							
+						
+						}
+
+						
+                    	
+                    	$data['puestos']= $puestos;
+
+                    	
+                    	$succes = ["mensaje" => 'Exito.' ,
+                            	   "succes" => "succes"];
+                    	
+                    } else {
+                    		
+                    	$dontSucces = ["error" => "error" ,
+                    				   "mensaje" => 'Hubo un error al obtener los datos.'];
+
+                    }
+                    		
+
+				} else {	
+					$errors = $this->validator->getErrors();
+				}
+
+				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+			
+		}	
+    }
+
+    public function AgregarAltasEmpleados(){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['fecha_ingreso,asignacionServ,ubicacionRH,sueldoRH,turnoRH,puestoRH,pagoExterno,telEmpresaRH,nominaPeriodo,radioEmpresa,jefeInmediatoRH,bancoRH,cuentaRH,clabeRH,nssRH,pension,infonavit,fonacot,soldi'],FILTER_SANITIZE_STRING)){
+
+			$errors = [];
+			$succes = [];
+			$dontSucces = [];
+			$data = [];
+			
+			$getIdPersonal = $this->request->getPost('idPersonal');
+
+			
+			if(!empty($getIdPersonal)){	
+
+				
+					$rules = [
+					'fecha_ingreso' =>  ['label' => "Fecha de Ingreso", 'rules' => 'required|valid_only_date_chek'],
+					'asignacionServ' =>  ['label' => "Asignación Servicio", 'rules' => 'required'],
+					'ubicacionRH' =>  ['label' => "Ubicación", 'rules' => 'required'],
+					'sueldoRH' =>  ['label' => "Sueldo", 'rules' => 'required|max_length[25]'],
+					
+					'turnoRH' =>  ['label' => "Turno", 'rules' => 'required'],
+					'puestoRH' =>  ['label' => "Puesto", 'rules' => 'required'],
+					'pagoExterno' =>  ['label' => "Pago Externo", 'rules' => 'required|max_length[25]'],
+					'telEmpresaRH' =>  ['label' => "Teléfono Empresa", 'rules' => 'required|max_length[50]'],
+					'nominaPeriodo' =>  ['label' => "Periodicidad de la nómina", 'rules' => 'required'],
+					'radioEmpresa' =>  ['label' => "Radio Empresa", 'rules' => 'required|max_length[50]'],
+					'jefeInmediatoRH' =>  ['label' => "Jefe Inmediato", 'rules' => 'required'],
+					'bancoRH' =>  ['label' => "Banco", 'rules' => 'required'],
+					'cuentaRH' =>  ['label' => "Cuenta", 'rules' => 'required|max_length[50]'],
+					'clabeRH' =>  ['label' => "CLABE", 'rules' => 'required|max_length[30]'],
+					'infonavit' =>  ['label' => "Crédito Infonavit", 'rules' => 'required'],
+					'nssRH' =>  ['label' => "NSS", 'rules' => 'required|min_length[11]|max_length[11]'],
+					'pension' =>  ['label' => "Pensión Alimenticia", 'rules' => 'required'],
+					'soldi' =>  ['label' => "SOLDI", 'rules' => 'required'],
+					'fonacot' =>  ['label' => "Crédito Fonacot", 'rules' => 'required']];
+		 
+				
+
+
+
+					if($this->validate($rules)){
+					
+						$getUser = session()->get('IdUser');
+						$LoggedUserId = $this->encrypter->decrypt($getUser);
+						$empresa = session()->get('empresa');
+						$idEmpresa = $this->encrypter->decrypt($empresa);
+						$uuid = Uuid::uuid4();
+	        			$id = $uuid->toString();
+
+	        			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
+	        			
+	        			
+	        			$getFechaIngreso = $this->request->getPost('fecha_ingreso');
+
+	        			$fechaIngreso = date( "Y-m-d" ,strtotime($getFechaIngreso));
+
+	        			$getasignacionServ = $this->request->getPost('asignacionServ');
+
+        				$signacionServ = $this->encrypt->Decrytp($getasignacionServ);
+
+        				$getubicacionRH = $this->request->getPost('ubicacionRH');
+
+        				$ubicacionRH = $this->encrypt->Decrytp($getubicacionRH);
+
+        				$getturnoRH = $this->request->getPost('turnoRH');
+
+        				$turnoRH = $this->encrypt->Decrytp($getturnoRH);
+
+        				$getpuestoRH = $this->request->getPost('puestoRH');
+
+        				$puestoRH = $this->encrypt->Decrytp($getpuestoRH);
+
+        				$getjefeInmediatoRH = $this->request->getPost('jefeInmediatoRH');
+
+        				$jefeInmediatoRHj = $this->encrypt->Decrytp($getjefeInmediatoRH);
+
+        				$getbancoRH = $this->request->getPost('bancoRH');
+
+
+
+        				$banco = $this->encrypt->Decrytp($getbancoRH);
+
+        				$getinfonavit = $this->request->getPost('infonavit');
+
+        				$infonavit = $this->encrypt->Decrytp($getinfonavit);
+
+        				$getpension = $this->request->getPost('pension');
+
+        				$pension = $this->encrypt->Decrytp($getpension);
+
+        				$getNomimaPeriodo = $this->request->getPost('nominaPeriodo');
+
+        				$NomimaPeriodo = $this->encrypt->Decrytp($getNomimaPeriodo);
+
+	        			$date = date('y') ;
+	        			$consecutivo = $this->modelCuip->consecutivo();
+	        			$fecNac = $this->modelCuip->fecNac($idPersonal);
+
+	        			$fechaNacimiento = date('y',strtotime($fecNac->fecha));
+
+	        			$numEmpleado = $date.$consecutivo->con.$fechaNacimiento;
+
+	        			$getfonacot = $this->request->getPost('fonacot');
+
+        				$fonacot = $this->encrypt->Decrytp($getfonacot);
+
+        				$getsoldi = $this->request->getPost('soldi');
+
+        				$soldi = $this->encrypt->Decrytp($getsoldi);
+
+	        			
+
+						$altaEmpleado = array(
+			    					
+			    					
+							"id" => $id  ,
+							"numEmpleado" => $numEmpleado , 
+							"idPersonal" => $idPersonal  , 
+							"idEmpresa" =>  $idEmpresa , 
+							"fecha_ingreso" =>  $fechaIngreso , 
+							"idCliente" => $signacionServ   ,
+							"idUbicacion" => $ubicacionRH  , 
+							"sueldo" => $this->request->getPost('sueldoRH')  , 
+							"idTurno" =>  $turnoRH , 
+							"idPuesto" =>  $puestoRH , 
+							"pagoExterno" => $this->request->getPost('pagoExterno')  , 
+							"telefonoEmpresa" => $this->request->getPost('telEmpresaRH')  , 
+							"idNomimaPeriodo" =>  $NomimaPeriodo , 
+							"radioEmpresa" =>  $this->request->getPost('radioEmpresa') , 
+							"idJefeInmediato" => $jefeInmediatoRHj  , 
+							"idBanco" =>  $banco , 
+							"cuentaBanco" => $this->request->getPost('cuentaRH')  , 
+							"CLABE" =>  $this->request->getPost('clabeRH') , 
+							"nss" => $this->request->getPost('nssRH')  , 
+							"infonavit" =>  $infonavit , 
+							"pension" =>  $pension ,
+							"fonacot" =>  $fonacot ,
+							"soldi" =>  $soldi ,
+							"createdby" => $LoggedUserId , 
+							"createddate" => date("Y-m-d H:i:s") );
+						 
+						$result = $this->modelCuip->insertAltaEmpleado($altaEmpleado,$_POST['pTableDataEquipo'],$_POST['pTableDataUniforme'],$idPersonal);
+
+					
+                    	if ($result) {
+
+            			
+                    		$succes = ["mensaje" => 'Alta de Empleado realizada con exito, Número de empleado: '.$numEmpleado  ,
+                            	   "succes" => "succes"];
+
+                           	   
+                    	
+                    	} else {
+                    	$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Hubo un error al realizar la Alta de Empleado realizada'  ];
+
+                    	}
+					} else {	
+						$errors = $this->validator->getErrors();
+					}
+					
+				
+				
+
+			} else {
+
+				$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Es necesario que primero capture la sección de datos personales'  ];
+			}
+
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);	
+		}	
+	}
 
 	}

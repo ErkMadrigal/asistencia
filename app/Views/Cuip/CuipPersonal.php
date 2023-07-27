@@ -65,6 +65,7 @@
         <table id="dataGrid" class="table  text-center table-hover table-head-fixed text-nowrap">
             <thead>
             <tr>
+                <th>Num.Empleado</th>
                 <th>No.CUIP</th>
                 <th>Primer Nombre</th>
                 <th>Segundo Nombre</th>
@@ -377,7 +378,9 @@
             language: {
                 url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
             },
-            columns: [  { data: "nCuip"
+            columns: [  { data: "numEmpleado"
+                        },
+                        { data: "nCuip"
                         },
                         { data: "primer_nombre"
                         },

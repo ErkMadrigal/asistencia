@@ -36,11 +36,77 @@ use App\Libraries\Encrypt;
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="ubicacion" class=" control-label">Ubicacion:</label>
+                        <label for="ubicacion" class=" control-label">Ubicacion:<span class="text-danger">*</span></label>
                         <input type="text" class="form-control " id="ubicacion" name="ubicacion">
                     </div>
                 </div>
-             
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="region" class="control-label">Región: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="region" name="region">
+                            <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($region) ):
+                                    foreach($region as  $a){
+                                        $idRegion = $encrypt->Encrypt($a->id);
+                                        ?>
+                                            <option value="<?=$idRegion ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                        </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#region").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-6 col-sm-6'>
+                    <div class="form-group">
+                        <label for="zona" class="control-label">Zona: <span class="text-danger">*</span></label>
+                        <div>
+                            <select class="form-control" id="zona" name="zona">
+                            <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($zona) ):
+                                    foreach($zona as  $a){
+                                        $idZona = $encrypt->Encrypt($a->id);
+                                        ?>
+                                            <option value="<?=$idZona ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                        </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#zona").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="latitud" class=" control-label">Latitud:</label>
+                        <input type="text" class="form-control " id="latitud" name="latitud" maxlength="15">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="longitud" class=" control-label">Longitud:</label>
+                        <input type="text" class="form-control " id="longitud" name="longitud" maxlength="15">
+                    </div>
+                </div>
             </div>
         
     </div>

@@ -312,7 +312,7 @@
                 render: (data, type, full, meta) => {
                     let url = `${full.docuemento_Licencia}`
                     let rutaCodificada = encodeURIComponent(url);
-                    return `<button data-toggle='modal' data-target='#modal' onclick='asignData("${rutaCodificada}", "${full.nombre_Docuemento}")' class='nav-link btn btn-link'><i class='fa fa-file-pdf-o text-danger'></i></button>`;
+                    return `<button data-toggle='modal' data-target='#modal' onclick='asignData("${full.id_licencia}")' class='nav-link btn btn-link'><i class='fa fa-file-pdf-o text-danger'></i></button>`;
 
                 }
             },
@@ -333,9 +333,8 @@
         ]
     });
 
-    const asignData = (url, name) => {
-        let rutaDecodificada = decodeURIComponent(url);
-        document.querySelector("#modalVisor").innerHTML = `<iframe src="${rutaDecodificada}/${name}" width="100%" height="600"></iframe>`
+    const asignData = (id) => {
+        document.querySelector("#modalVisor").innerHTML = `<iframe src="visor?h=${id}" width="100%" height="600"></iframe>`
 
     }
 

@@ -208,7 +208,11 @@ $routes->get('editarUbicacion', 'Armas::editarUbicacion',['filter' => 'auth']);
 $routes->post('editUbicacion', 'Armas::editUbicacion',['filter' => 'auth']);
 $routes->get('detialUbicacion', 'Armas::detialUbicacion',['filter' => 'auth']);
 $routes->post('llenadoCampos', 'Armas::mostrarDatos',['filter' => 'auth']);
+$routes->get('visor', 'Armas::view',['filter' => 'auth']);
 
+$routes->post('getUbicacionAlta', 'Cuip::getUbicacion',['filter' => 'auth']);
+$routes->post('getPuestosAlta', 'Cuip::getPuesto',['filter' => 'auth']);
+$routes->post('GuardarAltaEmpleado', 'Cuip::AgregarAltasEmpleados',['filter' => 'auth']);
 
 
 

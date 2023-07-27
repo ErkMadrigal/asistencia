@@ -33,9 +33,10 @@ class UbicacionModel
 
     public function GetUbicacionById($id){
         $builder = $this->db->table('ubicacion');
-        $builder->select("cliente.id, razon_social AS idCliente,cliente.nombre_corto,nombre_ubicacion,ubicacion.activo,ubicacion.idCodigoPostal,ubicacion.calle_num,ubicacion.colonia,ubicacion.municipio,ubicacion.ciudad,ubicacion.estado, ubicacion.createddate, ubicacion.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
-       $builder->join("cliente","ubicacion.idCliente = cliente.id","left"); 
-        
+        $builder->select("cliente.id, razon_social AS idCliente,cliente.nombre_corto,nombre_ubicacion,R.valor as idRegion,Z.valor as idZona,latitud,longitud,ubicacion.activo,ubicacion.idCodigoPostal,ubicacion.calle_num,ubicacion.colonia,ubicacion.municipio,ubicacion.ciudad,ubicacion.estado, ubicacion.createddate, ubicacion.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+       $builder->join("cliente","ubicacion.idCliente = cliente.id","left");
+       $builder->join("catalogos_detalle Z","ubicacion.idZona = Z.id","left");
+       $builder->join("catalogos_detalle R","ubicacion.idRegion = R.id","left");
        $builder->join("sys_usuarios_admin UA","ubicacion.createdby = UA.id","left");
        $builder->join("sys_usuarios_admin UU","ubicacion.updatedby = UU.id","left");
        $builder->where('ubicacion.id', $id);
@@ -90,6 +91,30 @@ class UbicacionModel
         $builder->select('id,razon_social');
         $builder->where("id",$idCliente);
         return $builder->get()->getRow();
+        
+    }
+
+    public function GetZona($idEmpresa){
+        $builder = $this->db->table('catalogos_detalle');
+        $builder->select('catalogos_detalle.id,valor');
+        $builder->where('idCatalogo', 'e6a13ff6-c2c1-4c28-904b-6357852c37b2' );
+        $builder->where('activo', 1 );
+        $builder->where('idEmpresa', $idEmpresa );
+        $builder->orderBy('valor');
+        
+        return $builder->get()->getResult();
+        
+    }
+
+    public function GetRegion($idEmpresa){
+        $builder = $this->db->table('catalogos_detalle');
+        $builder->select('catalogos_detalle.id,valor');
+        $builder->where('idCatalogo', '617200c2-6157-489f-96bc-bf2a6cb8da8c' );
+        $builder->where('activo', 1 );
+        $builder->where('idEmpresa', $idEmpresa );
+        $builder->orderBy('valor');
+        
+        return $builder->get()->getResult();
         
     }
 

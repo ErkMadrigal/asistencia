@@ -22,8 +22,9 @@ class CuipModel
 
     public function GetCuip($idEmpresa){
         $builder = $this->db->table('datos_personales');
-        $builder->select('cuip, datos_personales.id,primer_nombre,segundo_nombre,apellido_paterno,apellido_materno,media_filiacion.idPersonal,respuesta,fecha_consulta');
+        $builder->select('cuip, datos_personales.id,primer_nombre,segundo_nombre,apellido_paterno,apellido_materno,media_filiacion.idPersonal,respuesta,fecha_consulta,numEmpleado');
         $builder->join("media_filiacion"," datos_personales.id= media_filiacion.idPersonal","left");
+        $builder->join("datos_empleado"," datos_personales.id= datos_empleado.idPersonal","left");
         $builder->orderBy("primer_nombre","asc");
         $builder->orderBy("apellido_paterno","asc");
        // $builder->where("cuip","");
@@ -823,6 +824,142 @@ class CuipModel
         } 
         $this->db->transComplete();
         return $return; 
+    }
+
+    public function getClientes(){
+        $builder = $this->db->table('cliente');
+        $builder->select('id, nombre_corto');
+        $builder->where("activo",true);
+        $builder->orderBy("nombre_corto","asc");
+        return $builder->get()->getResult();
+        
+    }
+
+    public function getUbicacion($idCliente){
+        $builder = $this->db->table('ubicacion');
+        $builder->select('id, nombre_ubicacion');
+        $builder->where("activo",true);
+        $builder->where("idCliente",$idCliente);
+        $builder->orderBy("nombre_ubicacion","asc");
+        return $builder->get()->getResult();
+        
+    }
+
+     public function getPuesto($idTurno){
+        $builder = $this->db->table('puestos');
+        $builder->select('puestos.id, valor as puesto');
+        $builder->join("catalogos_detalle","puestos.puesto = catalogos_detalle.id","left");
+        $builder->where("puestos.activo",true);
+        $builder->where("idTurno",$idTurno);
+        $builder->orderBy("puesto","asc");
+        return $builder->get()->getResult();
+        
+    }
+
+
+    public function getJefes($idEmpresa){
+        $builder = $this->db->table('datos_personales');
+        $builder->select("id, CONCAT(primer_nombre,' ',segundo_nombre,' ',apellido_paterno,' ',apellido_paterno ) as nombre");
+        $builder->where("activo",true);
+        $builder->where("idEmpresa",$idEmpresa);
+        $builder->orderBy("primer_nombre","asc");
+        return $builder->get()->getResult();
+        
+    }
+
+    public function insertAltaEmpleado($data,$equipos,$uniformes,$idPersonal){
+        $this->db->transStart();
+
+        $this->db->table('datos_empleado')->insert($data);
+
+        $getEquipos = json_decode($equipos,true);
+        $getUniformes = json_decode($uniformes,true);
+        $clockSequence = 16383;
+        foreach($getEquipos as $x =>$value){
+            $uuid1 = Uuid::uuid1($clockSequence);
+            $id = $uuid1->toString();
+            $idPersonal =  $idPersonal;
+            $idEquipo = $this->encrypt->Decrytp($value['Equipo']);
+            
+            $queryEquipos = "INSERT INTO equipos (id,
+                idPersonal, 
+                idTipo,
+                cantidad) VALUES (
+                '".$id."',
+                '".$idPersonal."', 
+                ".$idEquipo.", 
+                ".$value['Cantidad']." )";
+                
+            $this->db->query($queryEquipos);
+        }
+
+
+        foreach($getUniformes as $j =>$value){
+            $uuid1 = Uuid::uuid1($clockSequence);
+            $id = $uuid1->toString();
+            $idPersonal =  $idPersonal;
+            $idUniforme = $this->encrypt->Decrytp($value['Uniforme']);
+            
+            $queryEquipos = "INSERT INTO uniformes (id,
+                idPersonal, 
+                idUniforme,
+                cantidad,
+                talla) VALUES (
+                '".$id."',
+                '".$idPersonal."', 
+                ".$idUniforme.", 
+                ".$value['Cantidad'].",
+                ".$value['Talla']." )";
+                
+            $this->db->query($queryEquipos);
+        }
+
+        $this->db->transComplete();
+
+        if ($this->db->transStatus() === TRUE)
+        {
+            $return = true;
+        } else {
+            $return = false ;
+        }
+
+        return $return; 
+    }
+
+    public function consecutivo(){
+        $builder = $this->db->table('datos_empleado');
+        $builder->select("LPAD(IFNULL(MAX(CAST(SUBSTRING(numEmpleado,3,5) AS int)),0) + 1,5,0) as con");
+        
+        return $builder->get()->getRow();
+    }
+
+    public function fecNac($idPersonal){
+        $builder = $this->db->table('datos_personales');
+        $builder->select("fecha_nacimiento as fecha");
+        $builder->where("id",$idPersonal);
+        return $builder->get()->getRow();
+    }
+
+    public function getUniformes($idEmpresa){
+        $builder = $this->db->table('catalogos_detalle');
+        $builder->select("id, CONCAT(valor,' ',idReferencia ) as uniforme");
+        $builder->where("activo",true);
+        $builder->where("idCatalogo","4335095b-a05a-485f-a02b-038819370aaa");
+        $builder->where("idEmpresa",$idEmpresa);
+        $builder->orderBy("valor","asc");
+        return $builder->get()->getResult();
+        
+    }
+
+    public function getEquipos($idEmpresa){
+        $builder = $this->db->table('catalogos_detalle');
+        $builder->select("id, CONCAT(valor,' ',idReferencia ) as equipo");
+        $builder->where("activo",true);
+        $builder->where("idCatalogo","1f6938fb-8a65-44db-bd8c-5ec2a7f54a41");
+        $builder->where("idEmpresa",$idEmpresa);
+        $builder->orderBy("valor","asc");
+        return $builder->get()->getResult();
+        
     }
     
 }

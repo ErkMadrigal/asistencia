@@ -284,6 +284,7 @@ class Armas extends BaseController {
         	
 			$data['modalidad'] = $this->modelArmas->searchEnMulticatalogo('modalidad');
 			$data['licencias'] = $this->modelArmas->allLicencias();
+			//edit
 			
 			$data['breadcrumb'] = ["inicio" => 'Armas' ,
                     				"url" => 'armas',
@@ -327,8 +328,8 @@ class Armas extends BaseController {
 					$getfileExt = $file->getExtension();
 					$fileName = $this->encrypt->Encrypt($getfileName);
 					$extension = $this->encrypt->Encrypt($getfileExt);
-
 					$getRuta = WRITEPATH . 'uploads/files/'.date("Y").'/'.date("m").'/'.$idEmpresa;
+        			$ruta = $this->encrypt->Encrypt($getRuta);
 
 					if ($file->isValid() && !$file->hasMoved()){
 
@@ -350,8 +351,8 @@ class Armas extends BaseController {
 							"armas_Largas" =>  $_POST['aLargas'],
 							"total_Armas" =>  $_POST['aCorta']+$_POST['aLargas'],
 							"total_Personas" =>  $_POST['tPersonas'],
-							"docuemento_Licencia" =>  $getRuta,
-							"nombre_Docuemento" =>  $getFileNameAlmacen,
+							"docuemento_Licencia" =>  $ruta,
+							"nombre_Docuemento" =>  $fileNameAlmacen,
 							"activo" => 1,
 							"createdby" => $LoggedUserId,
 							"createddate" => date("Y-m-d H:i:s"),
@@ -720,4 +721,21 @@ class Armas extends BaseController {
 			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
 		}
 	}
+	
+    public function view(){
+		if ($this->request->getMethod() == "get" && $this->request->getvar(['h'],FILTER_SANITIZE_STRING)){
+
+			$getId = str_replace(" ", "+", $this->request->getGet('h'));
+			
+			$file = $this->modelArmas->searchLicencia($getId);
+
+			$path = $this->encrypt->Decrytp($file->docuemento_Licencia);
+			$fileName = $this->encrypt->Decrytp($file->nombre_Docuemento);
+			$doc = $path.'/'.$fileName;
+			$ctype = "application/pdf";
+			$this->response->setHeader('Content-Type', $ctype);
+			// var_dump($doc);
+			readfile($doc);
+		}
+    }
 }

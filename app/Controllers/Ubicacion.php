@@ -99,13 +99,13 @@ class Ubicacion extends BaseController {
 			$getId = str_replace(" ", "+", $_GET['id']);
 			$id = $this->encrypt->Decrytp($getId);
 			$idAdmin = session()->get('IdUser');
-
-			
-            
+			$getEmpresa = session()->get('empresa');
+            $idEmpresa = $this->encrypter->decrypt($getEmpresa);
             $data['id'] = $this->encrypt->Encrypt($id);
 
             $data['ubicacion'] = $this->modelUbica->GetUbicacionById($id);
-
+            $data['zona'] = $this->modelUbica->GetZona($idEmpresa);
+			$data['region'] = $this->modelUbica->GetRegion($idEmpresa);
 			$data['breadcrumb'] = ["inicio" => 'Ubicaciones' ,
                     				"url" => 'ubicacioncatalogo?id='.$this->encrypt->Encrypt($data['ubicacion']->id),
                     				"titulo" => 'Editar'];
@@ -115,9 +115,20 @@ class Ubicacion extends BaseController {
 
     public function SaveUbicacion(){
 
-		if($this->request->getMethod() == "post" && $this->request->getvar(['id'],FILTER_SANITIZE_STRING)) {
+		if($this->request->getMethod() == "post" && $this->request->getvar(['id,cliente, ubicacion, calle, codigo, coloniacodigo, municipiocodigo, ciudadcodigo, estadocodigo,region,zona,latitud,longitud'],FILTER_SANITIZE_STRING)) {
 
-			$rules = ['id' =>  ['label' => '', 'rules' =>'required']];
+			$rules = ['id' =>  ['label' => '', 'rules' =>'required'],
+					'ubicacion' =>  ['label' => "Ubicación", 'rules' => 'required|max_length[255]'],
+					'calle' =>  ['label' => "Calle y Número", 'rules' => 'required|max_length[255]'],
+					'codigo' =>  ['label' => "Código Postal", 'rules' => 'required|integer|max_length[5]'],
+					'coloniacodigo' =>  ['label' => "Colonia", 'rules' => 'required'],
+					'municipiocodigo' =>  ['label' => "Municipio", 'rules' => 'required'],
+					'ciudadcodigo' =>  ['label' => "Ciudad", 'rules' => 'required'],
+					'estadocodigo' =>  ['label' => "Estado", 'rules' => 'required'],
+					'zona' =>  ['label' => "Zona", 'rules' => 'required'],
+					'region' =>  ['label' => "Región", 'rules' => 'required'],
+					'latitud' =>  ['label' => "Latitud", 'rules' => 'max_length[15]'],
+					'longitud' =>  ['label' => "Longitud", 'rules' => 'max_length[15]']];
 
 				$errors = [];
 				$succes = [];
@@ -129,10 +140,25 @@ class Ubicacion extends BaseController {
 					$LoggedUserId = $this->encrypter->decrypt($getUser);
 					$TodayDate = date("Y-m-d H:i:s");
 					$idModi = $this->request->getPost('id');
-					$idUbicacion = $this->encrypt->Decrytp($idModi);	
+					$idUbicacion = $this->encrypt->Decrytp($idModi);
+					$getRegion = $this->request->getPost('region');
+					$idRegion = $this->encrypt->Decrytp($getRegion);
+
+					$getZona = $this->request->getPost('zona');
+					$idZona = $this->encrypt->Decrytp($getZona);	
 					$ubicacion = array(
 
-						
+						"idZona" => $idZona,
+						"idRegion" => $idRegion,
+						"longitud" => $this->request->getPost('longitud'),
+						"latitud" => $this->request->getPost('latitud'), 
+						"nombre_ubicacion" =>  $this->request->getPost('ubicacion') , 
+						"calle_num" =>  $this->request->getPost('calle') , 
+						"idCodigoPostal" =>  $this->request->getPost('codigo') , 
+						"colonia" =>  $this->request->getPost('coloniacodigo') , 
+						"municipio" => $this->request->getPost('municipiocodigo')  , 
+						"ciudad" => $this->request->getPost('ciudadcodigo')  , 
+						"estado" =>  $this->request->getPost('estadocodigo') ,
                         "activo" => $this->request->getPost('activo'),
                         "updatedby" => $LoggedUserId,
                 		"updateddate" => $TodayDate
@@ -168,7 +194,8 @@ class Ubicacion extends BaseController {
 			$idCliente = $this->encrypt->Decrytp($getId);
 			$cliente = $this->modelUbica->GetCliente($idCliente);
 			$data['modulos'] = $this->menu->Permisos();
-
+			$data['zona'] = $this->modelUbica->GetZona($idEmpresa);
+			$data['region'] = $this->modelUbica->GetRegion($idEmpresa);
 			$data['cliente'] = $cliente;
 
 			$data['breadcrumb'] = ["inicio" => 'Ubicaciones' ,
@@ -182,7 +209,7 @@ class Ubicacion extends BaseController {
 
     public function AgregarUbicacion(){
 		//helper(['form']);
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['cliente, ubicacion, calle, codigo, coloniacodigo, municipiocodigo, ciudadcodigo, estadocodigo'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['cliente, ubicacion, calle, codigo, coloniacodigo, municipiocodigo, ciudadcodigo, estadocodigo,region,zona,latitud,longitud'],FILTER_SANITIZE_STRING)){
 
 
 				$rules = [
@@ -193,7 +220,11 @@ class Ubicacion extends BaseController {
 				'coloniacodigo' =>  ['label' => "Colonia", 'rules' => 'required'],
 				'municipiocodigo' =>  ['label' => "Municipio", 'rules' => 'required'],
 				'ciudadcodigo' =>  ['label' => "Ciudad", 'rules' => 'required'],
-				'estadocodigo' =>  ['label' => "Estado", 'rules' => 'required']];
+				'estadocodigo' =>  ['label' => "Estado", 'rules' => 'required'],
+				'zona' =>  ['label' => "Zona", 'rules' => 'required'],
+				'region' =>  ['label' => "Región", 'rules' => 'required'],
+				'latitud' =>  ['label' => "Latitud", 'rules' => 'max_length[15]'],
+				'longitud' =>  ['label' => "Longitud", 'rules' => 'max_length[15]']];
 		 
 				$errors = [];
 				$succes = [];
@@ -212,11 +243,21 @@ class Ubicacion extends BaseController {
 
         			$getCliente = $this->request->getPost('cliente');
 					$idCliente = $this->encrypt->Decrytp($getCliente);
+
+					$getRegion = $this->request->getPost('region');
+					$idRegion = $this->encrypt->Decrytp($getRegion);
+
+					$getZona = $this->request->getPost('zona');
+					$idZona = $this->encrypt->Decrytp($getZona);
                     
 					$ubicacion = array(
 
 						"id" =>  $id , 
-						"idCliente" =>  $idCliente , 
+						"idCliente" =>  $idCliente ,
+						"idZona" => $idZona,
+						"idRegion" => $idRegion,
+						"longitud" => $this->request->getPost('longitud'),
+						"latitud" => $this->request->getPost('latitud'), 
 						"nombre_ubicacion" =>  $this->request->getPost('ubicacion') , 
 						"calle_num" =>  $this->request->getPost('calle') , 
 						"idCodigoPostal" =>  $this->request->getPost('codigo') , 

@@ -535,11 +535,32 @@ class Administrador extends BaseController {
     public function sendEmailTest(){
 
 
+    	$val = $_GET['val'];
+
+    	if ($val == 1){
+
     	$uuid = Uuid::uuid4();
         $id = $uuid->toString();
 
         echo $id;
 
+
+		} else {
+
+			$clockSequence = 16383;
+			$i = 0;
+        while ($i < $val) {
+         	$id = '';
+         	$uuid1 = Uuid::uuid1($clockSequence);
+            $id = $uuid1->toString();
+
+            echo  "<br>".$id;
+
+            $i++;
+
+         } 
+		}
+        
 
         // $email = \Config\Services::email();
 		

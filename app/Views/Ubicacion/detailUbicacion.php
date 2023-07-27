@@ -31,6 +31,38 @@
                         </div>
                     </div>
                 </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="region" class=" control-label">Región: </label>
+                        <div>
+                        <?= $ubicacion->idRegion ?>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="zona" class=" control-label">Zona: </label>
+                        <div>
+                        <?= $ubicacion->idZona ?>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="latitud" class=" control-label">Latitud: </label>
+                        <div>
+                        <?= $ubicacion->latitud ?>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="longitd" class=" control-label">Longitud: </label>
+                        <div>
+                        <?= $ubicacion->longitud ?>
+                        </div>
+                    </div>
+                </div>
                 
             </div>
         </form>
@@ -82,14 +114,7 @@
                         <div>
                         <?= $ubicacion->colonia ?>
                         </div>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#coloniacodigo").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
+                            
                     </div>
                 </div>
                 
@@ -98,14 +123,7 @@
                         <label for="municipiocodigo" class="control-label">Municipio: </label>
                         <div>
                         <?= $ubicacion->municipio ?>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#municipiocodigo").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
+                            
                         </div>
                     </div>
                 </div>
@@ -115,14 +133,7 @@
                         <label for="ciudadcodigo" class="control-label">Ciudad: </label>
                         <div>
                         <?= $ubicacion->ciudad ?>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#ciudadcodigo").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
+                            
                         </div>
                     </div>
                 </div>
@@ -130,15 +141,8 @@
                     <div class="form-group">
                         <label for="estadocodigo" class="control-label">Estado: </label>
                         <div>
-                        <?= $ubicacion->nombre_ubicacion ?>
-                            <script>
-                                $(document).ready(function() {
-                                    $("#estadocodigo").select2({
-                                        theme: "bootstrap4",
-                                        width: "100%"
-                                    });
-                                });
-                            </script>
+                        <?= $ubicacion->estado ?>
+                            
                         </div>
                     </div>
                 </div>

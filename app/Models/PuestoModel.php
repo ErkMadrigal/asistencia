@@ -22,12 +22,13 @@ class PuestoModel
 
     public function GetPuesto($idCliente){
         $builder = $this->db->table('puestos');
-        $builder->select('puestos.id, ,razon_social,nombre_ubicacion,puestos.activo,puestos.puesto,catalogos_detalle.valor AS turnos');
+        $builder->select('puestos.id, ,razon_social,nombre_ubicacion,puestos.activo,P.valor as puesto,catalogos_detalle.valor AS turnos');
         $builder->join("cliente","puestos.idCliente = cliente.id","left");
         $builder->join("ubicacion","puestos.idUbicacion = ubicacion.id","left");
 
         $builder->join("turnos","puestos.idTurno = turnos.id","left");    
         $builder->join("catalogos_detalle","turnos.idTurnos = catalogos_detalle.id","left");
+        $builder->join("catalogos_detalle P","puestos.puesto = P.id","left");
         $builder->where("puestos.idCliente", $idCliente);
         $builder->orderBy("puestos.puesto");
         return $builder->get()->getResult();
@@ -36,7 +37,7 @@ class PuestoModel
 
     public function GetPuestoById($id){
         $builder = $this->db->table('puestos');
-        $builder->select("cliente.id, razon_social AS idCliente,catalogos_detalle.valor AS turnos,num_guardias,cant_arma_corta,cant_arma_larga,cant_sin_arma,nombre_ubicacion,puestos.puesto,puestos.activo,cliente.nombre_corto, puestos.createddate, puestos.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->select("cliente.id, razon_social AS idCliente,catalogos_detalle.valor AS turnos,num_guardias,cant_arma_corta,cant_arma_larga,cant_sin_arma,nombre_ubicacion,P.valor as puesto,puestos.activo,cliente.nombre_corto, puestos.createddate, puestos.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
         $builder->join("cliente","puestos.idCliente = cliente.id","left");
 
         $builder->join("ubicacion","puestos.idUbicacion = ubicacion.id","left");
@@ -44,6 +45,7 @@ class PuestoModel
         $builder->join("catalogos_detalle","turnos.idTurnos = catalogos_detalle.id","left");
         $builder->join("sys_usuarios_admin UA","puestos.createdby = UA.id","left");
        $builder->join("sys_usuarios_admin UU","puestos.updatedby = UU.id","left");
+       $builder->join("catalogos_detalle P","puestos.puesto = P.id","left");
        $builder->orderBy("idCliente","asc");
        $builder->where('puestos.id', $id);
         return $builder->get()->getRow();
@@ -120,6 +122,17 @@ class PuestoModel
         $builder->where("activo",true);
         $builder->where("idCliente",$idCliente);
         $builder->orderBy("nombre_ubicacion");
+        return $builder->get()->getResult();
+        
+    }
+
+    public function getPuestos($idCliente){
+        $builder = $this->db->table('catalogos_detalle');
+        $builder->select('id,valor');
+        $builder->where("activo",true);
+        $builder->where("idEmpresa",$idCliente);
+        $builder->where("idCatalogo","29773b6a-a69c-4245-ba1c-755e17398d73");
+        $builder->orderBy("valor");
         return $builder->get()->getResult();
         
     }
