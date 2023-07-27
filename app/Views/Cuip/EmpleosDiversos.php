@@ -507,6 +507,8 @@
             }
         });
 
+        $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
+
     });
 
     $(document).on('click', '#btnNingunodiversos', function() {

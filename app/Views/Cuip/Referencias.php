@@ -1114,6 +1114,8 @@
                 $('#load').removeClass( "spinner-border" );           
             }
         });
+
+        $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
             
     });
 

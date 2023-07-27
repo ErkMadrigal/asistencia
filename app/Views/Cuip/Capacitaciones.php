@@ -783,6 +783,9 @@
             }
         });
 
+
+        $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
+
     });
 
     $(document).on('click', '.add-more-btn-public', function() {

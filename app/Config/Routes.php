@@ -195,6 +195,9 @@ $routes->post('cargarRespuestasConsulta', 'Cuip::cargaRespuestasPre',['filter' =
 $routes->post('cargaMasivaCuip', 'Cuip::cargaMasivaCUIP',['filter' => 'auth']);
 $routes->get('AddEmpresa', 'Administrador::agregarEmpresa',['filter' => 'auth']);
 $routes->post('GuardarEmpresa', 'Administrador::AgrEmpresa',['filter' => 'auth']);
+$routes->post('getUbicacionAlta', 'Cuip::getUbicacion',['filter' => 'auth']);
+$routes->post('getPuestosAlta', 'Cuip::getPuesto',['filter' => 'auth']);
+$routes->post('GuardarAltaEmpleado', 'Cuip::AgregarAltasEmpleados',['filter' => 'auth']);
 
 $routes->get('licencias', 'Armas::licencias',['filter' => 'auth']);
 $routes->post('GuardarLic', 'Armas::GuardarLic',['filter' => 'auth']);
@@ -210,9 +213,6 @@ $routes->get('detialUbicacion', 'Armas::detialUbicacion',['filter' => 'auth']);
 $routes->post('llenadoCampos', 'Armas::mostrarDatos',['filter' => 'auth']);
 $routes->get('visor', 'Armas::view',['filter' => 'auth']);
 
-$routes->post('getUbicacionAlta', 'Cuip::getUbicacion',['filter' => 'auth']);
-$routes->post('getPuestosAlta', 'Cuip::getPuesto',['filter' => 'auth']);
-$routes->post('GuardarAltaEmpleado', 'Cuip::AgregarAltasEmpleados',['filter' => 'auth']);
 
 
 
