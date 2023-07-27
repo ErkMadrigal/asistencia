@@ -107,7 +107,7 @@ class ArmasModel
         return $return; 
     }
 
-    public function insertItemAndSelect($table, $data , $tableSelect , $LoggedUserId, $idEmpresa, $idClase, $idCalibre, $idMarca, $idModelo)
+    public function insertItemAndSelect($table, $data , $tableSelect , $LoggedUserId, $idEmpresa, $idClase, $idCalibre, $idMarca, $idModelo, $ruta, $fileNameAlmacen)
     {
 
         $return = false;
@@ -117,7 +117,7 @@ class ArmasModel
         
         $idArma = $uuid->toString();
 
-        $query = "INSERT INTO armas (id, matricula,folio_manif, idClase, idCalibre, idMarca, idModelo, activo,createdby,createddate,idEmpresa, id_ubicacion, tipo_arma ) VALUES ('".$idArma."','".$data['matricula']."','".$data['folio_manif']."','".$idClase."','".$idCalibre."','".$idMarca."','".$idModelo."',1,'".$LoggedUserId."', now() ,'".$idEmpresa."', '".$data['ubicaciones']."','".$data['tipoArma']."')";
+        $query = "INSERT INTO armas (id, matricula,folio_manif, idClase, idCalibre, idMarca, idModelo, activo,createdby,createddate,idEmpresa, id_ubicacion, tipo_arma, nombre_folio, url ) VALUES ('".$idArma."','".$data['matricula']."','".$data['folio_manif']."','".$idClase."','".$idCalibre."','".$idMarca."','".$idModelo."',1,'".$LoggedUserId."', now() ,'".$idEmpresa."', '".$data['ubicaciones']."','".$data['tipoArma']."','".$fileNameAlmacen."','".$ruta."')";
 
         $this->db->query($query);
         
@@ -286,5 +286,12 @@ class ArmasModel
         $builder->select('codigoPostal, asentamiento, municipio, estado');
         $builder->where('codigoPostal', $where);
         return $builder->get()->getResult(); 
+    }
+
+    public function GetFolioManifiesto( $id ){
+        $builder = $this->db->table('armas');
+        $builder->select('url, nombre_folio');
+        $builder->where('id', $id);
+        return $builder->get()->getRow();
     }
 }

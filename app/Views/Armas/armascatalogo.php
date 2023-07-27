@@ -49,6 +49,7 @@
                 <th>Marca</th>
                 <th>Matricula</th>
                 <th>Folio-Manif</th>
+                <th>Folio Manifiesto</th>
                 <th>Asignado</th>
                 <th>Editar</th>
                 <th>Detalle</th>
@@ -56,7 +57,23 @@
             </thead>
         </table>
     </div>
-    
+    <div class="modal fade modal-visor" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Documento</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalVisor">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -94,6 +111,11 @@
                       },
                       { data: "folio_manif"
                       },
+                      { data: "docuemento",
+                            render: (data, type, full, meta) => {
+                                return `<a data-toggle='modal' data-target='#modal' onclick='asignData("${full.id}")' class='nav-link btn btn-lin'><i class='fa fa-file-pdf-o text-danger'></i></a>`;
+                            }
+                        },
                       { data: "activo",
                         render: estatusRenderer
                       }, 
@@ -113,6 +135,11 @@
                 }
             ]
         });
+
+        const asignData = (id) => {
+            
+            document.querySelector("#modalVisor").innerHTML = `<iframe src="visorFolioManifiesto?h=${id}" width="100%" height="600"></iframe>`
+        }
 
 </script>
 <?= $this->endSection() ?>

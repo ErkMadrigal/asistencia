@@ -40,9 +40,9 @@ class Armas extends BaseController {
 
 			foreach ( $resultData as $v){
 				
-				$id = $this->encrypt->Encrypt($v->id);
+				// $id = $this->encrypt->Encrypt($v->id);
 				$result[] = (object) array (
-					'id' => $id ,
+					'id' => $v->id,
 					'matricula' => $v->matricula,
 					'clase' => $v->clase,
 					'folio_manif' => $v->folio_manif,
@@ -68,7 +68,8 @@ class Armas extends BaseController {
 			$data['modulos'] = $this->menu->Permisos();
 
 			$getId = str_replace(" ", "+", $_GET['id']);
-			$id = $this->encrypt->Decrytp($getId);
+			// $id = $this->encrypt->Decrytp($getId);
+			$id = $getId;
 			$idAdmin = session()->get('IdUser');
         	//$idUserAdmin = $this->encrypter->decrypt($idAdmin);
 
@@ -91,7 +92,8 @@ class Armas extends BaseController {
 			$data['modulos'] = $this->menu->Permisos();
 			
 			$getId = str_replace(" ", "+", $_GET['id']);
-			$id = $this->encrypt->Decrytp($getId);
+			// $id = $this->encrypt->Decrytp($getId);
+			$id = $getId;
 			$idAdmin = session()->get('IdUser');
 
 			
@@ -218,7 +220,25 @@ class Armas extends BaseController {
 					$idMarca = $this->encrypt->Decrytp($getMarca);
                     $getModelo = $this->request->getPost('modelo');
 					$idModelo = $this->encrypt->Decrytp($getModelo);
-					$result = $this->modelArmas->insertItemAndSelect('armas', $this->request->getPost() , 'armas',$LoggedUserId , $idEmpresa, $idClase,$idCalibre,$idMarca,$idModelo);
+
+					$file = $this->request->getFile('archivo_file');
+					$getfileName = $file->getName();
+					$getfileExt = $file->getExtension();
+					$fileName = $this->encrypt->Encrypt($getfileName);
+					$extension = $this->encrypt->Encrypt($getfileExt);
+					$getRuta = WRITEPATH . 'uploads/files/FolioManifiesto/'.date("Y").'/'.date("m").'/'.$idEmpresa;
+        			$ruta = $this->encrypt->Encrypt($getRuta);
+
+					if ($file->isValid() && !$file->hasMoved()){
+
+						$file->move($getRuta,$file->getRandomName());
+
+						$getFileNameAlmacen = $file->getName();
+						$fileNameAlmacen = $this->encrypt->Encrypt($getFileNameAlmacen);
+
+					}
+
+					$result = $this->modelArmas->insertItemAndSelect('armas', $this->request->getPost() , 'armas',$LoggedUserId , $idEmpresa, $idClase,$idCalibre,$idMarca,$idModelo, $ruta, $fileNameAlmacen);
 
                     if ($result) {
                     	$succes = ["mensaje" => 'Arma Agregada con exito' , "succes" => "succes"];
@@ -284,7 +304,6 @@ class Armas extends BaseController {
         	
 			$data['modalidad'] = $this->modelArmas->searchEnMulticatalogo('modalidad');
 			$data['licencias'] = $this->modelArmas->allLicencias();
-			//edit
 			
 			$data['breadcrumb'] = ["inicio" => 'Armas' ,
                     				"url" => 'armas',
@@ -401,7 +420,6 @@ class Armas extends BaseController {
 				'tipoUbicacion' =>  ['label' => "", 'rules' => 'required'],
                 'calle' =>  ['label' => "", 'rules' => 'required'],
                 'No_Exterior' =>  ['label' => "", 'rules' => 'required'],
-                'No_Interior' =>  ['label' => "", 'rules' => 'required'],
                 'Colonia' =>  ['label' => "", 'rules' => 'required'],
                 'Municipio' =>  ['label' => "", 'rules' => 'required'],
                 'Estado' =>  ['label' => "", 'rules' => 'required'],
@@ -569,8 +587,12 @@ class Armas extends BaseController {
 				if($this->validate($rules)){
 					
 					$file = $this->request->getFile('archivo_file');
-					
+					$getfileName = $file->getName();
+					$getfileExt = $file->getExtension();
+					$fileName = $this->encrypt->Encrypt($getfileName);
+					$extension = $this->encrypt->Encrypt($getfileExt);
 					$getRuta = WRITEPATH . 'uploads/files/'.date("Y").'/'.date("m").'/'.$idEmpresa;
+        			$ruta = $this->encrypt->Encrypt($getRuta);
 
 					if ($file->isValid() && !$file->hasMoved()){
 
@@ -581,8 +603,8 @@ class Armas extends BaseController {
 
 					}
 						$update = array(
-							"docuemento_Licencia" =>  $getRuta,
-							"nombre_Docuemento" =>  $getFileNameAlmacen,
+							"docuemento_Licencia" =>  $ruta,
+							"nombre_Docuemento" =>  $fileNameAlmacen,
 							"updatedby" => $LoggedUserId,
 							"updateddate" => date("Y-m-d H:i:s")
 						);	
@@ -632,7 +654,6 @@ class Armas extends BaseController {
 				'tipoUbicacion' =>  ['label' => "", 'rules' => 'required'],
                 'calle' =>  ['label' => "", 'rules' => 'required'],
                 'No_Exterior' =>  ['label' => "", 'rules' => 'required'],
-                'No_Interior' =>  ['label' => "", 'rules' => 'required'],
                 'Colonia' =>  ['label' => "", 'rules' => 'required'],
                 'Municipio' =>  ['label' => "", 'rules' => 'required'],
                 'Estado' =>  ['label' => "", 'rules' => 'required'],
@@ -734,8 +755,27 @@ class Armas extends BaseController {
 			$doc = $path.'/'.$fileName;
 			$ctype = "application/pdf";
 			$this->response->setHeader('Content-Type', $ctype);
-			// var_dump($doc);
 			readfile($doc);
+		}
+    }
+
+	public function visorFolioManifiesto(){
+		if ($this->request->getMethod() == "get" && $this->request->getvar(['h'],FILTER_SANITIZE_STRING)){
+
+			$getId = str_replace(" ", "+", $this->request->getGet('h'));
+			$file = $this->modelArmas->GetFolioManifiesto($getId);
+			if($file->url == ''){
+				echo "<h1 style='font-family: sans-serif;text-align: center;'>Sin Documento Folio Manifiesto Asignado</h1>";
+
+			}else{
+				$path = $this->encrypt->Decrytp($file->url);
+				$fileName = $this->encrypt->Decrytp($file->nombre_folio);
+				$doc = $path.'/'.$fileName;
+				$ctype = "application/pdf";
+				$this->response->setHeader('Content-Type', $ctype);
+				readfile($doc);
+
+			}
 		}
     }
 }
