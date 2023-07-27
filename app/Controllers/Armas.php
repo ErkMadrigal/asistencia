@@ -98,7 +98,8 @@ class Armas extends BaseController {
 
 			
 			$data['arma'] = $this->modelArmas->GetArmaById($id);
-            $data['id'] = $this->encrypt->Encrypt($id);
+            // $data['id'] = $this->encrypt->Encrypt($id);
+            $data['id'] = $id;
 			$data['ubicaciones']=$this->modelArmas->getUbicaciones();
 			$data['tipoArma'] = $this->modelArmas->searchEnMulticatalogo('tipo Arma');
 
@@ -778,4 +779,63 @@ class Armas extends BaseController {
 			}
 		}
     }
+
+	public function editFolioManifisto(){
+		if ($this->request->getMethod() == "post"){
+
+			$rules = [
+				'idFolio' =>  ['label' => "", 'rules' => 'required'],
+            ];
+		 
+				$errors = [];
+				$succes = [];
+				$dontSucces = [];
+				$data = [];
+
+				$uuid = Uuid::uuid4();
+				$id = $uuid->toString();
+				$getUser = session()->get('IdUser');
+	            $LoggedUserId = $this->encrypter->decrypt($getUser);
+				$empresa = session()->get('empresa');
+				$idEmpresa = $this->encrypter->decrypt($empresa);
+
+				if($this->validate($rules)){
+					
+					$file = $this->request->getFile('archivo_file');
+					$getfileName = $file->getName();
+					$getfileExt = $file->getExtension();
+					$fileName = $this->encrypt->Encrypt($getfileName);
+					$extension = $this->encrypt->Encrypt($getfileExt);
+					$getRuta = WRITEPATH . 'uploads/files/FolioManifiesto/'.date("Y").'/'.date("m").'/'.$idEmpresa;
+        			$ruta = $this->encrypt->Encrypt($getRuta);
+
+					if ($file->isValid() && !$file->hasMoved()){
+
+						$file->move($getRuta,$file->getRandomName());
+
+						$getFileNameAlmacen = $file->getName();
+						$fileNameAlmacen = $this->encrypt->Encrypt($getFileNameAlmacen);
+
+					}
+						$update = array(
+							"url" =>  $ruta,
+							"nombre_folio" =>  $fileNameAlmacen,
+							"updatedby" => $LoggedUserId,
+							"updateddate" => date("Y-m-d H:i:s")
+						);	
+
+						$update = $this->modelArmas->updateFolioMani($update, $_POST['idFolio']);
+						if ($update) {
+								$succes = ["mensaje" => 'Actualizado con Exito', "succes" => "succes"];
+						} else {
+							$dontSucces = ["error" => "error", "mensaje" => "No se actualizo el registro"];
+						}
+					
+					
+				} else {	
+					$errors = $this->validator->getErrors();
+				}
+				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+		}	
+	}
 }

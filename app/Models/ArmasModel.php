@@ -267,6 +267,18 @@ class ArmasModel
         return $return; 
     }
 
+    public function updateFolioMani( $updated, $id ){
+
+        $return = false;
+        $this->db->table('armas')->where('id', $id)->update($updated);
+
+        if ($this->db->affectedRows() > 0){
+            $return = true;
+            
+        } 
+
+        return $return; 
+    }
     
     public function updateUbicacion( $updated, $id ){
 
