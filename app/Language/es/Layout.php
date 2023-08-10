@@ -16,16 +16,16 @@
 
 return [
    'Inicio' => 'Inicio',
-   'Empresa' => 'Arma2',
+   'Empresa' => 'ArmourTech',
    'Contacto' => 'Contacto',
    'Derechos' => 'Todos los derechos reservados',
    'Perfil' =>'Perfil',
    'CerrarSesion' =>'Cerrar sesión',
    'Idioma' => 'es',
-   'emailFrom' => 'Arma2 Administrador',
+   'emailFrom' => 'ArmourTech Administrador',
    'email' => 'soporte.tech@arma2.com.mx',
-   'Layout' => 'Copyright © 2022 Arma2',
-   'emailFooter' => 'Copyright © 2022 Arma2',
+   'Layout' => 'Copyright © 2022 ArmourTech',
+   'emailFooter' => 'Copyright © 2022 ArmourTech',
    'camposObligatorios' => 'Verificar los campos obligatorios',
    'toastrError' => 'Hubo un error , intente nuevamente.'
 ];
