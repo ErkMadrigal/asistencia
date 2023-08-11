@@ -23,9 +23,12 @@ class AdministradorModel
 
     public function GetUsuarios($idEmpresa){
         $builder = $this->db->table('sys_usuarios_admin');
-        $builder->select('id, nombre,apellido_paterno , email');
+        $builder->select('sys_usuarios_admin.id, nombre,apellido_paterno , email');
+        $builder->join("sys_empresas_usuarios","sys_usuarios_admin.id = sys_empresas_usuarios.idusuario","left");
         $builder->orderBy("nombre","asc");
-        $builder->where("idempresa",$idEmpresa);
+        $builder->where("sys_empresas_usuarios.idempresa",$idEmpresa);
+        $builder->where("sys_empresas_usuarios.permiso",true);
+
         return $builder->get()->getResult();
         
     }

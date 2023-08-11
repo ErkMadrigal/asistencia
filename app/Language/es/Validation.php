@@ -117,4 +117,5 @@ return [
    'is_unique_area' => 'El valor {field} ya existe.',
    'is_not_unique_whitout_log'         => 'El {field} no esta registrado.',
    'is_unique_without_log'             => 'El campo {field} debe contener un valor único.',
-    'date_mayor' => 'Fecha de Nacimiento debe de ser mayor a 18 años.'];
+    'date_mayor' => 'Fecha de Nacimiento debe de ser mayor a 18 años.',
+    'val_empresa' => 'Asignar al menos una empresa.'];

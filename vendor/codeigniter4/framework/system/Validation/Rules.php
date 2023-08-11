@@ -431,4 +431,26 @@ class Rules
 
         
     }
+
+    public function val_empresa(string $str , string &$error = null ): bool
+    {
+        
+        $getEmpresas = json_decode($str,true);
+        $empresasCount = 0;
+        foreach ($getEmpresas as $x =>$value) {
+            if ($value['val'] == 1){
+
+            $empresasCount = $empresasCount + 1;
+
+            }
+        }
+
+                
+        if($empresasCount > 0){
+            return true;
+        } else  {
+            return false;
+        }
+
+    }
 }

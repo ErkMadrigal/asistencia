@@ -153,7 +153,7 @@ if($parentStatus == 1){ ?>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
         <form class="form-horizontal" id="frmUsuario">
-            <div class="row">
+            <div class="row" id="emp">
                 <?php
                     if( !empty($empresa) ):
                         foreach($empresa as  $a){ ?>

@@ -256,9 +256,12 @@ class Administrador extends BaseController {
 				$rules = [
 				'Nombre' => ['label' => 'Nombre', 'rules' => 'required' ],
 				'apellidopaterno' => ['label' => 'Apellido paterno', 'rules' => 'required'],
-				'email' =>  [ 'label' => 'Email', 'rules' => 'required|valid_email|is_unique[sys_usuarios_admin.email]']
+				'email' =>  [ 'label' => 'Email', 'rules' => 'required|valid_email|is_unique[sys_usuarios_admin.email]'],
+				'emp' => [ 'label' => 'Empresa','rules' => 'val_empresa[emp]' ],
 
 				];
+
+				
 				
 				$errors = [];
 				$succes = [];
@@ -276,17 +279,9 @@ class Administrador extends BaseController {
 					}
 				}
 
-				$getEmpresas = json_decode($_POST['emp'],true);
-				$empresasCount = 0;
-				foreach ($getEmpresas as $x =>$value) {
-					if ($value['val'] == 1){
-
-						$empresasCount = $empresasCount + 1;
-
-					}
-				}
+				
 				 
-				if($this->validate($rules) && $rolUser === "1" && $modulosCount > 0 && $empresasCount > 0){
+				if($this->validate($rules) && $rolUser === "1" && $modulosCount > 0 ){
 					
 					$getUser = session()->get('IdUser');
 					$idUser = $this->encrypter->decrypt($getUser);
