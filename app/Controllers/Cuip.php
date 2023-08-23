@@ -2587,19 +2587,34 @@ class Cuip extends BaseController {
 			
         	$data['puesto'] = $this->cuipCatalgo($getPuesto);
 			////////////////////
+			$getBanco = $this->modelCuip->GetCatalogoCuip('9d392e39-27fa-4307-824b-66d40facba07');
+			
+        	$data['banco'] = $this->cuipCatalgo($getBanco);
+        	//////////////
+        	$getNomina = $this->modelCuip->GetCatalogoCuip('2b2bccdd-2f39-47b5-8aad-0272ea9096bb');
+			
+        	$data['nomina'] = $this->cuipCatalgo($getNomina);
+        	//////////////
+        	$data['jefes'] = $this->modelCuip->getJefes($idEmpresa);
+        	/////////////
+        	$data['uniformes'] = $this->modelCuip->getUniformes($idEmpresa);
+
+        	$data['equipos'] = $this->modelCuip->getEquipos($idEmpresa);
         	$getId = str_replace(" ", "+", $_GET['id']);
 			$id = $this->encrypt->Decrytp($getId);
 
         	$data['variable'] = $this->modelCuip->GetDatosPersonalesById($id);
          	$data['experiencia'] = $this->modelCuip->GetExperienciaPersonalesById($id);
 			$economico = $this->modelCuip->GetSocioEconomicoById($id);
+			$data['datosEmpleado'] = $this->modelCuip->GetAltaEmpleadoById($id);
 			$data['estudio'] = $economico;
-			
-
+			$data['uniforme'] = $this->modelCuip->GetUniformesById($id);
+			$data['equipo'] = $this->modelCuip->GetEquiposById($id);
 			if (!empty($economico)){
 				$data['economico_dependientes'] = $this->modelCuip->GetSocioEconomicoDependientesById($economico->id);
 			}
 			
+			$data['clientes'] = $this->modelCuip->getClientes();
 			
 			$data['seguridad'] = $this->modelCuip->GetEmpleosSeridadById($id);
 			$data['diversos'] = $this->modelCuip->GetEmpleosDiversos($id);

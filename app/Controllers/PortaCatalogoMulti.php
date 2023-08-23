@@ -179,7 +179,7 @@ class PortaCatalogoMulti extends BaseController {
 					$getCatalogo = $this->request->getPost('catalogo');
 					$idCatalogo = $this->encrypt->Decrytp($getCatalogo);
 					$idReferencia = $this->request->getPost('referencia');
-					$result = $this->modelMulticatalogo->insertItemAndSelect('catalogos_detalle', $this->request->getPost(),'catalogos_detalle',$idCatalogo, $idReferencia ,$LoggedUserId , $idEmpresa);
+					$result = $this->modelMulticatalogo->insertItemAndSelect('catalogos_detalle', $this->request->getPost(),'catalogos_detalle',$idCatalogo ,$LoggedUserId , $idEmpresa);
 					
                     if ($result) {
 
