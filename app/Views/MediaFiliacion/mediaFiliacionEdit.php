@@ -1,4 +1,13 @@
-<div class="card card-primary">
+<?php
+
+use CodeIgniter\HTTP\RequestInterface;
+use App\Models\AdministradorModel;
+use App\Libraries\Encrypt;
+
+$encrypt = new Encrypt();
+
+?>
+<div class="card card-primary" id="carMedAfiliacion">
     <div class="card-header">
         <h3 class="card-title">GENERALES</h3>
 
@@ -10,8 +19,9 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        <form class="form-horizontal" id="mediaFiliacion">
             <div class="row">
+                <input type="hidden" class="form-control " id="idMediaFiliacion" name="idMediaFiliacion" value="<?= $encrypt->Encrypt($mediaFiliacion->id) ?>"><?= csrf_field() ?>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
                         <label for="Nombre" class="control-label">Complexión: <span class="text-danger">*</span></label>
@@ -22,7 +32,7 @@
                                 if (!empty($complexion)) :
                                     foreach ($complexion as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idComplexion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= (($mediaFiliacion->idComplexion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                 <?php
                                     }
@@ -49,7 +59,7 @@
                                 if (!empty($piel)) :
                                     foreach ($piel as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idPiel) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= (($mediaFiliacion->idPiel) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                 <?php
                                     }
@@ -76,7 +86,7 @@
                                 if (!empty($cara)) :
                                     foreach ($cara as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idCara) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idCara) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -105,7 +115,7 @@
                                 if (!empty($SiNo)) :
                                     foreach ($SiNo as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idUsaAnteojos) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idUsaAnteojos) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -126,7 +136,7 @@
                     <div class="form-group">
                         <label for="estatura" class="control-label">Estatura: <span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="estatura" name="estatura" value=" <?= isset($mediaFiliacion->estatura) ? $mediaFiliacion->estatura : ''  ?>">
+                            <input type="text" class="form-control " id="estatura" name="estatura" value="<?= ($mediaFiliacion->estatura) ? $mediaFiliacion->estatura : ''  ?>">
 
                         </div>
                     </div>
@@ -135,14 +145,14 @@
                     <div class="form-group">
                         <label for="peso" class="control-label">Peso: <span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="peso" name="peso" value=" <?= isset($mediaFiliacion->peso) ? $mediaFiliacion->peso : ''  ?>">
+                            <input type="text" class="form-control " id="peso" name="peso" value="<?= ($mediaFiliacion->peso) ? $mediaFiliacion->peso : ''  ?>">
 
                         </div>
                     </div>
                 </div>
             </div>
 
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -157,7 +167,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -169,7 +179,7 @@
                                 if (!empty($cabello_cantidad)) :
                                     foreach ($cabello_cantidad as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idCantidadCabello) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idCantidadCabello) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -197,7 +207,7 @@
                                 if (!empty($color_cabello)) :
                                     foreach ($color_cabello as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idColorCabello) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idColorCabello) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -224,7 +234,7 @@
                                 if (!empty($forma_cabello)) :
                                     foreach ($forma_cabello as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idFormaCabello) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idFormaCabello) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -251,7 +261,7 @@
                                 if (!empty($calvicie_cabello)) :
                                     foreach ($calvicie_cabello as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idCalvicie) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idCalvicie) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -278,7 +288,7 @@
                                 if (!empty($implatacion_cabello)) :
                                     foreach ($implatacion_cabello as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idImplantacionCabello) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idImplantacionCabello) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -297,7 +307,7 @@
                 </div>
             </div>
 
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -312,7 +322,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -324,7 +334,7 @@
                                 if (!empty($altura)) :
                                     foreach ($altura as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idAlturaFrente) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idAlturaFrente) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -351,7 +361,7 @@
                                 if (!empty($inclinacion)) :
                                     foreach ($inclinacion as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idInclinacionFrente) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idInclinacionFrente) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -378,7 +388,7 @@
                                 if (!empty($ancho)) :
                                     foreach ($ancho as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idAnchoFrente) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idAnchoFrente) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -396,7 +406,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -411,7 +421,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -423,7 +433,7 @@
                                 if (!empty($direccion_cejas)) :
                                     foreach ($direccion_cejas as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idDireccionCejas) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idDireccionCejas) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -450,7 +460,7 @@
                                 if (!empty($implantacion_cejas)) :
                                     foreach ($implantacion_cejas as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idImplantacionCejas) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idImplantacionCejas) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -477,7 +487,7 @@
                                 if (!empty($forma)) :
                                     foreach ($forma as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idFormaCejas) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idFormaCejas) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -504,7 +514,7 @@
                                 if (!empty($tamanno)) :
                                     foreach ($tamanno as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idTamanoCejas) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idTamanoCejas) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -522,7 +532,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -537,7 +547,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -549,7 +559,7 @@
                                 if (!empty($color)) :
                                     foreach ($color as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idColorOjos) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idColorOjos) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -576,7 +586,7 @@
                                 if (!empty($forma_ojos)) :
                                     foreach ($forma_ojos as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idFormaOjos) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idFormaOjos) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -603,7 +613,7 @@
                                 if (!empty($tamanno_ojos)) :
                                     foreach ($tamanno_ojos as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idTamanoOjos) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idTamanoOjos) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -621,7 +631,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -636,7 +646,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -648,7 +658,7 @@
                                 if (!empty($raiz)) :
                                     foreach ($raiz as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idRaiz) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idRaiz) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -676,7 +686,7 @@
                                     foreach ($dorso as  $a) {
 
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idDorso) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idDorso) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -703,7 +713,7 @@
                                 if (!empty($ancho_nariz)) :
                                     foreach ($ancho_nariz as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idAnchoNariz) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idAnchoNariz) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -730,7 +740,7 @@
                                 if (!empty($base_nariz)) :
                                     foreach ($base_nariz as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idBaseNariz) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idBaseNariz) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -757,7 +767,7 @@
                                 if (!empty($altura_nariz)) :
                                     foreach ($altura_nariz as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idAlturaNariz) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idAlturaNariz) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -775,7 +785,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -789,7 +799,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -801,7 +811,7 @@
                                 if (!empty($tamanno_boca)) :
                                     foreach ($tamanno_boca as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idTamanoBoca) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idTamanoBoca) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -828,7 +838,7 @@
                                 if (!empty($comisura_boca)) :
                                     foreach ($comisura_boca as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idComisuras) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idComisuras) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -846,7 +856,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -860,7 +870,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -872,7 +882,7 @@
                                 if (!empty($espesor_labios)) :
                                     foreach ($espesor_labios as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idEspesorLabio) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idEspesorLabio) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -899,7 +909,7 @@
                                 if (!empty($altura_labial)) :
                                     foreach ($altura_labial as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idAlturaNasolabial) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idAlturaNasolabial) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -926,7 +936,7 @@
                                 if (!empty($prominencia)) :
                                     foreach ($prominencia as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idProminenciaLabio) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idProminenciaLabio) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -944,7 +954,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -958,7 +968,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -970,7 +980,7 @@
                                 if (!empty($tipo_menton)) :
                                     foreach ($tipo_menton as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idMentonTipo) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idMentonTipo) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -997,7 +1007,7 @@
                                 if (!empty($forma_menton)) :
                                     foreach ($forma_menton as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idMentonForma) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idMentonForma) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -1024,7 +1034,7 @@
                                 if (!empty($inclinacion_menton)) :
                                     foreach ($inclinacion_menton as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idMentonInclinacion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idMentonInclinacion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -1042,7 +1052,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -1056,7 +1066,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -1068,7 +1078,7 @@
                                 if (!empty($forma_ODerecha)) :
                                     foreach ($forma_ODerecha as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idFormaOreja) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idFormaOreja) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -1086,7 +1096,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
         <div class="card card-primary">
             <div class="card-header">
                 <h3 class="card-title">HELIX</h3>
@@ -1098,7 +1108,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive ">
-                <form class="form-horizontal" id="frmUsuario">
+                
                     <div class="row">
                         <div class='col-6 col-sm-4'>
                             <div class="form-group">
@@ -1110,7 +1120,7 @@
                                         if (!empty($original)) :
                                             foreach ($original as  $a) {
                                         ?>
-                                                <option <?= (isset($mediaFiliacion->idOriginal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                                <option <?= (($mediaFiliacion->idOriginal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                         <?php
                                             }
@@ -1137,7 +1147,7 @@
                                         if (!empty($superior)) :
                                             foreach ($superior as  $a) {
                                         ?>
-                                                <option <?= (isset($mediaFiliacion->idSuperior) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                                <option <?= (($mediaFiliacion->idSuperior) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                         <?php
                                             }
@@ -1164,7 +1174,7 @@
                                         if (!empty($posterior)) :
                                             foreach ($posterior as  $a) {
                                         ?>
-                                                <option <?= (isset($mediaFiliacion->idPosterior) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                                <option <?= (($mediaFiliacion->idPosterior) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                         <?php
                                             }
@@ -1191,7 +1201,7 @@
                                         if (!empty($adherencia)) :
                                             foreach ($adherencia as  $a) {
                                         ?>
-                                                <option <?= (isset($mediaFiliacion->idAdherenciaHelix) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                                <option <?= (($mediaFiliacion->idAdherenciaHelix) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                         <?php
                                             }
@@ -1209,7 +1219,7 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                
             </div>
         </div>
         <div class="card card-primary">
@@ -1223,7 +1233,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive ">
-                <form class="form-horizontal" id="frmUsuario">
+                
                     <div class="row">
                         <div class='col-6 col-sm-4'>
                             <div class="form-group">
@@ -1235,7 +1245,7 @@
                                         if (!empty($contorno)) :
                                             foreach ($contorno as  $a) {
                                         ?>
-                                                <option <?= (isset($mediaFiliacion->idContornoLobulo) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                                <option <?= (($mediaFiliacion->idContornoLobulo) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                         <?php
                                             }
@@ -1262,7 +1272,7 @@
                                         if (!empty($adherencia_lobulo)) :
                                             foreach ($adherencia_lobulo as  $a) {
                                         ?>
-                                                <option <?= (isset($mediaFiliacion->idAdherenciaLobulo) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                                <option <?= (($mediaFiliacion->idAdherenciaLobulo) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                         <?php
                                             }
@@ -1289,7 +1299,7 @@
                                         if (!empty($particularidad)) :
                                             foreach ($particularidad as  $a) {
                                         ?>
-                                                <option <?= (isset($mediaFiliacion->idParticularidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                                <option <?= (($mediaFiliacion->idParticularidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                         <?php
                                             }
@@ -1316,7 +1326,7 @@
                                         if (!empty($dimension)) :
                                             foreach ($dimension as  $a) {
                                         ?>
-                                                <option <?= (isset($mediaFiliacion->idDimensionLobulo) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                                <option <?= (($mediaFiliacion->idDimensionLobulo) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                         <?php
                                             }
@@ -1334,7 +1344,7 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                
             </div>
         </div>
     </div>
@@ -1350,7 +1360,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -1362,7 +1372,7 @@
                                 if (!empty($tipo_sangre)) :
                                     foreach ($tipo_sangre as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idSangreTipo) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idSangreTipo) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -1389,7 +1399,7 @@
                                 if (!empty($RH_sangre)) :
                                     foreach ($RH_sangre as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idRH) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idRH) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -1407,7 +1417,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
 </div>
 <div class="card card-primary">
@@ -1421,7 +1431,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
-        <form class="form-horizontal" id="frmUsuario">
+        
             <div class="row">
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
@@ -1433,7 +1443,7 @@
                                 if (!empty($SiNo)) :
                                     foreach ($SiNo as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idCicatrices) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idCicatrices) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -1454,7 +1464,7 @@
                     <div class="form-group">
                         <label for="cicatrices_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="cicatrices_descripcion" name="cicatrices_descripcion" value=" <?= isset($mediaFiliacion->descrip_cicatrices) ? $mediaFiliacion->descrip_cicatrices : ''  ?>">
+                            <input type="text" class="form-control " id="cicatrices_descripcion" name="cicatrices_descripcion" value=" <?= ($mediaFiliacion->descrip_cicatrices) ? $mediaFiliacion->descrip_cicatrices : ''  ?>">
 
                         </div>
                     </div>
@@ -1469,7 +1479,7 @@
                                 if (!empty($SiNo)) :
                                     foreach ($SiNo as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idTatuajes) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idTatuajes) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -1490,7 +1500,7 @@
                     <div class="form-group">
                         <label for="tatuajes_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="tatuajes_descripcion" name="tatuajes_descripcion" value=" <?= isset($mediaFiliacion->descrip_tatuajes) ? $mediaFiliacion->descrip_tatuajes : ''  ?>">
+                            <input type="text" class="form-control " id="tatuajes_descripcion" name="tatuajes_descripcion" value=" <?= ($mediaFiliacion->descrip_tatuajes) ? $mediaFiliacion->descrip_tatuajes : ''  ?>">
 
                         </div>
                     </div>
@@ -1505,7 +1515,7 @@
                                 if (!empty($SiNo)) :
                                     foreach ($SiNo as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idLunares) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idLunares) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -1526,7 +1536,7 @@
                     <div class="form-group">
                         <label for="lunares_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="tatuajes_descripcion" name="tatuajes_descripcion" value=" <?= isset($mediaFiliacion->descrip_lunares) ? $mediaFiliacion->descrip_lunares : ''  ?>">
+                            <input type="text" class="form-control " id="lunares_descripcion" name="lunares_descripcion" value=" <?= ($mediaFiliacion->descrip_lunares) ? $mediaFiliacion->descrip_lunares : ''  ?>">
 
                         </div>
                     </div>
@@ -1541,7 +1551,7 @@
                                 if (!empty($SiNo)) :
                                     foreach ($SiNo as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idDefectos) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idDefectos) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -1563,7 +1573,7 @@
                     <div class="form-group">
                         <label for="fisico_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="fisico_descripcion" name="fisico_descripcion" value=" <?= isset($mediaFiliacion->descrip_defectos) ? $mediaFiliacion->descrip_defectos : ''  ?>">
+                            <input type="text" class="form-control " id="fisico_descripcion" name="fisico_descripcion" value=" <?= ($mediaFiliacion->descrip_defectos) ? $mediaFiliacion->descrip_defectos : ''  ?>">
 
                         </div>
                     </div>
@@ -1578,7 +1588,7 @@
                                 if (!empty($SiNo)) :
                                     foreach ($SiNo as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idProtesis) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> 
+                                        <option <?= (($mediaFiliacion->idProtesis) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> 
 
                                 <?php
                                     }
@@ -1599,7 +1609,7 @@
                     <div class="form-group">
                         <label for="protesis_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="protesis_descripcion" name="protesis_descripcion" value=" <?= isset($mediaFiliacion->descrip_protesis) ? $mediaFiliacion->descrip_protesis : ''  ?>">
+                            <input type="text" class="form-control " id="protesis_descripcion" name="protesis_descripcion" value=" <?= ($mediaFiliacion->descrip_protesis) ? $mediaFiliacion->descrip_protesis : ''  ?>">
 
                         </div>
                     </div>
@@ -1614,7 +1624,7 @@
                                 if (!empty($SiNo)) :
                                     foreach ($SiNo as  $a) {
                                 ?>
-                                        <option <?= (isset($mediaFiliacion->idDiscapacidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= (($mediaFiliacion->idDiscapacidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -1635,7 +1645,7 @@
                     <div class="form-group">
                         <label for="discapacidad_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="discapacidad_descripcion" name="discapacidad_descripcion" value=" <?= isset($mediaFiliacion->descrip_discapacidad) ? $mediaFiliacion->descrip_discapacidad : ''  ?>">
+                            <input type="text" class="form-control " id="discapacidad_descripcion" name="discapacidad_descripcion" value=" <?= ($mediaFiliacion->descrip_discapacidad) ? $mediaFiliacion->descrip_discapacidad : ''  ?>">
 
                         </div>
                     </div>
@@ -1644,3 +1654,81 @@
         </form>
     </div>
 </div>
+<div class="card-footer bg-transparent clearfix">
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-9">
+            
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 ">    
+            <button id="saveMediaFiliacion" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" ></i>&nbsp;&nbsp;Guardar</button>
+        </div>
+    </div>    
+</div>
+<script>
+
+
+    $('#saveMediaFiliacion').click(function (event) {
+        event.preventDefault();
+        $('#load').addClass( "spinner-border" );
+
+        var idPersonal = $('#idPersonal').val();
+
+        var formData = new FormData($("form#mediaFiliacion")[0]);
+
+        formData.append('idPersonal', idPersonal);
+
+
+        
+        $.ajax({
+            url: base_url + '/EditarMediaFiliacion',
+            type: 'POST',
+            dataType: 'json',
+            data: formData,
+            cache: false,
+            async: true,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $('.errorField').remove();
+
+                if (response.succes.succes == 'succes') {
+
+                    toastr.success(response.succes.mensaje);
+
+                    $("html,body").animate({
+                        scrollTop: $("#carMedAfiliacion").offset().top
+                    }, 2000);
+                    
+
+                } else if (response.dontsucces.error == 'error'){
+
+                    toastr.error(response.dontsucces.mensaje);
+                            
+                } else if (Object.keys(response.error).length > 0 ){
+
+                    for (var clave in response.error){
+                                
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                            
+                    }
+                        toastr.error('<?=lang('Layout.camposObligatorios')?>');
+
+                }
+
+                $('#load').removeClass( "spinner-border" );    
+
+                        
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                toastr.error('<?=lang('Layout.toastrError')?>');
+                $('#load').removeClass( "spinner-border" );           
+            }
+        });
+
+        $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
+            
+    });
+
+
+
+</script>

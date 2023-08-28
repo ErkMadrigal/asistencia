@@ -24,6 +24,7 @@
             foreach($sanciones as  $e){
                                         ?>   
             <div class="row">
+                <?= csrf_field() ?>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="tipo<?= $label ?>" class="control-label">Tipo: <span class="text-danger">*</span></label>
@@ -168,7 +169,7 @@
                                 if (!empty($entidad_federativa)) :
                                     foreach ($entidad_federativa as  $a) {
                                 ?>
-                <option <?= (isset($e->idEstado) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                <option <?= (($e->idEstado) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                 <?php
                                     }
@@ -208,7 +209,7 @@
                         <div class="form-group">
                             <label for="no_expediente<?= $label ?>" class="control-label">No. Expediente: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="no_expediente<?= $label ?>" name="no_expediente<?= $label ?>"  value="<?= isset($e->dependencia) ? $e->dependencia : ''  ?>">
+                                  <input type="text"  class="form-control "  id="no_expediente<?= $label ?>" name="no_expediente<?= $label ?>"  value="<?= isset($e->numero_expediente) ? $e->numero_expediente : ''  ?>">
                             
                         </div>
                         </div>
@@ -227,7 +228,7 @@
                         <div class="form-group">
                             <label for="averiguacion_previa<?= $label ?>" class="control-label">Averiguación previa: <span class="text-danger">*</span></label>
                             <div >    
-                                  <input type="text"  class="form-control "  id="averiguacion_previa<?= $label ?>" name="averiguacion_previa<?= $label ?>"  value="<?= isset($e->averiguacion_estado) ? $e->averiguacion_estado : ''  ?> ">
+                                  <input type="text"  class="form-control "  id="averiguacion_previa<?= $label ?>" name="averiguacion_previa<?= $label ?>"  value="<?= isset($e->averiguacion_previa) ? $e->averiguacion_previa : ''  ?> ">
                     
                         </div>
                         </div>
@@ -535,7 +536,7 @@
         formData.append('estimulo', valEstimulo);
 
         $.ajax({
-            url: base_url + '/GuardarSancionesEstimulos',
+            url: base_url + '/EditarSancionesEstimulos',
             type: 'POST',
             dataType: 'json',
             data: formData,
@@ -550,11 +551,9 @@
 
                     toastr.success(response.succes.mensaje);
 
-                    $('#saveSancionesEstimulos').addClass("btn-success");
-                    $('#saveSancionesEstimulos').prop("disabled", true);
-                    $('#saveSancionesEstimulos').html("Guardado&nbsp;<i class='fa fa-thumbs-up'></i>");
-
-
+                    $("html,body").animate({
+                        scrollTop: $("#cardSancionesEst").offset().top
+                    }, 2000);
 
                 } else if (response.dontsucces.error == 'error') {
 
@@ -584,6 +583,8 @@
                 $('#load').removeClass("spinner-border");
             }
         });
+
+        $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
 
     });
     /*RESOLUCIONES */

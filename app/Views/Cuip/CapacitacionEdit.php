@@ -25,11 +25,12 @@
                     foreach ($capacitacion_publica as  $e) {
                 ?>
                         <div class="row">
+                            <?= csrf_field() ?>
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
                                     <label for="dependencia<?= $label ?>" class=" control-label">Dependencia responsable:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="certificado<?= $label ?>" name="certificado<?= $label ?>" value="<?= isset($e->dependencia) ? $e->dependencia : ''  ?>">
+                                        <input type="text" class="form-control " id="dependencia<?= $label ?>" name="dependencia<?= $label ?>" value="<?= isset($e->dependencia) ? $e->dependencia : ''  ?>">
 
                                     </div>
                                 </div>
@@ -825,7 +826,7 @@
         formData.append('afiliacion', valAfiliacion);
 
         $.ajax({
-            url: base_url + '/GuardarCapacitaciones',
+            url: base_url + '/EditarCapacitaciones',
             type: 'POST',
             dataType: 'json',
             data: formData,
@@ -838,22 +839,11 @@
 
                 if (response.succes.succes == 'succes') {
 
-
-                    $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
-
                     toastr.success(response.succes.mensaje);
 
-                    $('#saveCapacitaciones').addClass("btn-success");
-                    $('#saveCapacitaciones').prop("disabled", true);
-                    $('#saveCapacitaciones').html("Guardado&nbsp;<i class='fa fa-thumbs-up'></i>");
-
                     $("html,body").animate({
-                        scrollTop: $("#cardSancionesEst").offset().top
+                        scrollTop: $("#cardCapPublica").offset().top
                     }, 2000);
-
-                    $('#tabs a[href="#custom-normal"]').trigger('click');
-
-
 
                 } else if (response.dontsucces.error == 'error') {
 
@@ -887,6 +877,8 @@
                 $('#load').removeClass("spinner-border");
             }
         });
+
+        $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
 
     });
 

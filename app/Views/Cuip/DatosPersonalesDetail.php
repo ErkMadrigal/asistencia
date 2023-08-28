@@ -249,7 +249,7 @@
                     <div class="form-group">
                         <label for="promedio" class=" control-label">Promedio :</label>
                         <div>
-                            <?= isset($variable->primer_nombre) ? $variable->primer_nombre : ''  ?>
+                            <?= isset($variable->promedio) ? $variable->promedio : ''  ?>
                         </div>
                     </div>
                 </div>

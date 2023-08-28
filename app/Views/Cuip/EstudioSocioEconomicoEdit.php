@@ -1,3 +1,12 @@
+<?php
+
+use CodeIgniter\HTTP\RequestInterface;
+use App\Models\AdministradorModel;
+use App\Libraries\Encrypt;
+
+$encrypt = new Encrypt();
+
+?>
 <div class="card card-primary" id="CardGenerales">
     <div class="card-header">
         <h3 class="card-title">DATOS GENERALES: SOCIOECONÓMICO</h3>
@@ -16,7 +25,7 @@
         <form class="form-horizontal" id="SocioEconomico">
 
             <div class="row">
-
+                <input type="hidden" class="form-control " id="idSocioEconomico" name="idSocioEconomico" value="<?= $encrypt->Encrypt($estudio->id) ?>"><?= csrf_field() ?>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="familia" class="control-label">¿Vive con su Familia?: <span class="text-danger">*</span></label>
@@ -25,10 +34,10 @@
                         <select class="form-control" id="familia" name="familia">
                         <option value="">Selecciona una Opcion</option>
                         <?php
-                        if (!empty($familia)) :
-                            foreach ($familia as  $a) {
+                        if (!empty($SiNo)) :
+                            foreach ($SiNo as  $a) {
                         ?>
-         <option <?= (isset($estudio->vive) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+         <option <?= (($estudio->vive) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                         <?php
                             }
@@ -277,7 +286,7 @@
                 </div>
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
-                        <label for="municipiocodigoSegPub<?= $label ?>" class="control-label">Parentesco: <span class="text-danger">*</span></label>
+                        <label for="parentesco_familiar<?= $label ?>" class="control-label">Parentesco: <span class="text-danger">*</span></label>
                         <div>
                             <select class="form-control" id="parentesco_familiar<?= $label ?>" name="parentesco_familiar<?= $label ?>">
                                 <option value="">Selecciona una Opcion</option>
@@ -285,7 +294,7 @@
                                 if (!empty($parentesco_todos)) :
                                     foreach ($parentesco_todos as  $a) {
                                 ?>
-                                           <option <?= (isset($e->idParentesco) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                           <option <?= (($e->idParentesco) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                                 <?php
                                     }
                                 endif; ?>
@@ -353,7 +362,7 @@
         formData.append('app_csrf', csrfName);
 
         $.ajax({
-            url: base_url + '/GuardarSocioEconomico',
+            url: base_url + '/EditarSocioEconomico',
             type: 'POST',
             dataType: 'json',
             data: formData,
@@ -366,20 +375,17 @@
 
                 if (response.succes.succes == 'succes') {
 
-                    $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
+                    
 
                     toastr.success(response.succes.mensaje);
 
-                    $('#saveSocioEconomico').addClass("btn-success");
-                    $('#saveSocioEconomico').prop("disabled", true);
-                    $('#saveSocioEconomico').html("Guardado&nbsp;<i class='fa fa-thumbs-up'></i>");
+                    
 
                     $("html,body").animate({
-                        scrollTop: $("#cardEmplSeguridad").offset().top
+                        scrollTop: $("#CardGenerales").offset().top
                     }, 2000);
 
-                    $('#tabs a[href="#custom-tabs"]').trigger('click');
-
+                    
 
                 } else if (response.dontsucces.error == 'error') {
 
@@ -408,6 +414,8 @@
             }
         });
 
+        $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
+
     });
 
 
@@ -418,9 +426,9 @@
 
     $(document).on('click', '.add-more-btn-dged', function() {
 
-        var clone = '<div class="row" class="form-block">    <div class="col-12 col-sm-12 col-md-6">        <div class="form-group">            <label for="apellidoPaternoB" class=" control-label">Apellido                Paterno:<span class="text-danger">*</span></label>            <input type="text" class="form-control " id="apellidoPaternoB" name="apellidoPaternoB">        </div>    </div>    <div class="col-12 col-sm-12 col-md-6">        <div class="form-group">            <label for="apellidoMaternoB" class=" control-label">Apellido                Materno:<span class="text-danger">*</span></label>            <input type="text" class="form-control " id="apellidoMaternoB" name="apellidoMaternoB">        </div>    </div>    <div class="col-12 col-sm-12 col-md-6">        <div class="form-group">            <label for="primerNombreB" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>            <input type="text" class="form-control " id="primerNombreB" name="primerNombreB">        </div>    </div>    <div class="col-12 col-sm-12 col-md-6">        <div class="form-group">            <label for="segundoNombreB" class=" control-label">Segundo Nombre:</label>            <input type="text" class="form-control " id="segundoNombreB" name="segundoNombreB">        </div>    </div>    <div class="col-12 col-sm-6">        <div class="form-group">            <label for="fecha_nacimiento_depB">Fecha de Nacimiento: <span class="text-danger">*</span></label>            <div class="input-group date" id="fecha_nacimiento_depB" data-target-input="nearest">                <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_nacimiento_depB" id="datetime-fecha_nacimiento_depB" name="fecha_nacimiento_depB" placeholder="" value="" />                <div class="input-group-append" data-target="#fecha_nacimiento_depB" data-toggle="datetimepicker">                    <div class="input-group-text"><i class="far fa-calendar"></i></div>                </div>            </div>            <script type="text/javascript">                $(function() {                    $("#fecha_nacimiento_depB").datetimepicker({                        format: "DD-MM-YYYY",                        locale: moment.locale("es")                    });                });            <\/script>        </div>    </div>    <div class="col-12 col-sm-12 col-md-6">        <div class="form-group">            <label for="sexo_depB" class=" control-label">Sexo:<span class="text-danger">*</span></label>            <select class="form-control" id="sexo_depB" name="sexo_depB">                <option value="">Selecciona una Opcion</option>                <?php if (!empty($genero)) :                    foreach ($genero as  $a) {                ?>                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>                <?php                    }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                endif; ?>            </select>            <script>                $(document).ready(function() {                    $("#sexo_depB").select2({                        theme: "bootstrap4",                        width: "100%"                    });                });            <\/script>        </div>    </div>    <div class="col-6 col-sm-6">        <div class="form-group">            <label for="parentesco_familiarB" class="control-label">Parentesco: <span class="text-danger">*</span></label>            <div>                <select class="form-control" id="parentesco_familiarB" name="parentesco_familiarB">                    <option value="">Selecciona una Opcion</option>                    <?php if (!empty($parentesco_todos)) :                        foreach ($parentesco_todos as  $a) {                    ?>                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>                    <?php                        }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    endif; ?>                </select>                <script>                    $(document).ready(function() {                        $("#parentesco_familiarB").select2({                            theme: "bootstrap4",                            width: "100%"                        });                    });                <\/script>            </div>        </div>    </div></div>';
+        var clone = '<div class="row" class="form-block">    <div class="col-12 col-sm-12 col-md-6">        <div class="form-group">            <label for="apellidoPaternoB" class=" control-label">Apellido                Paterno:<span class="text-danger">*</span></label>            <input type="text" class="form-control " id="apellidoPaternoB" name="apellidoPaternoB">        </div>    </div>    <div class="col-12 col-sm-12 col-md-6">        <div class="form-group">            <label for="apellidoMaternoB" class=" control-label">Apellido                Materno:<span class="text-danger">*</span></label>            <input type="text" class="form-control " id="apellidoMaternoB" name="apellidoMaternoB">        </div>    </div>    <div class="col-12 col-sm-12 col-md-6">        <div class="form-group">            <label for="primerNombreB" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>            <input type="text" class="form-control " id="primerNombreB" name="primerNombreB">        </div>    </div>    <div class="col-12 col-sm-12 col-md-6">        <div class="form-group">            <label for="segundoNombreB" class=" control-label">Segundo Nombre:</label>            <input type="text" class="form-control " id="segundoNombreB" name="segundoNombreB">        </div>    </div>    <div class="col-12 col-sm-6">        <div class="form-group">            <label for="fecha_nacimiento_depB">Fecha de Nacimiento: <span class="text-danger">*</span></label>            <div class="input-group date" id="fecha_nacimiento_depB" data-target-input="nearest">                <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_nacimiento_depB" id="datetime-fecha_nacimiento_depB" name="fecha_nacimiento_depB" placeholder="" value="" />                <div class="input-group-append" data-target="#fecha_nacimiento_depB" data-toggle="datetimepicker">                    <div class="input-group-text"><i class="far fa-calendar"></i></div>                </div>            </div>            <script type="text/javascript">                $(function() {                    $("#fecha_nacimiento_depB").datetimepicker({                        format: "DD-MM-YYYY",                        locale: moment.locale("es")                    });                });            <\/script>        </div>    </div>    <div class="col-12 col-sm-12 col-md-6">        <div class="form-group">            <label for="sexo_depB" class=" control-label">Sexo:<span class="text-danger">*</span></label>            <select class="form-control" id="sexo_depB" name="sexo_depB">                <option value="">Selecciona una Opcion</option>                <?php if (!empty($genero)) :
+        foreach ($genero as  $a) {                ?>                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>                <?php                    }                endif; ?>            </select>            <script>                $(document).ready(function() {                    $("#sexo_depB").select2({                        theme: "bootstrap4",                        width: "100%"                    });                });            <\/script>        </div>    </div>    <div class="col-6 col-sm-6">        <div class="form-group">            <label for="parentesco_familiarB" class="control-label">Parentesco: <span class="text-danger">*</span></label>            <div>                <select class="form-control" id="parentesco_familiarB" name="parentesco_familiarB">                    <option value="">Selecciona una Opcion</option>                    <?php                    if (!empty($parentesco_todos)) :                        foreach ($parentesco_todos as  $a) {                    ?>                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>                    <?php                        }                    endif; ?>                </select>                <script>                    $(document).ready(function() {                        $("#parentesco_familiarB").select2({                            theme: "bootstrap4",                            width: "100%"                        });                    });                <\/script>            </div>        </div>    </div></div>';
+
         $('#CardConyugeB').append(clone);
         $('#btnAdddConyuge').removeClass('add-more-btn');
         $('#btnAdddConyuge').addClass('remove-more-btn');

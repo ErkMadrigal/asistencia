@@ -1,3 +1,12 @@
+<?php
+
+use CodeIgniter\HTTP\RequestInterface;
+use App\Models\AdministradorModel;
+use App\Libraries\Encrypt;
+
+$encrypt = new Encrypt();
+
+?>
 <div class="card card-primary" id="cardEmplSeguridad">
     <div class="card-header">
         <h3 class="card-title">EMPLEOS EN SEGURIDAD PUBLICA</h3>
@@ -16,6 +25,7 @@
         <form class="form-horizontal" id="EmpleoSeguridadPublica">
         <div id="CardEMPLEOS">
             <div class="row">
+                <input type="hidden" class="form-control " id="idSegPublica" name="idSegPublica" value="<?= $encrypt->Encrypt($seguridad->id) ?>"><?= csrf_field() ?>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="dependencia" class=" control-label">Dependencia:<span class="text-danger">*</span></label>
@@ -68,16 +78,11 @@
                         <div >    
                         <select class="form-control" id="coloniacodigoSegPub" name="coloniacodigoSegPub">
                         <option value="">Selecciona una Opcion</option>
-                        <?php
-                        if (!empty($duracion)) :
-                            foreach ($duracion as  $a) {
-                        ?>
-                          <option <?= (isset($seguridad->colonia) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                        
+                          <option selected value="<?= $seguridad->colonia ?>"><?= $seguridad->colonia ?></option>
 
 
-                        <?php
-                            }
-                        endif; ?>
+                        
                     </select>
                             <script>
                                 $(document).ready(function() {
@@ -103,7 +108,7 @@
                     <div class="form-group">
                         <label for="codigoSegPub" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="codigoSegPub" name="codigoSegPub" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value=" <?= isset($seguridad->idCodigoPostal) ? $seguridad->idCodigoPostal : ''  ?>">
+                                  <input type="text"  class="form-control "  id="codigoSegPub" name="codigoSegPub" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value="<?= isset($seguridad->idCodigoPostal) ? $seguridad->idCodigoPostal : ''  ?>">
                             
                         </div>
                  
@@ -166,7 +171,7 @@
                         <label for="especialidad" class=" control-label">Especialidad:<span class="text-danger">*</span></label>
                         
                         <div >    
-                                  <input type="text"  class="form-control "  id="funciones" name="funciones"  value="<?= isset($seguridad->especialidad) ? $seguridad->especialidad : ''  ?>">
+                                  <input type="text"  class="form-control "  id="especialidad" name="especialidad"  value="<?= isset($seguridad->especialidad) ? $seguridad->especialidad : ''  ?>">
                             
                         </div>
                     </div>
@@ -258,15 +263,10 @@
                         <div>
                         <select class="form-control" id="estadocodigoSegPub" name="estadocodigoSegPub">
                         <option value="">Selecciona una Opcion</option>
-                        <?php
-                        if (!empty($estadocodigoSegPub)) :
-                            foreach ($estadocodigoSegPub as  $a) {
-                        ?>
-                              <option <?= (isset($seguridad->estado) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                        
+                              <option selected value="<?= $seguridad->estado ?>"><?= $seguridad->estado ?></option>
 
-                        <?php
-                            }
-                        endif; ?>
+                        
                     </select>
                             <script>
                                 $(document).ready(function() {
@@ -286,14 +286,9 @@
                         <div>
                         <select class="form-control" id="municipiocodigoSegPub" name="municipiocodigoSegPub">
                         <option value="">Selecciona una Opcion</option>
-                        <?php
-                        if (!empty($municipiocodigoSegPub)) :
-                            foreach ($municipiocodigoSegPub as  $a) {
-                        ?>
-                           <option <?= (isset($seguridad->municipio) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-                        <?php
-                            }
-                        endif; ?>
+                        
+                           <option selected value="<?= $seguridad->municipio ?>"><?= $seguridad->municipio ?></option>
+                        
                     </select>
                             <script>
                                 $(document).ready(function() {
@@ -389,7 +384,7 @@
         formData.append('empleo', val);
         
         $.ajax({
-            url: base_url + '/GuardarEmpSegPublica',
+            url: base_url + '/EditarEmpSegPublica',
             type: 'POST',
             dataType: 'json',
             data: formData,
@@ -402,18 +397,12 @@
 
                 if (response.succes.succes == 'succes') {
 
-                    $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
 
                     toastr.success(response.succes.mensaje);
 
-                    $('#saveEmpSegPublica').addClass( "btn-success" );
-                    $('#saveEmpSegPublica').prop( "disabled",true );
-                    $('#saveEmpSegPublica').html( "Guardado&nbsp;<i class='fa fa-thumbs-up'></i>" );
+                    $("html,body").animate({scrollTop: $("#cardEmplSeguridad").offset().top},2000);
 
-                    $("html,body").animate({scrollTop: $("#cardEmpDiversos").offset().top},2000);
-
-                    $('#tabs a[href="#custom-tabs-five-normal"]').trigger('click');
-
+                    
                 } else if (response.dontsucces.error == 'error'){
 
                     toastr.error(response.dontsucces.mensaje);
@@ -438,6 +427,8 @@
                 $('#load').removeClass( "spinner-border" );           
             }
         });
+
+        $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
             
     });
 

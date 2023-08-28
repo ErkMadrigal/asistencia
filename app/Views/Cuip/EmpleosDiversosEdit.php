@@ -1,3 +1,12 @@
+<?php
+
+use CodeIgniter\HTTP\RequestInterface;
+use App\Models\AdministradorModel;
+use App\Libraries\Encrypt;
+
+$encrypt = new Encrypt();
+
+?>
 <div class="card card-primary" id="cardEmpDiversos">
     <div class="card-header">
         <h3 class="card-title">EMPLEOS DIVERSOS</h3>
@@ -17,6 +26,7 @@
     <div class="card-body">
         <form class="form-horizontal" id="EmpleosDiversos">
             <div class="row">
+                <input type="hidden" class="form-control " id="idEmpDiversos" name="idEmpDiversos" value="<?= $encrypt->Encrypt($diversos->id) ?>"><?= csrf_field() ?>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="empresa" class=" control-label">Empresa:<span class="text-danger">*</span></label>
@@ -58,16 +68,11 @@
                         <label for="coloniacodigoEmpDiv" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                         <div >    
                         <select class="form-control" id="coloniacodigoEmpDiv" name="coloniacodigoEmpDiv">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($coloniacodigoEmpDiv)) :
-                                        foreach ($coloniacodigoEmpDiv as  $a) {
-                                    ?>
-                       <option <?= (isset($diversos->colonia) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                            <option value="">Selecciona una Opcion</option>
+                                    
+                            <option selected value="<?= $diversos->colonia ?>"><?= $diversos->colonia ?></option>
 
-                                    <?php
-                                        }
-                                    endif; ?>
+                                    
                                 </select>
                             
                         <script>
@@ -86,16 +91,11 @@
                         <label for="estadocodigoEmpDiv" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
                         <div>
                         <select class="form-control" id="estadocodigoEmpDiv<" name="estadocodigoEmpDiv">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($estadocodigoEmpDiv)) :
-                                        foreach ($estadocodigoEmpDiv as  $a) {
-                                    ?>
-                               <option <?= (isset($diversos->estado) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                            <option value="">Selecciona una Opcion</option>
+                                    
+                               <option selected value="<?= $diversos->estado ?>"><?= $diversos->estado ?></option>
 
-                                    <?php
-                                        }
-                                    endif; ?>
+                                    
                                 </select>
                             <script>
                                 $(document).ready(function() {
@@ -113,16 +113,11 @@
                         <label for="municipiocodigoEmpDiv" class="control-label">Municipio: <span class="text-danger">*</span></label>
                         <div>
                         <select class="form-control" id="municipiocodigoEmpDiv" name="municipiocodigoEmpDiv">
-                                    <option value="">Selecciona una Opcion</option>
-                                    <?php
-                                    if (!empty($municipiocodigoEmpDiv)) :
-                                        foreach ($municipiocodigoEmpDiv as  $a) {
-                                    ?>
-                                   <option <?= (isset($diversos->municipio) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                            <option value="">Selecciona una Opcion</option>
+                                    
+                            <option selected value="<?= $diversos->municipio ?>"><?= $diversos->municipio ?></option>
 
-                                    <?php
-                                        }
-                                    endif; ?>
+                                    
                                 </select>
                             <script>
                                 $(document).ready(function() {
@@ -557,7 +552,7 @@
         formData.append('diversos', val);
 
         $.ajax({
-            url: base_url + '/GuardarEmpDiversos',
+            url: base_url + '/EditarEmpDiversos',
             type: 'POST',
             dataType: 'json',
             data: formData,
@@ -570,20 +565,18 @@
 
                 if (response.succes.succes == 'succes') {
 
-                    $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
+                    
 
 
                     toastr.success(response.succes.mensaje);
 
-                    $('#saveEmpleosDiversos').addClass("btn-success");
-                    $('#saveEmpleosDiversos').prop("disabled", true);
-                    $('#saveEmpleosDiversos').html("Guardado&nbsp;<i class='fa fa-thumbs-up'></i>");
+                    
 
                     $("html,body").animate({
-                        scrollTop: $("#cardCapPublica").offset().top
+                        scrollTop: $("#cardEmpDiversos").offset().top
                     }, 2000);
 
-                    $('#tabs a[href="#custom-overlay"]').trigger('click');
+                    
 
                 } else if (response.dontsucces.error == 'error') {
 
@@ -613,6 +606,8 @@
                 $('#load').removeClass("spinner-border");
             }
         });
+
+        $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
 
     });
 

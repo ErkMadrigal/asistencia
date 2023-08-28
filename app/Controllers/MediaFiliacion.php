@@ -719,6 +719,393 @@ class MediaFiliacion extends BaseController {
 		return $result;
 			
     }
+
+
+    public function EditarMediaFiliacion(){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['idPersonal,idMediaFiliacion,complexion, piel, cara, anteojos, anteojos, anteojos, cabello_cantidad, color_cabello, forma_cabello, calvicie_cabello, implatacion_cabello, altura, inclinacion, ancho, direccion_cejas, implantacion_cejas, forma, tamanno, color, forma_ojos, tamanno_ojos, raiz, dorso, ancho_nariz, base_nariz, altura_nariz, tamanno_boca, comisura_boca, espesor_labios, altura_labial, prominencia, tipo_menton, forma_menton, inclinacion_menton, forma_ODerecha, original, superior, posterior, adherencia, contorno, adherencia_lobulo, particularidad, dimension, tipo_sangre, RH_sangre, cicatrices, cicatrices_descripcion, tatuajes, tatuajes_descripcion, lunares, lunares_descripcion, fisico, fisico_descripcion, protesis, protesis_descripcion, discapacidad, discapacidad_descripcion'],FILTER_SANITIZE_STRING)){
+
+				$rules = [
+				'idPersonal' =>  ['label' => "
+				", 'rules' => 'required'],
+				'idMediaFiliacion' =>  ['label' => "
+				", 'rules' => 'required'],	
+				'complexion' =>  ['label' => "Complexión", 'rules' => 'required'],
+				'piel' =>  ['label' => "Piel", 'rules' => 'required'],
+				'cara' =>  ['label' => "Cara", 'rules' => 'required'],
+				'anteojos' =>  ['label' => "Anteojos Curso", 'rules' => 'required'],
+				'cabello_cantidad' =>  ['label' => "Cabello Cantidad ", 'rules' => 'required'],
+				'color_cabello' =>  ['label' => "Color Cabello", 'rules' => 'required'],
+				'forma_cabello' =>  ['label' => "Forma Cabello", 'rules' => 'required'],
+				'calvicie_cabello' =>  ['label' => "Calvicie Cabello", 'rules' => 'required'],
+				'implatacion_cabello' =>  ['label' => "implatacion cabello", 'rules' => 'required'],
+				'altura' =>  ['label' => "Altura", 'rules' => 'required'],
+				'inclinacion' =>  ['label' => "Inclinacion", 'rules' => 'required'],
+				'ancho' =>  ['label' => "Ancho", 'rules' => 'required'],
+				'direccion_cejas' =>  ['label' => "Direccion Cejas", 'rules' => 'required'],
+				'implantacion_cejas' =>  ['label' => "implantacion cejas", 'rules' => 'required'],
+				'forma' =>  ['label' => "Forma", 'rules' => 'required'],
+				'tamanno' =>  ['label' => "Tamaño", 'rules' => 'required'],
+				'color' =>  ['label' => "Color", 'rules' => 'required'],
+				'forma_ojos' =>  ['label' => "Forma Ojos", 'rules' => 'required'],
+				'tamanno_ojos' =>  ['label' => "Tamaño Ojos", 'rules' => 'required'],
+				'raiz' =>  ['label' => "Raiz", 'rules' => 'required'],
+				'dorso' =>  ['label' => "Dorso", 'rules' => 'required'],
+				'ancho_nariz' =>  ['label' => "Ancho Nariz", 'rules' => 'required'],
+				'base_nariz' =>  ['label' => "Base Nariz", 'rules' => 'required'],
+				'altura_nariz' =>  ['label' => "Altura Nariz", 'rules' => 'required'],
+				'tamanno_boca' =>  ['label' => "Tamaño Boca", 'rules' => 'required'],
+				'comisura_boca' =>  ['label' => "Comisura Boca", 'rules' => 'required'],
+				'espesor_labios' =>  ['label' => "Espesor Labios", 'rules' => 'required'],
+				'altura_labial' =>  ['label' => "Altura Labial", 'rules' => 'required'],
+				'prominencia' =>  ['label' => "Prominencia", 'rules' => 'required'],
+				'tipo_menton' =>  ['label' => "Tipo Menton", 'rules' => 'required'],
+				'forma_menton' =>  ['label' => "Forma Menton", 'rules' => 'required'],
+				'inclinacion_menton' =>  ['label' => "Inclinacion Menton", 'rules' => 'required'],
+				'forma_ODerecha' =>  ['label' => "Forma Oreja Derecha", 'rules' => 'required'],
+				'original' =>  ['label' => "Original", 'rules' => 'required'],
+				'superior' =>  ['label' => "Superior", 'rules' => 'required'],
+				'posterior' =>  ['label' => "Posterior", 'rules' => 'required'],
+				'adherencia' =>  ['label' => "Adherencia", 'rules' => 'required'],
+				'contorno' =>  ['label' => "Contorno", 'rules' => 'required'],
+				'adherencia_lobulo' =>  ['label' => "Adherencia Lobulo", 'rules' => 'required'],
+				'particularidad' =>  ['label' => "Particularidad", 'rules' => 'required'],
+				'dimension' =>  ['label' => "Dimension", 'rules' => 'required'],
+				'tipo_sangre' =>  ['label' => "Tipo Sangre", 'rules' => 'required'],
+				'RH_sangre' =>  ['label' => "RH Sangre", 'rules' => 'required'],
+				'anteojos' =>  ['label' => "Anteojos", 'rules' => 'required'],
+				'estatura' =>  ['label' => "Estatura", 'rules' => 'required|decimal'],
+				'peso' =>  ['label' => "Peso", 'rules' => 'required|decimal'],
+				'cicatrices' =>  ['label' => "Cicatrices", 'rules' => 'required'],
+				'tatuajes' =>  ['label' => "Tatuajes", 'rules' => 'required'],
+				'lunares' =>  ['label' => "Lunares", 'rules' => 'required'],
+				'fisico' =>  ['label' => "Fisico", 'rules' => 'required'],
+				'protesis' =>  ['label' => "Protesis", 'rules' => 'required'],
+				'discapacidad' =>  ['label' => "Discapacidad", 'rules' => 'required']];
+		 
+
+				$errors = [];
+				$succes = [];
+				$dontSucces = [];
+				$data = [];
+				
+
+				if($this->validate($rules)){
+
+					$getIdPersonal = $this->request->getPost('idPersonal');
+
+        			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
+
+					$fotos  = $this->modelMediaFiliacion->GetFotos($idPersonal);
+
+					if ($fotos->count >= 3){ 
+					
+					$getUser = session()->get('IdUser');
+					$LoggedUserId = $this->encrypter->decrypt($getUser);
+					$empresa = session()->get('empresa');
+					$idEmpresa = $this->encrypter->decrypt($empresa);
+					$uuid = $this->request->getPost('idMediaFiliacion');
+        			$id = $this->encrypt->Decrytp($uuid);
+
+        			
+        			$getComplexion = $this->request->getPost('complexion');
+
+        			$complexion = $this->encrypt->Decrytp($getComplexion);
+
+        			$getPiel = $this->request->getPost('piel');
+
+        			$piel = $this->encrypt->Decrytp($getPiel);
+
+        			$getCara = $this->request->getPost('cara');
+
+        			$cara = $this->encrypt->Decrytp($getCara);
+
+        			$getCabello_cantidad = $this->request->getPost('cabello_cantidad');
+
+        			$cabello_cantidad = $this->encrypt->Decrytp($getCabello_cantidad);
+
+        			$getColor_cabello = $this->request->getPost('color_cabello');
+
+        			$color_cabello = $this->encrypt->Decrytp($getColor_cabello);
+
+        			$getForma_cabello = $this->request->getPost('forma_cabello');
+
+        			$forma_cabello = $this->encrypt->Decrytp($getForma_cabello);
+
+        			$getCalvicie_cabello = $this->request->getPost('calvicie_cabello');
+
+        			$calvicie_cabello = $this->encrypt->Decrytp($getCalvicie_cabello);
+
+        			$getImplatacion_cabello = $this->request->getPost('implatacion_cabello');
+
+        			$implatacion_cabello = $this->encrypt->Decrytp($getImplatacion_cabello);
+
+        			$getAltura = $this->request->getPost('altura');
+
+        			$altura = $this->encrypt->Decrytp($getAltura);
+
+        			$getInclinacion = $this->request->getPost('inclinacion');
+
+        			$inclinacion = $this->encrypt->Decrytp($getInclinacion);
+
+        			$getAncho = $this->request->getPost('ancho');
+
+        			$ancho = $this->encrypt->Decrytp($getAncho);
+
+        			$getDireccion_cejas = $this->request->getPost('direccion_cejas');
+
+        			$direccion_cejas = $this->encrypt->Decrytp($getDireccion_cejas);
+
+        			$getImplantacion_cejas = $this->request->getPost('implantacion_cejas');
+
+        			$implantacion_cejas = $this->encrypt->Decrytp($getImplantacion_cejas);
+
+        			$getForma = $this->request->getPost('forma');
+
+        			$forma = $this->encrypt->Decrytp($getForma);
+
+        			$getTamanno = $this->request->getPost('tamanno');
+
+        			$tamanno = $this->encrypt->Decrytp($getTamanno);
+
+        			$getColor = $this->request->getPost('color');
+
+        			$color = $this->encrypt->Decrytp($getColor);
+
+        			$getForma_ojos = $this->request->getPost('forma_ojos');
+
+        			$forma_ojos = $this->encrypt->Decrytp($getForma_ojos);
+
+        			$getTamanno_ojos = $this->request->getPost('tamanno_ojos');
+
+        			$tamanno_ojos = $this->encrypt->Decrytp($getTamanno_ojos);
+
+        			$getRaiz = $this->request->getPost('raiz');
+
+        			$raiz = $this->encrypt->Decrytp($getRaiz);
+
+        			$getDorso = $this->request->getPost('dorso');
+
+        			$dorso = $this->encrypt->Decrytp($getDorso);
+
+        			$getAncho_nariz = $this->request->getPost('ancho_nariz');
+
+        			$ancho_nariz = $this->encrypt->Decrytp($getAncho_nariz);
+
+        			$getBase_nariz = $this->request->getPost('base_nariz');
+
+        			$base_nariz = $this->encrypt->Decrytp($getBase_nariz);
+
+        			$getAltura_nariz = $this->request->getPost('altura_nariz');
+
+        			$altura_nariz = $this->encrypt->Decrytp($getAltura_nariz);
+
+        			$getTamanno_boca = $this->request->getPost('tamanno_boca');
+
+        			$tamanno_boca = $this->encrypt->Decrytp($getTamanno_boca);
+
+        			$getComisura_boca = $this->request->getPost('comisura_boca');
+
+        			$comisura_boca = $this->encrypt->Decrytp($getComisura_boca);
+
+        			$getEspesor_labios = $this->request->getPost('espesor_labios');
+
+        			$espesor_labios = $this->encrypt->Decrytp($getEspesor_labios);
+
+        			$getAltura_labial = $this->request->getPost('altura_labial');
+
+        			$altura_labial = $this->encrypt->Decrytp($getAltura_labial);
+
+        			$getProminencia = $this->request->getPost('prominencia');
+
+        			$prominencia = $this->encrypt->Decrytp($getProminencia);
+
+        			$getTipo_menton = $this->request->getPost('tipo_menton');
+
+        			$tipo_menton = $this->encrypt->Decrytp($getTipo_menton);
+
+        			$getForma_menton = $this->request->getPost('forma_menton');
+
+        			$forma_menton = $this->encrypt->Decrytp($getForma_menton);
+
+        			$getInclinacion_menton = $this->request->getPost('inclinacion_menton');
+
+        			$inclinacion_menton = $this->encrypt->Decrytp($getInclinacion_menton);
+
+        			$getForma_ODerecha = $this->request->getPost('forma_ODerecha');
+
+        			$forma_ODerecha = $this->encrypt->Decrytp($getForma_ODerecha);
+
+        			$getOriginal = $this->request->getPost('original');
+
+        			$original = $this->encrypt->Decrytp($getOriginal);
+
+        			$getSuperior = $this->request->getPost('superior');
+
+        			$superior = $this->encrypt->Decrytp($getSuperior);
+
+        			$getPosterior = $this->request->getPost('posterior');
+
+        			$posterior = $this->encrypt->Decrytp($getPosterior);
+
+        			$getAdherencia = $this->request->getPost('adherencia');
+
+        			$adherencia = $this->encrypt->Decrytp($getAdherencia);
+
+        			$getContorno = $this->request->getPost('contorno');
+
+        			$contorno = $this->encrypt->Decrytp($getContorno);
+
+        			$getAdherencia_lobulo = $this->request->getPost('adherencia_lobulo');
+
+        			$adherencia_lobulo = $this->encrypt->Decrytp($getAdherencia_lobulo);
+
+        			$getParticularidad = $this->request->getPost('particularidad');
+
+        			$particularidad = $this->encrypt->Decrytp($getParticularidad);
+
+        			$getDimension = $this->request->getPost('dimension');
+
+        			$dimension = $this->encrypt->Decrytp($getDimension);
+
+        			$getTipo_sangre = $this->request->getPost('tipo_sangre');
+
+        			$tipo_sangre = $this->encrypt->Decrytp($getTipo_sangre);
+
+        			$getRH_sangre = $this->request->getPost('RH_sangre');
+
+        			$RH_sangre = $this->encrypt->Decrytp($getRH_sangre);
+
+        			$getAnteojos = $this->request->getPost('anteojos');
+
+        			$anteojos = $this->encrypt->Decrytp($getAnteojos);
+
+        			$getCicatrices = $this->request->getPost('cicatrices');
+
+        			$cicatrices = $this->encrypt->Decrytp($getCicatrices);
+
+        			$getTatuajes = $this->request->getPost('tatuajes');
+
+        			$tatuajes = $this->encrypt->Decrytp($getTatuajes);
+
+        			$getLunares = $this->request->getPost('lunares');
+
+        			$lunares = $this->encrypt->Decrytp($getLunares);
+
+        			$getFisico = $this->request->getPost('fisico');
+
+        			$fisico = $this->encrypt->Decrytp($getFisico);
+
+        			$getProtesis = $this->request->getPost('protesis');
+
+        			$protesis = $this->encrypt->Decrytp($getProtesis);
+
+        			$getDiscapacidad = $this->request->getPost('discapacidad');
+
+        			$discapacidad = $this->encrypt->Decrytp($getDiscapacidad);
+
+        			
+
+
+					$mediaFiliacion = array(
+		    					
+		    					
+						
+						"idComplexion" => $complexion , 
+						"idPiel" => $piel , 
+						"idCara" => $cara , 
+						"idCantidadCabello" => $cabello_cantidad , 
+						"idColorCabello" => $color_cabello , 
+						"idFormaCabello" => $forma_cabello , 
+						"idCalvicie" => $calvicie_cabello , 
+						"idImplantacionCabello" => $implatacion_cabello , 
+						"idAlturaFrente" => $altura , 
+						"idInclinacionFrente" => $inclinacion , 
+						"idAnchoFrente" => $ancho , 
+						"idDireccionCejas" => $direccion_cejas , 
+						"idImplantacionCejas" => $implantacion_cejas , 
+						"idFormaCejas" => $forma , 
+						"idTamanoCejas" => $tamanno , 
+						"idColorOjos" => $color , 
+						"idFormaOjos" => $forma_ojos , 
+						"idTamanoOjos" => $tamanno_ojos , 
+						"idRaiz" => $raiz , 
+						"idDorso" => $dorso , 
+						"idAnchoNariz" => $ancho_nariz , 
+						"idBaseNariz" => $base_nariz , 
+						"idAlturaNariz" => $altura_nariz , 
+						"idTamanoBoca" => $tamanno_boca , 
+						"idComisuras" => $comisura_boca , 
+						"idEspesorLabio" => $espesor_labios , 
+						"idAlturaNasolabial" => $altura_labial , 
+						"idProminenciaLabio" => $prominencia , 
+						"idMentonTipo" => $tipo_menton , 
+						"idMentonForma" => $forma_menton , 
+						"idMentonInclinacion" => $inclinacion_menton , 
+						"idFormaOreja" => $forma_ODerecha , 
+						"idOriginal" => $original , 
+						"idSuperior" => $superior , 
+						"idPosterior" => $posterior , 
+						"idAdherenciaHelix" => $adherencia , 
+						"idContornoLobulo" => $contorno , 
+						"idAdherenciaLobulo" => $adherencia_lobulo , 
+						"idParticularidad" => $particularidad , 
+						"idDimensionLobulo" => $dimension , 
+						"idSangreTipo" => $tipo_sangre , 
+						"idRH" => $RH_sangre , 
+						"idUsaAnteojos" => $anteojos , 
+						"estatura" => $this->request->getPost('estatura') , 
+						"peso" => $this->request->getPost('peso') , 
+						"idCicatrices" => $cicatrices , 
+						"descrip_cicatrices" => $this->request->getPost('cicatrices_descripcion') , 
+						"idTatuajes" => $tatuajes , 
+						"descrip_tatuajes" => $this->request->getPost('tatuajes_descripcion') , 
+						"idLunares" => $lunares , 
+						"descrip_lunares" => $this->request->getPost('lunares_descripcion') , 
+						"idDefectos" => $fisico , 
+						"descrip_defectos" => $this->request->getPost('fisico_descripcion') , 
+						"idProtesis" => $protesis , 
+						"descrip_protesis" => $this->request->getPost('protesis_descripcion') , 
+						"idDiscapacidad" => $discapacidad , 
+						"descrip_discapacidad" => $this->request->getPost('discapacidad_descripcion') ,
+						
+						"updatedby" => $LoggedUserId , 
+						"updateddate" => date("Y-m-d H:i:s") );
+
+					
+					$result = $this->modelMediaFiliacion->updateMediaFiliacion( $mediaFiliacion,$idPersonal,$id);
+
+					
+					
+                    if ($result) {
+
+            			
+                    	$succes = ["mensaje" => 'Información editada con exito' ,
+                            	   "succes" => "succes"];
+
+                           	   
+                    	
+                    } else {
+                    	$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Hubo un error al editar la Información'  ];
+
+                    }
+
+                } else {
+
+                	$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Aun no se han cargado Fotos y Huellas'  ];
+
+                }
+
+
+
+				} else {	
+					$errors = $this->validator->getErrors();
+				}
+
+				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+		}	
+	}
     
 
 }

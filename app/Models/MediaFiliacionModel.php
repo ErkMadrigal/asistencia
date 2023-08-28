@@ -89,5 +89,23 @@ class MediaFiliacionModel
     }
 
 
+    public function updateMediaFiliacion($data,$idPersonal,$id){
+        $this->db->transStart();
+
+        $this->db->table('media_filiacion')->where('idPersonal',$idPersonal)->where('id',$id)->update($data);
+
+        $this->db->transComplete();
+
+        if ($this->db->transStatus() === TRUE)
+        {
+            $return = true;
+        } else {
+            $return = false ;
+        }
+
+        return $return; 
+    }
+
+
     
 }

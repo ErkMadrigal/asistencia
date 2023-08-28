@@ -52,7 +52,7 @@ use Ramsey\Uuid\Provider\Node\StaticNodeProvider;
                         </div>';
             if($d->estatus != null){
 
-                $img = '<div ><p><a href="#" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#viewModal" onclick="hrefDoc(\''. $d->id.'\')" ><i class="fa fa-file nav-icon" aria-hidden="true"></i></a></p></div>';
+                $img = '<div ><p><a href="#" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#viewModal" onclick="hrefDoc(\''. $d->idDoc.'\')" ><i class="fa fa-file nav-icon" aria-hidden="true"></i></a></p></div>';
 
             }   else {
 
@@ -65,7 +65,9 @@ use Ramsey\Uuid\Provider\Node\StaticNodeProvider;
             ?>
             <tr><td><?= $i ?><input type="hidden" id="documento<?=$i?>" name="documento<?=$i?>"  value="<?= $d->id ?>"> </td>
                 <td><?=$d->documento?></td>
-                <td><?= $img ?></td>
+                <td><div id="view<?=$i?>">
+                    <?= $img ?>
+                    </div></td>
                 <td><?=$load?></td>
             </tr>       
 

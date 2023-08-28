@@ -198,7 +198,6 @@ $routes->post('GuardarEmpresa', 'Administrador::AgrEmpresa',['filter' => 'auth']
 $routes->post('getUbicacionAlta', 'Cuip::getUbicacion',['filter' => 'auth']);
 $routes->post('getPuestosAlta', 'Cuip::getPuesto',['filter' => 'auth']);
 $routes->post('GuardarAltaEmpleado', 'Cuip::AgregarAltasEmpleados',['filter' => 'auth']);
-
 $routes->get('licencias', 'Armas::licencias',['filter' => 'auth']);
 $routes->post('GuardarLic', 'Armas::GuardarLic',['filter' => 'auth']);
 $routes->get('editarLicenia', 'Armas::editarLicenia',['filter' => 'auth']);
@@ -214,6 +213,15 @@ $routes->post('llenadoCampos', 'Armas::mostrarDatos',['filter' => 'auth']);
 $routes->get('visor', 'Armas::view',['filter' => 'auth']);
 $routes->get('visorFolioManifiesto', 'Armas::visorFolioManifiesto',['filter' => 'auth']);
 $routes->post('editFolioManifisto', 'Armas::editFolioManifisto',['filter' => 'auth']);
+$routes->post('EditarDatosPersonales', 'Cuip::EditarPersonales',['filter' => 'auth']);
+$routes->post('EditarReferencias', 'Cuip::EditarReferencias',['filter' => 'auth']);
+$routes->post('EditarSocioEconomico', 'Cuip::EditarSocioEconomico',['filter' => 'auth']);
+$routes->post('EditarEmpSegPublica', 'Cuip::EditarEmpSegPublica',['filter' => 'auth']);
+$routes->post('EditarEmpDiversos', 'Cuip::EditarEmpDiversos',['filter' => 'auth']);
+$routes->post('EditarSancionesEstimulos', 'Cuip::EditarSancionesEstimulos',['filter' => 'auth']);
+$routes->post('EditarAltaEmpleado', 'Cuip::EditarAltasEmpleados',['filter' => 'auth']);
+$routes->post('EditarCapacitaciones', 'Cuip::EditarCapacitaciones',['filter' => 'auth']);
+$routes->post('EditarMediaFiliacion', 'MediaFiliacion::EditarMediaFiliacion',['filter' => 'auth']);
 
 
 

@@ -1,3 +1,12 @@
+<?php
+
+use CodeIgniter\HTTP\RequestInterface;
+use App\Models\AdministradorModel;
+use App\Libraries\Encrypt;
+
+$encrypt = new Encrypt();
+
+?>
 <div class="card card-primary" id="cardRefFamCer">
     <div class="card-header">
         <h3 class="card-title">FAMILIAR CERCANO</h3>
@@ -12,11 +21,12 @@
     <div class="card-body">
         <form class="form-horizontal" id="referencias">
             <div class="row">
+                <input type="hidden" class="form-control " id="idReferencia" name="idReferencia" value="<?= $encrypt->Encrypt($referencia->id) ?>">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="apellidoPaterno" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="apellidoPaterno" name="apellidoPaterno" value=" <?= isset($referencia->apellido_paterno_fam) ? $referencia->apellido_paterno_fam : ''  ?>">
+                            <input type="text" class="form-control " id="apellidoPaterno" name="apellidoPaterno" value=" <?= isset($referencia->apellido_paterno_fam) ? $referencia->apellido_paterno_fam : ''  ?>"><?= csrf_field() ?>
 
                         </div>
                     </div>
@@ -76,10 +86,25 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="ocupacion" class=" control-label">Ocupación:<span class="text-danger">*</span></label>
-                        <div>
-                            <input type="text" class="form-control " id="ocupacion" name="ocupacion" value=" <?= isset($referencia->ocupacion_fam) ? $referencia->ocupacion_fam : ''  ?>">
-
-                        </div>
+                        <select class="form-control" id="ocupacion" name="ocupacion">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($ocupacion) ):
+                                    foreach($ocupacion as  $a){
+                                        ?>
+                                            <option <?= (($referencia->ocupacion_fam) == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#ocupacion").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
                 <div class='col-6 col-sm-6'>
@@ -140,14 +165,9 @@
                         <label for="coloniacodigoRefCer" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                         <select class="form-control" id="coloniacodigoRefCer" name="coloniacodigoRefCer">
                             <option value="">Selecciona una Opcion</option>
-                            <?php
-                            if (!empty($coloniacodigoRefCer)) :
-                                foreach ($coloniacodigoRefCer as  $a) {
-                            ?>
-                      <option <?= (isset($referencia->colonia_fam) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-                            <?php
-                                }
-                            endif; ?>
+                            
+                      <option selected value="<?= $referencia->colonia_fam ?>"><?= $referencia->colonia_fam ?></option>
+                            
                         </select>
                         <script>
                             $(document).ready(function() {
@@ -163,7 +183,7 @@
                     <div class="form-group">
                         <label for="codigoRefCer" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="codigoRefCer" name="codigoRefCer" value=" <?= isset($referencia->idCodigoPostal_fam) ? $referencia->idCodigoPostal_fam : ''  ?>">
+                            <input type="text" class="form-control " id="codigoRefCer" name="codigoRefCer" value="<?= isset($referencia->idCodigoPostal_fam) ? $referencia->idCodigoPostal_fam : ''  ?>">
 
                         </div>
                     </div>
@@ -172,7 +192,7 @@
                     <div class="form-group">
                         <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="numero" name="numero" value=" <?= isset($referencia->numero_telefono_fam) ? $referencia->numero_telefono_fam : ''  ?>">
+                            <input type="text" class="form-control " id="numero" name="numero" value="<?= isset($referencia->numero_telefono_fam) ? $referencia->numero_telefono_fam : ''  ?>">
 
                         </div>
                     </div>
@@ -210,10 +230,10 @@
                             <select class="form-control" id="estadocodigoRefCer" name="estadocodigoRefCer">
                                 <option value="">Selecciona una Opcion</option>
                                 <?php
-                                if (!empty($estadocodigoRefCer)) :
-                                    foreach ($estadocodigoRefCer as  $a) {
+                                if (!empty($entidad_federativa)) :
+                                    foreach ($entidad_federativa as  $a) {
                                 ?>
-                              <option <?= (isset($referencia->idEstado_fam) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                              <option <?= (($referencia->idEstado_fam) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                                 <?php
                                     }
                                 endif; ?>
@@ -235,15 +255,10 @@
                         <div>
                             <select class="form-control" id="municipiocodigoRefCer" name="municipiocodigoRefCer">
                                 <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if (!empty($municipiocodigoRefCer)) :
-                                    foreach ($municipiocodigoRefCer as  $a) {
-                                ?>
-          <option <?= (isset($referencia->municipio_fam) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                
+                                <option selected value="<?= $encrypt->Encrypt($referencia->idMunciRefer) ?>"><?= $referencia->municipio_fam ?></option>
 
-                                <?php
-                                    }
-                                endif; ?>
+                                
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -262,14 +277,9 @@
                         <div>
                             <select class="form-control" id="ciudadcodigoRefCer" name="ciudadcodigoRefCer">
                                 <option value="">Selecciona una Opcion</option>
-                                <?php
-                                if (!empty($ciudadcodigoRefCer)) :
-                                    foreach ($ciudadcodigoRefCer as  $a) {
-                                ?>
-          <option <?= (isset($referencia->cuidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-                                <?php
-                                    }
-                                endif; ?>
+                                
+                                <option selected value="<?= $referencia->ciudad_fam ?>"><?= $referencia->ciudad_fam ?></option>
+                                
                             </select>
                             <script>
                                 $(document).ready(function() {
@@ -364,10 +374,26 @@
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="ocupacionParCer" class=" control-label">Ocupación:<span class="text-danger">*</span></label>
-                    <div>
-                        <input type="text" class="form-control " id="ocupacionParCer" name="ocupacionParCer" value=" <?= isset($referencia->ocupacion_pariente) ? $referencia->ocupacion_pariente : ''  ?>">
-
-                    </div>
+                    <select class="form-control" id="ocupacionParCer" name="ocupacionParCer">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($ocupacion) ):
+                                    foreach($ocupacion as  $a){
+                                        ?>
+                                            <option <?= (($referencia->ocupacion_pariente) == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#ocupacionParCer").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                    
                 </div>
             </div>
             <div class='col-6 col-sm-6'>
@@ -428,14 +454,9 @@
                     <label for="coloniacodigoParCer" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                     <select class="form-control" id="coloniacodigoParCer" name="coloniacodigoParCer">
                         <option value="">Selecciona una Opcion</option>
-                        <?php
-                        if (!empty($coloniacodigoParCer)) :
-                            foreach ($coloniacodigoParCer as  $a) {
-                        ?>
-                                       <option <?= (isset($referencia->colonia_pariente) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-                        <?php
-                            }
-                        endif; ?>
+                        
+                        <option selected value="<?= $referencia->colonia_pariente ?>"><?= $referencia->colonia_pariente ?></option>
+                        
                     </select>
                     <script>
                         $(document).ready(function() {
@@ -451,7 +472,7 @@
                 <div class="form-group">
                     <label for="codigoParCer" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value=" <?= isset($referencia->idCodigoPostal_pariente) ? $referencia->idCodigoPostal_pariente : ''  ?>">
+                        <input type="text" class="form-control " id="codigoParCer" name="codigoParCer" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value="<?= isset($referencia->idCodigoPostal_pariente) ? $referencia->idCodigoPostal_pariente : ''  ?>">
 
                     </div>
                 </div>
@@ -460,7 +481,7 @@
                 <div class="form-group">
                     <label for="numeroParCer" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value=" <?= isset($referencia->numero_telefono_pariente) ? $referencia->numero_telefono_pariente : ''  ?>">
+                        <input type="text" class="form-control " id="numeroParCer" name="numeroParCer" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value="<?= isset($referencia->numero_telefono_pariente) ? $referencia->numero_telefono_pariente : ''  ?>">
 
                     </div>
                 </div>
@@ -498,10 +519,10 @@
                         <select class="form-control" id="estadocodigoParCer" name="estadocodigoParCer">
                             <option value="">Selecciona una Opcion</option>
                             <?php
-                            if (!empty($estadocodigoParCer)) :
-                                foreach ($estadocodigoParCer as  $a) {
+                            if (!empty($entidad_federativa)) :
+                                foreach ($entidad_federativa as  $a) {
                             ?>
-                                               <option <?= (isset($referencia->idEstado_pariente) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <option <?= (($referencia->idEstado_pariente) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -523,14 +544,9 @@
                     <div>
                         <select class="form-control" id="municipiocodigoParCer" name="municipiocodigoParCer">
                             <option value="">Selecciona una Opcion</option>
-                            <?php
-                            if (!empty($municipiocodigoParCer)) :
-                                foreach ($municipiocodigoParCer as  $a) {
-                            ?>
-                                               <option <?= (isset($referencia->municipio_pariente) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-                            <?php
-                                }
-                            endif; ?>
+                            
+                            <option selected value="<?= $encrypt->Encrypt($referencia->idMuniRefPariente) ?>"><?= $referencia->municipio_pariente ?></option>
+                            
                         </select>
                         <script>
                             $(document).ready(function() {
@@ -549,14 +565,9 @@
                     <div>
                         <select class="form-control" id="ciudadcodigoParCer" name="ciudadcodigoParCer">
                             <option value="">Selecciona una Opcion</option>
-                            <?php
-                            if (!empty($ciudadcodigoParCer)) :
-                                foreach ($ciudadcodigoParCer as  $a) {
-                            ?>
-                                               <option <?= (isset($referencia->ciudad_pariente) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-                            <?php
-                                }
-                            endif; ?>
+                            
+                            <option selected value="<?= $referencia->ciudad_pariente ?>"><?= $referencia->ciudad_pariente ?></option>
+                            
                         </select>
                         <script>
                             $(document).ready(function() {
@@ -652,10 +663,26 @@
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="ocupacionRefPer" class=" control-label">Ocupación:<span class="text-danger">*</span></label>
-                    <div>
-                        <input type="text" class="form-control " id="ocupacionRefPer" name="ocupacionRefPer" value=" <?= isset($referenciaLab->ocupacion_personal) ? $referenciaLab->ocupacion_personal : ''  ?>">
+                    <select class="form-control" id="ocupacionRefPer" name="ocupacionRefPer">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($ocupacion) ):
+                                    foreach($ocupacion as  $a){
+                                        ?>
+                                            <option <?= (($referenciaLab->ocupacion_personal) == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#ocupacionRefPer").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
 
-                    </div>
                 </div>
             </div>
             <div class='col-6 col-sm-6'>
@@ -716,14 +743,9 @@
                     <label for="coloniacodigoPersonal" class=" control-label">Colonia:<span class="text-danger">*</span></label>
                     <select class="form-control" id="coloniacodigoPersonal" name="coloniacodigoPersonal">
                         <option value="">Selecciona una Opcion</option>
-                        <?php
-                        if (!empty($coloniacodigoPersonal)) :
-                            foreach ($coloniacodigoPersonal as  $a) {
-                        ?>
-                               <option <?= (isset($referenciaLab->colonia_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-                        <?php
-                            }
-                        endif; ?>
+                        
+                        <option selected value="<?= $referenciaLab->colonia_personal ?>"><?= $referenciaLab->colonia_personal ?></option>
+                        
                     </select>
                     <script>
                         $(document).ready(function() {
@@ -739,7 +761,7 @@
                 <div class="form-group">
                     <label for="codigoPersonal" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="codigoPersonal" name="codigoPersonal" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value=" <?= isset($referenciaLab->idCodigoPostal_personal) ? $referenciaLab->idCodigoPostal_personal : ''  ?>">
+                        <input type="text" class="form-control " id="codigoPersonal" name="codigoPersonal" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value="<?= isset($referenciaLab->idCodigoPostal_personal) ? $referenciaLab->idCodigoPostal_personal : ''  ?>">
 
                     </div>
                 </div>
@@ -748,7 +770,7 @@
                 <div class="form-group">
                     <label for="numeroRefPer" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="numeroRefPer" name="numeroRefPer" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value=" <?= isset($referenciaLab->numero_telefono_personal) ? $referenciaLab->numero_telefono_personal : ''  ?>">
+                        <input type="text" class="form-control " id="numeroRefPer" name="numeroRefPer" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value="<?= isset($referenciaLab->numero_telefono_personal) ? $referenciaLab->numero_telefono_personal : ''  ?>">
 
                     </div>
                 </div>
@@ -788,10 +810,10 @@
                         <select class="form-control" id="estadocodigoPersonal" name="estadocodigoPersonal">
                             <option value="">Selecciona una Opcion</option>
                             <?php
-                            if (!empty($estadocodigoPersonal)) :
-                                foreach ($estadocodigoPersonal as  $a) {
+                            if (!empty($entidad_federativa)) :
+                                foreach ($entidad_federativa as  $a) {
                             ?>
-                                   <option <?= (isset($referenciaLab->idEstado_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                   <option <?= (($referenciaLab->idEstado_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -813,14 +835,9 @@
                     <div>
                         <select class="form-control" id="municipiocodigoPersonal" name="municipiocodigoPersonal">
                             <option value="">Selecciona una Opcion</option>
-                            <?php
-                            if (!empty($municipiocodigoPersonal)) :
-                                foreach ($municipiocodigoPersonal as  $a) {
-                            ?>
-                     <option <?= (isset($referenciaLab->municipio_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-                            <?php
-                                }
-                            endif; ?>
+                            
+                                <option selected value="<?= $encrypt->Encrypt($referenciaLab->idMuniRefePersonal) ?>"><?= $referenciaLab->municipio_personal ?></option>
+                            
                         </select>
                         <script>
                             $(document).ready(function() {
@@ -839,14 +856,10 @@
                     <div>
                         <select class="form-control" id="ciudadcodigoPersonal" name="ciudadcodigoPersonal">
                             <option value="">Selecciona una Opcion</option>
-                            <?php
-                            if (!empty($ciudadcodigoPersonal)) :
-                                foreach ($ciudadcodigoPersonal as  $a) {
-                            ?>
-                     <option <?= (isset($referenciaLab->ciudad_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-                            <?php
-                                }
-                            endif; ?>
+                            
+                            <option selected value="<?= $referenciaLab->ciudad_personal ?>"><?= $referenciaLab->ciudad_personal ?></option>
+                            
+
                         </select>
                         <script>
                             $(document).ready(function() {
@@ -941,10 +954,27 @@
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="ocupacionRefLab" class=" control-label">Ocupación:<span class="text-danger">*</span></label>
-                    <div>
-                        <input type="text" class="form-control " id="ocupacionRefLab" name="ocupacionRefLab" value=" <?= isset($referenciaLab->ocupacion_laboral) ? $referenciaLab->ocupacion_laboral : ''  ?>">
+                    <select class="form-control" id="ocupacionRefLab" name="ocupacionRefLab">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if( !empty($ocupacion) ):
+                                    foreach($ocupacion as  $a){
+                                        ?>
+                                            <option <?= (($referenciaLab->ocupacion_laboral) == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <?php
+                                    }
+                                endif;?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#ocupacionRefLab").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
 
-                    </div>
+
                 </div>
             </div>
             <div class='col-6 col-sm-6'>
@@ -984,9 +1014,9 @@
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
+                    <label for="exteriorRefLab" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="exterior" name="exterior" value=" <?= isset($referenciaLab->numero_exterior_laboral) ? $referenciaLab->numero_exterior_laboral : ''  ?>">
+                        <input type="text" class="form-control " id="exteriorRefLab" name="exteriorRefLab" value=" <?= isset($referenciaLab->numero_exterior_laboral) ? $referenciaLab->numero_exterior_laboral : ''  ?>">
 
                     </div>
                 </div>
@@ -1003,17 +1033,12 @@
             </div>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
-                    <label for="colonia_fam_cercano" class=" control-label">Colonia:<span class="text-danger">*</span></label>
-                    <select class="form-control" id="colonia_fam_cercano" name="colonia_fam_cercano">
+                    <label for="coloniacodigoLaboral" class=" control-label">Colonia:<span class="text-danger">*</span></label>
+                    <select class="form-control" id="coloniacodigoLaboral" name="coloniacodigoLaboral">
                         <option value="">Selecciona una Opcion</option>
-                        <?php
-                        if (!empty($colonia_fam_cercano)) :
-                            foreach ($colonia_fam_cercano as  $a) {
-                        ?>
-                                 <option <?= (isset($referenciaLab->colonia_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-                        <?php
-                            }
-                        endif; ?>
+                        
+                        <option selected value="<?= $referenciaLab->colonia_laboral ?>"><?= $referenciaLab->colonia_laboral ?></option>
+                        
                     </select>
                     
                     <script>
@@ -1030,7 +1055,7 @@
                 <div class="form-group">
                     <label for="codigoLaboral" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="codigoLaboral" name="codigoLaboral" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value=" <?= isset($referenciaLab->idCodigoPostal_laboral) ? $referenciaLab->idCodigoPostal_laboral : ''  ?>">
+                        <input type="text" class="form-control " id="codigoLaboral" name="codigoLaboral" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" value="<?= isset($referenciaLab->idCodigoPostal_laboral) ? $referenciaLab->idCodigoPostal_laboral : ''  ?>">
 
                     </div>
                 </div>
@@ -1039,7 +1064,7 @@
                 <div class="form-group">
                     <label for="numeroRefLab" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="numeroRefLab" name="numeroRefLab" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value=" <?= isset($referenciaLab->numero_telefono_laboral) ? $referenciaLab->numero_telefono_laboral : ''  ?>">
+                        <input type="text" class="form-control " id="numeroRefLab" name="numeroRefLab" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value="<?= isset($referenciaLab->numero_telefono_laboral) ? $referenciaLab->numero_telefono_laboral : ''  ?>">
 
                     </div>
                 </div>
@@ -1077,10 +1102,10 @@
                         <select class="form-control" id="estadocodigoLaboral" name="estadocodigoLaboral">
                             <option value="">Selecciona una Opcion</option>
                             <?php
-                            if (!empty($estadocodigoLaboral)) :
-                                foreach ($estadocodigoLaboral as  $a) {
+                            if (!empty($entidad_federativa)) :
+                                foreach ($entidad_federativa as  $a) {
                             ?>
-                                     <option <?= (isset($referenciaLab->idEstado_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                     <option <?= (($referenciaLab->idEstado_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -1102,14 +1127,9 @@
                     <div>
                         <select class="form-control" id="municipiocodigoLaboral" name="municipiocodigoLaboral">
                             <option value="">Selecciona una Opcion</option>
-                            <?php
-                            if (!empty($municipiocodigoLaboral)) :
-                                foreach ($municipiocodigoLaboral as  $a) {
-                            ?>
-                                         <option <?= (isset($referenciaLab->municipio_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-                            <?php
-                                }
-                            endif; ?>
+                            
+                            <option selected value="<?= $encrypt->Encrypt($referenciaLab->idRefeMuniLaboral) ?>"><?= $referenciaLab->municipio_laboral ?></option>
+                            
                         </select>
                         <script>
                             $(document).ready(function() {
@@ -1128,14 +1148,9 @@
                     <div>
                         <select class="form-control" id="ciudadcodigoLaboral" name="ciudadcodigoLaboral">
                             <option value="">Selecciona una Opcion</option>
-                            <?php
-                            if (!empty($ciudadcodigoLaboral)) :
-                                foreach ($ciudadcodigoLaboral as  $a) {
-                            ?>
-            <option <?= (isset($referenciaLab->ciudad_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
-                            <?php
-                                }
-                            endif; ?>
+                            
+                            <option selected value="<?= $referenciaLab->ciudad_laboral ?>"><?= $referenciaLab->ciudad_laboral ?></option>
+                            
                         </select>
                         <script>
                             $(document).ready(function() {
@@ -1189,7 +1204,7 @@
         formData.append('idPersonal', idPersonal);
 
         $.ajax({
-            url: base_url + '/GuardarReferencias',
+            url: base_url + '/EditarReferencias',
             type: 'POST',
             dataType: 'json',
             data: formData,
@@ -1204,7 +1219,9 @@
 
                     toastr.success(response.succes.mensaje);
 
-
+                    $("html,body").animate({
+                        scrollTop: $("#cardRefFamCer").offset().top
+                    }, 2000);
 
                 } else if (response.dontsucces.error == 'error') {
 
@@ -1236,6 +1253,8 @@
                 $('#load').removeClass("spinner-border");
             }
         });
+
+        $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
 
     });
 </script>
