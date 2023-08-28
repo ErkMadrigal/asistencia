@@ -297,7 +297,7 @@
                     setInterval(function(){
                       count--;
                       if (count == 0) {
-                        window.location = base_url + '/licencias'; 
+                        window.location = base_url + '/armas'; 
                       }
                     },1000);
 

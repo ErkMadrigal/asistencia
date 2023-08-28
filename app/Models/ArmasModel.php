@@ -306,4 +306,55 @@ class ArmasModel
         $builder->where('id', $id);
         return $builder->get()->getRow();
     }
+
+    public function searchMulticatalogoArmas($data, $catalogo){
+        $builder = $this->db->table('catalogos cat');
+        $builder->select('cd.id');
+        $builder->join("catalogos_detalle cd","cat.idCatalogo = cd.idCatalogo","left");
+        $builder->like('cat.valor', $catalogo);
+        $builder->where('cd.valor', $data);
+        return $builder->get()->getResult(); 
+    }
+
+    public function searchMatriculaFolio($data, $where){
+        $builder = $this->db->table('armas');
+        $builder->select('folio_manif, matricula');
+        $builder->where($where, $data);
+        return $builder->get()->getResult(); 
+    }
+
+    public function addArmas($insert){
+        $this->db->transStart();
+        $return = false;
+        $this->db->table('armas')->insert($insert);
+        
+        // if ($this->db->affectedRows() > 0){
+        if ($this->db->transStatus()){
+            $return = true;
+        } 
+        $this->db->transComplete();
+        return $return; 
+    }
+
+    public function buscarPortador($id){
+        $builder = $this->db->table('datos_personales');
+        $builder->select('id');
+        $builder->where("id", $id);
+        return $builder->get()->getResult(); 
+    }
+
+    public function buscarUbicacion($id){
+        $builder = $this->db->table('ubicacion_armamento');
+        $builder->select('id_ubicacion');
+        $builder->where("id_licencia ", $id);
+        return $builder->get()->getResult(); 
+    }
+
+    public function buscarAllFolios(){
+        $builder = $this->db->table('armas');
+        $builder->select('id, folio_manif, idEmpresa');
+        // $builder->limit(5);
+        return $builder->get()->getResult(); 
+    }
+
 }

@@ -214,6 +214,7 @@ $routes->post('llenadoCampos', 'Armas::mostrarDatos',['filter' => 'auth']);
 $routes->get('visor', 'Armas::view',['filter' => 'auth']);
 $routes->get('visorFolioManifiesto', 'Armas::visorFolioManifiesto',['filter' => 'auth']);
 $routes->post('editFolioManifisto', 'Armas::editFolioManifisto',['filter' => 'auth']);
+$routes->get('cargaMasivaArmas', 'Armas::cargaMasivaArmas',['filter' => 'auth']);
 
 
 

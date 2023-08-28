@@ -765,6 +765,7 @@ class Armas extends BaseController {
 
 			$getId = str_replace(" ", "+", $this->request->getGet('h'));
 			$file = $this->modelArmas->GetFolioManifiesto($getId);
+			
 			if($file->url == ''){
 				echo "<h1 style='font-family: sans-serif;text-align: center;'>Sin Documento Folio Manifiesto Asignado</h1>";
 
@@ -772,8 +773,16 @@ class Armas extends BaseController {
 				$path = $this->encrypt->Decrytp($file->url);
 				$fileName = $this->encrypt->Decrytp($file->nombre_folio);
 				$doc = $path.'/'.$fileName;
-				$ctype = "application/pdf";
+				$split = explode(".", $fileName);
+				
+				if($split[1] == "pdf"){
+					$ctype = "application/pdf";
+				}else{
+					$ctype = "image/jpeg";
+				}
 				$this->response->setHeader('Content-Type', $ctype);
+				// print_r($doc);
+				// exit;
 				readfile($doc);
 
 			}
@@ -838,4 +847,97 @@ class Armas extends BaseController {
 				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
 		}	
 	}
+
+
+	public function cargaMasivaArmas(){
+		if ($this->request->getMethod() == "get"){
+			
+			$errors = [];
+			$succes = [];
+			$dontSucces = [];
+			$data = [];
+			$getUser = session()->get('IdUser');
+			$LoggedUserId = $this->encrypter->decrypt($getUser);
+			$this->db->transStart();
+	
+			$folios = $this->modelArmas->buscarAllFolios();
+			foreach ($folios as $folio) {
+				$data[] = $folio;
+				$resp = $this->_buscarArchivoEnCarpetas($folio->folio_manif, $folio->idEmpresa);
+				if($resp['status'] === "ok"){
+					$data[] = $folio;
+					$update = array(
+						"url" =>  $resp['ruta_db'],
+						"nombre_folio" =>  $resp['nombre_file_db'],
+						"updatedby" => $LoggedUserId,
+						"updateddate" => date("Y-m-d H:i:s")
+					);	
+
+					$update = $this->modelArmas->updateFolioMani($update, $folio->id);
+					if ($update) {
+						$succes = ["mensaje" => 'Actualizado con Exito', "succes" => "succes"];
+					} else {
+						$dontSucces = ["error" => "error", "mensaje" => "No se actualizo el registro"];
+					}
+				}else{
+					$dontSucces = ["error" => "error", "mensaje" => $resp['msg']];
+				}
+			}
+
+		} else {	
+			$errors = $this->validator->getErrors();
+		}
+		$this->db->transComplete();
+
+		echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+
+	}
+
+
+	private function _buscarArchivoEnCarpetas($nombre, $idEmpresa) {
+
+
+		$carpetas = ['C:\Users\e.madrigal\Downloads\SETER_MATRICULAS_Y_FOLIOS_TRASLADO', 'C:\Users\e.madrigal\Downloads\SERPROSEP_MATRICULAS_Y_FOLIOS', 'C:\Users\e.madrigal\Downloads\HOJAS_ROSAS_1'];
+	    $res = array(
+			"status" => "error",
+			"msg" => "No se econtro el Archivo"
+		);
+		
+		foreach ($carpetas as $carpeta) {
+		
+			$archivosCoincidentes = glob($carpeta . '/*' . $nombre . '*');
+			if(count($archivosCoincidentes) == 1){
+				if (!empty($archivosCoincidentes)) {
+					$name_file = explode("/", $archivosCoincidentes[0]);
+					$getRuta = WRITEPATH . 'uploads/files/FolioManifiesto/'.date("Y").'/'.date("m").'/'.$idEmpresa.'/'.$name_file[1];
+					$directorio = WRITEPATH . 'uploads/files/FolioManifiesto/'.date("Y").'/'.date("m").'/'.$idEmpresa.'/'; 
+
+					if (!is_dir($directorio)) {
+						mkdir($directorio, 0777, true);
+					}
+					if (copy($archivosCoincidentes[0], $getRuta)) {
+						$res = array(
+							"status" => "ok",
+							"ruta_file" => $archivosCoincidentes[0],
+							"nombre_file_db" => $this->encrypt->Encrypt($name_file[1]),
+							"ruta_db" => $this->encrypt->Encrypt($directorio)
+						);
+					} else {
+						$res = array(
+							"status" => "error",
+							"msg" => "No se pudo Cargar el archivo al Servidor"
+						);
+					}
+				}else{
+					$res = array(
+						"status" => "error",
+						"msg" => "No se econtro el Archivo"
+					);
+				}
+			}
+		}
+	
+		return $res;
+	}
+	
 }

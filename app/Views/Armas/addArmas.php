@@ -12,7 +12,15 @@ use App\Libraries\Encrypt;
 ?>
 <div id="load" class=" spinner text-secondary" role="status">
     </div>
-
+    <div class=" mb-2">    
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-9 ">
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <button class="btn btn-block btn-flat btn-primary d-none" onclick="leerArchivoExcel()"><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Carga Masiva</button>
+            </div>
+        </div>    
+    </div>
 <div class="card card-primary">
     <div class="card-header" >
         <h3 class="card-title">Agregar Arma</h3>
@@ -198,14 +206,78 @@ use App\Libraries\Encrypt;
                 </div>
             </div>
             </form>
+            <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+
             <script>
 
-        let select_excel = document.querySelector("#select-file")
+                let select_excel = document.querySelector("#select-excel")
+                let archivo_excel = document.querySelector("#archivo_excel")
+                let title_excel = document.querySelector("#title_excel")
+                let contenedorExcel = document.querySelector("#contenedorExcel")
+
+                select_excel.onclick = () => {
+                    archivo_excel.click()
+                }
+
+                archivo_excel.addEventListener('change', function(event) {
+                var archivoSeleccionado = event.target.files[0];
+                
+                if (archivoSeleccionado) {
+                    title_excel.innerHTML = archivoSeleccionado.name
+                    contenedorExcel.classList.remove('d-none')
+                }
+                });
+                function leerArchivoExcel() {
+
+                    $.ajax({
+                        url: base_url + '/cargaMasivaArmas',
+                        type: 'GET',
+                        dataType: 'json',
+                        cache: false,
+                        async: true,
+                        contentType: false,
+                        processData: false,
+                        success: function (response) {
+
+                            console.log(response);
+                            $('.errorField').remove();
+        
+                            if (response.succes.succes == 'succes') {
+        
+                                toastr.success(response.succes.mensaje);
+
+                            } else if (response.dontsucces.error == 'error'){
+        
+                                toastr.error(response.dontsucces.mensaje);
+                                        
+                            } else if (Object.keys(response.error).length > 0 ){
+        
+                                for (var clave in response.error){
+                                            
+                                    $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                                        
+                                }
+                                    toastr.error('<?=lang('Layout.camposObligatorios')?>');
+                            }
+        
+                            $('#load').removeClass( "spinner-border" );    
+        
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            toastr.error('<?=lang('Layout.toastrError')?>');
+                            $('#load').removeClass( "spinner-border" );           
+                        }
+                    });
+                }
+
+
+
+        let select_file = document.querySelector("#select-file")
         let archivo_file = document.querySelector("#archivo_file")
         let title_pdf = document.querySelector("#title_pdf")
         let contenedorPDF = document.querySelector("#contenedorPDF")
 
-        select_excel.onclick = (e) => {
+        select_file.onclick = (e) => {
             e.preventDefault()
             archivo_file.click()
         }
@@ -274,6 +346,7 @@ use App\Libraries\Encrypt;
         });
             
     });
+
 
 </script>
 <?= $this->endSection() ?>
