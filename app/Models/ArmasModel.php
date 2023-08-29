@@ -357,4 +357,16 @@ class ArmasModel
         return $builder->get()->getResult(); 
     }
 
+    public function update_url_name($update){
+
+        $return = false;
+        $this->db->table('armas')->update($update);
+
+        if ($this->db->affectedRows() > 0){
+            $return = true;
+        } 
+
+        return $return; 
+    }
+
 }

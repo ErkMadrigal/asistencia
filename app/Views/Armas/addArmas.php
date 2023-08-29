@@ -17,7 +17,7 @@ use App\Libraries\Encrypt;
             <div class="col-12 col-sm-6 col-md-9 ">
             </div>
             <div class="col-12 col-sm-6 col-md-3">
-                <button class="btn btn-block btn-flat btn-primary d-none" onclick="leerArchivoExcel()"><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Carga Masiva</button>
+                <button class="btn btn-block btn-flat btn-primary " onclick="leerArchivoExcel()"><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Carga Masiva</button>
             </div>
         </div>    
     </div>
