@@ -21,7 +21,7 @@ $encrypt = new Encrypt();
     <div class="card-body table-responsive ">
         <form class="form-horizontal" id="mediaFiliacion">
             <div class="row">
-                <input type="hidden" class="form-control " id="idMediaFiliacion" name="idMediaFiliacion" value="<?= $encrypt->Encrypt($mediaFiliacion->id) ?>"><?= csrf_field() ?>
+                <input type="hidden" class="form-control " id="idMediaFiliacion" name="idMediaFiliacion" value="<?= isset($mediaFiliacion->id)?$encrypt->Encrypt($mediaFiliacion->id):'' ?>"><?= csrf_field() ?>
                 <div class='col-6 col-sm-4'>
                     <div class="form-group">
                         <label for="Nombre" class="control-label">Complexión: <span class="text-danger">*</span></label>
@@ -32,7 +32,7 @@ $encrypt = new Encrypt();
                                 if (!empty($complexion)) :
                                     foreach ($complexion as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idComplexion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= isset($mediaFiliacion->idComplexion)?($mediaFiliacion->idComplexion) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                 <?php
                                     }
@@ -59,7 +59,7 @@ $encrypt = new Encrypt();
                                 if (!empty($piel)) :
                                     foreach ($piel as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idPiel) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= isset($mediaFiliacion->idPiel)?($mediaFiliacion->idPiel) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                 <?php
                                     }
@@ -86,7 +86,7 @@ $encrypt = new Encrypt();
                                 if (!empty($cara)) :
                                     foreach ($cara as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idCara) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idCara)?($mediaFiliacion->idCara) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -115,7 +115,7 @@ $encrypt = new Encrypt();
                                 if (!empty($SiNo)) :
                                     foreach ($SiNo as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idUsaAnteojos) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idUsaAnteojos)?($mediaFiliacion->idUsaAnteojos) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -136,7 +136,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="estatura" class="control-label">Estatura: <span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="estatura" name="estatura" value="<?= ($mediaFiliacion->estatura) ? $mediaFiliacion->estatura : ''  ?>">
+                            <input type="text" class="form-control " id="estatura" name="estatura" value="<?= isset($mediaFiliacion->estatura) ? $mediaFiliacion->estatura : ''  ?>">
 
                         </div>
                     </div>
@@ -145,7 +145,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="peso" class="control-label">Peso: <span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="peso" name="peso" value="<?= ($mediaFiliacion->peso) ? $mediaFiliacion->peso : ''  ?>">
+                            <input type="text" class="form-control " id="peso" name="peso" value="<?= isset($mediaFiliacion->peso) ? $mediaFiliacion->peso : ''  ?>">
 
                         </div>
                     </div>
@@ -179,7 +179,7 @@ $encrypt = new Encrypt();
                                 if (!empty($cabello_cantidad)) :
                                     foreach ($cabello_cantidad as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idCantidadCabello) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idCantidadCabello)?($mediaFiliacion->idCantidadCabello) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -207,7 +207,7 @@ $encrypt = new Encrypt();
                                 if (!empty($color_cabello)) :
                                     foreach ($color_cabello as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idColorCabello) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idColorCabello)?($mediaFiliacion->idColorCabello) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -234,7 +234,7 @@ $encrypt = new Encrypt();
                                 if (!empty($forma_cabello)) :
                                     foreach ($forma_cabello as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idFormaCabello) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idFormaCabello)?($mediaFiliacion->idFormaCabello) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -261,7 +261,7 @@ $encrypt = new Encrypt();
                                 if (!empty($calvicie_cabello)) :
                                     foreach ($calvicie_cabello as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idCalvicie) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idCalvicie)?($mediaFiliacion->idCalvicie) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -288,7 +288,7 @@ $encrypt = new Encrypt();
                                 if (!empty($implatacion_cabello)) :
                                     foreach ($implatacion_cabello as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idImplantacionCabello) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idImplantacionCabello)?($mediaFiliacion->idImplantacionCabello) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -334,7 +334,7 @@ $encrypt = new Encrypt();
                                 if (!empty($altura)) :
                                     foreach ($altura as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idAlturaFrente) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idAlturaFrente)?($mediaFiliacion->idAlturaFrente) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -361,7 +361,7 @@ $encrypt = new Encrypt();
                                 if (!empty($inclinacion)) :
                                     foreach ($inclinacion as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idInclinacionFrente) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idInclinacionFrente)?($mediaFiliacion->idInclinacionFrente) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -388,7 +388,7 @@ $encrypt = new Encrypt();
                                 if (!empty($ancho)) :
                                     foreach ($ancho as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idAnchoFrente) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idAnchoFrente)?($mediaFiliacion->idAnchoFrente) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -433,7 +433,7 @@ $encrypt = new Encrypt();
                                 if (!empty($direccion_cejas)) :
                                     foreach ($direccion_cejas as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idDireccionCejas) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idDireccionCejas)?($mediaFiliacion->idDireccionCejas) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -460,7 +460,7 @@ $encrypt = new Encrypt();
                                 if (!empty($implantacion_cejas)) :
                                     foreach ($implantacion_cejas as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idImplantacionCejas) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idImplantacionCejas)?($mediaFiliacion->idImplantacionCejas) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -487,7 +487,7 @@ $encrypt = new Encrypt();
                                 if (!empty($forma)) :
                                     foreach ($forma as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idFormaCejas) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idFormaCejas)?($mediaFiliacion->idFormaCejas) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -514,7 +514,7 @@ $encrypt = new Encrypt();
                                 if (!empty($tamanno)) :
                                     foreach ($tamanno as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idTamanoCejas) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idTamanoCejas)?($mediaFiliacion->idTamanoCejas) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -559,7 +559,7 @@ $encrypt = new Encrypt();
                                 if (!empty($color)) :
                                     foreach ($color as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idColorOjos) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idColorOjos)?($mediaFiliacion->idColorOjos) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -586,7 +586,7 @@ $encrypt = new Encrypt();
                                 if (!empty($forma_ojos)) :
                                     foreach ($forma_ojos as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idFormaOjos) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idFormaOjos)?($mediaFiliacion->idFormaOjos) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -613,7 +613,7 @@ $encrypt = new Encrypt();
                                 if (!empty($tamanno_ojos)) :
                                     foreach ($tamanno_ojos as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idTamanoOjos) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idTamanoOjos)?($mediaFiliacion->idTamanoOjos) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -658,7 +658,7 @@ $encrypt = new Encrypt();
                                 if (!empty($raiz)) :
                                     foreach ($raiz as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idRaiz) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idRaiz)?($mediaFiliacion->idRaiz) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -686,7 +686,7 @@ $encrypt = new Encrypt();
                                     foreach ($dorso as  $a) {
 
                                 ?>
-                                        <option <?= (($mediaFiliacion->idDorso) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idDorso)?($mediaFiliacion->idDorso) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -713,7 +713,7 @@ $encrypt = new Encrypt();
                                 if (!empty($ancho_nariz)) :
                                     foreach ($ancho_nariz as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idAnchoNariz) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idAnchoNariz)?($mediaFiliacion->idAnchoNariz) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -740,7 +740,7 @@ $encrypt = new Encrypt();
                                 if (!empty($base_nariz)) :
                                     foreach ($base_nariz as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idBaseNariz) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idBaseNariz)?($mediaFiliacion->idBaseNariz) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -767,7 +767,7 @@ $encrypt = new Encrypt();
                                 if (!empty($altura_nariz)) :
                                     foreach ($altura_nariz as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idAlturaNariz) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idAlturaNariz)?($mediaFiliacion->idAlturaNariz) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -811,7 +811,7 @@ $encrypt = new Encrypt();
                                 if (!empty($tamanno_boca)) :
                                     foreach ($tamanno_boca as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idTamanoBoca) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idTamanoBoca)?($mediaFiliacion->idTamanoBoca) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -838,7 +838,7 @@ $encrypt = new Encrypt();
                                 if (!empty($comisura_boca)) :
                                     foreach ($comisura_boca as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idComisuras) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idComisuras)?($mediaFiliacion->idComisuras) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -882,7 +882,7 @@ $encrypt = new Encrypt();
                                 if (!empty($espesor_labios)) :
                                     foreach ($espesor_labios as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idEspesorLabio) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idEspesorLabio)?($mediaFiliacion->idEspesorLabio) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -909,7 +909,7 @@ $encrypt = new Encrypt();
                                 if (!empty($altura_labial)) :
                                     foreach ($altura_labial as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idAlturaNasolabial) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idAlturaNasolabial)?($mediaFiliacion->idAlturaNasolabial) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -936,7 +936,7 @@ $encrypt = new Encrypt();
                                 if (!empty($prominencia)) :
                                     foreach ($prominencia as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idProminenciaLabio) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idProminenciaLabio)?($mediaFiliacion->idProminenciaLabio) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -980,7 +980,7 @@ $encrypt = new Encrypt();
                                 if (!empty($tipo_menton)) :
                                     foreach ($tipo_menton as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idMentonTipo) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idMentonTipo)?($mediaFiliacion->idMentonTipo) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -1007,7 +1007,7 @@ $encrypt = new Encrypt();
                                 if (!empty($forma_menton)) :
                                     foreach ($forma_menton as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idMentonForma) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idMentonForma)?($mediaFiliacion->idMentonForma) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -1034,7 +1034,7 @@ $encrypt = new Encrypt();
                                 if (!empty($inclinacion_menton)) :
                                     foreach ($inclinacion_menton as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idMentonInclinacion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idMentonInclinacion)?($mediaFiliacion->idMentonInclinacion) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -1078,7 +1078,7 @@ $encrypt = new Encrypt();
                                 if (!empty($forma_ODerecha)) :
                                     foreach ($forma_ODerecha as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idFormaOreja) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idFormaOreja)?($mediaFiliacion->idFormaOreja) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -1120,7 +1120,7 @@ $encrypt = new Encrypt();
                                         if (!empty($original)) :
                                             foreach ($original as  $a) {
                                         ?>
-                                                <option <?= (($mediaFiliacion->idOriginal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                                <option <?= isset($mediaFiliacion->idOriginal)?($mediaFiliacion->idOriginal) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                         <?php
                                             }
@@ -1147,7 +1147,7 @@ $encrypt = new Encrypt();
                                         if (!empty($superior)) :
                                             foreach ($superior as  $a) {
                                         ?>
-                                                <option <?= (($mediaFiliacion->idSuperior) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                                <option <?= isset($mediaFiliacion->idSuperior)?($mediaFiliacion->idSuperior) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                         <?php
                                             }
@@ -1174,7 +1174,7 @@ $encrypt = new Encrypt();
                                         if (!empty($posterior)) :
                                             foreach ($posterior as  $a) {
                                         ?>
-                                                <option <?= (($mediaFiliacion->idPosterior) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                                <option <?= isset($mediaFiliacion->idPosterior)?($mediaFiliacion->idPosterior) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                         <?php
                                             }
@@ -1201,7 +1201,7 @@ $encrypt = new Encrypt();
                                         if (!empty($adherencia)) :
                                             foreach ($adherencia as  $a) {
                                         ?>
-                                                <option <?= (($mediaFiliacion->idAdherenciaHelix) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                                <option <?= isset($mediaFiliacion->idAdherenciaHelix)?($mediaFiliacion->idAdherenciaHelix) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                         <?php
                                             }
@@ -1245,7 +1245,7 @@ $encrypt = new Encrypt();
                                         if (!empty($contorno)) :
                                             foreach ($contorno as  $a) {
                                         ?>
-                                                <option <?= (($mediaFiliacion->idContornoLobulo) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                                <option <?= isset($mediaFiliacion->idContornoLobulo)?($mediaFiliacion->idContornoLobulo) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                         <?php
                                             }
@@ -1272,7 +1272,7 @@ $encrypt = new Encrypt();
                                         if (!empty($adherencia_lobulo)) :
                                             foreach ($adherencia_lobulo as  $a) {
                                         ?>
-                                                <option <?= (($mediaFiliacion->idAdherenciaLobulo) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                                <option <?= isset($mediaFiliacion->idAdherenciaLobulo)?($mediaFiliacion->idAdherenciaLobulo) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                         <?php
                                             }
@@ -1299,7 +1299,7 @@ $encrypt = new Encrypt();
                                         if (!empty($particularidad)) :
                                             foreach ($particularidad as  $a) {
                                         ?>
-                                                <option <?= (($mediaFiliacion->idParticularidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                                <option <?= isset($mediaFiliacion->idParticularidad)?($mediaFiliacion->idParticularidad) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                         <?php
                                             }
@@ -1326,7 +1326,7 @@ $encrypt = new Encrypt();
                                         if (!empty($dimension)) :
                                             foreach ($dimension as  $a) {
                                         ?>
-                                                <option <?= (($mediaFiliacion->idDimensionLobulo) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                                <option <?= isset($mediaFiliacion->idDimensionLobulo)?($mediaFiliacion->idDimensionLobulo) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                         <?php
                                             }
@@ -1372,7 +1372,7 @@ $encrypt = new Encrypt();
                                 if (!empty($tipo_sangre)) :
                                     foreach ($tipo_sangre as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idSangreTipo) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idSangreTipo)?($mediaFiliacion->idSangreTipo) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -1399,7 +1399,7 @@ $encrypt = new Encrypt();
                                 if (!empty($RH_sangre)) :
                                     foreach ($RH_sangre as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idRH) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idRH)?($mediaFiliacion->idRH) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -1443,7 +1443,7 @@ $encrypt = new Encrypt();
                                 if (!empty($SiNo)) :
                                     foreach ($SiNo as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idCicatrices) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idCicatrices)?($mediaFiliacion->idCicatrices) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -1464,7 +1464,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="cicatrices_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="cicatrices_descripcion" name="cicatrices_descripcion" value=" <?= ($mediaFiliacion->descrip_cicatrices) ? $mediaFiliacion->descrip_cicatrices : ''  ?>">
+                            <input type="text" class="form-control " id="cicatrices_descripcion" name="cicatrices_descripcion" value=" <?= isset($mediaFiliacion->descrip_cicatrices) ? $mediaFiliacion->descrip_cicatrices : ''  ?>">
 
                         </div>
                     </div>
@@ -1479,7 +1479,7 @@ $encrypt = new Encrypt();
                                 if (!empty($SiNo)) :
                                     foreach ($SiNo as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idTatuajes) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idTatuajes)?($mediaFiliacion->idTatuajes) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -1500,7 +1500,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="tatuajes_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="tatuajes_descripcion" name="tatuajes_descripcion" value=" <?= ($mediaFiliacion->descrip_tatuajes) ? $mediaFiliacion->descrip_tatuajes : ''  ?>">
+                            <input type="text" class="form-control " id="tatuajes_descripcion" name="tatuajes_descripcion" value=" <?= isset($mediaFiliacion->descrip_tatuajes) ? $mediaFiliacion->descrip_tatuajes : ''  ?>">
 
                         </div>
                     </div>
@@ -1515,7 +1515,7 @@ $encrypt = new Encrypt();
                                 if (!empty($SiNo)) :
                                     foreach ($SiNo as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idLunares) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idLunares)?($mediaFiliacion->idLunares) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -1536,7 +1536,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="lunares_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="lunares_descripcion" name="lunares_descripcion" value=" <?= ($mediaFiliacion->descrip_lunares) ? $mediaFiliacion->descrip_lunares : ''  ?>">
+                            <input type="text" class="form-control " id="lunares_descripcion" name="lunares_descripcion" value=" <?= isset($mediaFiliacion->descrip_lunares) ? $mediaFiliacion->descrip_lunares : ''  ?>">
 
                         </div>
                     </div>
@@ -1551,7 +1551,7 @@ $encrypt = new Encrypt();
                                 if (!empty($SiNo)) :
                                     foreach ($SiNo as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idDefectos) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idDefectos)?($mediaFiliacion->idDefectos) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -1573,7 +1573,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="fisico_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="fisico_descripcion" name="fisico_descripcion" value=" <?= ($mediaFiliacion->descrip_defectos) ? $mediaFiliacion->descrip_defectos : ''  ?>">
+                            <input type="text" class="form-control " id="fisico_descripcion" name="fisico_descripcion" value=" <?= isset($mediaFiliacion->descrip_defectos) ? $mediaFiliacion->descrip_defectos : ''  ?>">
 
                         </div>
                     </div>
@@ -1588,7 +1588,7 @@ $encrypt = new Encrypt();
                                 if (!empty($SiNo)) :
                                     foreach ($SiNo as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idProtesis) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> 
+                                        <option <?= isset($mediaFiliacion->idProtesis)?($mediaFiliacion->idProtesis) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> 
 
                                 <?php
                                     }
@@ -1609,7 +1609,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="protesis_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="protesis_descripcion" name="protesis_descripcion" value=" <?= ($mediaFiliacion->descrip_protesis) ? $mediaFiliacion->descrip_protesis : ''  ?>">
+                            <input type="text" class="form-control " id="protesis_descripcion" name="protesis_descripcion" value=" <?= isset($mediaFiliacion->descrip_protesis) ? $mediaFiliacion->descrip_protesis : ''  ?>">
 
                         </div>
                     </div>
@@ -1624,7 +1624,7 @@ $encrypt = new Encrypt();
                                 if (!empty($SiNo)) :
                                     foreach ($SiNo as  $a) {
                                 ?>
-                                        <option <?= (($mediaFiliacion->idDiscapacidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
+                                        <option <?= isset($mediaFiliacion->idDiscapacidad)?($mediaFiliacion->idDiscapacidad) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option> }
 
                                 <?php
                                     }
@@ -1645,7 +1645,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="discapacidad_descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="discapacidad_descripcion" name="discapacidad_descripcion" value=" <?= ($mediaFiliacion->descrip_discapacidad) ? $mediaFiliacion->descrip_discapacidad : ''  ?>">
+                            <input type="text" class="form-control " id="discapacidad_descripcion" name="discapacidad_descripcion" value=" <?= isset($mediaFiliacion->descrip_discapacidad) ? $mediaFiliacion->descrip_discapacidad : ''  ?>">
 
                         </div>
                     </div>
