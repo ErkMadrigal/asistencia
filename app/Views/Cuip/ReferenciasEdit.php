@@ -12,6 +12,8 @@ $encrypt = new Encrypt();
         <h3 class="card-title">FAMILIAR CERCANO</h3>
 
         <div class="card-tools">
+            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
+        <input type="checkbox" class="form-check-input mt-2" id="btnNingunoFam">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
             </button>
@@ -293,7 +295,7 @@ $encrypt = new Encrypt();
                     </div>
                 </div>                
             </div>
-
+        </form>    
     </div>
 </div>
 
@@ -302,6 +304,8 @@ $encrypt = new Encrypt();
         <h3 class="card-title">PARIENTE CERCANO</h3>
 
         <div class="card-tools">
+            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" class="form-check-input mt-2" id="btnNingunoCer">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
             </button>
@@ -309,7 +313,7 @@ $encrypt = new Encrypt();
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-
+        <form class="form-horizontal" id="parienteCer">
         <div class="row">
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
@@ -580,7 +584,7 @@ $encrypt = new Encrypt();
                     </div>
                 </div>
             </div>
-            
+        </form>    
         </div>
 
     </div>
@@ -591,6 +595,8 @@ $encrypt = new Encrypt();
         <h3 class="card-title">PERSONAL</h3>
 
         <div class="card-tools">
+            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" class="form-check-input mt-2" id="btnNingunoPer">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
             </button>
@@ -598,7 +604,7 @@ $encrypt = new Encrypt();
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-
+        <form class="form-horizontal" id="formPersonal">
         <div class="row">
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
@@ -872,6 +878,7 @@ $encrypt = new Encrypt();
                     </div>
                 </div>
             </div>
+        </form>
         </div>
     </div>
 </div>
@@ -881,6 +888,8 @@ $encrypt = new Encrypt();
         <h3 class="card-title">LABORAL</h3>
 
         <div class="card-tools">
+            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" class="form-check-input mt-2" id="btnNingunoLa">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
             </button>
@@ -888,7 +897,7 @@ $encrypt = new Encrypt();
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-
+        <form class="form-horizontal" id="formLaboral">
         <div class="row">
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
@@ -1162,9 +1171,10 @@ $encrypt = new Encrypt();
                         </script>
                     </div>
                 </div>
-            </div>            
+            </div>
+        </form>                
         </div>
-        </form>
+        
     </div>
 </div>
 <div class="card-footer bg-transparent clearfix">
@@ -1200,8 +1210,78 @@ $encrypt = new Encrypt();
         $('#load').addClass("spinner-border");
 
         var idPersonal = $('#idPersonal').val()
-        var formData = new FormData($("form#referencias")[0]);
+        var idReferencia = $('#idReferencia').val()
+        var formData = new FormData();
         formData.append('idPersonal', idPersonal);
+        var csrfName = $("input[name=app_csrf]").val();
+        
+        formData.append('app_csrf', csrfName);
+        formData.append('idReferencia', idReferencia);
+
+        if($('#btnNingunoFam').is(':checked')) {
+            valFamiliar = 1;
+            
+        } else {
+            valFamiliar = 0;
+
+            var formDataD = new FormData($("form#referencias")[0]);
+
+
+            for (let [key, value] of formDataD.entries()) {
+                formData.append(key, value);
+            }
+            
+        }
+
+        if($('#btnNingunoCer').is(':checked')) {
+            valFamCercano = 1;
+            
+        } else {
+            valFamCercano = 0;
+
+            var formDataE = new FormData($("form#parienteCer")[0]);
+
+
+            for (let [key, value] of formDataE.entries()) {
+                formData.append(key, value);
+            }
+            
+        }
+
+        if($('#btnNingunoPer').is(':checked')) {
+            valrefpersonal = 1;
+            
+        } else {
+            valrefpersonal = 0;
+
+            var formDataJ = new FormData($("form#formPersonal")[0]);
+
+
+            for (let [key, value] of formDataJ.entries()) {
+                formData.append(key, value);
+            }
+            
+        }
+
+        if($('#btnNingunoLa').is(':checked')) {
+            valrefLaboral = 1;
+            
+        } else {
+            valrefLaboral = 0;
+
+            var formDataH = new FormData($("form#formLaboral")[0]);
+
+
+            for (let [key, value] of formDataH.entries()) {
+                formData.append(key, value);
+            }
+            
+        }
+
+        formData.append('familiar', valFamiliar);
+        formData.append('cercano', valFamCercano);
+        formData.append('personal', valrefpersonal);
+        formData.append('laboral', valrefLaboral);
 
         $.ajax({
             url: base_url + '/EditarReferencias',
@@ -1255,6 +1335,86 @@ $encrypt = new Encrypt();
         });
 
         $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
+
+    });
+
+    $(document).on('click','#btnNingunoFam',function(){ 
+
+        if($('#btnNingunoFam').is(':checked')) {
+
+
+            $('#referencias input').attr('disabled','disabled');
+            
+            $('#referencias select').attr('disabled','disabled');
+            
+
+        } else {
+            $('#referencias input').attr('disabled',false);
+            
+            $('#referencias select').attr('disabled',false);
+            
+        }
+
+
+    });
+
+    $(document).on('click','#btnNingunoCer',function(){ 
+
+        if($('#btnNingunoCer').is(':checked')) {
+
+
+            $('#parienteCer input').attr('disabled','disabled');
+            
+            $('#parienteCer select').attr('disabled','disabled');
+            
+
+        } else {
+            $('#parienteCer input').attr('disabled',false);
+            
+            $('#parienteCer select').attr('disabled',false);
+            
+        }
+
+
+    });
+
+    $(document).on('click','#btnNingunoPer',function(){ 
+
+        if($('#btnNingunoPer').is(':checked')) {
+
+
+            $('#formPersonal input').attr('disabled','disabled');
+            
+            $('#formPersonal select').attr('disabled','disabled');
+            
+
+        } else {
+            $('#formPersonal input').attr('disabled',false);
+            
+            $('#formPersonal select').attr('disabled',false);
+            
+        }
+
+
+    });
+
+    $(document).on('click','#btnNingunoLa',function(){ 
+
+        if($('#btnNingunoLa').is(':checked')) {
+
+
+            $('#formLaboral input').attr('disabled','disabled');
+            
+            $('#formLaboral select').attr('disabled','disabled');
+            
+
+        } else {
+            $('#formLaboral input').attr('disabled',false);
+            
+            $('#formLaboral select').attr('disabled',false);
+            
+        }
+
 
     });
 </script>

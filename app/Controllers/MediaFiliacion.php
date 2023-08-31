@@ -727,8 +727,6 @@ class MediaFiliacion extends BaseController {
 				$rules = [
 				'idPersonal' =>  ['label' => "
 				", 'rules' => 'required'],
-				'idMediaFiliacion' =>  ['label' => "
-				", 'rules' => 'required'],	
 				'complexion' =>  ['label' => "Complexión", 'rules' => 'required'],
 				'piel' =>  ['label' => "Piel", 'rules' => 'required'],
 				'cara' =>  ['label' => "Cara", 'rules' => 'required'],
@@ -803,8 +801,21 @@ class MediaFiliacion extends BaseController {
 					$LoggedUserId = $this->encrypter->decrypt($getUser);
 					$empresa = session()->get('empresa');
 					$idEmpresa = $this->encrypter->decrypt($empresa);
-					$uuid = $this->request->getPost('idMediaFiliacion');
-        			$id = $this->encrypt->Decrytp($uuid);
+
+					$valMedFilia = $this->request->getPost('idMediaFiliacion');
+
+					if (isset($valMedFilia)){
+						$uuid = $this->request->getPost('idMediaFiliacion');
+						$id = $this->encrypt->Decrytp($uuid);
+						$tipo = 1;
+					} else {
+						$uuid = Uuid::uuid4();
+        				$id = $uuid->toString();
+						$tipo = 2;
+					}
+
+					
+        			
 
         			
         			$getComplexion = $this->request->getPost('complexion');
@@ -1004,7 +1015,7 @@ class MediaFiliacion extends BaseController {
         			$discapacidad = $this->encrypt->Decrytp($getDiscapacidad);
 
         			
-
+        			if($tipo == 1){
 
 					$mediaFiliacion = array(
 		    					
@@ -1071,8 +1082,78 @@ class MediaFiliacion extends BaseController {
 						"updatedby" => $LoggedUserId , 
 						"updateddate" => date("Y-m-d H:i:s") );
 
-					
-					$result = $this->modelMediaFiliacion->updateMediaFiliacion( $mediaFiliacion,$idPersonal,$id);
+						$result = $this->modelMediaFiliacion->updateMediaFiliacion( $mediaFiliacion,$idPersonal,$id);
+
+				} elseif($tipo == 2){
+
+					$mediaFiliacion = array(
+		    					
+		    			"id" => $id  ,
+						"idPersonal" => $idPersonal  , 
+						"idEmpresa" =>  $idEmpresa , 
+						"idComplexion" => $complexion , 
+						"idPiel" => $piel , 
+						"idCara" => $cara , 
+						"idCantidadCabello" => $cabello_cantidad , 
+						"idColorCabello" => $color_cabello , 
+						"idFormaCabello" => $forma_cabello , 
+						"idCalvicie" => $calvicie_cabello , 
+						"idImplantacionCabello" => $implatacion_cabello , 
+						"idAlturaFrente" => $altura , 
+						"idInclinacionFrente" => $inclinacion , 
+						"idAnchoFrente" => $ancho , 
+						"idDireccionCejas" => $direccion_cejas , 
+						"idImplantacionCejas" => $implantacion_cejas , 
+						"idFormaCejas" => $forma , 
+						"idTamanoCejas" => $tamanno , 
+						"idColorOjos" => $color , 
+						"idFormaOjos" => $forma_ojos , 
+						"idTamanoOjos" => $tamanno_ojos , 
+						"idRaiz" => $raiz , 
+						"idDorso" => $dorso , 
+						"idAnchoNariz" => $ancho_nariz , 
+						"idBaseNariz" => $base_nariz , 
+						"idAlturaNariz" => $altura_nariz , 
+						"idTamanoBoca" => $tamanno_boca , 
+						"idComisuras" => $comisura_boca , 
+						"idEspesorLabio" => $espesor_labios , 
+						"idAlturaNasolabial" => $altura_labial , 
+						"idProminenciaLabio" => $prominencia , 
+						"idMentonTipo" => $tipo_menton , 
+						"idMentonForma" => $forma_menton , 
+						"idMentonInclinacion" => $inclinacion_menton , 
+						"idFormaOreja" => $forma_ODerecha , 
+						"idOriginal" => $original , 
+						"idSuperior" => $superior , 
+						"idPosterior" => $posterior , 
+						"idAdherenciaHelix" => $adherencia , 
+						"idContornoLobulo" => $contorno , 
+						"idAdherenciaLobulo" => $adherencia_lobulo , 
+						"idParticularidad" => $particularidad , 
+						"idDimensionLobulo" => $dimension , 
+						"idSangreTipo" => $tipo_sangre , 
+						"idRH" => $RH_sangre , 
+						"idUsaAnteojos" => $anteojos , 
+						"estatura" => $this->request->getPost('estatura') , 
+						"peso" => $this->request->getPost('peso') , 
+						"idCicatrices" => $cicatrices , 
+						"descrip_cicatrices" => $this->request->getPost('cicatrices_descripcion') , 
+						"idTatuajes" => $tatuajes , 
+						"descrip_tatuajes" => $this->request->getPost('tatuajes_descripcion') , 
+						"idLunares" => $lunares , 
+						"descrip_lunares" => $this->request->getPost('lunares_descripcion') , 
+						"idDefectos" => $fisico , 
+						"descrip_defectos" => $this->request->getPost('fisico_descripcion') , 
+						"idProtesis" => $protesis , 
+						"descrip_protesis" => $this->request->getPost('protesis_descripcion') , 
+						"idDiscapacidad" => $discapacidad , 
+						"descrip_discapacidad" => $this->request->getPost('discapacidad_descripcion') ,
+						"activo" => 1,
+						"createdby" => $LoggedUserId , 
+						"createddate" => date("Y-m-d H:i:s") );
+
+						$result = $this->modelMediaFiliacion->insertMediaFiliacion( $mediaFiliacion);
+				}
 
 					
 					

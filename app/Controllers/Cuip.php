@@ -1007,7 +1007,11 @@ class Cuip extends BaseController {
 					'tipo_baja' =>  ['label' => "Tipo de Baja", 'rules' => 'required|max_length[255]'],
 					'comentarios' =>  ['label' => "Comentarios", 'rules' => 'required|max_length[255]']];
 		 
-				
+				} else {
+
+					$rules = [
+					'idPersonal' =>  ['label' => "", 'rules' => 'required']];	
+				}
 
 
 
@@ -1023,18 +1027,20 @@ class Cuip extends BaseController {
 	        			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
 
 	        			
-	        			$getIngresoEmpPublic = $this->request->getPost('ingresoEmpPublic');
+	        			if($datos == 0){
 
-	        			$ingresoEmpPublic = date( "Y-m-d" ,strtotime($getIngresoEmpPublic));
+	        				$getIngresoEmpPublic = $this->request->getPost('ingresoEmpPublic');
+
+	        				$ingresoEmpPublic = date( "Y-m-d" ,strtotime($getIngresoEmpPublic));
 
 
-	        			$getSeparacion = $this->request->getPost('separacionEmpSeg');
+	        				$getSeparacion = $this->request->getPost('separacionEmpSeg');
 
-	        			$separacion = date( "Y-m-d" ,strtotime($getSeparacion));
+	        				$separacion = date( "Y-m-d" ,strtotime($getSeparacion));
 
 	        			
 
-						$empleosSeguridad = array(
+							$empleosSeguridad = array(
 			    					
 			    					
 							"id" => $id  ,
@@ -1072,6 +1078,46 @@ class Cuip extends BaseController {
 							"activo" => 1 , 
 							"createdby" => $LoggedUserId , 
 							"createddate" => date("Y-m-d H:i:s") );
+						}	
+						else {
+
+							$empleosSeguridad = array(
+			    					
+			    					
+							"id" => $id  ,
+							"idPersonal" => $idPersonal  , 
+							"idEmpresa" =>  $idEmpresa , 
+							"dependencia" =>  "" , 
+							"corporacion" =>  "" ,
+							"calle" =>  ""  , 
+							"numero_interior" => ""  , 
+							"colonia" =>  "" , 
+							"idCodigoPostal" => ""  , 
+							"ingreso" =>  "" , 
+							"separacion" =>  "" , 
+							"idPuestoFuncional" =>  "" , 
+							"funciones" => ""  , 
+							"especialidad" => ""  , 
+							"rango" =>  "" , 
+							"numero_placa" => ""  , 
+							"numero_empleado" => ""  , 
+							"sueldo_base" => ""  , 
+							"compensacion" =>  "" , 
+							"area" =>  "" , 
+							"division" =>  "" , 
+							"cuip_jefe" =>  "" , 
+							"nombre_jefe" =>  "" , 
+							"idEstado" =>  "" , 
+							"municipio" => ""  , 
+							"idMotivoSeparacion" =>  "" , 
+							"tipo_separacion" => ""  , 
+							"tipo_baja" =>  "" , 
+							"comentarios" => "" , 
+							"activo" => 1 , 
+							"createdby" => $LoggedUserId , 
+							"createddate" => date("Y-m-d H:i:s") );
+
+						}	
 						
 
 						$result = $this->modelCuip->insertEmpleosSeguridad( $empleosSeguridad);
@@ -1094,11 +1140,7 @@ class Cuip extends BaseController {
 					} else {	
 						$errors = $this->validator->getErrors();
 					}
-				} else {
-
-					$dontSucces = ["error" => "error",
-                    				  "mensaje" => 	'Ningun dato capturado'  ];	
-				}	
+					
 				
 				
 
@@ -1131,7 +1173,7 @@ class Cuip extends BaseController {
 				$resoluciones = $this->request->getPost('resoluciones');
 				$estimulo = $this->request->getPost('estimulo');
 
-				if( $sanciones == 0 && $resoluciones == 0 && $estimulo == 0){
+				
 
 					if($sanciones == 0){
 				
@@ -1151,6 +1193,9 @@ class Cuip extends BaseController {
 					$rules['termino_inhabilitacionB'] =  ['label' => "Término de la inhabilitación", 'rules' => 'required_with[tipoB,determinacionB,descripcionB,situacionB,inicio_inhabilitacionB,organismoB]'];
 					$rules['organismoB'] =  ['label' => "Dependencia u organismo que emite la determinación", 'rules' => 'required_with[tipoB,determinacionB,descripcionB,situacionB,inicio_inhabilitacionB,termino_inhabilitacionB]|max_length[255]'];
 
+				} else {
+
+					$rules['idPersonal'] =  ['label' => "", 'rules' => 'required'];
 				}
 
 			if($resoluciones == 0){
@@ -1193,7 +1238,10 @@ class Cuip extends BaseController {
 				$rules['inicio_procesoB'] =  ['label' => "Inicio del proceso", 'rules' => 'required_with[emisoraB,entidad_federativaSEB,delitosB,motivoB,no_expedienteB,agencia_mpB,averiguacion_previaB,tipo_fueroB,averiguacion_estadoB,inicio_averiguacionB,al_diaB,juzgadoB,no_procesoB,estado_procesalB,al_dia_procesoB]'];
 				$rules['al_dia_procesoB'] =  ['label' => "Al día", 'rules' => 'required_with[emisoraB,entidad_federativaSEB,delitosB,motivoB,no_expedienteB,agencia_mpB,averiguacion_previaB,tipo_fueroB,averiguacion_estadoB,inicio_averiguacionB,al_diaB,juzgadoB,no_procesoB,estado_procesalB,inicio_procesoB]'];
 
-			} 
+			} else {
+
+				$rules['idPersonal'] =  ['label' => "", 'rules' => 'required'];
+			}
 
 			if($estimulo == 0){
 
@@ -1208,6 +1256,9 @@ class Cuip extends BaseController {
 				$rules['dependenciaB'] =  ['label' => "Dependencia que otorga", 'rules' => 'required_with[tipo_estimuloB,descripcion_estimuloB,otrogado_estimuloB]|max_length[255]'];
 				$rules['otrogado_estimuloB'] =  ['label' => "Otorgado", 'rules' => 'required_with[tipo_estimuloB,descripcion_estimuloB,dependenciaB]'];
 				
+			} else {
+
+				$rules['idPersonal'] =  ['label' => "", 'rules' => 'required'];
 			}	 
 		 
 				
@@ -1273,6 +1324,27 @@ class Cuip extends BaseController {
 							$i = 3;
 						}
 					}
+				} else {
+
+					$uuid = Uuid::uuid4();
+					$idSan = $uuid->toString();
+
+					$datosSanciones[] = array(
+
+						"id" => $idSan ,
+						"idPersonal" => $idPersonal , 
+						"idEmpresa" => $idEmpresa ,
+						"tipo_sancion" =>  "" , 
+						"determinacion" =>  "" , 
+						"descripcion_sancion" => ""  , 
+						"situacion" =>  "" , 
+						"inicio_habilitacion" =>  "" , 
+						"termino_habilitacion" => ""  , 
+						"dependencia" =>  "" ,
+						"activo" => 1 , 
+						"createdby" => $LoggedUserId , 
+						"createddate" => date("Y-m-d H:i:s"));
+
 				}
 
 				if ($resoluciones == 0){	
@@ -1342,6 +1414,37 @@ class Cuip extends BaseController {
 							$i = 3;
 						}
 					}
+				} else {
+
+					$uuid = Uuid::uuid4();
+					$idRes = $uuid->toString();
+
+					$datosResoluciones[] = array(
+
+							"id" => $idRes ,
+							"idPersonal" => $idPersonal , 
+							"idEmpresa" => $idEmpresa ,
+							"institucion_emisora" =>  "" , 
+							"idEstado" =>  "" , 
+							"delitos" =>  "" , 
+							"motivos" =>  "" , 
+							"numero_expediente" =>  "" , 
+							"agencia_mp" =>  "" , 
+							"averiguacion_previa" =>  "" , 
+							"idTipoFuero" =>  "" , 
+							"estado_averiguacion" =>  "" , 
+							"inicio_averiguacion" =>  "" , 
+							"aldia_averiguacion" => ""  , 
+							"juzgado" =>  "" , 
+							"num_proceso" =>  "" , 
+							"estado_procesal" => ""  , 
+							"inicio_proceso" => ""  , 
+							"aldia_proceso" =>  "" ,
+							"activo" => 1 , 
+							"createdby" => $LoggedUserId , 
+							"createddate" => date("Y-m-d H:i:s"));
+
+
 				}
 
 
@@ -1380,6 +1483,24 @@ class Cuip extends BaseController {
 								}
 						}
 				
+					} else {
+
+						$uuid = Uuid::uuid4();
+						$idEst = $uuid->toString();
+
+						$datosEstimulos[] = array(
+
+								"id" => $idEst ,
+								"idPersonal" => $idPersonal , 
+								"idEmpresa" => $idEmpresa ,
+								"tipo_estimulo" => ""  , 
+								"descripcion_estimulo" => ""  , 
+								"dependencia_otorga" => ""  , 
+								"otorgado" =>  "" ,
+								"activo" => 1 , 
+								"createdby" => $LoggedUserId , 
+								"createddate" => date("Y-m-d H:i:s"));
+
 					}	
 
 					
@@ -1404,11 +1525,7 @@ class Cuip extends BaseController {
 						$errors = $this->validator->getErrors();
 					}
 
-				} else {
-
-					$dontSucces = ["error" => "error",
-                    				  "mensaje" => 	'Ningun dato capturado'  ];	
-				}	
+				
 					
 
 			} else {
@@ -1439,7 +1556,7 @@ class Cuip extends BaseController {
 				$habilidad = $this->request->getPost('habilidad');
 				$afiliacion = $this->request->getPost('afiliacion');
 
-				if($publica == 0 && $capacitacion == 0 && $valIdioma == 0 && $habilidad == 0 && $afiliacion == 0 ){
+				
 
 					if($capacitacion == 0){
 				
@@ -1467,7 +1584,10 @@ class Cuip extends BaseController {
 						$rules['duracionB'] =  ['label' => "Duración en horas", 'rules' => 'required_with[dependenciaB,institucionB,nombre_cursoB,tema_cursoB,nivel_cursoB,eficienciaCursosB,inicioB,conclusionB,comprobanteB]|max_length[255]'];
 						$rules['comprobanteB'] =  ['label' => "Tipo de comprobante", 'rules' => 'required_with[dependenciaB,institucionB,nombre_cursoB,tema_cursoB,nivel_cursoB,eficienciaCursosB,inicioB,conclusionB,duracionB]|max_length[255]'];
 
-					} 
+					} else {
+
+						$rules['idPersonal'] =  ['label' => "", 'rules' => 'required'];
+					}
 
 					if($publica == 0){
 					
@@ -1494,7 +1614,10 @@ class Cuip extends BaseController {
 						$rules['conclusionAdicionalB'] =  ['label' => "Conclusión", 'rules' => 'required_with[empresaB,cursoB,tipo_cursoB,cuso_tomadoB,eficienciaB,inicioAdicionalB,duracion_horasB]'];
 						
 
-					} 
+					} else {
+
+						$rules['idPersonal'] =  ['label' => "", 'rules' => 'required'];
+					}
 
 					if($valIdioma == 0){
 					
@@ -1510,6 +1633,9 @@ class Cuip extends BaseController {
 						$rules['lecturaB'] =  ['label' => "Lectura", 'rules' => 'required_with[idiomaB,escrituraB,conversacionB]'];
 						$rules['conversacionB'] =  ['label' => "Conversación", 'rules' => 'required_with[idiomaB,escrituraB,lecturaB]'];
 
+					} else {
+
+						$rules['idPersonal'] =  ['label' => "", 'rules' => 'required'];
 					}
 
 					if($habilidad == 0){
@@ -1524,6 +1650,9 @@ class Cuip extends BaseController {
 						$rules['especificacionB'] =  ['label' => "Especifique", 'rules' => 'required_with[tipo_habilidadB,grado_habilidadCapB]|max_length[255]'];
 						$rules['grado_habilidadCapB'] =  ['label' => "Grado de aptitude o dominio", 'rules' => 'required_with[tipo_habilidadB,especificacionB]'];
 
+					} else {
+
+						$rules['idPersonal'] =  ['label' => "", 'rules' => 'required'];
 					}
 
 					if($afiliacion == 0){
@@ -1544,6 +1673,9 @@ class Cuip extends BaseController {
 						$rules['desdeB'] =  ['label' => "Desde", 'rules' => 'required_with[nombreB,tipoAgrupaB,hastaB]'];
 						$rules['hastaB'] =  ['label' => "Hasta", 'rules' => 'required_with[nombreB,tipoAgrupaB,desdeB]'];
 
+					} else {
+
+						$rules['idPersonal'] =  ['label' => "", 'rules' => 'required'];
 					}
 
 
@@ -1566,7 +1698,7 @@ class Cuip extends BaseController {
         			$datosAfiliacion=[];
 
 
-        			if ($capacitacion == 0){	
+        			if ($capacitacion == 0){  	
 						$val ="";
 						$clockSequence = 16383;
 						for ($i = 1; $i <= 2; $i++) {
@@ -1619,7 +1751,30 @@ class Cuip extends BaseController {
 							}
   							
 						}
-					} 
+					} else {
+
+						$uuid = Uuid::uuid4();
+						$idCap = $uuid->toString();
+
+
+						$datosCapacitacion[] = array(
+
+								"id" => $idCap ,
+								"idPersonal" => $idPersonal , 
+								"idEmpresa" => $idEmpresa ,
+								"institucion"  => ""  , 
+								"curso"  =>  "" , 
+								"tipo_curso"  =>  "" , 
+								"idCursoFue"  => ""  , 
+								"idEficienciaAdicional"  => ""  , 
+								"inicio_adicional"  =>  "" , 
+								"conclusion_adicional"  =>  "" , 
+								"duracion_horas_adicional"  => ""  , 
+								"activo" => 1 , 
+								"createdby" => $LoggedUserId , 
+								"createddate" => date("Y-m-d H:i:s"));
+
+					}
 
 					if ($publica == 0){
 
@@ -1675,6 +1830,31 @@ class Cuip extends BaseController {
 							}	
 						
 						}
+					} else {
+
+						$uuid = Uuid::uuid4();
+						$idPubli = $uuid->toString();
+
+
+						$datosPublica[] = array(
+
+								"id" => $idPubli ,
+								"idPersonal" => $idPersonal , 
+								"idEmpresa" => $idEmpresa ,
+								"dependencia"  =>  "" , 
+								"inst_capacitadora"  =>  "" , 
+								"nombre_curso"  =>  "" , 
+								"tema_curso"  =>  "" , 
+								"idNivel_curso"  =>  "" , 
+								"idEficienciaCurso"  =>  "" , 
+								"inicio_curso"  =>  "" , 
+								"conclusion_curso"  => ""  , 
+								"duracion_horas_curso"  =>  "" , 
+								"tipo_comprobante"  =>  "" ,
+								"activo" => 1 , 
+								"createdby" => $LoggedUserId , 
+								"createddate" => date("Y-m-d H:i:s"));
+
 					}
 
 					if ($valIdioma == 0){	
@@ -1723,7 +1903,24 @@ class Cuip extends BaseController {
 								$i = 3;
 							}
 						}
-					} 
+					}  else {
+
+						$uuid = Uuid::uuid4();
+						$idIdioma = $uuid->toString();
+
+						$datosIdioma[] = array(
+
+								"id" => $idIdioma ,
+								"idPersonal" => $idPersonal , 
+								"idEmpresa" => $idEmpresa ,
+								"idIdioma"  =>  "" , 
+								"idIdiomaLectura"  => ""  , 
+								"idIdiomaEscritura"  =>  "" , 
+								"idIdiomaConversacion"  => ""  ,
+								"activo" => 1 , 
+								"createdby" => $LoggedUserId , 
+								"createddate" => date("Y-m-d H:i:s"));
+					}
 
 					if ($habilidad == 0){	
 						$val ="";
@@ -1762,7 +1959,24 @@ class Cuip extends BaseController {
 								$i = 3;
 							}
 						}
-					} 
+					} else {
+
+						$uuid = Uuid::uuid4();
+						$idHab = $uuid->toString();
+
+						$datosHabilidad[] = array(
+
+								"id" => $idHab ,
+								"idPersonal" => $idPersonal , 
+								"idEmpresa" => $idEmpresa ,
+								"idTipoHabilidad"  =>  "" , 
+								"especifique_habilidad"  =>  "" , 
+								"idGradoHabilidad"  => ""  ,	
+								"activo" => 1 , 
+								"createdby" => $LoggedUserId , 
+								"createddate" => date("Y-m-d H:i:s"));
+
+					}
 
 					if ($afiliacion == 0){	
 						$val ="";
@@ -1807,7 +2021,25 @@ class Cuip extends BaseController {
 								$i = 3;
 							}
 						}
-					} 
+					} else {
+
+						$uuid = Uuid::uuid4();
+						$idAfil = $uuid->toString();
+
+						$datosAfiliacion[] = array(
+
+								"id" => $idAfil ,
+								"idPersonal" => $idPersonal , 
+								"idEmpresa" => $idEmpresa ,
+								"nombre_agrupacion"  =>  "" , 
+								"idTipoAgrupacion"  =>  "" , 
+						 
+								"desde"  =>  "" , 
+								"hasta"  => "" ,
+								"activo" => 1 , 
+								"createdby" => $LoggedUserId , 
+								"createddate" => date("Y-m-d H:i:s"));
+					}
 
         			
 
@@ -1832,11 +2064,7 @@ class Cuip extends BaseController {
 					$errors = $this->validator->getErrors();
 				}
 
-			} else {
-
-					$dontSucces = ["error" => "error",
-                    				  "mensaje" => 	'Ningun dato capturado'  ];	
-				}	
+				
 
 			} else {
 
@@ -2685,76 +2913,120 @@ class Cuip extends BaseController {
 
 			if(!empty($getIdPersonal)){
 
-				$rules = [
+				$familiar = $this->request->getPost('familiar');
+				$cercano = $this->request->getPost('cercano');
+				$personal = $this->request->getPost('personal');
+				$laboral = $this->request->getPost('laboral');
+
+				if($familiar == 0 || $cercano == 0 || $personal == 0 || $laboral == 0  ){
+
+
+					if($familiar == 0){
+
+
 					////////////////////familiar cercano//////////////////
-				'apellidoPaterno' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
-				'apellidoMaterno' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
-				'primerNombre' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
-				'sexo_fam_cer' =>  ['label' => "Sexo", 'rules' => 'required'],
-				'ocupacion' =>  ['label' => "Ocupacion", 'rules' => 'required'],
-				'parentesco_fam_cercano' =>  ['label' => "Parentesco", 'rules' => 'required'],
-				'calle' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
-				'exterior' =>  ['label' => "Exterior", 'rules' => 'required|max_length[255]'],
+				$rules['apellidoPaterno'] =  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'];
+				$rules['apellidoMaterno'] =  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'];
+				$rules['primerNombre'] =  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'];
+				$rules['sexo_fam_cer'] =  ['label' => "Sexo", 'rules' => 'required'];
+				$rules['ocupacion'] =  ['label' => "Ocupacion", 'rules' => 'required'];
+				$rules['parentesco_fam_cercano'] =  ['label' => "Parentesco", 'rules' => 'required'];
+				$rules['calle'] =  ['label' => "Calle", 'rules' => 'required|max_length[255]'];
+				$rules['exterior'] =  ['label' => "Exterior", 'rules' => 'required|max_length[255]'];
 				
-				'coloniacodigoRefCer' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
-				'codigoRefCer' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'],
-				'numero' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'],
-				'pais' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]'],
-				'estadocodigoRefCer' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
-				'municipiocodigoRefCer' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
-				'ciudadcodigoRefCer' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
-				//////////////////////pariente cercano///////////////////////
-				'apellidoPaternoParCer' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
-				'apellidoMaternoParCer' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
-				'primerNombreParCer' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
+				$rules['coloniacodigoRefCer'] =  ['label' => "Colonia", 'rules' => 'required|max_length[255]'];
+				$rules['codigoRefCer'] =  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'];
+				$rules['numero'] =  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'];
+				$rules['pais'] =  ['label' => "Pais", 'rules' => 'required|max_length[255]'];
+				$rules['estadocodigoRefCer'] =  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'];
+				$rules['municipiocodigoRefCer'] =  ['label' => "Municipio", 'rules' => 'required|max_length[255]'];
+				$rules['ciudadcodigoRefCer'] =  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'];
+
+					} else {
+
+						$rules['idPersonal'] =  ['label' => "", 'rules' => 'required'];
+					}
+
+					if($cercano == 0){
+
+						//////////////////////pariente cercano///////////////////////
+				$rules['apellidoPaternoParCer'] =  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'];
+				$rules['apellidoMaternoParCer'] =  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'];
+				$rules['primerNombreParCer'] =  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'];
 				
-				'sexo_par_cer' =>  ['label' => "Sexo", 'rules' => 'required|max_length[255]'],
-				'ocupacionParCer' =>  ['label' => "Ocupacion", 'rules' => 'required'],
-				'parentesco_cercano' =>  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'],
-				'calleParCer' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
-				'exteriorParCer' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
+				$rules['sexo_par_cer'] =  ['label' => "Sexo", 'rules' => 'required|max_length[255]'];
+				$rules['ocupacionParCer'] =  ['label' => "Ocupacion", 'rules' => 'required'];
+				$rules['parentesco_cercano'] =  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'];
+				$rules['calleParCer'] =  ['label' => "Calle", 'rules' => 'required|max_length[255]'];
+				$rules['exteriorParCer'] =  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'];
 				
-				'codigoParCer' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'],
-				'coloniacodigoParCer' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
-				'numeroParCer' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'],
-				'estadocodigoParCer' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
-				'municipiocodigoParCer' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
-				'ciudadcodigoParCer' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
-				'paisParCer' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]'],
-				'apellidoPaternoRefLab' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
-				'apellidoMaternoRefLab' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
-				'primerNombreRefLab' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
+				$rules['codigoParCer'] =  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'];
+				$rules['coloniacodigoParCer'] =  ['label' => "Colonia", 'rules' => 'required|max_length[255]'];
+				$rules['numeroParCer'] =  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'];
+				$rules['estadocodigoParCer'] =  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'];
+				$rules['municipiocodigoParCer'] =  ['label' => "Municipio", 'rules' => 'required|max_length[255]'];
+				$rules['ciudadcodigoParCer'] =  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'];
+				$rules['paisParCer'] =  ['label' => "Pais", 'rules' => 'required|max_length[255]'];
+
+					} else {
+
+						$rules['idPersonal'] =  ['label' => "", 'rules' => 'required'];
+					}
+
+					if($laboral == 0){
+
+						$rules['apellidoPaternoRefLab'] =  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'];
+				$rules['apellidoMaternoRefLab'] =  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'];
+				$rules['primerNombreRefLab'] =  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'];
 				
-				'sexo_lab' =>  ['label' => "Sexo", 'rules' => 'required|max_length[255]'],
-				'ocupacionRefLab' =>  ['label' => "Ocupacion", 'rules' => 'required'],
-				'parentesco_laboral' =>  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'],
-				'calleRefLab' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
-				'exteriorRefLab' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
+				$rules['sexo_lab'] =  ['label' => "Sexo", 'rules' => 'required|max_length[255]'];
+				$rules['ocupacionRefLab'] = ['label' => "Ocupacion", 'rules' => 'required'];
+				$rules['parentesco_laboral'] =  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'];
+				$rules['calleRefLab'] =  ['label' => "Calle", 'rules' => 'required|max_length[255]'];
+				$rules['exteriorRefLab'] =  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'];
 				
-				'numeroRefLab' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'],
-				'codigoLaboral' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'],
-				'coloniacodigoLaboral' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
-				'estadocodigoLaboral' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
-				'municipiocodigoLaboral' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
-				'ciudadcodigoLaboral' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
-				'paisRefLab' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]'],
-				'apellidoPaternoRefPer' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
-				'apellidoMaternoRefPer' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
-				'primerNombreRefPer' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
+				$rules['numeroRefLab'] =  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'];
+				$rules['codigoLaboral'] =  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'];
+				$rules['coloniacodigoLaboral'] =  ['label' => "Colonia", 'rules' => 'required|max_length[255]'];
+				$rules['estadocodigoLaboral'] =  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'];
+				$rules['municipiocodigoLaboral'] =  ['label' => "Municipio", 'rules' => 'required|max_length[255]'];
+				$rules['ciudadcodigoLaboral'] =  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'];
+				$rules['paisRefLab'] =  ['label' => "Pais", 'rules' => 'required|max_length[255]'];
+
+					} else {
+
+						$rules['idPersonal'] =  ['label' => "", 'rules' => 'required'];
+					}
+
+					if($personal == 0){
+
+						$rules['apellidoPaternoRefPer'] =  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'];
+				$rules['apellidoMaternoRefPer'] =  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'];
+				$rules['primerNombreRefPer'] =  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'];
 				
-				'sexo_per' =>  ['label' => "Sexo", 'rules' => 'required|max_length[255]'],
-				'ocupacionRefPer' =>  ['label' => "Ocupacion", 'rules' => 'required'],
-				'parentesco_personal' =>  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'],
-				'calleRefPer' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
-				'exteriorRefPer' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
+				$rules['sexo_per'] =  ['label' => "Sexo", 'rules' => 'required|max_length[255]'];
+				$rules['ocupacionRefPer'] =  ['label' => "Ocupacion", 'rules' => 'required'];
+				$rules['parentesco_personal'] =  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'];
+				$rules['calleRefPer'] = ['label' => "Calle", 'rules' => 'required|max_length[255]'];
+				$rules['exteriorRefPer'] =  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'];
 				
-				'numeroRefPer' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'],
-				'codigoPersonal' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'],
-				'coloniacodigoPersonal' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
-				'estadocodigoPersonal' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
-				'municipiocodigoPersonal' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
-				'ciudadcodigoPersonal' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
-				'paisRefPer' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]']];
+				$rules['numeroRefPer'] =  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'];
+				$rules['codigoPersonal'] =  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'];
+				$rules['coloniacodigoPersonal'] =  ['label' => "Colonia", 'rules' => 'required|max_length[255]'];
+				$rules['estadocodigoPersonal'] =  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'];
+				$rules['municipiocodigoPersonal'] =  ['label' => "Municipio", 'rules' => 'required|max_length[255]'];
+				$rules['ciudadcodigoPersonal'] =  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'];
+				$rules['paisRefPer'] =  ['label' => "Pais", 'rules' => 'required|max_length[255]'];
+
+					} else {
+
+						$rules['idPersonal'] =  ['label' => "", 'rules' => 'required'];
+					}
+
+				
+				
+				
+				
 		 
 				$errors = [];
 				$succes = [];
@@ -2776,104 +3048,320 @@ class Cuip extends BaseController {
 
         			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
 
-        			
+        			if($familiar == 0){
 
-        			$getSexo_fam_cer = $this->request->getPost('sexo_fam_cer');
+        				$getSexo_fam_cer = $this->request->getPost('sexo_fam_cer');
 
-        			$sexo_fam_cer = $this->encrypt->Decrytp($getSexo_fam_cer);
+        				$sexo_fam_cer = $this->encrypt->Decrytp($getSexo_fam_cer);
 
-        			$getParentesco_fam_cercano = $this->request->getPost('parentesco_fam_cercano');
+        				$getParentesco_fam_cercano = $this->request->getPost('parentesco_fam_cercano');
 
-        			$parentesco_fam_cercano = $this->encrypt->Decrytp($getParentesco_fam_cercano);
+        				$parentesco_fam_cercano = $this->encrypt->Decrytp($getParentesco_fam_cercano);
 
-        			$getPais = $this->request->getPost('pais');
+        				$getPais = $this->request->getPost('pais');
 
-        			$pais = $this->encrypt->Decrytp($getPais);
+        				$pais = $this->encrypt->Decrytp($getPais);
 
-        			$getSexo_per = $this->request->getPost('sexo_per');
+        				$getEstadocodigoRefCer = $this->request->getPost('estadocodigoRefCer');
 
-        			$sexo_per = $this->encrypt->Decrytp($getSexo_per);
+        				$estadocodigoRefCer = $this->encrypt->Decrytp($getEstadocodigoRefCer);
 
-        			$getParentesco_personal = $this->request->getPost('parentesco_personal');
+        				$getMunicipiocodigoRefCer = $this->request->getPost('municipiocodigoRefCer');
 
-        			$parentesco_personal = $this->encrypt->Decrytp($getParentesco_personal);
+        				$municipiocodigoRefCer = $this->encrypt->Decrytp($getMunicipiocodigoRefCer);
 
-        			$getPaisRefPer = $this->request->getPost('paisRefPer');
+        				$getOcupacion = $this->request->getPost('ocupacion');
 
-        			$paisRefPer = $this->encrypt->Decrytp($getPaisRefPer);
+        				$ocupacion = $this->encrypt->Decrytp($getOcupacion);
 
-        			$getSexo_lab = $this->request->getPost('sexo_lab');
+        				$apellido_paterno_fam = strtoupper($this->request->getPost('apellidoPaterno')) ; 
+						$apellido_materno_fam = strtoupper($this->request->getPost('apellidoMaterno')) ; 
+						$primer_nombre_fam = strtoupper($this->request->getPost('primerNombre')) ; 
+						$segundo_nombre_fam = strtoupper($this->request->getPost('segundoNombre'));
+						$calle_fam = strtoupper($this->request->getPost('calle')) ; 
+						$numero_exterior_fam = strtoupper($this->request->getPost('exterior')) ; 
+						$numero_interior_fam = strtoupper($this->request->getPost('interior')) ; 
+						$colonia_fam = strtoupper($this->request->getPost('coloniacodigoRefCer')) ; 
+						$idCodigoPostal_fam = $this->request->getPost('codigoRefCer') ; 
+						$numero_telefono_fam = $this->request->getPost('numero') ;
+						$ciudad_fam = strtoupper($this->request->getPost('ciudadcodigoRefCer')) ;
+					}	
+        			else {
 
-        			$sexo_lab = $this->encrypt->Decrytp($getSexo_lab);
+        				$getSexo_fam_cer = "";
+        				$sexo_fam_cer = "";
+        				$getParentesco_fam_cercano = "";
 
-        			$getParentesco_laboral = $this->request->getPost('parentesco_laboral');
+        				$parentesco_fam_cercano = "";
 
-        			$parentesco_laboral = $this->encrypt->Decrytp($getParentesco_laboral);
+        				$getPais = "";
 
-        			$getPaisRefLab = $this->request->getPost('paisRefLab');
+        				$pais = "";
 
-        			$paisRefLab = $this->encrypt->Decrytp($getPaisRefLab);
+        				$getEstadocodigoRefCer = "";
 
-        			$getSexo_par_cer = $this->request->getPost('sexo_par_cer');
+        				$estadocodigoRefCer = "";
 
-        			$sexo_par_cer = $this->encrypt->Decrytp($getSexo_par_cer);
+        				$getMunicipiocodigoRefCer = "";
 
-        			$getParentesco_cercano = $this->request->getPost('parentesco_cercano');
+        				$municipiocodigoRefCer = "";
 
-        			$parentesco_cercano = $this->encrypt->Decrytp($getParentesco_cercano);
+        				$getOcupacion = "";
+
+        				$ocupacion = "";
+
+        				$apellido_paterno_fam = "" ; 
+						$apellido_materno_fam = ""; 
+						$primer_nombre_fam = "" ; 
+						$segundo_nombre_fam = "";
+						$calle_fam = "" ; 
+						$numero_exterior_fam = "" ; 
+						$numero_interior_fam = "" ; 
+						$colonia_fam = "" ; 
+						$idCodigoPostal_fam = "" ; 
+						$numero_telefono_fam = "";
+						$ciudad_fam = "" ;
+        			}
+
+        			if($cercano == 0){
+
+        				$getSexo_par_cer = $this->request->getPost('sexo_par_cer');
+
+        				$sexo_par_cer = $this->encrypt->Decrytp($getSexo_par_cer);
+
+        				$getParentesco_cercano = $this->request->getPost('parentesco_cercano');
+
+        				$parentesco_cercano = $this->encrypt->Decrytp($getParentesco_cercano);
 
 
-        			$getPaisParCer = $this->request->getPost('paisParCer');
+        				$getPaisParCer = $this->request->getPost('paisParCer');
 
-        			$paisParCer = $this->encrypt->Decrytp($getPaisParCer);
+        				$paisParCer = $this->encrypt->Decrytp($getPaisParCer);
 
-        			$getOcupacion = $this->request->getPost('ocupacion');
+        				$getOcupacionParCer = $this->request->getPost('ocupacionParCer');
 
-        			$ocupacion = $this->encrypt->Decrytp($getOcupacion);
+        				$ocupacionParCer = $this->encrypt->Decrytp($getOcupacionParCer);
 
-        			$getOcupacionParCer = $this->request->getPost('ocupacionParCer');
+        				$getEstadocodigoParCer = $this->request->getPost('estadocodigoParCer');
 
-        			$ocupacionParCer = $this->encrypt->Decrytp($getOcupacionParCer);
+        				$estadocodigoParCer = $this->encrypt->Decrytp($getEstadocodigoParCer);
 
-        			$getOcupacionRefPer = $this->request->getPost('ocupacionRefPer');
+        				$getMunicipiocodigoParCer = $this->request->getPost('municipiocodigoParCer');
 
-        			$ocupacionRefPer = $this->encrypt->Decrytp($getOcupacionRefPer);
+        				$municipiocodigoParCer = $this->encrypt->Decrytp($getMunicipiocodigoParCer);
+        				$apellido_paterno_pariente = strtoupper($this->request->getPost('apellidoPaternoParCer')) ; 
+						$apellido_materno_pariente = strtoupper($this->request->getPost('apellidoMaternoParCer')) ;
+						$primer_nombre_pariente = strtoupper($this->request->getPost('primerNombreParCer')) ;
+						$segundo_nombre_pariente = strtoupper($this->request->getPost('segundoNombreParCer')) ; 
+						$calle_pariente = strtoupper($this->request->getPost('calleParCer')) ; 
+						$numero_exterior_pariente = strtoupper($this->request->getPost('exteriorParCer')) ; 
+						$numero_interior_pariente = strtoupper($this->request->getPost('interiorParCer')) ; 
+						$colonia_pariente = strtoupper($this->request->getPost('coloniacodigoParCer')) ; 
+						$idCodigoPostal_pariente = $this->request->getPost('codigoParCer') ; 
+						$numero_telefono_pariente = $this->request->getPost('numeroParCer') ;
+						$ciudad_pariente = strtoupper($this->request->getPost('ciudadcodigoParCer')) ;
 
-        			$getOcupacionRefLab = $this->request->getPost('ocupacionRefLab');
 
-        			$ocupacionRefLab = $this->encrypt->Decrytp($getOcupacionRefLab);
+					}
+        			else {
 
-        			$getEstadocodigoRefCer = $this->request->getPost('estadocodigoRefCer');
+        				$getSexo_par_cer = "";
 
-        			$estadocodigoRefCer = $this->encrypt->Decrytp($getEstadocodigoRefCer);
+        				$sexo_par_cer = "";
 
-        			$getMunicipiocodigoRefCer = $this->request->getPost('municipiocodigoRefCer');
+        				$getParentesco_cercano = "";
 
-        			$municipiocodigoRefCer = $this->encrypt->Decrytp($getMunicipiocodigoRefCer);
+        				$parentesco_cercano = "";
 
-        			$getEstadocodigoParCer = $this->request->getPost('estadocodigoParCer');
 
-        			$estadocodigoParCer = $this->encrypt->Decrytp($getEstadocodigoParCer);
+        				$getPaisParCer = "";
 
-        			$getMunicipiocodigoParCer = $this->request->getPost('municipiocodigoParCer');
+        				$paisParCer = "";
 
-        			$municipiocodigoParCer = $this->encrypt->Decrytp($getMunicipiocodigoParCer);
+        				$getOcupacionParCer = "";
 
-        			$getEstadocodigoPersonal = $this->request->getPost('estadocodigoPersonal');
+        				$ocupacionParCer = "";
 
-        			$estadocodigoPersonal = $this->encrypt->Decrytp($getEstadocodigoPersonal);
+        				$getEstadocodigoParCer = "";
 
-        			$getMunicipiocodigoPersonal = $this->request->getPost('municipiocodigoPersonal');
+        				$estadocodigoParCer = "";
 
-        			$municipiocodigoPersonal = $this->encrypt->Decrytp($getMunicipiocodigoPersonal);
+        				$getMunicipiocodigoParCer = "";
 
-        			$getEstadocodigoLaboral = $this->request->getPost('estadocodigoLaboral');
+        				$municipiocodigoParCer = "";
+        				$apellido_paterno_pariente = "" ; 
+						$apellido_materno_pariente = "";
+						$primer_nombre_pariente = "";
+						$segundo_nombre_pariente = "" ; 
+						$calle_pariente = "" ; 
+						$numero_exterior_pariente = "" ; 
+						$numero_interior_pariente = "" ; 
+						$colonia_pariente = "" ; 
+						$idCodigoPostal_pariente = "" ; 
+						$numero_telefono_pariente = "" ;
+						$ciudad_pariente = "" ;
+        				
+        			}
 
-        			$estadocodigoLaboral = $this->encrypt->Decrytp($getEstadocodigoLaboral);
+        			if($personal == 0){
 
-        			$getMunicipiocodigoLaboral = $this->request->getPost('municipiocodigoLaboral');
+        				$getSexo_per = $this->request->getPost('sexo_per');
 
-        			$municipiocodigoLaboral = $this->encrypt->Decrytp($getMunicipiocodigoLaboral);
+        				$sexo_per = $this->encrypt->Decrytp($getSexo_per);
+
+        				$getParentesco_personal = $this->request->getPost('parentesco_personal');
+
+        				$parentesco_personal = $this->encrypt->Decrytp($getParentesco_personal);
+
+        				$getPaisRefPer = $this->request->getPost('paisRefPer');
+
+        				$paisRefPer = $this->encrypt->Decrytp($getPaisRefPer);
+
+        				$getEstadocodigoPersonal = $this->request->getPost('estadocodigoPersonal');
+
+        				$estadocodigoPersonal = $this->encrypt->Decrytp($getEstadocodigoPersonal);
+
+        				$getMunicipiocodigoPersonal = $this->request->getPost('municipiocodigoPersonal');
+
+        				$municipiocodigoPersonal = $this->encrypt->Decrytp($getMunicipiocodigoPersonal);
+
+        				$getOcupacionRefPer = $this->request->getPost('ocupacionRefPer');
+
+        				$ocupacionRefPer = $this->encrypt->Decrytp($getOcupacionRefPer);
+
+        				$apellido_paterno_personal = strtoupper($this->request->getPost('apellidoPaternoRefPer')) ; 
+						$apellido_materno_personal = strtoupper($this->request->getPost('apellidoMaternoRefPer')) ; 
+						$primer_nombre_personal = strtoupper($this->request->getPost('primerNombreRefPer')) ; 
+						$segundo_nombre_personal = strtoupper($this->request->getPost('segundoNombreRefPer')) ;
+
+						$calle_personal = strtoupper($this->request->getPost('calleRefPer')) ; 
+						$numero_exterior_personal = strtoupper($this->request->getPost('exteriorRefPer')) ; 
+						$numero_interior_personal = strtoupper($this->request->getPost('interiorRefPer')) ; 
+						$colonia_personal = strtoupper($this->request->getPost('coloniacodigoPersonal')) ; 
+						$idCodigoPostal_personal = $this->request->getPost('codigoPersonal'); 
+						$numero_telefono_personal = $this->request->getPost('numeroRefPer') ;
+						$ciudad_personal = strtoupper($this->request->getPost('ciudadcodigoPersonal')) ;
+        			}
+        			else {
+
+        				$getSexo_per = "";
+
+        				$sexo_per = "";
+
+        				$getParentesco_personal = "";
+
+        				$parentesco_personal = "";
+
+        				$getPaisRefPer = "";
+
+        				$paisRefPer = "";
+
+        				$getEstadocodigoPersonal = "";
+
+        				$estadocodigoPersonal = "";
+
+        				$getMunicipiocodigoPersonal = "";
+
+        				$municipiocodigoPersonal = "";
+
+        				$getOcupacionRefPer = "";
+
+        				$ocupacionRefPer = "";
+
+        				$apellido_paterno_personal = "" ; 
+						$apellido_materno_personal = "" ; 
+						$primer_nombre_personal = "" ; 
+						$segundo_nombre_personal = "" ;
+
+						$calle_personal = "" ; 
+						$numero_exterior_personal = "" ; 
+						$numero_interior_personal = "" ; 
+						$colonia_personal = "" ; 
+						$idCodigoPostal_personal = ""; 
+						$numero_telefono_personal = "" ;
+						$ciudad_personal = "" ;
+        			}
+
+        			if($laboral == 0){
+
+        				$getSexo_lab = $this->request->getPost('sexo_lab');
+
+        				$sexo_lab = $this->encrypt->Decrytp($getSexo_lab);
+
+        				$getParentesco_laboral = $this->request->getPost('parentesco_laboral');
+
+        				$parentesco_laboral = $this->encrypt->Decrytp($getParentesco_laboral);
+
+        				$getPaisRefLab = $this->request->getPost('paisRefLab');
+
+        				$paisRefLab = $this->encrypt->Decrytp($getPaisRefLab);
+
+        				$getEstadocodigoLaboral = $this->request->getPost('estadocodigoLaboral');
+
+        				$estadocodigoLaboral = $this->encrypt->Decrytp($getEstadocodigoLaboral);
+
+        				$getMunicipiocodigoLaboral = $this->request->getPost('municipiocodigoLaboral');
+
+        				$municipiocodigoLaboral = $this->encrypt->Decrytp($getMunicipiocodigoLaboral);
+
+        				$getOcupacionRefLab = $this->request->getPost('ocupacionRefLab');
+
+        				$ocupacionRefLab = $this->encrypt->Decrytp($getOcupacionRefLab);
+
+        				$apellido_paterno_laboral = strtoupper($this->request->getPost('apellidoPaternoRefLab')) ; 
+						$apellido_materno_laboral = strtoupper($this->request->getPost('apellidoMaternoRefLab')) ; 
+						$primer_nombre_laboral = strtoupper($this->request->getPost('primerNombreRefLab')) ; 
+						$segundo_nombre_laboral = strtoupper($this->request->getPost('segundoNombreRefLab')) ;
+
+						$calle_laboral = strtoupper($this->request->getPost('calleRefLab')) ; 
+						$numero_exterior_laboral = strtoupper($this->request->getPost('exteriorRefLab')) ; 
+						$numero_interior_laboral = strtoupper($this->request->getPost('interiorRefLab')) ; 
+						$colonia_laboral = strtoupper($this->request->getPost('coloniacodigoLaboral')) ; 
+						$idCodigoPostal_laboral = $this->request->getPost('codigoLaboral') ; 
+						$numero_telefono_laboral = $this->request->getPost('numeroRefLab') ;
+
+						$ciudad_laboral = strtoupper($this->request->getPost('ciudadcodigoLaboral')) ; 
+					}
+        			else {
+
+        				$getSexo_lab = "";
+
+        				$sexo_lab = "";
+
+        				$getParentesco_laboral = "";
+
+        				$parentesco_laboral = "";
+
+        				$getPaisRefLab = "";
+
+        				$paisRefLab = "";
+
+        				$getEstadocodigoLaboral = "";
+
+        				$estadocodigoLaboral = "";
+
+        				$getMunicipiocodigoLaboral = "";
+
+        				$municipiocodigoLaboral = "";
+
+        				$getOcupacionRefLab = "";
+
+        				$ocupacionRefLab = "";
+
+        				$apellido_paterno_laboral = "" ; 
+						$apellido_materno_laboral = "" ; 
+						$primer_nombre_laboral = "" ; 
+						$segundo_nombre_laboral = "" ;
+
+						$calle_laboral = "" ; 
+						$numero_exterior_laboral = "" ; 
+						$numero_interior_laboral = "" ; 
+						$colonia_laboral = "" ; 
+						$idCodigoPostal_laboral = "" ; 
+						$numero_telefono_laboral = "" ;
+
+						$ciudad_laboral = "" ;
+        			}	
 
         			
 
@@ -2884,76 +3372,76 @@ class Cuip extends BaseController {
 						"id" => $id  ,
 						"idPersonal" => $idPersonal  , 
 						"idEmpresa" =>  $idEmpresa , 
-						"apellido_paterno_fam" => strtoupper($this->request->getPost('apellidoPaterno')) , 
-						"apellido_materno_fam" => strtoupper($this->request->getPost('apellidoMaterno')) , 
-						"primer_nombre_fam" => strtoupper($this->request->getPost('primerNombre')) , 
-						"segundo_nombre_fam" => strtoupper($this->request->getPost('segundoNombre')) , 
+						"apellido_paterno_fam" => $apellido_paterno_fam , 
+						"apellido_materno_fam" => $apellido_materno_fam , 
+						"primer_nombre_fam" => $primer_nombre_fam , 
+						"segundo_nombre_fam" => $segundo_nombre_fam , 
 						"idGenero_fam" => $sexo_fam_cer , 
 						"ocupacion_fam" => $ocupacion , 
 						"idParentesco_fam" => $parentesco_fam_cercano , 
-						"calle_fam" => strtoupper($this->request->getPost('calle')) , 
-						"numero_exterior_fam" => strtoupper($this->request->getPost('exterior')) , 
-						"numero_interior_fam" => strtoupper($this->request->getPost('interior')) , 
-						"colonia_fam" => strtoupper($this->request->getPost('coloniacodigoRefCer')) , 
-						"idCodigoPostal_fam" => $this->request->getPost('codigoRefCer') , 
-						"numero_telefono_fam" => $this->request->getPost('numero') , 
+						"calle_fam" => $calle_fam , 
+						"numero_exterior_fam" => $numero_exterior_fam , 
+						"numero_interior_fam" => $numero_interior_fam , 
+						"colonia_fam" => $colonia_fam , 
+						"idCodigoPostal_fam" => $idCodigoPostal_fam , 
+						"numero_telefono_fam" => $numero_telefono_fam , 
 						"idPaisNacimiento_fam" => $pais , 
 						"idEstado_fam" => $estadocodigoRefCer , 
 						"municipio_fam" => $municipiocodigoRefCer , 
-						"ciudad_fam" => strtoupper($this->request->getPost('ciudadcodigoRefCer')) , 
-						"apellido_paterno_pariente" => strtoupper($this->request->getPost('apellidoPaternoParCer')) , 
-						"apellido_materno_pariente" => strtoupper($this->request->getPost('apellidoMaternoParCer')) , 
-						"primer_nombre_pariente" => strtoupper($this->request->getPost('primerNombreParCer')) , 
-						"segundo_nombre_pariente" => strtoupper($this->request->getPost('segundoNombreParCer')) , 
+						"ciudad_fam" => $ciudad_fam , 
+						"apellido_paterno_pariente" => $apellido_paterno_pariente , 
+						"apellido_materno_pariente" => $apellido_materno_pariente , 
+						"primer_nombre_pariente" => $primer_nombre_pariente , 
+						"segundo_nombre_pariente" => $segundo_nombre_pariente , 
 						"idGenero_pariente" => $sexo_par_cer , 
 						"ocupacion_pariente" => $ocupacionParCer , 
 						"idParentesco_pariente" => $parentesco_cercano , 
-						"calle_pariente" => strtoupper($this->request->getPost('calleParCer')) , 
-						"numero_exterior_pariente" => strtoupper($this->request->getPost('exteriorParCer')) , 
-						"numero_interior_pariente" => strtoupper($this->request->getPost('interiorParCer')) , 
-						"colonia_pariente" => strtoupper($this->request->getPost('coloniacodigoParCer')) , 
-						"idCodigoPostal_pariente" => $this->request->getPost('codigoParCer') , 
-						"numero_telefono_pariente" => $this->request->getPost('numeroParCer') , 
+						"calle_pariente" => $calle_pariente , 
+						"numero_exterior_pariente" => $numero_exterior_pariente , 
+						"numero_interior_pariente" => $numero_interior_pariente , 
+						"colonia_pariente" => $colonia_pariente , 
+						"idCodigoPostal_pariente" => $idCodigoPostal_pariente , 
+						"numero_telefono_pariente" => $numero_telefono_pariente , 
 						"idPaisNacimiento_pariente" => $paisParCer , 
 						"idEstado_pariente" => $estadocodigoParCer , 
 						"municipio_pariente" => $municipiocodigoParCer , 
-						"ciudad_pariente" => strtoupper($this->request->getPost('ciudadcodigoParCer')) , 
+						"ciudad_pariente" => $ciudad_pariente , 
 
-						"apellido_paterno_personal" => strtoupper($this->request->getPost('apellidoPaternoRefPer')) , 
-						"apellido_materno_personal" => strtoupper($this->request->getPost('apellidoMaternoRefPer')) , 
-						"primer_nombre_personal" => strtoupper($this->request->getPost('primerNombreRefPer')) , 
-						"segundo_nombre_personal" => strtoupper($this->request->getPost('segundoNombreRefPer')) , 
+						"apellido_paterno_personal" => $apellido_paterno_personal , 
+						"apellido_materno_personal" => $apellido_materno_personal , 
+						"primer_nombre_personal" => $primer_nombre_personal , 
+						"segundo_nombre_personal" => $segundo_nombre_personal , 
 						"idGenero_personal" => $sexo_per , 
 						"ocupacion_personal" => $ocupacionRefPer , 
 						"idParentesco_personal" => $parentesco_personal , 
-						"calle_personal" => strtoupper($this->request->getPost('calleRefPer')) , 
-						"numero_exterior_personal" => strtoupper($this->request->getPost('exteriorRefPer')) , 
-						"numero_interior_personal" => strtoupper($this->request->getPost('interiorRefPer')) , 
-						"colonia_personal" => strtoupper($this->request->getPost('coloniacodigoPersonal')) , 
-						"idCodigoPostal_personal" => $this->request->getPost('codigoPersonal') , 
-						"numero_telefono_personal" => $this->request->getPost('numeroRefPer') , 
+						"calle_personal" => $calle_personal , 
+						"numero_exterior_personal" => $numero_exterior_personal , 
+						"numero_interior_personal" => $numero_interior_personal , 
+						"colonia_personal" => $colonia_personal , 
+						"idCodigoPostal_personal" => $idCodigoPostal_personal , 
+						"numero_telefono_personal" => $numero_telefono_personal , 
 						"idPaisNacimiento_personal" => $paisRefPer, 
 						"idEstado_personal" => $estadocodigoPersonal , 
 						"municipio_personal" => $municipiocodigoPersonal , 
-						"ciudad_personal" => strtoupper($this->request->getPost('ciudadcodigoPersonal')) ,
+						"ciudad_personal" => $ciudad_personal ,
 
-						"apellido_paterno_laboral" => strtoupper($this->request->getPost('apellidoPaternoRefLab')) , 
-						"apellido_materno_laboral" => strtoupper($this->request->getPost('apellidoMaternoRefLab')) , 
-						"primer_nombre_laboral" => strtoupper($this->request->getPost('primerNombreRefLab')) , 
-						"segundo_nombre_laboral" => strtoupper($this->request->getPost('segundoNombreRefLab')) , 
+						"apellido_paterno_laboral" => $apellido_paterno_laboral , 
+						"apellido_materno_laboral" => $apellido_materno_laboral , 
+						"primer_nombre_laboral" => $primer_nombre_laboral , 
+						"segundo_nombre_laboral" => $segundo_nombre_laboral , 
 						"idGenero_laboral" => $sexo_lab , 
 						"ocupacion_laboral" => $ocupacionRefLab , 
 						"idParentesco_laboral" => $parentesco_laboral , 
-						"calle_laboral" => strtoupper($this->request->getPost('calleRefLab')) , 
-						"numero_exterior_laboral" => strtoupper($this->request->getPost('exteriorRefLab')) , 
-						"numero_interior_laboral" => strtoupper($this->request->getPost('interiorRefLab')) , 
-						"colonia_laboral" => strtoupper($this->request->getPost('coloniacodigoLaboral')) , 
-						"idCodigoPostal_laboral" => $this->request->getPost('codigoLaboral') , 
-						"numero_telefono_laboral" => $this->request->getPost('numeroRefLab') , 
+						"calle_laboral" => $calle_laboral , 
+						"numero_exterior_laboral" => $numero_exterior_laboral , 
+						"numero_interior_laboral" => $numero_interior_laboral , 
+						"colonia_laboral" => $colonia_laboral , 
+						"idCodigoPostal_laboral" => $idCodigoPostal_laboral , 
+						"numero_telefono_laboral" => $numero_telefono_laboral , 
 						"idPaisNacimiento_laboral" => $paisRefLab , 
 						"idEstado_laboral" => $estadocodigoLaboral , 
 						"municipio_laboral" => $municipiocodigoLaboral , 
-						"ciudad_laboral" => strtoupper($this->request->getPost('ciudadcodigoLaboral')) ,
+						"ciudad_laboral" => $ciudad_laboral ,
 						"activo" => 1 , 
 						"createdby" => $LoggedUserId , 
 						"createddate" => date("Y-m-d H:i:s") );
@@ -2979,6 +3467,12 @@ class Cuip extends BaseController {
 				} else {	
 					$errors = $this->validator->getErrors();
 				}
+
+			} else {
+
+					$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Capturar por lo menos una Referencia'  ];	
+				}	
 
 				
 
@@ -4339,78 +4833,120 @@ class Cuip extends BaseController {
 
 			if(!empty($getIdPersonal)){
 
-				$rules = [
-				'idPersonal' =>  ['label' => "", 'rules' => 'required'],
-				'idReferencia' =>  ['label' => "", 'rules' => 'required'],	
+				$familiar = $this->request->getPost('familiar');
+				$cercano = $this->request->getPost('cercano');
+				$personal = $this->request->getPost('personal');
+				$laboral = $this->request->getPost('laboral');
+
+				if($familiar == 0 || $cercano == 0 || $personal == 0 || $laboral == 0  ){
+
+
+					if($familiar == 0){
+
+
 					////////////////////familiar cercano//////////////////
-				'apellidoPaterno' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
-				'apellidoMaterno' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
-				'primerNombre' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
-				'sexo_fam_cer' =>  ['label' => "Sexo", 'rules' => 'required'],
-				'ocupacion' =>  ['label' => "Ocupacion", 'rules' => 'required'],
-				'parentesco_fam_cercano' =>  ['label' => "Parentesco", 'rules' => 'required'],
-				'calle' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
-				'exterior' =>  ['label' => "Exterior", 'rules' => 'required|max_length[255]'],
+				$rules['apellidoPaterno'] =  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'];
+				$rules['apellidoMaterno'] =  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'];
+				$rules['primerNombre'] =  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'];
+				$rules['sexo_fam_cer'] =  ['label' => "Sexo", 'rules' => 'required'];
+				$rules['ocupacion'] =  ['label' => "Ocupacion", 'rules' => 'required'];
+				$rules['parentesco_fam_cercano'] =  ['label' => "Parentesco", 'rules' => 'required'];
+				$rules['calle'] =  ['label' => "Calle", 'rules' => 'required|max_length[255]'];
+				$rules['exterior'] =  ['label' => "Exterior", 'rules' => 'required|max_length[255]'];
 				
-				'coloniacodigoRefCer' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
-				'codigoRefCer' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'],
-				'numero' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'],
-				'pais' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]'],
-				'estadocodigoRefCer' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
-				'municipiocodigoRefCer' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
-				'ciudadcodigoRefCer' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
-				//////////////////////pariente cercano///////////////////////
-				'apellidoPaternoParCer' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
-				'apellidoMaternoParCer' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
-				'primerNombreParCer' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
+				$rules['coloniacodigoRefCer'] =  ['label' => "Colonia", 'rules' => 'required|max_length[255]'];
+				$rules['codigoRefCer'] =  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'];
+				$rules['numero'] =  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'];
+				$rules['pais'] =  ['label' => "Pais", 'rules' => 'required|max_length[255]'];
+				$rules['estadocodigoRefCer'] =  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'];
+				$rules['municipiocodigoRefCer'] =  ['label' => "Municipio", 'rules' => 'required|max_length[255]'];
+				$rules['ciudadcodigoRefCer'] =  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'];
+
+					} else {
+
+						$rules['idPersonal'] =  ['label' => "", 'rules' => 'required'];
+					}
+
+					if($cercano == 0){
+
+						//////////////////////pariente cercano///////////////////////
+				$rules['apellidoPaternoParCer'] =  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'];
+				$rules['apellidoMaternoParCer'] =  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'];
+				$rules['primerNombreParCer'] =  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'];
 				
-				'sexo_par_cer' =>  ['label' => "Sexo", 'rules' => 'required|max_length[255]'],
-				'ocupacionParCer' =>  ['label' => "Ocupacion", 'rules' => 'required'],
-				'parentesco_cercano' =>  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'],
-				'calleParCer' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
-				'exteriorParCer' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
+				$rules['sexo_par_cer'] =  ['label' => "Sexo", 'rules' => 'required|max_length[255]'];
+				$rules['ocupacionParCer'] =  ['label' => "Ocupacion", 'rules' => 'required'];
+				$rules['parentesco_cercano'] =  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'];
+				$rules['calleParCer'] =  ['label' => "Calle", 'rules' => 'required|max_length[255]'];
+				$rules['exteriorParCer'] =  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'];
 				
-				'codigoParCer' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'],
-				'coloniacodigoParCer' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
-				'numeroParCer' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'],
-				'estadocodigoParCer' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
-				'municipiocodigoParCer' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
-				'ciudadcodigoParCer' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
-				'paisParCer' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]'],
-				'apellidoPaternoRefLab' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
-				'apellidoMaternoRefLab' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
-				'primerNombreRefLab' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
+				$rules['codigoParCer'] =  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'];
+				$rules['coloniacodigoParCer'] =  ['label' => "Colonia", 'rules' => 'required|max_length[255]'];
+				$rules['numeroParCer'] =  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'];
+				$rules['estadocodigoParCer'] =  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'];
+				$rules['municipiocodigoParCer'] =  ['label' => "Municipio", 'rules' => 'required|max_length[255]'];
+				$rules['ciudadcodigoParCer'] =  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'];
+				$rules['paisParCer'] =  ['label' => "Pais", 'rules' => 'required|max_length[255]'];
+
+					} else {
+
+						$rules['idPersonal'] =  ['label' => "", 'rules' => 'required'];
+					}
+
+					if($laboral == 0){
+
+						$rules['apellidoPaternoRefLab'] =  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'];
+				$rules['apellidoMaternoRefLab'] =  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'];
+				$rules['primerNombreRefLab'] =  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'];
 				
-				'sexo_lab' =>  ['label' => "Sexo", 'rules' => 'required|max_length[255]'],
-				'ocupacionRefLab' =>  ['label' => "Ocupacion", 'rules' => 'required'],
-				'parentesco_laboral' =>  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'],
-				'calleRefLab' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
-				'exteriorRefLab' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
+				$rules['sexo_lab'] =  ['label' => "Sexo", 'rules' => 'required|max_length[255]'];
+				$rules['ocupacionRefLab'] = ['label' => "Ocupacion", 'rules' => 'required'];
+				$rules['parentesco_laboral'] =  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'];
+				$rules['calleRefLab'] =  ['label' => "Calle", 'rules' => 'required|max_length[255]'];
+				$rules['exteriorRefLab'] =  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'];
 				
-				'numeroRefLab' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'],
-				'codigoLaboral' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'],
-				'coloniacodigoLaboral' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
-				'estadocodigoLaboral' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
-				'municipiocodigoLaboral' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
-				'ciudadcodigoLaboral' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
-				'paisRefLab' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]'],
-				'apellidoPaternoRefPer' =>  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'],
-				'apellidoMaternoRefPer' =>  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'],
-				'primerNombreRefPer' =>  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'],
+				$rules['numeroRefLab'] =  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'];
+				$rules['codigoLaboral'] =  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'];
+				$rules['coloniacodigoLaboral'] =  ['label' => "Colonia", 'rules' => 'required|max_length[255]'];
+				$rules['estadocodigoLaboral'] =  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'];
+				$rules['municipiocodigoLaboral'] =  ['label' => "Municipio", 'rules' => 'required|max_length[255]'];
+				$rules['ciudadcodigoLaboral'] =  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'];
+				$rules['paisRefLab'] =  ['label' => "Pais", 'rules' => 'required|max_length[255]'];
+
+					} else {
+
+						$rules['idPersonal'] =  ['label' => "", 'rules' => 'required'];
+					}
+
+					if($personal == 0){
+
+						$rules['apellidoPaternoRefPer'] =  ['label' => "Apellido Paterno", 'rules' => 'required|max_length[255]'];
+				$rules['apellidoMaternoRefPer'] =  ['label' => "Apellido Materno", 'rules' => 'required|max_length[255]'];
+				$rules['primerNombreRefPer'] =  ['label' => "Primer Nombre", 'rules' => 'required|max_length[255]'];
 				
-				'sexo_per' =>  ['label' => "Sexo", 'rules' => 'required|max_length[255]'],
-				'ocupacionRefPer' =>  ['label' => "Ocupacion", 'rules' => 'required'],
-				'parentesco_personal' =>  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'],
-				'calleRefPer' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
-				'exteriorRefPer' =>  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'],
+				$rules['sexo_per'] =  ['label' => "Sexo", 'rules' => 'required|max_length[255]'];
+				$rules['ocupacionRefPer'] =  ['label' => "Ocupacion", 'rules' => 'required'];
+				$rules['parentesco_personal'] =  ['label' => "Parentesco", 'rules' => 'required|max_length[255]'];
+				$rules['calleRefPer'] = ['label' => "Calle", 'rules' => 'required|max_length[255]'];
+				$rules['exteriorRefPer'] =  ['label' => "NO.Exterior", 'rules' => 'required|max_length[255]'];
 				
-				'numeroRefPer' =>  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'],
-				'codigoPersonal' =>  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'],
-				'coloniacodigoPersonal' =>  ['label' => "Colonia", 'rules' => 'required|max_length[255]'],
-				'estadocodigoPersonal' =>  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'],
-				'municipiocodigoPersonal' =>  ['label' => "Municipio", 'rules' => 'required|max_length[255]'],
-				'ciudadcodigoPersonal' =>  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'],
-				'paisRefPer' =>  ['label' => "Pais", 'rules' => 'required|max_length[255]']];
+				$rules['numeroRefPer'] =  ['label' => "Numero Telefonico", 'rules' => 'required|max_length[10]|integer'];
+				$rules['codigoPersonal'] =  ['label' => "Codigo Postal", 'rules' => 'required|max_length[5]|integer'];
+				$rules['coloniacodigoPersonal'] =  ['label' => "Colonia", 'rules' => 'required|max_length[255]'];
+				$rules['estadocodigoPersonal'] =  ['label' => "Entidad Federativa", 'rules' => 'required|max_length[255]'];
+				$rules['municipiocodigoPersonal'] =  ['label' => "Municipio", 'rules' => 'required|max_length[255]'];
+				$rules['ciudadcodigoPersonal'] =  ['label' => "Ciudad", 'rules' => 'required|max_length[255]'];
+				$rules['paisRefPer'] =  ['label' => "Pais", 'rules' => 'required|max_length[255]'];
+
+					} else {
+
+						$rules['idPersonal'] =  ['label' => "", 'rules' => 'required'];
+					}
+
+				
+				
+				
+				
 		 
 				$errors = [];
 				$succes = [];
@@ -4432,204 +4968,429 @@ class Cuip extends BaseController {
 
         			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
 
-        			
+        			if($familiar == 0){
 
-        			$getSexo_fam_cer = $this->request->getPost('sexo_fam_cer');
+        				$getSexo_fam_cer = $this->request->getPost('sexo_fam_cer');
 
-        			$sexo_fam_cer = $this->encrypt->Decrytp($getSexo_fam_cer);
+        				$sexo_fam_cer = $this->encrypt->Decrytp($getSexo_fam_cer);
 
-        			$getParentesco_fam_cercano = $this->request->getPost('parentesco_fam_cercano');
+        				$getParentesco_fam_cercano = $this->request->getPost('parentesco_fam_cercano');
 
-        			$parentesco_fam_cercano = $this->encrypt->Decrytp($getParentesco_fam_cercano);
+        				$parentesco_fam_cercano = $this->encrypt->Decrytp($getParentesco_fam_cercano);
 
-        			$getPais = $this->request->getPost('pais');
+        				$getPais = $this->request->getPost('pais');
 
-        			$pais = $this->encrypt->Decrytp($getPais);
+        				$pais = $this->encrypt->Decrytp($getPais);
 
-        			$getSexo_per = $this->request->getPost('sexo_per');
+        				$getEstadocodigoRefCer = $this->request->getPost('estadocodigoRefCer');
 
-        			$sexo_per = $this->encrypt->Decrytp($getSexo_per);
+        				$estadocodigoRefCer = $this->encrypt->Decrytp($getEstadocodigoRefCer);
 
-        			$getParentesco_personal = $this->request->getPost('parentesco_personal');
+        				$getMunicipiocodigoRefCer = $this->request->getPost('municipiocodigoRefCer');
 
-        			$parentesco_personal = $this->encrypt->Decrytp($getParentesco_personal);
+        				$municipiocodigoRefCer = $this->encrypt->Decrytp($getMunicipiocodigoRefCer);
 
-        			$getPaisRefPer = $this->request->getPost('paisRefPer');
+        				$getOcupacion = $this->request->getPost('ocupacion');
 
-        			$paisRefPer = $this->encrypt->Decrytp($getPaisRefPer);
+        				$ocupacion = $this->encrypt->Decrytp($getOcupacion);
 
-        			$getSexo_lab = $this->request->getPost('sexo_lab');
+        				$apellido_paterno_fam = strtoupper($this->request->getPost('apellidoPaterno')) ; 
+						$apellido_materno_fam = strtoupper($this->request->getPost('apellidoMaterno')) ; 
+						$primer_nombre_fam = strtoupper($this->request->getPost('primerNombre')) ; 
+						$segundo_nombre_fam = strtoupper($this->request->getPost('segundoNombre'));
+						$calle_fam = strtoupper($this->request->getPost('calle')) ; 
+						$numero_exterior_fam = strtoupper($this->request->getPost('exterior')) ; 
+						$numero_interior_fam = strtoupper($this->request->getPost('interior')) ; 
+						$colonia_fam = strtoupper($this->request->getPost('coloniacodigoRefCer')) ; 
+						$idCodigoPostal_fam = $this->request->getPost('codigoRefCer') ; 
+						$numero_telefono_fam = $this->request->getPost('numero') ;
+						$ciudad_fam = strtoupper($this->request->getPost('ciudadcodigoRefCer')) ;
+					}	
+        			else {
 
-        			$sexo_lab = $this->encrypt->Decrytp($getSexo_lab);
+        				$getSexo_fam_cer = "";
+        				$sexo_fam_cer = "";
+        				$getParentesco_fam_cercano = "";
 
-        			$getParentesco_laboral = $this->request->getPost('parentesco_laboral');
+        				$parentesco_fam_cercano = "";
 
-        			$parentesco_laboral = $this->encrypt->Decrytp($getParentesco_laboral);
+        				$getPais = "";
 
-        			$getPaisRefLab = $this->request->getPost('paisRefLab');
+        				$pais = "";
 
-        			$paisRefLab = $this->encrypt->Decrytp($getPaisRefLab);
+        				$getEstadocodigoRefCer = "";
 
-        			$getSexo_par_cer = $this->request->getPost('sexo_par_cer');
+        				$estadocodigoRefCer = "";
 
-        			$sexo_par_cer = $this->encrypt->Decrytp($getSexo_par_cer);
+        				$getMunicipiocodigoRefCer = "";
 
-        			$getParentesco_cercano = $this->request->getPost('parentesco_cercano');
+        				$municipiocodigoRefCer = "";
 
-        			$parentesco_cercano = $this->encrypt->Decrytp($getParentesco_cercano);
+        				$getOcupacion = "";
+
+        				$ocupacion = "";
+
+        				$apellido_paterno_fam = "" ; 
+						$apellido_materno_fam = ""; 
+						$primer_nombre_fam = "" ; 
+						$segundo_nombre_fam = "";
+						$calle_fam = "" ; 
+						$numero_exterior_fam = "" ; 
+						$numero_interior_fam = "" ; 
+						$colonia_fam = "" ; 
+						$idCodigoPostal_fam = "" ; 
+						$numero_telefono_fam = "";
+						$ciudad_fam = "" ;
+        			}
+
+        			if($cercano == 0){
+
+        				$getSexo_par_cer = $this->request->getPost('sexo_par_cer');
+
+        				$sexo_par_cer = $this->encrypt->Decrytp($getSexo_par_cer);
+
+        				$getParentesco_cercano = $this->request->getPost('parentesco_cercano');
+
+        				$parentesco_cercano = $this->encrypt->Decrytp($getParentesco_cercano);
 
 
-        			$getPaisParCer = $this->request->getPost('paisParCer');
+        				$getPaisParCer = $this->request->getPost('paisParCer');
 
-        			$paisParCer = $this->encrypt->Decrytp($getPaisParCer);
+        				$paisParCer = $this->encrypt->Decrytp($getPaisParCer);
 
-        			$getOcupacion = $this->request->getPost('ocupacion');
+        				$getOcupacionParCer = $this->request->getPost('ocupacionParCer');
 
-        			$ocupacion = $this->encrypt->Decrytp($getOcupacion);
+        				$ocupacionParCer = $this->encrypt->Decrytp($getOcupacionParCer);
 
-        			$getOcupacionParCer = $this->request->getPost('ocupacionParCer');
+        				$getEstadocodigoParCer = $this->request->getPost('estadocodigoParCer');
 
-        			$ocupacionParCer = $this->encrypt->Decrytp($getOcupacionParCer);
+        				$estadocodigoParCer = $this->encrypt->Decrytp($getEstadocodigoParCer);
 
-        			$getOcupacionRefPer = $this->request->getPost('ocupacionRefPer');
+        				$getMunicipiocodigoParCer = $this->request->getPost('municipiocodigoParCer');
 
-        			$ocupacionRefPer = $this->encrypt->Decrytp($getOcupacionRefPer);
+        				$municipiocodigoParCer = $this->encrypt->Decrytp($getMunicipiocodigoParCer);
+        				$apellido_paterno_pariente = strtoupper($this->request->getPost('apellidoPaternoParCer')) ; 
+						$apellido_materno_pariente = strtoupper($this->request->getPost('apellidoMaternoParCer')) ;
+						$primer_nombre_pariente = strtoupper($this->request->getPost('primerNombreParCer')) ;
+						$segundo_nombre_pariente = strtoupper($this->request->getPost('segundoNombreParCer')) ; 
+						$calle_pariente = strtoupper($this->request->getPost('calleParCer')) ; 
+						$numero_exterior_pariente = strtoupper($this->request->getPost('exteriorParCer')) ; 
+						$numero_interior_pariente = strtoupper($this->request->getPost('interiorParCer')) ; 
+						$colonia_pariente = strtoupper($this->request->getPost('coloniacodigoParCer')) ; 
+						$idCodigoPostal_pariente = $this->request->getPost('codigoParCer') ; 
+						$numero_telefono_pariente = $this->request->getPost('numeroParCer') ;
+						$ciudad_pariente = strtoupper($this->request->getPost('ciudadcodigoParCer')) ;
 
-        			$getOcupacionRefLab = $this->request->getPost('ocupacionRefLab');
 
-        			$ocupacionRefLab = $this->encrypt->Decrytp($getOcupacionRefLab);
+					}
+        			else {
 
-        			$getEstadocodigoRefCer = $this->request->getPost('estadocodigoRefCer');
+        				$getSexo_par_cer = "";
 
-        			$estadocodigoRefCer = $this->encrypt->Decrytp($getEstadocodigoRefCer);
+        				$sexo_par_cer = "";
 
-        			$getMunicipiocodigoRefCer = $this->request->getPost('municipiocodigoRefCer');
+        				$getParentesco_cercano = "";
 
-        			$municipiocodigoRefCer = $this->encrypt->Decrytp($getMunicipiocodigoRefCer);
+        				$parentesco_cercano = "";
 
-        			$getEstadocodigoParCer = $this->request->getPost('estadocodigoParCer');
 
-        			$estadocodigoParCer = $this->encrypt->Decrytp($getEstadocodigoParCer);
+        				$getPaisParCer = "";
 
-        			$getMunicipiocodigoParCer = $this->request->getPost('municipiocodigoParCer');
+        				$paisParCer = "";
 
-        			$municipiocodigoParCer = $this->encrypt->Decrytp($getMunicipiocodigoParCer);
+        				$getOcupacionParCer = "";
 
-        			$getEstadocodigoPersonal = $this->request->getPost('estadocodigoPersonal');
+        				$ocupacionParCer = "";
 
-        			$estadocodigoPersonal = $this->encrypt->Decrytp($getEstadocodigoPersonal);
+        				$getEstadocodigoParCer = "";
 
-        			$getMunicipiocodigoPersonal = $this->request->getPost('municipiocodigoPersonal');
+        				$estadocodigoParCer = "";
 
-        			$municipiocodigoPersonal = $this->encrypt->Decrytp($getMunicipiocodigoPersonal);
+        				$getMunicipiocodigoParCer = "";
 
-        			$getEstadocodigoLaboral = $this->request->getPost('estadocodigoLaboral');
+        				$municipiocodigoParCer = "";
+        				$apellido_paterno_pariente = "" ; 
+						$apellido_materno_pariente = "";
+						$primer_nombre_pariente = "";
+						$segundo_nombre_pariente = "" ; 
+						$calle_pariente = "" ; 
+						$numero_exterior_pariente = "" ; 
+						$numero_interior_pariente = "" ; 
+						$colonia_pariente = "" ; 
+						$idCodigoPostal_pariente = "" ; 
+						$numero_telefono_pariente = "" ;
+						$ciudad_pariente = "" ;
+        				
+        			}
 
-        			$estadocodigoLaboral = $this->encrypt->Decrytp($getEstadocodigoLaboral);
+        			if($personal == 0){
 
-        			$getMunicipiocodigoLaboral = $this->request->getPost('municipiocodigoLaboral');
+        				$getSexo_per = $this->request->getPost('sexo_per');
 
-        			$municipiocodigoLaboral = $this->encrypt->Decrytp($getMunicipiocodigoLaboral);
+        				$sexo_per = $this->encrypt->Decrytp($getSexo_per);
+
+        				$getParentesco_personal = $this->request->getPost('parentesco_personal');
+
+        				$parentesco_personal = $this->encrypt->Decrytp($getParentesco_personal);
+
+        				$getPaisRefPer = $this->request->getPost('paisRefPer');
+
+        				$paisRefPer = $this->encrypt->Decrytp($getPaisRefPer);
+
+        				$getEstadocodigoPersonal = $this->request->getPost('estadocodigoPersonal');
+
+        				$estadocodigoPersonal = $this->encrypt->Decrytp($getEstadocodigoPersonal);
+
+        				$getMunicipiocodigoPersonal = $this->request->getPost('municipiocodigoPersonal');
+
+        				$municipiocodigoPersonal = $this->encrypt->Decrytp($getMunicipiocodigoPersonal);
+
+        				$getOcupacionRefPer = $this->request->getPost('ocupacionRefPer');
+
+        				$ocupacionRefPer = $this->encrypt->Decrytp($getOcupacionRefPer);
+
+        				$apellido_paterno_personal = strtoupper($this->request->getPost('apellidoPaternoRefPer')) ; 
+						$apellido_materno_personal = strtoupper($this->request->getPost('apellidoMaternoRefPer')) ; 
+						$primer_nombre_personal = strtoupper($this->request->getPost('primerNombreRefPer')) ; 
+						$segundo_nombre_personal = strtoupper($this->request->getPost('segundoNombreRefPer')) ;
+
+						$calle_personal = strtoupper($this->request->getPost('calleRefPer')) ; 
+						$numero_exterior_personal = strtoupper($this->request->getPost('exteriorRefPer')) ; 
+						$numero_interior_personal = strtoupper($this->request->getPost('interiorRefPer')) ; 
+						$colonia_personal = strtoupper($this->request->getPost('coloniacodigoPersonal')) ; 
+						$idCodigoPostal_personal = $this->request->getPost('codigoPersonal'); 
+						$numero_telefono_personal = $this->request->getPost('numeroRefPer') ;
+						$ciudad_personal = strtoupper($this->request->getPost('ciudadcodigoPersonal')) ;
+        			}
+        			else {
+
+        				$getSexo_per = "";
+
+        				$sexo_per = "";
+
+        				$getParentesco_personal = "";
+
+        				$parentesco_personal = "";
+
+        				$getPaisRefPer = "";
+
+        				$paisRefPer = "";
+
+        				$getEstadocodigoPersonal = "";
+
+        				$estadocodigoPersonal = "";
+
+        				$getMunicipiocodigoPersonal = "";
+
+        				$municipiocodigoPersonal = "";
+
+        				$getOcupacionRefPer = "";
+
+        				$ocupacionRefPer = "";
+
+        				$apellido_paterno_personal = "" ; 
+						$apellido_materno_personal = "" ; 
+						$primer_nombre_personal = "" ; 
+						$segundo_nombre_personal = "" ;
+
+						$calle_personal = "" ; 
+						$numero_exterior_personal = "" ; 
+						$numero_interior_personal = "" ; 
+						$colonia_personal = "" ; 
+						$idCodigoPostal_personal = ""; 
+						$numero_telefono_personal = "" ;
+						$ciudad_personal = "" ;
+        			}
+
+        			if($laboral == 0){
+
+        				$getSexo_lab = $this->request->getPost('sexo_lab');
+
+        				$sexo_lab = $this->encrypt->Decrytp($getSexo_lab);
+
+        				$getParentesco_laboral = $this->request->getPost('parentesco_laboral');
+
+        				$parentesco_laboral = $this->encrypt->Decrytp($getParentesco_laboral);
+
+        				$getPaisRefLab = $this->request->getPost('paisRefLab');
+
+        				$paisRefLab = $this->encrypt->Decrytp($getPaisRefLab);
+
+        				$getEstadocodigoLaboral = $this->request->getPost('estadocodigoLaboral');
+
+        				$estadocodigoLaboral = $this->encrypt->Decrytp($getEstadocodigoLaboral);
+
+        				$getMunicipiocodigoLaboral = $this->request->getPost('municipiocodigoLaboral');
+
+        				$municipiocodigoLaboral = $this->encrypt->Decrytp($getMunicipiocodigoLaboral);
+
+        				$getOcupacionRefLab = $this->request->getPost('ocupacionRefLab');
+
+        				$ocupacionRefLab = $this->encrypt->Decrytp($getOcupacionRefLab);
+
+        				$apellido_paterno_laboral = strtoupper($this->request->getPost('apellidoPaternoRefLab')) ; 
+						$apellido_materno_laboral = strtoupper($this->request->getPost('apellidoMaternoRefLab')) ; 
+						$primer_nombre_laboral = strtoupper($this->request->getPost('primerNombreRefLab')) ; 
+						$segundo_nombre_laboral = strtoupper($this->request->getPost('segundoNombreRefLab')) ;
+
+						$calle_laboral = strtoupper($this->request->getPost('calleRefLab')) ; 
+						$numero_exterior_laboral = strtoupper($this->request->getPost('exteriorRefLab')) ; 
+						$numero_interior_laboral = strtoupper($this->request->getPost('interiorRefLab')) ; 
+						$colonia_laboral = strtoupper($this->request->getPost('coloniacodigoLaboral')) ; 
+						$idCodigoPostal_laboral = $this->request->getPost('codigoLaboral') ; 
+						$numero_telefono_laboral = $this->request->getPost('numeroRefLab') ;
+
+						$ciudad_laboral = strtoupper($this->request->getPost('ciudadcodigoLaboral')) ; 
+					}
+        			else {
+
+        				$getSexo_lab = "";
+
+        				$sexo_lab = "";
+
+        				$getParentesco_laboral = "";
+
+        				$parentesco_laboral = "";
+
+        				$getPaisRefLab = "";
+
+        				$paisRefLab = "";
+
+        				$getEstadocodigoLaboral = "";
+
+        				$estadocodigoLaboral = "";
+
+        				$getMunicipiocodigoLaboral = "";
+
+        				$municipiocodigoLaboral = "";
+
+        				$getOcupacionRefLab = "";
+
+        				$ocupacionRefLab = "";
+
+        				$apellido_paterno_laboral = "" ; 
+						$apellido_materno_laboral = "" ; 
+						$primer_nombre_laboral = "" ; 
+						$segundo_nombre_laboral = "" ;
+
+						$calle_laboral = "" ; 
+						$numero_exterior_laboral = "" ; 
+						$numero_interior_laboral = "" ; 
+						$colonia_laboral = "" ; 
+						$idCodigoPostal_laboral = "" ; 
+						$numero_telefono_laboral = "" ;
+
+						$ciudad_laboral = "" ;
+        			}	
 
         			
 
 
 					$referencias = array(
 		    					
-		    			
-						"apellido_paterno_fam" => strtoupper($this->request->getPost('apellidoPaterno')) , 
-						"apellido_materno_fam" => strtoupper($this->request->getPost('apellidoMaterno')) , 
-						"primer_nombre_fam" => strtoupper($this->request->getPost('primerNombre')) , 
-						"segundo_nombre_fam" => strtoupper($this->request->getPost('segundoNombre')) , 
+		    					
+						
+						"apellido_paterno_fam" => $apellido_paterno_fam , 
+						"apellido_materno_fam" => $apellido_materno_fam , 
+						"primer_nombre_fam" => $primer_nombre_fam , 
+						"segundo_nombre_fam" => $segundo_nombre_fam , 
 						"idGenero_fam" => $sexo_fam_cer , 
 						"ocupacion_fam" => $ocupacion , 
 						"idParentesco_fam" => $parentesco_fam_cercano , 
-						"calle_fam" => strtoupper($this->request->getPost('calle')) , 
-						"numero_exterior_fam" => strtoupper($this->request->getPost('exterior')) , 
-						"numero_interior_fam" => strtoupper($this->request->getPost('interior')) , 
-						"colonia_fam" => strtoupper($this->request->getPost('coloniacodigoRefCer')) , 
-						"idCodigoPostal_fam" => $this->request->getPost('codigoRefCer') , 
-						"numero_telefono_fam" => $this->request->getPost('numero') , 
+						"calle_fam" => $calle_fam , 
+						"numero_exterior_fam" => $numero_exterior_fam , 
+						"numero_interior_fam" => $numero_interior_fam , 
+						"colonia_fam" => $colonia_fam , 
+						"idCodigoPostal_fam" => $idCodigoPostal_fam , 
+						"numero_telefono_fam" => $numero_telefono_fam , 
 						"idPaisNacimiento_fam" => $pais , 
 						"idEstado_fam" => $estadocodigoRefCer , 
 						"municipio_fam" => $municipiocodigoRefCer , 
-						"ciudad_fam" => strtoupper($this->request->getPost('ciudadcodigoRefCer')) , 
-						"apellido_paterno_pariente" => strtoupper($this->request->getPost('apellidoPaternoParCer')) , 
-						"apellido_materno_pariente" => strtoupper($this->request->getPost('apellidoMaternoParCer')) , 
-						"primer_nombre_pariente" => strtoupper($this->request->getPost('primerNombreParCer')) , 
-						"segundo_nombre_pariente" => strtoupper($this->request->getPost('segundoNombreParCer')) , 
+						"ciudad_fam" => $ciudad_fam , 
+						"apellido_paterno_pariente" => $apellido_paterno_pariente , 
+						"apellido_materno_pariente" => $apellido_materno_pariente , 
+						"primer_nombre_pariente" => $primer_nombre_pariente , 
+						"segundo_nombre_pariente" => $segundo_nombre_pariente , 
 						"idGenero_pariente" => $sexo_par_cer , 
 						"ocupacion_pariente" => $ocupacionParCer , 
 						"idParentesco_pariente" => $parentesco_cercano , 
-						"calle_pariente" => strtoupper($this->request->getPost('calleParCer')) , 
-						"numero_exterior_pariente" => strtoupper($this->request->getPost('exteriorParCer')) , 
-						"numero_interior_pariente" => strtoupper($this->request->getPost('interiorParCer')) , 
-						"colonia_pariente" => strtoupper($this->request->getPost('coloniacodigoParCer')) , 
-						"idCodigoPostal_pariente" => $this->request->getPost('codigoParCer') , 
-						"numero_telefono_pariente" => $this->request->getPost('numeroParCer') , 
+						"calle_pariente" => $calle_pariente , 
+						"numero_exterior_pariente" => $numero_exterior_pariente , 
+						"numero_interior_pariente" => $numero_interior_pariente , 
+						"colonia_pariente" => $colonia_pariente , 
+						"idCodigoPostal_pariente" => $idCodigoPostal_pariente , 
+						"numero_telefono_pariente" => $numero_telefono_pariente , 
 						"idPaisNacimiento_pariente" => $paisParCer , 
 						"idEstado_pariente" => $estadocodigoParCer , 
 						"municipio_pariente" => $municipiocodigoParCer , 
-						"ciudad_pariente" => strtoupper($this->request->getPost('ciudadcodigoParCer')) , 
+						"ciudad_pariente" => $ciudad_pariente , 
 
-						"apellido_paterno_personal" => strtoupper($this->request->getPost('apellidoPaternoRefPer')) , 
-						"apellido_materno_personal" => strtoupper($this->request->getPost('apellidoMaternoRefPer')) , 
-						"primer_nombre_personal" => strtoupper($this->request->getPost('primerNombreRefPer')) , 
-						"segundo_nombre_personal" => strtoupper($this->request->getPost('segundoNombreRefPer')) , 
+						"apellido_paterno_personal" => $apellido_paterno_personal , 
+						"apellido_materno_personal" => $apellido_materno_personal , 
+						"primer_nombre_personal" => $primer_nombre_personal , 
+						"segundo_nombre_personal" => $segundo_nombre_personal , 
 						"idGenero_personal" => $sexo_per , 
 						"ocupacion_personal" => $ocupacionRefPer , 
 						"idParentesco_personal" => $parentesco_personal , 
-						"calle_personal" => strtoupper($this->request->getPost('calleRefPer')) , 
-						"numero_exterior_personal" => strtoupper($this->request->getPost('exteriorRefPer')) , 
-						"numero_interior_personal" => strtoupper($this->request->getPost('interiorRefPer')) , 
-						"colonia_personal" => strtoupper($this->request->getPost('coloniacodigoPersonal')) , 
-						"idCodigoPostal_personal" => $this->request->getPost('codigoPersonal') , 
-						"numero_telefono_personal" => $this->request->getPost('numeroRefPer') , 
+						"calle_personal" => $calle_personal , 
+						"numero_exterior_personal" => $numero_exterior_personal , 
+						"numero_interior_personal" => $numero_interior_personal , 
+						"colonia_personal" => $colonia_personal , 
+						"idCodigoPostal_personal" => $idCodigoPostal_personal , 
+						"numero_telefono_personal" => $numero_telefono_personal , 
 						"idPaisNacimiento_personal" => $paisRefPer, 
 						"idEstado_personal" => $estadocodigoPersonal , 
 						"municipio_personal" => $municipiocodigoPersonal , 
-						"ciudad_personal" => strtoupper($this->request->getPost('ciudadcodigoPersonal')) ,
+						"ciudad_personal" => $ciudad_personal ,
 
-						"apellido_paterno_laboral" => strtoupper($this->request->getPost('apellidoPaternoRefLab')) , 
-						"apellido_materno_laboral" => strtoupper($this->request->getPost('apellidoMaternoRefLab')) , 
-						"primer_nombre_laboral" => strtoupper($this->request->getPost('primerNombreRefLab')) , 
-						"segundo_nombre_laboral" => strtoupper($this->request->getPost('segundoNombreRefLab')) , 
+						"apellido_paterno_laboral" => $apellido_paterno_laboral , 
+						"apellido_materno_laboral" => $apellido_materno_laboral , 
+						"primer_nombre_laboral" => $primer_nombre_laboral , 
+						"segundo_nombre_laboral" => $segundo_nombre_laboral , 
 						"idGenero_laboral" => $sexo_lab , 
 						"ocupacion_laboral" => $ocupacionRefLab , 
 						"idParentesco_laboral" => $parentesco_laboral , 
-						"calle_laboral" => strtoupper($this->request->getPost('calleRefLab')) , 
-						"numero_exterior_laboral" => strtoupper($this->request->getPost('exteriorRefLab')) , 
-						"numero_interior_laboral" => strtoupper($this->request->getPost('interiorRefLab')) , 
-						"colonia_laboral" => strtoupper($this->request->getPost('coloniacodigoLaboral')) , 
-						"idCodigoPostal_laboral" => $this->request->getPost('codigoLaboral') , 
-						"numero_telefono_laboral" => $this->request->getPost('numeroRefLab') , 
+						"calle_laboral" => $calle_laboral , 
+						"numero_exterior_laboral" => $numero_exterior_laboral , 
+						"numero_interior_laboral" => $numero_interior_laboral , 
+						"colonia_laboral" => $colonia_laboral , 
+						"idCodigoPostal_laboral" => $idCodigoPostal_laboral , 
+						"numero_telefono_laboral" => $numero_telefono_laboral , 
 						"idPaisNacimiento_laboral" => $paisRefLab , 
 						"idEstado_laboral" => $estadocodigoLaboral , 
 						"municipio_laboral" => $municipiocodigoLaboral , 
-						"ciudad_laboral" => strtoupper($this->request->getPost('ciudadcodigoLaboral')) ,
+						"ciudad_laboral" => $ciudad_laboral ,
+						
 						"updatedby" => $LoggedUserId , 
 						"updateddate" => date("Y-m-d H:i:s") );
 
 
 					$result = $this->modelCuip->updateReferencias( $referencias,$idPersonal,$id);
 
+
 					
 					
                     if ($result) {
 
             			
-                    	$succes = ["mensaje" => 'Referencias editadas con exito' ,
+                    	$succes = ["mensaje" => 'Referencias agregadas con exito' ,
                             	   "succes" => "succes"];
 
                            	   
                     	
                     } else {
                     	$dontSucces = ["error" => "error",
-                    				  "mensaje" => 	'Hubo un error al editar las Referencias'  ];
+                    				  "mensaje" => 	'Hubo un error al registrar las Referencias'  ];
 
                     }
 				} else {	
 					$errors = $this->validator->getErrors();
+				}
+
+			} else {
+
+					$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Capturar por lo menos una Referencia'  ];	
 				}
 
 				
