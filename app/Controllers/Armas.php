@@ -774,14 +774,15 @@ class Armas extends BaseController {
 				$fileName = $this->encrypt->Decrytp($file->nombre_folio);
 				$doc = $path.'/'.$fileName;
 				$split = explode(".", $fileName);
-				if($split[1] == "pdf"){
-					$ctype = "application/pdf";
-				}else{
-					$ctype = "image/jpeg";
-				}
-				$this->response->setHeader('Content-Type', $ctype);
+				print_r($split);
+				// if($split[1] == "pdf"){
+				// 	$ctype = "application/pdf";
+				// }else{
+				// 	$ctype = "image/jpeg";
+				// }
+				// $this->response->setHeader('Content-Type', $ctype);
 				
-				readfile($doc);
+				// readfile($doc);
 
 			}
 		}
