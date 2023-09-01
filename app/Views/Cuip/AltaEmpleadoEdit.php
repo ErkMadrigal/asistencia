@@ -163,7 +163,7 @@ use App\Libraries\Encrypt;
                                     foreach($nomina as  $a){
                                         
                                         ?>
-                                            <option <?= (isset($datosEmpleado->idNomimaPeriodo) == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= isset($datosEmpleado->idNomimaPeriodo)?($datosEmpleado->idNomimaPeriodo) == $a->valor ? 'selected' : '':'' ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -228,7 +228,7 @@ use App\Libraries\Encrypt;
                                 if( !empty($SiNo) ):
                                     foreach($SiNo as  $a){
                                         ?>
-                                            <option <?= (isset($datosEmpleado->infonavit) == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= isset($datosEmpleado->infonavit)?($datosEmpleado->infonavit) == $a->valor ? 'selected' : '':'' ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -253,7 +253,7 @@ use App\Libraries\Encrypt;
                                 if( !empty($SiNo) ):
                                     foreach($SiNo as  $a){
                                         ?>
-                                            <option <?= (isset($datosEmpleado->pension) == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= isset($datosEmpleado->pension)?($datosEmpleado->pension) == $a->valor ? 'selected' : '':'' ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -278,7 +278,7 @@ use App\Libraries\Encrypt;
                                 if( !empty($SiNo) ):
                                     foreach($SiNo as  $a){
                                         ?>
-                                            <option <?= (isset($datosEmpleado->fonacot) == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= isset($datosEmpleado->fonacot)?($datosEmpleado->fonacot) == $a->valor ? 'selected' : '':'' ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -303,7 +303,7 @@ use App\Libraries\Encrypt;
                                 if( !empty($SiNo) ):
                                     foreach($SiNo as  $a){
                                         ?>
-                                            <option <?= (isset($datosEmpleado->soldi) == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= isset($datosEmpleado->soldi)?($datosEmpleado->soldi) == $a->valor ? 'selected' : '':'' ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -351,7 +351,7 @@ use App\Libraries\Encrypt;
                                     foreach($banco as  $a){
                                         
                                         ?>
-                                            <option <?= (isset($datosEmpleado->idBanco) == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= isset($datosEmpleado->idBanco)?($datosEmpleado->idBanco) == $a->valor ? 'selected' : '':'' ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>

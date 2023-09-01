@@ -37,7 +37,7 @@ $encrypt = new Encrypt();
                         if (!empty($SiNo)) :
                             foreach ($SiNo as  $a) {
                         ?>
-         <option <?= (($estudio->vive) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+         <option <?= isset($estudio->vive)?($estudio->vive) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                         <?php
                             }
@@ -76,7 +76,7 @@ $encrypt = new Encrypt();
                         if (!empty($domicilio_tipo)) :
                             foreach ($domicilio_tipo as  $a) {
                         ?>
-      <option <?= (isset($estudio->domicilio) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+      <option <?= isset($estudio->domicilio)?($estudio->domicilio) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                         <?php
                             }
@@ -267,7 +267,7 @@ $encrypt = new Encrypt();
                                 if (!empty($genero)) :
                                     foreach ($genero as  $a) {
                                 ?>
-           <option <?= (isset($e->idGenero) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+           <option <?= isset($e->idGenero)?($e->idGenero) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                 <?php
                                     }
@@ -294,7 +294,7 @@ $encrypt = new Encrypt();
                                 if (!empty($parentesco_todos)) :
                                     foreach ($parentesco_todos as  $a) {
                                 ?>
-                                           <option <?= (($e->idParentesco) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                           <option <?= isset($e->idParentesco)?($e->idParentesco) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                                 <?php
                                     }
                                 endif; ?>

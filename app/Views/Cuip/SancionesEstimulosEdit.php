@@ -169,7 +169,7 @@
                                 if (!empty($entidad_federativa)) :
                                     foreach ($entidad_federativa as  $a) {
                                 ?>
-                <option <?= (($e->idEstado) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                <option <?= isset($e->idEstado)?($e->idEstado) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                 <?php
                                     }
@@ -243,7 +243,7 @@
                                     if (!empty($tipo_fuero)) :
                                         foreach ($tipo_fuero as  $a) {
                                     ?>
-                <option <?= (isset($e->idTipoFuero) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                <option <?= isset($e->idTipoFuero)?($e->idTipoFuero) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                     <?php
                                         }

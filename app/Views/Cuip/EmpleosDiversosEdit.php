@@ -286,7 +286,7 @@ $encrypt = new Encrypt();
                         if (!empty($SiNo)) :
                             foreach ($SiNo as  $a) {
                         ?>
-             <option <?= (isset($diversos->reglamento) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+             <option <?= isset($diversos->reglamento)?($diversos->reglamento) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                         <?php
                             }
                         endif; ?>
@@ -321,7 +321,7 @@ $encrypt = new Encrypt();
                         if (!empty($SiNo)) :
                             foreach ($SiNo as  $a) {
                         ?>
-                                     <option <?= (isset($diversos->razon_ascenso) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                     <option <?= isset($diversos->razon_ascenso)?($diversos->razon_ascenso) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                         <?php
                             }
                         endif; ?>
@@ -387,7 +387,7 @@ $encrypt = new Encrypt();
                         if (!empty($tipoDisciplina)) :
                             foreach ($tipoDisciplina as  $a) {
                         ?>
-              <option <?= (isset($diversos->disciplina) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+              <option <?= isset($diversos->disciplina)?($diversos->disciplina) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                         <?php
                             }
                         endif; ?>
@@ -484,7 +484,7 @@ $encrypt = new Encrypt();
                         if (!empty($duracion)) :
                             foreach ($duracion as  $a) {
                         ?>
-                                      <option <?= (isset($diversos->duracion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                      <option <?= isset($diversos->duracion)?($diversos->duracion) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                         <?php
                             }

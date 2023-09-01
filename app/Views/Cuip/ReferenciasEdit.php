@@ -69,7 +69,7 @@ $encrypt = new Encrypt();
                             if (!empty($genero)) :
                                 foreach ($genero as  $a) {
                             ?>
-          <option <?= (isset($referencia->idGenero_fam) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+          <option <?= isset($referencia->idGenero_fam)?($referencia->idGenero_fam) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                             <?php
                                 }
@@ -94,7 +94,7 @@ $encrypt = new Encrypt();
                                 if( !empty($ocupacion) ):
                                     foreach($ocupacion as  $a){
                                         ?>
-                                            <option <?= (($referencia->ocupacion_fam) == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= isset($referencia->ocupacion_fam)?($referencia->ocupacion_fam) == $a->valor ? 'selected' : '':'' ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -119,7 +119,7 @@ $encrypt = new Encrypt();
                                 if (!empty($parentesco_familiar)) :
                                     foreach ($parentesco_familiar as  $a) {
                                 ?>
-              <option <?= (isset($referencia->idParentesco_fam) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+              <option <?= isset($referencia->idParentesco_fam)?($referencia->idParentesco_fam) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                                 <?php
                                     }
                                 endif; ?>
@@ -209,7 +209,7 @@ $encrypt = new Encrypt();
                                 if (!empty($pais)) :
                                     foreach ($pais as  $a) {
                                 ?>
-                                          <option <?= (isset($referencia->idPaisNacimiento_fam) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                          <option <?= isset($referencia->idPaisNacimiento_fam)?($referencia->idPaisNacimiento_fam) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                                 <?php
                                     }
                                 endif; ?>
@@ -235,7 +235,7 @@ $encrypt = new Encrypt();
                                 if (!empty($entidad_federativa)) :
                                     foreach ($entidad_federativa as  $a) {
                                 ?>
-                              <option <?= (($referencia->idEstado_fam) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                              <option <?= isset($referencia->idEstado_fam)?($referencia->idEstado_fam) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                                 <?php
                                     }
                                 endif; ?>
@@ -360,7 +360,7 @@ $encrypt = new Encrypt();
                         if (!empty($genero)) :
                             foreach ($genero as  $a) {
                         ?>
-           <option <?= (isset($referencia->idGenero_pariente) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+           <option <?= isset($referencia->idGenero_pariente)?($referencia->idGenero_pariente) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                         <?php
                             }
                         endif; ?>
@@ -384,7 +384,7 @@ $encrypt = new Encrypt();
                                 if( !empty($ocupacion) ):
                                     foreach($ocupacion as  $a){
                                         ?>
-                                            <option <?= (($referencia->ocupacion_pariente) == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= isset($referencia->ocupacion_pariente)?($referencia->ocupacion_pariente) == $a->valor ? 'selected' : '':'' ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -410,7 +410,7 @@ $encrypt = new Encrypt();
                             if (!empty($parentesco_familiar)) :
                                 foreach ($parentesco_familiar as  $a) {
                             ?>
-                                       <option <?= (isset($referencia->idParentesco_pariente) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                       <option <?= isset($referencia->idParentesco_pariente)?($referencia->idParentesco_pariente) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -500,7 +500,7 @@ $encrypt = new Encrypt();
                             if (!empty($pais)) :
                                 foreach ($pais as  $a) {
                             ?>
-                           <option <?= (isset($referencia->idPaisNacimiento_pariente) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                           <option <?= isset($referencia->idPaisNacimiento_pariente)?($referencia->idPaisNacimiento_pariente) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -526,7 +526,7 @@ $encrypt = new Encrypt();
                             if (!empty($entidad_federativa)) :
                                 foreach ($entidad_federativa as  $a) {
                             ?>
-                                <option <?= (($referencia->idEstado_pariente) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <option <?= isset($referencia->idEstado_pariente)?($referencia->idEstado_pariente) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -651,7 +651,7 @@ $encrypt = new Encrypt();
                         if (!empty($genero)) :
                             foreach ($genero as  $a) {
                         ?>
-                           <option <?= (isset($referenciaLab->idGenero_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                           <option <?= isset($referenciaLab->idGenero_personal)?($referenciaLab->idGenero_personal) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                         <?php
                             }
                         endif; ?>
@@ -675,7 +675,7 @@ $encrypt = new Encrypt();
                                 if( !empty($ocupacion) ):
                                     foreach($ocupacion as  $a){
                                         ?>
-                                            <option <?= (($referenciaLab->ocupacion_personal) == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= isset($referenciaLab->ocupacion_personal)?($referenciaLab->ocupacion_personal) == $a->valor ? 'selected' : '':'' ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -701,7 +701,7 @@ $encrypt = new Encrypt();
                             if (!empty($parentesco_personal)) :
                                 foreach ($parentesco_personal as  $a) {
                             ?>
-                           <option <?= (isset($referenciaLab->idParentesco_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                           <option <?= isset($referenciaLab->idParentesco_personal)?($referenciaLab->idParentesco_personal) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -791,7 +791,7 @@ $encrypt = new Encrypt();
                             if (!empty($pais)) :
                                 foreach ($pais as  $a) {
                             ?>
-                             <option <?= (isset($referenciaLab->idPaisNacimiento_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                             <option <?= isset($referenciaLab->idPaisNacimiento_personal)?($referenciaLab->idPaisNacimiento_personal) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                             <?php
                                 }
@@ -819,7 +819,7 @@ $encrypt = new Encrypt();
                             if (!empty($entidad_federativa)) :
                                 foreach ($entidad_federativa as  $a) {
                             ?>
-                                   <option <?= (($referenciaLab->idEstado_personal) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                   <option <?= isset($referenciaLab->idEstado_personal)?($referenciaLab->idEstado_personal) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -944,7 +944,7 @@ $encrypt = new Encrypt();
                         if (!empty($genero)) :
                             foreach ($genero as  $a) {
                         ?>
-                             <option <?= (isset($referenciaLab->idGenero_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                             <option <?= isset($referenciaLab->idGenero_laboral)?($referenciaLab->idGenero_laboral) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                         <?php
                             }
@@ -969,7 +969,7 @@ $encrypt = new Encrypt();
                                 if( !empty($ocupacion) ):
                                     foreach($ocupacion as  $a){
                                         ?>
-                                            <option <?= (($referenciaLab->ocupacion_laboral) == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= isset($referenciaLab->ocupacion_laboral)?($referenciaLab->ocupacion_laboral) == $a->valor ? 'selected' : '':'' ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -996,7 +996,7 @@ $encrypt = new Encrypt();
                             if (!empty($parentesco_familiar)) :
                                 foreach ($parentesco_familiar as  $a) {
                             ?>
-                                 <option <?= (isset($referenciaLab->idParentesco_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                 <option <?= isset($referenciaLab->idParentesco_laboral)?($referenciaLab->idParentesco_laboral) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -1088,7 +1088,7 @@ $encrypt = new Encrypt();
                             if (!empty($pais)) :
                                 foreach ($pais as  $a) {
                             ?>
-                <option <?= (isset($referenciaLab->idPaisNacimiento_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                <option <?= isset($referenciaLab->idPaisNacimiento_laboral)?($referenciaLab->idPaisNacimiento_laboral) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>
@@ -1114,7 +1114,7 @@ $encrypt = new Encrypt();
                             if (!empty($entidad_federativa)) :
                                 foreach ($entidad_federativa as  $a) {
                             ?>
-                                     <option <?= (($referenciaLab->idEstado_laboral) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                     <option <?= isset($referenciaLab->idEstado_laboral)?($referenciaLab->idEstado_laboral) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
                             <?php
                                 }
                             endif; ?>

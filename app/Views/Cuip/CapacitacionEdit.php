@@ -72,7 +72,7 @@
                                             if (!empty($nivel_curso)) :
                                                 foreach ($nivel_curso as  $a) {
                                             ?>
-                                                    <option <?= (isset($e->idNivel_curso) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= isset($e->idNivel_curso)?($e->idNivel_curso) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
@@ -99,7 +99,7 @@
                                             if (!empty($eficiencia)) :
                                                 foreach ($eficiencia as  $a) {
                                             ?>
-                                                    <option <?= (isset($e->idEficienciaCurso) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= isset($e->idEficienciaCurso)?($e->idEficienciaCurso) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
@@ -246,7 +246,7 @@
                                             if (!empty($cuso_tomado)) :
                                                 foreach ($cuso_tomado as  $a) {
                                             ?>
-                                                    <option <?= (isset($e->cursofue) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= isset($e->cursofue)?($e->cursofue) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                                             <?php
@@ -274,7 +274,7 @@
                                             if (!empty($eficiencia)) :
                                                 foreach ($eficiencia as  $a) {
                                             ?>
-                                                    <option <?= (isset($e->adicional) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= isset($e->adicional)?($e->adicional) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
@@ -387,7 +387,7 @@
                                             if (!empty($idioma)) :
                                                 foreach ($idioma as  $a) {
                                             ?>
-                                         <option <?= (isset($e->idIdioma) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                         <option <?= isset($e->idIdioma)?($e->idIdioma) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
@@ -414,7 +414,7 @@
                                             if (!empty($porsentajeIdioma)) :
                                                 foreach ($porsentajeIdioma as  $a) {
                                             ?>
-                                                    <option <?= (isset($e->idIdiomaLectura) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= isset($e->idIdiomaLectura)?($e->idIdiomaLectura) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
@@ -441,7 +441,7 @@
                                             if (!empty($porsentajeIdioma)) :
                                                 foreach ($porsentajeIdioma as  $a) {
                                             ?>
-                                                    <option <?= (isset($e->idIdiomaEscritura) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= isset($e->idIdiomaEscritura)?($e->idIdiomaEscritura) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
@@ -468,7 +468,7 @@
                                             if (!empty($porsentajeIdioma)) :
                                                 foreach ($porsentajeIdioma as  $a) {
                                             ?>
-                                                    <option <?= (isset($e->idIdiomaConversacion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= isset($e->idIdiomaConversacion)?($e->idIdiomaConversacion) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
@@ -535,7 +535,7 @@
                                             if (!empty($tipo_habilidad)) :
                                                 foreach ($tipo_habilidad as  $a) {
                                             ?>
-                                                    <option <?= (isset($e->idTipoHabilidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= isset($e->idTipoHabilidad)?($e->idTipoHabilidad) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
@@ -571,7 +571,7 @@
                                             if (!empty($grado_habilidad)) :
                                                 foreach ($grado_habilidad as  $a) {
                                             ?>
-                                                    <option <?= (isset($e->idGradoHabilidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= isset($e->idGradoHabilidad)?($e->idGradoHabilidad) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
@@ -649,7 +649,7 @@
                                             if (!empty($tipo_agrupacion)) :
                                                 foreach ($tipo_agrupacion as  $a) {
                                             ?>
-                                                    <option <?= (isset($e->idTipoAgrupacion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                                    <option <?= isset($e->idTipoAgrupacion)?($e->idTipoAgrupacion) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                             <?php
                                                 }
