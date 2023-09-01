@@ -765,28 +765,22 @@ class Armas extends BaseController {
 
 			$getId = str_replace(" ", "+", $this->request->getGet('h'));
 			$file = $this->modelArmas->GetFolioManifiesto($getId);
-			print_r($file);
 			if($file->url == ''){
 				echo "<h1 style='font-family: sans-serif;text-align: center;'>Sin Documento Folio Manifiesto Asignado</h1>";
 
 			}else{
-				echo "<br>";
 				$path = $this->encrypt->Decrytp($file->url);
 				$fileName = $this->encrypt->Decrytp($file->nombre_folio);
-				$data["path"] = $path;
-				$data["fileName"] = $fileName;
-				print_r($data);
-				// $doc = $path.'/'.$fileName;
-				// $split = explode(".", $fileName);
-				// print_r($fileName);
-				// if($split[1] == "pdf"){
-				// 	$ctype = "application/pdf";
-				// }else{
-				// 	$ctype = "image/jpeg";
-				// }
-				// $this->response->setHeader('Content-Type', $ctype);
+				$doc = $path.'/'.$fileName;
+				$split = explode(".", $fileName);
+				if($split[1] == "pdf"){
+					$ctype = "application/pdf";
+				}else{
+					$ctype = "image/jpeg";
+				}
+				$this->response->setHeader('Content-Type', $ctype);
 				
-				// readfile($doc);
+				readfile($doc);
 
 			}
 		}
@@ -851,6 +845,11 @@ class Armas extends BaseController {
 		}	
 	}
 
+	public function limpiar_datos(){
+		$this->modelArmas->update_url_name();
+		echo "succes";
+	}
+
 
 	public function cargaMasivaArmas(){
 		if ($this->request->getMethod() == "get"){
@@ -865,12 +864,7 @@ class Armas extends BaseController {
 	
 			$folios = $this->modelArmas->buscarAllFolios();
 			foreach ($folios as $folio) {
-				// $updated = array(
-				// 	"url" =>  '',
-				// 	"nombre_folio" => '',
-
-				// );
-				// $resp = $this->modelArmas->update_url_name($updated);
+				
 				$resp = $this->_buscarArchivoEnCarpetas($folio->folio_manif, $folio->idEmpresa);
 				if($resp['status'] === "ok"){
 					$data[] = $folio;
@@ -918,8 +912,9 @@ class Armas extends BaseController {
 				if (!empty($archivosCoincidentes)) {
 					$name_file = explode("/", $archivosCoincidentes[0]);
 					$getRuta = WRITEPATH . 'uploads/files/FolioManifiesto/'.date("Y").'/'.date("m").'/'.$idEmpresa.'/'.$name_file[2];
-					$directorio = WRITEPATH . 'uploads/files/FolioManifiesto/'.date("Y").'/'.date("m").'/'.$idEmpresa.'/'; 
 
+					$directorio = WRITEPATH . 'uploads/files/FolioManifiesto/'.date("Y").'/'.date("m").'/'.$idEmpresa.'/'; 
+					$res = $name_file;
 					if (!is_dir($directorio)) {
 						mkdir($directorio, 0777, true);
 					}
@@ -927,7 +922,7 @@ class Armas extends BaseController {
 						$res = array(
 							"status" => "ok",
 							"ruta_file" => $archivosCoincidentes[0],
-							"nombre_file_db" => $this->encrypt->Encrypt($name_file[2]),
+							"nombre_file_db" => $this->encrypt->Encrypt($name_file[7]),
 							"ruta_db" => $this->encrypt->Encrypt($directorio)
 						);
 					} else {
@@ -936,21 +931,6 @@ class Armas extends BaseController {
 							"msg" => "No se pudo Cargar el archivo al Servidor"
 						);
 					}
-
-
-					// if (copy($archivosCoincidentes[0], $getRuta)) {
-						// $res = array(
-						// 	"status" => "ok",
-						// 	"ruta_file" => $archivosCoincidentes[0],
-						// 	"nombre_file_db" => $this->encrypt->Encrypt($name_file[2]),
-						// 	"ruta_db" => $this->encrypt->Encrypt($directorio)
-						// );
-					// } else {
-						// $res = array(
-						// 	"status" => "error",
-						// 	"msg" => "No se pudo Cargar el archivo al Servidor"
-						// );
-					// }
 				}else{
 					$res = array(
 						"status" => "error",
