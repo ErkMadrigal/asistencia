@@ -53,7 +53,8 @@ class Cuip extends BaseController {
 					'segundo_nombre' => $v->segundo_nombre,
                     'apellido_paterno' => $v->apellido_paterno,
                     'apellido_materno' => $v->apellido_materno,
-                    'media_filiacion' => $v->idPersonal
+                    'media_filiacion' => $v->idPersonal,
+                    'activo' => $v->activo
 				) ;
 			}
 		
@@ -6869,6 +6870,19 @@ class Cuip extends BaseController {
 
 			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);	
 		}	
+	}
+
+	public function validaCancelada(){
+		
+		if($this->request->getMethod() == "post" && $this->request->getvar(['idRegistro'],FILTER_SANITIZE_STRING)){
+
+		$id = $this->encrypt->Decrytp($_POST["idRegistro"]);
+
+		$estatus = $this->modelCuip->ValidaCancelada($id);
+
+		echo json_encode( $estatus );
+
+		}
 	}
 
 }

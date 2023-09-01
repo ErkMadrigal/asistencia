@@ -223,6 +223,7 @@ $routes->post('EditarSancionesEstimulos', 'Cuip::EditarSancionesEstimulos',['fil
 $routes->post('EditarAltaEmpleado', 'Cuip::EditarAltasEmpleados',['filter' => 'auth']);
 $routes->post('EditarCapacitaciones', 'Cuip::EditarCapacitaciones',['filter' => 'auth']);
 $routes->post('EditarMediaFiliacion', 'MediaFiliacion::EditarMediaFiliacion',['filter' => 'auth']);
+$routes->post('validaCancelada', 'Cuip::validaCancelada',['filter' => 'auth']);
 
 
 

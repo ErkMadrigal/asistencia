@@ -22,7 +22,7 @@ class CuipModel
 
     public function GetCuip($idEmpresa){
         $builder = $this->db->table('datos_personales');
-        $builder->select('cuip, datos_personales.id,primer_nombre,segundo_nombre,apellido_paterno,apellido_materno,media_filiacion.idPersonal,respuesta,fecha_consulta,numEmpleado');
+        $builder->select('cuip, datos_personales.id,primer_nombre,segundo_nombre,apellido_paterno,apellido_materno,media_filiacion.idPersonal,respuesta,fecha_consulta,numEmpleado,datos_personales.activo');
         $builder->join("media_filiacion"," datos_personales.id= media_filiacion.idPersonal","left");
         $builder->join("datos_empleado"," datos_personales.id= datos_empleado.idPersonal","left");
         $builder->orderBy("primer_nombre","asc");
@@ -1248,6 +1248,25 @@ class CuipModel
         }
 
         return $return; 
+    }
+
+    public function ValidaCancelada($id)
+    {
+        
+
+        $query = "SELECT T.activo FROM datos_personales T WHERE T.id = '$id' AND T.Activo = 1";
+        $result = $this->db->query($query)->getResult();
+
+
+        if (!empty($result)){
+            return true;
+           
+        } else {
+           
+            return false;
+
+        }
+
     }    
     
 }

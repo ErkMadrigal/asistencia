@@ -6,7 +6,8 @@
 
     <div class="row">
         <div class="col-12 col-sm-6 col-md-3 ">
-            
+            <button id="idRegistro" class="btn btn-block btn-flat btn-primary" ><i class="fa fa-file-text" aria-hidden="true" ></i>&nbsp;&nbsp;Baja</button>
+        
         </div>
         <div class="col-12 col-sm-6 col-md-3">
             <button class="btn btn-block btn-flat btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Carga Masiva</button>
@@ -65,6 +66,7 @@
         <table id="dataGrid" class="table  text-center table-hover table-head-fixed text-nowrap">
             <thead>
             <tr>
+                <th></th>
                 <th>Num.Empleado</th>
                 <th>No.CUIP</th>
                 <th>Primer Nombre</th>
@@ -74,11 +76,55 @@
                 <th>CUIP</th>
                 <th>Expediente</th>
                 <th>Media Filiación</th>
+                <th>Activo</th>
        		</tr>
             </thead>
         </table>
     </div>
     
+</div>
+<!-- Modal -->
+<div class="modal fade" id="SinReunionModal" tabindex="-1"  aria-labelledby="reunionModalLabel" aria-hidden="true">
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Baja</h5>
+            </div>
+            <div class="modal-body">
+                <p><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;Seleccionar un registro</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button"  class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+             </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="bajaModal" tabindex="-1"  aria-labelledby="bajaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Baja</h5>
+                
+            </div>
+            <div class="modal-body">
+                <form action="'.base_url().'/Reunion" method="post" >
+                <input type="hidden" class="form-control " id="idRegistroBaja" name="idRegistroBaja"  readonly>
+                <?= csrf_field() ?>
+                <p><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;Esta seguro de realizar la baja ?</p>
+                <div>
+                    <input type="text" class="form-control " id="modalReg" name="modalReg"  readonly>
+                    
+                </div>
+               
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button"  class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <input type="submit" id="btnIniciar" class="btn btn-primary"  value="Procesar baja" />
+            </div>
+                </form>
+        </div>
+    </div>
 </div>
 <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 <script>
@@ -378,7 +424,12 @@
             language: {
                 url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
             },
-            columns: [  { data: "numEmpleado"
+            columns: [  {
+                            data: "id",
+                            render: checkBox,
+                            orderable: false
+                        },
+                        { data: "numEmpleado"
                         },
                         { data: "nCuip"
                         },
@@ -418,11 +469,112 @@
                         
                     
                         }
-                    }
+                    },{ data: "activo",
+                        render: estatusRenderer
+                    }, 
 
                 
             ]
         });
+
+    function estatusRenderer(data, type, full, meta) {
+        var src;
+    
+        if (full.activo == 1) {
+            src = "<i class=\'fa fa-check-circle\'></i>";
+        } else  {
+            src = "<i class=\'fa fa-times-circle\'></i>";
+        } 
+
+   
+        return src;
+    }
+
+    function checkBox(data, type, full, meta) {
+        var src;
+
+        if (full.activo == 1) {
+            disabled = "";
+        } else  {
+            disabled = "disabled";
+        } 
+
+            
+        src = "<input type='checkbox' " + disabled + " name='idTema' value='" +full.id+"'>";
+
+           
+        return src;
+    }
+
+    $('#idRegistro').click(function (event) {
+        
+    $('#load').addClass( "spinner-border" );
+    var csrfName = $("input[name=app_csrf]").val();
+    $tema = $('input:checkbox[name=idTema]:checked').val();
+        var data = {
+        idRegistro: $tema,
+        app_csrf: csrfName
+    };
+
+    if (typeof($tema) == 'undefined') {
+        $('#SinReunionModal').modal('show');
+        $('#load').removeClass( "spinner-border" );
+    } else {
+
+        $.ajax({
+            url: base_url + '/validaCancelada',
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            cache: false,
+            async: true,
+            success: function (response) {
+                $('#load').removeClass( "spinner-border" );
+                if (!response) {
+                    
+                    toastr.error('El usuario ya esta dado de baja');
+                } else {
+                    
+                    $('#bajaModal').modal('show');
+                }
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('#load').removeClass( "spinner-border" );
+                toastr.error('<?=lang('Layout.toastrError')?>');
+            }
+        });
+
+    }
+
+});
+
+    $('#dataGrid tbody').on('click', 'tr', function () {
+
+        var d = table.row(this).data();
+        var id = d.id;
+        var apellido_materno = d.apellido_materno;
+        var apellido_paterno = d.apellido_paterno;
+        var segundo_nombre = d.segundo_nombre;
+        var primer_nombre = d.primer_nombre;
+        
+        
+        $('#modalReg').val(apellido_paterno + ' ' + apellido_materno+ ' ' + primer_nombre + ' ' + segundo_nombre);
+        $('#idRegistroBaja').val(id);
+        
+    });
+
+
+    $(document).on("change", ":checkbox", function () {
+        event.preventDefault();
+        
+
+        $('input[type="checkbox"]').not(this).prop('checked', false);
+                
+       
+    });
+
+
 
 </script>
 <?= $this->endSection() ?>
