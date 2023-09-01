@@ -765,16 +765,20 @@ class Armas extends BaseController {
 
 			$getId = str_replace(" ", "+", $this->request->getGet('h'));
 			$file = $this->modelArmas->GetFolioManifiesto($getId);
-			
+			print_r($file);
 			if($file->url == ''){
 				echo "<h1 style='font-family: sans-serif;text-align: center;'>Sin Documento Folio Manifiesto Asignado</h1>";
 
 			}else{
+				echo "<br>";
 				$path = $this->encrypt->Decrytp($file->url);
 				$fileName = $this->encrypt->Decrytp($file->nombre_folio);
-				$doc = $path.'/'.$fileName;
-				$split = explode(".", $fileName);
-				print_r($split);
+				$data["path"] = $path;
+				$data["fileName"] = $fileName;
+				print_r($data);
+				// $doc = $path.'/'.$fileName;
+				// $split = explode(".", $fileName);
+				// print_r($fileName);
 				// if($split[1] == "pdf"){
 				// 	$ctype = "application/pdf";
 				// }else{
