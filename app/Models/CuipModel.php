@@ -861,7 +861,7 @@ class CuipModel
 
     public function getJefes($idEmpresa){
         $builder = $this->db->table('datos_personales');
-        $builder->select("id, CONCAT(primer_nombre,' ',segundo_nombre,' ',apellido_paterno,' ',apellido_paterno ) as nombre");
+        $builder->select("id, CONCAT(primer_nombre,' ',segundo_nombre,' ',apellido_paterno,' ',apellido_materno ) as nombre");
         $builder->where("activo",true);
         $builder->where("idEmpresa",$idEmpresa);
         $builder->orderBy("primer_nombre","asc");
@@ -966,7 +966,7 @@ class CuipModel
 
     public function GetAltaEmpleadoById($id){
         $builder = $this->db->table('datos_empleado');
-        $builder->select("datos_empleado.id,numEmpleado, datos_empleado.fecha_ingreso, cliente.nombre_corto AS idCliente, nombre_ubicacion AS idUbicacion, sueldo, T.valor AS idTurno, P.valor AS idPuesto, pagoExterno, telefonoEmpresa, N.valor AS idNomimaPeriodo, radioEmpresa, CONCAT(primer_nombre,' ',segundo_nombre,' ',apellido_paterno,' ',apellido_materno ) as idJefeInmediato, B.valor AS idBanco, cuentaBanco, CLABE, nss, I.valor AS infonavit, PE.valor AS pension, F.valor AS fonacot, S.valor AS soldi");
+        $builder->select("datos_empleado.id,numEmpleado, datos_empleado.fecha_ingreso, cliente.nombre_corto AS idCliente, datos_empleado.idUbicacion, nombre_ubicacion AS nombre_ubicacion, sueldo, T.valor AS turno,datos_empleado.idTurno, P.valor AS puesto,datos_empleado.idPuesto, pagoExterno, telefonoEmpresa, N.valor AS idNomimaPeriodo, radioEmpresa, CONCAT(primer_nombre,' ',segundo_nombre,' ',apellido_paterno,' ',apellido_materno ) as idJefeInmediato, B.valor AS idBanco, cuentaBanco, CLABE, nss, I.valor AS infonavit, PE.valor AS pension, F.valor AS fonacot, S.valor AS soldi");
         $builder->join("cliente","datos_empleado.idCliente = cliente.id","left");
         $builder->join("ubicacion","datos_empleado.idUbicacion = ubicacion.id","left");
         $builder->join("turnos","datos_empleado.idTurno = turnos.id","left");
@@ -1149,53 +1149,53 @@ class CuipModel
      public function updateAltaEmpleado($data,$equipos,$uniformes,$idPersonal,$id){
         $this->db->transStart();
 
-        $this->db->table('equipos')->where('idPersonal',$idPersonal)->delete();
+        //$this->db->table('equipos')->where('idPersonal',$idPersonal)->delete();
 
-        $this->db->table('uniformes')->where('idPersonal',$idPersonal)->delete();
+        //$this->db->table('uniformes')->where('idPersonal',$idPersonal)->delete();
 
         $this->db->table('datos_empleado')->where('idPersonal',$idPersonal)->where('id',$id)->update($data);
 
-        $getEquipos = json_decode($equipos,true);
-        $getUniformes = json_decode($uniformes,true);
-        $clockSequence = 16383;
-        foreach($getEquipos as $x =>$value){
-            $uuid1 = Uuid::uuid1($clockSequence);
-            $id = $uuid1->toString();
-            $idPersonal =  $idPersonal;
-            $idEquipo = $this->encrypt->Decrytp($value['Equipo']);
+        // $getEquipos = json_decode($equipos,true);
+        // $getUniformes = json_decode($uniformes,true);
+        // $clockSequence = 16383;
+        // foreach($getEquipos as $x =>$value){
+        //     $uuid1 = Uuid::uuid1($clockSequence);
+        //     $id = $uuid1->toString();
+        //     $idPersonal =  $idPersonal;
+        //     $idEquipo = $this->encrypt->Decrytp($value['Equipo']);
             
-            $queryEquipos = "INSERT INTO equipos (id,
-                idPersonal, 
-                idTipo,
-                cantidad) VALUES (
-                '".$id."',
-                '".$idPersonal."', 
-                ".$idEquipo.", 
-                ".$value['Cantidad']." )";
+        //     $queryEquipos = "INSERT INTO equipos (id,
+        //         idPersonal, 
+        //         idTipo,
+        //         cantidad) VALUES (
+        //         '".$id."',
+        //         '".$idPersonal."', 
+        //         ".$idEquipo.", 
+        //         ".$value['Cantidad']." )";
                 
-            $this->db->query($queryEquipos);
-        }
+        //     $this->db->query($queryEquipos);
+        // }
 
 
-        foreach($getUniformes as $j =>$value){
-            $uuid1 = Uuid::uuid1($clockSequence);
-            $id = $uuid1->toString();
-            $idPersonal =  $idPersonal;
-            $idUniforme = $this->encrypt->Decrytp($value['Uniforme']);
+        // foreach($getUniformes as $j =>$value){
+        //     $uuid1 = Uuid::uuid1($clockSequence);
+        //     $id = $uuid1->toString();
+        //     $idPersonal =  $idPersonal;
+        //     $idUniforme = $this->encrypt->Decrytp($value['Uniforme']);
             
-            $queryEquipos = "INSERT INTO uniformes (id,
-                idPersonal, 
-                idUniforme,
-                cantidad,
-                talla) VALUES (
-                '".$id."',
-                '".$idPersonal."', 
-                ".$idUniforme.", 
-                ".$value['Cantidad'].",
-                ".$value['Talla']." )";
+        //     $queryEquipos = "INSERT INTO uniformes (id,
+        //         idPersonal, 
+        //         idUniforme,
+        //         cantidad,
+        //         talla) VALUES (
+        //         '".$id."',
+        //         '".$idPersonal."', 
+        //         ".$idUniforme.", 
+        //         ".$value['Cantidad'].",
+        //         ".$value['Talla']." )";
                 
-            $this->db->query($queryEquipos);
-        }
+        //     $this->db->query($queryEquipos);
+        // }
 
         $this->db->transComplete();
 

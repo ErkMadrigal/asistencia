@@ -26,7 +26,7 @@ $encrypt = new Encrypt();
     <div class="card-body">
         <form class="form-horizontal" id="EmpleosDiversos">
             <div class="row">
-                <input type="hidden" class="form-control " id="idEmpDiversos" name="idEmpDiversos" value="<?= $encrypt->Encrypt($diversos->id) ?>"><?= csrf_field() ?>
+                
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="empresa" class=" control-label">Empresa:<span class="text-danger">*</span></label>
@@ -180,7 +180,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="ingresoEmpDiv" class=" control-label">Ingreso:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="ingresoEmpDiv" name="ingresoEmpDiv"  value="<?= isset($diversos->ingreso) ? $diversos->ingreso : ''  ?>">
+                                  <input type="text"  class="form-control "  id="ingresoEmpDiv" name="ingresoEmpDiv"  value="<?= isset($diversos->ingreso) ? date( "d-m-Y" ,strtotime($diversos->ingreso)) : ''  ?>">
                             
                         </div>
                         <script type="text/javascript">
@@ -376,6 +376,7 @@ $encrypt = new Encrypt();
     <div class="card-body">
 
         <div class="row">
+            <input type="hidden" class="form-control " id="idEmpDiversos" name="idEmpDiversos" value="<?= $encrypt->Encrypt($diversos->id) ?>"><?= csrf_field() ?>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="desciplina" class=" control-label">Tipo de Disciplina:<span class="text-danger">*</span></label>

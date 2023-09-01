@@ -146,7 +146,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="vigenciaLic" class=" control-label">Vigencia de Licencia:</label>
                         <div>
-                            <input type="text" class="form-control " id="vigenciaLic" name="vigenciaLic" value="<?= isset($variable->vigencia_licencia) ? $variable->vigencia_licencia : ''  ?>">
+                            <input type="text" class="form-control " id="vigenciaLic" name="vigenciaLic" value="<?= isset($variable->vigencia_licencia) ? date( "d-m-Y" ,strtotime($variable->vigencia_licencia)) : ''  ?>">
 
                         </div>
                         <script type="text/javascript">
@@ -209,7 +209,7 @@ $encrypt = new Encrypt();
                         <label for="fecha_naturalizacion">Fecha de Naturalización: <span class="text-danger">*</span></label>
 
                         <div>
-                            <input type="text" class="form-control " id="fecha_naturalizacion" name="fecha_naturalizacion" value="<?= isset($variable->fecha_naturalizacion) ? $variable->fecha_naturalizacion : ''  ?>">
+                            <input type="text" class="form-control " id="fecha_naturalizacion" name="fecha_naturalizacion" value="<?= isset($variable->fecha_naturalizacion) ? date( "d-m-Y" ,strtotime($variable->fecha_naturalizacion)) : ''  ?>">
 
                         </div>
                         <script type="text/javascript">

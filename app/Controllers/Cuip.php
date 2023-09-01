@@ -2210,7 +2210,9 @@ class Cuip extends BaseController {
 						"area_gustaria"  =>  strtoupper($this->request->getPost('area_gustaria')) , 
 						"tiempo_ascenso"  =>  strtoupper($this->request->getPost('ascender')) , 
 						"reglamento"  =>  $reglamentacion , 
-						"razon_ascenso"  => $reglamentacion_ascenso  , 
+						"razon_ascenso"  => $reglamentacion_ascenso  ,
+						"razon_no_reconocimiento" => strtoupper($this->request->getPost('reconomiento')),
+						"razon_no_ascenso" => strtoupper($this->request->getPost('razones_ascenso')),  
 						"capacitacion"  =>  strtoupper($this->request->getPost('capacitacion')) , 
 						"idTipoDisciplina"  =>  $desciplina , 
 						"subtipo_disciplina"  =>  strtoupper($this->request->getPost('subtipo_disciplina')) , 
@@ -2386,7 +2388,7 @@ class Cuip extends BaseController {
 			$data['datosEmpleado'] = $this->modelCuip->GetAltaEmpleadoById($id);
 			$data['uniforme'] = $this->modelCuip->GetUniformesById($id);
 			$data['equipo'] = $this->modelCuip->GetEquiposById($id);
-//var_dump($data['referenciaLab']);
+//var_dump($data['diversos']);
 			$documentos = $this->modelCuip->GetDocumentosById($id);
 
 
@@ -2888,7 +2890,7 @@ class Cuip extends BaseController {
 
 
 			$data['documentos'] = $result;
-
+			//var_dump($data['diversos']);
 			
 			$data['id'] = $this->encrypt->Encrypt($id); 
 			
@@ -5863,7 +5865,9 @@ class Cuip extends BaseController {
 						"area_gustaria"  =>  strtoupper($this->request->getPost('area_gustaria')) , 
 						"tiempo_ascenso"  =>  strtoupper($this->request->getPost('ascender')) , 
 						"reglamento"  =>  $reglamentacion , 
-						"razon_ascenso"  => $reglamentacion_ascenso  , 
+						"razon_ascenso"  => $reglamentacion_ascenso  ,
+						"razon_no_reconocimiento" => strtoupper($this->request->getPost('reconomiento')),
+						"razon_no_ascenso" => strtoupper($this->request->getPost('razones_ascenso')),  
 						"capacitacion"  =>  strtoupper($this->request->getPost('capacitacion')) , 
 						"idTipoDisciplina"  =>  $desciplina , 
 						"subtipo_disciplina"  =>  strtoupper($this->request->getPost('subtipo_disciplina')) , 
