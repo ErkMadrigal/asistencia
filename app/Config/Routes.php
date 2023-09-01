@@ -214,6 +214,7 @@ $routes->get('visor', 'Armas::view',['filter' => 'auth']);
 $routes->get('visorFolioManifiesto', 'Armas::visorFolioManifiesto',['filter' => 'auth']);
 $routes->post('editFolioManifisto', 'Armas::editFolioManifisto',['filter' => 'auth']);
 $routes->get('cargaMasivaArmas', 'Armas::cargaMasivaArmas',['filter' => 'auth']);
+$routes->get('limpiar_datos', 'Armas::limpiar_datos',['filter' => 'auth']);
 $routes->post('EditarDatosPersonales', 'Cuip::EditarPersonales',['filter' => 'auth']);
 $routes->post('EditarReferencias', 'Cuip::EditarReferencias',['filter' => 'auth']);
 $routes->post('EditarSocioEconomico', 'Cuip::EditarSocioEconomico',['filter' => 'auth']);

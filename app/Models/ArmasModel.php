@@ -357,9 +357,11 @@ class ArmasModel
         return $builder->get()->getResult(); 
     }
 
-    public function update_url_name($update){
+    public function update_url_name(){
 
         $return = false;
+        $update["url"] = '';
+        $update["nombre_folio"] = '';
         $this->db->table('armas')->update($update);
 
         if ($this->db->affectedRows() > 0){
