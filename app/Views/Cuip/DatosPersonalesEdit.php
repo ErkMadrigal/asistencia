@@ -86,7 +86,7 @@ $encrypt = new Encrypt();
                             if (!empty($genero)) :
                                 foreach ($genero as  $a) {
                             ?>
-                                    <option <?= (isset($variable->sexo) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= isset($variable->sexo)?($variable->sexo) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                             <?php
                                 }
@@ -186,7 +186,7 @@ $encrypt = new Encrypt();
                             if (!empty($modo_nacionalidad)) :
                                 foreach ($modo_nacionalidad as  $a) {
                             ?>
-                                    <option <?= (isset($variable->nacionalidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= isset($variable->nacionalidad)?($variable->nacionalidad) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                             <?php
@@ -233,7 +233,7 @@ $encrypt = new Encrypt();
                                 if (!empty($pais_nacimiento)) :
                                     foreach ($pais_nacimiento as  $a) {
                                 ?>
-                                        <option <?= (isset($variable->pais) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= isset($variable->pais)?($variable->pais) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                 <?php
                                     }
@@ -260,7 +260,7 @@ $encrypt = new Encrypt();
                                 if (!empty($entidad_federativa)) :
                                     foreach ($entidad_federativa as  $a) {
                                 ?>
-                                        <option <?= (($variable->naciE) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= isset($variable->naciE)?($variable->naciE) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                                 <?php
@@ -332,7 +332,7 @@ $encrypt = new Encrypt();
                                 if (!empty($nacionalidad)) :
                                     foreach ($nacionalidad as  $a) {
                                 ?>
-                                        <option <?= (isset($variable->nacionalidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= isset($variable->nacion)?($variable->nacion) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                                 <?php
@@ -360,7 +360,7 @@ $encrypt = new Encrypt();
                                 if (!empty($estado_civil)) :
                                     foreach ($estado_civil as  $a) {
                                 ?>
-                                        <option <?= (isset($variable->civil) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= isset($variable->civil)?($variable->civil) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                 <?php
                                     }
@@ -387,7 +387,7 @@ $encrypt = new Encrypt();
                                 if (!empty($desarrollo_academico)) :
                                     foreach ($desarrollo_academico as  $a) {
                                 ?>
-                                        <option <?= (isset($variable->desarrollo_academico) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= isset($variable->desarrollo_academico)?($variable->desarrollo_academico) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                                 <?php
@@ -476,7 +476,7 @@ $encrypt = new Encrypt();
                                 if (!empty($SiNo)) :
                                     foreach ($SiNo as  $a) {
                                 ?>
-                                        <option <?= (isset($variable->registro_sep) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= isset($variable->registro_sep)?($variable->registro_sep) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                                 <?php
@@ -627,7 +627,7 @@ $encrypt = new Encrypt();
                         if (!empty($entidad_federativa)) :
                             foreach ($entidad_federativa as  $a) {
                         ?>
-                                <option <?= (($variable->estado) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <option <?= isset($variable->estado)?($variable->estado) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                         <?php
                             }
@@ -751,7 +751,7 @@ $encrypt = new Encrypt();
                             if (!empty($puesto)) :
                                 foreach ($puesto as  $a) {
                             ?>
-                                    <option <?= (isset($variable->puesto) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= isset($variable->puesto)?($variable->puesto) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                             <?php
                                 }
@@ -777,7 +777,7 @@ $encrypt = new Encrypt();
                             if (!empty($rango)) :
                                 foreach ($rango as  $a) {
                             ?>
-                                    <option <?= (isset($variable->rango) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= isset($variable->rango)?($variable->rango) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                             <?php
@@ -803,7 +803,7 @@ $encrypt = new Encrypt();
                             if (!empty($mando)) :
                                 foreach ($mando as  $a) {
                             ?>
-                                    <option <?= (isset($variable->nivel_mando) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= isset($variable->nivel_mando)?($variable->nivel_mando) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                             <?php
                                 }
@@ -838,7 +838,7 @@ $encrypt = new Encrypt();
                         if (!empty($entidad_federativa)) :
                             foreach ($entidad_federativa as  $a) {
                         ?>
-                                <option <?= (($variable->idEstado_adscripcion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <option <?= isset($variable->idEstado_adscripcion)?($variable->idEstado_adscripcion) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                         <?php
                             }
@@ -985,7 +985,7 @@ $encrypt = new Encrypt();
                         if (!empty($entidad_federativa)) :
                             foreach ($entidad_federativa as  $a) {
                         ?>
-                                <option <?= (($variable->idEstado_dom_adscripcion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <option <?= isset($variable->idEstado_dom_adscripcion)?($variable->idEstado_dom_adscripcion) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                         <?php
                             }

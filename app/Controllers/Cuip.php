@@ -6885,4 +6885,66 @@ class Cuip extends BaseController {
 		}
 	}
 
+	public function BajaRegistro(){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['idRegistroBaja,fecha_baja,finiquito,motivoBaja'],FILTER_SANITIZE_STRING)){
+
+				$rules = [
+				'motivoBaja' =>  ['label' => "Motivo de baja", 'rules' => 'max_length[150]'],
+                'finiquito' =>  ['label' => "Finiquito", 'rules' => 'required'],
+            	'fecha_baja' =>  ['label' => "Fecha efectiva de la baja", 'rules' => 'required'],
+            	'idRegistroBaja' =>  ['label' => "", 'rules' => 'required']];
+		 
+				$errors = [];
+				$succes = [];
+				$dontSucces = [];
+				$data = [];
+
+				if($this->validate($rules)){
+					
+					$getUser = session()->get('IdUser');
+					$LoggedUserId = $this->encrypter->decrypt($getUser);
+					$getFechaBaja = $this->request->getPost('fecha_baja');
+
+        			$fechaBaja = date( "Y-m-d" ,strtotime($getFechaBaja));
+					
+					$getIdRegistroBaja = $this->request->getPost('idRegistroBaja');
+					$id = $this->encrypt->Decrytp($getIdRegistroBaja);
+
+					$baja = array(
+			    					
+			    					
+							"fecha_sol_baja" => date("Y-m-d H:i:s")  ,
+							"fecha_efec_baja" => $fechaBaja  , 
+							"finiquito" =>  $this->request->getPost('finiquito') , 
+							"motivo_baja" =>  $this->request->getPost('motivoBaja') ,
+							"activo" => 0 , 
+							"updatedby" => $LoggedUserId , 
+							"updateddate" => date("Y-m-d H:i:s") );
+
+							
+						
+
+						$result = $this->modelCuip->BajaRegistro( $baja, $id);
+					
+                    if ($result) {
+
+            			
+                    	$succes = ["mensaje" => 'Baja procesada con exito' ,
+                            	   "succes" => "succes"];
+
+                           	   
+                    	
+                    } else {
+                    	$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Hubo un error al procesar la baja'  ];
+
+                    }
+				} else {	
+					$errors = $this->validator->getErrors();
+				}
+
+				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+		}	
+	
+	}	
 }

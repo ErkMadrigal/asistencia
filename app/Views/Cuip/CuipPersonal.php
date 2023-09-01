@@ -108,19 +108,67 @@
                 
             </div>
             <div class="modal-body">
-                <form action="'.base_url().'/Reunion" method="post" >
-                <input type="hidden" class="form-control " id="idRegistroBaja" name="idRegistroBaja"  readonly>
-                <?= csrf_field() ?>
+                
                 <p><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;Esta seguro de realizar la baja ?</p>
-                <div>
-                    <input type="text" class="form-control " id="modalReg" name="modalReg"  readonly>
-                    
-                </div>
-               
+                <form class="form-horizontal" id="DatosBaja">
+                    <div class="row">
+                        <input type="hidden" class="form-control " id="idRegistroBaja" name="idRegistroBaja"  readonly>
+                        <?= csrf_field() ?>
+                        <div class='col-12 col-sm-12 col-md-12'>
+                            <div class="form-group">
+                                <input type="text" class="form-control " id="modalReg" name="modalReg"  readonly>
+                            </div>
+                        </div>        
+                        <div class='col-12 col-sm-6'>
+                            <div class='form-group'>
+                                <label for="fecha_baja">Fecha efectiva de la baja: <span class="text-danger">*</span></label>
+                                <div class="input-group date" id="fecha_baja" data-target-input="nearest">
+                                    <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_baja" id="datetime-fecha_baja" name="fecha_baja" placeholder="" value="" />
+                                    <div class="input-group-append" data-target="#fecha_baja" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                                    </div>
+                                </div>
+                                    <script type="text/javascript">
+                                        $(function() {
+                                            $("#fecha_baja").datetimepicker({
+                                                format: 'DD-MM-YYYY',
+                                                locale: moment.locale('es')
+                                            });
+                                        });
+                                    </script>
+                            </div>
+                        </div>
+                        <div class='col-12 col-sm-12 col-md-6'>
+                            <div class="form-group">
+                                <label for="finiquito" class=" control-label">Finiquito:<span class="text-danger">*</span></label>
+                                <select class="form-control" id="finiquito" name="finiquito">
+                                    <option value="">Selecciona una Opcion</option>
+                                    <option value="1">SI</option>
+                                    <option value="0">NO</option>                
+                                </select>
+                                <script>
+                                    $(document).ready(function() {
+                                        $("#finiquito").select2({
+                                            theme: "bootstrap4",
+                                            width: "100%"
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <div class='col-12 col-sm-12 col-md-12'>
+                            <div class="form-group">
+                                <label for="motivoBaja" class=" control-label">Motivo de baja:</label>
+                                <textarea type="text" class="form-control " id="motivoBaja" name="motivoBaja"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>         
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button"  class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <input type="submit" id="btnIniciar" class="btn btn-primary"  value="Procesar baja" />
+                <button type="button" id="btnBaja" class="btn btn-primary">Procesar baja</button>
             </div>
                 </form>
         </div>
@@ -572,6 +620,62 @@
         $('input[type="checkbox"]').not(this).prop('checked', false);
                 
        
+    });
+
+    $('#btnBaja').click(function (event) {
+        event.preventDefault();
+        $('#load').addClass( "spinner-border" );
+        var formData = new FormData($("form#DatosBaja")[0]);
+        
+        $.ajax({
+            url: base_url + '/ProcesoBaja',
+            type: 'POST',
+            dataType: 'json',
+            data: formData,
+            cache: false,
+            async: true,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $('.errorField').remove();
+
+                if (response.succes.succes == 'succes') {
+
+                    toastr.success(response.succes.mensaje);
+
+                    var count = 2;
+                    setInterval(function(){
+                      count--;
+                      if (count == 0) {
+                        window.location = base_url + '/cuip'; 
+                      }
+                    },1000);
+
+                } else if (response.dontsucces.error == 'error'){
+
+                    toastr.error(response.dontsucces.mensaje);
+                            
+                } else if (Object.keys(response.error).length > 0 ){
+
+                    for (var clave in response.error){
+                                
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                            
+                    }
+                        toastr.error('<?=lang('Layout.camposObligatorios')?>');
+
+                }
+
+                $('#load').removeClass( "spinner-border" );    
+
+                        
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                toastr.error('<?=lang('Layout.toastrError')?>');
+                $('#load').removeClass( "spinner-border" );           
+            }
+        });
+            
     });
 
 

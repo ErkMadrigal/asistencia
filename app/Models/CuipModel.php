@@ -1267,6 +1267,19 @@ class CuipModel
 
         }
 
+    }
+
+    public function BajaRegistro( $baja, $id ){
+
+        $return = false;
+        $this->db->table('datos_personales')->where('id',$id)->update($baja);
+
+        if ($this->db->affectedRows() > 0){
+            $return = true;
+            
+        } 
+
+        return $return; 
     }    
     
 }
