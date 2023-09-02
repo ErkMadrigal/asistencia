@@ -1536,175 +1536,180 @@ $encrypt = new Encrypt();
 
 
         var elemento = id;
-
-        var num = $('#' + elemento).val().length
+        
+        var num = $('#'+elemento).val().length
 
         if (num === 5) {
 
-            $('#load').addClass("spinner-border");
+            $('#load').addClass( "spinner-border" );
 
-            let selectEstadoDom = document.querySelector("#estado" + elemento)
+            let selectEstadoDom = document.querySelector("#estado"+elemento)
 
-            let selectMunicipioDom = document.querySelector("#municipio" + elemento)
-
-            let selectColoniaDom = document.querySelector("#colonia" + elemento)
-
+            let selectMunicipioDom = document.querySelector("#municipio"+elemento)
+                
+            let selectColoniaDom = document.querySelector("#colonia"+elemento)
+            
             switch (elemento) {
-                case "codigo":
+            case "codigo":
+                
+            var selectCiudadDom = document.querySelector("#ciudad"+elemento)
 
-                    var selectCiudadDom = document.querySelector("#ciudad" + elemento)
+                selectCiudadDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+            case "codigoSegPub":
+                 
 
-                    selectCiudadDom.innerHTML = ''
-                    selectColoniaDom.innerHTML = ''
-                    break;
-                case "codigoSegPub":
+                selectEstadoDom.innerHTML = ''
+                selectMunicipioDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+            case "codigoEmpDiv":
+                 
 
+                selectEstadoDom.innerHTML = ''
+                selectMunicipioDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+            case "codigoRefCer":
+                
+            var selectCiudadDom = document.querySelector("#ciudad"+elemento)
 
-                    selectEstadoDom.innerHTML = ''
-                    selectMunicipioDom.innerHTML = ''
-                    selectColoniaDom.innerHTML = ''
-                    break;
-                case "codigoEmpDiv":
+                
+                selectCiudadDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+            case "codigoParCer":
+                
+            var selectCiudadDom = document.querySelector("#ciudad"+elemento)
 
+                
+                selectCiudadDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+            case "codigoPersonal":
+                
+            var selectCiudadDom = document.querySelector("#ciudad"+elemento)
 
-                    selectEstadoDom.innerHTML = ''
-                    selectMunicipioDom.innerHTML = ''
-                    selectColoniaDom.innerHTML = ''
-                    break;
-                case "codigoRefCer":
+                
+                selectCiudadDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+            case "codigoLaboral":
+                
+            var selectCiudadDom = document.querySelector("#ciudad"+elemento)
 
-                    var selectCiudadDom = document.querySelector("#ciudad" + elemento)
-
-
-                    selectCiudadDom.innerHTML = ''
-                    selectColoniaDom.innerHTML = ''
-                    break;
-                case "codigoParCer":
-
-                    var selectCiudadDom = document.querySelector("#ciudad" + elemento)
-
-
-                    selectCiudadDom.innerHTML = ''
-                    selectColoniaDom.innerHTML = ''
-                    break;
-                case "codigoPersonal":
-
-                    var selectCiudadDom = document.querySelector("#ciudad" + elemento)
-
-
-                    selectCiudadDom.innerHTML = ''
-                    selectColoniaDom.innerHTML = ''
-                    break;
-                case "codigoLaboral":
-
-                    var selectCiudadDom = document.querySelector("#ciudad" + elemento)
-
-
-                    selectCiudadDom.innerHTML = ''
-                    selectColoniaDom.innerHTML = ''
-                    break;
-                case "codigoAds":
-                    var selectCiudadDom = document.querySelector("#ciudad" + elemento)
-                    selectCiudadDom.innerHTML = ''
-                    selectColoniaDom.innerHTML = ''
-                    break;
-
+                
+                selectCiudadDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+            case "codigoAds":
+                var selectCiudadDom = document.querySelector("#ciudad"+elemento)    
+                selectCiudadDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+  
             }
+            
 
+            
 
-            $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
+        
+        var cp = $('#'+elemento).val()
+        var csrfName = $("input[name=app_csrf]").val();
+        
+            var data    = {
+                    cp : cp,
+                    app_csrf: csrfName
+                };
 
+        $.ajax({
+            url: base_url + '/getSepomex',
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            data: data,
+            ache: false,
+            async: true,
+            success: function (response) {
+                if(response.succes.succes === "succes"){
 
-            var cp = $('#' + elemento).val()
-            var csrfName = $("input[name=app_csrf]").val();
+                    switch (elemento) {
+                    case "codigo":
+                
+                        
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectColoniaDom.innerHTML = response.data.colonia
+                    break;
+                    case "codigoSegPub":
+                        
+                        selectEstadoDom.innerHTML = response.data.estado
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                        
+                        selectColoniaDom.innerHTML = response.data.colonia
 
-            var data = {
-                cp: cp,
-                app_csrf: csrfName
-            };
+                
+                    break;
+                    case "codigoEmpDiv":
+                        
+                        selectEstadoDom.innerHTML = response.data.estado
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                        
+                        selectColoniaDom.innerHTML = response.data.colonia
 
-            $.ajax({
-                url: base_url + '/getSepomex',
-                type: 'POST',
-                dataType: 'json',
-                data: data,
-                data: data,
-                ache: false,
-                async: true,
-                success: function(response) {
-                    if (response.succes.succes === "succes") {
-
-                        switch (elemento) {
-                            case "codigo":
-
-
-                                selectCiudadDom.innerHTML = response.data.ciudad
-                                selectColoniaDom.innerHTML = response.data.colonia
-                                break;
-                            case "codigoSegPub":
-
-                                selectEstadoDom.innerHTML = response.data.estado
-                                selectMunicipioDom.innerHTML = response.data.municipio
-
-                                selectColoniaDom.innerHTML = response.data.colonia
-
-
-                                break;
-                            case "codigoEmpDiv":
-
-                                selectEstadoDom.innerHTML = response.data.estado
-                                selectMunicipioDom.innerHTML = response.data.municipio
-
-                                selectColoniaDom.innerHTML = response.data.colonia
-
-
-                                break;
-                            case "codigoRefCer":
-
-
-                                selectCiudadDom.innerHTML = response.data.ciudad
-                                selectColoniaDom.innerHTML = response.data.colonia
-                                break;
-                            case "codigoParCer":
-
-
-                                selectCiudadDom.innerHTML = response.data.ciudad
-                                selectColoniaDom.innerHTML = response.data.colonia
-                                break;
-                            case "codigoPersonal":
-
-
-                                selectCiudadDom.innerHTML = response.data.ciudad
-                                selectColoniaDom.innerHTML = response.data.colonia
-                                break;
-                            case "codigoLaboral":
-
-
-                                selectCiudadDom.innerHTML = response.data.ciudad
-                                selectColoniaDom.innerHTML = response.data.colonia
-                                break;
-                            case "codigoAds":
-
-
-                                selectCiudadDom.innerHTML = response.data.ciudad
-                                selectColoniaDom.innerHTML = response.data.colonia
-                                break;
-
-                        }
-
-
+                
+                    break;
+                    case "codigoRefCer":
+                
+                        
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectColoniaDom.innerHTML = response.data.colonia
+                    break;
+                    case "codigoParCer":
+                
+                        
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectColoniaDom.innerHTML = response.data.colonia
+                    break;
+                    case "codigoPersonal":
+                
+                        
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectColoniaDom.innerHTML = response.data.colonia
+                    break;
+                    case "codigoLaboral":
+                
+                        
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectColoniaDom.innerHTML = response.data.colonia
+                    break;
+                    case "codigoAds":
+                
+                        
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectColoniaDom.innerHTML = response.data.colonia
+                    break;
+  
                     }
-
-                    $('#load').removeClass("spinner-border");
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    $('#load').removeClass("spinner-border");
-                    toastr.error('<?= lang('Layout.toastrError') ?>');
-
+                    
+                    
                 }
-            });
 
-        }
+
+                
+
+                $('#load').removeClass( "spinner-border" );
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('#load').removeClass( "spinner-border" );
+                toastr.error('<?=lang('Layout.toastrError') ?>');
+                           
+            }
+        });
+
+        $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
+
+    }
     };
 
     $(document).on('click', '.add-more-btn-dged', function() {

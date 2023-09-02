@@ -39,7 +39,7 @@
                                 <div class="form-group">
                                     <label for="institucion<?= $label ?>" class=" control-label">Institución Capacitadora:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="institucion<?= $label ?>" name="institucion<?= $label ?>" value=" <?= isset($e->inst_capacitadora) ? $e->inst_capacitadora : ''  ?>">
+                                        <input type="text" class="form-control " id="institucion<?= $label ?>" name="institucion<?= $label ?>" value="<?= isset($e->inst_capacitadora)?$e->inst_capacitadora:''?>">
 
                                     </div>
                                 </div>
@@ -57,7 +57,7 @@
                                 <div class="form-group">
                                     <label for="tema_curso<?= $label ?>" class=" control-label">Tema del curso:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="tema_curso<?= $label ?>" name="tema_curso<?= $label ?>" value=" <?= isset($e->tema_curso) ? $e->tema_curso : ''  ?>">
+                                        <input type="text" class="form-control " id="tema_curso<?= $label ?>" name="tema_curso<?= $label ?>" value="<?= isset($e->tema_curso)?$e->tema_curso:''?>">
 
                                     </div>
                                 </div>

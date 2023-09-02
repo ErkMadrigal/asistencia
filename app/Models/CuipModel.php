@@ -274,7 +274,7 @@ class CuipModel
     public function GetEmpleosDiversos($id)
     {
         $builder = $this->db->table('empleos_diversos');
-        $builder->select("empleos_diversos.id,empresa,calle,numero_exterior,numero_interior,colonia,idCodigoPostal,numero_telefono,ingreso,area,sueldo_base,idEstado AS estado,municipio,idMotivoSeparacion AS separacion,tipo_separacion,comentarios,eligio_empleo,puesto_gustaria,area_gustaria,tiempo_ascenso,RR.valor AS reglamento,RA.valor AS razon_ascenso,capacitacion,TD.valor AS disciplina,subtipo_disciplina,motivo,tipo,fecha_inicio,fecha_termino,funciones,razon_no_reconocimiento,razon_no_ascenso,TDU.valor AS duracion,cantidad,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
+        $builder->select("empleos_diversos.id,empresa,calle,numero_exterior,numero_interior,colonia,idCodigoPostal,numero_telefono,ingreso,area,sueldo_base,idEstado AS estado,municipio,idMotivoSeparacion AS separacion,tipo_separacion,comentarios,eligio_empleo,puesto_gustaria,area_gustaria,tiempo_ascenso,RR.valor AS reglamento,RA.valor AS razon_ascenso,capacitacion,TD.valor AS disciplina,subtipo_disciplina,motivo,tipo,fecha_inicio,fecha_termino,funciones,razon_no_reconocimiento,razon_no_ascenso,TDU.valor AS duracion,cantidad,licencias_medicas,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby");
         $builder->join("catalogos_detalle RR"," empleos_diversos.reglamento= RR.id  ","left");
         $builder->join("catalogos_detalle RA"," empleos_diversos.razon_ascenso= RA.id  ","left");
         $builder->join("catalogos_detalle TD"," empleos_diversos.idTipoDisciplina= TD.id  ","left");

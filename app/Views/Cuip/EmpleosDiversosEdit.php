@@ -90,7 +90,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="estadocodigoEmpDiv" class="control-label">Entidad Federativa: <span class="text-danger">*</span></label>
                         <div>
-                        <select class="form-control" id="estadocodigoEmpDiv<" name="estadocodigoEmpDiv">
+                        <select class="form-control" id="estadocodigoEmpDiv" name="estadocodigoEmpDiv">
                             <option value="">Selecciona una Opcion</option>
                                     
                                <option selected value="<?= $diversos->estado ?>"><?= $diversos->estado ?></option>
@@ -179,9 +179,11 @@ $encrypt = new Encrypt();
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="ingresoEmpDiv" class=" control-label">Ingreso:<span class="text-danger">*</span></label>
-                        <div >    
-                                  <input type="text"  class="form-control "  id="ingresoEmpDiv" name="ingresoEmpDiv"  value="<?= isset($diversos->ingreso) ? date( "d-m-Y" ,strtotime($diversos->ingreso)) : ''  ?>">
-                            
+                        <div class="input-group date" id="ingresoEmpDiv" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#ingresoEmpDiv" id="datetime-ingresoEmpDiv" name="ingresoEmpDiv" placeholder="" value="<?= isset($diversos->ingreso) ? date( "d-m-Y" ,strtotime($diversos->ingreso)) : ''  ?>" />
+                            <div class="input-group-append" data-target="#ingresoEmpDiv" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
                         </div>
                         <script type="text/javascript">
                             $(function() {
@@ -197,7 +199,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="motivo_separacion" class=" control-label">Motivo de separación:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="motivo_separacion" name="motivo_separacion"  value=" <?= isset($diversos->separacion) ? $diversos->separacion : ''  ?>">
+                                  <input type="text"  class="form-control "  id="motivo_separacion" name="motivo_separacion"  value="<?= isset($diversos->separacion)?$diversos->separacion:''?>">
                             
                         </div>
                     </div>
@@ -206,7 +208,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="tipo_separacion" class=" control-label">Tipo de Separación:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="tipo_separacion" name="tipo_separacion"  value=" <?= isset($diversos->tipo_separacion) ? $diversos->tipo_separacion : ''  ?>">
+                                  <input type="text"  class="form-control "  id="tipo_separacion" name="tipo_separacion"  value="<?= isset($diversos->tipo_separacion)?$diversos->tipo_separacion:''?>">
                             
                         </div>
                     </div>
@@ -216,7 +218,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="comentarios" class=" control-label">Comentarios:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="comentarios" name="comentarios"  value=" <?= isset($diversos->comentarios) ? $diversos->comentarios : ''  ?>">
+                                  <input type="text"  class="form-control "  id="comentarios" name="comentarios"  value="<?= isset($diversos->comentarios)?$diversos->comentarios:''?>">
                             
                         </div>
                     </div>
@@ -262,7 +264,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="area_gustaria" class=" control-label">¿En que area le gustaría estar?<span class="text-danger">*</span></label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="area_gustaria" name="area_gustaria"  value=" <?= isset($diversos->area_gustaria) ? $diversos->area_gustaria : ''  ?> ">
+                                  <input type="text"  class="form-control "  id="area_gustaria" name="area_gustaria"  value="<?= isset($diversos->area_gustaria)?$diversos->area_gustaria:''?> ">
                             
                         </div>
                 </div>
@@ -433,10 +435,12 @@ $encrypt = new Encrypt();
             <div class='col-12 col-sm-6'>
                 <div class='form-group'>
                     <label for="fecha_inicialDis">Fecha de Inicio: <span class="text-danger">*</span></label>
-                    <div >    
-                                  <input type="text"  class="form-control "  id="fecha_inicialDis" name="fecha_inicialDis"  value="<?= isset($diversos->fecha_inicio) ? $diversos->fecha_inicio : ''  ?>">
-                            
+                    <div class="input-group date" id="fecha_inicialDis" data-target-input="nearest">
+                        <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_inicialDis" id="datetime-fecha_inicialDis" name="fecha_inicialDis" placeholder="" value="<?= isset($diversos->fecha_inicio) ? date( "d-m-Y" ,strtotime($diversos->fecha_inicio)) : ''  ?>" />
+                        <div class="input-group-append" data-target="#fecha_inicialDis" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="far fa-calendar"></i></div>
                         </div>
+                    </div>
                     <script type="text/javascript">
                         $(function() {
                             $("#fecha_inicialDis").datetimepicker({
@@ -450,10 +454,12 @@ $encrypt = new Encrypt();
             <div class='col-12 col-sm-6'>
                 <div class='form-group'>
                     <label for="fecha_finalDis">Fecha de Término: <span class="text-danger">*</span></label>
-                    <div >    
-                                  <input type="text"  class="form-control "  id="fecha_finalDis" name="fecha_finalDis"  value="<?= isset($diversos->fecha_termino) ? $diversos->fecha_termino : ''  ?>">
-                            
+                    <div class="input-group date" id="fecha_finalDis" data-target-input="nearest">
+                        <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_finalDis" id="datetime-fecha_finalDis" name="fecha_finalDis" placeholder="" value="<?= isset($diversos->fecha_termino) ? date( "d-m-Y" ,strtotime($diversos->fecha_termino)) : ''  ?>" />
+                        <div class="input-group-append" data-target="#fecha_finalDis" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="far fa-calendar"></i></div>
                         </div>
+                    </div>
                     <script type="text/javascript">
                         $(function() {
                             $("#fecha_finalDis").datetimepicker({
@@ -469,7 +475,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="licencias_medicas" class=" control-label">En caso de licencias médicas:</label>
                     <div >    
-                                  <input type="text"  class="form-control "  id="licencias_medicas" name="licencias_medicas"  value="<?= isset($diversos->dependencia) ? $diversos->dependencia : ''  ?>">
+                                  <input type="text"  class="form-control "  id="licencias_medicas" name="licencias_medicas"  value="<?= isset($diversos->licencias_medicas) ? $diversos->licencias_medicas : ''  ?>">
                             
                         </div>
                 </div>

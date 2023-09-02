@@ -2090,7 +2090,7 @@ class Cuip extends BaseController {
 
 
 	public function AgregarEmpDiversos(){
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['empresa, calle, exterior, interior, codigoEmpDiv, coloniacodigoEmpDiv, estadocodigoEmpDiv, municipiocodigoEmpDiv, numero, ingresoEmpDiv,  funciones, sueldo, area, motivo_separacion, tipo_separacion, comentarios, empleo, puesto, area_gustaria, ascender, reglamentacion, reconomiento, reglamentacion_ascenso, razones_ascenso, capacitacion, desciplina, subtipo_disciplina, motivo, tipo, fecha_inicialDis, fecha_finalDis, duracion, cantidad'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['empresa, calle, exterior, interior, codigoEmpDiv, coloniacodigoEmpDiv, estadocodigoEmpDiv, municipiocodigoEmpDiv, numero, ingresoEmpDiv,  funciones, sueldo, area, motivo_separacion, tipo_separacion, comentarios, empleo, puesto, area_gustaria, ascender, reglamentacion, reconomiento, reglamentacion_ascenso, razones_ascenso, capacitacion, desciplina, subtipo_disciplina, motivo, tipo, fecha_inicialDis, fecha_finalDis, duracion, cantidad,licencias_medicas'],FILTER_SANITIZE_STRING)){
 
 			$errors = [];
 			$succes = [];
@@ -2230,7 +2230,8 @@ class Cuip extends BaseController {
 						"fecha_inicio"  =>  $fecha_inicialDis , 
 						"fecha_termino"  => $fecha_finalDis  , 
 						"idDuracion"  => $duracion   , 
-						"cantidad" => strtoupper($this->request->getPost('cantidad')) , 
+						"cantidad" => strtoupper($this->request->getPost('cantidad')) ,
+						"licencias_medicas" =>  strtoupper($this->request->getPost('licencias_medicas')) ,
 						"activo" => 1 , 
 						"createdby" => $LoggedUserId , 
 						"createddate" => date("Y-m-d H:i:s") );
@@ -2278,7 +2279,8 @@ class Cuip extends BaseController {
 						"fecha_inicio"  =>  $fecha_inicialDis , 
 						"fecha_termino"  => $fecha_finalDis  , 
 						"idDuracion"  => $duracion   , 
-						"cantidad" => strtoupper($this->request->getPost('cantidad')) , 
+						"cantidad" => strtoupper($this->request->getPost('cantidad')) ,
+						"licencias_medicas" =>  strtoupper($this->request->getPost('licencias_medicas')) , 
 						"activo" => 1 , 
 						"createdby" => $LoggedUserId , 
 						"createddate" => date("Y-m-d H:i:s") );
@@ -5756,7 +5758,7 @@ class Cuip extends BaseController {
 
 
 	public function EditarEmpDiversos(){
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['idPersonales,idEmpDiversos,empresa, calle, exterior, interior, codigoEmpDiv, coloniacodigoEmpDiv, estadocodigoEmpDiv, municipiocodigoEmpDiv, numero, ingresoEmpDiv,  funciones, sueldo, area, motivo_separacion, tipo_separacion, comentarios, empleo, puesto, area_gustaria, ascender, reglamentacion, reconomiento, reglamentacion_ascenso, razones_ascenso, capacitacion, desciplina, subtipo_disciplina, motivo, tipo, fecha_inicialDis, fecha_finalDis, duracion, cantidad'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['idPersonales,idEmpDiversos,empresa, calle, exterior, interior, codigoEmpDiv, coloniacodigoEmpDiv, estadocodigoEmpDiv, municipiocodigoEmpDiv, numero, ingresoEmpDiv,  funciones, sueldo, area, motivo_separacion, tipo_separacion, comentarios, empleo, puesto, area_gustaria, ascender, reglamentacion, reconomiento, reglamentacion_ascenso, razones_ascenso, capacitacion, desciplina, subtipo_disciplina, motivo, tipo, fecha_inicialDis, fecha_finalDis, duracion, cantidad,licencias_medicas'],FILTER_SANITIZE_STRING)){
 
 			$errors = [];
 			$succes = [];
@@ -5896,7 +5898,7 @@ class Cuip extends BaseController {
 						"fecha_termino"  => $fecha_finalDis  , 
 						"idDuracion"  => $duracion   , 
 						"cantidad" => strtoupper($this->request->getPost('cantidad')) , 
-						 
+						"licencias_medicas" =>  strtoupper($this->request->getPost('licencias_medicas')) ,
 						"updatedby" => $LoggedUserId , 
 						"updateddate" => date("Y-m-d H:i:s") );
 
@@ -5942,7 +5944,7 @@ class Cuip extends BaseController {
 						"fecha_termino"  => $fecha_finalDis  , 
 						"idDuracion"  => $duracion   , 
 						"cantidad" => strtoupper($this->request->getPost('cantidad')) , 
-						
+						"licencias_medicas" =>  strtoupper($this->request->getPost('licencias_medicas')) ,
 						"updatedby" => $LoggedUserId , 
 						"updateddate" => date("Y-m-d H:i:s") );
 
