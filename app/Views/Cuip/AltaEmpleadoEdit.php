@@ -148,7 +148,7 @@ use App\Libraries\Encrypt;
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="telEmpresaRH" class=" control-label">Teléfono Empresa:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="telEmpresaRH" name="telEmpresaRH" maxlength="50" value=" <?= isset($datosEmpleado->telefonoEmpresa) ? $datosEmpleado->telefonoEmpresa : ''  ?>"> 
+                        <input type="text" class="form-control " id="telEmpresaRH" name="telEmpresaRH" maxlength="50" value="<?= isset($datosEmpleado->telefonoEmpresa)?$datosEmpleado->telefonoEmpresa:''?>"> 
                         
                     </div>
                 </div>

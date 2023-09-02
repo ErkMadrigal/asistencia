@@ -498,6 +498,14 @@ class Cuip extends BaseController {
         			
         			$municipio_adscripcion = $this->encrypt->Decrytp($getMunicipio_adscripcion);
 
+        			$getfederativa_adscripcion = $this->request->getPost('federativa_adscripcion');
+        			
+        			$federativa_adscripcion = $this->encrypt->Decrytp($$getfederativa_adscripcion);
+
+        			$getdelegacion_adscripcion = $this->request->getPost('delegacion_adscripcion');
+        			
+        			$delegacion_adscripcion = $this->encrypt->Decrytp($getdelegacion_adscripcion);
+
         			
 
 					$datosPersonales = array(
@@ -533,7 +541,8 @@ class Cuip extends BaseController {
 						"año_inicio" => $this->request->getPost('anno_inicio') , 
 						"año_termino" => $this->request->getPost('anno_termino') , 
 						"registro_sep" => $registroSep , 
-						"folio_certificado" => strtoupper($this->request->getPost('certificado')) , 
+						"folio_certificado" => strtoupper($this->request->getPost('certificado')) ,
+						"promedio" => $this->request->getPost('promedio') , 
 						"calle" => strtoupper($this->request->getPost('calle')) , 
 						"numero_exterior" => strtoupper($this->request->getPost('exterior')) , 
 						"numero_interior" => strtoupper($this->request->getPost('interior')) , 
@@ -562,8 +571,8 @@ class Cuip extends BaseController {
 					  "numero_telefono_adscripcion" => $this->request->getPost('telefono_adscripcion'),
 					  "idCodigoPostal_adscripcion" => $this->request->getPost('codigoAds'),
 					  "colonia_adscripcion" => $this->request->getPost('coloniacodigoAds'),
-					  "idEstado_dom_adscripcion" => $this->request->getPost('federativa_adscripcion'),
-					  "municipio_delegacion" => $this->request->getPost('delegacion_adscripcion'),
+					  "idEstado_dom_adscripcion" => $federativa_adscripcion,
+					  "municipio_delegacion" => $delegacion_adscripcion,
 					  "ciudad_poblacion" => $this->request->getPost('ciudadcodigoAds'), 
 						"activo" => 1 , 
 						"createdby" => $LoggedUserId , 
@@ -2888,9 +2897,8 @@ class Cuip extends BaseController {
 				) ;
 			}
 
-
+//var_dump($data['variable']);
 			$data['documentos'] = $result;
-			//var_dump($data['diversos']);
 			
 			$data['id'] = $this->encrypt->Encrypt($id); 
 			
@@ -4684,6 +4692,16 @@ class Cuip extends BaseController {
         			
         			$municipio_adscripcion = $this->encrypt->Decrytp($getMunicipio_adscripcion);
 
+        			$getfederativa_adscripcion = $this->request->getPost('federativa_adscripcion');
+        			
+        			$federativa_adscripcion = $this->encrypt->Decrytp($getfederativa_adscripcion);
+
+        			$getdelegacion_adscripcion = $this->request->getPost('delegacion_adscripcion');
+        			
+        			$delegacion_adscripcion = $this->encrypt->Decrytp($getdelegacion_adscripcion);
+
+
+
         			
 
 					$datosPersonales = array(
@@ -4719,7 +4737,8 @@ class Cuip extends BaseController {
 						"año_inicio" => $this->request->getPost('anno_inicio') , 
 						"año_termino" => $this->request->getPost('anno_termino') , 
 						"registro_sep" => $registroSep , 
-						"folio_certificado" => strtoupper($this->request->getPost('certificado')) , 
+						"folio_certificado" => strtoupper($this->request->getPost('certificado')) ,
+						"promedio" => $this->request->getPost('promedio') , 
 						"calle" => strtoupper($this->request->getPost('calle')) , 
 						"numero_exterior" => strtoupper($this->request->getPost('exterior')) , 
 						"numero_interior" => strtoupper($this->request->getPost('interior')) , 
@@ -4748,8 +4767,8 @@ class Cuip extends BaseController {
 					  "numero_telefono_adscripcion" => $this->request->getPost('telefono_adscripcion'),
 					  "idCodigoPostal_adscripcion" => $this->request->getPost('codigoAds'),
 					  "colonia_adscripcion" => $this->request->getPost('coloniacodigoAds'),
-					  "idEstado_dom_adscripcion" => $this->request->getPost('federativa_adscripcion'),
-					  "municipio_delegacion" => $this->request->getPost('delegacion_adscripcion'),
+					  "idEstado_dom_adscripcion" => $federativa_adscripcion,
+					  "municipio_delegacion" => $delegacion_adscripcion,
 					  "ciudad_poblacion" => $this->request->getPost('ciudadcodigoAds'), 
 						"updatedby" => $LoggedUserId , 
 						"updateddate" => date("Y-m-d H:i:s") );

@@ -30,7 +30,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="dependencia" class=" control-label">Dependencia:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="dependencia" name="dependencia"  value="<?= isset($seguridad->dependencia) ? $seguridad->dependencia : ''  ?>">
+                                  <input type="text"  class="form-control "  id="dependencia" name="dependencia"  value="<?= isset($seguridad->dependencia)?$seguridad->dependencia:''?>">
                             
                         </div>
                     </div>
@@ -39,7 +39,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="corporacion" class=" control-label">Corporación:<span class="text-danger">*</span></label>
                           <div >    
-                                  <input type="text"  class="form-control "  id="corporacion" name="corporacion"  value=" <?= isset($seguridad->corporacion) ? $seguridad->corporacion : ''  ?>">
+                                  <input type="text"  class="form-control "  id="corporacion" name="corporacion"  value="<?= isset($seguridad->corporacion)?$seguridad->corporacion:''?>">
                             
                         </div>
                     </div>
@@ -49,7 +49,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="calle" name="calle"  value=" <?= isset($seguridad->calle) ? $seguridad->calle : ''  ?>">
+                                  <input type="text"  class="form-control "  id="calle" name="calle"  value="<?= isset($seguridad->calle)?$seguridad->calle:''?>">
                             
                         </div>
                     </div>
@@ -58,7 +58,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="exterior" name="exterior"  value=" <?= isset($seguridad->numero_exterior) ? $seguridad->numero_exterior : ''  ?>">
+                                  <input type="text"  class="form-control "  id="exterior" name="exterior"  value="<?= isset($seguridad->numero_exterior)?$seguridad->numero_exterior:''?>">
                             
                         </div>
                     </div>
@@ -67,7 +67,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="interior" class=" control-label">No. Interior:</label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="interior" name="interior"  value="<?= isset($seguridad->numero_interior) ? $seguridad->numero_interior : ''  ?>">
+                                  <input type="text"  class="form-control "  id="interior" name="interior"  value="<?= isset($seguridad->numero_interior)?$seguridad->numero_interior:''?>">
                             
                         </div>
                     </div>
@@ -113,13 +113,15 @@ $encrypt = new Encrypt();
                         </div>
                  
                     </div>
-                </div>              
+                </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="ingresoEmpPublic" class=" control-label">Ingreso:<span class="text-danger">*</span></label>
-                        <div >    
-                                  <input type="text"  class="form-control "  id="ingresoEmpPublic" name="ingresoEmpPublic"  value=" <?= isset($seguridad->ingreso) ? $seguridad->ingreso : ''  ?>">
-                            
+                        <div class="input-group date" id="ingresoEmpPublic" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#ingresoEmpPublic" id="datetime-ingresoEmpPublic" name="ingresoEmpPublic" placeholder="" value="<?= isset($seguridad->ingreso) ? date( "d-m-Y" ,strtotime($seguridad->ingreso)) : ''  ?>" />
+                            <div class="input-group-append" data-target="#ingresoEmpPublic" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
                         </div>
                         <script type="text/javascript">
                             $(function() {
@@ -130,13 +132,15 @@ $encrypt = new Encrypt();
                             });
                         </script>
                     </div>
-                </div>
+                </div>              
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="separacionEmpSeg" class=" control-label">Separación:<span class="text-danger">*</span></label>
-                        <div >    
-                                  <input type="text"  class="form-control "  id="separacionEmpSeg" name="separacionEmpSeg"  value="<?= isset($seguridad->separacion) ? $seguridad->separacion : ''  ?>">
-                            
+                        <div class="input-group date" id="separacionEmpSeg" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#separacionEmpSeg" id="datetime-separacionEmpSeg" name="separacionEmpSeg" placeholder="" value="<?= isset($seguridad->separacion) ? date( "d-m-Y" ,strtotime($seguridad->separacion)) : ''  ?>" />
+                            <div class="input-group-append" data-target="#separacionEmpSeg" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
                         </div>
                         <script type="text/javascript">
                             $(function() {
@@ -148,11 +152,12 @@ $encrypt = new Encrypt();
                         </script>
                     </div>
                 </div>
+                
                 <div class='col-12 col-sm-12 col-md-12'>
                     <div class="form-group">
                         <label for="puesto_funcional" class=" control-label">Puesto Funcional:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="puesto_funcional" name="puesto_funcional"  value="<?= isset($seguridad->funcional) ? $seguridad->funcional : ''  ?>">
+                                  <input type="text"  class="form-control "  id="puesto_funcional" name="puesto_funcional"  value="<?= isset($seguridad->funcional)?$seguridad->funcional:''?>">
                             
                         </div>
                     </div>
@@ -161,7 +166,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="funciones" class=" control-label">Funciones:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="funciones" name="funciones"  value="<?= isset($seguridad->funciones) ? $seguridad->funciones : ''  ?>">
+                                  <input type="text"  class="form-control "  id="funciones" name="funciones"  value="<?= isset($seguridad->funciones)?$seguridad->funciones:''?>">
                             
                         </div>
                     </div>
@@ -171,7 +176,7 @@ $encrypt = new Encrypt();
                         <label for="especialidad" class=" control-label">Especialidad:<span class="text-danger">*</span></label>
                         
                         <div >    
-                                  <input type="text"  class="form-control "  id="especialidad" name="especialidad"  value="<?= isset($seguridad->especialidad) ? $seguridad->especialidad : ''  ?>">
+                                  <input type="text"  class="form-control "  id="especialidad" name="especialidad"  value="<?= isset($seguridad->especialidad)?$seguridad->especialidad:''?>">
                             
                         </div>
                     </div>
@@ -180,7 +185,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="rango" class=" control-label">Rango o categoría:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="rango" name="rango"  value=" <?= isset($seguridad->rango) ? $seguridad->rango : ''  ?>">
+                                  <input type="text"  class="form-control "  id="rango" name="rango"  value="<?= isset($seguridad->rango)?$seguridad->rango:''?>">
                             
                         </div>
                     </div>
@@ -189,7 +194,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="numero_placa" class=" control-label">Numero de placa:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="numero_placa" name="numero_placa"  value="  <?= isset($seguridad->numero_placa) ? $seguridad->numero_placa : ''  ?>">
+                                  <input type="text"  class="form-control "  id="numero_placa" name="numero_placa"  value="<?= isset($seguridad->numero_placa)?$seguridad->numero_placa:''?>">
                             
                         </div>
                     </div>
@@ -198,7 +203,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="numero_empleado" class=" control-label">Numero de empleado :<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="numero_empleado" name="numero_empleado"  value=" <?= isset($seguridad->numero_empleado) ? $seguridad->numero_empleado : ''  ?> ">
+                                  <input type="text"  class="form-control "  id="numero_empleado" name="numero_empleado"  value="<?= isset($seguridad->numero_empleado)?$seguridad->numero_empleado:''?> ">
                             
                         </div>
                     </div>
@@ -207,7 +212,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="sueldo" class=" control-label">Sueldo Base (Mensual):<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="sueldo" name="sueldo"  value="<?= isset($seguridad->sueldo_base) ? $seguridad->sueldo_base : ''  ?>">
+                                  <input type="text"  class="form-control "  id="sueldo" name="sueldo"  value="<?= isset($seguridad->sueldo_base)? $seguridad->sueldo_base:''?>">
                             
                         </div>
                     </div>
@@ -216,7 +221,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="compensaciones" class=" control-label">Compensaciones (Mensual):<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="compensaciones" name="compensaciones"  value=" <?= isset($seguridad->compensacion) ? $seguridad->compensacion : ''  ?>">
+                                  <input type="text"  class="form-control "  id="compensaciones" name="compensaciones"  value="<?= isset($seguridad->compensacion)?$seguridad->compensacion:''?>">
                             
                         </div>
                     </div>
@@ -225,7 +230,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="area" class=" control-label">Area:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="area" name="area"  value="<?= isset($seguridad->area) ? $seguridad->area : ''  ?>">
+                                  <input type="text"  class="form-control "  id="area" name="area"  value="<?= isset($seguridad->area)?$seguridad->area:''?>">
                             
                         </div>
                     </div>
@@ -234,7 +239,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="division" class=" control-label">División:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="division" name="division"  value="<?= isset($seguridad->division) ? $seguridad->division : ''  ?>">
+                                  <input type="text"  class="form-control "  id="division" name="division"  value="<?= isset($seguridad->division) ? $seguridad->division:''?>">
                             
                         </div>
                     </div>
@@ -243,7 +248,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="jefe_inmediato" class=" control-label">CUIP Jefe Inmediato:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="jefe_inmediato" name="jefe_inmediato"  value="<?= isset($seguridad->cuip_jefe) ? $seguridad->cuip_jefe : ''  ?>">
+                                  <input type="text"  class="form-control "  id="jefe_inmediato" name="jefe_inmediato"  value="<?= isset($seguridad->cuip_jefe) ? $seguridad->cuip_jefe:''?>">
                             
                         </div>
                     </div>
@@ -252,7 +257,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="nombre_jefe" class=" control-label">Nombre del Jefe Inmediato:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="nombre_jefe" name="nombre_jefe"  value="<?= isset($seguridad->nombre_jefe) ? $seguridad->nombre_jefe : ''  ?>">
+                                  <input type="text"  class="form-control "  id="nombre_jefe" name="nombre_jefe"  value="<?= isset($seguridad->nombre_jefe)?$seguridad->nombre_jefe:''?>">
                             
                         </div>
                     </div>
@@ -264,7 +269,7 @@ $encrypt = new Encrypt();
                         <select class="form-control" id="estadocodigoSegPub" name="estadocodigoSegPub">
                         <option value="">Selecciona una Opcion</option>
                         
-                              <option selected value="<?= $seguridad->estado ?>"><?= $seguridad->estado ?></option>
+                              <option selected value="<?= $seguridad->estado?>"><?= $seguridad->estado?></option>
 
                         
                     </select>
@@ -305,7 +310,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="motivo_separacion" class=" control-label">Motivo de separación:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="motivo_separacion" name="motivo_separacion"  value=" <?= isset($seguridad->motivoSeparacion) ? $seguridad->motivoSeparacion : ''  ?>">
+                                  <input type="text"  class="form-control "  id="motivo_separacion" name="motivo_separacion"  value="<?= isset($seguridad->motivoSeparacion)?$seguridad->motivoSeparacion:''?>">
                             
                         </div>
                     </div>
@@ -314,7 +319,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="tipo_separacion" class=" control-label">Tipo de Separación:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="tipo_separacion" name="tipo_separacion"  value="<?= isset($seguridad->tipo_separacion) ? $seguridad->tipo_separacion : ''  ?>">
+                                  <input type="text"  class="form-control "  id="tipo_separacion" name="tipo_separacion"  value="<?= isset($seguridad->tipo_separacion)?$seguridad->tipo_separacion:''?>">
                             
                         </div>
                     </div>
@@ -323,7 +328,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="tipo_baja" class=" control-label">Tipo de Baja:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="tipo_baja" name="tipo_baja"  value="<?= isset($seguridad->tipo_baja) ? $seguridad->tipo_baja : ''  ?>">
+                                  <input type="text"  class="form-control "  id="tipo_baja" name="tipo_baja"  value="<?= isset($seguridad->tipo_baja) ? $seguridad->tipo_baja:''?>">
                             
                         </div>
                     </div>
@@ -332,7 +337,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="comentarios" class=" control-label">Comentarios:<span class="text-danger">*</span></label>
                         <div >    
-                                  <input type="text"  class="form-control "  id="comentarios" name="comentarios"  value="<?= isset($seguridad->comentarios) ? $seguridad->comentarios : ''  ?>">
+                                  <input type="text"  class="form-control "  id="comentarios" name="comentarios"  value="<?= isset($seguridad->comentarios)?$seguridad->comentarios:''?>">
                             
                         </div>
                     </div>

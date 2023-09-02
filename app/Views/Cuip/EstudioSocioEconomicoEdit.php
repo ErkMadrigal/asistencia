@@ -197,7 +197,7 @@ $encrypt = new Encrypt();
         <form class="form-horizontal" id="DatosDependientes">
             <div id="CardConyuge">
             <?php
-        if( !empty($economico_dependientes) ):
+        if( !empty($economico_dependientes) ){
             $label = '';
             foreach($economico_dependientes as  $e){
                                         ?>   
@@ -243,10 +243,12 @@ $encrypt = new Encrypt();
                     </div>
                     <div class='col-12 col-sm-6'>
                         <div class='form-group'>
-                            <label for="fecha_nacimiento_dep<?= $label ?>">Fecha de Nacimiento: <span class="text-danger">*</span></label>
-                            <div>
-                                <input type="text" class="form-control " id="fecha_nacimiento_dep<?= $label ?>" name="fecha_nacimiento_dep<?= $label ?>" value="<?= isset($e->fecha_nacimiento) ? $e->fecha_nacimiento : ''  ?>">
-
+                            <label for="fecha_nacimiento_dep">Fecha de Nacimiento: <span class="text-danger">*</span></label>
+                            <div class="input-group date" id="fecha_nacimiento_dep" data-target-input="nearest">
+                                <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_nacimiento_dep" id="datetime-fecha_nacimiento_dep" name="fecha_nacimiento_dep" placeholder="" value="<?= isset($e->fecha_nacimiento) ? date( "d-m-Y" ,strtotime($e->fecha_nacimiento)) : ''  ?>" />
+                                <div class="input-group-append" data-target="#fecha_nacimiento_dep" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                                </div>
                             </div>
                             <script type="text/javascript">
                                 $(function() {
@@ -258,6 +260,7 @@ $encrypt = new Encrypt();
                             </script>
                         </div>
                     </div>
+                    
                     <div class='col-12 col-sm-12 col-md-6'>
                         <div class="form-group">
                             <label for="sexo_dep<?= $label ?>" class=" control-label">Sexo:<span class="text-danger">*</span></label>
@@ -313,7 +316,111 @@ $encrypt = new Encrypt();
                 <?php
             $label = 'B';
             }
-            endif;?>    
+
+            } else {
+
+                ?>
+
+                <div class="row" class="form-block">
+                    <div class='col-12 col-sm-12 col-md-6'>
+                        <div class="form-group">
+                            <label for="apellidoPaterno" class=" control-label">Apellido
+                                Paterno:<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control " id="apellidoPaterno" name="apellidoPaterno">
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-12 col-md-6'>
+                        <div class="form-group">
+                            <label for="apellidoMaterno" class=" control-label">Apellido
+                                Materno:<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno">
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-12 col-md-6'>
+                        <div class="form-group">
+                            <label for="primerNombre" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control " id="primerNombre" name="primerNombre">
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-12 col-md-6'>
+                        <div class="form-group">
+                            <label for="segundoNombre" class=" control-label">Segundo Nombre:</label>
+                            <input type="text" class="form-control " id="segundoNombre" name="segundoNombre">
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-6'>
+                        <div class='form-group'>
+                            <label for="fecha_nacimiento_dep">Fecha de Nacimiento: <span class="text-danger">*</span></label>
+                            <div class="input-group date" id="fecha_nacimiento_dep" data-target-input="nearest">
+                                <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_nacimiento_dep" id="datetime-fecha_nacimiento_dep" name="fecha_nacimiento_dep" placeholder="" value="" />
+                                <div class="input-group-append" data-target="#fecha_nacimiento_dep" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                                $(function() {
+                                    $("#fecha_nacimiento_dep").datetimepicker({
+                                        format: 'DD-MM-YYYY',
+                                        locale: moment.locale('es')
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-12 col-md-6'>
+                        <div class="form-group">
+                            <label for="sexo_dep" class=" control-label">Sexo:<span class="text-danger">*</span></label>
+                            <select class="form-control" id="sexo_dep" name="sexo_dep">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if (!empty($genero)) :
+                                    foreach ($genero as  $a) {
+                                ?>
+                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
+                                    }
+                                endif; ?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#sexo_dep").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class='col-6 col-sm-6'>
+                        <div class="form-group">
+                            <label for="parentesco_familiar" class="control-label">Parentesco: <span class="text-danger">*</span></label>
+                            <div>
+                                <select class="form-control" id="parentesco_familiar" name="parentesco_familiar">
+                                    <option value="">Selecciona una Opcion</option>
+                                    <?php
+                                    if (!empty($parentesco_todos)) :
+                                        foreach ($parentesco_todos as  $a) {
+                                    ?>
+                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <?php
+                                        }
+                                    endif; ?>
+                                </select>
+                                <script>
+                                    $(document).ready(function() {
+                                        $("#parentesco_familiar").select2({
+                                            theme: "bootstrap4",
+                                            width: "100%"
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <?php
+            }   ?> 
             </div>
 
             <hr class="mt-3 mb-3" />

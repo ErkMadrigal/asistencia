@@ -36,10 +36,12 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="determinacion<?= $label ?>" class=" control-label">Determinación:<span class="text-danger">*</span></label>
-                        <div >    
-                                  <input type="text"  class="form-control "  id="determinacion<?= $label ?>" name="determinacion<?= $label ?>"  value="<?= isset($e->determinacion) ? $e->determinacion : ''  ?>">
-                            
+                        <label for="determinacion" class=" control-label">Determinación:<span class="text-danger">*</span></label>
+                        <div class="input-group date" id="determinacion" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#determinacion" id="datetime-determinacion" name="determinacion" placeholder="" value="<?= isset($e->determinacion) ? date( "d-m-Y" ,strtotime($e->determinacion)) : ''  ?>" />
+                            <div class="input-group-append" data-target="#determinacion" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
                         </div>
                         <script type="text/javascript">
                             $(function() {
@@ -51,6 +53,7 @@
                         </script>
                     </div>
                 </div>
+                
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="descripcion<?= $label ?>" class=" control-label">Descripción:<span class="text-danger">*</span></label>
@@ -71,10 +74,12 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="inicio_inhabilitacion<?= $label ?>" class=" control-label">Inicio de la inhabilitación:<span class="text-danger">*</span></label>
-                        <div >    
-                                  <input type="text"  class="form-control "  id="inicio_inhabilitacion<?= $label ?>" name="inicio_inhabilitacion<?= $label ?>"  value="<?= isset($e->inicio_habilitacion) ? $e->inicio_habilitacion : ''  ?>">
-                            
+                        <label for="inicio_inhabilitacion" class=" control-label">Inicio de la inhabilitación:<span class="text-danger">*</span></label>
+                        <div class="input-group date" id="inicio_inhabilitacion" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#inicio_inhabilitacion" id="datetime-inicio_inhabilitacion" name="inicio_inhabilitacion" placeholder="" value="<?= isset($e->inicio_habilitacion) ? date( "d-m-Y" ,strtotime($e->inicio_habilitacion)) : ''  ?>" />
+                            <div class="input-group-append" data-target="#inicio_inhabilitacion" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
                         </div>
                         <script type="text/javascript">
                             $(function() {
@@ -88,10 +93,12 @@
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
-                        <label for="termino_inhabilitacion<?= $label ?>" class=" control-label">Término de la inhabilitación:<span class="text-danger">*</span></label>
-                        <div >    
-                                  <input type="text"  class="form-control "  id="termino_inhabilitacion<?= $label ?>" name="termino_inhabilitacion<?= $label ?>"  value="<?= isset($e->termino_habilitacion) ? $e->termino_habilitacion : ''  ?>">
-                            
+                        <label for="termino_inhabilitacion" class=" control-label">Término de la inhabilitación:<span class="text-danger">*</span></label>
+                        <div class="input-group date" id="termino_inhabilitacion" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#termino_inhabilitacion" id="datetime-termino_inhabilitacion" name="termino_inhabilitacion" placeholder="" value="<?= isset($e->termino_habilitacion) ? date( "d-m-Y" ,strtotime($e->termino_habilitacion)) : ''  ?>" />
+                            <div class="input-group-append" data-target="#termino_inhabilitacion" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
                         </div>
                         <script type="text/javascript">
                             $(function() {
@@ -200,7 +207,7 @@
                             <label for="motivo<?= $label ?>" class=" control-label">Motivo:
                                 <span class="text-danger">*</span></label>
                                 <div >    
-                                  <input type="text"  class="form-control "  id="motivo<?= $label ?>" name="motivo<?= $label ?>"  value=" <?= isset($e->motivos) ? $e->motivos : ''  ?>">
+                                  <input type="text"  class="form-control "  id="motivo<?= $label ?>" name="motivo<?= $label ?>"  value="<?= isset($e->motivos)?$e->motivos:''?>">
                             
                         </div>
                         </div>
@@ -219,7 +226,7 @@
                             <label for="agencia_mp<?= $label ?>" class=" control-label">Agencia del MP:
                                 <span class="text-danger">*</span></label>
                                 <div >    
-                                  <input type="text"  class="form-control "  id="agencia_mp<?= $label ?>" name="agencia_mp<?= $label ?>"  value=" <?= isset($e->agencia_mp) ? $e->agencia_mp : ''  ?>">
+                                  <input type="text"  class="form-control "  id="agencia_mp<?= $label ?>" name="agencia_mp<?= $label ?>"  value="<?= isset($e->agencia_mp)?$e->agencia_mp:''?>">
                             
                         </div>
                         </div>
@@ -271,11 +278,13 @@
                     </div>
                     <div class='col-12 col-sm-6'>
                         <div class='form-group'>
-                            <label for="inicio_averiguacion<?= $label ?>">Inicio de la averiguación: <span class="text-danger">*</span></label>
-                            <div >    
-                                  <input type="text"  class="form-control "  id="inicio_averiguacion<?= $label ?>" name="inicio_averiguacion<?= $label ?>"  value="<?= isset($e->inicio_averiguacion) ? $e->inicio_averiguacion : ''  ?> ">
-                            
-                        </div>
+                            <label for="inicio_averiguacion">Inicio de la averiguación: <span class="text-danger">*</span></label>
+                            <div class="input-group date" id="inicio_averiguacion" data-target-input="nearest">
+                                <input type="text" required class="form-control datetimepicker-input" data-target="#inicio_averiguacion" id="datetime-inicio_averiguacion" name="inicio_averiguacion" placeholder="" value="<?= isset($e->inicio_averiguacion) ? date( "d-m-Y" ,strtotime($e->inicio_averiguacion)) : ''  ?>" />
+                                <div class="input-group-append" data-target="#inicio_averiguacion" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                                </div>
+                            </div>
                             <script type="text/javascript">
                                 $(function() {
                                     $("#inicio_averiguacion").datetimepicker({
@@ -288,11 +297,13 @@
                     </div>
                     <div class='col-12 col-sm-6'>
                         <div class='form-group'>
-                            <label for="al_dia<?= $label ?>">Al día: <span class="text-danger">*</span></label>
-                            <div >    
-                                  <input type="text"  class="form-control "  id="al_dia<?= $label ?>" name="al_dia<?= $label ?>"  value="<?= isset($e->aldia_averiguacion) ? $e->aldia_averiguacion : ''  ?>">
-                            
-                        </div>
+                            <label for="al_dia">Al día: <span class="text-danger">*</span></label>
+                            <div class="input-group date" id="al_dia" data-target-input="nearest">
+                                <input type="text" required class="form-control datetimepicker-input" data-target="#al_dia" id="datetime-al_dia" name="al_dia" placeholder="" value="<?= isset($e->aldia_averiguacion) ? date( "d-m-Y" ,strtotime($e->aldia_averiguacion)) : ''  ?>" />
+                                <div class="input-group-append" data-target="#al_dia" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                                </div>
+                            </div>
                             <script type="text/javascript">
                                 $(function() {
                                     $("#al_dia").datetimepicker({
@@ -335,11 +346,13 @@
                     </div>
                     <div class='col-12 col-sm-6'>
                         <div class='form-group'>
-                            <label for="inicio_proceso<?= $label ?>">Inicio del proceso: <span class="text-danger">*</span></label>
-                            <div >    
-                                  <input type="text"  class="form-control "  id="inicio_proceso<?= $label ?>" name="inicio_proceso<?= $label ?>"  value="<?= isset($e->inicio_proceso) ? $e->inicio_proceso : ''  ?>">
-                            
-                        </div>
+                            <label for="inicio_proceso">Inicio del proceso: <span class="text-danger">*</span></label>
+                            <div class="input-group date" id="inicio_proceso" data-target-input="nearest">
+                                <input type="text" required class="form-control datetimepicker-input" data-target="#inicio_proceso" id="datetime-inicio_proceso" name="inicio_proceso" placeholder="" value="<?= isset($e->inicio_proceso) ? date( "d-m-Y" ,strtotime($e->inicio_proceso)) : ''  ?>" />
+                                <div class="input-group-append" data-target="#inicio_proceso" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                                </div>
+                            </div>
                             <script type="text/javascript">
                                 $(function() {
                                     $("#inicio_proceso").datetimepicker({
@@ -352,11 +365,13 @@
                     </div>
                     <div class='col-12 col-sm-6'>
                         <div class='form-group'>
-                            <label for="al_dia_proceso<?= $label ?>">Al día: <span class="text-danger">*</span></label>
-                            <div >    
-                                  <input type="text"  class="form-control "  id="al_dia_proceso<?= $label ?>" name="al_dia_proceso<?= $label ?>"  value="<?= isset($e->aldia_proceso) ? $e->aldia_proceso : ''  ?>">
-                            
-                        </div>
+                            <label for="al_dia_proceso">Al día: <span class="text-danger">*</span></label>
+                            <div class="input-group date" id="al_dia_proceso" data-target-input="nearest">
+                                <input type="text" required class="form-control datetimepicker-input" data-target="#al_dia_proceso" id="datetime-al_dia_proceso" name="al_dia_proceso" placeholder="" value="<?= isset($e->aldia_proceso) ? date( "d-m-Y" ,strtotime($e->aldia_proceso)) : ''  ?>" />
+                                <div class="input-group-append" data-target="#al_dia_proceso" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                                </div>
+                            </div>
                             <script type="text/javascript">
                                 $(function() {
                                     $("#al_dia_proceso").datetimepicker({
@@ -435,11 +450,13 @@
             </div>
             <div class='col-12 col-sm-6'>
                 <div class='form-group'>
-                    <label for="otrogado_estimulo<?= $label ?>">Otorgado: <span class="text-danger">*</span></label>
-                    <div >    
-                                  <input type="text"  class="form-control "  id="otrogado_estimulo<?= $label ?>" name="otrogado_estimulo<?= $label ?>"  value=" <?= isset($e->otorgado) ? $e->otorgado : ''  ?>">
-                            
+                    <label for="otrogado_estimulo">Otorgado: <span class="text-danger">*</span></label>
+                    <div class="input-group date" id="otrogado_estimulo" data-target-input="nearest">
+                        <input type="text" required class="form-control datetimepicker-input" data-target="#otrogado_estimulo" id="datetime-otrogado_estimulo" name="otrogado_estimulo" placeholder="" value="<?= isset($e->otorgado) ? date( "d-m-Y" ,strtotime($e->otorgado)) : ''  ?>" />
+                        <div class="input-group-append" data-target="#otrogado_estimulo" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="far fa-calendar"></i></div>
                         </div>
+                    </div>
                     <script type="text/javascript">
                         $(function() {
                             $("#otrogado_estimulo").datetimepicker({

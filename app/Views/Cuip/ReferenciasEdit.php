@@ -28,7 +28,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="apellidoPaterno" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="apellidoPaterno" name="apellidoPaterno" value=" <?= isset($referencia->apellido_paterno_fam) ? $referencia->apellido_paterno_fam : ''  ?>"><?= csrf_field() ?>
+                            <input type="text" class="form-control " id="apellidoPaterno" name="apellidoPaterno" value="<?= isset($referencia->apellido_paterno_fam)?$referencia->apellido_paterno_fam:''?>"><?= csrf_field() ?>
 
                         </div>
                     </div>
@@ -37,7 +37,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="apellidoMaterno" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno" value=" <?= isset($referencia->apellido_materno_fam) ? $referencia->apellido_materno_fam : ''  ?>">
+                            <input type="text" class="form-control " id="apellidoMaterno" name="apellidoMaterno" value="<?= isset($referencia->apellido_materno_fam)?$referencia->apellido_materno_fam:''?>">
 
                         </div>
                     </div>
@@ -46,7 +46,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="primerNombre" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="primerNombre" name="primerNombre" value=" <?= isset($referencia->primer_nombre_fam) ? $referencia->primer_nombre_fam : ''  ?>">
+                            <input type="text" class="form-control " id="primerNombre" name="primerNombre" value="<?= isset($referencia->primer_nombre_fam)? $referencia->primer_nombre_fam:''?>">
 
                         </div>
                     </div>
@@ -55,7 +55,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="segundoNombre" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="segundoNombre" name="segundoNombre" value=" <?= isset($referencia->segundo_nombre_fam) ? $referencia->segundo_nombre_fam : ''  ?>">
+                            <input type="text" class="form-control " id="segundoNombre" name="segundoNombre" value="<?= isset($referencia->segundo_nombre_fam) ?$referencia->segundo_nombre_fam:''?>">
 
                         </div>
                     </div>
@@ -139,7 +139,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="calle" class=" control-label">Calle :<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="calle" name="calle" value=" <?= isset($referencia->calle_fam) ? $referencia->calle_fam : ''  ?>">
+                            <input type="text" class="form-control " id="calle" name="calle" value="<?=isset($referencia->calle_fam)?$referencia->calle_fam:''?>">
 
                         </div>
                     </div>
@@ -148,7 +148,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="exterior" name="exterior" value=" <?= isset($referencia->numero_exterior_fam) ? $referencia->numero_exterior_fam : ''  ?>">
+                            <input type="text" class="form-control " id="exterior" name="exterior" value="<?= isset($referencia->numero_exterior_fam) ?$referencia->numero_exterior_fam:''?>">
 
                         </div>
                     </div>
@@ -157,7 +157,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="interior" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="interior" name="interior" value=" <?= isset($referencia->numero_interior_fam) ? $referencia->numero_interior_fam : ''  ?>">
+                            <input type="text" class="form-control " id="interior" name="interior" value="<?= isset($referencia->numero_interior_fam) ?$referencia->numero_interior_fam:''?>">
 
                         </div>
                     </div>
@@ -185,7 +185,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="codigoRefCer" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="codigoRefCer" name="codigoRefCer" value="<?= isset($referencia->idCodigoPostal_fam) ? $referencia->idCodigoPostal_fam : ''  ?>">
+                            <input type="text" class="form-control " id="codigoRefCer" name="codigoRefCer" value="<?= isset($referencia->idCodigoPostal_fam)? $referencia->idCodigoPostal_fam:''?>">
 
                         </div>
                     </div>
@@ -194,7 +194,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="numero" name="numero" value="<?= isset($referencia->numero_telefono_fam) ? $referencia->numero_telefono_fam : ''  ?>">
+                            <input type="text" class="form-control " id="numero" name="numero" value="<?=isset($referencia->numero_telefono_fam)?$referencia->numero_telefono_fam:''?>">
 
                         </div>
                     </div>
@@ -319,7 +319,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="apellidoPaternoParCer" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="apellidoPaternoParCer" name="apellidoPaternoParCer" value=" <?= isset($referencia->apellido_paterno_pariente) ? $referencia->apellido_paterno_pariente : ''  ?>">
+                        <input type="text" class="form-control " id="apellidoPaternoParCer" name="apellidoPaternoParCer" value="<?= isset($referencia->apellido_paterno_pariente)?$referencia->apellido_paterno_pariente:''?>">
 
                     </div>
                 </div>
@@ -328,7 +328,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="apellidoMaternoParCer" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="apellidoMaternoParCer" name="apellidoMaternoParCer" value=" <?= isset($referencia->apellido_materno_pariente) ? $referencia->apellido_materno_pariente : ''  ?>">
+                        <input type="text" class="form-control " id="apellidoMaternoParCer" name="apellidoMaternoParCer" value="<?= isset($referencia->apellido_materno_pariente)?$referencia->apellido_materno_pariente:''?>">
 
                     </div>
                 </div>
@@ -337,7 +337,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="primerNombreParCer" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="primerNombreParCer" name="primerNombreParCer" value=" <?= isset($referencia->primer_nombre_pariente) ? $referencia->primer_nombre_pariente : ''  ?>">
+                        <input type="text" class="form-control " id="primerNombreParCer" name="primerNombreParCer" value="<?= isset($referencia->primer_nombre_pariente)? $referencia->primer_nombre_pariente:''?>">
 
                     </div>
                 </div>
@@ -346,7 +346,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="segundoNombreParCer" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="segundoNombreParCer" name="segundoNombreParCer" value=" <?= isset($referencia->segundo_nombre_pariente) ? $referencia->segundo_nombre_pariente : ''  ?>">
+                        <input type="text" class="form-control " id="segundoNombreParCer" name="segundoNombreParCer" value="<?=isset($referencia->segundo_nombre_pariente) ? $referencia->segundo_nombre_pariente:''?>">
 
                     </div>
                 </div>
@@ -430,7 +430,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="calleParCer" class=" control-label">Calle :<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="calleParCer" name="calleParCer" value=" <?= isset($referencia->calle_pariente) ? $referencia->calle_pariente : ''  ?>">
+                        <input type="text" class="form-control " id="calleParCer" name="calleParCer" value="<?= isset($referencia->calle_pariente) ?$referencia->calle_pariente:''?>">
 
                     </div>
                 </div>
@@ -439,7 +439,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="exteriorParCer" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="exteriorParCer" name="exteriorParCer" value=" <?= isset($referencia->numero_exterior_pariente) ? $referencia->numero_exterior_pariente : ''  ?>">
+                        <input type="text" class="form-control " id="exteriorParCer" name="exteriorParCer" value="<?= isset($referencia->numero_exterior_pariente)?$referencia->numero_exterior_pariente:''?>">
 
                     </div>
                 </div>
@@ -448,7 +448,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="interiorParCer" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="interiorParCer" name="interiorParCer" value=" <?= isset($referencia->numero_interior_pariente) ? $referencia->numero_interior_pariente : ''  ?>">
+                        <input type="text" class="form-control " id="interiorParCer" name="interiorParCer" value="<?= isset($referencia->numero_interior_pariente)?$referencia->numero_interior_pariente:''?>">
 
                     </div>
                 </div>
@@ -485,7 +485,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="numeroParCer" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="numeroParCer" name="numeroParCer" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value="<?= isset($referencia->numero_telefono_pariente) ? $referencia->numero_telefono_pariente : ''  ?>">
+                        <input type="text" class="form-control " id="numeroParCer" name="numeroParCer" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value="<?= isset($referencia->numero_telefono_pariente) ? $referencia->numero_telefono_pariente :''?>">
 
                     </div>
                 </div>
@@ -610,7 +610,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="apellidoPaternoRefPer" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="apellidoPaternoRefPer" name="apellidoPaternoRefPer" value=" <?= isset($referenciaLab->apellido_paterno_personal) ? $referenciaLab->apellido_paterno_personal : ''  ?>">
+                        <input type="text" class="form-control " id="apellidoPaternoRefPer" name="apellidoPaternoRefPer" value="<?= isset($referenciaLab->apellido_paterno_personal)?$referenciaLab->apellido_paterno_personal:''?>">
 
                     </div>
                 </div>
@@ -619,7 +619,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="apellidoMaternoRefPer" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="apellidoMaternoRefPer" name="apellidoMaternoRefPer" value=" <?= isset($referenciaLab->apellido_materno_personal) ? $referenciaLab->apellido_materno_personal : ''  ?>">
+                        <input type="text" class="form-control " id="apellidoMaternoRefPer" name="apellidoMaternoRefPer" value="<?= isset($referenciaLab->apellido_materno_personal)?$referenciaLab->apellido_materno_personal:''?>">
 
                     </div>
                 </div>
@@ -628,7 +628,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="primerNombreRefPer" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="primerNombreRefPer" name="primerNombreRefPer" value=" <?= isset($referenciaLab->primer_nombre_personal) ? $referenciaLab->primer_nombre_personal : ''  ?>">
+                        <input type="text" class="form-control " id="primerNombreRefPer" name="primerNombreRefPer" value="<?= isset($referenciaLab->primer_nombre_personal) ? $referenciaLab->primer_nombre_personal:''?>">
 
                     </div>
                 </div>
@@ -637,7 +637,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="segundoNombreRefPer" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="segundoNombreRefPer" name="segundoNombreRefPer" value=" <?= isset($referenciaLab->segundo_nombre_personal) ? $referenciaLab->segundo_nombre_personal : ''  ?>">
+                        <input type="text" class="form-control " id="segundoNombreRefPer" name="segundoNombreRefPer" value="<?= isset($referenciaLab->segundo_nombre_personal)?$referenciaLab->segundo_nombre_personal:''?>">
 
                     </div>
                 </div>
@@ -721,7 +721,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="calleRefPer" class=" control-label">Calle :<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="calleRefPer" name="calleRefPer" value=" <?= isset($referenciaLab->calle_personal) ? $referenciaLab->calle_personal : ''  ?>">
+                        <input type="text" class="form-control " id="calleRefPer" name="calleRefPer" value="<?= isset($referenciaLab->calle_personal)?$referenciaLab->calle_personal:''?>">
 
                     </div>
                 </div>
@@ -730,7 +730,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="exteriorRefPer" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="exteriorRefPer" name="exteriorRefPer" value=" <?= isset($referenciaLab->numero_exterior_personal) ? $referenciaLab->numero_exterior_personal : ''  ?>">
+                        <input type="text" class="form-control " id="exteriorRefPer" name="exteriorRefPer" value="<?= isset($referenciaLab->numero_exterior_personal)?$referenciaLab->numero_exterior_personal:''?>">
 
                     </div>
                 </div>
@@ -739,7 +739,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="interiorRefPer" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="interiorRefPer" name="interiorRefPer" value=" <?= isset($referenciaLab->numero_interior_personal) ? $referenciaLab->numero_interior_personal : ''  ?>">
+                        <input type="text" class="form-control " id="interiorRefPer" name="interiorRefPer" value="<?= isset($referenciaLab->numero_interior_personal)?$referenciaLab->numero_interior_personal:''?>">
 
                     </div>
                 </div>
@@ -903,7 +903,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="apellidoPaternoRefLab" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="apellidoPaternoRefLab" name="apellidoPaternoRefLab" value=" <?= isset($referenciaLab->apellido_paterno_laboral) ? $referenciaLab->apellido_paterno_laboral : ''  ?>">
+                        <input type="text" class="form-control " id="apellidoPaternoRefLab" name="apellidoPaternoRefLab" value="<?= isset($referenciaLab->apellido_paterno_laboral)?$referenciaLab->apellido_paterno_laboral:''?>">
 
                     </div>
                 </div>
@@ -912,7 +912,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="apellidoMaternoRefLab" class=" control-label">Apellido Materno:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="apellidoMaternoRefLab" name="apellidoMaternoRefLab" value=" <?= isset($referenciaLab->apellido_materno_laboral) ? $referenciaLab->apellido_materno_laboral : ''  ?>">
+                        <input type="text" class="form-control " id="apellidoMaternoRefLab" name="apellidoMaternoRefLab" value="<?= isset($referenciaLab->apellido_materno_laboral)?$referenciaLab->apellido_materno_laboral:''?>">
 
                     </div>
                 </div>
@@ -921,7 +921,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="primerNombreRefLab" class="control-label">Primer Nombre: <span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="primerNombreRefLab" name="primerNombreRefLab" value=" <?= isset($referenciaLab->primer_nombre_laboral) ? $referenciaLab->primer_nombre_laboral : ''  ?>">
+                        <input type="text" class="form-control " id="primerNombreRefLab" name="primerNombreRefLab" value="<?= isset($referenciaLab->primer_nombre_laboral) ? $referenciaLab->primer_nombre_laboral:''?>">
 
                     </div>
                 </div>
@@ -930,7 +930,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="segundoNombreRefLab" class=" control-label">Segundo Nombre: <span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="segundoNombreRefLab" name="segundoNombreRefLab" value=" <?= isset($referenciaLab->segundo_nombre_laboral) ? $referenciaLab->segundo_nombre_laboral : ''  ?>">
+                        <input type="text" class="form-control " id="segundoNombreRefLab" name="segundoNombreRefLab" value="<?= isset($referenciaLab->segundo_nombre_laboral) ? $referenciaLab->segundo_nombre_laboral:''?>">
 
                     </div>
                 </div>
@@ -1016,7 +1016,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="calleRefLab" class=" control-label">Calle :<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="calleRefLab" name="calleRefLab" value=" <?= isset($referenciaLab->calle_laboral) ? $referenciaLab->calle_laboral : ''  ?>">
+                        <input type="text" class="form-control " id="calleRefLab" name="calleRefLab" value="<?= isset($referenciaLab->calle_laboral)?$referenciaLab->calle_laboral:''?>">
 
                     </div>
                 </div>
@@ -1025,7 +1025,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="exteriorRefLab" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="exteriorRefLab" name="exteriorRefLab" value=" <?= isset($referenciaLab->numero_exterior_laboral) ? $referenciaLab->numero_exterior_laboral : ''  ?>">
+                        <input type="text" class="form-control " id="exteriorRefLab" name="exteriorRefLab" value="<?= isset($referenciaLab->numero_exterior_laboral)?$referenciaLab->numero_exterior_laboral:''?>">
 
                     </div>
                 </div>
@@ -1035,7 +1035,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="interiorRefLab" class=" control-label">No. Interior:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="interiorRefLab" name="interiorRefLab" value=" <?= isset($referenciaLab->numero_interior_laboral) ? $referenciaLab->numero_interior_laboral : ''  ?>">
+                        <input type="text" class="form-control " id="interiorRefLab" name="interiorRefLab" value="<?= isset($referenciaLab->numero_interior_laboral)?$referenciaLab->numero_interior_laboral:''?>">
 
                     </div>
                 </div>
@@ -1188,20 +1188,36 @@ $encrypt = new Encrypt();
     </div>
 </div>
 <script>
-    $("#codigoRefCer").on('keyup', function() {
+    $("#codigoRefCer").on('keyup', function(){
         getSepomex(this.id)
     });
 
-    $("#codigoParCer").on('keyup', function() {
+    $("#codigoParCer").on('keyup', function(){
         getSepomex(this.id)
     });
 
-    $("#codigoPersonal").on('keyup', function() {
+    $("#codigoPersonal").on('keyup', function(){
         getSepomex(this.id)
     });
 
-    $("#codigoLaboral").on('keyup', function() {
+    $("#codigoLaboral").on('keyup', function(){
         getSepomex(this.id)
+    });
+
+    $("#estadocodigoRefCer").on('change', function(){
+        getEstado(this.id)
+    });
+
+    $("#estadocodigoParCer").on('change', function(){
+        getEstado(this.id)
+    });
+
+    $("#estadocodigoPersonal").on('change', function(){
+        getEstado(this.id)
+    });
+
+    $("#estadocodigoLaboral").on('change', function(){
+        getEstado(this.id)
     });
 
 
