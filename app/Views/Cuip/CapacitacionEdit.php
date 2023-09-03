@@ -117,39 +117,43 @@
                                 </div>
                             </div>
                             <div class='col-12 col-sm-12 col-md-6'>
-                                <div class="form-group">
-                                    <label for="inicio<?= $label ?>" class=" control-label">Inicio:<span class="text-danger">*</span></label>
-                                    <div>
-                                        <input type="text" class="form-control " id="inicio<?= $label ?>" name="inicio<?= $label ?>" value=" <?= isset($e->inicio_curso) ? $e->inicio_curso : ''  ?>">
-
-                                    </div>
-                                    <script type="text/javascript">
-                                        $(function() {
-                                            $("#inicio").datetimepicker({
-                                                format: 'DD-MM-YYYY',
-                                                locale: moment.locale('es')
-                                            });
-                                        });
-                                    </script>
+                        <div class="form-group">
+                            <label for="inicio" class=" control-label">Inicio:<span class="text-danger">*</span></label>
+                            <div class="input-group date" id="inicio" data-target-input="nearest">
+                                <input type="text" required class="form-control datetimepicker-input" data-target="#inicio" id="datetime-inicio" name="inicio" placeholder="" value="<?= isset($e->inicio_curso) ? date( "d-m-Y" ,strtotime($e->inicio_curso)) : ''  ?>" />
+                                <div class="input-group-append" data-target="#inicio" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
                                 </div>
                             </div>
+                            <script type="text/javascript">
+                                $(function() {
+                                    $("#inicio").datetimepicker({
+                                        format: 'DD-MM-YYYY',
+                                        locale: moment.locale('es')
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
                             <div class='col-12 col-sm-12 col-md-6'>
-                                <div class="form-group">
-                                    <label for="conclusion<?= $label ?>" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
-                                    <div>
-                                        <input type="text" class="form-control " id="conclusion<?= $label ?>" name="conclusion<?= $label ?>" value="<?= isset($e->conclusion_curso) ? $e->conclusion_curso : ''  ?>">
-
-                                    </div>
-                                    <script type="text/javascript">
-                                        $(function() {
-                                            $("#conclusion").datetimepicker({
-                                                format: 'DD-MM-YYYY',
-                                                locale: moment.locale('es')
-                                            });
-                                        });
-                                    </script>
+                        <div class="form-group">
+                            <label for="conclusion" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
+                            <div class="input-group date" id="conclusion" data-target-input="nearest">
+                                <input type="text" required class="form-control datetimepicker-input" data-target="#conclusion" id="datetime-conclusion" name="conclusion" placeholder="" value="<?= isset($e->conclusion_curso) ? date( "d-m-Y" ,strtotime($e->conclusion_curso)) : ''  ?>" />
+                                <div class="input-group-append" data-target="#conclusion" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
                                 </div>
                             </div>
+                            <script type="text/javascript">
+                                $(function() {
+                                    $("#conclusion").datetimepicker({
+                                        format: 'DD-MM-YYYY',
+                                        locale: moment.locale('es')
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
                                     <label for="duracion<?= $label ?>" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
@@ -292,41 +296,43 @@
                                 </div>
                             </div>
                             <div class='col-12 col-sm-12 col-md-6'>
-                                <div class="form-group">
-                                    <label for="inicioAdicional<?= $label ?>" class=" control-label">Inicio:<span class="text-danger">*</span></label>
-                                    <div>
-                                        <input type="text" class="form-control " id="inicioAdicional<?= $label ?>" name="inicioAdicional<?= $label ?>" value="<?= isset($e->inicio_adicional) ? $e->inicio_adicional : ''  ?>">
-                                    </div>
-
-                                    <script type="text/javascript">
-                                        $(function() {
-                                            $("#inicioAdicional").datetimepicker({
-                                                format: 'DD-MM-YYYY',
-                                                locale: moment.locale('es')
-                                            });
-                                        });
-                                    </script>
+                        <div class="form-group">
+                            <label for="inicioAdicional" class=" control-label">Inicio:<span class="text-danger">*</span></label>
+                            <div class="input-group date" id="inicioAdicional" data-target-input="nearest">
+                                <input type="text" required class="form-control datetimepicker-input" data-target="#inicioAdicional" id="datetime-inicioAdicional" name="inicioAdicional" placeholder="" value="<?= isset($e->inicio_adicional) ? date( "d-m-Y" ,strtotime($e->inicio_adicional)) : ''  ?>" />
+                                <div class="input-group-append" data-target="#inicioAdicional" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
                                 </div>
                             </div>
-                            <div class='col-12 col-sm-12 col-md-6'>
-                                <div class="form-group">
-                                    <label for="conclusionAdicional<?= $label ?>" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
-
-                                    <div>
-                                        <input type="text" class="form-control " id="conclusionAdicional<?= $label ?>" name="conclusionAdicional<?= $label ?>" value="<?= isset($e->conclusion_adicional) ? $e->conclusion_adicional : ''  ?>">
-                                    </div>
-                     
-                                    <script type="text/javascript">
-                            $(function() {
-                                $("#conclusionAdicional").datetimepicker({
-                                    format: 'DD-MM-YYYY',
-                                    locale: moment.locale('es')
+                            <script type="text/javascript">
+                                $(function() {
+                                    $("#inicioAdicional").datetimepicker({
+                                        format: 'DD-MM-YYYY',
+                                        locale: moment.locale('es')
+                                    });
                                 });
-                            });
-                        </script>
-
+                            </script>
+                        </div>
+                    </div>
+                            <div class='col-12 col-sm-12 col-md-6'>
+                        <div class="form-group">
+                            <label for="conclusionAdicional" class=" control-label">Conclusión:<span class="text-danger">*</span></label>
+                            <div class="input-group date" id="conclusionAdicional" data-target-input="nearest">
+                                <input type="text" required class="form-control datetimepicker-input" data-target="#conclusionAdicional" id="datetime-conclusionAdicional" name="conclusionAdicional" placeholder="" value="<?= isset($e->conclusion_adicional) ? date( "d-m-Y" ,strtotime($e->conclusion_adicional)) : ''  ?>" />
+                                <div class="input-group-append" data-target="#conclusionAdicional" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
                                 </div>
                             </div>
+                            <script type="text/javascript">
+                                $(function() {
+                                    $("#conclusionAdicional").datetimepicker({
+                                        format: 'DD-MM-YYYY',
+                                        locale: moment.locale('es')
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
                             <div class='col-12 col-sm-12 col-md-6'>
                                 <div class="form-group">
                                     <label for="duracion_horas<?= $label ?>" class=" control-label">Duración en horas:<span class="text-danger">*</span></label>
@@ -667,43 +673,43 @@
                                 </div>
                             </div>
                             <div class='col-12 col-sm-12 col-md-6'>
-                                <div class="form-group">
-                                    <label for="desde<?= $label ?>" class=" control-label">Desde:<span class="text-danger">*</span></label>
-
-                                    <div>
-                                        <input type="text" class="form-control " id="desde<?= $label ?>" name="desde<?= $label ?>" value="<?= isset($e->desde) ? $e->desde : ''  ?>">
-
-                                    </div>
-                                    <script type="text/javascript">
-                                        $(function() {
-                                            $("#desde").datetimepicker({
-                                                format: 'DD-MM-YYYY',
-                                                locale: moment.locale('es')
-                                            });
-                                        });
-                                    </script>
+                        <div class="form-group">
+                            <label for="desde" class=" control-label">Desde:<span class="text-danger">*</span></label>
+                            <div class="input-group date" id="desde" data-target-input="nearest">
+                                <input type="text" required class="form-control datetimepicker-input" data-target="#desde" id="datetime-desde" name="desde" placeholder="" value="<?= isset($e->desde) ? date( "d-m-Y" ,strtotime($e->desde)) : ''  ?>" />
+                                <div class="input-group-append" data-target="#desde" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
                                 </div>
                             </div>
-
-                            <div class='col-12 col-sm-12 col-md-6'>
-                                <div class="form-group">
-                                    <label for="hasta<?= $label ?>" class=" control-label">Hasta:<span class="text-danger">*</span></label>
-
-                                    <div>
-                                        <input type="text" class="form-control " id="hasta<?= $label ?>" name="hasta<?= $label ?>" value="<?= isset($e->hasta) ? $e->hasta : ''  ?>">
-
-                                    </div>
-                                    <script type="text/javascript">
-                                        $(function() {
-                                            $("#hasta").datetimepicker({
-                                                format: 'DD-MM-YYYY',
-                                                locale: moment.locale('es')
-                                            });
-                                        });
-                                    </script>
-
+                            <script type="text/javascript">
+                                $(function() {
+                                    $("#desde").datetimepicker({
+                                        format: 'DD-MM-YYYY',
+                                        locale: moment.locale('es')
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-12 col-md-6'>
+                        <div class="form-group">
+                            <label for="hasta" class=" control-label">Hasta:<span class="text-danger">*</span></label>
+                            <div class="input-group date" id="hasta" data-target-input="nearest">
+                                <input type="text" required class="form-control datetimepicker-input" data-target="#hasta" id="datetime-hasta" name="hasta" placeholder="" value="<?= isset($e->hasta) ? date( "d-m-Y" ,strtotime($e->hasta)) : ''  ?>" />
+                                <div class="input-group-append" data-target="#hasta" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
                                 </div>
                             </div>
+                            <script type="text/javascript">
+                                $(function() {
+                                    $("#hasta").datetimepicker({
+                                        format: 'DD-MM-YYYY',
+                                        locale: moment.locale('es')
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
 
 
                         </div>
