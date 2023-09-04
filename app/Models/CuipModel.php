@@ -930,7 +930,7 @@ class CuipModel
 
     public function consecutivo(){
         $builder = $this->db->table('datos_empleado');
-        $builder->select("LPAD(IFNULL(MAX(SUBSTRING(numEmpleado,3,5) ),0) + 1,5,0) as con");
+        $builder->select("LPAD(IFNULL(MAX(SUBSTRING(numEmpleado,3,4)),0) + 1,4,0) as con");
         
         return $builder->get()->getRow();
     }
