@@ -319,7 +319,6 @@ class Cuip extends BaseController {
 				'promedio' =>  ['label' => "Promedio", 'rules' => 'required|max_length[255]'],
 				'calle' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
 				'exterior' =>  ['label' => "No. Exterior", 'rules' => 'required|max_length[255]'],
-				'interior' =>  ['label' => "No. Interior", 'rules' => 'required|max_length[255]'],
 				'numeroTelefono' =>  ['label' => "Numero Telefónico", 'rules' => 'required|max_length[10]|integer|min_length[10]'],
 				'entrecalle' =>  ['label' => "Entre la calle de", 'rules' => 'required|max_length[255]'],
 				'ylacalle' =>  ['label' => "Y la calle ", 'rules' => 'required|max_length[255]'],
@@ -500,7 +499,7 @@ class Cuip extends BaseController {
 
         			$getfederativa_adscripcion = $this->request->getPost('federativa_adscripcion');
         			
-        			$federativa_adscripcion = $this->encrypt->Decrytp($$getfederativa_adscripcion);
+        			$federativa_adscripcion = $this->encrypt->Decrytp($getfederativa_adscripcion);
 
         			$getdelegacion_adscripcion = $this->request->getPost('delegacion_adscripcion');
         			
@@ -623,7 +622,6 @@ class Cuip extends BaseController {
 
 					$result = $this->modelCuip->insertDatosPersonales( $datosPersonales,$expDocenteArray,$expDocente);
 
-					
 					
                     if ($result) {
 
@@ -4515,7 +4513,7 @@ class Cuip extends BaseController {
 				'promedio' =>  ['label' => "Promedio", 'rules' => 'required|max_length[255]'],
 				'calle' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
 				'exterior' =>  ['label' => "No. Exterior", 'rules' => 'required|max_length[255]'],
-				'interior' =>  ['label' => "No. Interior", 'rules' => 'required|max_length[255]'],
+				
 				'numeroTelefono' =>  ['label' => "Numero Telefónico", 'rules' => 'required|max_length[10]|integer|min_length[10]'],
 				'entrecalle' =>  ['label' => "Entre la calle de", 'rules' => 'required|max_length[255]'],
 				'ylacalle' =>  ['label' => "Y la calle ", 'rules' => 'required|max_length[255]'],
