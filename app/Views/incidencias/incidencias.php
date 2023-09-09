@@ -14,35 +14,35 @@
 </div>
 <div class="card card-primary">
     <div class="card-header" >
-        <h3 class="card-title">Empleados</h3>
+        <h3 class="card-title">Incidencias Empleados</h3>
     </div>
     <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
             <i class="fas fa-minus"></i>
           </button>
      </div>
+     <div class="card-body table-responsive ">
+         <table id="dataGrid" class="table text-center table-hover table-head-fixed text-nowrap">
+             <thead>
+             <tr>
+                 <th>Editar</th>
+                 <th>Detalle</th>
+                 <th>Número Empleado</th>
+                 <th>Nombre Completo</th>
+                 <th>Incidencia</th>
+                 <th>Descripción</th>
+                 <th>Fecha Inicio</th>
+                 <th>Fecha Final</th>
+                 <th>Cliente</th>
+                 <th>Ubicación</th>
+                 <th>Jefe Inmediato</th>
+                 <th>Activo</th>
+             </tr>
+             </thead>
+         </table>
+     </div>
 </div>
 
-<div class="card-body table-responsive ">
-    <table id="dataGrid" class="table text-center table-hover table-head-fixed text-nowrap">
-        <thead>
-        <tr>
-            <th>Nombre Completo</th>
-            <th>Incidencia</th>
-            <th>Descripcion</th>
-            <th>Fecha Inicio</th>
-            <th>Fecha Final</th>
-            <th>Número Empleado</th>
-            <th>Ubicacion</th>
-            <th>Jefe Inmediato</th>
-            <th>Cliente</th>
-            <th>Activo</th>
-            <th>Editar</th>
-            <th>Detalle</th>
-        </tr>
-        </thead>
-    </table>
-</div>
     
 <div class="modal fade" id="ModalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -102,11 +102,18 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class='col-12 col-sm-6'>    
+                                <div class="form-group">
+                                    <label for="Activo" class="control-label">Activo:</label>
+                                    <div class="form-check" >
+                                        <input class="form-check-input"  type="checkbox" id="activo" >
+                                    </div>
+                                </div>
+                            </div>
                         </div> 
                     </form>
                     <div class=" mt-5 modal-footer">
-                        <button id="btnGuardar" onclick="asignarInicidencia()" class="btn btn-primary"><i id="loadBtn" class="fa fa-circle-o-notch fa-spin" style="display:none;"></i>&nbsp&nbsp<i class="fa fa-window-restore" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
-                        <button type="reset" class="d-none" id="reset">Limpiar</button>
+                        <button id="btnGuardar" onclick="updateInicidencia()" class="btn btn-primary"><i id="loadBtn" class="fa fa-circle-o-notch fa-spin" style="display:none;"></i>&nbsp&nbsp<i class="fa fa-window-restore" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
                     </div>
                 </div>
             </div>
@@ -129,25 +136,25 @@
                             <div class='col-12 col-sm-6'>
                                 <div class="form-group">
                                     <label for="matricula" class="control-label">Tipo Incidencia: </label>
-                                    <p class="font-weight-light" id="detail_tipo_incidencia">ejemplo</p>
+                                    <p class="font-weight-light" id="detail_tipo_incidencia"></p>
                                 </div>
                             </div>
                             <div class='col-12 col-sm-6'>
                                 <div class="form-group">
                                     <label for="matricula" class="control-label">Descripcion: </label>
-                                    <p class="font-weight-light" id="detail_descripcion">ejemplo</p>
+                                    <p class="font-weight-light" id="detail_descripcion"></p>
                                 </div>
                             </div>
                             <div class='col-12 col-sm-6'>
                                 <div class="form-group">
                                     <label for="matricula" class="control-label">Fecha Inicio: </label>
-                                    <p class="font-weight-light" id="detail_inicio">ejemplo</p>
+                                    <p class="font-weight-light" id="detail_inicio"></p>
                                 </div>
                             </div>
                             <div class='col-12 col-sm-6'>
                                 <div class="form-group">
                                     <label for="matricula" class="control-label">Fecha final: </label>
-                                    <p class="font-weight-light" id="detail_final">ejemplo</p>
+                                    <p class="font-weight-light" id="detail_final"></p>
                                 </div>
                             </div>
                         </div> 
@@ -201,7 +208,7 @@
     let descripcion = document.querySelector("#descripcion")
     let fecha_inicio = document.querySelector("#fecha_inicio")
     let fecha_final = document.querySelector("#fecha_final")
-    let reset = document.querySelector("#reset")
+    let activo = document.querySelector("#activo")
     const  estatusRenderer = (data, type, full, meta) => {
         var src;
         
@@ -220,10 +227,32 @@
         deferRender: true,
         paging: true,
         scrollCollapse: true,
+        dom: 'Bfrtip',
+        buttons: [
+        {
+            extend: 'excel',  
+            text: `<i class='fa fa-file-excel-o nav-icon'></i>&nbsp;&nbsp;&nbsp; Excel`, 
+            className: 'btn  btn-flat btn-success' , 
+            title: 'Incidencias'
+        }],
         language: {
             url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
         },
         columns: [
+            {  data: "editar",
+                render: function (data, type, full, meta) {
+                    return `<button class="btn btn-outline-light text-primary" data-toggle='modal' data-target='#ModalUpdate' onclick="updateModal('${full.id}', '${full.id_tipo_incidencia}', '${full.tipo_incidencia}', '${full.descripcion}', '${full.fecha_incidencia_inicio}', '${full.fecha_incidencia_final}', '${full.activo}')"><i class='fa fa-edit nav-icon'></i></button>`
+
+                }
+            },
+            {  data: "detail",
+                render: function (data, type, full, meta) {
+                    return `<button class="btn btn-outline-light text-primary" data-toggle='modal' data-target='#ModalDetail' onclick="detail('${full.id}')"><i class='fa fa-list-alt nav-icon'></i></button>`
+
+                }
+            },
+            { data: "numEmpleado"
+            },
             { data: "nombre"
             },
             { data: "tipo_incidencia"
@@ -234,32 +263,19 @@
             },
             { data: "fecha_incidencia_final"
             },
-            { data: "numEmpleado"
+            { data: "nombre_corto"
             },
             { data: "nombre_ubicacion"
             },
             { data: "nomJefe"
             },
-            { data: "nombre_corto"
-            },
-            { data: "activo", render: estatusRenderer },
-            {  data: "editar",
-                render: function (data, type, full, meta) {
-                    return `<button class="btn btn-outline-light text-primary" data-toggle='modal' data-target='#ModalUpdate' onclick="updateModal('${full.id}', '${full.id_tipo_incidencia}', '${full.tipo_incidencia}', '${full.descripcion}', '${full.fecha_incidencia_inicio}', '${full.fecha_incidencia_final}')"><i class='fa fa-edit nav-icon'></i></button>`
-
-                }
-            },
-            {  data: "detail",
-                render: function (data, type, full, meta) {
-                    return `<button class="btn btn-outline-light text-primary" data-toggle='modal' data-target='#ModalDetail' onclick="detail('${full.id}')"><i class='fa fa-list-alt nav-icon'></i></button>`
-
-                }
-            }
+            { data: "activo", render: estatusRenderer }
+            
         ]
     });
 
 
-    const updateModal = (id, idIncidencia, txtIncidencia, descrip, fechaInicio, fechaFin) =>{
+    const updateModal = (id, idIncidencia, txtIncidencia, descrip, fechaInicio, fechaFin, act) =>{
         id_empleado.value = id
 
         let newOption = document.createElement('option');
@@ -271,10 +287,16 @@
         descripcion.value = descrip
         fecha_inicio.value = fechaInicio
         fecha_final.value = fechaFin
+        activo.value = act == 1 ? '1' : '0'
+        activo.checked = act == 1 ? true : false ;
+
+        
     }
 
-    const asignarInicidencia = () => {
+    const updateInicidencia = () => {
         var formData = new FormData($("form#frmIncidencia")[0]);
+        let  act = activo.checked ? "1" : "0";
+        formData.append("activo", act)
 
         $.ajax({
             url: base_url + '/editIncidencias',
@@ -314,7 +336,6 @@
                         toastr.error('<?= lang('Layout.camposObligatorios') ?>');
 
                 }
-                reset.click()
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 toastr.error('<?=lang('Layout.toastrError') ?>');
@@ -370,7 +391,6 @@
                         toastr.error('<?= lang('Layout.camposObligatorios') ?>');
 
                 }
-                reset.click()
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 toastr.error('<?=lang('Layout.toastrError') ?>');

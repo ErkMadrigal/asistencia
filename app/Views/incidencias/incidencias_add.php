@@ -1,8 +1,7 @@
 <?= $this->extend('includes/main') ?>
 <?= $this->section('content') ?>
 
-<div id="load" class=" spinner text-secondary" role="status">
-    </div>
+<div id="load" class=" spinner text-secondary" role="status"></div>
     <div class=" mb-2">    
         <div class="row">
             <div class="col-12 col-sm-6 col-md-9 ">
@@ -14,13 +13,13 @@
 <div class="card card-primary">
     <div class="card-header" >
         <h3 class="card-title">Empleados</h3>
+    </div>
     
     <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse">
             <i class="fas fa-minus"></i>
-          </button>
-     </div>
-</div>
+        </button>
+    </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive ">
         <table id="dataGrid" class="table text-center table-hover table-head-fixed text-nowrap">
@@ -140,7 +139,7 @@
         columns: [
             {  data: "Asignar",
                 render: function (data, type, full, meta) {
-                    return `<button class="btn btn-outline-light text-primary" data-toggle="modal" data-target="#exampleModal" onclick='editar("${full.id}", "${full.nombre_completo}")'><i class='fa fa-edit nav-icon'></i></button>`
+                    return `<button class="btn btn-outline-light text-primary" data-toggle="modal" data-target="#exampleModal" onclick='edit("${full.id}", "${full.nombre}")'><i class='fa fa-edit nav-icon'></i></button>`
 
                 }
             },
@@ -158,6 +157,12 @@
         ]
     });
 
+    const edit = (id, title) => {
+        let id_empleado = document.querySelector("#id_empleado")
+        let modalTitle = document.querySelector("#modalTitle")
+        modalTitle.innerHTML = "ASIGNAR - " + title
+        id_empleado.value = id;
+    }
 
     const asignarInicidencia = () => {
         var formData = new FormData($("form#frmIncidencia")[0]);

@@ -152,6 +152,7 @@ class Incidencias extends BaseController{
                 "descripcion" =>  $_POST['descripcion'],
                 "fecha_incidencia_inicio" =>  $_POST["fecha_inicio"],
                 "fecha_incidencia_final" =>  $_POST["fecha_final"],
+                "activo" =>  $_POST["activo"],
                 "updateddate" =>  date("Y-m-d H:i:s"),
                 "updatedby" => $LoggedUserId,
             );
