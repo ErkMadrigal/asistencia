@@ -111,7 +111,6 @@
     let id_empleado = document.querySelector("#id_empleado")
     let reset = document.querySelector("#reset")
 
-
     const fecha1Input = document.getElementById('fecha_inicio');
     const fecha2Input = document.getElementById('fecha_final');
 

@@ -381,7 +381,6 @@
 
     }
 
-
 </script>
 
 <?= $this->endSection() ?>

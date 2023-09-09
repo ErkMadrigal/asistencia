@@ -57,7 +57,6 @@ class IncidenciasModel{
         return $builder->get()->getResult();
     }
 
-
     public function addIncidencia($insert){
         $this->db->transStart();
         $return = false;

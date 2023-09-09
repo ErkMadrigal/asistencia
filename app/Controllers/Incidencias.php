@@ -122,7 +122,6 @@ class Incidencias extends BaseController{
             } else {
                 $dontSucces = ["error" => "error", "mensaje" => 'No Cuenta con Incidencias.'];
             }
-            
 				
 			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
 		}
@@ -174,6 +173,5 @@ class Incidencias extends BaseController{
 			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
 		}
     }
-
 
 }
