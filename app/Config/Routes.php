@@ -225,6 +225,12 @@ $routes->post('EditarAltaEmpleado', 'Cuip::EditarAltasEmpleados',['filter' => 'a
 $routes->post('EditarCapacitaciones', 'Cuip::EditarCapacitaciones',['filter' => 'auth']);
 $routes->post('EditarMediaFiliacion', 'MediaFiliacion::EditarMediaFiliacion',['filter' => 'auth']);
 
+$routes->get('Incidencias', 'Incidencias::index',['filter' => 'auth']);
+$routes->get('addIncidencias', 'Incidencias::addIncidencias',['filter' => 'auth']);
+$routes->post('newIncidencias', 'Incidencias::agregar',['filter' => 'auth']);
+$routes->post('editIncidencias', 'Incidencias::edit',['filter' => 'auth']);
+$routes->post('detailIncidencias', 'Incidencias::detail',['filter' => 'auth']);
+
 
 
 
