@@ -42,7 +42,7 @@ use App\Libraries\Encrypt;
                     <div class="form-group">
                         <label for="ubicacionRH" class=" control-label">Ubicación:</label>
                         <div>
-                            <?= isset($datosEmpleado->idUbicacion) ? $datosEmpleado->idUbicacion : ''  ?>
+                            <?= isset($datosEmpleado->nombre_ubicacion) ? $datosEmpleado->nombre_ubicacion : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@ use App\Libraries\Encrypt;
                     <div class="form-group">
                         <label for="turnoRH" class=" control-label">Turno:</label>
                         <div>
-                            <?= isset($datosEmpleado->idTurno) ? $datosEmpleado->idTurno : ''  ?>
+                            <?= isset($datosEmpleado->turno) ? $datosEmpleado->turno : ''  ?>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@ use App\Libraries\Encrypt;
                     <div class="form-group">
                         <label for="puestoRH" class="control-label">Puesto: </label>
                         <div>
-                            <?= isset($datosEmpleado->idPuesto) ? $datosEmpleado->idPuesto : ''  ?>
+                            <?= isset($datosEmpleado->puesto) ? $datosEmpleado->puesto : ''  ?>
                         </div>
                     </div>
                 </div>

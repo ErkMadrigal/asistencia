@@ -899,48 +899,106 @@ class Armas extends BaseController {
 	private function _buscarArchivoEnCarpetas($nombre, $idEmpresa) {
 
 
-		$carpetas = [WRITEPATH."files/SETER_MATRICULAS_Y_FOLIOS_TRASLADO", WRITEPATH."files/SERPROSEP_MATRICULAS_Y_FOLIOS", WRITEPATH."files/HOJAS_ROSAS_1"];
+		$carpeta = WRITEPATH."files/FolioManifiesto";
 	    $res = array(
 			"status" => "error",
 			"msg" => "No se econtro el Archivo"
 		);
 		
-		foreach ($carpetas as $carpeta) {
 		
-			$archivosCoincidentes = glob($carpeta . '/*' . $nombre . '*');
-			if(count($archivosCoincidentes) == 1){
-				if (!empty($archivosCoincidentes)) {
-					$name_file = explode("/", $archivosCoincidentes[0]);
-					$getRuta = WRITEPATH . 'uploads/files/FolioManifiesto/'.date("Y").'/'.date("m").'/'.$idEmpresa.'/'.$name_file[2];
+		$archivosCoincidentes = glob($carpeta . '/*' . $nombre . '*');
+		if(count($archivosCoincidentes) == 1){
+			if (!empty($archivosCoincidentes)) {
+				$name_file = explode("/", $archivosCoincidentes[0]);
+				$getRuta = WRITEPATH . 'uploads/files/FolioManifiesto/'.date("Y").'/'.date("m").'/'.$idEmpresa.'/'.$name_file[2];
 
-					$directorio = WRITEPATH . 'uploads/files/FolioManifiesto/'.date("Y").'/'.date("m").'/'.$idEmpresa.'/'; 
-					$res = $name_file;
-					if (!is_dir($directorio)) {
-						mkdir($directorio, 0777, true);
-					}
-					if (rename($archivosCoincidentes[0], $getRuta)) {
-						$res = array(
-							"status" => "ok",
-							"ruta_file" => $archivosCoincidentes[0],
-							"nombre_file_db" => $this->encrypt->Encrypt($name_file[7]),
-							"ruta_db" => $this->encrypt->Encrypt($directorio)
-						);
-					} else {
-						$res = array(
-							"status" => "error",
-							"msg" => "No se pudo Cargar el archivo al Servidor"
-						);
-					}
-				}else{
+				$directorio = WRITEPATH . 'uploads/files/FolioManifiesto/'.date("Y").'/'.date("m").'/'.$idEmpresa.'/'; 
+				$res = $name_file;
+				if (!is_dir($directorio)) {
+					mkdir($directorio, 0777, true);
+				}
+				if (copy($archivosCoincidentes[0], $getRuta)) {
+					$res = array(
+						"status" => "ok",
+						"ruta_file" => $archivosCoincidentes[0],
+						"nombre_file_db" => $this->encrypt->Encrypt($name_file[7]),
+						"ruta_db" => $this->encrypt->Encrypt($directorio)
+					);
+				} else {
 					$res = array(
 						"status" => "error",
-						"msg" => "No se econtro el Archivo"
+						"msg" => "No se pudo Cargar el archivo al Servidor"
 					);
 				}
+			}else{
+				$res = array(
+					"status" => "error",
+					"msg" => "No se econtro el Archivo"
+				);
 			}
 		}
 
 		return $res;
 	}
+
+	public function all_files(){
+		$carpeta = WRITEPATH."files/FolioManifiesto";
+
+		$archivos = scandir($carpeta);
+
+		foreach ($archivos as $archivo) {
+			if (is_file($carpeta . '/' . $archivo)) {
+				echo $archivo . "<br>";
+			}
+		}
+	}
+
+	public function all_files_completed(){
+		$directorio = WRITEPATH . 'uploads/files/FolioManifiesto/'.date("Y").'/'.date("m").'/';
+
+
+		if (is_dir($directorio)) {
+			$archivos = scandir($directorio);
+			
+			foreach ($archivos as $archivo) {
+				if ($archivo != '.' && $archivo != '..') {
+					$ruta = $directorio . '/' . $archivo;
+					
+					if (is_dir($ruta)) {
+						// Si es una carpeta, realiza una llamada recursiva
+						listarArchivosEnDirectorio($ruta);
+					} else {
+						// Si es un archivo, muestra su nombre
+						echo $ruta . "<br>";
+					}
+				}
+			}
+		}
+	}
+
+	
+	public function eliminarCarpeta() {
+		
+		$carpeta = WRITEPATH."files/FolioManifiesto";
+
+		if (is_dir($carpeta)) {
+			$archivos = scandir($carpeta);
+			foreach ($archivos as $archivo) {
+				if ($archivo != '.' && $archivo != '..') {
+					$ruta = $carpeta . '/' . $archivo;
+					if (is_dir($ruta)) {
+						eliminarCarpeta($ruta); 
+					} else {
+						unlink($ruta); 
+					}
+				}
+			}
+			rmdir($carpeta); 
+			echo "La carpeta ha sido eliminada.";
+		} else {
+			echo "La carpeta no existe o no se puede acceder.";
+		}
+	}
+
 	
 }

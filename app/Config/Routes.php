@@ -215,6 +215,10 @@ $routes->get('visorFolioManifiesto', 'Armas::visorFolioManifiesto',['filter' => 
 $routes->post('editFolioManifisto', 'Armas::editFolioManifisto',['filter' => 'auth']);
 $routes->get('cargaMasivaArmas', 'Armas::cargaMasivaArmas',['filter' => 'auth']);
 $routes->get('limpiar_datos', 'Armas::limpiar_datos',['filter' => 'auth']);
+$routes->get('eliminarCarpeta', 'Armas::eliminarCarpeta',['filter' => 'auth']);
+$routes->get('all_files', 'Armas::all_files',['filter' => 'auth']);
+$routes->get('all_files_completed', 'Armas::all_files_completed',['filter' => 'auth']);
+
 $routes->post('EditarDatosPersonales', 'Cuip::EditarPersonales',['filter' => 'auth']);
 $routes->post('EditarReferencias', 'Cuip::EditarReferencias',['filter' => 'auth']);
 $routes->post('EditarSocioEconomico', 'Cuip::EditarSocioEconomico',['filter' => 'auth']);
@@ -224,6 +228,8 @@ $routes->post('EditarSancionesEstimulos', 'Cuip::EditarSancionesEstimulos',['fil
 $routes->post('EditarAltaEmpleado', 'Cuip::EditarAltasEmpleados',['filter' => 'auth']);
 $routes->post('EditarCapacitaciones', 'Cuip::EditarCapacitaciones',['filter' => 'auth']);
 $routes->post('EditarMediaFiliacion', 'MediaFiliacion::EditarMediaFiliacion',['filter' => 'auth']);
+$routes->post('validaCancelada', 'Cuip::validaCancelada',['filter' => 'auth']);
+$routes->post('ProcesoBaja', 'Cuip::BajaRegistro',['filter' => 'auth']);
 
 //incidecnias
 $routes->get('Incidencias', 'Incidencias::index',['filter' => 'auth']);

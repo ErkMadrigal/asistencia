@@ -6,7 +6,8 @@
 
     <div class="row">
         <div class="col-12 col-sm-6 col-md-3 ">
-            
+            <button id="idRegistro" class="btn btn-block btn-flat btn-primary" ><i class="fa fa-file-text" aria-hidden="true" ></i>&nbsp;&nbsp;Baja</button>
+        
         </div>
         <div class="col-12 col-sm-6 col-md-3">
             <button class="btn btn-block btn-flat btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;Carga Masiva</button>
@@ -65,6 +66,7 @@
         <table id="dataGrid" class="table  text-center table-hover table-head-fixed text-nowrap">
             <thead>
             <tr>
+                <th></th>
                 <th>Num.Empleado</th>
                 <th>No.CUIP</th>
                 <th>Primer Nombre</th>
@@ -74,11 +76,103 @@
                 <th>CUIP</th>
                 <th>Expediente</th>
                 <th>Media Filiación</th>
+                <th>Activo</th>
        		</tr>
             </thead>
         </table>
     </div>
     
+</div>
+<!-- Modal -->
+<div class="modal fade" id="SinReunionModal" tabindex="-1"  aria-labelledby="reunionModalLabel" aria-hidden="true">
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Baja</h5>
+            </div>
+            <div class="modal-body">
+                <p><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;Seleccionar un registro</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button"  class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+             </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="bajaModal" tabindex="-1"  aria-labelledby="bajaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Baja</h5>
+                
+            </div>
+            <div class="modal-body">
+                
+                <p><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;Esta seguro de realizar la baja ?</p>
+                <form class="form-horizontal" id="DatosBaja">
+                    <div class="row">
+                        <input type="hidden" class="form-control " id="idRegistroBaja" name="idRegistroBaja"  readonly>
+                        <?= csrf_field() ?>
+                        <div class='col-12 col-sm-12 col-md-12'>
+                            <div class="form-group">
+                                <input type="text" class="form-control " id="modalReg" name="modalReg"  readonly>
+                            </div>
+                        </div>        
+                        <div class='col-12 col-sm-6'>
+                            <div class='form-group'>
+                                <label for="fecha_baja">Fecha efectiva de la baja: <span class="text-danger">*</span></label>
+                                <div class="input-group date" id="fecha_baja" data-target-input="nearest">
+                                    <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_baja" id="datetime-fecha_baja" name="fecha_baja" placeholder="" value="" />
+                                    <div class="input-group-append" data-target="#fecha_baja" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                                    </div>
+                                </div>
+                                    <script type="text/javascript">
+                                        $(function() {
+                                            $("#fecha_baja").datetimepicker({
+                                                format: 'DD-MM-YYYY',
+                                                locale: moment.locale('es')
+                                            });
+                                        });
+                                    </script>
+                            </div>
+                        </div>
+                        <div class='col-12 col-sm-12 col-md-6'>
+                            <div class="form-group">
+                                <label for="finiquito" class=" control-label">Finiquito:<span class="text-danger">*</span></label>
+                                <select class="form-control" id="finiquito" name="finiquito">
+                                    <option value="">Selecciona una Opcion</option>
+                                    <option value="1">SI</option>
+                                    <option value="0">NO</option>                
+                                </select>
+                                <script>
+                                    $(document).ready(function() {
+                                        $("#finiquito").select2({
+                                            theme: "bootstrap4",
+                                            width: "100%"
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <div class='col-12 col-sm-12 col-md-12'>
+                            <div class="form-group">
+                                <label for="motivoBaja" class=" control-label">Motivo de baja:</label>
+                                <textarea type="text" class="form-control " id="motivoBaja" name="motivoBaja"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>         
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button"  class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" id="btnBaja" class="btn btn-primary">Procesar baja</button>
+            </div>
+                </form>
+        </div>
+    </div>
 </div>
 <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 <script>
@@ -378,7 +472,12 @@
             language: {
                 url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
             },
-            columns: [  { data: "numEmpleado"
+            columns: [  {
+                            data: "id",
+                            render: checkBox,
+                            orderable: false
+                        },
+                        { data: "numEmpleado"
                         },
                         { data: "nCuip"
                         },
@@ -418,11 +517,168 @@
                         
                     
                         }
-                    }
+                    },{ data: "activo",
+                        render: estatusRenderer
+                    }, 
 
                 
             ]
         });
+
+    function estatusRenderer(data, type, full, meta) {
+        var src;
+    
+        if (full.activo == 1) {
+            src = "<i class=\'fa fa-check-circle\'></i>";
+        } else  {
+            src = "<i class=\'fa fa-times-circle\'></i>";
+        } 
+
+   
+        return src;
+    }
+
+    function checkBox(data, type, full, meta) {
+        var src;
+
+        if (full.activo == 1) {
+            disabled = "";
+        } else  {
+            disabled = "disabled";
+        } 
+
+            
+        src = "<input type='checkbox' " + disabled + " name='idTema' value='" +full.id+"'>";
+
+           
+        return src;
+    }
+
+    $('#idRegistro').click(function (event) {
+        
+    $('#load').addClass( "spinner-border" );
+    var csrfName = $("input[name=app_csrf]").val();
+    $tema = $('input:checkbox[name=idTema]:checked').val();
+        var data = {
+        idRegistro: $tema,
+        app_csrf: csrfName
+    };
+
+    if (typeof($tema) == 'undefined') {
+        $('#SinReunionModal').modal('show');
+        $('#load').removeClass( "spinner-border" );
+    } else {
+
+        $.ajax({
+            url: base_url + '/validaCancelada',
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            cache: false,
+            async: true,
+            success: function (response) {
+                $('#load').removeClass( "spinner-border" );
+                if (!response) {
+                    
+                    toastr.error('El usuario ya esta dado de baja');
+                } else {
+                    
+                    $('#bajaModal').modal('show');
+                }
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('#load').removeClass( "spinner-border" );
+                toastr.error('<?=lang('Layout.toastrError')?>');
+            }
+        });
+
+    }
+
+});
+
+    $('#dataGrid tbody').on('click', 'tr', function () {
+
+        var d = table.row(this).data();
+        var id = d.id;
+        var apellido_materno = d.apellido_materno;
+        var apellido_paterno = d.apellido_paterno;
+        var segundo_nombre = d.segundo_nombre;
+        var primer_nombre = d.primer_nombre;
+        
+        
+        $('#modalReg').val(apellido_paterno + ' ' + apellido_materno+ ' ' + primer_nombre + ' ' + segundo_nombre);
+        $('#idRegistroBaja').val(id);
+        
+    });
+
+
+    $(document).on("change", ":checkbox", function () {
+        event.preventDefault();
+        
+
+        $('input[type="checkbox"]').not(this).prop('checked', false);
+                
+       
+    });
+
+    $('#btnBaja').click(function (event) {
+        event.preventDefault();
+        $('#load').addClass( "spinner-border" );
+        var formData = new FormData($("form#DatosBaja")[0]);
+        
+        $.ajax({
+            url: base_url + '/ProcesoBaja',
+            type: 'POST',
+            dataType: 'json',
+            data: formData,
+            cache: false,
+            async: true,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $('.errorField').remove();
+
+                if (response.succes.succes == 'succes') {
+
+                    toastr.success(response.succes.mensaje);
+
+                    var count = 2;
+                    setInterval(function(){
+                      count--;
+                      if (count == 0) {
+                        window.location = base_url + '/cuip'; 
+                      }
+                    },1000);
+
+                } else if (response.dontsucces.error == 'error'){
+
+                    toastr.error(response.dontsucces.mensaje);
+                            
+                } else if (Object.keys(response.error).length > 0 ){
+
+                    for (var clave in response.error){
+                                
+                        $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                            
+                    }
+                        toastr.error('<?=lang('Layout.camposObligatorios')?>');
+
+                }
+
+                $('#load').removeClass( "spinner-border" );    
+
+                        
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                toastr.error('<?=lang('Layout.toastrError')?>');
+                $('#load').removeClass( "spinner-border" );           
+            }
+        });
+            
+    });
+
+
 
 </script>
 <?= $this->endSection() ?>

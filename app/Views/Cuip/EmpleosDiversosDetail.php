@@ -306,7 +306,9 @@
             <div class='col-12 col-sm-12 col-md-12'>
                 <div class="form-group">
                     <label for="licencias_medicas" class=" control-label">En caso de licencias médicas:</label>
-
+                        <div>
+                            <?= isset($diversos->licencias_medicas) ? $diversos->licencias_medicas : ''  ?>
+                        </div>
                 </div>
             </div>
             <div class='col-12 col-sm-12 col-md-6'>

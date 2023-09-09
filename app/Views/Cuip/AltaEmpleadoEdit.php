@@ -54,7 +54,7 @@ use App\Libraries\Encrypt;
                                     foreach($clientes as  $a){
                                         $idCliente = $encrypt->Encrypt($a->id);
                                         ?>
-                                            <option <?= (isset($datosEmpleado->idCliente) == $a->nombre_corto ? 'selected' : '') ?> value="<?=$idCliente ?>"><?= $a->nombre_corto ?></option>
+                                            <option <?= isset($datosEmpleado->idCliente)?($datosEmpleado->idCliente) == $a->nombre_corto ? 'selected' : '':'' ?> value="<?=$idCliente ?>"><?= $a->nombre_corto ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -77,7 +77,7 @@ use App\Libraries\Encrypt;
                         <select class="form-control" id="ubicacionRH" name="ubicacionRH">
                                 <option value="">Selecciona una Opcion</option>
                                 
-                                            <option selected value="<?=$datosEmpleado->idUbicacion ?>"><?= $datosEmpleado->idUbicacion ?></option>
+                                            <option selected value="<?= $encrypt->Encrypt($datosEmpleado->idUbicacion) ?>"><?= $datosEmpleado->nombre_ubicacion ?></option>
                                             
                             </select>
                             <script>
@@ -104,7 +104,7 @@ use App\Libraries\Encrypt;
                         <select class="form-control" id="turnoRH" name="turnoRH">
                                 <option value="">Selecciona una Opcion</option>
                                 
-                                            <option selected value="<?=$datosEmpleado->idTurno ?>"><?= $datosEmpleado->idTurno ?></option>
+                                            <option selected value="<?= $encrypt->Encrypt($datosEmpleado->idTurno) ?>"><?= $datosEmpleado->turno ?></option>
                                             
                             </select>
                             <script>
@@ -124,7 +124,7 @@ use App\Libraries\Encrypt;
                         <select class="form-control" id="puestoRH" name="puestoRH">
                             <option value="">Selecciona una Opcion</option>
                                 
-                                            <option selected value="<?=$datosEmpleado->idPuesto ?>"><?= $datosEmpleado->idPuesto ?></option>
+                                            <option selected value="<?= $encrypt->Encrypt($datosEmpleado->idPuesto) ?>"><?= $datosEmpleado->puesto ?></option>
                                             
                         </select>
                             <script>
@@ -148,7 +148,7 @@ use App\Libraries\Encrypt;
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="telEmpresaRH" class=" control-label">Teléfono Empresa:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="telEmpresaRH" name="telEmpresaRH" maxlength="50" value=" <?= isset($datosEmpleado->telefonoEmpresa) ? $datosEmpleado->telefonoEmpresa : ''  ?>"> 
+                        <input type="text" class="form-control " id="telEmpresaRH" name="telEmpresaRH" maxlength="50" value="<?= isset($datosEmpleado->telefonoEmpresa)?$datosEmpleado->telefonoEmpresa:''?>"> 
                         
                     </div>
                 </div>
@@ -163,7 +163,7 @@ use App\Libraries\Encrypt;
                                     foreach($nomina as  $a){
                                         
                                         ?>
-                                            <option <?= (isset($datosEmpleado->idNomimaPeriodo) == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= isset($datosEmpleado->idNomimaPeriodo)?($datosEmpleado->idNomimaPeriodo) == $a->valor ? 'selected' : '':'' ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -196,7 +196,7 @@ use App\Libraries\Encrypt;
                                     foreach($jefes as  $a){
                                         $idJefe = $encrypt->Encrypt($a->id);
                                         ?>
-                                            <option <?= (isset($datosEmpleado->idJefeInmediato) == $a->nombre ? 'selected' : '') ?> value="<?=$idJefe ?>"><?= $a->nombre ?></option>
+                                            <option <?= isset($datosEmpleado->idJefeInmediato)?($datosEmpleado->idJefeInmediato) == $a->nombre ? 'selected' : '':'' ?> value="<?=$idJefe ?>"><?= $a->nombre ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -228,7 +228,7 @@ use App\Libraries\Encrypt;
                                 if( !empty($SiNo) ):
                                     foreach($SiNo as  $a){
                                         ?>
-                                            <option <?= (isset($datosEmpleado->infonavit) == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= isset($datosEmpleado->infonavit)?($datosEmpleado->infonavit) == $a->valor ? 'selected' : '':'' ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -253,7 +253,7 @@ use App\Libraries\Encrypt;
                                 if( !empty($SiNo) ):
                                     foreach($SiNo as  $a){
                                         ?>
-                                            <option <?= (isset($datosEmpleado->pension) == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= isset($datosEmpleado->pension)?($datosEmpleado->pension) == $a->valor ? 'selected' : '':'' ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -278,7 +278,7 @@ use App\Libraries\Encrypt;
                                 if( !empty($SiNo) ):
                                     foreach($SiNo as  $a){
                                         ?>
-                                            <option <?= (isset($datosEmpleado->fonacot) == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= isset($datosEmpleado->fonacot)?($datosEmpleado->fonacot) == $a->valor ? 'selected' : '':'' ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -303,7 +303,7 @@ use App\Libraries\Encrypt;
                                 if( !empty($SiNo) ):
                                     foreach($SiNo as  $a){
                                         ?>
-                                            <option <?= (isset($datosEmpleado->soldi) == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= isset($datosEmpleado->soldi)?($datosEmpleado->soldi) == $a->valor ? 'selected' : '':'' ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>
@@ -351,7 +351,7 @@ use App\Libraries\Encrypt;
                                     foreach($banco as  $a){
                                         
                                         ?>
-                                            <option <?= (isset($datosEmpleado->idBanco) == $a->valor ? 'selected' : '') ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
+                                            <option <?= isset($datosEmpleado->idBanco)?($datosEmpleado->idBanco) == $a->valor ? 'selected' : '':'' ?> value="<?=$a->id ?>"><?= $a->valor ?></option>
                                             <?php
                                     }
                                 endif;?>

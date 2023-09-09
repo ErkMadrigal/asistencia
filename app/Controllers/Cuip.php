@@ -53,7 +53,8 @@ class Cuip extends BaseController {
 					'segundo_nombre' => $v->segundo_nombre,
                     'apellido_paterno' => $v->apellido_paterno,
                     'apellido_materno' => $v->apellido_materno,
-                    'media_filiacion' => $v->idPersonal
+                    'media_filiacion' => $v->idPersonal,
+                    'activo' => $v->activo
 				) ;
 			}
 		
@@ -318,7 +319,6 @@ class Cuip extends BaseController {
 				'promedio' =>  ['label' => "Promedio", 'rules' => 'required|max_length[255]'],
 				'calle' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
 				'exterior' =>  ['label' => "No. Exterior", 'rules' => 'required|max_length[255]'],
-				'interior' =>  ['label' => "No. Interior", 'rules' => 'required|max_length[255]'],
 				'numeroTelefono' =>  ['label' => "Numero Telefónico", 'rules' => 'required|max_length[10]|integer|min_length[10]'],
 				'entrecalle' =>  ['label' => "Entre la calle de", 'rules' => 'required|max_length[255]'],
 				'ylacalle' =>  ['label' => "Y la calle ", 'rules' => 'required|max_length[255]'],
@@ -497,6 +497,14 @@ class Cuip extends BaseController {
         			
         			$municipio_adscripcion = $this->encrypt->Decrytp($getMunicipio_adscripcion);
 
+        			$getfederativa_adscripcion = $this->request->getPost('federativa_adscripcion');
+        			
+        			$federativa_adscripcion = $this->encrypt->Decrytp($getfederativa_adscripcion);
+
+        			$getdelegacion_adscripcion = $this->request->getPost('delegacion_adscripcion');
+        			
+        			$delegacion_adscripcion = $this->encrypt->Decrytp($getdelegacion_adscripcion);
+
         			
 
 					$datosPersonales = array(
@@ -532,7 +540,8 @@ class Cuip extends BaseController {
 						"año_inicio" => $this->request->getPost('anno_inicio') , 
 						"año_termino" => $this->request->getPost('anno_termino') , 
 						"registro_sep" => $registroSep , 
-						"folio_certificado" => strtoupper($this->request->getPost('certificado')) , 
+						"folio_certificado" => strtoupper($this->request->getPost('certificado')) ,
+						"promedio" => $this->request->getPost('promedio') , 
 						"calle" => strtoupper($this->request->getPost('calle')) , 
 						"numero_exterior" => strtoupper($this->request->getPost('exterior')) , 
 						"numero_interior" => strtoupper($this->request->getPost('interior')) , 
@@ -561,8 +570,8 @@ class Cuip extends BaseController {
 					  "numero_telefono_adscripcion" => $this->request->getPost('telefono_adscripcion'),
 					  "idCodigoPostal_adscripcion" => $this->request->getPost('codigoAds'),
 					  "colonia_adscripcion" => $this->request->getPost('coloniacodigoAds'),
-					  "idEstado_dom_adscripcion" => $this->request->getPost('federativa_adscripcion'),
-					  "municipio_delegacion" => $this->request->getPost('delegacion_adscripcion'),
+					  "idEstado_dom_adscripcion" => $federativa_adscripcion,
+					  "municipio_delegacion" => $delegacion_adscripcion,
 					  "ciudad_poblacion" => $this->request->getPost('ciudadcodigoAds'), 
 						"activo" => 1 , 
 						"createdby" => $LoggedUserId , 
@@ -613,7 +622,6 @@ class Cuip extends BaseController {
 
 					$result = $this->modelCuip->insertDatosPersonales( $datosPersonales,$expDocenteArray,$expDocente);
 
-					
 					
                     if ($result) {
 
@@ -2080,7 +2088,7 @@ class Cuip extends BaseController {
 
 
 	public function AgregarEmpDiversos(){
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['empresa, calle, exterior, interior, codigoEmpDiv, coloniacodigoEmpDiv, estadocodigoEmpDiv, municipiocodigoEmpDiv, numero, ingresoEmpDiv,  funciones, sueldo, area, motivo_separacion, tipo_separacion, comentarios, empleo, puesto, area_gustaria, ascender, reglamentacion, reconomiento, reglamentacion_ascenso, razones_ascenso, capacitacion, desciplina, subtipo_disciplina, motivo, tipo, fecha_inicialDis, fecha_finalDis, duracion, cantidad'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['empresa, calle, exterior, interior, codigoEmpDiv, coloniacodigoEmpDiv, estadocodigoEmpDiv, municipiocodigoEmpDiv, numero, ingresoEmpDiv,  funciones, sueldo, area, motivo_separacion, tipo_separacion, comentarios, empleo, puesto, area_gustaria, ascender, reglamentacion, reconomiento, reglamentacion_ascenso, razones_ascenso, capacitacion, desciplina, subtipo_disciplina, motivo, tipo, fecha_inicialDis, fecha_finalDis, duracion, cantidad,licencias_medicas'],FILTER_SANITIZE_STRING)){
 
 			$errors = [];
 			$succes = [];
@@ -2209,7 +2217,9 @@ class Cuip extends BaseController {
 						"area_gustaria"  =>  strtoupper($this->request->getPost('area_gustaria')) , 
 						"tiempo_ascenso"  =>  strtoupper($this->request->getPost('ascender')) , 
 						"reglamento"  =>  $reglamentacion , 
-						"razon_ascenso"  => $reglamentacion_ascenso  , 
+						"razon_ascenso"  => $reglamentacion_ascenso  ,
+						"razon_no_reconocimiento" => strtoupper($this->request->getPost('reconomiento')),
+						"razon_no_ascenso" => strtoupper($this->request->getPost('razones_ascenso')),  
 						"capacitacion"  =>  strtoupper($this->request->getPost('capacitacion')) , 
 						"idTipoDisciplina"  =>  $desciplina , 
 						"subtipo_disciplina"  =>  strtoupper($this->request->getPost('subtipo_disciplina')) , 
@@ -2218,7 +2228,8 @@ class Cuip extends BaseController {
 						"fecha_inicio"  =>  $fecha_inicialDis , 
 						"fecha_termino"  => $fecha_finalDis  , 
 						"idDuracion"  => $duracion   , 
-						"cantidad" => strtoupper($this->request->getPost('cantidad')) , 
+						"cantidad" => strtoupper($this->request->getPost('cantidad')) ,
+						"licencias_medicas" =>  strtoupper($this->request->getPost('licencias_medicas')) ,
 						"activo" => 1 , 
 						"createdby" => $LoggedUserId , 
 						"createddate" => date("Y-m-d H:i:s") );
@@ -2266,7 +2277,8 @@ class Cuip extends BaseController {
 						"fecha_inicio"  =>  $fecha_inicialDis , 
 						"fecha_termino"  => $fecha_finalDis  , 
 						"idDuracion"  => $duracion   , 
-						"cantidad" => strtoupper($this->request->getPost('cantidad')) , 
+						"cantidad" => strtoupper($this->request->getPost('cantidad')) ,
+						"licencias_medicas" =>  strtoupper($this->request->getPost('licencias_medicas')) , 
 						"activo" => 1 , 
 						"createdby" => $LoggedUserId , 
 						"createddate" => date("Y-m-d H:i:s") );
@@ -2385,7 +2397,7 @@ class Cuip extends BaseController {
 			$data['datosEmpleado'] = $this->modelCuip->GetAltaEmpleadoById($id);
 			$data['uniforme'] = $this->modelCuip->GetUniformesById($id);
 			$data['equipo'] = $this->modelCuip->GetEquiposById($id);
-//var_dump($data['referenciaLab']);
+//var_dump($data['diversos']);
 			$documentos = $this->modelCuip->GetDocumentosById($id);
 
 
@@ -2885,9 +2897,8 @@ class Cuip extends BaseController {
 				) ;
 			}
 
-
+//var_dump($data['variable']);
 			$data['documentos'] = $result;
-
 			
 			$data['id'] = $this->encrypt->Encrypt($id); 
 			
@@ -4502,7 +4513,7 @@ class Cuip extends BaseController {
 				'promedio' =>  ['label' => "Promedio", 'rules' => 'required|max_length[255]'],
 				'calle' =>  ['label' => "Calle", 'rules' => 'required|max_length[255]'],
 				'exterior' =>  ['label' => "No. Exterior", 'rules' => 'required|max_length[255]'],
-				'interior' =>  ['label' => "No. Interior", 'rules' => 'required|max_length[255]'],
+				
 				'numeroTelefono' =>  ['label' => "Numero Telefónico", 'rules' => 'required|max_length[10]|integer|min_length[10]'],
 				'entrecalle' =>  ['label' => "Entre la calle de", 'rules' => 'required|max_length[255]'],
 				'ylacalle' =>  ['label' => "Y la calle ", 'rules' => 'required|max_length[255]'],
@@ -4681,6 +4692,16 @@ class Cuip extends BaseController {
         			
         			$municipio_adscripcion = $this->encrypt->Decrytp($getMunicipio_adscripcion);
 
+        			$getfederativa_adscripcion = $this->request->getPost('federativa_adscripcion');
+        			
+        			$federativa_adscripcion = $this->encrypt->Decrytp($getfederativa_adscripcion);
+
+        			$getdelegacion_adscripcion = $this->request->getPost('delegacion_adscripcion');
+        			
+        			$delegacion_adscripcion = $this->encrypt->Decrytp($getdelegacion_adscripcion);
+
+
+
         			
 
 					$datosPersonales = array(
@@ -4716,7 +4737,8 @@ class Cuip extends BaseController {
 						"año_inicio" => $this->request->getPost('anno_inicio') , 
 						"año_termino" => $this->request->getPost('anno_termino') , 
 						"registro_sep" => $registroSep , 
-						"folio_certificado" => strtoupper($this->request->getPost('certificado')) , 
+						"folio_certificado" => strtoupper($this->request->getPost('certificado')) ,
+						"promedio" => $this->request->getPost('promedio') , 
 						"calle" => strtoupper($this->request->getPost('calle')) , 
 						"numero_exterior" => strtoupper($this->request->getPost('exterior')) , 
 						"numero_interior" => strtoupper($this->request->getPost('interior')) , 
@@ -4745,8 +4767,8 @@ class Cuip extends BaseController {
 					  "numero_telefono_adscripcion" => $this->request->getPost('telefono_adscripcion'),
 					  "idCodigoPostal_adscripcion" => $this->request->getPost('codigoAds'),
 					  "colonia_adscripcion" => $this->request->getPost('coloniacodigoAds'),
-					  "idEstado_dom_adscripcion" => $this->request->getPost('federativa_adscripcion'),
-					  "municipio_delegacion" => $this->request->getPost('delegacion_adscripcion'),
+					  "idEstado_dom_adscripcion" => $federativa_adscripcion,
+					  "municipio_delegacion" => $delegacion_adscripcion,
 					  "ciudad_poblacion" => $this->request->getPost('ciudadcodigoAds'), 
 						"updatedby" => $LoggedUserId , 
 						"updateddate" => date("Y-m-d H:i:s") );
@@ -5734,7 +5756,7 @@ class Cuip extends BaseController {
 
 
 	public function EditarEmpDiversos(){
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['idPersonales,idEmpDiversos,empresa, calle, exterior, interior, codigoEmpDiv, coloniacodigoEmpDiv, estadocodigoEmpDiv, municipiocodigoEmpDiv, numero, ingresoEmpDiv,  funciones, sueldo, area, motivo_separacion, tipo_separacion, comentarios, empleo, puesto, area_gustaria, ascender, reglamentacion, reconomiento, reglamentacion_ascenso, razones_ascenso, capacitacion, desciplina, subtipo_disciplina, motivo, tipo, fecha_inicialDis, fecha_finalDis, duracion, cantidad'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['idPersonales,idEmpDiversos,empresa, calle, exterior, interior, codigoEmpDiv, coloniacodigoEmpDiv, estadocodigoEmpDiv, municipiocodigoEmpDiv, numero, ingresoEmpDiv,  funciones, sueldo, area, motivo_separacion, tipo_separacion, comentarios, empleo, puesto, area_gustaria, ascender, reglamentacion, reconomiento, reglamentacion_ascenso, razones_ascenso, capacitacion, desciplina, subtipo_disciplina, motivo, tipo, fecha_inicialDis, fecha_finalDis, duracion, cantidad,licencias_medicas'],FILTER_SANITIZE_STRING)){
 
 			$errors = [];
 			$succes = [];
@@ -5862,7 +5884,9 @@ class Cuip extends BaseController {
 						"area_gustaria"  =>  strtoupper($this->request->getPost('area_gustaria')) , 
 						"tiempo_ascenso"  =>  strtoupper($this->request->getPost('ascender')) , 
 						"reglamento"  =>  $reglamentacion , 
-						"razon_ascenso"  => $reglamentacion_ascenso  , 
+						"razon_ascenso"  => $reglamentacion_ascenso  ,
+						"razon_no_reconocimiento" => strtoupper($this->request->getPost('reconomiento')),
+						"razon_no_ascenso" => strtoupper($this->request->getPost('razones_ascenso')),  
 						"capacitacion"  =>  strtoupper($this->request->getPost('capacitacion')) , 
 						"idTipoDisciplina"  =>  $desciplina , 
 						"subtipo_disciplina"  =>  strtoupper($this->request->getPost('subtipo_disciplina')) , 
@@ -5872,7 +5896,7 @@ class Cuip extends BaseController {
 						"fecha_termino"  => $fecha_finalDis  , 
 						"idDuracion"  => $duracion   , 
 						"cantidad" => strtoupper($this->request->getPost('cantidad')) , 
-						 
+						"licencias_medicas" =>  strtoupper($this->request->getPost('licencias_medicas')) ,
 						"updatedby" => $LoggedUserId , 
 						"updateddate" => date("Y-m-d H:i:s") );
 
@@ -5918,7 +5942,7 @@ class Cuip extends BaseController {
 						"fecha_termino"  => $fecha_finalDis  , 
 						"idDuracion"  => $duracion   , 
 						"cantidad" => strtoupper($this->request->getPost('cantidad')) , 
-						
+						"licencias_medicas" =>  strtoupper($this->request->getPost('licencias_medicas')) ,
 						"updatedby" => $LoggedUserId , 
 						"updateddate" => date("Y-m-d H:i:s") );
 
@@ -6871,4 +6895,79 @@ class Cuip extends BaseController {
 		}	
 	}
 
+	public function validaCancelada(){
+		
+		if($this->request->getMethod() == "post" && $this->request->getvar(['idRegistro'],FILTER_SANITIZE_STRING)){
+
+		$id = $this->encrypt->Decrytp($_POST["idRegistro"]);
+
+		$estatus = $this->modelCuip->ValidaCancelada($id);
+
+		echo json_encode( $estatus );
+
+		}
+	}
+
+	public function BajaRegistro(){
+		if ($this->request->getMethod() == "post" && $this->request->getvar(['idRegistroBaja,fecha_baja,finiquito,motivoBaja'],FILTER_SANITIZE_STRING)){
+
+				$rules = [
+				'motivoBaja' =>  ['label' => "Motivo de baja", 'rules' => 'max_length[150]'],
+                'finiquito' =>  ['label' => "Finiquito", 'rules' => 'required'],
+            	'fecha_baja' =>  ['label' => "Fecha efectiva de la baja", 'rules' => 'required'],
+            	'idRegistroBaja' =>  ['label' => "", 'rules' => 'required']];
+		 
+				$errors = [];
+				$succes = [];
+				$dontSucces = [];
+				$data = [];
+
+				if($this->validate($rules)){
+					
+					$getUser = session()->get('IdUser');
+					$LoggedUserId = $this->encrypter->decrypt($getUser);
+					$getFechaBaja = $this->request->getPost('fecha_baja');
+
+        			$fechaBaja = date( "Y-m-d" ,strtotime($getFechaBaja));
+					
+					$getIdRegistroBaja = $this->request->getPost('idRegistroBaja');
+					$id = $this->encrypt->Decrytp($getIdRegistroBaja);
+
+					$baja = array(
+			    					
+			    					
+							"fecha_sol_baja" => date("Y-m-d H:i:s")  ,
+							"fecha_efec_baja" => $fechaBaja  , 
+							"finiquito" =>  $this->request->getPost('finiquito') , 
+							"motivo_baja" =>  $this->request->getPost('motivoBaja') ,
+							"activo" => 0 , 
+							"updatedby" => $LoggedUserId , 
+							"updateddate" => date("Y-m-d H:i:s") );
+
+							
+						
+
+						$result = $this->modelCuip->BajaRegistro( $baja, $id);
+					
+                    if ($result) {
+
+            			
+                    	$succes = ["mensaje" => 'Baja procesada con exito' ,
+                            	   "succes" => "succes"];
+
+                           	   
+                    	
+                    } else {
+                    	$dontSucces = ["error" => "error",
+                    				  "mensaje" => 	'Hubo un error al procesar la baja'  ];
+
+                    }
+				} else {	
+					$errors = $this->validator->getErrors();
+				}
+
+				echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+		}	
+	
+	}	
 }

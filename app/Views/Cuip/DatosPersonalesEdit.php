@@ -37,7 +37,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="segundoNombre" class=" control-label">Segundo Nombre:</label>
                         <div>
-                            <input type="text" class="form-control " id="segundoNombre" name="segundoNombre" value=" <?= isset($variable->segundo_nombre) ? $variable->segundo_nombre : ''  ?>">
+                            <input type="text" class="form-control " id="segundoNombre" name="segundoNombre" value="<?= isset($variable->segundo_nombre)?$variable->segundo_nombre:''?>">
 
                         </div>
                     </div>
@@ -63,9 +63,11 @@ $encrypt = new Encrypt();
                 <div class='col-12 col-sm-6'>
                     <div class='form-group'>
                         <label for="fecha_nacimiento">Fecha de Nacimiento: <span class="text-danger">*</span></label>
-                        <div>
-                            <input type="text" class="form-control " id="fecha_nacimiento" name="fecha_nacimiento" value="<?= isset($variable->fecha_nacimiento) ? $variable->fecha_nacimiento : ''  ?>">
-
+                        <div class="input-group date" id="fecha_nacimiento" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_nacimiento" id="datetime-fecha_nacimiento" name="fecha_nacimiento" placeholder="" value="<?= isset($variable->fecha_nacimiento) ? $variable->fecha_nacimiento : ''  ?>" />
+                            <div class="input-group-append" data-target="#fecha_nacimiento" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
                         </div>
                         <script type="text/javascript">
                             $(function() {
@@ -77,6 +79,7 @@ $encrypt = new Encrypt();
                         </script>
                     </div>
                 </div>
+                
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="sexo" class=" control-label">Sexo:<span class="text-danger">*</span></label>
@@ -86,7 +89,7 @@ $encrypt = new Encrypt();
                             if (!empty($genero)) :
                                 foreach ($genero as  $a) {
                             ?>
-                                    <option <?= (isset($variable->sexo) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= isset($variable->sexo)?($variable->sexo) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                             <?php
                                 }
@@ -145,9 +148,11 @@ $encrypt = new Encrypt();
                 <div class='col-6 col-sm-12 col-md-6    '>
                     <div class="form-group">
                         <label for="vigenciaLic" class=" control-label">Vigencia de Licencia:</label>
-                        <div>
-                            <input type="text" class="form-control " id="vigenciaLic" name="vigenciaLic" value="<?= isset($variable->vigencia_licencia) ? $variable->vigencia_licencia : ''  ?>">
-
+                        <div class="input-group date" id="vigenciaLic" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#vigenciaLic" id="datetime-vigenciaLic" name="vigenciaLic" placeholder="" value="<?= ($variable->vigencia_licencia != '0000-00-00') ? date( "d-m-Y" ,strtotime($variable->vigencia_licencia)) : ''  ?>" />
+                            <div class="input-group-append" data-target="#vigenciaLic" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
                         </div>
                         <script type="text/javascript">
                             $(function() {
@@ -159,6 +164,7 @@ $encrypt = new Encrypt();
                         </script>
                     </div>
                 </div>
+                
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="CURP" class=" control-label">CURP:<span class="text-danger">*</span></label>
@@ -186,7 +192,7 @@ $encrypt = new Encrypt();
                             if (!empty($modo_nacionalidad)) :
                                 foreach ($modo_nacionalidad as  $a) {
                             ?>
-                                    <option <?= (isset($variable->nacionalidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= isset($variable->nacionalidad)?($variable->nacionalidad) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                             <?php
@@ -206,11 +212,12 @@ $encrypt = new Encrypt();
                 </div>
                 <div class='col-12 col-sm-6'>
                     <div class='form-group'>
-                        <label for="fecha_naturalizacion">Fecha de Naturalización: <span class="text-danger">*</span></label>
-
-                        <div>
-                            <input type="text" class="form-control " id="fecha_naturalizacion" name="fecha_naturalizacion" value="<?= isset($variable->fecha_naturalizacion) ? $variable->fecha_naturalizacion : ''  ?>">
-
+                        <label for="fecha_naturalizacion">Fecha de Naturalización: </label>
+                        <div class="input-group date" id="fecha_naturalizacion" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_naturalizacion" id="datetime-fecha_naturalizacion" name="fecha_naturalizacion" placeholder="" value="<?= ($variable->fecha_naturalizacion != '0000-00-00') ? date( "d-m-Y" ,strtotime($variable->fecha_naturalizacion)) : ''  ?>" />
+                            <div class="input-group-append" data-target="#fecha_naturalizacion" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
                         </div>
                         <script type="text/javascript">
                             $(function() {
@@ -220,9 +227,9 @@ $encrypt = new Encrypt();
                                 });
                             });
                         </script>
-
                     </div>
                 </div>
+                
                 <div class='col-6 col-sm-6'>
                     <div class="form-group">
                         <label for="pais_nacimiento" class="control-label">Pais de Nacimiento: <span class="text-danger">*</span></label>
@@ -233,7 +240,7 @@ $encrypt = new Encrypt();
                                 if (!empty($pais_nacimiento)) :
                                     foreach ($pais_nacimiento as  $a) {
                                 ?>
-                                        <option <?= (isset($variable->pais) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= isset($variable->pais)?($variable->pais) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                 <?php
                                     }
@@ -260,7 +267,7 @@ $encrypt = new Encrypt();
                                 if (!empty($entidad_federativa)) :
                                     foreach ($entidad_federativa as  $a) {
                                 ?>
-                                        <option <?= (($variable->naciE) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= isset($variable->naciE)?($variable->naciE) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                                 <?php
@@ -285,7 +292,7 @@ $encrypt = new Encrypt();
                             <select class="form-control" id="municipio_nacimiento" name="municipio_nacimiento">
                                 <option value="">Selecciona una Opcion</option>
                                 
-                                        <option selected value="<?= $encrypt->Encrypt($variable->idMunicipioNacimiento) ?>"><?= $variable->ciudad ?></option>
+                                        <option selected value="<?= $encrypt->Encrypt($variable->idMunicipioNacimiento) ?>"><?= $variable->municipio ?></option>
 
 
                                 
@@ -332,7 +339,7 @@ $encrypt = new Encrypt();
                                 if (!empty($nacionalidad)) :
                                     foreach ($nacionalidad as  $a) {
                                 ?>
-                                        <option <?= (isset($variable->nacionalidad) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= isset($variable->nacion)?($variable->nacion) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                                 <?php
@@ -360,7 +367,7 @@ $encrypt = new Encrypt();
                                 if (!empty($estado_civil)) :
                                     foreach ($estado_civil as  $a) {
                                 ?>
-                                        <option <?= (isset($variable->civil) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= isset($variable->civil)?($variable->civil) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                                 <?php
                                     }
@@ -387,7 +394,7 @@ $encrypt = new Encrypt();
                                 if (!empty($desarrollo_academico)) :
                                     foreach ($desarrollo_academico as  $a) {
                                 ?>
-                                        <option <?= (isset($variable->desarrollo_academico) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= isset($variable->desarrollo_academico)?($variable->desarrollo_academico) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                                 <?php
@@ -418,7 +425,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="especialidad" class=" control-label">Especialidad o Estudio :<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="especialidad" name="especialidad" value=" <?= isset($variable->especialidad) ? $variable->especialidad : ''  ?>">
+                            <input type="text" class="form-control " id="especialidad" name="especialidad" value="<?= isset($variable->especialidad)?$variable->especialidad:''?>">
 
                         </div>
                     </div>
@@ -427,7 +434,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="cedula" class=" control-label">No. Cédula Profesional:</label>
                         <div>
-                            <input type="text" class="form-control " id="cedula" name="cedula" value=" <?= isset($variable->cedula_profesional) ? $variable->cedula_profesional : ''  ?>">
+                            <input type="text" class="form-control " id="cedula" name="cedula" value="<?= isset($variable->cedula_profesional)?$variable->cedula_profesional:''?>">
 
                         </div>
                     </div>
@@ -435,9 +442,11 @@ $encrypt = new Encrypt();
                 <div class='col-12 col-sm-6'>
                     <div class='form-group'>
                         <label for="anno_inicio">Año de Inicio: <span class="text-danger">*</span></label>
-                        <div>
-                            <input type="text" class="form-control " id="anno_inicio" name="anno_inicio" value=" <?= isset($variable->año_inicio) ? $variable->año_inicio : ''  ?>">
-
+                        <div class="input-group date" id="anno_inicio" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#anno_inicio" id="datetime-anno_inicio" name="anno_inicio" placeholder="" value="<?= isset($variable->año_inicio) ? $variable->año_inicio : ''  ?>" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="4" />
+                            <div class="input-group-append" data-target="#anno_inicio" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
                         </div>
                         <script type="text/javascript">
                             $(function() {
@@ -452,9 +461,11 @@ $encrypt = new Encrypt();
                 <div class='col-12 col-sm-6'>
                     <div class='form-group'>
                         <label for="anno_termino">Año de Termino: <span class="text-danger">*</span></label>
-                        <div>
-                            <input type="text" class="form-control " id="anno_termino" name="anno_termino" value=" <?= isset($variable->año_termino) ? $variable->año_termino : ''  ?>">
-
+                        <div class="input-group date" id="anno_termino" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#anno_termino" id="datetime-anno_termino" name="anno_termino" placeholder="" value="<?= isset($variable->año_termino) ? $variable->año_termino : ''  ?>" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="4" />
+                            <div class="input-group-append" data-target="#anno_termino" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
                         </div>
                         <script type="text/javascript">
                             $(function() {
@@ -466,6 +477,7 @@ $encrypt = new Encrypt();
                         </script>
                     </div>
                 </div>
+                
                 <div class='col-6 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="sep" class=" control-label">Registro SEP:<span class="text-danger">*</span></label>
@@ -476,7 +488,7 @@ $encrypt = new Encrypt();
                                 if (!empty($SiNo)) :
                                     foreach ($SiNo as  $a) {
                                 ?>
-                                        <option <?= (isset($variable->registro_sep) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                        <option <?= isset($variable->registro_sep)?($variable->registro_sep) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                                 <?php
@@ -498,7 +510,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="certificado" class=" control-label">Num. de Folio Certificado :<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="certificado" name="certificado" value=" <?= isset($variable->folio_certificado) ? $variable->folio_certificado : ''  ?>">
+                            <input type="text" class="form-control " id="certificado" name="certificado" value="<?= isset($variable->folio_certificado)?$variable->folio_certificado:''?>">
 
                         </div>
                     </div>
@@ -507,7 +519,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="promedio" class=" control-label">Promedio :<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="promedio" name="promedio" value="<?= isset($variable->folio_certificado) ? $variable->folio_certificado : ''  ?>">
+                            <input type="text" class="form-control " id="promedio" name="promedio" value="<?= isset($variable->promedio)?$variable->promedio:''?>">
 
                         </div>
                     </div>
@@ -544,7 +556,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="exterior" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="exterior" name="exterior" value=" <?= isset($variable->numero_exterior) ? $variable->numero_exterior : ''  ?>">
+                            <input type="text" class="form-control " id="exterior" name="exterior" value="<?= isset($variable->numero_exterior)?$variable->numero_exterior:''?>">
 
                         </div>
                     </div>
@@ -553,7 +565,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="interior" class=" control-label">No. Interior:</label>
                         <div>
-                            <input type="text" class="form-control " id="interior" name="interior" value="<?= isset($variable->numero_interior) ? $variable->numero_interior : ''  ?>">
+                            <input type="text" class="form-control " id="interior" name="interior" value="<?= isset($variable->numero_interior)?$variable->numero_interior:''?>">
 
                         </div>
                     </div>
@@ -584,7 +596,7 @@ $encrypt = new Encrypt();
                         <label for="entrecalle" class=" control-label">Entre la calle
                             de:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="entrecalle" name="entrecalle" value=" <?= isset($variable->entre_calle1) ? $variable->entre_calle1 : ''  ?>">
+                            <input type="text" class="form-control " id="entrecalle" name="entrecalle" value="<?= isset($variable->entre_calle1)?$variable->entre_calle1:''?>">
 
                         </div>
                     </div>
@@ -593,7 +605,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="ylacalle" class=" control-label">Y la calle :<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="ylacalle" name="ylacalle" value=" <?= isset($variable->entre_calle2) ? $variable->entre_calle2 : ''  ?> ">
+                            <input type="text" class="form-control " id="ylacalle" name="ylacalle" value="<?= isset($variable->entre_calle2)?$variable->entre_calle2:''?>">
 
                         </div>
                     </div>
@@ -627,7 +639,7 @@ $encrypt = new Encrypt();
                         if (!empty($entidad_federativa)) :
                             foreach ($entidad_federativa as  $a) {
                         ?>
-                                <option <?= (($variable->estado) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <option <?= isset($variable->estado)?($variable->estado) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                         <?php
                             }
@@ -711,7 +723,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="dependencia_adscripcion" class=" control-label">Dependencia:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="dependencia_adscripcion" name="dependencia_adscripcion" value=" <?= isset($variable->dependencia) ? $variable->dependencia : ''  ?>">
+                            <input type="text" class="form-control " id="dependencia_adscripcion" name="dependencia_adscripcion" value="<?= isset($variable->dependencia)?$variable->dependencia:''?>">
 
                         </div>
                     </div>
@@ -720,7 +732,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="institucion_adscripcion" class=" control-label">Institución:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="institucion_adscripcion" name="institucion_adscripcion" value=" <?= isset($variable->institucion) ? $variable->institucion : ''  ?>">
+                            <input type="text" class="form-control " id="institucion_adscripcion" name="institucion_adscripcion" value="<?= isset($variable->institucion)?$variable->institucion:''?>">
 
                         </div>
                     </div>
@@ -728,9 +740,11 @@ $encrypt = new Encrypt();
                 <div class='col-12 col-sm-6'>
                     <div class='form-group'>
                         <label for="fechaingreso_adscripcion">Fecha de Ingreso: <span class="text-danger">*</span></label>
-                        <div>
-                            <input type="text" class="form-control " id="fechaingreso_adscripcion" name="fechaingreso_adscripcion" value=" <?= isset($variable->fecha_ingreso) ? $variable->fecha_ingreso : ''  ?>">
-
+                        <div class="input-group date" id="fechaingreso_adscripcion" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fechaingreso_adscripcion" id="datetime-fechaingreso_adscripcion" name="fechaingreso_adscripcion" placeholder="" value="<?= isset($variable->fecha_ingreso)?$variable->fecha_ingreso:''?>" />
+                            <div class="input-group-append" data-target="#fechaingreso_adscripcion" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
                         </div>
                         <script type="text/javascript">
                             $(function() {
@@ -742,6 +756,7 @@ $encrypt = new Encrypt();
                         </script>
                     </div>
                 </div>
+                
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="puesto_adscripcion" class=" control-label">Puesto:<span class="text-danger">*</span></label>
@@ -751,7 +766,7 @@ $encrypt = new Encrypt();
                             if (!empty($puesto)) :
                                 foreach ($puesto as  $a) {
                             ?>
-                                    <option <?= (isset($variable->puesto) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= isset($variable->puesto)?($variable->puesto) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                             <?php
                                 }
@@ -777,7 +792,7 @@ $encrypt = new Encrypt();
                             if (!empty($rango)) :
                                 foreach ($rango as  $a) {
                             ?>
-                                    <option <?= (isset($variable->rango) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= isset($variable->rango)?($variable->rango) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
 
                             <?php
@@ -803,7 +818,7 @@ $encrypt = new Encrypt();
                             if (!empty($mando)) :
                                 foreach ($mando as  $a) {
                             ?>
-                                    <option <?= (isset($variable->nivel_mando) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <option <?= isset($variable->nivel_mando)?($variable->nivel_mando) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                             <?php
                                 }
@@ -824,7 +839,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="nombrejefe_adscripcion" class=" control-label">Nombre del jefe inmediato:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="nombrejefe_adscripcion" name="nombrejefe_adscripcion" value=" <?= isset($variable->nombre_jefe) ? $variable->nombre_jefe : ''  ?>">
+                            <input type="text" class="form-control " id="nombrejefe_adscripcion" name="nombrejefe_adscripcion" value="<?= isset($variable->nombre_jefe)?$variable->nombre_jefe:''?>">
 
                         </div>
                     </div>
@@ -838,7 +853,7 @@ $encrypt = new Encrypt();
                         if (!empty($entidad_federativa)) :
                             foreach ($entidad_federativa as  $a) {
                         ?>
-                                <option <?= (($variable->idEstado_adscripcion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <option <?= isset($variable->idEstado_adscripcion)?($variable->idEstado_adscripcion) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                         <?php
                             }
@@ -897,7 +912,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="calle_adscripcion" class=" control-label">Calle:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="calle_adscripcion" name="calle_adscripcion" value=" <?= isset($variable->calle_adscripcion) ? $variable->calle_adscripcion : ''  ?>">
+                        <input type="text" class="form-control " id="calle_adscripcion" name="calle_adscripcion" value="<?=isset($variable->calle_adscripcion)?$variable->calle_adscripcion:''?>">
 
                     </div>
                 </div>
@@ -906,7 +921,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="exterior_adscripcion" class=" control-label">No. Exterior:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="exterior_adscripcion" name="exterior_adscripcion" value=" <?= isset($variable->numero_exterior_adscripcion) ? $variable->numero_exterior_adscripcion : ''  ?>">
+                        <input type="text" class="form-control " id="exterior_adscripcion" name="exterior_adscripcion" value="<?= isset($variable->numero_exterior_adscripcion)?$variable->numero_exterior_adscripcion:''?>">
 
                     </div>
                 </div>
@@ -915,7 +930,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="interior_adscripcion" class=" control-label">No. Interior:</label>
                     <div>
-                        <input type="text" class="form-control " id="interior_adscripcion" name="interior_adscripcion" value=" <?= isset($variable->numero_interior_adscripcion) ? $variable->numero_interior_adscripcion : ''  ?>">
+                        <input type="text" class="form-control " id="interior_adscripcion" name="interior_adscripcion" value="<?=isset($variable->numero_interior_adscripcion)?$variable->numero_interior_adscripcion:''?>">
 
                     </div>
                 </div>
@@ -944,7 +959,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="entrecalle_adscripcion" class=" control-label">Entre la calle de:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="entrecalle_adscripcion" name="entrecalle_adscripcion" value=" <?= isset($variable->entre_calle1_adscripcion) ? $variable->entre_calle1_adscripcion : ''  ?>">
+                        <input type="text" class="form-control " id="entrecalle_adscripcion" name="entrecalle_adscripcion" value="<?= isset($variable->entre_calle1_adscripcion)?$variable->entre_calle1_adscripcion:''?>">
 
                     </div>
                 </div>
@@ -953,7 +968,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="ylacalle_adscripcion" class=" control-label">Y la calle:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="ylacalle_adscripcion" name="ylacalle_adscripcion" value=" <?= isset($variable->entre_calle2_adscripcion) ? $variable->entre_calle2_adscripcion : ''  ?>">
+                        <input type="text" class="form-control " id="ylacalle_adscripcion" name="ylacalle_adscripcion" value="<?=isset($variable->entre_calle2_adscripcion)?$variable->entre_calle2_adscripcion:''?>">
 
                     </div>
                 </div>
@@ -962,7 +977,7 @@ $encrypt = new Encrypt();
                 <div class="form-group">
                     <label for="telefono_adscripcion" class=" control-label">Número Telefonico:<span class="text-danger">*</span></label>
                     <div>
-                        <input type="text" class="form-control " id="telefono_adscripcion" name="telefono_adscripcion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value="<?= isset($variable->numero_telefono_adscripcion) ? $variable->numero_telefono_adscripcion : ''  ?>">
+                        <input type="text" class="form-control " id="telefono_adscripcion" name="telefono_adscripcion" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value="<?= isset($variable->numero_telefono_adscripcion)?$variable->numero_telefono_adscripcion:''?>">
 
                     </div>
                 </div>
@@ -985,7 +1000,7 @@ $encrypt = new Encrypt();
                         if (!empty($entidad_federativa)) :
                             foreach ($entidad_federativa as  $a) {
                         ?>
-                                <option <?= (($variable->idEstado_dom_adscripcion) == $a->valor ? 'selected' : '') ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <option <?= isset($variable->idEstado_dom_adscripcion)?($variable->idEstado_dom_adscripcion) == $a->valor ? 'selected' : '':'' ?> value="<?= $a->id ?>"><?= $a->valor ?></option>
 
                         <?php
                             }
@@ -1072,7 +1087,7 @@ $encrypt = new Encrypt();
         <form class="form-horizontal" id="FormDatosGeneralesDocente">
             <div id="CardDatosGeneralesDocente">
                 <?php
-                if (!empty($experiencia)) :
+                if (!empty($experiencia)) {
                     $label = '';
                     foreach ($experiencia as  $e) {
                 ?>
@@ -1082,7 +1097,7 @@ $encrypt = new Encrypt();
                                     <label for="nombrecurso<?= $label ?>" class=" control-label">Nombre del Curso
                                         :<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="nombrecurso<?= $label ?>" name="nombrecurso<?= $label ?>" value=" <?= isset($e->nombre_curso) ? $e->nombre_curso : ''  ?>">
+                                        <input type="text" class="form-control " id="nombrecurso<?= $label ?>" name="nombrecurso<?= $label ?>" value="<?=isset($e->nombre_curso)?$e->nombre_curso:''?>">
 
                                     </div>
                                 </div>
@@ -1092,56 +1107,57 @@ $encrypt = new Encrypt();
                                     <label for="nombreInstitucion<?= $label ?>" class=" control-label">Nombre de
                                         la Institución:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="nombreInstitucion<?= $label ?>" name="nombreInstitucion<?= $label ?>" value=" <?= isset($e->nombre_institucion) ? $e->nombre_institucion : ''  ?>">
+                                        <input type="text" class="form-control " id="nombreInstitucion<?= $label ?>" name="nombreInstitucion<?= $label ?>" value="<?=isset($e->nombre_institucion)?$e->nombre_institucion:''?>">
 
                                     </div>
                                 </div>
                             </div>
                             <div class='col-12 col-sm-6'>
-                                <div class='form-group'>
-                                    <label for="fecha_inicial<?= $label ?>">Fecha de Inicio: <span class="text-danger">*</span></label>
-
-
-                                    <div>
-                                        <input type="text" class="form-control " id="fecha_inicial<?= $label ?>" name="fecha_inicial<?= $label ?>" value="<?= isset($e->fecha_inicio) ? $e->fecha_inicio : ''  ?>">
-
-                                    </div>
-
-                                    <script type="text/javascript">
-                                        $(function() {
-                                            $("#fecha_inicial<?= $label ?>").datetimepicker({
-                                                format: 'DD-MM-YYYY',
-                                                locale: moment.locale('es')
-                                            });
-                                        });
-                                    </script>
-                                </div>
+                    <div class='form-group'>
+                        <label for="fecha_inicial">Fecha de Inicio: <span class="text-danger">*</span></label>
+                        <div class="input-group date" id="fecha_inicial" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_inicial" id="datetime-fecha_inicial" name="fecha_inicial" placeholder="" value="<?= isset($e->fecha_inicio) ? date( "d-m-Y" ,strtotime($e->fecha_inicio)) : ''  ?>" />
+                            <div class="input-group-append" data-target="#fecha_inicial" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
-
-                            <div class='col-12 col-sm-6'>
-                                <div class='form-group'>
-                                    <label for="fecha_final<?= $label ?>">Fecha de Término: <span class="text-danger">*</span></label>
-                                    <div>
-                                        <input type="text" class="form-control " id="fecha_final<?= $label ?>" name="fecha_final<?= $label ?>" value=" <?= isset($e->fecha_termino) ? $e->fecha_termino : ''  ?>">
-
-                                    </div>
-                                    <script type="text/javascript">
-                                        $(function() {
-                                            $("#fecha_final<?= $label ?>").datetimepicker({
-                                                format: "DD-MM-YYYY",
-                                                locale: moment.locale('es')
-
-                                            });
-                                        });
-                                    </script>
-                                </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#fecha_inicial").datetimepicker({
+                                    format: 'DD-MM-YYYY',
+                                    locale: moment.locale('es')
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-6'>
+                    <div class='form-group'>
+                        <label for="fecha_final">Fecha de Término: <span class="text-danger">*</span></label>
+                        <div class="input-group date" id="fecha_final" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_final" id="datetime-fecha_final" name="fecha_final" placeholder="" value="<?=isset($e->fecha_termino)?date( "d-m-Y" ,strtotime($e->fecha_termino)):''?>" />
+                            <div class="input-group-append" data-target="#fecha_final" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#fecha_final").datetimepicker({
+                                    format: "DD-MM-YYYY",
+                                    locale: moment.locale('es')
+
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>             
+                            
                             <div class='col-12 col-sm-12 col-md-12'>
                                 <div class="form-group">
                                     <label for="certificado_por<?= $label ?>" class=" control-label">Certificado
                                         por:<span class="text-danger">*</span></label>
                                     <div>
-                                        <input type="text" class="form-control " id="certificado_por<?= $label ?>" name="certificado_por<?= $label ?>" value=" <?= isset($e->certificado_por) ? $e->certificado_por : ''  ?>">
+                                        <input type="text" class="form-control " id="certificado_por<?= $label ?>" name="certificado_por<?= $label ?>" value="<?=isset($e->certificado_por)?$e->certificado_por:''?>">
 
                                     </div>
                                 </div>
@@ -1150,7 +1166,74 @@ $encrypt = new Encrypt();
                 <?php
                         $label = 'B';
                     }
-                endif; ?>
+                } else { ?>
+
+                    <div class="row form-block-dged">
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="nombrecurso" class=" control-label">Nombre del Curso
+                            :<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="nombrecurso" name="nombrecurso">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="nombreInstitucion" class=" control-label">Nombre de
+                            la Institución:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="nombreInstitucion" name="nombreInstitucion">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-6'>
+                    <div class='form-group'>
+                        <label for="fecha_inicial">Fecha de Inicio: <span class="text-danger">*</span></label>
+                        <div class="input-group date" id="fecha_inicial" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_inicial" id="datetime-fecha_inicial" name="fecha_inicial" placeholder="" value="" />
+                            <div class="input-group-append" data-target="#fecha_inicial" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#fecha_inicial").datetimepicker({
+                                    format: 'DD-MM-YYYY',
+                                    locale: moment.locale('es')
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-6'>
+                    <div class='form-group'>
+                        <label for="fecha_final">Fecha de Término: <span class="text-danger">*</span></label>
+                        <div class="input-group date" id="fecha_final" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_final" id="datetime-fecha_final" name="fecha_final" placeholder="" value="" />
+                            <div class="input-group-append" data-target="#fecha_final" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#fecha_final").datetimepicker({
+                                    format: "DD-MM-YYYY",
+                                    locale: moment.locale('es')
+
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-12'>
+                    <div class="form-group">
+                        <label for="certificado_por" class=" control-label">Certificado
+                            por:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="certificado_por" name="certificado_por">
+                    </div>
+                </div>
+            </div>
+
+            <?php
+                }    
+                 ?>
             </div>
             <hr class="mt-3 mb-3" />
             <div id="CardDatosGeneralesDocenteB">
@@ -1453,175 +1536,180 @@ $encrypt = new Encrypt();
 
 
         var elemento = id;
-
-        var num = $('#' + elemento).val().length
+        
+        var num = $('#'+elemento).val().length
 
         if (num === 5) {
 
-            $('#load').addClass("spinner-border");
+            $('#load').addClass( "spinner-border" );
 
-            let selectEstadoDom = document.querySelector("#estado" + elemento)
+            let selectEstadoDom = document.querySelector("#estado"+elemento)
 
-            let selectMunicipioDom = document.querySelector("#municipio" + elemento)
-
-            let selectColoniaDom = document.querySelector("#colonia" + elemento)
-
+            let selectMunicipioDom = document.querySelector("#municipio"+elemento)
+                
+            let selectColoniaDom = document.querySelector("#colonia"+elemento)
+            
             switch (elemento) {
-                case "codigo":
+            case "codigo":
+                
+            var selectCiudadDom = document.querySelector("#ciudad"+elemento)
 
-                    var selectCiudadDom = document.querySelector("#ciudad" + elemento)
+                selectCiudadDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+            case "codigoSegPub":
+                 
 
-                    selectCiudadDom.innerHTML = ''
-                    selectColoniaDom.innerHTML = ''
-                    break;
-                case "codigoSegPub":
+                selectEstadoDom.innerHTML = ''
+                selectMunicipioDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+            case "codigoEmpDiv":
+                 
 
+                selectEstadoDom.innerHTML = ''
+                selectMunicipioDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+            case "codigoRefCer":
+                
+            var selectCiudadDom = document.querySelector("#ciudad"+elemento)
 
-                    selectEstadoDom.innerHTML = ''
-                    selectMunicipioDom.innerHTML = ''
-                    selectColoniaDom.innerHTML = ''
-                    break;
-                case "codigoEmpDiv":
+                
+                selectCiudadDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+            case "codigoParCer":
+                
+            var selectCiudadDom = document.querySelector("#ciudad"+elemento)
 
+                
+                selectCiudadDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+            case "codigoPersonal":
+                
+            var selectCiudadDom = document.querySelector("#ciudad"+elemento)
 
-                    selectEstadoDom.innerHTML = ''
-                    selectMunicipioDom.innerHTML = ''
-                    selectColoniaDom.innerHTML = ''
-                    break;
-                case "codigoRefCer":
+                
+                selectCiudadDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+            case "codigoLaboral":
+                
+            var selectCiudadDom = document.querySelector("#ciudad"+elemento)
 
-                    var selectCiudadDom = document.querySelector("#ciudad" + elemento)
-
-
-                    selectCiudadDom.innerHTML = ''
-                    selectColoniaDom.innerHTML = ''
-                    break;
-                case "codigoParCer":
-
-                    var selectCiudadDom = document.querySelector("#ciudad" + elemento)
-
-
-                    selectCiudadDom.innerHTML = ''
-                    selectColoniaDom.innerHTML = ''
-                    break;
-                case "codigoPersonal":
-
-                    var selectCiudadDom = document.querySelector("#ciudad" + elemento)
-
-
-                    selectCiudadDom.innerHTML = ''
-                    selectColoniaDom.innerHTML = ''
-                    break;
-                case "codigoLaboral":
-
-                    var selectCiudadDom = document.querySelector("#ciudad" + elemento)
-
-
-                    selectCiudadDom.innerHTML = ''
-                    selectColoniaDom.innerHTML = ''
-                    break;
-                case "codigoAds":
-                    var selectCiudadDom = document.querySelector("#ciudad" + elemento)
-                    selectCiudadDom.innerHTML = ''
-                    selectColoniaDom.innerHTML = ''
-                    break;
-
+                
+                selectCiudadDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+            case "codigoAds":
+                var selectCiudadDom = document.querySelector("#ciudad"+elemento)    
+                selectCiudadDom.innerHTML = ''
+                selectColoniaDom.innerHTML = ''
+            break;
+  
             }
+            
 
+            
 
-            $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
+        
+        var cp = $('#'+elemento).val()
+        var csrfName = $("input[name=app_csrf]").val();
+        
+            var data    = {
+                    cp : cp,
+                    app_csrf: csrfName
+                };
 
+        $.ajax({
+            url: base_url + '/getSepomex',
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            data: data,
+            ache: false,
+            async: true,
+            success: function (response) {
+                if(response.succes.succes === "succes"){
 
-            var cp = $('#' + elemento).val()
-            var csrfName = $("input[name=app_csrf]").val();
+                    switch (elemento) {
+                    case "codigo":
+                
+                        
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectColoniaDom.innerHTML = response.data.colonia
+                    break;
+                    case "codigoSegPub":
+                        
+                        selectEstadoDom.innerHTML = response.data.estado
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                        
+                        selectColoniaDom.innerHTML = response.data.colonia
 
-            var data = {
-                cp: cp,
-                app_csrf: csrfName
-            };
+                
+                    break;
+                    case "codigoEmpDiv":
+                        
+                        selectEstadoDom.innerHTML = response.data.estado
+                        selectMunicipioDom.innerHTML = response.data.municipio
+                        
+                        selectColoniaDom.innerHTML = response.data.colonia
 
-            $.ajax({
-                url: base_url + '/getSepomex',
-                type: 'POST',
-                dataType: 'json',
-                data: data,
-                data: data,
-                ache: false,
-                async: true,
-                success: function(response) {
-                    if (response.succes.succes === "succes") {
-
-                        switch (elemento) {
-                            case "codigo":
-
-
-                                selectCiudadDom.innerHTML = response.data.ciudad
-                                selectColoniaDom.innerHTML = response.data.colonia
-                                break;
-                            case "codigoSegPub":
-
-                                selectEstadoDom.innerHTML = response.data.estado
-                                selectMunicipioDom.innerHTML = response.data.municipio
-
-                                selectColoniaDom.innerHTML = response.data.colonia
-
-
-                                break;
-                            case "codigoEmpDiv":
-
-                                selectEstadoDom.innerHTML = response.data.estado
-                                selectMunicipioDom.innerHTML = response.data.municipio
-
-                                selectColoniaDom.innerHTML = response.data.colonia
-
-
-                                break;
-                            case "codigoRefCer":
-
-
-                                selectCiudadDom.innerHTML = response.data.ciudad
-                                selectColoniaDom.innerHTML = response.data.colonia
-                                break;
-                            case "codigoParCer":
-
-
-                                selectCiudadDom.innerHTML = response.data.ciudad
-                                selectColoniaDom.innerHTML = response.data.colonia
-                                break;
-                            case "codigoPersonal":
-
-
-                                selectCiudadDom.innerHTML = response.data.ciudad
-                                selectColoniaDom.innerHTML = response.data.colonia
-                                break;
-                            case "codigoLaboral":
-
-
-                                selectCiudadDom.innerHTML = response.data.ciudad
-                                selectColoniaDom.innerHTML = response.data.colonia
-                                break;
-                            case "codigoAds":
-
-
-                                selectCiudadDom.innerHTML = response.data.ciudad
-                                selectColoniaDom.innerHTML = response.data.colonia
-                                break;
-
-                        }
-
-
+                
+                    break;
+                    case "codigoRefCer":
+                
+                        
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectColoniaDom.innerHTML = response.data.colonia
+                    break;
+                    case "codigoParCer":
+                
+                        
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectColoniaDom.innerHTML = response.data.colonia
+                    break;
+                    case "codigoPersonal":
+                
+                        
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectColoniaDom.innerHTML = response.data.colonia
+                    break;
+                    case "codigoLaboral":
+                
+                        
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectColoniaDom.innerHTML = response.data.colonia
+                    break;
+                    case "codigoAds":
+                
+                        
+                        selectCiudadDom.innerHTML = response.data.ciudad
+                        selectColoniaDom.innerHTML = response.data.colonia
+                    break;
+  
                     }
-
-                    $('#load').removeClass("spinner-border");
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    $('#load').removeClass("spinner-border");
-                    toastr.error('<?= lang('Layout.toastrError') ?>');
-
+                    
+                    
                 }
-            });
 
-        }
+
+                
+
+                $('#load').removeClass( "spinner-border" );
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('#load').removeClass( "spinner-border" );
+                toastr.error('<?=lang('Layout.toastrError') ?>');
+                           
+            }
+        });
+
+        $("input[name=app_csrf]").val('<?= csrf_hash() ?>');
+
+    }
     };
 
     $(document).on('click', '.add-more-btn-dged', function() {
@@ -1633,12 +1721,15 @@ $encrypt = new Encrypt();
         $('#btnAdddged').text('Remover -');
     });
 
-    $(document).on('click', '.remove-more-btn', function() {
-        $('#CardDatosGeneralesDocenteB').empty();
-        $('#btnAdddged').removeClass('remove-more-btn');
-        $('#btnAdddged').addClass('add-more-btn');
-        $('#btnAdddged').text('Agregar +');
-    });
+    
+
+    $(document).on('click','.remove-more-btn',function(){    
+    $('#CardDatosGeneralesDocenteB').empty();
+    setTimeout(function () { $("#nombrecurso").focus() }, 300);
+    $('#btnAdddged').removeClass('remove-more-btn');
+    $('#btnAdddged').addClass('add-more-btn');
+    $('#btnAdddged').text('Agregar +');
+});
 
     $(document).on('click', '#btnNingunodged', function() {
 
