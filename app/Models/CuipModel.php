@@ -863,7 +863,7 @@ class CuipModel
         $builder = $this->db->table('datos_personales');
         $builder->select("id, CONCAT(primer_nombre,' ',segundo_nombre,' ',apellido_paterno,' ',apellido_materno ) as nombre");
         $builder->where("activo",true);
-        $builder->where("idEmpresa",$idEmpresa);
+        //$builder->where("idEmpresa",$idEmpresa);
         $builder->orderBy("primer_nombre","asc");
         return $builder->get()->getResult();
         
