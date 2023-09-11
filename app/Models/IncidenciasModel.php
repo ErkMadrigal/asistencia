@@ -29,7 +29,7 @@ class IncidenciasModel{
         $builder->join("datos_personales dpj", "dpj.id = de.idJefeInmediato","left");
         $builder->join("cliente c", "c.id = de.idCliente","left");
        // $builder->where("dp.idEmpresa", $idEmpresa);
-       // $builder->where("dp.activo", 1);
+        $builder->where("dp.activo", 1);
 
         return $builder->get()->getResult();
     }
