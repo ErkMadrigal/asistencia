@@ -28,8 +28,8 @@ class IncidenciasModel{
         $builder->join("ubicacion u", "u.id = de.idUbicacion","left");
         $builder->join("datos_personales dpj", "dpj.id = de.idJefeInmediato","left");
         $builder->join("cliente c", "c.id = de.idCliente","left");
-        $builder->where("dp.idEmpresa", $idEmpresa);
-        $builder->where("dp.activo", 1);
+       // $builder->where("dp.idEmpresa", $idEmpresa);
+       // $builder->where("dp.activo", 1);
 
         return $builder->get()->getResult();
     }
@@ -60,7 +60,7 @@ class IncidenciasModel{
     public function addIncidencia($insert){
         $this->db->transStart();
         $return = false;
-        $this->db->table('incidencias_Personal')->insert($insert);
+        $this->db->table('incidencias_personal')->insert($insert);
 
 
         // if ($this->db->affectedRows() > 0){
