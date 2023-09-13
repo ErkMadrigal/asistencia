@@ -110,7 +110,7 @@ $encrypt = new Encrypt();
                         <label for="rfc" class=" control-label">R.F.C.:<span class="text-danger">*</span></label>
                         <div>
 
-                            <input type="text" class="form-control " id="rfc" name="rfc" value="<?= isset($variable->rfc) ? $variable->rfc : ''  ?>">
+                            <input type="text" class="form-control " id="rfc" name="rfc" maxlength="13" value="<?= isset($variable->rfc) ? $variable->rfc : ''  ?>">
 
 
                         </div>

@@ -83,7 +83,7 @@
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="rfc" class=" control-label">R.F.C.:<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control " id="rfc" name="rfc" maxlength="10">
+                        <input type="text" class="form-control " id="rfc" name="rfc" maxlength="13">
                     </div>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6'>
