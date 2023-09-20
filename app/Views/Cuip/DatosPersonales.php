@@ -596,6 +596,8 @@
         <h3 class="card-title">ADSCRIPCION</h3>
 
         <div class="card-tools">
+            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" class="form-check-input mt-2" id="btnNingunoAds">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
             </button>
@@ -758,7 +760,7 @@
                 </div>
                 
             </div>
-        
+        </form>
     </div>
 </div>
 <div class="card card-primary">
@@ -766,6 +768,8 @@
         <h3 class="card-title">ADSCRIPCION: DOMICILIO DE ADSCRIPCION</h3>
 
         <div class="card-tools">
+            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" class="form-check-input mt-2" id="btnNingunoAdsDom">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
             </button>
@@ -773,7 +777,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        
+        <form class="form-horizontal" id="FormAdscripcionDom">
             <div class="row">
                 <div class='col-12 col-sm-12 col-md-12'>
                     <div class="form-group">
@@ -1020,14 +1024,40 @@
             
         }
 
-        var formDataC = new FormData($("form#FormAdscripcion")[0]);
+        if($('#btnNingunoAds').is(':checked')) {
+            valAdscripcion = 1;
+            
+        } else {
+            valAdscripcion = 0;
+
+            var formDataC = new FormData($("form#FormAdscripcion")[0]);
 
 
             for (let [key, value] of formDataC.entries()) {
                 formData.append(key, value);
             }
+            
+        }
 
+        if($('#btnNingunoAdsDom').is(':checked')) {
+            valAdscripcionDom = 1;
+            
+        } else {
+            valAdscripcionDom = 0;
+
+            var formDataD = new FormData($("form#FormAdscripcionDom")[0]);
+
+
+            for (let [key, value] of formDataD.entries()) {
+                formData.append(key, value);
+            }
+            
+        }
+
+        
         formData.append('expDocente', val);
+        formData.append('adscripcion', valAdscripcion);
+        formData.append('adscripcionDom', valAdscripcionDom);
 
         
         
@@ -1494,6 +1524,46 @@ $(document).on('click','#btnNingunodged',function(){
         }
         
         
+    });
+
+$(document).on('click','#btnNingunoAds',function(){ 
+
+        if($('#btnNingunoAds').is(':checked')) {
+
+
+            $('#FormAdscripcion input').attr('disabled','disabled');
+            
+            $('#FormAdscripcion select').attr('disabled','disabled');
+            
+
+        } else {
+            $('#FormAdscripcion input').attr('disabled',false);
+            
+            $('#FormAdscripcion select').attr('disabled',false);
+            
+        }
+
+
+    });
+
+$(document).on('click','#btnNingunoAdsDom',function(){ 
+
+        if($('#btnNingunoAdsDom').is(':checked')) {
+
+
+            $('#FormAdscripcionDom input').attr('disabled','disabled');
+            
+            $('#FormAdscripcionDom select').attr('disabled','disabled');
+            
+
+        } else {
+            $('#FormAdscripcionDom input').attr('disabled',false);
+            
+            $('#FormAdscripcionDom select').attr('disabled',false);
+            
+        }
+
+
     });
 
 </script>
