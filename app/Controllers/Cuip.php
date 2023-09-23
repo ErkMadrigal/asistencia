@@ -5079,16 +5079,7 @@ class Cuip extends BaseController {
 					$empresa = session()->get('empresa');
 					$idEmpresa = $this->encrypter->decrypt($empresa);
 
-					if isset($this->request->getPost('idReferencia')){
-						$uuid = $this->request->getPost('idReferencia');
-        				$id = $this->encrypt->Decrytp($uuid);
-        				$tipo = 0;
-        			} else {
-
-        				$uuid = Uuid::uuid4();
-        				$id = $uuid->toString();
-        				$tipo = 1; 
-        			}
+					
 
         			
 
@@ -5416,8 +5407,7 @@ class Cuip extends BaseController {
 
 					$referencias = array(
 		    					
-		    					
-						
+		    			
 						"apellido_paterno_fam" => $apellido_paterno_fam , 
 						"apellido_materno_fam" => $apellido_materno_fam , 
 						"primer_nombre_fam" => $primer_nombre_fam , 
@@ -5493,7 +5483,23 @@ class Cuip extends BaseController {
 						"updateddate" => date("Y-m-d H:i:s") );
 
 
-					$result = $this->modelCuip->updateReferencias( $referencias,$idPersonal,$id);
+					if ($this->request->getPost('idReferencia') != null){
+						$uuid = $this->request->getPost('idReferencia');
+        				$id = $this->encrypt->Decrytp($uuid);
+        				$tipo = 0;
+        			} else {
+
+        				$uuid = Uuid::uuid4();
+        				$id = $uuid->toString();
+        				$tipo = 1;
+
+        				$referencias['id'] = $id;
+        				$referencias['idPersonal'] = $idPersonal;
+        				$referencias['idEmpresa'] = $idEmpresa;
+        				 
+        			}
+
+					$result = $this->modelCuip->updateReferencias( $referencias,$idPersonal,$id,$tipo);
 
 
 					

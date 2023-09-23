@@ -1031,10 +1031,20 @@ class CuipModel
         return $return; 
     }
 
-    public function updateReferencias($data,$idPersonal,$id){
+    public function updateReferencias($data,$idPersonal,$id,$tipo){
         $this->db->transStart();
 
-        $this->db->table('referencias')->where('idPersonal',$idPersonal)->where('id',$id)->update($data);
+        if ($tipo == 0) {
+
+            $this->db->table('referencias')->where('idPersonal',$idPersonal)->where('id',$id)->update($data);
+
+        } elseif($tipo == 1) {
+
+            $this->db->table('referencias')->insert($data);
+
+        }
+
+        
 
         $this->db->transComplete();
 
