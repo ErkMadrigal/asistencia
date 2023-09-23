@@ -42,14 +42,12 @@ class Armas extends BaseController {
 				
 				// $id = $this->encrypt->Encrypt($v->id);
 				$result[] = (object) array (
+					'id' => $v->id,
+					'matricula' => $v->matricula,
 					'clase' => $v->clase,
 					'folio_manif' => $v->folio_manif,
                     'idMarca' => $v->idMarca,
-					'activo' => $v->activo,
-					'No_oficio' => $v->No_oficio,
-					'folio' => $v->folio,
-					'Modalidad' => $v->Modalidad,
-					'direccion' => $v->direccion
+					'activo' => $v->activo
 
 				) ;
 			}
@@ -58,7 +56,7 @@ class Armas extends BaseController {
                 'data' => $result]; 
 
         	$data['arma'] = $dataCrud['data'];
-			$data['dataBaja'] = $this->modelArmas->get_motivo_baja("Baja Juridico");
+
 			
 			return view('Armas/armascatalogo', $data);
 		}	
