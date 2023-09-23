@@ -2172,16 +2172,7 @@ class Cuip extends BaseController {
 				'reconomiento' =>  ['label' => "¿Razones por las que no ha recibido un reconocimiento?", 'rules' => 'required|max_length[255]'],
 				'reglamentacion_ascenso' =>  ['label' => "¿Conoce la reglamentación de los ascensos?", 'rules' => 'required'],
 				'razones_ascenso' =>  ['label' => "¿Razones por las que no ha recibido un ascenso?", 'rules' => 'required|max_length[255]'],
-				'capacitacion' =>  ['label' => "¿Qué capacitación le gustaría recibir?", 'rules' => 'required|max_length[255]'],
-				'desciplina' =>  ['label' => "Tipo de Disciplina", 'rules' => 'required'],
-				'subtipo_disciplina' =>  ['label' => "Subtipo de disciplina", 'rules' => 'required|max_length[255]'],
-				'motivo' =>  ['label' => "Motivo", 'rules' => 'required|max_length[255]'],
-				'tipo' =>  ['label' => "Tipo", 'rules' => 'required|max_length[255]'],
-				'fecha_inicialDis' =>  ['label' => "Fecha de Inicio", 'rules' => 'required|valid_only_date_chek'],
-				'fecha_finalDis' =>  ['label' => "Fecha de Término", 'rules' => 'required|valid_only_date_chek'],
-				
-				'duracion' =>  ['label' => "Duración", 'rules' => 'required_with[cantidad]'],
-				'cantidad' =>  ['label' => "Cantidad", 'rules' => 'required_with[duracion]']];
+				'capacitacion' =>  ['label' => "¿Qué capacitación le gustaría recibir?", 'rules' => 'required|max_length[255]']];
 
 
 				$datos = $this->request->getPost('diversos');
@@ -2207,6 +2198,22 @@ class Cuip extends BaseController {
 				$rules['comentarios'] =  ['label' => "Comentarios", 'rules' => 'required|max_length[255]'];
 
 				}
+
+				$datosDisciplina = $this->request->getPost('diversos');
+
+				if($datosDisciplina == 0){
+
+
+					$rules['desciplina'] =  ['label' => "Tipo de Disciplina", 'rules' => 'required'];
+					$rules['subtipo_disciplina'] =  ['label' => "Subtipo de disciplina", 'rules' => 'required|max_length[255]'];
+					$rules['motivo'] =  ['label' => "Motivo", 'rules' => 'required|max_length[255]'];
+					$rules['tipo'] =  ['label' => "Tipo", 'rules' => 'required|max_length[255]'];
+					$rules['fecha_inicialDis'] =  ['label' => "Fecha de Inicio", 'rules' => 'required|valid_only_date_chek'];
+					$rules['fecha_finalDis'] =  ['label' => "Fecha de Término", 'rules' => 'required|valid_only_date_chek'];
+					$rules['duracion'] =  ['label' => "Duración", 'rules' => 'required_with[cantidad]'];
+					$rules['cantidad'] =  ['label' => "Cantidad", 'rules' => 'required_with[duracion]'];
+
+				}
 		 
 				
 
@@ -2227,17 +2234,6 @@ class Cuip extends BaseController {
 
         			$ingresoEmpDiv = date( "Y-m-d" ,strtotime($getingresoEmpDiv));
 
-        			
-        			$getFecha_inicialDis = $this->request->getPost('fecha_inicialDis');
-
-        			$fecha_inicialDis = date( "Y-m-d" ,strtotime($getFecha_inicialDis));
-
-        			$getFecha_finalDis = $this->request->getPost('fecha_finalDis');
-
-        			$fecha_finalDis = date( "Y-m-d" ,strtotime($getFecha_finalDis));
-
-        			
-
         			$getReglamentacion = $this->request->getPost('reglamentacion');
 
         			$reglamentacion = $this->encrypt->Decrytp($getReglamentacion);
@@ -2246,13 +2242,50 @@ class Cuip extends BaseController {
 
         			$reglamentacion_ascenso = $this->encrypt->Decrytp($getReglamentacion_ascenso);
 
-        			$getDesciplina = $this->request->getPost('desciplina');
+        			
 
-        			$desciplina = $this->encrypt->Decrytp($getDesciplina);
+        			
 
-        			$getDuracion = $this->request->getPost('duracion');
+        			if($datosDisciplina == 0){
 
-        			$duracion = $this->encrypt->Decrytp($getDuracion);
+        				$getFecha_inicialDis = $this->request->getPost('fecha_inicialDis');
+
+        				$fecha_inicialDis = date( "Y-m-d" ,strtotime($getFecha_inicialDis));
+
+        				$getFecha_finalDis = $this->request->getPost('fecha_finalDis');
+
+        				$fecha_finalDis = date( "Y-m-d" ,strtotime($getFecha_finalDis));
+
+        				$getDesciplina = $this->request->getPost('desciplina');
+
+        				$desciplina = $this->encrypt->Decrytp($getDesciplina);
+
+        				$getDuracion = $this->request->getPost('duracion');
+
+        				$duracion = $this->encrypt->Decrytp($getDuracion);
+
+        				$idTipoDisciplina  =  $desciplina; 
+						$subtipo_disciplina  =  strtoupper($this->request->getPost('subtipo_disciplina')); 
+						$motivo  = strtoupper($this->request->getPost('motivo')); 
+						$tipo  =  strtoupper($this->request->getPost('tipo')); 
+						$fecha_inicio  =  $fecha_inicialDis; 
+						$fecha_termino  = $fecha_finalDis; 
+						$idDuracion  = $duracion; 
+						$cantidad = strtoupper($this->request->getPost('cantidad'));
+						
+					} else {
+
+						$idTipoDisciplina  =  ""; 
+						$subtipo_disciplina  =  ""; 
+						$motivo  = ""; 
+						$tipo  =  ""; 
+						$fecha_inicio  =  ""; 
+						$fecha_termino  = ""; 
+						$idDuracion  = ""; 
+						$cantidad = "";
+
+						
+					}
 
         			if($datos == 1){
 					$empDiversos = array(
@@ -2285,14 +2318,14 @@ class Cuip extends BaseController {
 						"razon_no_reconocimiento" => strtoupper($this->request->getPost('reconomiento')),
 						"razon_no_ascenso" => strtoupper($this->request->getPost('razones_ascenso')),  
 						"capacitacion"  =>  strtoupper($this->request->getPost('capacitacion')) , 
-						"idTipoDisciplina"  =>  $desciplina , 
-						"subtipo_disciplina"  =>  strtoupper($this->request->getPost('subtipo_disciplina')) , 
-						"motivo"  => strtoupper($this->request->getPost('motivo'))  , 
-						"tipo"  =>  strtoupper($this->request->getPost('tipo')) , 
-						"fecha_inicio"  =>  $fecha_inicialDis , 
-						"fecha_termino"  => $fecha_finalDis  , 
-						"idDuracion"  => $duracion   , 
-						"cantidad" => strtoupper($this->request->getPost('cantidad')) ,
+						"idTipoDisciplina"  =>  $idTipoDisciplina , 
+						"subtipo_disciplina"  =>  $subtipo_disciplina , 
+						"motivo"  => $motivo  , 
+						"tipo"  =>  $tipo , 
+						"fecha_inicio"  =>  $fecha_inicio , 
+						"fecha_termino"  => $fecha_termino  , 
+						"idDuracion"  => $idDuracion   , 
+						"cantidad" => $cantidad ,
 						"licencias_medicas" =>  strtoupper($this->request->getPost('licencias_medicas')) ,
 						"activo" => 1 , 
 						"createdby" => $LoggedUserId , 
@@ -2334,14 +2367,14 @@ class Cuip extends BaseController {
 						"razon_no_reconocimiento" => strtoupper($this->request->getPost('reconomiento')),
 						"razon_no_ascenso" => strtoupper($this->request->getPost('razones_ascenso')), 
 						"capacitacion"  =>  strtoupper($this->request->getPost('capacitacion')) , 
-						"idTipoDisciplina"  =>  $desciplina , 
-						"subtipo_disciplina"  =>  strtoupper($this->request->getPost('subtipo_disciplina')) , 
-						"motivo"  => strtoupper($this->request->getPost('motivo'))  , 
-						"tipo"  =>  strtoupper($this->request->getPost('tipo')) , 
-						"fecha_inicio"  =>  $fecha_inicialDis , 
-						"fecha_termino"  => $fecha_finalDis  , 
-						"idDuracion"  => $duracion   , 
-						"cantidad" => strtoupper($this->request->getPost('cantidad')) ,
+						"idTipoDisciplina"  =>  $idTipoDisciplina , 
+						"subtipo_disciplina"  =>  $subtipo_disciplina , 
+						"motivo"  => $motivo  , 
+						"tipo"  =>  $tipo , 
+						"fecha_inicio"  =>  $fecha_inicio , 
+						"fecha_termino"  => $fecha_termino  , 
+						"idDuracion"  => $idDuracion   , 
+						"cantidad" => $cantidad ,
 						"licencias_medicas" =>  strtoupper($this->request->getPost('licencias_medicas')) , 
 						"activo" => 1 , 
 						"createdby" => $LoggedUserId , 

@@ -274,7 +274,7 @@
                 </div>
             </div>
         </div>
-
+    </form>    
     </div>
 </div>
 
@@ -283,6 +283,10 @@
         <h3 class="card-title">LABORAL: DISCIPLINA LABORAL</h3>
 
         <div class="card-tools">
+
+            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" class="form-check-input mt-2" id="btnNingunoDisciplina">
+
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
             </button>
@@ -290,7 +294,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-
+        <form class="form-horizontal" id="EmpleosDisciplina">
         <div class="row">
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
@@ -434,6 +438,8 @@
 
         var idPersonal = $('#idPersonal').val()
         var csrfName = $("input[name=app_csrf]").val();
+        var formData = new FormData($("form#EmpleosDiversos")[0]);
+
 
         if($('#btnNingunodiversos').is(':checked')) {
             val = 1;
@@ -443,11 +449,26 @@
 
         }
 
-        var formData = new FormData($("form#EmpleosDiversos")[0]);
+        if($('#btnNingunoDisciplina').is(':checked')) {
+            valDisciplina = 1;
+            
+        } else {
+            valDisciplina = 0;
+            var formDataD = new FormData($("form#EmpleosDisciplina")[0]);
+
+
+            for (let [key, value] of formDataD.entries()) {
+                formData.append(key, value);
+            }
+
+        }
+
+        
         formData.append('idPersonal', idPersonal);
         formData.append('app_csrf', csrfName);
 
         formData.append('diversos', val);
+        formData.append('disciplina', valDisciplina);
 
         $.ajax({
             url: base_url + '/GuardarEmpDiversos',
@@ -523,6 +544,24 @@
             $('#EmpleosDiversos input').attr('disabled', false);
             $('#EmpleosDiversos select').attr('disabled', false);
             $('#EmpleosDiversos textarea').attr('disabled', false);
+        }
+
+
+    });
+
+
+    $(document).on('click', '#btnNingunoDisciplina', function() {
+
+        if ($('#btnNingunoDisciplina').is(':checked')) {
+
+
+            $('#EmpleosDisciplina input').attr('disabled', 'disabled');
+            $('#EmpleosDisciplina select').attr('disabled', 'disabled');
+            $('#EmpleosDisciplina textarea').attr('disabled', 'disabled');
+        } else {
+            $('#EmpleosDisciplina input').attr('disabled', false);
+            $('#EmpleosDisciplina select').attr('disabled', false);
+            $('#EmpleosDisciplina textarea').attr('disabled', false);
         }
 
 
