@@ -159,7 +159,25 @@
                         <div class='col-12 col-sm-12 col-md-12'>
                             <div class="form-group">
                                 <label for="motivoBaja" class=" control-label">Motivo de baja:</label>
-                                <textarea type="text" class="form-control " id="motivoBaja" name="motivoBaja"></textarea>
+                                <select class="form-control " id="motivoBaja" name="motivoBaja">
+                                    <?php foreach ($dataBaja as $baja):?>
+                                        <option value="<?=$baja->id?>"><?=$baja->valor?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <script>
+                                    $(document).ready(function() {
+                                        $("#motivoBaja").select2({
+                                            theme: "bootstrap4",
+                                            width: "100%"
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <div class='col-12 col-sm-12 col-md-12'>
+                            <div class="form-group">
+                                <label for="notaBaja" class=" control-label">Nota:</label>
+                                <textarea type="text" class="form-control " id="notaBaja" name="notaBaja"></textarea>
                             </div>
                         </div>
                     </div>

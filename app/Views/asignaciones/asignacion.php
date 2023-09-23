@@ -861,16 +861,20 @@
             // }
         };
 
+        const data_Bajas = {}
+
+        let array_bajas = <?= json_encode($dataBaja) ?>
+
+        array_bajas.forEach(baja => {
+            data_Bajas[baja.id] = baja.valor;
+        });
+
         const eliminarJuridico = (id, idArma) => {
                 Swal.fire({
                     title: 'Seguro que lo deseas mandar a Juridico?',
                     text: `¡Describe el motivo!`,
                     input: 'select',
-                    inputOptions: {
-                        "Robo":"Robo", 
-                        "Extrabio":"Extravío",
-                        "Detención":"Detención"
-                    },
+                    inputOptions: data_Bajas,
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',

@@ -34,7 +34,7 @@ class Asignaciones extends BaseController{
             $data['modulos'] = $this->menu->Permisos();
 			$data['datos'] = $this->modelAsign->getAllData();
             $data['pendientes'] = $this->modelAsign->getCountPendientes();
-			
+			$data['dataBaja'] = $this->modelAsign->get_motivo_baja("Baja Juridico");
 			return view('asignaciones/asignacion', $data);
 		}	
     }
@@ -510,13 +510,17 @@ class Asignaciones extends BaseController{
 			$validate = [];
 
             $motivo = empty($_POST['motivo']) ? '' : $_POST['motivo'] ;
-            $delete = $this->modelAsign->delete( $_POST['idElimn'], $_POST["idArma"], $_POST["status"], $motivo );
-            if ($delete) {
-                $succes = ["mensaje" => 'Exito', "succes" => "succes"];
-                $data = $delete;
-            } else {
-                $dontSucces = ["error" => "error", "mensaje" => 'Hubo un error al Obtener los Datos.'];
-            }
+            if($motivo != ''){
+                $delete = $this->modelAsign->delete( $_POST['idElimn'], $_POST["idArma"], $_POST["status"], $motivo );
+                if ($delete) {
+                    $succes = ["mensaje" => 'Exito', "succes" => "succes"];
+                    $data = $delete;
+                } else {
+                    $dontSucces = ["error" => "error", "mensaje" => 'Hubo un error al Obtener los Datos.'];
+                }
+            }else{
+				$dontSucces = ["error" => "error", "mensaje" => 'Error: Es requerido el motivo.'];
+			}
 				
 			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
 		}
