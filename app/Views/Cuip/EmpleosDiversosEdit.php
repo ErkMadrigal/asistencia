@@ -70,7 +70,7 @@ $encrypt = new Encrypt();
                         <select class="form-control" id="coloniacodigoEmpDiv" name="coloniacodigoEmpDiv">
                             <option value="">Selecciona una Opcion</option>
                                     
-                            <option selected value="<?= $diversos->colonia ?>"><?= $diversos->colonia ?></option>
+                            <option selected value="<?= isset($diversos->colonia)?$diversos->colonia:"" ?>"><?= isset($diversos->colonia)?$diversos->colonia:"" ?></option>
 
                                     
                                 </select>
@@ -93,7 +93,7 @@ $encrypt = new Encrypt();
                         <select class="form-control" id="estadocodigoEmpDiv" name="estadocodigoEmpDiv">
                             <option value="">Selecciona una Opcion</option>
                                     
-                               <option selected value="<?= $diversos->estado ?>"><?= $diversos->estado ?></option>
+                               <option selected value="<?= isset($diversos->estado)?$diversos->estado:"" ?>"><?= isset($diversos->estado)?$diversos->estado:"" ?></option>
 
                                     
                                 </select>
@@ -115,7 +115,7 @@ $encrypt = new Encrypt();
                         <select class="form-control" id="municipiocodigoEmpDiv" name="municipiocodigoEmpDiv">
                             <option value="">Selecciona una Opcion</option>
                                     
-                            <option selected value="<?= $diversos->municipio ?>"><?= $diversos->municipio ?></option>
+                            <option selected value="<?= isset($diversos->municipio)?$diversos->municipio:"" ?>"><?= isset($diversos->municipio)?$diversos->municipio:"" ?></option>
 
                                     
                                 </select>
@@ -378,7 +378,7 @@ $encrypt = new Encrypt();
     <div class="card-body">
 
         <div class="row">
-            <input type="hidden" class="form-control " id="idEmpDiversos" name="idEmpDiversos" value="<?= $encrypt->Encrypt($diversos->id) ?>"><?= csrf_field() ?>
+            <input type="hidden" class="form-control " id="idEmpDiversos" name="idEmpDiversos" value="<?= isset($diversos->id)?$encrypt->Encrypt($diversos->id):"" ?>"><?= csrf_field() ?>
             <div class='col-12 col-sm-12 col-md-6'>
                 <div class="form-group">
                     <label for="desciplina" class=" control-label">Tipo de Disciplina:<span class="text-danger">*</span></label>

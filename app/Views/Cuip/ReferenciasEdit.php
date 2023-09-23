@@ -23,7 +23,7 @@ $encrypt = new Encrypt();
     <div class="card-body">
         <form class="form-horizontal" id="referencias">
             <div class="row">
-                <input type="hidden" class="form-control " id="idReferencia" name="idReferencia" value="<?= $encrypt->Encrypt($referencia->id) ?>">
+                <input type="hidden" class="form-control " id="idReferencia" name="idReferencia" value="<?= isset($referencia->id)?$encrypt->Encrypt($referencia->id):"" ?>">
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="apellidoPaterno" class=" control-label">Apellido Paterno:<span class="text-danger">*</span></label>
@@ -168,7 +168,7 @@ $encrypt = new Encrypt();
                         <select class="form-control" id="coloniacodigoRefCer" name="coloniacodigoRefCer">
                             <option value="">Selecciona una Opcion</option>
                             
-                      <option selected value="<?= $referencia->colonia_fam ?>"><?= $referencia->colonia_fam ?></option>
+                      <option selected value="<?= isset($referencia->colonia_fam)?$referencia->colonia_fam:"" ?>"><?= isset($referencia->colonia_fam)?$referencia->colonia_fam:"" ?></option>
                             
                         </select>
                         <script>
@@ -258,7 +258,7 @@ $encrypt = new Encrypt();
                             <select class="form-control" id="municipiocodigoRefCer" name="municipiocodigoRefCer">
                                 <option value="">Selecciona una Opcion</option>
                                 
-                                <option selected value="<?= $encrypt->Encrypt($referencia->idMunciRefer) ?>"><?= $referencia->municipio_fam ?></option>
+                                <option selected value="<?= isset($referencia->idMunciRefer)?$encrypt->Encrypt($referencia->idMunciRefer):"" ?>"><?= isset($referencia->municipio_fam)?$referencia->municipio_fam:"" ?></option>
 
                                 
                             </select>
@@ -280,7 +280,7 @@ $encrypt = new Encrypt();
                             <select class="form-control" id="ciudadcodigoRefCer" name="ciudadcodigoRefCer">
                                 <option value="">Selecciona una Opcion</option>
                                 
-                                <option selected value="<?= $referencia->ciudad_fam ?>"><?= $referencia->ciudad_fam ?></option>
+                                <option selected value="<?= isset($referencia->ciudad_fam)?$referencia->ciudad_fam:"" ?>"><?= isset($referencia->ciudad_fam)?$referencia->ciudad_fam:"" ?></option>
                                 
                             </select>
                             <script>
@@ -459,7 +459,7 @@ $encrypt = new Encrypt();
                     <select class="form-control" id="coloniacodigoParCer" name="coloniacodigoParCer">
                         <option value="">Selecciona una Opcion</option>
                         
-                        <option selected value="<?= $referencia->colonia_pariente ?>"><?= $referencia->colonia_pariente ?></option>
+                        <option selected value="<?= isset($referencia->colonia_pariente)?$referencia->colonia_pariente:"" ?>"><?= isset($referencia->colonia_pariente)?$referencia->colonia_pariente:"" ?></option>
                         
                     </select>
                     <script>
@@ -549,7 +549,7 @@ $encrypt = new Encrypt();
                         <select class="form-control" id="municipiocodigoParCer" name="municipiocodigoParCer">
                             <option value="">Selecciona una Opcion</option>
                             
-                            <option selected value="<?= $encrypt->Encrypt($referencia->idMuniRefPariente) ?>"><?= $referencia->municipio_pariente ?></option>
+                            <option selected value="<?= isset($referencia->idMuniRefPariente)?$encrypt->Encrypt($referencia->idMuniRefPariente):"" ?>"><?= isset($referencia->municipio_pariente)?$referencia->municipio_pariente:"" ?></option>
                             
                         </select>
                         <script>
@@ -570,7 +570,7 @@ $encrypt = new Encrypt();
                         <select class="form-control" id="ciudadcodigoParCer" name="ciudadcodigoParCer">
                             <option value="">Selecciona una Opcion</option>
                             
-                            <option selected value="<?= $referencia->ciudad_pariente ?>"><?= $referencia->ciudad_pariente ?></option>
+                            <option selected value="<?= isset($referencia->ciudad_pariente)?$referencia->ciudad_pariente:"" ?>"><?= isset($referencia->ciudad_pariente)?$referencia->ciudad_pariente:"" ?></option>
                             
                         </select>
                         <script>
@@ -750,7 +750,7 @@ $encrypt = new Encrypt();
                     <select class="form-control" id="coloniacodigoPersonal" name="coloniacodigoPersonal">
                         <option value="">Selecciona una Opcion</option>
                         
-                        <option selected value="<?= $referenciaLab->colonia_personal ?>"><?= $referenciaLab->colonia_personal ?></option>
+                        <option selected value="<?= isset($referenciaLab->colonia_personal)?$referenciaLab->colonia_personal:"" ?>"><?= isset($referenciaLab->colonia_personal)?$referenciaLab->colonia_personal:"" ?></option>
                         
                     </select>
                     <script>
@@ -842,7 +842,7 @@ $encrypt = new Encrypt();
                         <select class="form-control" id="municipiocodigoPersonal" name="municipiocodigoPersonal">
                             <option value="">Selecciona una Opcion</option>
                             
-                                <option selected value="<?= $encrypt->Encrypt($referenciaLab->idMuniRefePersonal) ?>"><?= $referenciaLab->municipio_personal ?></option>
+                                <option selected value="<?= isset($referenciaLab->idMuniRefePersonal)?$encrypt->Encrypt($referenciaLab->idMuniRefePersonal):"" ?>"><?= isset($referenciaLab->municipio_personal)?$referenciaLab->municipio_personal:"" ?></option>
                             
                         </select>
                         <script>
@@ -863,7 +863,7 @@ $encrypt = new Encrypt();
                         <select class="form-control" id="ciudadcodigoPersonal" name="ciudadcodigoPersonal">
                             <option value="">Selecciona una Opcion</option>
                             
-                            <option selected value="<?= $referenciaLab->ciudad_personal ?>"><?= $referenciaLab->ciudad_personal ?></option>
+                            <option selected value="<?= isset($referenciaLab->ciudad_personal)?$referenciaLab->ciudad_personal:"" ?>"><?= isset($referenciaLab->ciudad_personal)?$referenciaLab->ciudad_personal:"" ?></option>
                             
 
                         </select>
@@ -1046,7 +1046,7 @@ $encrypt = new Encrypt();
                     <select class="form-control" id="coloniacodigoLaboral" name="coloniacodigoLaboral">
                         <option value="">Selecciona una Opcion</option>
                         
-                        <option selected value="<?= $referenciaLab->colonia_laboral ?>"><?= $referenciaLab->colonia_laboral ?></option>
+                        <option selected value="<?= isset($referenciaLab->colonia_laboral)?$referenciaLab->colonia_laboral:"" ?>"><?= isset($referenciaLab->colonia_laboral)?$referenciaLab->colonia_laboral:"" ?></option>
                         
                     </select>
                     
@@ -1137,7 +1137,7 @@ $encrypt = new Encrypt();
                         <select class="form-control" id="municipiocodigoLaboral" name="municipiocodigoLaboral">
                             <option value="">Selecciona una Opcion</option>
                             
-                            <option selected value="<?= $encrypt->Encrypt($referenciaLab->idRefeMuniLaboral) ?>"><?= $referenciaLab->municipio_laboral ?></option>
+                            <option selected value="<?= isset($referenciaLab->idRefeMuniLaboral)?$encrypt->Encrypt($referenciaLab->idRefeMuniLaboral):"" ?>"><?= isset($referenciaLab->municipio_laboral)?$referenciaLab->municipio_laboral:"" ?></option>
                             
                         </select>
                         <script>
@@ -1158,7 +1158,7 @@ $encrypt = new Encrypt();
                         <select class="form-control" id="ciudadcodigoLaboral" name="ciudadcodigoLaboral">
                             <option value="">Selecciona una Opcion</option>
                             
-                            <option selected value="<?= $referenciaLab->ciudad_laboral ?>"><?= $referenciaLab->ciudad_laboral ?></option>
+                            <option selected value="<?= isset($referenciaLab->ciudad_laboral)?$referenciaLab->ciudad_laboral:"" ?>"><?= isset($referenciaLab->ciudad_laboral)?$referenciaLab->ciudad_laboral:"" ?></option>
                             
                         </select>
                         <script>

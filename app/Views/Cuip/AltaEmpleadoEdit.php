@@ -21,7 +21,7 @@ use App\Libraries\Encrypt;
     <div class="card-body">
         <form class="form-horizontal" id="altaEmpleado">
             <div class="row">
-                <input type="hidden" class="form-control " id="idAltaEmpleado" name="idAltaEmpleado" value="<?= $encrypt->Encrypt($datosEmpleado->id) ?>"><?= csrf_field() ?>
+                <input type="hidden" class="form-control " id="idAltaEmpleado" name="idAltaEmpleado" value="<?= isset($datosEmpleado->id)?$encrypt->Encrypt($datosEmpleado->id):"" ?>"><?= csrf_field() ?>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="fecha_ingreso" class=" control-label">Fecha de Ingreso:<span class="text-danger">*</span></label>
@@ -77,7 +77,7 @@ use App\Libraries\Encrypt;
                         <select class="form-control" id="ubicacionRH" name="ubicacionRH">
                                 <option value="">Selecciona una Opcion</option>
                                 
-                                            <option selected value="<?= $encrypt->Encrypt($datosEmpleado->idUbicacion) ?>"><?= $datosEmpleado->nombre_ubicacion ?></option>
+                                            <option selected value="<?= isset($datosEmpleado->idUbicacion)?$encrypt->Encrypt($datosEmpleado->idUbicacion):"" ?>"><?= isset($datosEmpleado->nombre_ubicacion)?$datosEmpleado->nombre_ubicacion:"" ?></option>
                                             
                             </select>
                             <script>
@@ -104,7 +104,7 @@ use App\Libraries\Encrypt;
                         <select class="form-control" id="turnoRH" name="turnoRH">
                                 <option value="">Selecciona una Opcion</option>
                                 
-                                            <option selected value="<?= $encrypt->Encrypt($datosEmpleado->idTurno) ?>"><?= $datosEmpleado->turno ?></option>
+                                            <option selected value="<?= isset($datosEmpleado->idTurno)?$encrypt->Encrypt($datosEmpleado->idTurno):"" ?>"><?= isset($datosEmpleado->turno)?$datosEmpleado->turno:"" ?></option>
                                             
                             </select>
                             <script>
@@ -124,7 +124,7 @@ use App\Libraries\Encrypt;
                         <select class="form-control" id="puestoRH" name="puestoRH">
                             <option value="">Selecciona una Opcion</option>
                                 
-                                            <option selected value="<?= $encrypt->Encrypt($datosEmpleado->idPuesto) ?>"><?= $datosEmpleado->puesto ?></option>
+                                            <option selected value="<?= isset($datosEmpleado->idPuesto)?$encrypt->Encrypt($datosEmpleado->idPuesto):"" ?>"><?= isset($datosEmpleado->puesto)?$datosEmpleado->puesto:"" ?></option>
                                             
                         </select>
                             <script>

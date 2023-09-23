@@ -25,7 +25,7 @@ $encrypt = new Encrypt();
         <form class="form-horizontal" id="SocioEconomico">
 
             <div class="row">
-                <input type="hidden" class="form-control " id="idSocioEconomico" name="idSocioEconomico" value="<?= $encrypt->Encrypt($estudio->id) ?>"><?= csrf_field() ?>
+                <input type="hidden" class="form-control " id="idSocioEconomico" name="idSocioEconomico" value="<?= isset($estudio->id)?$encrypt->Encrypt($estudio->id):"" ?>"><?= csrf_field() ?>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="familia" class="control-label">¿Vive con su Familia?: <span class="text-danger">*</span></label>
