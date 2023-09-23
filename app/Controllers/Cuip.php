@@ -5078,8 +5078,17 @@ class Cuip extends BaseController {
 					$LoggedUserId = $this->encrypter->decrypt($getUser);
 					$empresa = session()->get('empresa');
 					$idEmpresa = $this->encrypter->decrypt($empresa);
-					$uuid = $this->request->getPost('idReferencia');
-        			$id = $this->encrypt->Decrytp($uuid);
+
+					if isset($this->request->getPost('idReferencia')){
+						$uuid = $this->request->getPost('idReferencia');
+        				$id = $this->encrypt->Decrytp($uuid);
+        				$tipo = 0;
+        			} else {
+
+        				$uuid = Uuid::uuid4();
+        				$id = $uuid->toString();
+        				$tipo = 1; 
+        			}
 
         			
 

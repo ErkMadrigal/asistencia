@@ -1022,7 +1022,7 @@ $encrypt = new Encrypt();
                     <select class="form-control" id="delegacion_adscripcion" name="delegacion_adscripcion">
                         <option value="">Selecciona una Opcion</option>
                         
-                                <option  selected value="<?= $variable->idMunDomAdscripcion ?>"><?= $variable->municipio_delegacion ?></option>
+                                <option  selected value="<?= $encrypt->Encrypt($variable->idMunDomAdscripcion) ?>"><?= $variable->municipio_delegacion ?></option>
 
 
                         

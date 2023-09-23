@@ -185,7 +185,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="codigoRefCer" class=" control-label">Código Postal :<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="codigoRefCer" name="codigoRefCer" value="<?= isset($referencia->idCodigoPostal_fam)? $referencia->idCodigoPostal_fam:''?>">
+                            <input type="text" class="form-control " id="codigoRefCer" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="5" name="codigoRefCer" value="<?= isset($referencia->idCodigoPostal_fam)? $referencia->idCodigoPostal_fam:''?>">
 
                         </div>
                     </div>
@@ -194,7 +194,7 @@ $encrypt = new Encrypt();
                     <div class="form-group">
                         <label for="numero" class=" control-label">Numero Telefónico:<span class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control " id="numero" name="numero" value="<?=isset($referencia->numero_telefono_fam)?$referencia->numero_telefono_fam:''?>">
+                            <input type="text" class="form-control " id="numero" name="numero" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" value="<?=isset($referencia->numero_telefono_fam)?$referencia->numero_telefono_fam:''?>">
 
                         </div>
                     </div>
