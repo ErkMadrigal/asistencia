@@ -63,7 +63,7 @@ class Cuip extends BaseController {
 
         	$data['CuipPersonal'] = $dataCrud['data'];
 
-			
+			$data['dataBaja'] = $this->modelCuip->get_motivo_baja("Tipo Baja");
 			
 			return view('Cuip/CuipPersonal', $data);
 		}	
@@ -7083,7 +7083,8 @@ class Cuip extends BaseController {
 							"fecha_sol_baja" => date("Y-m-d H:i:s")  ,
 							"fecha_efec_baja" => $fechaBaja  , 
 							"finiquito" =>  $this->request->getPost('finiquito') , 
-							"motivo_baja" =>  $this->request->getPost('motivoBaja') ,
+							"id_motivo" =>  $this->request->getPost('motivoBaja') ,
+							"motivo_baja" =>  $this->request->getPost('notaBaja') ,
 							"activo" => 0 , 
 							"updatedby" => $LoggedUserId , 
 							"updateddate" => date("Y-m-d H:i:s") );

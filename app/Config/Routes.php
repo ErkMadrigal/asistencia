@@ -239,6 +239,7 @@ $routes->post('editIncidencias', 'Incidencias::edit',['filter' => 'auth']);
 $routes->post('detailIncidencias', 'Incidencias::detail',['filter' => 'auth']);
 
 
+$routes->post('deleteArmaJuridico', 'Armas::deleteArmaJuridico',['filter' => 'auth']);
 
 
 /*

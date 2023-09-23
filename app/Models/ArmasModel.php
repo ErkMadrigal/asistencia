@@ -22,14 +22,40 @@ class ArmasModel
 
     public function GetArmas($idEmpresa){
         $builder = $this->db->table('armas');
-        $builder->select('armas.id, armas.matricula, armas.folio_manif,armas.activo, M.valor AS idMarca,C.valor AS clase');
+        $builder->select("armas.id, armas.matricula, armas.folio_manif,armas.activo, M.valor AS idMarca,C.valor AS clase, LI.No_oficio, LI.folio, MO.valor as Modalidad, CONCAT(UA.calle, ' ', UA.no_exterior, ', ', UA.colonia, ' ', UA.codigo_postal ) as direccion");
         $builder->join("catalogos_detalle M"," armas.idMarca= M.id  ","left");
         $builder->join("catalogos_detalle C"," armas.idClase= C.id  ","left");
+        $builder->join("ubicacion_armamento UA"," UA.id_ubicacion = armas.id_ubicacion  ","left");
+        $builder->join("licencias LI"," LI.id_licencia  = UA.id_licencia ","left");
+        $builder->join("catalogos_detalle MO"," MO.id= LI.id_Modalidad  ","left");
         $builder->orderBy("clase","asc");
         $builder->orderBy("matricula","asc");
         $builder->where("armas.idempresa",$idEmpresa);
         return $builder->get()->getResult();
         
+    }
+
+    public function get_motivo_baja($catalogo){
+        $builder = $this->db->table(' catalogos c ');
+        $builder->select("cd.id, cd.valor");
+        $builder->join(" catalogos_detalle cd"," cd.idCatalogo = c.idCatalogo ","left");
+        $builder->like('c.valor', $catalogo);
+        return $builder->get()->getResult(); 
+
+    }
+
+    public function deleteArmaJuridico( $id, $motivo){
+
+        $return = false;
+        $update["id_motivo"] = $motivo;
+        $update["activo"] = 3;
+        $this->db->table('armas')->where('id ', $id)->update($update);
+
+        if ($this->db->affectedRows() > 0){
+            $return = true;
+        } 
+
+        return $return; 
     }
 
     public function GetArmaById($id){

@@ -33,6 +33,15 @@ class CuipModel
         
     }
 
+    public function get_motivo_baja($catalogo){
+        $builder = $this->db->table(' catalogos c ');
+        $builder->select("cd.id, cd.valor");
+        $builder->join(" catalogos_detalle cd"," cd.idCatalogo = c.idCatalogo ","left");
+        $builder->like('c.valor', $catalogo);
+        return $builder->get()->getResult(); 
+
+    }
+
     public function GetCatalogoCuip($idCatalogo){
         $builder = $this->db->table('catalogos_detalle');
         $builder->select('id, valor');

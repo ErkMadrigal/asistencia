@@ -42,6 +42,15 @@ class AsignacionesModel
         return $builder->get()->getResult();
     }
 
+    public function get_motivo_baja($catalogo){
+        $builder = $this->db->table(' catalogos c ');
+        $builder->select("cd.id, cd.valor");
+        $builder->join(" catalogos_detalle cd"," cd.idCatalogo = c.idCatalogo ","left");
+        $builder->like('c.valor', $catalogo);
+        return $builder->get()->getResult(); 
+
+    }
+
     public function reportPendientes(){
         $builder = $this->db->table('compromiso_pago cp');
         $builder->select("cl.nombre_corto as cliente, CONCAT(dp.primer_nombre, ' ', dp.apellido_paterno, ' ', dp.apellido_materno) as nombre, CONCAT(cdc.valor, ' ', cdma.valor, ' ', cdm.valor) as arma, asg.pagos, asg.periodicidad, asg.renta, COUNT(*) pagosVencidos, (select MAX(fecha_pago) from compromiso_pago where id_asignacion = asg.id) as ultimoPago");
@@ -342,11 +351,11 @@ class AsignacionesModel
 
         return $return; 
     }
-    public function delete( $id, $idArma, $status, $motivo = '' ){
+    public function delete( $id, $idArma, $status, $motivo ){
 
         $return = false;
         $this->db->transStart();
-        $query = "UPDATE asignaciones SET activo = '$status', motivo = '$motivo' WHERE id = '$id'";
+        $query = "UPDATE asignaciones SET activo = '$status', id_motivo = '$motivo' WHERE id = '$id'";
         $this->db->query($query);
         $query = "UPDATE compromiso_pago SET activo = 0 WHERE id_asignacion = '$id'";
         $this->db->query($query);
