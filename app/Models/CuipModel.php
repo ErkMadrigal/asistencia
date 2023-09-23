@@ -1059,13 +1059,22 @@ class CuipModel
     }
 
 
-    public function updateSocioEconomico($data,$datosDependientesArray,$datos,$idPersonal,$id){
+    public function updateSocioEconomico($data,$datosDependientesArray,$datos,$idPersonal,$id,$tipo){
         $this->db->transStart();
 
         $this->db->table('estudio_socioeconomico_dependientes')->where('idSocioeconomico',$id)->delete();
 
+        if ($tipo == 0) {
+
         
-        $this->db->table('estudio_socioeconomico')->where('id',$id)->where('idPersonal',$idPersonal)->update($data);
+            $this->db->table('estudio_socioeconomico')->where('id',$id)->where('idPersonal',$idPersonal)->update($data);
+
+        } elseif($tipo == 1) {
+
+            $this->db->table('estudio_socioeconomico')->insert($data);
+        
+
+        }    
 
         if($datos == 0){
 
@@ -1103,10 +1112,17 @@ class CuipModel
         return $return; 
     }
 
-    public function updateEmpDiversos($data,$idPersonal,$id){
+    public function updateEmpDiversos($data,$idPersonal,$id,$tipo){
         $this->db->transStart();
 
-        $this->db->table('empleos_diversos')->where('idPersonal',$idPersonal)->where('id',$id)->update($data);
+        if ($tipo == 0) {
+
+            $this->db->table('empleos_diversos')->where('idPersonal',$idPersonal)->where('id',$id)->update($data);
+        } elseif($tipo == 1) {
+
+            $this->db->table('empleos_diversos')->insert($data);
+        
+        }    
 
         $this->db->transComplete();
 

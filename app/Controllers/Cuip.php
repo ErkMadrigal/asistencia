@@ -5508,7 +5508,8 @@ class Cuip extends BaseController {
 
             			
                     	$succes = ["mensaje" => 'Referencias agregadas con exito' ,
-                            	   "succes" => "succes"];
+                            	   "succes" => "succes",
+                            		"id" => $this->encrypt->Encrypt($id)];
 
                            	   
                     	
@@ -5554,7 +5555,7 @@ class Cuip extends BaseController {
 
 				$rules = [
 				'idPersonal' =>  ['label' => "", 'rules' => 'required'],
-				'idSocioEconomico' =>  ['label' => "", 'rules' => 'required'],	
+				
 				'familia' =>  ['label' => "¿Vive con su Familia?", 'rules' => 'required'],
 				'ingreso' =>  ['label' => "Ingreso familiar adicional (Mensual)", 'rules' => 'required|max_length[255]'],
 				'domicilio_tipo' =>  ['label' => "Su domicilio es", 'rules' => 'required'],
@@ -5593,8 +5594,7 @@ class Cuip extends BaseController {
 					$LoggedUserId = $this->encrypter->decrypt($getUser);
 					$empresa = session()->get('empresa');
 					$idEmpresa = $this->encrypter->decrypt($empresa);
-					$uuid = $this->request->getPost('idSocioEconomico');
-        			$id = $this->encrypt->Decrytp($uuid);
+					
 
         			
 
@@ -5627,6 +5627,22 @@ class Cuip extends BaseController {
 						"comportamiento" => strtoupper($this->request->getPost('comportamiento'))  ,
 						"updatedby" => $LoggedUserId , 
 						"updateddate" => date("Y-m-d H:i:s") );
+
+					if ($this->request->getPost('idSocioEconomico') != null){
+						$uuid = $this->request->getPost('idSocioEconomico');
+        				$id = $this->encrypt->Decrytp($uuid);
+        				$tipo = 0;
+        			} else {
+
+        				$uuid = Uuid::uuid4();
+        				$id = $uuid->toString();
+        				$tipo = 1;
+
+        				$socioEconomico['id'] = $id;
+        				$socioEconomico['idPersonal'] = $idPersonal;
+        				$socioEconomico['idEmpresa'] = $idEmpresa;
+        				 
+        			}
 
 
 					$datosDependientesArray=[];
@@ -5677,9 +5693,10 @@ class Cuip extends BaseController {
 					}
 				}
 
+					
 
 
-					$result = $this->modelCuip->updateSocioEconomico( $socioEconomico,$datosDependientesArray,$datos,$idPersonal,$id);
+				$result = $this->modelCuip->updateSocioEconomico( $socioEconomico,$datosDependientesArray,$datos,$idPersonal,$id,$tipo);
 
 					
 					
@@ -5687,7 +5704,8 @@ class Cuip extends BaseController {
 
             			
                     	$succes = ["mensaje" => 'Socio Economicos editados con exito' ,
-                            	   "succes" => "succes"];
+                            	   "succes" => "succes",
+                            		"id" => $this->encrypt->Encrypt($id)];
 
                            	   
                     	
@@ -5880,7 +5898,6 @@ class Cuip extends BaseController {
 
 				$rules = [
 				'idPersonal' =>  ['label' => "", 'rules' => 'required'],
-				'idEmpDiversos' =>  ['label' => "", 'rules' => 'required'],
 				'empleo' =>  ['label' => "¿Por qué Eligio este empleo?", 'rules' => 'required|max_length[255]'],
 				'puesto' =>  ['label' => "¿Qué puesto le gustaria tener?", 'rules' => 'required|max_length[255]'],
 				'area_gustaria' =>  ['label' => "¿En que area le gustaría estar?", 'rules' => 'required|max_length[255]'],
@@ -5933,8 +5950,7 @@ class Cuip extends BaseController {
 					$LoggedUserId = $this->encrypter->decrypt($getUser);
 					$empresa = session()->get('empresa');
 					$idEmpresa = $this->encrypter->decrypt($empresa);
-					$uuid = $this->request->getPost('idEmpDiversos');
-        			$id = $this->encrypt->Decrytp($uuid);
+					
 
         			
         			$idPersonal = $this->encrypt->Decrytp($getIdPersonal);
@@ -6060,8 +6076,23 @@ class Cuip extends BaseController {
 
 					}
 
+					if ($this->request->getPost('idEmpDiversos') != null){
+						$uuid = $this->request->getPost('idEmpDiversos');
+        				$id = $this->encrypt->Decrytp($uuid);
+        				$tipo = 0;
+        			} else {
+
+        				$uuid = Uuid::uuid4();
+        				$id = $uuid->toString();
+        				$tipo = 1;
+
+        				$empDiversos['id'] = $id;	
+        				$empDiversos['idPersonal'] = $idPersonal;
+        				$empDiversos['idEmpresa'] = $idEmpresa;
+        				 
+        			}
 					
-					$result = $this->modelCuip->updateEmpDiversos( $empDiversos,$idPersonal,$id);
+					$result = $this->modelCuip->updateEmpDiversos( $empDiversos,$idPersonal,$id,$tipo);
 
 					
 					
@@ -6069,7 +6100,8 @@ class Cuip extends BaseController {
 
             			
                     	$succes = ["mensaje" => 'Empleos Diversos editados con exito' ,
-                            	   "succes" => "succes"];
+                            	   "succes" => "succes",
+                            		"id" => $this->encrypt->Encrypt($id)];
 
                            	   
                     	

@@ -1313,6 +1313,7 @@ $encrypt = new Encrypt();
 
                 if (response.succes.succes == 'succes') {
 
+                    $('#idReferencia').val(response.succes.id);
                     toastr.success(response.succes.mensaje);
 
                     $("html,body").animate({
