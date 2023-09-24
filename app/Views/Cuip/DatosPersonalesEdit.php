@@ -64,7 +64,7 @@ $encrypt = new Encrypt();
                     <div class='form-group'>
                         <label for="fecha_nacimiento">Fecha de Nacimiento: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="fecha_nacimiento" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_nacimiento" id="datetime-fecha_nacimiento" name="fecha_nacimiento" placeholder="" value="<?= isset($variable->fecha_nacimiento) ? $variable->fecha_nacimiento : ''  ?>" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fecha_nacimiento" id="datetime-fecha_nacimiento" name="fecha_nacimiento" placeholder="" value="<?= isset($variable->fecha_nacimiento) ? date( "d-m-Y" ,strtotime($variable->fecha_nacimiento)) : ''  ?>" />
                             <div class="input-group-append" data-target="#fecha_nacimiento" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -130,7 +130,7 @@ $encrypt = new Encrypt();
                         <label for="cartilla" class=" control-label">Cartilla SMN:<span class="text-danger">*</span></label>
                         <div>
 
-                            <input type="text" class="form-control " id="cartilla" name="cartilla" value=" <?= isset($variable->cartilla_smn) ? $variable->cartilla_smn : ''  ?>">
+                            <input type="text" class="form-control " id="cartilla" name="cartilla" value="<?= isset($variable->cartilla_smn)?$variable->cartilla_smn:''  ?>">
 
 
                         </div>
@@ -292,7 +292,7 @@ $encrypt = new Encrypt();
                             <select class="form-control" id="municipio_nacimiento" name="municipio_nacimiento">
                                 <option value="">Selecciona una Opcion</option>
                                 
-                                        <option selected value="<?= $encrypt->Encrypt($variable->idMunicipioNacimiento) ?>"><?= $variable->municipio ?></option>
+                                        <option selected value="<?= $encrypt->Encrypt($variable->idMunicipioNacimiento) ?>"><?= $variable->muniE ?></option>
 
 
                                 
@@ -710,6 +710,8 @@ $encrypt = new Encrypt();
         <h3 class="card-title">ADSCRIPCION</h3>
 
         <div class="card-tools">
+            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" class="form-check-input mt-2" id="btnNingunoAds">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
             </button>
@@ -741,7 +743,7 @@ $encrypt = new Encrypt();
                     <div class='form-group'>
                         <label for="fechaingreso_adscripcion">Fecha de Ingreso: <span class="text-danger">*</span></label>
                         <div class="input-group date" id="fechaingreso_adscripcion" data-target-input="nearest">
-                            <input type="text" required class="form-control datetimepicker-input" data-target="#fechaingreso_adscripcion" id="datetime-fechaingreso_adscripcion" name="fechaingreso_adscripcion" placeholder="" value="<?= isset($variable->fecha_ingreso)?$variable->fecha_ingreso:''?>" />
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#fechaingreso_adscripcion" id="datetime-fechaingreso_adscripcion" name="fechaingreso_adscripcion" placeholder="" value="<?=  $variable->fecha_ingreso != '0000-00-00 00:00:00' ? date( "d-m-Y" ,strtotime($variable->fecha_ingreso)) : ''  ?> " />
                             <div class="input-group-append" data-target="#fechaingreso_adscripcion" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar"></i></div>
                             </div>
@@ -891,7 +893,7 @@ $encrypt = new Encrypt();
                 </div>
 
             </div>
-
+        </form>    
     </div>
 </div>
 <div class="card card-primary">
@@ -899,6 +901,8 @@ $encrypt = new Encrypt();
         <h3 class="card-title">ADSCRIPCION: DOMICILIO DE ADSCRIPCION</h3>
 
         <div class="card-tools">
+            <a href="#" class="btn btn-tool form-check-label">Ninguno</a>&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" class="form-check-input mt-2" id="btnNingunoAdsDom">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
             </button>
@@ -906,7 +910,7 @@ $encrypt = new Encrypt();
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-
+        <form class="form-horizontal" id="FormAdscripcionDom">
         <div class="row">
             <div class='col-12 col-sm-12 col-md-12'>
                 <div class="form-group">
@@ -1275,16 +1279,40 @@ $encrypt = new Encrypt();
 
         }
 
-        var formDataC = new FormData($("form#FormAdscripcion")[0]);
+        if($('#btnNingunoAds').is(':checked')) {
+            valAdscripcion = 1;
+            
+        } else {
+            valAdscripcion = 0;
+
+            var formDataC = new FormData($("form#FormAdscripcion")[0]);
 
 
-        for (let [key, value] of formDataC.entries()) {
-            formData.append(key, value);
+            for (let [key, value] of formDataC.entries()) {
+                formData.append(key, value);
+            }
+            
         }
 
+        if($('#btnNingunoAdsDom').is(':checked')) {
+            valAdscripcionDom = 1;
+            
+        } else {
+            valAdscripcionDom = 0;
+
+            var formDataD = new FormData($("form#FormAdscripcionDom")[0]);
+
+
+            for (let [key, value] of formDataD.entries()) {
+                formData.append(key, value);
+            }
+            
+        }
+
+
         formData.append('expDocente', val);
-
-
+        formData.append('adscripcion', valAdscripcion);
+        formData.append('adscripcionDom', valAdscripcionDom);
 
         $.ajax({
             url: base_url + '/EditarDatosPersonales',
@@ -1745,4 +1773,46 @@ $encrypt = new Encrypt();
 
 
     });
+
+
+$(document).on('click','#btnNingunoAds',function(){ 
+
+        if($('#btnNingunoAds').is(':checked')) {
+
+
+            $('#FormAdscripcion input').attr('disabled','disabled');
+            
+            $('#FormAdscripcion select').attr('disabled','disabled');
+            
+
+        } else {
+            $('#FormAdscripcion input').attr('disabled',false);
+            
+            $('#FormAdscripcion select').attr('disabled',false);
+            
+        }
+
+
+    });
+
+$(document).on('click','#btnNingunoAdsDom',function(){ 
+
+        if($('#btnNingunoAdsDom').is(':checked')) {
+
+
+            $('#FormAdscripcionDom input').attr('disabled','disabled');
+            
+            $('#FormAdscripcionDom select').attr('disabled','disabled');
+            
+
+        } else {
+            $('#FormAdscripcionDom input').attr('disabled',false);
+            
+            $('#FormAdscripcionDom select').attr('disabled',false);
+            
+        }
+
+
+    });
+
 </script>

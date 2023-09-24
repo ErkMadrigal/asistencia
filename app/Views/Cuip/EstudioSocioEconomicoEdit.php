@@ -481,12 +481,9 @@ $encrypt = new Encrypt();
                 $('.errorField').remove();
 
                 if (response.succes.succes == 'succes') {
-
                     
-
+                    $('#idSocioEconomico').val(response.succes.id);
                     toastr.success(response.succes.mensaje);
-
-                    
 
                     $("html,body").animate({
                         scrollTop: $("#CardGenerales").offset().top

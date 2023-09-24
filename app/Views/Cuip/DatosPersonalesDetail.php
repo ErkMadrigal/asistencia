@@ -153,7 +153,7 @@
                     <div class="form-group">
                         <label for="municipio_nacimiento" class="control-label">Municipio de Nacimiento: </label>
                         <div>
-                            <?= isset($variable->municipio) ? $variable->municipio : ''  ?>
+                            <?= isset($variable->muniE) ? $variable->muniE : ''  ?>
                         </div>
                     </div>
                 </div>                       
@@ -161,7 +161,7 @@
                     <div class="form-group">
                         <label for="cuidad_nacimiento" class="control-label">Cuidad de Nacimiento: </label>
                         <div>
-                            <?= isset($variable->ciudad) ? $variable->ciudad : ''  ?>
+                            <?= isset($variable->ciudE) ? $variable->ciudE : ''  ?>
                         </div>
                     </div>
                 </div>
