@@ -123,7 +123,93 @@
             <?php
             $label = 'B';
             }
-            endif;?>  
+        else: ?>
+
+            <div class="row">
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="tipo" class="control-label">Tipo: <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="tipo" name="tipo">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="determinacion" class=" control-label">Determinación:<span class="text-danger">*</span></label>
+                        <div class="input-group date" id="determinacion" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#determinacion" id="datetime-determinacion" name="determinacion" placeholder="" value="" />
+                            <div class="input-group-append" data-target="#determinacion" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#determinacion").datetimepicker({
+                                    format: 'DD-MM-YYYY',
+                                    locale: moment.locale('es')
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="descripcion" class=" control-label">Descripción:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="descripcion" name="descripcion">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="situacion" class=" control-label">Situación:<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="situacion" name="situacion">
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="inicio_inhabilitacion" class=" control-label">Inicio de la inhabilitación:<span class="text-danger">*</span></label>
+                        <div class="input-group date" id="inicio_inhabilitacion" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#inicio_inhabilitacion" id="datetime-inicio_inhabilitacion" name="inicio_inhabilitacion" placeholder="" value="" />
+                            <div class="input-group-append" data-target="#inicio_inhabilitacion" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#inicio_inhabilitacion").datetimepicker({
+                                    format: 'DD-MM-YYYY',
+                                    locale: moment.locale('es')
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-6'>
+                    <div class="form-group">
+                        <label for="termino_inhabilitacion" class=" control-label">Término de la inhabilitación:<span class="text-danger">*</span></label>
+                        <div class="input-group date" id="termino_inhabilitacion" data-target-input="nearest">
+                            <input type="text" required class="form-control datetimepicker-input" data-target="#termino_inhabilitacion" id="datetime-termino_inhabilitacion" name="termino_inhabilitacion" placeholder="" value="" />
+                            <div class="input-group-append" data-target="#termino_inhabilitacion" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                $("#termino_inhabilitacion").datetimepicker({
+                                    format: 'DD-MM-YYYY',
+                                    locale: moment.locale('es')
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-12 col-md-12'>
+                    <div class="form-group">
+                        <label for="organismo" class=" control-label">Dependencia u organismo que emite la determinación :<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " id="organismo" name="organismo">
+                    </div>
+                </div>
+            </div> <?php
+            
+        endif;?>  
         </div>
         <hr class="mt-3 mb-3" />
             <div id="CardDatossancionesB">
@@ -386,7 +472,202 @@
                 <?php
             $label = 'B';
             }
-            endif;?>   
+        else: ?>
+            <div class="row">
+                    <div class='col-12 col-sm-12 col-md-6'>
+                        <div class="form-group">
+                            <label for="emisora" class=" control-label">Institución emisora:<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control " id="emisora" name="emisora">
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-12 col-md-6'>
+                        <div class="form-group">
+                            <label for="entidad_federativaSE" class=" control-label">Entidad federativa:<span class="text-danger">*</span></label>
+                            <select class="form-control" id="entidad_federativaSE" name="entidad_federativaSE">
+                                <option value="">Selecciona una Opcion</option>
+                                <?php
+                                if (!empty($entidad_federativa)) :
+                                    foreach ($entidad_federativa as  $a) {
+                                ?>
+                                        <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                <?php
+                                    }
+                                endif; ?>
+                            </select>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#entidad_federativaSE").select2({
+                                        theme: "bootstrap4",
+                                        width: "100%"
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-12 col-md-6'>
+                        <div class="form-group">
+                            <label for="delitos" class="control-label">Delitos: <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control " id="delitos" name="delitos">
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-12 col-md-6'>
+                        <div class="form-group">
+                            <label for="motivo" class=" control-label">Motivo:
+                                <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control " id="motivo" name="motivo">
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-12 col-md-6'>
+                        <div class="form-group">
+                            <label for="no_expediente" class="control-label">No. Expediente: <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control " id="no_expediente" name="no_expediente">
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-12 col-md-6'>
+                        <div class="form-group">
+                            <label for="agencia_mp" class=" control-label">Agencia del MP:
+                                <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control " id="agencia_mp" name="agencia_mp">
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-12 col-md-6'>
+                        <div class="form-group">
+                            <label for="averiguacion_previa" class="control-label">Averiguación previa: <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control " id="averiguacion_previa" name="averiguacion_previa">
+                        </div>
+                    </div>
+                    <div class='col-6 col-sm-6'>
+                        <div class="form-group">
+                            <label for="tipo_fuero" class="control-label">Tipo de Fuero: <span class="text-danger">*</span></label>
+                            <div>
+                                <select class="form-control" id="tipo_fuero" name="tipo_fuero">
+                                    <option value="">Selecciona una Opcion</option>
+                                    <?php
+                                    if (!empty($tipo_fuero)) :
+                                        foreach ($tipo_fuero as  $a) {
+                                    ?>
+                                            <option value="<?= $a->id ?>"><?= $a->valor ?></option>
+                                    <?php
+                                        }
+                                    endif; ?>
+                                </select>
+                                <script>
+                                    $(document).ready(function() {
+                                        $("#tipo_fuero").select2({
+                                            theme: "bootstrap4",
+                                            width: "100%"
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-12 col-md-6'>
+                        <div class="form-group">
+                            <label for="averiguacion_estado" class="control-label">Estado de la averiguación previa: <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control " id="averiguacion_estado" name="averiguacion_estado">
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-6'>
+                        <div class='form-group'>
+                            <label for="inicio_averiguacion">Inicio de la averiguación: <span class="text-danger">*</span></label>
+                            <div class="input-group date" id="inicio_averiguacion" data-target-input="nearest">
+                                <input type="text" required class="form-control datetimepicker-input" data-target="#inicio_averiguacion" id="datetime-inicio_averiguacion" name="inicio_averiguacion" placeholder="" value="" />
+                                <div class="input-group-append" data-target="#inicio_averiguacion" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                                $(function() {
+                                    $("#inicio_averiguacion").datetimepicker({
+                                        format: 'DD-MM-YYYY',
+                                        locale: moment.locale('es')
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-6'>
+                        <div class='form-group'>
+                            <label for="al_dia">Al día: <span class="text-danger">*</span></label>
+                            <div class="input-group date" id="al_dia" data-target-input="nearest">
+                                <input type="text" required class="form-control datetimepicker-input" data-target="#al_dia" id="datetime-al_dia" name="al_dia" placeholder="" value="" />
+                                <div class="input-group-append" data-target="#al_dia" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                                $(function() {
+                                    $("#al_dia").datetimepicker({
+                                        format: 'DD-MM-YYYY',
+                                        locale: moment.locale('es')
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class='col-6 col-sm-12 col-md-6'>
+                        <div class="form-group">
+                            <label for="juzgado" class=" control-label">Juzgado:<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control " id="juzgado" name="juzgado">
+
+                        </div>
+                    </div>
+                    <div class='col-6 col-sm-12 col-md-6'>
+                        <div class="form-group">
+                            <label for="no_proceso" class=" control-label">No. Proceso:<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control " id="no_proceso" name="no_proceso">
+
+                        </div>
+                    </div>
+                    <div class='col-6 col-sm-12 col-md-6'>
+                        <div class="form-group">
+                            <label for="estado_procesal" class=" control-label">Estado Procesal:<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control " id="estado_procesal" name="estado_procesal">
+
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-6'>
+                        <div class='form-group'>
+                            <label for="inicio_proceso">Inicio del proceso: <span class="text-danger">*</span></label>
+                            <div class="input-group date" id="inicio_proceso" data-target-input="nearest">
+                                <input type="text" required class="form-control datetimepicker-input" data-target="#inicio_proceso" id="datetime-inicio_proceso" name="inicio_proceso" placeholder="" value="" />
+                                <div class="input-group-append" data-target="#inicio_proceso" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                                $(function() {
+                                    $("#inicio_proceso").datetimepicker({
+                                        format: 'DD-MM-YYYY',
+                                        locale: moment.locale('es')
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class='col-12 col-sm-6'>
+                        <div class='form-group'>
+                            <label for="al_dia_proceso">Al día: <span class="text-danger">*</span></label>
+                            <div class="input-group date" id="al_dia_proceso" data-target-input="nearest">
+                                <input type="text" required class="form-control datetimepicker-input" data-target="#al_dia_proceso" id="datetime-al_dia_proceso" name="al_dia_proceso" placeholder="" value="" />
+                                <div class="input-group-append" data-target="#al_dia_proceso" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                                $(function() {
+                                    $("#al_dia_proceso").datetimepicker({
+                                        format: 'DD-MM-YYYY',
+                                        locale: moment.locale('es')
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            <?php
+        endif;?>   
             </div>
             <hr class="mt-3 mb-3" />
             <div id="CardDatosResoluionB">
@@ -472,7 +753,50 @@
         <?php
             $label = 'B';
             }
-            endif;?>   
+        else: ?>
+            
+            <div class="row">
+            <div class='col-6 col-sm-12 col-md-6'>
+                <div class="form-group">
+                    <label for="tipo_estimulo" class=" control-label">Tipo:<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control " id="tipo_estimulo" name="tipo_estimulo">
+                </div>
+            </div>
+            <div class='col-12 col-sm-12 col-md-6'>
+                <div class="form-group">
+                    <label for="descripcion_estimulo" class=" control-label">Descripción:<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control " id="descripcion_estimulo" name="descripcion_estimulo">
+                </div>
+            </div>
+            <div class='col-12 col-sm-12 col-md-6'>
+                <div class="form-group">
+                    <label for="dependencia" class=" control-label">Dependencia que otorga:<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control " id="dependencia" name="dependencia">
+                </div>
+            </div>
+            <div class='col-12 col-sm-6'>
+                <div class='form-group'>
+                    <label for="otrogado_estimulo">Otorgado: <span class="text-danger">*</span></label>
+                    <div class="input-group date" id="otrogado_estimulo" data-target-input="nearest">
+                        <input type="text" required class="form-control datetimepicker-input" data-target="#otrogado_estimulo" id="datetime-otrogado_estimulo" name="otrogado_estimulo" placeholder="" value="" />
+                        <div class="input-group-append" data-target="#otrogado_estimulo" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $(function() {
+                            $("#otrogado_estimulo").datetimepicker({
+                                format: 'DD-MM-YYYY',
+                                locale: moment.locale('es')
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+        
+            <?php
+        endif;?>   
     </div>
             <hr class="mt-3 mb-3" />
             <div id="CardDatosEstimuloB">
