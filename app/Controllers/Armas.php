@@ -1000,5 +1000,5 @@ class Armas extends BaseController {
 		}
 	}
 
-	
+	//version recuperada
 }
