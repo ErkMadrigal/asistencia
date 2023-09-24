@@ -25,7 +25,7 @@ $encrypt = new Encrypt();
         <form class="form-horizontal" id="EmpleoSeguridadPublica">
         <div id="CardEMPLEOS">
             <div class="row">
-                <input type="hidden" class="form-control " id="idSegPublica" name="idSegPublica" value="<?= $encrypt->Encrypt($seguridad->id) ?>"><?= csrf_field() ?>
+                <input type="hidden" class="form-control " id="idSegPublica" name="idSegPublica" value="<?= isset($seguridad->id)?$encrypt->Encrypt($seguridad->id):"" ?>"><?= csrf_field() ?>
                 <div class='col-12 col-sm-12 col-md-6'>
                     <div class="form-group">
                         <label for="dependencia" class=" control-label">Dependencia:<span class="text-danger">*</span></label>
@@ -79,7 +79,7 @@ $encrypt = new Encrypt();
                         <select class="form-control" id="coloniacodigoSegPub" name="coloniacodigoSegPub">
                         <option value="">Selecciona una Opcion</option>
                         
-                          <option selected value="<?= $seguridad->colonia ?>"><?= $seguridad->colonia ?></option>
+                          <option selected value="<?= isset($seguridad->colonia)?$seguridad->colonia:"" ?>"><?= isset($seguridad->colonia)?$seguridad->colonia:"" ?></option>
 
 
                         
@@ -269,7 +269,7 @@ $encrypt = new Encrypt();
                         <select class="form-control" id="estadocodigoSegPub" name="estadocodigoSegPub">
                         <option value="">Selecciona una Opcion</option>
                         
-                              <option selected value="<?= $seguridad->estado?>"><?= $seguridad->estado?></option>
+                              <option selected value="<?= isset($seguridad->estado)?$seguridad->estado:"" ?>"><?= isset($seguridad->estado)?$seguridad->estado:"" ?></option>
 
                         
                     </select>
@@ -292,7 +292,7 @@ $encrypt = new Encrypt();
                         <select class="form-control" id="municipiocodigoSegPub" name="municipiocodigoSegPub">
                         <option value="">Selecciona una Opcion</option>
                         
-                           <option selected value="<?= $seguridad->municipio ?>"><?= $seguridad->municipio ?></option>
+                           <option selected value="<?= isset($seguridad->municipio)?$seguridad->municipio:"" ?>"><?= isset($seguridad->municipio)?$seguridad->municipio:"" ?></option>
                         
                     </select>
                             <script>
@@ -403,6 +403,7 @@ $encrypt = new Encrypt();
                 if (response.succes.succes == 'succes') {
 
 
+                    $('#idSegPublica').val(response.succes.id);
                     toastr.success(response.succes.mensaje);
 
                     $("html,body").animate({scrollTop: $("#cardEmplSeguridad").offset().top},2000);

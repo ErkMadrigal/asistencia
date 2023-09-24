@@ -691,6 +691,7 @@ function estatusRenderer(data, type, full, meta) {
 
                 if (response.succes.succes == 'succes') {
 
+                    $('#idAltaEmpleado').val(response.succes.id);
                     toastr.success(response.succes.mensaje);
 
                     $("html,body").animate({
