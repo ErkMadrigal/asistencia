@@ -63,7 +63,7 @@ class Cuip extends BaseController {
 
         	$data['CuipPersonal'] = $dataCrud['data'];
 
-			$data['dataBaja'] = $this->modelCuip->get_motivo_baja("Tipo Baja");
+			$data['dataBaja'] = $this->modelCuip->get_motivo_baja("Motivo Desercion");
 			
 			return view('Cuip/CuipPersonal', $data);
 		}	
