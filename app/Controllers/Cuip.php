@@ -6261,7 +6261,7 @@ class Cuip extends BaseController {
 				$resoluciones = $this->request->getPost('resoluciones');
 				$estimulo = $this->request->getPost('estimulo');
 
-				if( $sanciones == 0 && $resoluciones == 0 && $estimulo == 0){
+				
 
 					if($sanciones == 0){
 				
@@ -6533,11 +6533,7 @@ class Cuip extends BaseController {
 						$errors = $this->validator->getErrors();
 					}
 
-				} else {
-
-					$dontSucces = ["error" => "error",
-                    				  "mensaje" => 	'Ningun dato capturado'  ];	
-				}	
+					
 					
 
 			} else {
