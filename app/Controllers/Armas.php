@@ -980,7 +980,6 @@ class Armas extends BaseController {
 			}
 		}
 	}
-
 	
 	public function eliminarCarpeta() {
 		
