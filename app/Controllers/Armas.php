@@ -47,14 +47,21 @@ class Armas extends BaseController {
 					'clase' => $v->clase,
 					'folio_manif' => $v->folio_manif,
                     'idMarca' => $v->idMarca,
-					'activo' => $v->activo
+					'activo' => $v->activo,
+					'No_oficio' => $v->No_oficio,
+					'folio' => $v->folio,
+					'Modalidad' => $v->Modalidad,
+					'direccion' => $v->direccion
+
 				) ;
 			}
 		
-			$dataCrud = ['data' => $result]; 
+			$dataCrud = [
+                'data' => $result]; 
 
         	$data['arma'] = $dataCrud['data'];
 
+		$data['dataBaja'] = $this->modelArmas->get_motivo_baja("Baja Juridico");
 			
 			return view('Armas/armascatalogo', $data);
 		}	
@@ -997,6 +1004,32 @@ class Armas extends BaseController {
 			echo "La carpeta no existe o no se puede acceder.";
 		}
 	}
+
+	public function deleteArmaJuridico(){
+        if ($this->request->getMethod() == "post"){
+            $errors = [];
+            $succes = [];
+            $dontSucces = [];
+            $data = [];
+			$validate = [];
+
+            $motivo = empty($_POST['motivo']) ? '' : $_POST['motivo'] ;
+			if($motivo != ''){
+				$delete = $this->modelArmas->deleteArmaJuridico($_POST["id"], $motivo );
+				
+				if ($delete) {
+					$succes = ["mensaje" => 'Exito', "succes" => "succes"];
+					$data = $delete;
+				} else {
+					$dontSucces = ["error" => "error", "mensaje" => 'Hubo un error al Obtener los Datos.'];
+				}
+			}else{
+				$dontSucces = ["error" => "error", "mensaje" => 'Error: Es requerido el motivo.'];
+			}
+				
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+		}
+    }
 
 	
 }

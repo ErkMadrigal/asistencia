@@ -6,6 +6,8 @@ use App\Libraries\Encrypt;
 class UserRules{
 
 	private $encrypt;
+	private $db;
+	private $model;
 	
 
 	public function __construct()

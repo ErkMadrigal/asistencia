@@ -242,6 +242,13 @@ $routes->post('detailIncidencias', 'Incidencias::detail',['filter' => 'auth']);
 $routes->post('deleteArmaJuridico', 'Armas::deleteArmaJuridico',['filter' => 'auth']);
 
 
+//RH
+$routes->get('incidencias_empeado', 'RH::index',['filter' => 'auth']);
+$routes->get('getAltasEmpleados', 'RH::getAltasEmpleados',['filter' => 'auth']);
+$routes->get('getBajasEmpleados', 'RH::getBajasEmpleados',['filter' => 'auth']);
+
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
