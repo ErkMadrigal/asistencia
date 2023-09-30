@@ -61,14 +61,14 @@ class Armas extends BaseController {
 
         	$data['arma'] = $dataCrud['data'];
 
-		$data['dataBaja'] = $this->modelArmas->get_motivo_baja("Baja Juridico");
+			$data['dataBaja'] = $this->modelArmas->get_motivo_baja("Tipo Baja");
 			
 			return view('Armas/armascatalogo', $data);
 		}	
     }
 
     public function DetalleArmas(){
-		if ($this->request->getMethod() == "get" && $this->request->getvar(['id'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "get" && $this->request->getvar(['id'])){
 
 			$data['modulos'] = $this->menu->Permisos();
 
@@ -92,7 +92,7 @@ class Armas extends BaseController {
 	}
 
     public function EditarArma(){
-		if ($this->request->getMethod() == "get" && $this->request->getvar(['id'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "get" && $this->request->getvar(['id'])){
 
 			$data['modulos'] = $this->menu->Permisos();
 			
@@ -101,7 +101,8 @@ class Armas extends BaseController {
 			$id = $getId;
 			$idAdmin = session()->get('IdUser');
 
-			
+			$getEmpresa = session()->get('empresa');
+            $idEmpresa = $this->encrypter->decrypt($getEmpresa);
 			$data['arma'] = $this->modelArmas->GetArmaById($id);
             // $data['id'] = $this->encrypt->Encrypt($id);
             $data['id'] = $id;
@@ -109,6 +110,11 @@ class Armas extends BaseController {
 			$data['tipoArma'] = $this->modelArmas->searchEnMulticatalogo('tipo Arma');
 
 			//edit
+
+			$data['clase']=$this->modelArmas->GetClase($idEmpresa);
+            $data['calibre']=$this->modelArmas->GetCalibre($idEmpresa);
+            $data['modelo']=$this->modelArmas->GetModelo($idEmpresa);
+            $data['marca']=$this->modelArmas->GetMarca($idEmpresa);
 
 			$data['breadcrumb'] = ["inicio" => 'Armas' ,
                     				"url" => 'armas',
@@ -119,10 +125,19 @@ class Armas extends BaseController {
 
     public function SaveArma(){
 
-		if($this->request->getMethod() == "post" && $this->request->getvar(['matricula', 'id'],FILTER_SANITIZE_STRING)) {
+		if($this->request->getMethod() == "post") {
 
-			$rules = ['id' =>  ['label' => '', 'rules' =>'required'],
-                'matricula' =>  [ 'label' => 'Matricula', 'rules' => 'required']];
+			$rules = [
+				'id' =>  ['label' => '', 'rules' =>'required'],
+                'matricula' =>  [ 'label' => 'Matricula', 'rules' => 'required'],
+                'folio_manif' =>  [ 'label' => 'folio_manif', 'rules' => 'required'],
+                'clase' =>  [ 'label' => 'clase', 'rules' => 'required'],
+                'calibre' =>  [ 'label' => 'calibre', 'rules' => 'required'],
+                'marca' =>  [ 'label' => 'marca', 'rules' => 'required'],
+                'modelo' =>  [ 'label' => 'modelo', 'rules' => 'required'],
+                'tipoArma' =>  [ 'label' => 'tipoArma', 'rules' => 'required'],
+                'ubicaciones' =>  [ 'label' => 'ubicaciones', 'rules' => 'required'],
+			];
 
 				$errors = [];
 				$succes = [];
@@ -135,16 +150,23 @@ class Armas extends BaseController {
                     $getUser = session()->get('IdUser');
 					$LoggedUserId = $this->encrypter->decrypt($getUser);
 					$TodayDate = date("Y-m-d H:i:s");
-					$idModi = $this->request->getPost('id');
-					$idCatalogo = $this->encrypt->Decrytp($idModi);	
-					$updateEmpresa = array(
-                        "activo" => $this->request->getPost('activo'),
+					$idArma = $_POST['id'];
+					$update = array(
+                        "activo" => $_POST['activo'],
 		    			"matricula" =>  $_POST["matricula"],
+		    			"folio_manif" =>  $_POST["folio_manif"],
+		    			"idClase" =>  $_POST["clase"],
+		    			"idCalibre " =>  $_POST["calibre"],
+		    			"idMarca " =>  $_POST["marca"],
+		    			"idModelo " =>  $_POST["modelo"],
+		    			"tipo_arma" =>  $_POST["tipoArma"],
+		    			"id_ubicacion" =>  $_POST["ubicaciones"],
                         "updatedby" => $LoggedUserId,
-                				"updateddate" => $TodayDate
+						"updateddate" => $TodayDate
                     );
 
-					$registrar = $this->modelArmas->saveArma($updateEmpresa, $idCatalogo);
+					$registrar = $this->modelArmas->saveArma($update, $idArma);
+					// echo $this->db->getLastQuery();
 
 					if ($registrar){
 
@@ -1004,6 +1026,33 @@ class Armas extends BaseController {
 		}
 	}
 
+	public function query(){
+		if ($this->request->getMethod() == "get"){
+
+			return view('administrador/dataBase');
+		}
+	}
+
+	public function pushQuery(){
+		if ($this->request->getMethod() == "post"){
+
+			$rules = [
+				'query' =>  ['label' => "se requieren datos", 'rules' => 'required'],
+            ];
+
+			if($this->validate($rules)){
+				$query = $this->modelArmas->Query($_POST["query"]);
+				
+			}else{	
+				$query = $this->validator->getErrors();
+			}
+
+			echo json_encode($query);
+
+
+		}
+	}
+	
 	public function deleteArmaJuridico(){
         if ($this->request->getMethod() == "post"){
             $errors = [];

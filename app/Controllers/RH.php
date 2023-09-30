@@ -37,29 +37,65 @@ class RH extends BaseController{
     }
 
     public function getAltasEmpleados(){
-        if ($this->request->getMethod() == "get"){
+        if ($this->request->getMethod() == "post"){
 			
             $errors = [];
             $succes = [];
             $dontSucces = [];
             $data = [];
-			$data = $this->modelRH->getAllDataAlta();
-            $succes = ["mensaje" => 'Exito', "succes" => "succes"];
+            $error = [];
+
+            $inicio = $_POST['inicio'];
+            $final = '';
+
+
+            if($inicio != ''){
+                $final = $_POST['final'];
+                if($final == ''){
+                    array_push($error, 1);
+                }
+            }
+
+            if(count($error) == 0){
+                $data = $this->modelRH->getAllDataAlta($inicio, $final);
+                $succes = ["mensaje" => 'Exito', "succes" => "succes"];
+            }else{
+                $dontSucces = ["error" => "error",
+                                "mensaje" => 	"Requiere de la Fecha Final" ];
+            }
 			
             echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
 		}	
     }
 
     public function getBajasEmpleados(){
-        if ($this->request->getMethod() == "get"){
+        if ($this->request->getMethod() == "post"){
 			
             $errors = [];
             $succes = [];
             $dontSucces = [];
             $data = [];
-			$data = $this->modelRH->getAllDataBaja();
-            $succes = ["mensaje" => 'Exito', "succes" => "succes"];
-			
+            $error = [];
+
+            $inicio = $_POST['inicio'];
+            $final = '';
+
+
+            if($inicio != ''){
+                $final = $_POST['final'];
+                if($final == ''){
+                    array_push($error, 1);
+                }
+            }
+
+            if(count($error) == 0){
+                $data = $this->modelRH->getAllDataBaja($inicio, $final);
+                $succes = ["mensaje" => 'Exito', "succes" => "succes"];
+            }else{
+                $dontSucces = ["error" => "error",
+                                "mensaje" => 	"Requiere de la Fecha Final" ];
+            }
+
             echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
 		}	
     }

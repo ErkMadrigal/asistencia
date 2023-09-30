@@ -142,7 +142,7 @@ use App\Libraries\Encrypt;
                         <select id="ubicaciones" name="ubicaciones" class="form-control" >
                             <option value="" selected>Selecciona una Opción</option>
                             <?php foreach($ubicaciones as $ubicacion):?>
-                                <option value="<?=$ubicacion->id_ubicacion?>"><?=$ubicacion->direccion?></option>
+                                <option value="<?=$ubicacion->id_ubicacion?>"><?=$ubicacion->direccion?> <?=$ubicacion->No_oficio?></option>
                             <?php endforeach;?>
                         </select>
                         <script>

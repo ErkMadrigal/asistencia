@@ -101,6 +101,8 @@
 
     let array_bajas = <?= json_encode($dataBaja) ?>
 
+    console.log(array_bajas)
+
     array_bajas.forEach(baja => {
         data_Bajas[baja.id] = baja.valor;
     });

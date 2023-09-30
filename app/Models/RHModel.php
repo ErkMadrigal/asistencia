@@ -21,7 +21,7 @@ class RHModel
 
     }
 
-    public function getAllDataAlta(){
+    public function getAllDataAlta($inicio = '', $final = ''){
         $builder = $this->db->table('datos_personales dp');
         $builder->select("de.numEmpleado, dp.apellido_paterno, dp.apellido_materno, dp.primer_nombre, dp.segundo_nombre, de.fecha_ingreso, de.nss, dp.rfc, dp.curp, dp.idCodigoPostal, cdb.valor banco, de.cuentaBanco, de.CLABE, de.sueldo, de.pagoExterno, dp.numero_telefono, cli.nombre_corto cliente, ub.nombre_ubicacion, cdp.valor puesto, cdtr.valor turno, dp.nombre_jefe, concat(sua.nombre, ' ', sua.apellido_paterno) nombreAlta");
         $builder->join("datos_empleado de", "dp.id = de.idPersonal", "left");
@@ -34,13 +34,16 @@ class RHModel
         $builder->join("catalogos_detalle cdtr", "cdtr.id = tr.idTurnos", "left");
         $builder->join("sys_usuarios_admin sua", "sua.id = dp.createdby", "left");
         $builder->where("dp.activo", "1");
-
+        if($inicio != '' || $final != ''){
+            $builder->where("de.fecha_ingreso >= ", $inicio);
+            $builder->where("de.fecha_ingreso <= ", $final);
+        }
         return $builder->get()->getResult();
     }
 
-    public function getAllDataBaja(){
+    public function getAllDataBaja($inicio = '', $final = ''){
         $builder = $this->db->table('datos_personales dp');
-        $builder->select("de.numEmpleado, dp.apellido_paterno, dp.apellido_materno, dp.primer_nombre, dp.segundo_nombre, de.fecha_ingreso, de.inactivateddate fecha_baja, de.inactivateddate fecha_efectiva_baja, cli.nombre_corto cliente, ub.nombre_ubicacion, cdp.valor puesto, cdtr.valor turno, dp.nombre_jefe,  de.sueldo, cdf.valor finiquito, cdb.valor tipoBaja, de.motivo_baja, concat(sua.nombre, ' ', sua.apellido_paterno) nombreBaja ");
+        $builder->select("de.numEmpleado, dp.apellido_paterno, dp.apellido_materno, dp.primer_nombre, dp.segundo_nombre, de.fecha_ingreso, dp.fecha_sol_baja fecha_baja, dp.fecha_efec_baja fecha_efectiva_baja, cli.nombre_corto cliente, ub.nombre_ubicacion, cdp.valor puesto, cdtr.valor turno, dp.nombre_jefe,  de.sueldo, cdf.valor finiquito, cdb.valor tipoBaja, de.motivo_baja, concat(sua.nombre, ' ', sua.apellido_paterno) nombreBaja ");
         $builder->join("datos_empleado de", "dp.id = de.idPersonal", "left");
         $builder->join("cliente cli", "cli.id = de.idCliente", "left");
         $builder->join("ubicacion ub", "ub.id = de.idUbicacion", "left");
@@ -51,6 +54,11 @@ class RHModel
         $builder->join("catalogos_detalle cdtr", "cdtr.id = tr.idTurnos", "left");
         $builder->join("catalogos_detalle cdb", "cdb.id = de.id_motivo", "left");
         $builder->join("sys_usuarios_admin sua", "sua.id = dp.inactivateddate", "left");
+        $builder->where("dp.activo", "0");
+        if($inicio != '' || $final != ''){
+            $builder->where("dp.fecha_efec_baja >= ", $inicio);
+            $builder->where("dp.fecha_efec_baja <= ", $final);
+        }
         return $builder->get()->getResult();
     }
 

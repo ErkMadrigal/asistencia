@@ -1,5 +1,14 @@
 <?= $this->extend('includes/main') ?>
 <?= $this->section('content') ?>
+<?php
+
+use CodeIgniter\HTTP\RequestInterface;
+use App\Models\ArmasModel;
+use App\Libraries\Encrypt;
+
+ $encrypt = new Encrypt();
+
+?>
 <div id="load" class=" spinner text-secondary" role="status">
     </div>
 
@@ -29,16 +38,16 @@
                     <div class="form-group">
                         <label for="folio_manif" class="control-label">Folio-Manif: </label>
                         <div >
-                            <input type="text"  class="form-control " disabled id="folio_manif" name="folio_manif"  value="<?= $arma->folio_manif ?>">
+                            <input type="text"  class="form-control "  id="folio_manif" name="folio_manif"  value="<?= $arma->folio_manif ?>">
                             
                         </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-6'>
+                <!-- <div class='col-12 col-sm-6'>
                     <div class="form-group">
                         <label for="idClase" class="control-label">Clase: </label>
                         <div >
-                            <input type="text"  class="form-control " disabled id="idClase" name="idClase"  value="<?= $arma->clase ?>">
+                            <input type="text"  class="form-control "  id="idClase" name="idClase"  value="<?= $arma->clase ?>">
                             
                         </div>
                     </div>
@@ -47,7 +56,7 @@
                     <div class="form-group">
                         <label for="idCalibre" class="control-label">Calibre: </label>
                         <div >
-                            <input type="text"  class="form-control " disabled id="idCalibre" name="idCalibre"  value="<?= $arma->calibre ?>">
+                            <input type="text"  class="form-control "  id="idCalibre" name="idCalibre"  value="<?= $arma->calibre ?>">
                             
                         </div>
                     </div>
@@ -56,7 +65,7 @@
                     <div class="form-group">
                         <label for="idMarca" class="control-label">Marca: </label>
                         <div >
-                            <input type="text"  class="form-control " disabled id="idMarca" name="idMarca"  value="<?= $arma->marca ?>">
+                            <input type="text"  class="form-control "  id="idMarca" name="idMarca"  value="<?= $arma->marca ?>">
                             
                         </div>
                     </div>
@@ -65,15 +74,87 @@
                     <div class="form-group">
                         <label for="idModelo" class="control-label">Modelo: </label>
                         <div >
-                            <input type="text"  class="form-control " disabled id="idModelo" name="idModelo"  value="<?= $arma->modelo ?>">
+                            <input type="text"  class="form-control "  id="idModelo" name="idModelo"  value="<?= $arma->modelo ?>">
                             
                         </div>
+                    </div>
+                </div> -->
+
+                <div class='col-12 col-sm-6'>    
+                    <div class="form-group">
+                        <label for="clase" class="control-label">Clase: <span class="text-danger">*</span></label>
+                        <select class="form-control" id="clase" name="clase">
+                        <option value="">Selecciona una Clase</option>';
+                        <?php
+                                if( !empty($clase) ):
+                                    foreach($clase as  $a):?>
+                                            <option <?= (isset($a->id) == $a->id ? 'selected' : '') ?> value="<?=$a->id?>"><?= $a->valor ?></option>
+                                            <?php
+                                    endforeach;
+                                endif;?>
+                                    </select><script>$(document).ready(function() {
+                                        $("#clase").select2({theme: "bootstrap4",width:"100%"});
+                                        });</script>
                     </div>
                 </div>
                 <div class='col-12 col-sm-6'>    
                     <div class="form-group">
+                        <label for="calibre" class="control-label">Calibre: <span class="text-danger">*</span></label>
+                        <select class="form-control" id="calibre" name="calibre" >
+                        <option value="">Selecciona un Calibre</option>';
+                        <?php
+                                if( !empty($calibre) ):
+                                    foreach($calibre as  $a):?>
+                                            <option <?= (isset($a->id) == $a->id ? 'selected' : '') ?> value="<?=$a->id?>"><?= $a->valor ?></option>
+                                            <?php
+                                    endforeach;
+                                endif;?>
+                                    </select><script>$(document).ready(function() {
+                                        $("#calibre").select2({theme: "bootstrap4",width:"100%"});
+                                        });</script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-6'>    
+                    <div class="form-group">
+                        <label for="marca" class="control-label">Marca: <span class="text-danger">*</span></label>
+                        <select class="form-control" id="marca" name="marca">
+                        <option value="">Selecciona una Marca</option>';
+                        <?php
+                                if( !empty($marca) ):
+                                    foreach($marca as  $a):?>
+                                            <option <?= (isset($a->id) == $a->id ? 'selected' : '') ?> value="<?=$a->id?>"><?= $a->valor ?></option>
+                                            <?php
+                                    endforeach;
+                                endif;?>
+                                    </select><script>$(document).ready(function() {
+                                        $("#marca").select2({theme: "bootstrap4",width:"100%"});
+                                        });</script>
+
+                    </div>
+                </div>
+                <div class='col-12 col-sm-6'>    
+                    <div class="form-group">
+                        <label for="modelo" class="control-label">Modelo: <span class="text-danger">*</span></label>
+                        <select class="form-control" id="modelo" name="modelo" >
+                        <option value="">Selecciona un Modelo</option>';
+                        <?php
+                                if( !empty($modelo) ):
+                                    foreach($modelo as  $a):?>
+                                            <option <?= (isset($a->id) == $a->id ? 'selected' : '') ?> value="<?=$a->id?>"><?= $a->valor ?></option>
+                                            <?php
+                                    endforeach;
+                                endif;?>
+                                    </select><script>$(document).ready(function() {
+                                        $("#modelo").select2({theme: "bootstrap4",width:"100%"});
+                                        });</script>
+
+                    </div>
+                </div>
+
+                <div class='col-12 col-sm-6'>    
+                    <div class="form-group">
                         <label for="tipo de Arma" class="control-label">Tipo de Arma: <span class="text-danger">*</span></label>
-                        <select disabled id="tipoArma" name="tipoArma" class="form-control" >
+                        <select  id="tipoArma" name="tipoArma" class="form-control" >
                             <option value="" selected>Selecciona una Opción</option>
                             <?php foreach($tipoArma as $tipoAr):?>
                                 <option <?= (isset($arma->id_tipo_arma) == $tipoAr->id ? 'selected' : '') ?> value="<?=$tipoAr->id?>"><?=$tipoAr->valor?></option>
@@ -92,10 +173,10 @@
                 <div class='col-12 col-sm-6'>    
                     <div class="form-group">
                         <label for="modelo" class="control-label">Ubicacion: <span class="text-danger">*</span></label>
-                        <select disabled id="ubicaciones" name="ubicaciones" class="form-control" >
+                        <select id="ubicaciones" name="ubicaciones" class="form-control" >
                             <option value="" selected>Selecciona una Opción</option>
                             <?php foreach($ubicaciones as $ubicacion):?>
-                                <option <?= (isset($arma->id_ubicacion) == $ubicacion->id_ubicacion ? 'selected' : '') ?> value="<?=$ubicacion->id_ubicacion?>"><?=$ubicacion->direccion?></option>
+                                <option <?= (isset($arma->id_ubicacion) == $ubicacion->id_ubicacion ? 'selected' : '') ?> value="<?=$ubicacion->id_ubicacion?>"><?=$ubicacion->direccion?> <?=$ubicacion->No_oficio?></option>
                             <?php endforeach;?>
                         </select>
                         <script>

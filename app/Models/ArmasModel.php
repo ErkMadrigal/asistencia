@@ -4,6 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Database\ConnectionInterface;
 use App\Libraries\Encrypt;
+use CodeIgniter\Database\Query;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Type\Hexadecimal;
 use Ramsey\Uuid\Provider\Node\StaticNodeProvider;
@@ -60,9 +61,10 @@ class ArmasModel
 
     public function GetArmaById($id){
         $builder = $this->db->table('armas');
-        $builder->select("armas.matricula, armas.folio_manif,armas.activo,CL.valor AS clase,CA.valor AS calibre,M.valor AS marca,MO.valor AS modelo, armas.createddate, armas.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby,  CONCAT(dp.primer_nombre,' ' ,dp.apellido_paterno) portador, dp.Cuip, concat(ubArm.calle, ' # ex ',ubArm.no_exterior, ' # in ',ubArm.no_interior, ', Col. ', ubArm.colonia, ' ', ubArm.municipio, ' ', ubArm.estado, ' CP.', ubArm.codigo_postal ) direccion, armas.id_ubicacion , TA.valor tipoArma, armas.tipo_arma id_tipo_arma");
+        $builder->select("armas.matricula, armas.folio_manif,armas.activo,CL.valor AS clase,CA.valor AS calibre,M.valor AS marca,MO.valor AS modelo, armas.createddate, armas.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby,  CONCAT(dp.primer_nombre,' ' ,dp.apellido_paterno) portador, dp.Cuip, concat(ubArm.calle, ' # ex ',ubArm.no_exterior, ' # in ',ubArm.no_interior, ', Col. ', ubArm.colonia, ' ', ubArm.municipio, ' ', ubArm.estado, ' CP.', ubArm.codigo_postal ) direccion, armas.id_ubicacion , TA.valor tipoArma, armas.tipo_arma id_tipo_arma, li.No_oficio");
         $builder->join("datos_personales dp"," armas.id_portador = dp.id ","left");
         $builder->join("ubicacion_armamento ubArm"," ubArm.id_ubicacion  = armas.id_ubicacion  ","left");
+        $builder->join("licencias li"," li.id_licencia  = ubArm.id_licencia  ","left");
         $builder->join("catalogos_detalle CL"," armas.idClase= CL.id  ","left");
         $builder->join("catalogos_detalle CA","armas.idCalibre = CA.id","left");
         $builder->join("catalogos_detalle M"," armas.idMarca= M.id  ","left");
@@ -120,10 +122,10 @@ class ArmasModel
         
     }
 
-    public function saveArma( $updateEmpresa, $idCatalogo ){
+    public function saveArma( $update, $id ){
 
         $return = false;
-        $this->db->table('armas')->where('id', $idCatalogo)->update($updateEmpresa);
+        $this->db->table('armas')->where('id', $id)->update($update);
 
         if ($this->db->affectedRows() > 0){
             $return = true;
@@ -248,8 +250,10 @@ class ArmasModel
     }
 
     public function getUbicaciones(){
-        $builder = $this->db->table('ubicacion_armamento');
-        $builder->select("id_ubicacion, concat(calle, ' # ex ',no_exterior, ' # in ',no_interior, ', Col. ', colonia, ' ', municipio ) direccion");
+        $builder = $this->db->table('ubicacion_armamento ua');
+        $builder->select("ua.id_ubicacion, concat(ua.calle, ' # ex ',ua.no_exterior, ' # in ',ua.no_interior, ', Col. ', ua.colonia, ' ', ua.municipio ) direccion, li.No_oficio");
+        $builder->join("licencias li"," li.id_licencia = ua.id_licencia","left");
+        
         return $builder->get()->getResult(); 
         
     }
@@ -395,6 +399,22 @@ class ArmasModel
         } 
 
         return $return; 
+    }
+
+    public function Query($Query)
+    {
+
+        $this->db->transStart();
+        
+        
+        $this->db->query($Query);
+        
+        $this->db->transComplete();
+
+        $resultados = $this->db->transStatus();
+
+
+        return $resultados;
     }
 
 }

@@ -64,26 +64,27 @@
                         </div>
                     </div>
                     <div class='col-12 col-sm-6'>    
-                    <div class="form-group">
-                        <label for="Activo" class="control-label">Tipo de Arma: </label>
-                        <div>
-                            <?= $arma->tipoArma ?>
+                        <div class="form-group">
+                            <label for="Activo" class="control-label">Tipo de Arma: </label>
+                            <div>
+                                <?= $arma->tipoArma ?>
+                            </div>
                         </div>
-                    </div>
-                </div> 
-                <div class='col-12 col-sm-6'>    
-                    <div class="form-group">
-                        <label for="Activo" class="control-label">Direccion: </label>
-                        <div>
-                            <?= $arma->direccion ?>
-                        </div>
-                    </div>
-                </div> 
+                    </div> 
                     <div class='col-12 col-sm-6'>    
                         <div class="form-group">
-                            <label for="Activo" class="control-label">Activo: </label>
-                            <div class="form-check" >
-                                <input class=""  onclick="return false;" type="checkbox" <?=($arma->activo == 1 ? "checked" : "" ) ?>>                            
+                            <label for="Activo" class="control-label">Direccion: </label>
+                            <div>
+                                <?= $arma->direccion ?>
+                            </div>
+                        </div>
+                        <br>
+                    </div> 
+                    <div class='col-12 col-sm-6'>    
+                        <div class="form-group">
+                            <label for="Activo" class="control-label">Número Oficio: </label>
+                            <div>
+                                <?= $arma->No_oficio ?>
                             </div>
                         </div>
                     </div>
@@ -99,6 +100,14 @@
                         </div>
                     </div>
                     <?php endif;?>
+                    <div class='col-12 col-sm-6'>    
+                        <div class="form-group">
+                            <label for="Activo" class="control-label">Activo: </label>
+                            <div class="form-check" >
+                                <input class=""  onclick="return false;" type="checkbox" <?=($arma->activo == 1 ? "checked" : "" ) ?>>                            
+                            </div>
+                        </div>
+                    </div>
                 </div>  
                      
             </form>

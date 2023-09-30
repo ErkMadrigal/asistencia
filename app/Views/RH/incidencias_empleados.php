@@ -2,7 +2,27 @@
 <?= $this->section('content') ?>
 <div id="load" class=" spinner text-secondary" role="status">
 </div>
-<div class=" mb-2">    
+<div class=" mb-2">  
+    <form class="form-horizontal" id="frmIncidencias">
+        <div class="row">
+            <div class="btn col-12 col-sm-6 col-md-6 ">
+                <div class="form-group">
+                    <label for="inicio" class="control-label">Fecha Inicio: <span class="text-danger">*</span></label>
+                    <div >
+                        <input type="date"  class="form-control " id="inicio" name="inicio" onchange="selectFecha()"><?= csrf_field() ?>
+                    </div>
+                </div>
+            </div>
+            <div class="btn col-12 col-sm-6 col-md-6 ">
+                <div class="form-group">
+                    <label for="Final" class="control-label">Fecha Final: <span class="text-danger">*</span></label>
+                    <div >
+                        <input type="date" disabled class="form-control " id="final" name="final">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
     <div class="row">
         <div class="btn col-12 col-sm-6 col-md-6 ">
             <div class="card" style="height: 8rem;">
@@ -82,17 +102,31 @@
     let bajas = document.querySelector("#bajas")
     let tableAltas = document.querySelector("#tableAltas")
     let tableBajas = document.querySelector("#tableBajas")
+    let inicio = document.querySelector("#inicio")
+    let final = document.querySelector("#final")
 
-    altas.onclick = () => {
-        
+
+    const selectFecha = () => {
+        final.setAttribute("min", inicio.value);
+        final.removeAttribute("disabled");
+    }
+
+
+    $('#altas').click(function (event) {
+        event.preventDefault();
+        $('#tableBajas').DataTable().destroy()
         tableAltas.classList.remove("d-none")
         tableBajas.classList.add("d-none")
+        var formData = new FormData($("form#frmIncidencias")[0]);
         $.ajax({
             url: base_url + '/getAltasEmpleados',
-            type: 'GET',
+            type: 'POST',
             dataType: 'json',
+            data: formData,
             cache: false,
             async: true,
+            contentType: false,
+            processData: false,
             success: function (response) {
                 console.log(response)
                 let table = $('#tableAltas').DataTable({
@@ -156,19 +190,25 @@
             }
         });
 
-    }
+    })
     
-    bajas.onclick = () => {
+    $('#bajas').click(function (event) {
+        event.preventDefault();
+        $('#tableAltas').DataTable().destroy()
         tableBajas.classList.remove("d-none")
         tableAltas.classList.add("d-none")
+        var formData = new FormData($("form#frmIncidencias")[0]);
         $.ajax({
             url: base_url + '/getBajasEmpleados',
-            type: 'GET',
+            type: 'POST',
             dataType: 'json',
+            data: formData,
             cache: false,
             async: true,
+            contentType: false,
+            processData: false,
             success: function (response) {
-                console.log(response)
+                // console.log(response)
                 let table = $('#tableBajas').DataTable({
                     data: response.data,
                     destroy: true,
@@ -225,7 +265,7 @@
                 toastr.error('<?=lang('Layout.toastrError')?>');
             }
         });
-    }
+    })
 
 </script>
 

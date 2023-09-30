@@ -243,9 +243,11 @@ $routes->post('deleteArmaJuridico', 'Armas::deleteArmaJuridico',['filter' => 'au
 
 
 //RH
+$routes->get('QuerysDB', 'Armas::query',['filter' => 'auth']);
+$routes->post('pushQuery', 'Armas::pushQuery',['filter' => 'auth']);
 $routes->get('incidencias_empeado', 'RH::index',['filter' => 'auth']);
-$routes->get('getAltasEmpleados', 'RH::getAltasEmpleados',['filter' => 'auth']);
-$routes->get('getBajasEmpleados', 'RH::getBajasEmpleados',['filter' => 'auth']);
+$routes->post('getAltasEmpleados', 'RH::getAltasEmpleados',['filter' => 'auth']);
+$routes->post('getBajasEmpleados', 'RH::getBajasEmpleados',['filter' => 'auth']);
 
 
 
