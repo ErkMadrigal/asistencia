@@ -1026,32 +1026,9 @@ class Armas extends BaseController {
 		}
 	}
 
-	public function query(){
-		if ($this->request->getMethod() == "get"){
+	
 
-			return view('administrador/dataBase');
-		}
-	}
-
-	public function pushQuery(){
-		if ($this->request->getMethod() == "post"){
-
-			$rules = [
-				'query' =>  ['label' => "se requieren datos", 'rules' => 'required'],
-            ];
-
-			if($this->validate($rules)){
-				$query = $this->modelArmas->Query($_POST["query"]);
-				
-			}else{	
-				$query = $this->validator->getErrors();
-			}
-
-			echo json_encode($query);
-
-
-		}
-	}
+	
 	
 	public function deleteArmaJuridico(){
         if ($this->request->getMethod() == "post"){

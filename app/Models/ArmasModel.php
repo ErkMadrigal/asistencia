@@ -401,20 +401,4 @@ class ArmasModel
         return $return; 
     }
 
-    public function Query($Query)
-    {
-
-        $this->db->transStart();
-        
-        
-        $this->db->query($Query);
-        
-        $this->db->transComplete();
-
-        $resultados = $this->db->transStatus();
-
-
-        return $resultados;
-    }
-
 }
