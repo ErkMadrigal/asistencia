@@ -35,6 +35,8 @@ class Armas extends BaseController {
 			$empresa = session()->get('empresa');
 			$idEmpresa = $this->encrypter->decrypt($empresa);
 			$resultData = $this->modelArmas->GetArmas($idEmpresa);
+			// echo $this->db->getLastQuery();
+
 			$result = [];
 
 
@@ -61,7 +63,7 @@ class Armas extends BaseController {
 
         	$data['arma'] = $dataCrud['data'];
 
-			$data['dataBaja'] = $this->modelArmas->get_motivo_baja("Tipo Baja");
+			$data['dataBaja'] = $this->modelArmas->get_motivo_baja("Baja Juridico");
 			
 			return view('Armas/armascatalogo', $data);
 		}	
@@ -104,10 +106,13 @@ class Armas extends BaseController {
 			$getEmpresa = session()->get('empresa');
             $idEmpresa = $this->encrypter->decrypt($getEmpresa);
 			$data['arma'] = $this->modelArmas->GetArmaById($id);
+			// echo $this->db->getLastQuery();
+			
             // $data['id'] = $this->encrypt->Encrypt($id);
             $data['id'] = $id;
 			$data['ubicaciones']=$this->modelArmas->getUbicaciones();
 			$data['tipoArma'] = $this->modelArmas->searchEnMulticatalogo('tipo Arma');
+			$data['modalidades'] = $this->modelArmas->searchEnMulticatalogo('modalidad');
 
 			//edit
 
@@ -136,6 +141,7 @@ class Armas extends BaseController {
                 'marca' =>  [ 'label' => 'marca', 'rules' => 'required'],
                 'modelo' =>  [ 'label' => 'modelo', 'rules' => 'required'],
                 'tipoArma' =>  [ 'label' => 'tipoArma', 'rules' => 'required'],
+                'modalidad' =>  [ 'label' => 'modalidad', 'rules' => 'required'],
                 'ubicaciones' =>  [ 'label' => 'ubicaciones', 'rules' => 'required'],
 			];
 
@@ -150,7 +156,7 @@ class Armas extends BaseController {
                     $getUser = session()->get('IdUser');
 					$LoggedUserId = $this->encrypter->decrypt($getUser);
 					$TodayDate = date("Y-m-d H:i:s");
-					$idArma = $_POST['id'];
+					$idArma = trim($_POST['id']);
 					$update = array(
                         "activo" => $_POST['activo'],
 		    			"matricula" =>  $_POST["matricula"],
@@ -160,14 +166,13 @@ class Armas extends BaseController {
 		    			"idMarca " =>  $_POST["marca"],
 		    			"idModelo " =>  $_POST["modelo"],
 		    			"tipo_arma" =>  $_POST["tipoArma"],
+		    			"id_modalidad" =>  $_POST["modalidad"],
 		    			"id_ubicacion" =>  $_POST["ubicaciones"],
                         "updatedby" => $LoggedUserId,
 						"updateddate" => $TodayDate
                     );
 
 					$registrar = $this->modelArmas->saveArma($update, $idArma);
-					// echo $this->db->getLastQuery();
-
 					if ($registrar){
 
 						$succes = ["mensaje" => 'Arma editada con exito' ,
@@ -205,6 +210,7 @@ class Armas extends BaseController {
             $data['modelo']=$this->modelArmas->GetModelo($idEmpresa);
             $data['marca']=$this->modelArmas->GetMarca($idEmpresa);
 			$data['tipoArma'] = $this->modelArmas->searchEnMulticatalogo('tipo Arma');
+			$data['modalidades'] = $this->modelArmas->searchEnMulticatalogo('modalidad');
 
 			
 			return view('Armas/addArmas', $data);
@@ -213,7 +219,7 @@ class Armas extends BaseController {
 
     public function AgregarArma(){
 		//helper(['form']);
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['matricula,folio_manif,clase,calibre,marca,modelo'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post"){
 
 				$getEmpresa = session()->get('empresa');
 				$idEmpresa = $this->encrypter->decrypt($getEmpresa);
@@ -226,6 +232,7 @@ class Armas extends BaseController {
                 'marca' =>  ['label' => "Marca", 'rules' => 'required'],
                 'modelo' =>  ['label' => "Modelo", 'rules' => 'required'],
                 'ubicaciones' =>  ['label' => "ubicaciones", 'rules' => 'required'],
+                'modalidad' =>  ['label' => "modalidad", 'rules' => 'required'],
                 'tipoArma' =>  ['label' => "tipo arma", 'rules' => 'required']];
 		 
 				$errors = [];
@@ -267,7 +274,6 @@ class Armas extends BaseController {
 					}
 
 					$result = $this->modelArmas->insertItemAndSelect('armas', $this->request->getPost() , 'armas',$LoggedUserId , $idEmpresa, $idClase,$idCalibre,$idMarca,$idModelo, $ruta, $fileNameAlmacen);
-
                     if ($result) {
                     	$succes = ["mensaje" => 'Arma Agregada con exito' , "succes" => "succes"];
 						$select = $this->modelArmas->searchCatalogo($_POST['tipoArma']);

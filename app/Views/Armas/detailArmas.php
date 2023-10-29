@@ -88,6 +88,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class='col-12 col-sm-6'>    
+                        <div class="form-group">
+                            <label for="Activo" class="control-label">Modalidad: </label>
+                            <div>
+                                <?= $arma->modalidad ?>
+                            </div>
+                        </div>
+                    </div>
                     <?php if($arma->portador != ''):?>
                     <div class='col-12 col-sm-6'>    
                         <div class="form-group">

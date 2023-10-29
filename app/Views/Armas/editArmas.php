@@ -88,7 +88,7 @@ use App\Libraries\Encrypt;
                         <?php
                                 if( !empty($clase) ):
                                     foreach($clase as  $a):?>
-                                            <option <?= (isset($a->id) == $a->id ? 'selected' : '') ?> value="<?=$a->id?>"><?= $a->valor ?></option>
+                                            <option <?= ($arma->idClase == $a->id ? 'selected' : '') ?> value="<?=$a->id?>"><?= $a->valor ?></option>
                                             <?php
                                     endforeach;
                                 endif;?>
@@ -105,7 +105,7 @@ use App\Libraries\Encrypt;
                         <?php
                                 if( !empty($calibre) ):
                                     foreach($calibre as  $a):?>
-                                            <option <?= (isset($a->id) == $a->id ? 'selected' : '') ?> value="<?=$a->id?>"><?= $a->valor ?></option>
+                                            <option <?= ($arma->idCalibre == $a->id ? 'selected' : '') ?> value="<?=$a->id?>"><?= $a->valor ?></option>
                                             <?php
                                     endforeach;
                                 endif;?>
@@ -122,7 +122,7 @@ use App\Libraries\Encrypt;
                         <?php
                                 if( !empty($marca) ):
                                     foreach($marca as  $a):?>
-                                            <option <?= (isset($a->id) == $a->id ? 'selected' : '') ?> value="<?=$a->id?>"><?= $a->valor ?></option>
+                                            <option <?= ($arma->idMarca == $a->id ? 'selected' : '') ?> value="<?=$a->id?>"><?= $a->valor ?></option>
                                             <?php
                                     endforeach;
                                 endif;?>
@@ -140,7 +140,7 @@ use App\Libraries\Encrypt;
                         <?php
                                 if( !empty($modelo) ):
                                     foreach($modelo as  $a):?>
-                                            <option <?= (isset($a->id) == $a->id ? 'selected' : '') ?> value="<?=$a->id?>"><?= $a->valor ?></option>
+                                            <option <?= ($arma->idModelo == $a->id ? 'selected' : '') ?> value="<?=$a->id?>"><?= $a->valor ?></option>
                                             <?php
                                     endforeach;
                                 endif;?>
@@ -157,7 +157,7 @@ use App\Libraries\Encrypt;
                         <select  id="tipoArma" name="tipoArma" class="form-control" >
                             <option value="" selected>Selecciona una Opción</option>
                             <?php foreach($tipoArma as $tipoAr):?>
-                                <option <?= (isset($arma->id_tipo_arma) == $tipoAr->id ? 'selected' : '') ?> value="<?=$tipoAr->id?>"><?=$tipoAr->valor?></option>
+                                <option <?= ($arma->id_tipo_arma == $tipoAr->id ? 'selected' : '') ?> value="<?=$tipoAr->id?>"><?=$tipoAr->valor?></option>
                             <?php endforeach;?>
                         </select>
                         <script>
@@ -176,12 +176,31 @@ use App\Libraries\Encrypt;
                         <select id="ubicaciones" name="ubicaciones" class="form-control" >
                             <option value="" selected>Selecciona una Opción</option>
                             <?php foreach($ubicaciones as $ubicacion):?>
-                                <option <?= (isset($arma->id_ubicacion) == $ubicacion->id_ubicacion ? 'selected' : '') ?> value="<?=$ubicacion->id_ubicacion?>"><?=$ubicacion->direccion?> <?=$ubicacion->No_oficio?></option>
+                                <option <?= ($arma->id_ubicacion == $ubicacion->id_ubicacion ? 'selected' : '') ?> value="<?=$ubicacion->id_ubicacion?>"><?=$ubicacion->direccion?> <?=$ubicacion->No_oficio?></option>
                             <?php endforeach;?>
                         </select>
                         <script>
                             $(document).ready(function() {
                                 $("#ubicaciones").select2({
+                                    theme: "bootstrap4",
+                                    width: "100%"
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-6'>    
+                    <div class="form-group">
+                        <label for="modelo" class="control-label">Modalidad: <span class="text-danger">*</span></label>
+                        <select id="modalidad" name="modalidad" class="form-control" >
+                            <option value="" selected>Selecciona una Opción</option>
+                            <?php foreach($modalidades as $modalidad):?>
+                                <option <?= ($arma->id_modalidad == $modalidad->id ? 'selected' : '') ?> value="<?=$modalidad->id?>"><?=$modalidad->valor?></option>
+                        <?php endforeach;?>
+                        </select>
+                        <script>
+                            $(document).ready(function() {
+                                $("#modalidad").select2({
                                     theme: "bootstrap4",
                                     width: "100%"
                                 });

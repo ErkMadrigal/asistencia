@@ -1,7 +1,6 @@
-<?= $this->extend('includes/main') ?>
-<?= $this->section('content') ?>
-
-<?php
+<?php 
+    $this->extend('includes/main');
+    $this->section('content');
 
 use CodeIgniter\HTTP\RequestInterface;
 use App\Models\ArmasModel;
@@ -12,7 +11,7 @@ use App\Libraries\Encrypt;
 ?>
 <div id="load" class=" spinner text-secondary" role="status">
     </div>
-    <div class=" mb-2">    
+    <div class=" mb-2 " style="display: none;">    
         <div class="row">
             <div class="col-12 col-sm-6 col-md-9 ">
             </div>
@@ -157,6 +156,25 @@ use App\Libraries\Encrypt;
                 </div>
                 <div class='col-12 col-sm-6'>    
                     <div class="form-group">
+                        <label for="modelo" class="control-label">Modalidad: <span class="text-danger">*</span></label>
+                        <select id="modalidad" name="modalidad" class="form-control" >
+                            <option value="" selected>Selecciona una Opción</option>
+                            <?php foreach($modalidades as $modalidad):?>
+                            <option value="<?=$modalidad->id?>"><?=$modalidad->valor?></option>
+                        <?php endforeach;?>
+                        </select>
+                        <script>
+                            $(document).ready(function() {
+                                $("#modalidad").select2({
+                                    theme: "bootstrap4",
+                                    width: "100%"
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class='col-12 col-sm-6'>    
+                    <div class="form-group">
                         <label for="folio_manif" class="control-label">Folio Manif: <span class="text-danger">*</span></label>
                         <div >
                             <input type="text"  class="form-control " id="folio_manif" name="folio_manif" >
@@ -197,99 +215,100 @@ use App\Libraries\Encrypt;
                     </div>
                 </div>
             </div>        
+        </form>
         
     </div>
 </div>
-            <div class="row">
-                <div class="col-12 col-sm-6 col-md-3">    
-                    <button id="SaveArmas" class="btn btn-block btn-flat btn-primary " type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
-                </div>
-            </div>
-            </form>
-            <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+<div class="row">
+    <div class="col-12 col-sm-6 col-md-3">    
+        <button id="SaveArmas" class="btn btn-block btn-flat btn-primary "><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Guardar</button>
+    </div>
+</div>
+<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 
-            <script>
+<script>
 
-                let select_excel = document.querySelector("#select-excel")
-                let archivo_excel = document.querySelector("#archivo_excel")
-                let title_excel = document.querySelector("#title_excel")
-                let contenedorExcel = document.querySelector("#contenedorExcel")
+    // let select_excel = document.querySelector("#select-excel")
+    // let archivo_excel = document.querySelector("#archivo_excel")
+    // let title_excel = document.querySelector("#title_excel")
+    // let contenedorExcel = document.querySelector("#contenedorExcel")
 
-                select_excel.onclick = () => {
-                    archivo_excel.click()
-                }
+    // select_excel.onclick = (e) => {
+    //     e.preventDefault()
+    //     archivo_excel.click()
+    // }
 
-                archivo_excel.addEventListener('change', function(event) {
-                var archivoSeleccionado = event.target.files[0];
-                
-                if (archivoSeleccionado) {
-                    title_excel.innerHTML = archivoSeleccionado.name
-                    contenedorExcel.classList.remove('d-none')
-                }
-                });
-                function leerArchivoExcel() {
-
-                    $.ajax({
-                        url: base_url + '/cargaMasivaArmas',
-                        type: 'GET',
-                        dataType: 'json',
-                        cache: false,
-                        async: true,
-                        contentType: false,
-                        processData: false,
-                        success: function (response) {
-
-                            console.log(response);
-                            $('.errorField').remove();
+    // archivo_excel.addEventListener('change', function(event) {
+    //     var archivoSeleccionado = event.target.files[0];
         
-                            if (response.succes.succes == 'succes') {
-        
-                                toastr.success(response.succes.mensaje);
+    //     if (archivoSeleccionado) {
+    //         title_excel.innerHTML = archivoSeleccionado.name
+    //         contenedorExcel.classList.remove('d-none')
+    //     }
+    // });
+    // function leerArchivoExcel() {
 
-                            } else if (response.dontsucces.error == 'error'){
-        
-                                toastr.error(response.dontsucces.mensaje);
-                                        
-                            } else if (Object.keys(response.error).length > 0 ){
-        
-                                for (var clave in response.error){
-                                            
-                                    $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
-                                        
-                                }
-                                    toastr.error('<?=lang('Layout.camposObligatorios')?>');
-                            }
-        
-                            $('#load').removeClass( "spinner-border" );    
-        
-                        },
-                        error: function (jqXHR, textStatus, errorThrown) {
-                            toastr.error('<?=lang('Layout.toastrError')?>');
-                            $('#load').removeClass( "spinner-border" );           
-                        }
-                    });
-                }
+    //     $.ajax({
+    //         url: base_url + '/cargaMasivaArmas',
+    //         type: 'GET',
+    //         dataType: 'json',
+    //         cache: false,
+    //         async: true,
+    //         contentType: false,
+    //         processData: false,
+    //         success: function (response) {
+
+    //             console.log(response);
+    //             $('.errorField').remove();
+
+    //             if (response.succes.succes == 'succes') {
+
+    //                 toastr.success(response.succes.mensaje);
+
+    //             } else if (response.dontsucces.error == 'error'){
+
+    //                 toastr.error(response.dontsucces.mensaje);
+                            
+    //             } else if (Object.keys(response.error).length > 0 ){
+
+    //                 for (var clave in response.error){
+                                
+    //                     $( "<div class='errorField text-danger'>" + response.error[clave] +"</div>" ).insertAfter( "#"+clave+"" );
+                            
+    //                 }
+    //                     toastr.error('<?=lang('Layout.camposObligatorios')?>');
+    //             }
+
+    //             $('#load').removeClass( "spinner-border" );    
+
+    //         },
+    //         error: function (jqXHR, textStatus, errorThrown) {
+    //             toastr.error('<?=lang('Layout.toastrError')?>');
+    //             $('#load').removeClass( "spinner-border" );           
+    //         }
+    //     });
+    // }
 
 
 
-        let select_file = document.querySelector("#select-file")
-        let archivo_file = document.querySelector("#archivo_file")
-        let title_pdf = document.querySelector("#title_pdf")
-        let contenedorPDF = document.querySelector("#contenedorPDF")
+    let select_file = document.querySelector("#select-file")
+    let archivo_file = document.querySelector("#archivo_file")
+    let title_pdf = document.querySelector("#title_pdf")
+    let contenedorPDF = document.querySelector("#contenedorPDF")
 
-        select_file.onclick = (e) => {
-            e.preventDefault()
-            archivo_file.click()
+    select_file.onclick = (e) => {
+        e.preventDefault()
+        archivo_file.click()
+    }
+
+    archivo_file.addEventListener('change', function(event) {
+        var archivoSeleccionado = event.target.files[0];
+        
+        if (archivoSeleccionado) {
+            title_pdf.innerHTML = archivoSeleccionado.name
+            contenedorPDF.classList.remove('d-none')
         }
-
-        archivo_file.addEventListener('change', function(event) {
-            var archivoSeleccionado = event.target.files[0];
-            
-            if (archivoSeleccionado) {
-                title_pdf.innerHTML = archivoSeleccionado.name
-                contenedorPDF.classList.remove('d-none')
-            }
-        });
+    });
     
     $('#SaveArmas').click(function (event) {
         event.preventDefault();

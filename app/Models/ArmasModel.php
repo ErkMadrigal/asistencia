@@ -23,9 +23,10 @@ class ArmasModel
 
     public function GetArmas($idEmpresa){
         $builder = $this->db->table('armas');
-        $builder->select("armas.id, armas.matricula, armas.folio_manif,armas.activo, M.valor AS idMarca,C.valor AS clase, LI.No_oficio, LI.folio, MO.valor as Modalidad, CONCAT(UA.calle, ' ', UA.no_exterior, ', ', UA.colonia, ' ', UA.codigo_postal ) as direccion");
+        $builder->select("armas.id, armas.matricula, mod.valor as modalidadArma, armas.folio_manif,armas.activo, M.valor AS idMarca,C.valor AS clase, LI.No_oficio, LI.folio, MO.valor as Modalidad, CONCAT(UA.calle, ' ', UA.no_exterior, ', ', UA.colonia, ' ', UA.codigo_postal ) as direccion");
         $builder->join("catalogos_detalle M"," armas.idMarca= M.id  ","left");
         $builder->join("catalogos_detalle C"," armas.idClase= C.id  ","left");
+        $builder->join("catalogos_detalle mod","mod.id = armas.id_modalidad","left");
         $builder->join("ubicacion_armamento UA"," UA.id_ubicacion = armas.id_ubicacion  ","left");
         $builder->join("licencias LI"," LI.id_licencia  = UA.id_licencia ","left");
         $builder->join("catalogos_detalle MO"," MO.id= LI.id_Modalidad  ","left");
@@ -61,7 +62,7 @@ class ArmasModel
 
     public function GetArmaById($id){
         $builder = $this->db->table('armas');
-        $builder->select("armas.matricula, armas.folio_manif,armas.activo,CL.valor AS clase,CA.valor AS calibre,M.valor AS marca,MO.valor AS modelo, armas.createddate, armas.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby,  CONCAT(dp.primer_nombre,' ' ,dp.apellido_paterno) portador, dp.Cuip, concat(ubArm.calle, ' # ex ',ubArm.no_exterior, ' # in ',ubArm.no_interior, ', Col. ', ubArm.colonia, ' ', ubArm.municipio, ' ', ubArm.estado, ' CP.', ubArm.codigo_postal ) direccion, armas.id_ubicacion , TA.valor tipoArma, armas.tipo_arma id_tipo_arma, li.No_oficio");
+        $builder->select("armas.matricula, armas.folio_manif,armas.activo,CL.valor AS clase,CA.valor AS calibre,M.valor AS marca,MO.valor AS modelo, armas.createddate, armas.updateddate,CONCAT(UA.nombre,' ' ,UA.apellido_paterno) AS createdby,CONCAT(UU.nombre,' ' ,UU.apellido_paterno) AS updatedby,  CONCAT(dp.primer_nombre,' ' ,dp.apellido_paterno) portador, dp.Cuip, concat(ubArm.calle, ' # ex ',ubArm.no_exterior, ' # in ',ubArm.no_interior, ', Col. ', ubArm.colonia, ' ', ubArm.municipio, ' ', ubArm.estado, ' CP.', ubArm.codigo_postal ) direccion, armas.id_ubicacion , TA.valor tipoArma, armas.tipo_arma id_tipo_arma, li.No_oficio, armas.id_modalidad, Mod.valor modalidad, armas.idClase, armas.idCalibre, armas.idMarca, armas.idModelo");
         $builder->join("datos_personales dp"," armas.id_portador = dp.id ","left");
         $builder->join("ubicacion_armamento ubArm"," ubArm.id_ubicacion  = armas.id_ubicacion  ","left");
         $builder->join("licencias li"," li.id_licencia  = ubArm.id_licencia  ","left");
@@ -70,6 +71,7 @@ class ArmasModel
         $builder->join("catalogos_detalle M"," armas.idMarca= M.id  ","left");
         $builder->join("catalogos_detalle MO","armas.idModelo = MO.id","left");
         $builder->join("catalogos_detalle TA","TA.id = armas.tipo_arma","left");
+        $builder->join("catalogos_detalle Mod","mod.id = armas.id_modalidad","left");
         $builder->join("sys_usuarios_admin UA","armas.createdby = UA.id","left");
         $builder->join("sys_usuarios_admin UU","armas.updatedby = UU.id","left");
         $builder->orderBy("matricula","asc");
@@ -145,7 +147,7 @@ class ArmasModel
         
         $idArma = $uuid->toString();
 
-        $query = "INSERT INTO armas (id, matricula,folio_manif, idClase, idCalibre, idMarca, idModelo, activo,createdby,createddate,idEmpresa, id_ubicacion, tipo_arma, nombre_folio, url ) VALUES ('".$idArma."','".$data['matricula']."','".$data['folio_manif']."','".$idClase."','".$idCalibre."','".$idMarca."','".$idModelo."',1,'".$LoggedUserId."', now() ,'".$idEmpresa."', '".$data['ubicaciones']."','".$data['tipoArma']."','".$fileNameAlmacen."','".$ruta."')";
+        $query = "INSERT INTO armas (id, matricula,folio_manif, idClase, idCalibre, idMarca, idModelo, activo,createdby,createddate,idEmpresa, id_ubicacion, tipo_arma, nombre_folio, id_modalidad, url ) VALUES ('".$idArma."','".$data['matricula']."','".$data['folio_manif']."','".$idClase."','".$idCalibre."','".$idMarca."','".$idModelo."',1,'".$LoggedUserId."', now() ,'".$idEmpresa."', '".$data['ubicaciones']."','".$data['tipoArma']."','".$fileNameAlmacen."','".$data['modalidad']."','".$ruta."')";
 
         $this->db->query($query);
         
