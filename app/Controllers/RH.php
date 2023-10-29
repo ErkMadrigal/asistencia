@@ -90,6 +90,8 @@ class RH extends BaseController{
 
             if(count($error) == 0){
                 $data = $this->modelRH->getAllDataBaja($inicio, $final);
+    			// echo $this->db->getLastQuery();
+
                 $succes = ["mensaje" => 'Exito', "succes" => "succes"];
             }else{
                 $dontSucces = ["error" => "error",

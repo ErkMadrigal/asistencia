@@ -7175,7 +7175,7 @@ class Cuip extends BaseController {
 
 	public function validaCancelada(){
 		
-		if($this->request->getMethod() == "post" && $this->request->getvar(['idRegistro'],FILTER_SANITIZE_STRING)){
+		if($this->request->getMethod() == "post"){
 
 		$id = $this->encrypt->Decrytp($_POST["idRegistro"]);
 
@@ -7187,7 +7187,7 @@ class Cuip extends BaseController {
 	}
 
 	public function BajaRegistro(){
-		if ($this->request->getMethod() == "post" && $this->request->getvar(['idRegistroBaja,fecha_baja,finiquito,motivoBaja'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "post" ){
 
 				$rules = [
 				'motivoBaja' =>  ['label' => "Motivo de baja", 'rules' => 'max_length[150]'],
