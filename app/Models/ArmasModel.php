@@ -71,7 +71,7 @@ class ArmasModel
         $builder->join("catalogos_detalle M"," armas.idMarca= M.id  ","left");
         $builder->join("catalogos_detalle MO","armas.idModelo = MO.id","left");
         $builder->join("catalogos_detalle TA","TA.id = armas.tipo_arma","left");
-        $builder->join("catalogos_detalle Mod","mod.id = armas.id_modalidad","left");
+        $builder->join("catalogos_detalle Mod","Mod.id = armas.id_modalidad","left");
         $builder->join("sys_usuarios_admin UA","armas.createdby = UA.id","left");
         $builder->join("sys_usuarios_admin UU","armas.updatedby = UU.id","left");
         $builder->orderBy("matricula","asc");
