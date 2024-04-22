@@ -779,6 +779,28 @@ class CuipModel
         return $builder->get()->getResult(); 
     }
 
+    public function searchMulticatalogo($data, $catalogo){
+        $builder = $this->db->table('catalogos cat');
+        $builder->select('cd.id');
+        $builder->join("catalogos_detalle cd","cat.idCatalogo = cd.idCatalogo","left");
+        $builder->like('cd.valor', $data);
+        $builder->where('cat.valor', $catalogo);
+        $result = $builder->get()->getResult(); 
+        if(empty($result)) {
+            return '1'; 
+        } else {
+            return $result[0]->id; 
+        }
+    }
+
+    public function searchUbicacion($ubicacion){
+        $builder = $this->db->table('ubicacion');
+        $builder->select('id');
+        $builder->like('nombre_ubicacion', $ubicacion);
+        return $builder->get()->getResult(); 
+        
+    }
+
     public function searchSINO($data, $catalogo){
         $builder = $this->db->table('catalogos cat');
         $builder->select('cd.id');
@@ -793,7 +815,12 @@ class CuipModel
         $builder->select('id');
         $builder->where('cve_parentesco', $cveRef);
         $builder->where('idReferencia', $idReferencia);
-            return $builder->get()->getResult(); 
+        $result = $builder->get()->getResult(); 
+        if(empty($result)) {
+            return '1'; 
+        } else {
+            return $result[0]->id; 
+        }
     }
     
     public function addData($insert){

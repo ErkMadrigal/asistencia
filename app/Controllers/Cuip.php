@@ -64,6 +64,8 @@ class Cuip extends BaseController {
         	$data['CuipPersonal'] = $dataCrud['data'];
 
 			$data['dataBaja'] = $this->modelCuip->get_motivo_baja("Motivo Desercion");
+
+			$data['clientes'] = $this->modelCuip->getClientes();
 			
 			return view('Cuip/CuipPersonal', $data);
 		}	
@@ -4259,6 +4261,372 @@ class Cuip extends BaseController {
 					}
 				}else{
 					$dontSucces = ["error" => "error", "mensaje" => "comprueba que los campos esten completos"];
+				}
+
+			} else {	
+				$errors = $this->validator->getErrors();
+			}
+			$this->db->transComplete();
+
+			echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+	
+		}
+
+		function cargaCortaCUIP(){
+			if ($this->request->getMethod() == "post"){
+				$errors = [];
+				$succes = [];
+				$dontSucces = [];
+				$data = [];
+				$this->db->transStart();
+        
+				$uuid = Uuid::uuid4();
+				$idDP = $uuid->toString();
+				$idDE = $uuid->toString();
+				$idMF = $uuid->toString();
+				$idRP = $uuid->toString();
+				$getUser = session()->get('IdUser');
+	            $LoggedUserId = $this->encrypter->decrypt($getUser);
+				$empresa = session()->get('empresa');
+				$idEmpresa = $this->encrypter->decrypt($empresa);
+			
+				$insertDatosPersonales = array(
+					"id" => $idDP	,
+					"idEmpresa" => $idEmpresa,
+					
+					// camposnuevos
+					"talla_calzado" =>  $_POST["tallaCalzado"],
+					"talla_pantalon" =>  $_POST["tallaPantalon"],
+					"talla_camisa" =>  $_POST["tallaCamisa"],
+					"idGenero" => 48,
+					// "Cuip" =>  $_POST["cuip"],
+					"apellido_paterno" => $_POST["paterno"],
+					"apellido_materno" => $_POST["materno"],
+					"primer_nombre" => $_POST["primerNombre"],
+					"segundo_nombre" => $_POST["segundoNombre"],
+					"idFormaNacionalidad" => 11,
+					"idPaisNacimiento" => 143,
+					"idEstadoCivil" =>  $this->modelCuip->searchMulticatalogo($_POST['estadoCivil'], 'Estado Civil'),
+					"idNivelEducativo" => $this->modelCuip->searchMulticatalogo($_POST['nivelAcademico'], 'Nivel Educativo'),
+					"rfc" => $_POST["rfc"],
+					"cartilla_smn" => $_POST["numCartilla"],
+					"curp" => $_POST["curp"],
+					"calle" => $_POST["calle"],
+					"numero_exterior" => $_POST["numInt"],
+					"numero_interior" => $_POST["numEx"],
+					"colonia" => $_POST["colonia"],
+					"idCodigoPostal" => $_POST["cp"],
+					"numero_telefono" => $_POST["telefono"],
+					"fecha_ingreso" => $_POST["marcaTemporal"],
+					"idNacionalidad" => 146,
+					"activo" => 1,
+                    "createdby" => $LoggedUserId,
+					"createddate" => date("Y-m-d H:i:s"),
+					"puesto" => 74,
+					"rango" => 631,
+					"nivel_mando" => 632,
+				);	
+
+				$date = date('y') ;
+				$consecutivo = $this->modelCuip->consecutivo();
+				$anioNacimiento = substr($_POST["curp"], 4, 2);
+				$numEmpleado = $date.$consecutivo->con.$anioNacimiento;
+
+				$insertDatosEmpleado = array(
+					"id" => $idDE,
+					"idPersonal " => $idDP,
+					"numEmpleado" => $numEmpleado,
+					"idCliente" => $_POST["cliente"], //comboVista
+					"idUbicacion" => $this->modelCuip->searchUbicacion($_POST["unidadTabajo"]),
+					"idTurno" => "",
+					"idPuesto" => "",
+					"idNomimaPeriodo" => 1849,
+					"idJefeInmediato" => "",
+					"idBanco " => $this->modelCuip->searchMulticatalogo($_POST['banco'], 'bancos'),
+					"CLABE" => $_POST["claveInterbancaria"],
+					"idEmpresa" => $idEmpresa,
+					"nss" => $_POST["nss"],
+					// camaponuevo
+					"email" => $_POST["email"],
+
+					"fecha_ingreso" => $_POST["marcaTemporal"],
+					"idPuesto " => $this->modelCuip->searchMulticatalogo($_POST['cargoSolicitado'], 'puesto'),
+					"createdby" => $LoggedUserId,
+					"createddate" => date("Y-m-d H:i:s"),
+				);
+
+				$insertMediaFiliacion = array(
+					"id" => $idMF,
+					"idPersonal " => $idDP,
+					"idEmpresa" => $idEmpresa,
+					"idSangreTipo" => $this->modelCuip->searchMulticatalogo($_POST['grupoSanguineo'], 'Tipo Sangre'),
+					"estatura" => $_POST["estatura"],
+					"peso" => $_POST["peso"],
+					"idRH" =>1,
+					"idUsaAnteojos" =>1,
+					"idComplexion" =>1,
+					"idPiel" =>1,
+					"idCara" =>1,
+					"idCantidadCabello" =>1,
+					"idColorCabello" =>1,
+					"idFormaCabello" =>1,
+					"idCalvicie" =>1,
+					"idImplantacionCabello" =>1,
+					"idAlturaFrente" =>1,
+					"idInclinacionFrente" =>1,
+					"idAnchoFrente" =>1,
+					"idDireccionCejas" =>1,
+					"idImplantacionCejas" =>1,
+					"idFormaCejas" =>1,
+					"idTamanoCejas" =>1,
+					"idColorOjos" =>1,
+					"idFormaOjos" =>1,
+					"idTamanoOjos" =>1,
+					"idRaiz" =>1,
+					"idDorso" =>1,
+					"idAnchoNariz" =>1,
+					"idBaseNariz" =>1,
+					"idAlturaNariz" =>1,
+					"idTamanoBoca" =>1,
+					"idComisuras" =>1,
+					"idEspesorLabio" =>1,
+					"idAlturaNasolabial" =>1,
+					"idProminenciaLabio" =>1,
+					"idMentonTipo" =>1,
+					"idMentonForma" =>1,
+					"idMentonInclinacion" =>1,
+					"idFormaOreja" =>1,
+					"idOriginal" =>1,
+					"idSuperior" =>1,
+					"idPosterior" =>1,
+					"idAdherenciaHelix" =>1,
+					"idContornoLobulo" =>1,
+					"idAdherenciaLobulo" =>1,
+					"idParticularidad" =>1,
+					"idDimensionLobulo" =>1,
+					"idCicatrices" => 1,
+					"idTatuajes" => 1,
+					"idLunares" => 1,
+					"idDefectos" => 1,
+					"idProtesis" => 1,
+					"idDiscapacidad"  => 1,
+					"activo" => 1,
+                    "createdby" => $LoggedUserId,
+					"createddate" => date("Y-m-d H:i:s"),
+				);
+				
+				$insertReferencias = array(
+					"id" => $idRP	,
+					"idEmpresa" => $idEmpresa,
+					"idPersonal" => $idDP,
+
+					// camposNuevos
+					"nombre_padre" => $_POST["nomMadre"] , 
+					"nombre_madre" => $_POST["nomPadre"] ,
+
+					"activo" => 1,
+					"createdby" => $LoggedUserId,
+					"createddate" => date("Y-m-d H:i:s"),
+				);
+				
+				$nombreCompletoReferencia = $_POST['nomContactoEmergencia'];
+
+				$partesNombre = explode(" ", $nombreCompletoReferencia);
+
+				$apellidoMaterno = '';
+				$apellidoPaterno = '';
+
+				$particulas = array('de', 'del', 'de la', 'de las', 'de los', 'dela', 'de los', 'delas', 'de lo');
+				foreach ($partesNombre as $indice => $parte) {
+					if (in_array(strtolower($parte), $particulas)) {
+						$apellidoMaterno = implode(' ', array_slice($partesNombre, $indice));
+						$nombre = implode(' ', array_slice($partesNombre, 0, $indice));
+						break;
+					}
+				}
+
+				if ($apellidoMaterno == '') {
+					$apellidoMaterno = array_pop($partesNombre);
+				}
+				
+				$nombre = implode(' ', $partesNombre);
+				$apellidoPaterno = array_pop($partesNombre);
+
+				
+				switch ($_POST["parentescoContacto"]) {
+					case 'CONYUGE':
+					case 'HERMANO':
+					case 'HERMANA':
+					case 'HIJO':
+					case 'HIJA':
+					case 'MADRE':
+					case 'PADRE':
+						$insertReferencias["apellido_paterno_fam"] = $apellidoPaterno;
+						$insertReferencias["apellido_materno_fam"] = $apellidoMaterno;
+						$insertReferencias["primer_nombre_fam"] = $nombre;
+						$insertReferencias["idParentesco_fam"] = $this->modelCuip->searchParentesco(1, $_POST['parentescoContacto']);
+						$insertReferencias["numero_telefono_fam"] = $_POST["telefonoEmergencia"];
+					break;	
+					
+					case 'ABUELO':
+					case 'ABUELA':
+					case 'CUNADO':
+					case 'CUNADA':
+					case 'ENTENADO':
+					case 'ENTENADA':
+					case 'NIETO':
+					case 'NIETA':
+					case 'PRIMO':
+					case 'PRIMA':
+					case 'SOBRINO':
+					case 'SOBRINA':
+					case 'SUEGRO':
+					case 'SUEGRA':
+					case 'TIO':
+					case 'TIA':
+					case 'YERNO':
+					case 'NUERA':
+						$insertReferencias["apellido_paterno_pariente"] = $apellidoPaterno;
+						$insertReferencias["apellido_materno_pariente"] = $apellidoMaterno;
+						$insertReferencias["primer_nombre_pariente"] = $nombre;
+						$insertReferencias["idParentesco_pariente"] = $this->modelCuip->searchParentesco(2, $_POST['parentescoContacto']);
+						$insertReferencias["numero_telefono_pariente"] = $_POST['telefonoEmergencia'];
+					
+					break;	
+					
+					case 'AHIJADO':
+					case 'AHIJADA':
+					case 'AMISTAD':
+					case 'AMOROSA':
+					case 'MADRINA':
+					case 'PADRINO':
+						$insertReferencias["apellido_paterno_personal"] = $apellidoPaterno;
+						$insertReferencias["apellido_materno_personal"] = $apellidoMaterno;
+						$insertReferencias["primer_nombre_personal"] = $nombre;
+						$insertReferencias["idParentesco_personal"] = $this->modelCuip->searchParentesco(3, $_POST['parentescoContacto']);
+						$insertReferencias["numero_telefono_personal"] = $_POST['telefonoEmergencia'];
+					break;
+
+					default:
+
+						$insertReferencias["apellido_paterno_laboral"] = $apellidoPaterno;
+						$insertReferencias["apellido_materno_laboral"] = $apellidoMaterno;
+						$insertReferencias["primer_nombre_laboral"] = $nombre;
+						$insertReferencias["idParentesco_laboral"] = $this->modelCuip->searchParentesco(4, 'LABORAL');
+						$insertReferencias["numero_telefono_laboral"] = $_POST['telefonoEmergencia'];
+
+					break;
+				}
+
+				$nombreCompletoReferencia2 = $_POST['nomContactoEmergencia2'];
+
+				$partesNombre2 = explode(" ", $nombreCompletoReferencia2);
+
+				$apellidoMaterno2 = '';
+				$apellidoPaterno2 = '';
+
+				$particulas = array('de', 'del', 'de la', 'de las', 'de los', 'dela', 'de los', 'delas', 'de lo');
+				foreach ($partesNombre2 as $indice => $parte) {
+					if (in_array(strtolower($parte), $particulas)) {
+						$apellidoMaterno2 = implode(' ', array_slice($partesNombre2, $indice));
+						$nombre = implode(' ', array_slice($partesNombre2, 0, $indice));
+						break;
+					}
+				}
+
+				if ($apellidoMaterno2 == '') {
+					$apellidoMaterno2 = array_pop($partesNombre2);
+				}
+				$nombre2 = implode(' ', $partesNombre2);
+
+				$apellidoPaterno2 = array_pop($partesNombre2);
+
+				
+				switch ($_POST["parentescoContacto2"]) {
+					case 'CONYUGE':
+					case 'HERMANO':
+					case 'HERMANA':
+					case 'HIJO':
+					case 'HIJA':
+					case 'MADRE':
+					case 'PADRE':
+						$insertReferencias["apellido_paterno_fam"] = $apellidoPaterno2;
+						$insertReferencias["apellido_materno_fam"] = $apellidoMaterno2;
+						$insertReferencias["primer_nombre_fam"] = $nombre2;
+						$insertReferencias["idParentesco_fam"] = $this->modelCuip->searchParentesco(1, $_POST['parentescoContacto2']);
+						$insertReferencias["numero_telefono_fam"] = $_POST["telefonoEmergencia2"];
+					break;	
+					
+					case 'ABUELO':
+					case 'ABUELA':
+					case 'CUNADO':
+					case 'CUNADA':
+					case 'ENTENADO':
+					case 'ENTENADA':
+					case 'NIETO':
+					case 'NIETA':
+					case 'PRIMO':
+					case 'PRIMA':
+					case 'SOBRINO':
+					case 'SOBRINA':
+					case 'SUEGRO':
+					case 'SUEGRA':
+					case 'TIO':
+					case 'TIA':
+					case 'YERNO':
+					case 'NUERA':
+						$insertReferencias["apellido_paterno_pariente"] = $apellidoPaterno2;
+						$insertReferencias["apellido_materno_pariente"] = $apellidoMaterno2;
+						$insertReferencias["primer_nombre_pariente"] = $nombre2;
+						$insertReferencias["idParentesco_pariente"] = $this->modelCuip->searchParentesco(2, $_POST['parentescoContacto2']);
+						$insertReferencias["numero_telefono_pariente"] = $_POST['telefonoEmergencia2'];
+					
+					break;	
+					
+					case 'AHIJADO':
+					case 'AHIJADA':
+					case 'AMISTAD':
+					case 'AMOROSA':
+					case 'MADRINA':
+					case 'PADRINO':
+						$insertReferencias["apellido_paterno_personal"] = $apellidoPaterno2;
+						$insertReferencias["apellido_materno_personal"] = $apellidoMaterno2;
+						$insertReferencias["primer_nombre_personal"] = $nombre2;
+						$insertReferencias["idParentesco_personal"] = $this->modelCuip->searchParentesco(3, $_POST['parentescoContacto2']);
+						$insertReferencias["numero_telefono_personal"] = $_POST['telefonoEmergencia2'];
+					break;
+
+					default:
+
+						$insertReferencias["apellido_paterno_laboral"] = $apellidoPaterno2;
+						$insertReferencias["apellido_materno_laboral"] = $apellidoMaterno2;
+						$insertReferencias["primer_nombre_laboral"] = $nombre2;
+						$insertReferencias["idParentesco_laboral"] = $this->modelCuip->searchParentesco(4, 'LABORAL');
+						$insertReferencias["numero_telefono_laboral"] = $_POST['telefonoEmergencia'];
+
+					break;
+				}
+
+				
+				$selectCuip = $this->modelCuip->searchCUIP($_POST['cuip']);
+				// if(count($selectCuip) == 0){
+				if(true){
+					$insert = $this->modelCuip->addData($insertDatosPersonales);
+					if ($insert) {
+						$insert = $this->modelCuip->addDataMF($insertMediaFiliacion);
+						$insert = $this->modelCuip->addDataRP($insertReferencias);
+						if($insert){
+							$succes = ["mensaje" => 'Registrado con Exito', "succes" => "succes"];
+						}else{
+
+							$dontSucces = ["error" => "error", "mensaje" => "No se inserto el registro verifica tus Datos"];
+						}
+					} else {
+						$dontSucces = ["error" => "error", "mensaje" => "No se inserto el registro el CUIP ".$_POST['cuip']];
+					}
+
+				}else{
+					$dontSucces = ["error" => "error", "mensaje" => "la CUIP ".$_POST['cuip']." ya ha existe"];
 				}
 
 			} else {	
