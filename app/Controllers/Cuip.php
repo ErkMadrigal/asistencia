@@ -4299,7 +4299,7 @@ class Cuip extends BaseController {
 					"talla_pantalon" =>  $_POST["tallaPantalon"],
 					"talla_camisa" =>  $_POST["tallaCamisa"],
 					"idGenero" => 48,
-					// "Cuip" =>  $_POST["cuip"],
+					"Cuip" =>  $_POST["cuip"],
 					"apellido_paterno" => $_POST["paterno"],
 					"apellido_materno" => $_POST["materno"],
 					"primer_nombre" => $_POST["primerNombre"],
@@ -4609,8 +4609,7 @@ class Cuip extends BaseController {
 
 				
 				$selectCuip = $this->modelCuip->searchCUIP($_POST['cuip']);
-				// if(count($selectCuip) == 0){
-				if(true){
+				if(count($selectCuip) == 0){
 					$insert = $this->modelCuip->addData($insertDatosPersonales);
 					if ($insert) {
 						$insert = $this->modelCuip->addDataMF($insertMediaFiliacion);
