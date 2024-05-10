@@ -142,7 +142,7 @@ class PortaCatalogoMulti extends BaseController {
 	}
 
     public function AgregarMulti(){
-		if ($this->request->getMethod() == "get" && $this->request->getvar(['id'],FILTER_SANITIZE_STRING)){
+		if ($this->request->getMethod() == "get" && $this->request->getvar(['id'])){
 
 			$data['modulos'] = $this->menu->Permisos();
 

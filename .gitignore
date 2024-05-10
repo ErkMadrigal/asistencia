@@ -129,3 +129,4 @@ public/index.php
 /.phpunit.*.cache
 vendor/bin/phpunit
 vendor/bin/php-parse
+vendor/

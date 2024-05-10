@@ -395,4 +395,134 @@ class Cliente extends BaseController {
 		}	
 	}
 
+	function cargaCortaClientes(){
+		if ($this->request->getMethod() == "post"){
+			$errors = [];
+			$succes = [];
+			$dontSucces = [];
+			$data = [];
+			$this->db->transStart();
+	
+			$uuid = Uuid::uuid4();
+			$idTurno = $uuid->toString();
+			$idPuestos = $uuid->toString();
+			
+			$getUser = session()->get('IdUser');
+			$LoggedUserId = $this->encrypter->decrypt($getUser);
+			$empresa = session()->get('empresa');
+			$idEmpresa = $this->encrypter->decrypt($empresa);
+
+			$idCliente = $this->modelCliente->searchCliente($_POST['razonSocial']);
+			
+			if(!$idCliente){
+				$idCliente = $uuid->toString();
+				$insertCliente = array(
+					"id" => $idCliente	,
+					"idEmpresa" => $idEmpresa,
+					
+					"razon_social" =>  $_POST["razonSocial"],
+					"nombre_corto" =>  $_POST["nombreCorto"],
+					"nombre_contacto" =>  $_POST["coordinador"],
+					"whatsapp" =>  $_POST["telefono"],
+					"tel_oficina" =>  $_POST["telefono"],
+					"activo" => 1,
+					"createdby" => $LoggedUserId,
+					"createddate" => date("Y-m-d H:i:s"),
+				);
+				$this->modelCliente->save($insertCliente, 'cliente');
+			}
+
+			$idUbicacion = $this->modelCliente->searchUbicacion($_POST['ubicacion'], $_POST["calle"],  $_POST["colonia"], $_POST["cp"]);
+
+			if(!$idUbicacion){
+				$idUbicacion = $uuid->toString();
+				
+				$insertUbicacion = array(
+					"id" => $idUbicacion,
+					"idCliente" => $idCliente,
+					"nombre_ubicacion" =>  $_POST["ubicacion"],
+					"calle_num" =>  $_POST["calle"],
+					"colonia" =>  $_POST["colonia"],
+					"idCodigoPostal" =>  $_POST["cp"],
+					"activo" => 1,
+					"createdby" => $LoggedUserId,
+					"createddate" => date("Y-m-d H:i:s"),
+				);
+				$this->modelCliente->save($insertUbicacion, 'ubicacion');
+			}
+
+			$turnos = $this->modelCliente->searchMulticatalogo($_POST['turno'], 'Turnos');
+
+			if(!$turnos){
+				$insertCatalogoDetalleTurno = array(
+					"idEmpresa" => $idEmpresa,
+					"idCatalogo" => $this->modelCliente->searchCatalogo('Turnos'),
+					"valor" => $_POST['turno'],
+					"activo" => 1,
+					"createdby" => $LoggedUserId,
+					"createddate" => date("Y-m-d H:i:s"),
+				);
+				$turnos = $this->modelCliente->addCatalogoDetalle($insertCatalogoDetalleTurno);
+			}
+
+			$insertTurnos = array(
+				"id" => $idTurno	,
+				"idCliente" => $idCliente,
+				"idUbicacion" => $idUbicacion,
+				"idTurnos" =>  $turnos, //buscar en catalogos_detalle catalogo Turnos, 
+				"idHorario" =>  1822,
+				"activo" => 1,
+				"createdby" => $LoggedUserId,
+				"createddate" => date("Y-m-d H:i:s"),
+			);
+
+
+
+			$puesto = $this->modelCliente->searchMulticatalogo($_POST['puesto'], 'Puesto');
+
+			if(!$puesto){
+				$insertCatalogoDetallePuesto = array(
+					"idEmpresa" => $idEmpresa,
+					"idCatalogo" => $this->modelCliente->searchCatalogo('Puesto'),
+					"valor" => $_POST['puesto'],
+					"activo" => 1,
+					"createdby" => $LoggedUserId,
+					"createddate" => date("Y-m-d H:i:s"),
+				);
+				$puesto = $this->modelCliente->addCatalogoDetalle($insertCatalogoDetallePuesto);
+			}
+
+			$insertPuestos = array(
+				"id" => $idPuestos	,
+				"idCliente" => $idCliente,
+				"idUbicacion" => $idUbicacion,
+				"idTurno" =>  $idTurno, 
+				"puesto" =>  $puesto,
+				"num_guardias" =>  $_POST['elementos'],
+				"activo" => 1,
+				"createdby" => $LoggedUserId,
+				"createddate" => date("Y-m-d H:i:s"),
+			);
+
+			
+			$insert1 = $this->modelCliente->save($insertTurnos, 'turnos');
+			$insert2 = $this->modelCliente->save($insertPuestos, 'puestos');
+			if ($insert1 && $insert2) {
+				$this->db->transCommit(); 
+				$succes = ["mensaje" => 'Registrado con Éxito', "succes" => "succes"];
+			} else {
+				$this->db->transRollback(); 
+				$dontSucces = ["error" => "error", "mensaje" => "No se insertó el registro"];
+			}
+
+
+		} else {	
+			$errors = $this->validator->getErrors();
+		}
+		$this->db->transComplete();
+
+		echo json_encode(['error'=> $errors , 'succes' => $succes , 'dontsucces' => $dontSucces , 'data' => $data]);
+
+	}
+
 }

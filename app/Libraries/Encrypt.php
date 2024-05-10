@@ -6,7 +6,7 @@ class Encrypt {
 
 
 	private $iddecrypt;
-	private $serviceEncrypter;
+	private $encrypter;
 	private $idencrypt;
 
 

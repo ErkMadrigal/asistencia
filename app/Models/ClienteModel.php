@@ -72,6 +72,98 @@ class ClienteModel
         return $return;
     }
 
+    public function save($data, $tabla)
+    {
+
+        $this->db->transStart();
+
+        $this->db->table($tabla)->insert($data);
+
+        $this->db->transComplete();
+
+        if ($this->db->transStatus() === TRUE)
+        {
+            $return = true;
+        } else {
+            $return = false ;
+        }
+
+        return $return;
+    }
+    
+
+    public function addCatalogoDetalle($data){
+
+        $this->db->transStart();
+
+        $this->db->table('catalogos_detalle')->insert($data);
+
+        $insert_id = $this->db->insertID(); 
+
+        $this->db->transComplete();
+
+        if ($this->db->transStatus()){
+            $return = $insert_id; 
+        } else {
+            $return = false ;
+        }
+
+        return $return;
+    }
+
+    public function searchMulticatalogo($data, $catalogo){
+        $builder = $this->db->table('catalogos cat');
+        $builder->select('cd.id');
+        $builder->join("catalogos_detalle cd","cat.idCatalogo = cd.idCatalogo","left");
+        $builder->like('cd.valor', $data);
+        $builder->where('cat.valor', $catalogo);
+        $result = $builder->get()->getResult(); 
+        if(empty($result)) {
+            return false; 
+        } else {
+            return $result[0]->id; 
+        }
+    }
+
+    public function searchCatalogo($catalogo){
+        $builder = $this->db->table('catalogos');
+        $builder->select('idCatalogo');
+        $builder->where('valor', $catalogo);
+        $result = $builder->get()->getResult(); 
+        if(empty($result)) {
+            return 1; 
+        } else {
+            return $result[0]->idCatalogo; 
+        }
+    }
+
+    public function searchCliente($data){
+        $builder = $this->db->table('cliente');
+        $builder->select('id');
+        $builder->where('razon_social', $data);
+        $result = $builder->get()->getResult(); 
+        if(empty($result)) {
+            return false; 
+        } else {
+            return $result[0]->id; 
+        }
+    }
+
+    public function searchUbicacion($ubicacion, $calle,  $colonia, $cp){
+        $builder = $this->db->table('ubicacion');
+        $builder->select('id');
+        $builder->where('nombre_ubicacion', $ubicacion);
+        $builder->where('calle_num', $calle);
+        $builder->where('colonia', $colonia);
+        $builder->where('idCodigoPostal', $cp);
+        $result = $builder->get()->getResult(); 
+        if(empty($result)) {
+            return false; 
+        } else {
+            return $result[0]->id; 
+        }
+    }
+
 
     
     

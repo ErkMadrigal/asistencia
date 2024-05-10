@@ -134,6 +134,8 @@ $routes->get('editCliente', 'Cliente::EditarCliente',['filter' => 'auth']);
 $routes->post('EditInfoCliente', 'Cliente::SaveClientes',['filter' => 'auth']);
 $routes->get('AddCliente', 'Cliente::Agrecliente',['filter' => 'auth']);
 $routes->post('GuardarCliente', 'Cliente::AgregarClientes',['filter' => 'auth']);
+$routes->post('cargaCortaClientes', 'Cliente::cargaCortaClientes',['filter' => 'auth']);
+
 
 ///puesto///
 $routes->get('puesto', 'Puesto::GetPuestos',['filter' => 'auth']);
@@ -244,6 +246,9 @@ $routes->post('deleteArmaJuridico', 'Armas::deleteArmaJuridico',['filter' => 'au
 $routes->get('incidencias_empeado', 'RH::index',['filter' => 'auth']);
 $routes->post('getAltasEmpleados', 'RH::getAltasEmpleados',['filter' => 'auth']);
 $routes->post('getBajasEmpleados', 'RH::getBajasEmpleados',['filter' => 'auth']);
+
+
+
 
 
 
