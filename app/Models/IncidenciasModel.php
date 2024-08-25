@@ -94,5 +94,44 @@ class IncidenciasModel{
         return $return; 
     }
 
+
+    public function searchDoc($data){
+        $builder = $this->db->table('documentos_expediente_digital');
+        $builder->select('id');
+        $builder->where('documento', $data);
+        $result = $builder->get()->getResult(); 
+        if(empty($result)) {
+            return '1'; 
+        } else {
+            return $result[0]->id; 
+        }
+    }
+
+    public function insertExpDoc($data){
+        $this->db->transStart();
+
+
+        $this->db->table('documentos')->insert($data);
+
+        $this->db->transComplete();
+
+        if ($this->db->transStatus() === TRUE)
+        {
+            $return = true;
+        } else {
+            $return = false ;
+        }
+
+        return $return; 
+    }
+
+    public function getClientes(){
+        $builder = $this->db->table('cliente');
+        $builder->select('id, nombre_corto');
+        $builder->where("activo",true);
+        $builder->orderBy("nombre_corto","asc");
+        return $builder->get()->getResult();
+        
+    }
 }
 

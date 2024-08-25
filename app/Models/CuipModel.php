@@ -793,6 +793,31 @@ class CuipModel
         }
     }
 
+    public function searchPuesto($data){
+        $builder = $this->db->table('puestos');
+        $builder->select('id');
+        $builder->where('puesto', $data);
+        $result = $builder->get()->getResult(); 
+        if(empty($result)) {
+            return '1'; 
+        } else {
+            return $result[0]->id; 
+        }
+    }
+
+    
+    public function searchTurno($data){
+        $builder = $this->db->table('turnos');
+        $builder->select('id');
+        $builder->where('idTurnos', $data);
+        $result = $builder->get()->getResult(); 
+        if(empty($result)) {
+            return '1'; 
+        } else {
+            return $result[0]->id; 
+        }
+    }
+
     public function searchUbicacion($ubicacion){
         $builder = $this->db->table('ubicacion');
         $builder->select('id');
@@ -841,6 +866,19 @@ class CuipModel
         $return = false;
         $this->db->table('media_filiacion')->insert($insert);
 
+
+        // if ($this->db->affectedRows() > 0){
+        if ($this->db->transStatus()){
+            $return = true;
+        } 
+        $this->db->transComplete();
+        return $return; 
+    }
+
+    public function addDataEmleados($insert){
+        $this->db->transStart();
+        $return = false;
+        $this->db->table('datos_empleado')->insert($insert);
 
         // if ($this->db->affectedRows() > 0){
         if ($this->db->transStatus()){

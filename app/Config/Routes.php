@@ -247,6 +247,9 @@ $routes->get('incidencias_empeado', 'RH::index',['filter' => 'auth']);
 $routes->post('getAltasEmpleados', 'RH::getAltasEmpleados',['filter' => 'auth']);
 $routes->post('getBajasEmpleados', 'RH::getBajasEmpleados',['filter' => 'auth']);
 
+//jefe de turno 
+$routes->get('Incidencias_jefe_turno', 'Incidencias::jefeTurno',['filter' => 'auth']);
+$routes->post('evidencia', 'Incidencias::evidencia',['filter' => 'auth']);
 
 
 

@@ -4295,29 +4295,29 @@ class Cuip extends BaseController {
 					"idEmpresa" => $idEmpresa,
 					
 					// camposnuevos
-					"talla_calzado" =>  $_POST["tallaCalzado"],
-					"talla_pantalon" =>  $_POST["tallaPantalon"],
-					"talla_camisa" =>  $_POST["tallaCamisa"],
+					"talla_calzado" =>  isset($_POST["tallaCalzado"]) && !empty($_POST["tallaCalzado"]) ? $_POST["tallaCalzado"] : '',
+					"talla_pantalon" => isset($_POST["tallaPantalon"]) && !empty($_POST["tallaPantalon"]) ? $_POST["tallaPantalon"] : '',
+					"talla_camisa" =>  isset($_POST["tallaCamisa"]) && !empty($_POST["tallaCamisa"]) ? $_POST["tallaCamisa"] : '',
 					"idGenero" => 48,
-					"Cuip" =>  $_POST["cuip"],
+					// "Cuip" =>  isset($_POST["cuip"]) && !empty($_POST["cuip"]) ? $_POST["cuip"] : '',
 					"apellido_paterno" => $_POST["paterno"],
 					"apellido_materno" => $_POST["materno"],
 					"primer_nombre" => $_POST["primerNombre"],
-					"segundo_nombre" => $_POST["segundoNombre"],
+					"segundo_nombre" => isset($_POST["segundoNombre"]) && !empty($_POST["segundoNombre"]) ? $_POST["segundoNombre"] : '',
 					"idFormaNacionalidad" => 11,
 					"idPaisNacimiento" => 143,
 					"idEstadoCivil" =>  $this->modelCuip->searchMulticatalogo($_POST['estadoCivil'], 'Estado Civil'),
 					"idNivelEducativo" => $this->modelCuip->searchMulticatalogo($_POST['nivelAcademico'], 'Nivel Educativo'),
-					"rfc" => $_POST["rfc"],
+					"rfc" => isset($_POST["rfc"]) && !empty($_POST["rfc"]) ? $_POST["rfc"] : '',
 					"cartilla_smn" => $_POST["numCartilla"],
-					"curp" => $_POST["curp"],
-					"calle" => $_POST["calle"],
-					"numero_exterior" => $_POST["numInt"],
-					"numero_interior" => $_POST["numEx"],
-					"colonia" => $_POST["colonia"],
-					"idCodigoPostal" => $_POST["cp"],
-					"numero_telefono" => $_POST["telefono"],
-					"fecha_ingreso" => $_POST["marcaTemporal"],
+					"curp" => isset($_POST["curp"]) && !empty($_POST["curp"]) ? $_POST["curp"] : '',
+					"calle" => isset($_POST["calle"]) && !empty($_POST["calle"]) ? $_POST["calle"] : '',
+					"numero_exterior" => isset($_POST["numInt"]) && !empty($_POST["numInt"]) ? $_POST["numInt"] : '',
+					"numero_interior" => isset($_POST["numEx"]) && !empty($_POST["numEx"]) ? $_POST["numEx"] : '',
+					"colonia" => isset($_POST["colonia"]) && !empty($_POST["colonia"]) ? $_POST["colonia"] : '',
+					"idCodigoPostal" => isset($_POST["cp"]) && !empty($_POST["cp"]) ? $_POST["cp"] : '',
+					"numero_telefono" => isset($_POST["telefono"]) && !empty($_POST["telefono"]) ? $_POST["telefono"] : '',
+					"fecha_ingreso" => isset($_POST["fechaIngreso"]) && !empty($_POST["fechaIngreso"]) ? $_POST["fechaIngreso"] : '',
 					"idNacionalidad" => 146,
 					"activo" => 1,
                     "createdby" => $LoggedUserId,
@@ -4335,33 +4335,34 @@ class Cuip extends BaseController {
 				$insertDatosEmpleado = array(
 					"id" => $idDE,
 					"idPersonal " => $idDP,
-					"numEmpleado" => $numEmpleado,
-					"idCliente" => $_POST["cliente"], //comboVista
-					"idUbicacion" => $this->modelCuip->searchUbicacion($_POST["unidadTabajo"]),
-					"idTurno" => "",
-					"idPuesto" => "",
-					"idNomimaPeriodo" => 1849,
-					"idJefeInmediato" => "",
-					"idBanco " => $this->modelCuip->searchMulticatalogo($_POST['banco'], 'bancos'),
-					"CLABE" => $_POST["claveInterbancaria"],
+					// "numEmpleado" => $numEmpleado,
+					"numEmpleado" => isset($_POST["numEmpleado"]) && !empty($_POST["numEmpleado"]) ? $_POST["numEmpleado"] : '',
+					"idCliente" => isset($_POST["cliente"]) && !empty($_POST["cliente"]) ? $_POST["cliente"] : '', //comboVista
+					"idUbicacion" => $this->modelCuip->searchUbicacion($_POST["unidadTabajo"])[0]->id,
+					"idTurno" => $this->modelCuip->searchTurno($this->modelCuip->searchMulticatalogo($_POST['turno'], 'turnos')),
+					"idJefeInmediato" => "67a3e45a-4a17-11ee-87ff-000000003fff",
+					"idBanco" => $this->modelCuip->searchMulticatalogo($_POST['banco'], 'bancos'),
+					"CLABE" => isset($_POST["claveInterbancaria"]) && !empty($_POST["claveInterbancaria"]) ? $_POST["claveInterbancaria"] : '',
 					"idEmpresa" => $idEmpresa,
-					"nss" => $_POST["nss"],
+					"nss" => isset($_POST["nss"]) && !empty($_POST["nss"]) ? $_POST["nss"] : '',
 					// camaponuevo
-					"email" => $_POST["email"],
-
-					"fecha_ingreso" => $_POST["marcaTemporal"],
-					"idPuesto " => $this->modelCuip->searchMulticatalogo($_POST['cargoSolicitado'], 'puesto'),
+					"email" => isset($_POST["email"]) && !empty($_POST["email"]) ? $_POST["email"] : '',
+					"idNomimaPeriodo" => $this->modelCuip->searchMulticatalogo($_POST['formaPago'], 'Periodo de nómina'),
+					"sueldo" => isset($_POST["sueldo"]) && !empty($_POST["sueldo"]) ? $_POST["sueldo"] : '',
+					"fecha_ingreso" => isset($_POST["fechaIngreso"]) && !empty($_POST["fechaIngreso"]) ? $_POST["fechaIngreso"] : '',
+					"idPuesto" => $this->modelCuip->searchPuesto($this->modelCuip->searchPuesto($_POST['cargoSolicitado'], 'puesto')),
 					"createdby" => $LoggedUserId,
 					"createddate" => date("Y-m-d H:i:s"),
 				);
+
 
 				$insertMediaFiliacion = array(
 					"id" => $idMF,
 					"idPersonal " => $idDP,
 					"idEmpresa" => $idEmpresa,
 					"idSangreTipo" => $this->modelCuip->searchMulticatalogo($_POST['grupoSanguineo'], 'Tipo Sangre'),
-					"estatura" => $_POST["estatura"],
-					"peso" => $_POST["peso"],
+					"estatura" => isset($_POST["estatura"]) && !empty($_POST["estatura"]) ? $_POST["estatura"] : '',
+					"peso" => isset($_POST["peso"]) && !empty($_POST["peso"]) ? $_POST["peso"] : '',
 					"idRH" =>1,
 					"idUsaAnteojos" =>1,
 					"idComplexion" =>1,
@@ -4421,8 +4422,8 @@ class Cuip extends BaseController {
 					"idPersonal" => $idDP,
 
 					// camposNuevos
-					"nombre_padre" => $_POST["nomMadre"] , 
-					"nombre_madre" => $_POST["nomPadre"] ,
+					"nombre_padre" => isset($_POST["nomMadre"]) && !empty($_POST["nomMadre"]) ? $_POST["nomMadre"] : '' , 
+					"nombre_madre" => isset($_POST["nomPadre"]) && !empty($_POST["nomPadre"]) ? $_POST["nomPadre"] : '' ,
 
 					"activo" => 1,
 					"createdby" => $LoggedUserId,
@@ -4608,10 +4609,12 @@ class Cuip extends BaseController {
 				}
 
 				
-				$selectCuip = $this->modelCuip->searchCUIP($_POST['cuip']);
-				if(count($selectCuip) == 0){
+				// $selectCuip = $this->modelCuip->searchCUIP($_POST['cuip']);
+				// if(count($selectCuip) == 0){
 					$insert = $this->modelCuip->addData($insertDatosPersonales);
 					if ($insert) {
+						
+						$insert = $this->modelCuip->addDataEmleados($insertDatosEmpleado);
 						$insert = $this->modelCuip->addDataMF($insertMediaFiliacion);
 						$insert = $this->modelCuip->addDataRP($insertReferencias);
 						if($insert){
@@ -4624,9 +4627,9 @@ class Cuip extends BaseController {
 						$dontSucces = ["error" => "error", "mensaje" => "No se inserto el registro el CUIP ".$_POST['cuip']];
 					}
 
-				}else{
-					$dontSucces = ["error" => "error", "mensaje" => "la CUIP ".$_POST['cuip']." ya ha existe"];
-				}
+				// }else{
+				// 	$dontSucces = ["error" => "error", "mensaje" => "la CUIP ".$_POST['cuip']." ya ha existe"];
+				// }
 
 			} else {	
 				$errors = $this->validator->getErrors();

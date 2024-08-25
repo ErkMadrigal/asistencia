@@ -287,20 +287,24 @@
     });
 
     function convertirMayusculasSinAcentos(texto) {
-        if(typeof texto === 'string'){
-            return texto.toUpperCase()
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "")
-                .replace(/[áÁ]/g, 'A')
-                .replace(/[éÉ]/g, 'E')
-                .replace(/[íÍ]/g, 'I')
-                .replace(/[óÓ]/g, 'O')
-                .replace(/[úÚ]/g, 'U')
-                .replace(/[üÜ]/g, 'U')
-                .replace(/[ñÑ]/g, 'N');
-        }else{
-            return texto
+        
+        texto = texto ?? '';
+
+        if (typeof texto !== 'string') {
+        // Convierte el dato a string si no lo es
+            texto = String(texto);
         }
+
+        return texto.toUpperCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/[áÁ]/g, 'A')
+            .replace(/[éÉ]/g, 'E')
+            .replace(/[íÍ]/g, 'I')
+            .replace(/[óÓ]/g, 'O')
+            .replace(/[úÚ]/g, 'U')
+            .replace(/[üÜ]/g, 'U')
+            .replace(/[ñÑ]/g, 'N');
     }
     function convertirNumeroAFecha(numero) {
         var fechaBase = new Date(1899, 11, 30);
@@ -323,8 +327,10 @@
             // console.log( datos)
             let cliente = document.querySelector("#cliente")
             for (var fila = 1; fila < datos.length; fila++) {
+                    
                     // datosPersonales
-                    let marcaTemporal =  convertirNumeroAFecha(datos[fila][0])
+                    // let marcaTemporal =  convertirNumeroAFecha(datos[fila][0])
+                    let marcaTemporal =  '2024-08-24'
                     let materno =  convertirMayusculasSinAcentos(datos[fila][7])
                     let paterno =  convertirMayusculasSinAcentos(datos[fila][6])
                     let segundoNombre =  convertirMayusculasSinAcentos(datos[fila][5])
@@ -352,6 +358,11 @@
                     let cargoSolicitado =  convertirMayusculasSinAcentos(datos[fila][3])
                     let email =  convertirMayusculasSinAcentos(datos[fila][29])
                     let unidadTabajo =  convertirMayusculasSinAcentos(datos[fila][2])
+                    let numEmpleado = convertirMayusculasSinAcentos(datos[fila][40])
+                    let fechaIngreso = convertirExcelDate(datos[fila][41])
+                    let turno = convertirMayusculasSinAcentos(datos[fila][42])
+                    let formaPago = convertirMayusculasSinAcentos(datos[fila][43])
+                    let sueldo = convertirMayusculasSinAcentos(datos[fila][44])
 
                     //mediaFiliacion
                     let grupoSanguineo =  convertirMayusculasSinAcentos(datos[fila][22])
@@ -449,6 +460,12 @@
                     formData.append("telefonoEmergencia2", telefonoEmergencia2)
                     formData.append("nomPadre", nomPadre)
                     formData.append("nomMadre", nomMadre)
+
+                    formData.append('numEmpleado', numEmpleado)
+                    formData.append('fechaIngreso',fechaIngreso)
+                    formData.append('turno', turno)
+                    formData.append('formaPago', formaPago)
+                    formData.append('sueldo', sueldo)
                     if(clienteSelect.value == ''){
                         toastr.error("es requerido seleccionar un cliente");
 
@@ -501,6 +518,14 @@
         };
 
         lector.readAsBinaryString(archivo);
+    }
+
+    function convertirExcelDate(excelDate) {
+        // Excel usa 1 de enero de 1900 como fecha base (hay que restar 1 por un bug histórico)
+        const fechaBase = new Date(1900, 0, 1);
+        // Sumar el número de días al 1 de enero de 1900
+        fechaBase.setDate(fechaBase.getDate() + excelDate - 1);
+        return fechaBase;
     }
 
     function leerArchivoExcel() {
