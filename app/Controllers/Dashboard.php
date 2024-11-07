@@ -1,65 +1,11 @@
-<?php namespace App\Controllers;
+<?php
 
-use App\Libraries\Menu;
-use App\Models\AdministradorModel;
-use App\Libraries\Encrypt;
+namespace App\Controllers;
 
 class Dashboard extends BaseController
 {
-
-	private $db;
-	private $modelAdministrador;
-	private $encrypter;
-	private $menu;
-	private $encrypt;
-
-	public function __construct()
-	{
-		
-		$this->encrypt = new Encrypt();
-		$this->encrypter = \Config\Services::encrypter();
-        $this->db =  \Config\Database::connect('default');
-		$this->modelAdministrador = new AdministradorModel($this->db);
-		
-	}
-	
-	public function index()
-	{
-		if ($this->request->getMethod() == "get" ){
-			$obj = new Menu();
-			$data['modulos'] = $obj->Permisos();
-
-			$rolUser = $this->Rol();
-
-			if ($rolUser == 1){
-				$this->encrypter = \Config\Services::encrypter();
-				$getUser = session()->get('IdUser');
-				$idUserAdmin = $this->encrypter->decrypt($getUser);
-
-
-				
-				
-			} else {
-				$data['form'] = "";
-			}
-
-
-			return view('dashboard/Index',$data);
-		}
-		
-	}
-
-	private function Rol(){
-
-		$this->encrypter = \Config\Services::encrypter();
-		$getUser = session()->get('IdUser');
-		$idUser = $this->encrypter->decrypt($getUser);
-
-		$rolUser = $this->modelAdministrador->getRol($idUser);
-		return $rolUser->rol;
-	}
-
-	
-	
-
+    public function index()
+    {
+        return view('admin/dashboard');
+    }
 }

@@ -37,223 +37,30 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'User::index',['filter' => 'noauth']);
-$routes->get('ingresar', 'User::index',['filter' => 'noauth']);
-$routes->get('lang/(:any)', 'Language::index',['filter' => 'auth']);
-$routes->get('logout', 'User::logout',['filter' => 'auth']);
+
+
+$routes->get('/', 'Login::index',['filter' => 'noauth']);
+$routes->get('logout', 'Login::logout',['filter' => 'noauth']);
+
+
 $routes->get('dash', 'Dashboard::index',['filter' => 'auth']);
-$routes->get('Confirmar/(:any)', 'ConfirmaCuenta::Confirmar',['filter' => 'noauth']);
-$routes->get('forgotPass', 'User::olvide_contrasena',['filter' => 'noauth']);
-$routes->post('recoveryPass','User::recuperarContrasena',['filter' => 'noauth']);
-$routes->get('Recuperar/(:any)', 'RecuperarCuenta::Recuperar',['filter' => 'noauth']);
-$routes->post('asignaPass', 'RecuperarCuenta::asignar_contrasena',['filter' => 'noauth']);
-$routes->get('empresa', 'Administrador::InfoEmpresa',['filter' => 'auth']);
-$routes->get('editEmpresa', 'Administrador::EditarEmpresa',['filter' => 'auth']);
-$routes->post('EditInfoEmpresa', 'Administrador::SaveEmpresa',['filter' => 'auth']);
-$routes->get('usuarios', 'Administrador::GetUsuario',['filter' => 'auth']);
-$routes->get('AddUser', 'Administrador::AgregarUsuario',['filter' => 'auth']);
-$routes->get('detailUser', 'Administrador::DetalleUsuario',['filter' => 'auth']);
-$routes->get('multicatalogo', 'PortaCatalogoMulti::GetMulti',['filter' => 'auth']);
-$routes->get('editMulti', 'PortaCatalogoMulti::EditarMulticatalogo',['filter' => 'auth']);
-$routes->post('EditInfoMulti', 'PortaCatalogoMulti::SaveMulti',['filter' => 'auth']);
-$routes->get('detailMulti', 'PortaCatalogoMulti::DetalleMulticatalogo',['filter' => 'auth']);
-$routes->post('SaveUser', 'Administrador::CrearUsuario',['filter' => 'auth']);
-$routes->get('editUser', 'Administrador::EditarUsuario',['filter' => 'auth']);
-$routes->post('EditInfoUser', 'Administrador::EditarUsuarioById',['filter' => 'auth']);
-$routes->post('EditUserPermiso', 'Administrador::EditarPermiso',['filter' => 'auth']);
-$routes->get('armas', 'Armas::GetArmas',['filter' => 'auth']);
-$routes->get('detailArmas', 'Armas::DetalleArmas',['filter' => 'auth']);
-$routes->get('editArmas', 'Armas::EditarArma',['filter' => 'auth']);
-$routes->post('EditInfoArma', 'Armas::SaveArma',['filter' => 'auth']);
-$routes->get('AddArmas', 'Armas::AgreArma',['filter' => 'auth']);
-$routes->post('GuardarArma', 'Armas::AgregarArma',['filter' => 'auth']);
-$routes->get('AddMulti', 'PortaCatalogoMulti::AgregarMulti',['filter' => 'auth']);
-$routes->post('GuardarMulti', 'PortaCatalogoMulti::AgregarMulticatalogo',['filter' => 'auth']);
-$routes->get('catDocumentos', 'Documentos::GetDocumentos',['filter' => 'auth']);
-$routes->get('detailCatDoc', 'Documentos::DetalleDocumentos',['filter' => 'auth']);
-$routes->get('editCatDoc', 'Documentos::EditarDocumento',['filter' => 'auth']);
-$routes->post('EditCatDoc', 'Documentos::SaveDocumento',['filter' => 'auth']);
-$routes->get('AddCatDoc', 'Documentos::AgregarDocumento',['filter' => 'auth']);
-$routes->post('GuardarCatDocumento', 'Documentos::AgregarDoc',['filter' => 'auth']);
-$routes->get('cuip', 'Cuip::GetCuip',['filter' => 'auth']);
-$routes->get('MediaFiliacion', 'MediaFiliacion::Form',['filter' => 'auth']);
-$routes->get('carga', 'CargaMasiva::GetDatos',['filter' => 'auth']); //la de ejemplo
-$routes->get('sepomex', 'Sepomex::index',['filter' => 'auth']);
-$routes->post('mostrarDatosSepomex', 'Sepomex::mostrarDatos',['filter' => 'auth']);
-$routes->get('AddSepomex', 'Sepomex::add',['filter' => 'auth']);
-$routes->post('getDataSepomex', 'Sepomex::getDataSep',['filter' => 'auth']);
-$routes->post('insertDataSepomex', 'Sepomex::insertDataSep',['filter' => 'auth']);
-$routes->get('editSepomex', 'Sepomex::update',['filter' => 'auth']);
-$routes->post('editDataSepomex', 'Sepomex::updateDataSep',['filter' => 'auth']);
-$routes->get('detailSepomex', 'Sepomex::detail',['filter' => 'auth']);
-
-$routes->get('estados', 'Estados::index',['filter' => 'auth']);
-$routes->post('mostrarDatosEstados', 'Estados::mostrarDatos',['filter' => 'auth']);
-$routes->get('editEstado', 'Estados::update',['filter' => 'auth']);
-$routes->post('getDatosEstado', 'Estados::GetDatosEst',['filter' => 'auth']);
-$routes->post('editDataEstado', 'Estados::updateDataEstado',['filter' => 'auth']);
-$routes->get('detailEstado', 'Estados::detail',['filter' => 'auth']);
-$routes->get('addEstado', 'Estados::add',['filter' => 'auth']);
-$routes->post('addDataEstado', 'Estados::insertDataEstado',['filter' => 'auth']);
 
 
-$routes->get('AddCUIP', 'Cuip::AgregarCuip',['filter' => 'auth']);
-$routes->post('GuardarDatosPersonales', 'Cuip::AgregarPersonales',['filter' => 'auth']);
-$routes->post('getCiudadEstado', 'Cuip::CiudadEstado',['filter' => 'auth']);
-$routes->post('getSepomex', 'Cuip::getCP',['filter' => 'auth']);
-$routes->post('GuardarSocioEconomico', 'Cuip::AgregarSocioEconomico',['filter' => 'auth']);
-$routes->post('GuardarEmpSegPublica', 'Cuip::AgregarEmpSegPublica',['filter' => 'auth']);
-$routes->post('GuardarSancionesEstimulos', 'Cuip::AgregarSancionesEstimulos',['filter' => 'auth']);
-$routes->post('GuardarCapacitaciones', 'Cuip::AgregarCapacitaciones',['filter' => 'auth']);
-$routes->post('GuardarEmpDiversos', 'Cuip::AgregarEmpDiversos',['filter' => 'auth']);
-$routes->get('mediafiliacion', 'MediaFiliacion::getMediafiliacion',['filter' => 'auth']);
-$routes->get('cuipInfo', 'Cuip::getCuipDetail',['filter' => 'auth']);
-$routes->get('expediente', 'Cuip::getExpediente',['filter' => 'auth']);
-$routes->get('editarCuip', 'Cuip::CuipEdit',['filter' => 'auth']);
-$routes->post('GuardarReferencias', 'Cuip::AgregarReferencias',['filter' => 'auth']);
-$routes->post('GuardarMediaFiliacion', 'MediaFiliacion::AgregarMediaFiliacion',['filter' => 'auth']);
-$routes->post('uploadFile', 'CargaMasiva::uploadFile',['filter' => 'auth']);
-$routes->get('getFileIni', 'CargaMasiva::FileIni',['filter' => 'auth']);
-$routes->post('eliminaDocumento', 'CargaMasiva::deleteDocumento',['filter' => 'auth']);
-$routes->get('exportCuip', 'Cuip::export',['filter' => 'auth']);
-$routes->get('preconsulta', 'Cuip::GetPreconsulta',['filter' => 'auth']);
-$routes->get('exportPreconsulta', 'Cuip::exportPreconsulta',['filter' => 'auth']);
-$routes->post('validaPreconsulta', 'Cuip::valPreconsulta',['filter' => 'auth']);
-$routes->get('exportBajas', 'Cuip::bajasExport',['filter' => 'auth']);
-$routes->post('validaBajas', 'Cuip::valBajas',['filter' => 'auth']);
-$routes->get('referencias', 'Referencia::GetReferencias',['filter' => 'auth']);
-$routes->get('detailReferencia', 'Referencia::DetalleReferencia',['filter' => 'auth']);
-$routes->get('editReferencia', 'Referencia::EditarReferencia',['filter' => 'auth']);
-$routes->post('EditInfoReferenci', 'Referencia::SaveReferencia',['filter' => 'auth']);
-$routes->get('AddReferencia', 'Referencia::AgreRefe',['filter' => 'auth']);
-$routes->post('GuardarRefe', 'Referencia::AgregarReferencia',['filter' => 'auth']);
-//clientes//
-$routes->get('clientes', 'Cliente::GetCliente',['filter' => 'auth']);
-$routes->get('detailCliente', 'Cliente::DetalleReferencia',['filter' => 'auth']);
-$routes->get('editCliente', 'Cliente::EditarCliente',['filter' => 'auth']);
-$routes->post('EditInfoCliente', 'Cliente::SaveClientes',['filter' => 'auth']);
-$routes->get('AddCliente', 'Cliente::Agrecliente',['filter' => 'auth']);
-$routes->post('GuardarCliente', 'Cliente::AgregarClientes',['filter' => 'auth']);
-$routes->post('cargaCortaClientes', 'Cliente::cargaCortaClientes',['filter' => 'auth']);
-
-
-///puesto///
-$routes->get('puesto', 'Puesto::GetPuestos',['filter' => 'auth']);
-$routes->get('detailPuesto', 'Puesto::DetallePuesto',['filter' => 'auth']);
-$routes->get('editPuesto', 'Puesto::EditarCliente',['filter' => 'auth']);
-$routes->post('EditInfoPuesto', 'Puesto::SavePuesto',['filter' => 'auth']);
-$routes->get('AddPuesto', 'Puesto::AgregaPuesto',['filter' => 'auth']);
-$routes->post('GuardarPuesto', 'Puesto::AgregarPuesto',['filter' => 'auth']);
-
-///ubicacion//
-$routes->get('ubicacion', 'Ubicacion::GetUbica',['filter' => 'auth']);
-$routes->get('detailUbicacion', 'Ubicacion::DetalleUbicacion',['filter' => 'auth']);
-$routes->get('editUbicacion', 'Ubicacion::EditarUbicacion',['filter' => 'auth']);
-$routes->post('EditInfoUbicacion', 'Ubicacion::SaveUbicacion',['filter' => 'auth']);
-$routes->get('AddUbicacion', 'Ubicacion::AgregaUbicacion',['filter' => 'auth']);
-$routes->post('GuardarUbicacion', 'Ubicacion::AgregarUbicacion',['filter' => 'auth']);
-
-
-////turno/////
-$routes->get('turnos', 'Turno::GetTurno',['filter' => 'auth']);
-$routes->get('detailTurno', 'Turno::DetalleTurno',['filter' => 'auth']);
-$routes->get('editTurno', 'Turno::EditarTurno',['filter' => 'auth']);
-$routes->post('EditInfoturno', 'Turno::SaveTurno',['filter' => 'auth']);
-$routes->get('AddTurno', 'Turno::AgregaTurno',['filter' => 'auth']);
-$routes->post('GuardarTurno', 'Turno::AgregarTurnos',['filter' => 'auth']);
-
-$routes->post('getUbicaciones', 'Turno::Ubicaciones',['filter' => 'auth']);
-$routes->post('getTurnos', 'Puesto::Turnos',['filter' => 'auth']);
-
-
-$routes->get('ubicacioncatalogo', 'Ubicacion::GetUbica',['filter' => 'auth']);
-$routes->get('turnocatalogo', 'Turno::GetTurno',['filter' => 'auth']);
-$routes->get('puestocatalogo', 'Puesto::GetPuestos',['filter' => 'auth']);
-
-$routes->get('asignaciones', 'Asignaciones::index',['filter' => 'auth']);
-$routes->post('buscarData', 'Asignaciones::buscarData',['filter' => 'auth']);
-$routes->post('getAllDataSearch', 'Asignaciones::getAllDataSearch',['filter' => 'auth']);
-
-$routes->get('addAsignacion', 'Asignaciones::add',['filter' => 'auth']);
-$routes->get('adeudos', 'Asignaciones::adeudos',['filter' => 'auth']);
-$routes->post('addDataAsignacion', 'Asignaciones::setData',['filter' => 'auth']);
-$routes->post('getCompromisoPago', 'Asignaciones::getCompromisoPago',['filter' => 'auth']);
-$routes->post('setCompromisoPago', 'Asignaciones::setCompromisoPago',['filter' => 'auth']);
-$routes->get('getAllData', 'Asignaciones::getAllData',['filter' => 'auth']);
-$routes->get('detailAsignacion', 'Asignaciones::detailAsignacion',['filter' => 'auth']);
-$routes->post('deleteData', 'Asignaciones::deleteData',['filter' => 'auth']);
-$routes->post('modifyDate', 'Asignaciones::modifyDate',['filter' => 'auth']);
-
-$routes->get('comisionista', 'Comision::index',['filter' => 'auth']);
-$routes->post('addComisionista', 'Comision::setData',['filter' => 'auth']);
-$routes->post('UpdateComisionista', 'Comision::update',['filter' => 'auth']);
-$routes->post('deleteComisionista', 'Comision::delete',['filter' => 'auth']);
-$routes->post('detallesPagos', 'Comision::detallesPagos',['filter' => 'auth']);
-$routes->post('detalleComisionista', 'Comision::detail',['filter' => 'auth']);
-$routes->post('detalleComisionistaAsignacion', 'Comision::detailAC',['filter' => 'auth']);
-$routes->post('asignarComision', 'Comision::asignarComision',['filter' => 'auth']);
-$routes->get('sendEmail', 'Administrador::sendEmailTest',['filter' => 'auth']);
-$routes->post('cargarRespuestasConsulta', 'Cuip::cargaRespuestasPre',['filter' => 'auth']);
-$routes->post('cargaMasivaCuip', 'Cuip::cargaMasivaCUIP',['filter' => 'auth']);
-$routes->post('cargaCortaCuip', 'Cuip::cargaCortaCUIP',['filter' => 'auth']);
-$routes->get('AddEmpresa', 'Administrador::agregarEmpresa',['filter' => 'auth']);
-$routes->post('GuardarEmpresa', 'Administrador::AgrEmpresa',['filter' => 'auth']);
-$routes->post('getUbicacionAlta', 'Cuip::getUbicacion',['filter' => 'auth']);
-$routes->post('getPuestosAlta', 'Cuip::getPuesto',['filter' => 'auth']);
-$routes->post('GuardarAltaEmpleado', 'Cuip::AgregarAltasEmpleados',['filter' => 'auth']);
-$routes->get('licencias', 'Armas::licencias',['filter' => 'auth']);
-$routes->post('GuardarLic', 'Armas::GuardarLic',['filter' => 'auth']);
-$routes->get('editarLicenia', 'Armas::editarLicenia',['filter' => 'auth']);
-$routes->post('editLicencia', 'Armas::editLicencia',['filter' => 'auth']);
-$routes->post('editDoc', 'Armas::editDoc',['filter' => 'auth']);
-$routes->get('detialLicencia', 'Armas::detialLicencia',['filter' => 'auth']);
-$routes->get('ubicaciones', 'Armas::ubicaciones',['filter' => 'auth']);
-$routes->post('GuardarUbicacionArmas', 'Armas::GuardarUbicacionArmas',['filter' => 'auth']);
-$routes->get('editarUbicacion', 'Armas::editarUbicacion',['filter' => 'auth']);
-$routes->post('editUbicacion', 'Armas::editUbicacion',['filter' => 'auth']);
-$routes->get('detialUbicacion', 'Armas::detialUbicacion',['filter' => 'auth']);
-$routes->post('llenadoCampos', 'Armas::mostrarDatos',['filter' => 'auth']);
-$routes->get('visor', 'Armas::view',['filter' => 'auth']);
-$routes->get('visorFolioManifiesto', 'Armas::visorFolioManifiesto',['filter' => 'auth']);
-$routes->post('editFolioManifisto', 'Armas::editFolioManifisto',['filter' => 'auth']);
-$routes->get('cargaMasivaArmas', 'Armas::cargaMasivaArmas',['filter' => 'auth']);
-$routes->get('limpiar_datos', 'Armas::limpiar_datos',['filter' => 'auth']);
-$routes->get('eliminarCarpeta', 'Armas::eliminarCarpeta',['filter' => 'auth']);
-$routes->get('all_files', 'Armas::all_files',['filter' => 'auth']);
-$routes->get('all_files_completed', 'Armas::all_files_completed',['filter' => 'auth']);
-
-$routes->post('EditarDatosPersonales', 'Cuip::EditarPersonales',['filter' => 'auth']);
-$routes->post('EditarReferencias', 'Cuip::EditarReferencias',['filter' => 'auth']);
-$routes->post('EditarSocioEconomico', 'Cuip::EditarSocioEconomico',['filter' => 'auth']);
-$routes->post('EditarEmpSegPublica', 'Cuip::EditarEmpSegPublica',['filter' => 'auth']);
-$routes->post('EditarEmpDiversos', 'Cuip::EditarEmpDiversos',['filter' => 'auth']);
-$routes->post('EditarSancionesEstimulos', 'Cuip::EditarSancionesEstimulos',['filter' => 'auth']);
-$routes->post('EditarAltaEmpleado', 'Cuip::EditarAltasEmpleados',['filter' => 'auth']);
-$routes->post('EditarCapacitaciones', 'Cuip::EditarCapacitaciones',['filter' => 'auth']);
-$routes->post('EditarMediaFiliacion', 'MediaFiliacion::EditarMediaFiliacion',['filter' => 'auth']);
-$routes->post('validaCancelada', 'Cuip::validaCancelada',['filter' => 'auth']);
-$routes->post('ProcesoBaja', 'Cuip::BajaRegistro',['filter' => 'auth']);
-
-//incidecnias
-$routes->get('Incidencias', 'Incidencias::index',['filter' => 'auth']);
-$routes->get('addIncidencias', 'Incidencias::addIncidencias',['filter' => 'auth']);
-$routes->post('newIncidencias', 'Incidencias::agregar',['filter' => 'auth']);
-$routes->post('editIncidencias', 'Incidencias::edit',['filter' => 'auth']);
-$routes->post('detailIncidencias', 'Incidencias::detail',['filter' => 'auth']);
-
-
-$routes->post('deleteArmaJuridico', 'Armas::deleteArmaJuridico',['filter' => 'auth']);
-$routes->get('incidencias_empeado', 'RH::index',['filter' => 'auth']);
-$routes->post('getAltasEmpleados', 'RH::getAltasEmpleados',['filter' => 'auth']);
-$routes->post('getBajasEmpleados', 'RH::getBajasEmpleados',['filter' => 'auth']);
-
-//jefe de turno 
-$routes->get('Incidencias_jefe_turno', 'Incidencias::jefeTurno',['filter' => 'auth']);
-$routes->post('evidencia', 'Incidencias::evidencia',['filter' => 'auth']);
+$routes->get('estudiantes', 'Estudiantes::index', ['filter' => 'auth']);
+$routes->get('GetAllEstudents', 'Estudiantes::GetAllEstudents', ['filter' => 'auth']);
+$routes->get('getEstudent/(:num)', 'Estudiantes::getEstudent/$1', ['filter' => 'auth']);
+$routes->post('setEstudiante', 'Estudiantes::setEstudiante', ['filter' => 'auth']);
+$routes->post('updateEstudiante/(:num)', 'Estudiantes::updateEstudiante/$1', ['filter' => 'auth']);
+$routes->post('deleteEstudiantes/(:num)', 'Estudiantes::deleteEstudiantes/$1', ['filter' => 'auth']);
+$routes->get('getContacts/(:num)', 'Estudiantes::getContacts/$1', ['filter' => 'auth']);
+$routes->get('getContact/(:num)', 'Estudiantes::getContact/$1', ['filter' => 'auth']);
+$routes->post('active_Desactive_Phone/(:num)', 'Estudiantes::active_Desactive_Phone/$1', ['filter' => 'auth']);
+$routes->post('setContacts', 'Estudiantes::setContacts', ['filter' => 'auth']);
+$routes->post('updateContacts/(:num)', 'Estudiantes::updateContacts/$1', ['filter' => 'auth']);
 
 
 
-
+$routes->get('docentes', 'Docentes::index', ['filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------

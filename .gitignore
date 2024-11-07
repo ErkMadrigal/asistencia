@@ -41,7 +41,7 @@ $RECYCLE.BIN/
 #-------------------------
 # These should never be under version control,
 # as it poses a security risk.
-.env
+# .env
 .vagrant
 Vagrantfile
 
@@ -64,7 +64,7 @@ writable/debugbar/*
 
 php_errors.log
 
-public/index.php
+# public/index.php
 #-------------------------
 # User Guide Temp Files
 #-------------------------
@@ -120,7 +120,7 @@ nb-configuration.xml
 /api/
 
 app/Config/Email.php
-public/index.php
+# public/index.php
 # Visual Studio Code
 .vscode/
 

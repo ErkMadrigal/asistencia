@@ -15,6 +15,7 @@ Options All -Indexes
 	# change the following line to match the subfolder you need.
 	# http://httpd.apache.org/docs/current/mod/mod_rewrite.html#rewritebase
 	# RewriteBase /
+	RewriteBase /serprosep/public/
 
 	# Redirect Trailing Slashes...
 	RewriteCond %{REQUEST_FILENAME} !-d
@@ -43,6 +44,20 @@ Options All -Indexes
 	# can be sent to index.php, and everything works as normal.
 	ErrorDocument 404 index.php
 </IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /asistencias/public
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php/$1 [L]
+</IfModule>
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+
 
 # Disable server signature start
 	ServerSignature Off
