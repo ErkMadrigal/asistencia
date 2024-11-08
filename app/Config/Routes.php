@@ -61,6 +61,17 @@ $routes->post('updateContacts/(:num)', 'Estudiantes::updateContacts/$1', ['filte
 
 
 $routes->get('docentes', 'Docentes::index', ['filter' => 'auth']);
+$routes->get('GetAllDocents', 'Docentes::GetAllDocents', ['filter' => 'auth']);
+$routes->get('getDocent/(:num)', 'Docentes::getDocent/$1', ['filter' => 'auth']);
+$routes->post('setDocents', 'Docentes::setDocents', ['filter' => 'auth']);
+$routes->post('updateDocents/(:num)', 'Docentes::updateDocents/$1', ['filter' => 'auth']);
+$routes->post('deleteDocents/(:num)', 'Docentes::deleteDocents/$1', ['filter' => 'auth']);
+
+
+$routes->get('asistencias', 'Asistencias::index', ['filter' => 'auth']);
+$routes->get('GetAllAsistencias', 'Asistencias::GetAllAsistencias', ['filter' => 'auth']);
+$routes->post('searchAsistencia', 'Asistencias::searchAsistencia', ['filter' => 'auth']);
+
 
 /*
  * --------------------------------------------------------------------

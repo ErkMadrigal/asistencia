@@ -28,14 +28,15 @@ class DocentesModel extends Model
     }
 
     public function GetAllDocents(){
-        $builder = $this->db->table('docentes');
-        $builder->select("*");
+        $builder = $this->db->table('docentes d');
+        $builder->select("d.id, d.nombre_completo, d.matricula, d.activo, r.rol");
+        $builder->join("roles r","r.id = d.rol","left");
         return $builder->get()->getResult();
     }
 
     public function GetDocents($id){
         $builder = $this->db->table('docentes');
-        $builder->select("*");
+        $builder->select("id, nombre_completo, matricula");
         $builder->where("id", $id);
 
         return $builder->get()->getRow();
@@ -44,7 +45,7 @@ class DocentesModel extends Model
     public function setDocents($insert){
         $this->db->transStart();
         $return = false;
-        $this->db->table('estudiantes')->insert($insert);
+        $this->db->table('docentes')->insert($insert);
 
         // if ($this->db->affectedRows() > 0){
         if ($this->db->transStatus()){
@@ -58,7 +59,7 @@ class DocentesModel extends Model
     public function updateDocents( $update ,$id){
 
         $return = false;
-        $this->db->table('estudiantes')->where('id', $id)->update($update);
+        $this->db->table('docentes')->where('id', $id)->update($update);
 
         if ($this->db->affectedRows() > 0){
             $return = true;

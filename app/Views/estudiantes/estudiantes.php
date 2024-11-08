@@ -213,15 +213,23 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData)
                 });
-                console.log(response)
+                
                 if (response.ok) {
+                    const data = await response.json();
+                    Toast.fire({
+                        icon: "success",
+                        title: data.message
+                    });
                     loadData();
                     $('#dataForm')[0].reset();
                     $('#dataForm').removeData('id');
                     $('button[type="submit"]').text('Agregar Datos');
                 } else {
                     const errorData = await response.json();
-                    alert(errorData.message);
+                    Toast.fire({
+                        icon: "error",
+                        title: errorData.message
+                    });
                 }
             } catch (error) {
                 console.error('Error:', error);
@@ -236,8 +244,18 @@
                 const response = await fetch(base_url+`/deleteEstudiantes/${id}`, { method: 'post' });
                 if (response.ok) {
                     loadData();
-
+                    const data = await response.json();
+                    Toast.fire({
+                        icon: "success",
+                        title: data.message
+                    });
                     // dataTable.row($(this).closest('tr')).remove().draw();
+                }else{
+                    const errorData = await response.json();
+                    Toast.fire({
+                        icon: "error",
+                        title: errorData.message
+                    });
                 }
             } catch (error) {
                 console.error('Error:', error);
@@ -311,9 +329,18 @@
                         body: JSON.stringify(formData) 
                     });
                     if (response.ok) {
-                        // subtable();
-                        console.log(dataTableContacts)
-                        // dataTableContacts.row($(this).closest('tr')).remove().draw();
+                        const data = await response.json();
+                        Toast.fire({
+                            icon: "success",
+                            title: data.message
+                        });
+                        subtable();
+                    }else{
+                        const errorData = await response.json();
+                        Toast.fire({
+                            icon: "error",
+                            title: errorData.message
+                        });
                     }
                 } catch (error) {
                     console.error('Error:', error);
@@ -332,7 +359,18 @@
                         body: JSON.stringify(formData) 
                     });
                     if (response.ok) {
-                        dataTableContacts();
+                        subtable();
+                        const data = await response.json();
+                        Toast.fire({
+                            icon: "success",
+                            title: data.message
+                        });
+                    }else{
+                        const errorData = await response.json();
+                        Toast.fire({
+                            icon: "error",
+                            title: errorData.message
+                        });
                     }
                 } catch (error) {
                     console.error('Error:', error);
@@ -378,14 +416,21 @@
                         body: JSON.stringify(formData)
                     });
                     if (response.ok) {
-                    
+                        const data = await response.json();
+                        Toast.fire({
+                            icon: "success",
+                            title: data.message
+                        });
                         $('#dataForm')[0].reset();
                         $('#dataForm').removeData('id');
                         $('button[type="submit"]').text('Agregar Datos');
                         subtable();
                     } else {
                         const errorData = await response.json();
-                        alert(errorData.message);
+                        Toast.fire({
+                            icon: "error",
+                            title: errorData.message
+                        });
                     }
                 } catch (error) {
                     console.error('Error:', error);

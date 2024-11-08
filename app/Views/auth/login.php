@@ -20,11 +20,11 @@
     <div class="login-box">
         <div class="card card-outline card-primary">
             <div class="card-header">
-                <h1 class="mb-0"> <b>Admin</b>LTE</h1>
+                <h1 class="mb-0"> <b>Asistencia</b> Escolar</h1>
             </div>
             <div class="card-body login-card-body">
                 <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
-                <p class="login-box-msg">Sign in to start your session</p>
+                <p class="login-box-msg">Ingresa las credenciales correspondientes</p>
                 <form id="loginForm">
                     <div class="input-group mb-1">
                         <div class="form-floating">

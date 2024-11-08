@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 
-use App\Models\DocentesModel;
+use App\Models\AsistenciasModel;
 use App\Libraries\Menu;
 use App\Libraries\Encrypt;
 use Ramsey\Uuid\Uuid;
@@ -11,47 +11,39 @@ use Ramsey\Uuid\Type\Hexadecimal;
 use Ramsey\Uuid\Provider\Node\StaticNodeProvider;
 
 
-class Docentes extends BaseController
+class Asistencias extends BaseController
 {
 
     private $encrypter;
 	private $menu;
 	private $encrypt;
 	private $db;
-	private $DocentesModel;
+	private $AsistenciasModel;
 
     public function __construct(){
 		$this->menu = new Menu();
 		$this->encrypt = new Encrypt();
 		$this->encrypter = \Config\Services::encrypter();
         $this->db =  \Config\Database::connect('default');
-		$this->DocentesModel = new DocentesModel($this->db);
+		$this->AsistenciasModel = new AsistenciasModel($this->db);
     }
     
 
 
     public function index()
     {
-        return view('docentes/docentes');
+        return view('asistencias/asistencias');
     }
 
-    public function GetAllDocents()
+    public function GetAllAsistencias()
     {
         if ($this->request->getMethod() == "get"){
             
-            echo json_encode($this->DocentesModel->GetAllDocents());
+            echo json_encode($this->AsistenciasModel->GetAllAsistencias());
         }
     }
 
-    public function GetDocent($id)
-    {
-        if ($this->request->getMethod() == "get"){
-            
-            echo json_encode($this->DocentesModel->GetDocents($id));
-        }
-    }
-
-    public function setDocents()
+    public function setAsistencias()
     {
         $jsonData = $this->request->getJSON(true);
 
@@ -72,25 +64,24 @@ class Docentes extends BaseController
         ];
 
         // Llamada al modelo para insertar los datos
-        $insertedId = $this->DocentesModel->setDocents($data);
+        $insertedId = $this->AsistenciasModel->setAsistencias($data);
 
         // Comprobamos si la inserción fue exitosa
         if ($insertedId) {
             return $this->response->setJSON([
                 'status' => 'success',
-                'message' => 'Registro creado correctamente',
+                'message' => 'Ingreso exitoso',
                 'id' => $insertedId
             ])->setStatusCode(200); // Código 200 para creación exitosa
         } else {
             return $this->response->setJSON([
                 'status' => 'error',
-                'message' => 'No se pudo crear el registro'
+                'message' => 'Error: al querer realizar el ingreso'
             ])->setStatusCode(500); // Código 500 para error en el servidor
         }
     }
 
-
-    public function updateDocents($id)
+    public function searchAsistencia()
     {
         $jsonData = $this->request->getJSON(true);
 
@@ -101,61 +92,21 @@ class Docentes extends BaseController
             ])->setStatusCode(405); // Código 405 para métodos no permitidos
         }
 
-        // Recibimos los datos del cliente mediante el método POST
-        $data = [
-            'nombre_completo' => $jsonData['nombre_Completo'],
-            'matricula' => $jsonData['matricula'],
-        ];
 
         // Llamada al modelo para insertar los datos
-        $updateId = $this->DocentesModel->updateDocents($data, $id);
+        $selected = $this->AsistenciasModel->GetAsistenciasDate($jsonData['curp']);
 
         // Comprobamos si la inserción fue exitosa
-        if ($updateId) {
+        if ($selected) {
             return $this->response->setJSON([
                 'status' => 'success',
-                'message' => 'Registro actualizado correctamente',
-                'id' => $updateId
-            ])->setStatusCode(200); 
+                'message' => 'Busqueda exitosa',
+                'data' => $selected
+            ])->setStatusCode(200); // Código 200 para creación exitosa
         } else {
             return $this->response->setJSON([
                 'status' => 'error',
-                'message' => 'No se pudo actualizar el registro'
-            ])->setStatusCode(500); // Código 500 para error en el servidor
-        }
-    }
-
-
-    public function deleteDocents($id)
-    {
-
-
-        $jsonData = $this->request->getJSON(true);
-
-        if ($this->request->getMethod() !== 'post') {
-            return $this->response->setJSON([
-                'status' => 'error',
-                'message' => 'Método no permitido'
-            ])->setStatusCode(405); // Código 405 para métodos no permitidos
-        }
-
-        // Recibimos los datos del cliente mediante el método POST
-        $data['activo'] = $jsonData['activo'];
-        
-        // Llamada al modelo para insertar los datos
-        $updateId = $this->DocentesModel->updateDocents($data, $id);
-
-        // Comprobamos si la inserción fue exitosa
-        if ($updateId) {
-            return $this->response->setJSON([
-                'status' => 'success',
-                'message' => 'Registro Actualizado correctamente',
-                'id' => $updateId
-            ])->setStatusCode(200); 
-        } else {
-            return $this->response->setJSON([
-                'status' => 'error',
-                'message' => 'No se pudo Actualizar el registro'
+                'message' => 'No se encontraron resultados'
             ])->setStatusCode(500); // Código 500 para error en el servidor
         }
     }

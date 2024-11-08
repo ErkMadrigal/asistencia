@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="<?= base_url('dist/css/adminlte.min.css') ?>">
   <link rel="stylesheet" href="https://adminlte.io/themes/v3/dist/css/adminlte.min.css?v=3.2.0">
+  <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
 </head>
 <!-- <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> -->
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary app-loaded sidebar-open">
@@ -26,6 +27,8 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script> <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script> <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
 <script src="<?= base_url('dist/js/adminlte.min.js') ?>"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
 <!-- <script src="https://adminlte.io/themes/v3/plugins/jquery/jquery.min.js"></script> -->
 <!-- <script src="https://adminlte.io/themes/v3/dist/js/demo.js"></script> -->
 <script>
@@ -49,6 +52,18 @@
                         clickScroll: Default.scrollbarClickScroll,
                     },
                 });
+            }
+        });
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
             }
         });
     </script> 
